@@ -86,53 +86,149 @@ footer{
     padding:20px;
     color:#94a3b8;
 }
+
+/* الصفحة الترحيبية */
+#welcome{
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    background:#0f172a;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    z-index:9999;
+    padding:20px;
+}
+
+.welcome-box{
+    background:#1e293b;
+    padding:35px 25px;
+    border-radius:22px;
+    max-width:500px;
+    width:100%;
+}
+
+.welcome-box h1{
+    font-size:32px;
+    margin-bottom:15px;
+}
+
+.welcome-box p{
+    color:#cbd5e1;
+    font-size:18px;
+    line-height:1.8;
+}
+
+.welcome-box button{
+    margin-top:15px;
+}
 </style>
 </head>
 
 <body>
 
-<header>
-🚀 KAPO ONE | كابو ون
-</header>
+<!-- شاشة الترحيب -->
+<div id="welcome">
 
-<section class="hero">
-    <h1>مرحبًا بك في كابو ون</h1>
-    <p>
-        منصة كابو للأفكار والتصاميم والمشاريع المستقبلية
-    </p>
-</section>
+    <div class="welcome-box">
 
-<div class="container">
+        <h1>🚀 مرحبًا بك في كابو ون</h1>
 
-    <div class="card">
-        <h2>🏗️ التصميم والهندسة</h2>
         <p>
-            استكشاف أفكار معمارية وتصاميم مبتكرة للمشاريع المستقبلية.
+            منصة كابو للأفكار والتصاميم والمشاريع المستقبلية.
         </p>
-        <button onclick="alert('مرحبًا بك في KAPO ONE 🚀')">
+
+        <button onclick="startKapo()">
             ابدأ الآن
         </button>
-    </div>
 
-    <div class="card">
-        <h2>💡 أفكار جديدة</h2>
-        <p>
-            مساحة لعرض الأفكار والمشاريع والتصاميم الإبداعية.
-        </p>
-    </div>
-
-    <div class="card">
-        <h2>🌍 KAPO ONE</h2>
-        <p>
-            نعمل على بناء منصة احترافية تجمع الأفكار والتصميم والتقنية.
-        </p>
     </div>
 
 </div>
 
+
+<header>
+🚀 KAPO ONE | كابو ون
+</header>
+
+
+<section class="hero">
+
+    <h1>منصة كابو ون</h1>
+
+    <p>
+        اكتشف الأفكار والتصاميم والمشاريع المستقبلية
+    </p>
+
+</section>
+
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>🏗️ التصميم والهندسة</h2>
+
+        <p>
+            استكشاف أفكار معمارية وتصاميم مبتكرة للمشاريع المستقبلية.
+        </p>
+
+        <button onclick="showMessage()">
+            استكشف الآن
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>💡 أفكار جديدة</h2>
+
+        <p>
+            مساحة لعرض الأفكار والمشاريع والتصاميم الإبداعية.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>🌍 KAPO ONE</h2>
+
+        <p>
+            نعمل على بناء منصة احترافية تجمع الأفكار والتصميم والتقنية.
+        </p>
+
+    </div>
+
+</div>
+
+
 <footer>
 © 2026 KAPO ONE | كابو ون
 </footer>
+
+
+<script>
+
+function startKapo(){
+
+    document.getElementById("welcome").style.display = "none";
+
+    alert("أهلًا بك في كابو ون 🚀");
+
+}
+
+function showMessage(){
+
+    alert("قسم التصميم والهندسة قادم قريبًا 🏗️");
+
+}
+
+</script>
 
 </body>
 </html>
