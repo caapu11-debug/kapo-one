@@ -24,7 +24,9 @@ text-align:center;
 padding:35px 20px;
 }
 
-.hero h1{font-size:30px}
+.hero h1{
+font-size:30px;
+}
 
 .hero p{
 color:#cbd5e1;
@@ -158,6 +160,31 @@ border-radius:12px;
 line-height:2;
 }
 
+.table-box{
+display:none;
+margin-top:20px;
+overflow-x:auto;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+background:#1e293b;
+border-radius:12px;
+overflow:hidden;
+}
+
+th,
+td{
+padding:13px;
+border:1px solid #475569;
+text-align:center;
+}
+
+th{
+background:#2563eb;
+}
+
 .close{
 background:#475569;
 }
@@ -182,15 +209,23 @@ placeholder="اكتب سؤالك أو فكرتك هنا..."
 🏗️ قسم الهندسة والتصميم
 </h2><p style="text-align:center;color:#cbd5e1">
 طوّر مشروعك الهندسي والمعماري من مكان واحد.
-</p><div class="cards"><div class="card" onclick="openTool('towerTool')"><div class="icon">🏙️</div><h3>تصميم الأبراج</h3><p>
-تصميم وحسابات أولية للأبراج.
-</p></div><div class="card" onclick="openTool('architectureTool')"><div class="icon">🏛️</div><h3>الأفكار المعمارية</h3><p>
-تطوير الأفكار المعمارية.
-</p></div><div class="card" onclick="openTool('plansTool')"><div class="icon">📐</div><h3>المخططات الهندسية</h3><p>
-تنظيم بيانات المخططات.
-</p></div><div class="card" onclick="openTool('tableTool')"><div class="icon">🧮</div><h3>الجداول والحسابات</h3><p>
-تنظيم بيانات المشروع.
-</p></div></div><!-- تصميم الأبراج --><div class="tool" id="towerTool"><h3>🏙️ تصميم برج جديد</h3><label>اسم البرج</label>
+</p><div class="cards"><div class="card" onclick="openTool('towerTool')">
+<div class="icon">🏙️</div>
+<h3>تصميم الأبراج</h3>
+<p>تصميم وحسابات أولية للأبراج.</p>
+</div><div class="card" onclick="openTool('architectureTool')">
+<div class="icon">🏛️</div>
+<h3>الأفكار المعمارية</h3>
+<p>تطوير الأفكار المعمارية.</p>
+</div><div class="card" onclick="openTool('plansTool')">
+<div class="icon">📐</div>
+<h3>المخططات الهندسية</h3>
+<p>تنظيم بيانات المخططات.</p>
+</div><div class="card" onclick="openTool('tableTool')">
+<div class="icon">🧮</div>
+<h3>الجداول والحسابات</h3>
+<p>إنشاء جداول تلقائية للمشروع.</p>
+</div></div><!-- تصميم الأبراج --><div class="tool" id="towerTool"><h3>🏙️ تصميم برج جديد</h3><label>اسم البرج</label>
 
 <input
 id="towerName"
@@ -227,122 +262,83 @@ placeholder="مثال: 1500"
 
 <label>نوع البرج</label>
 
-<select id="towerType"><option>سكني</option><option>تجاري</option><option>فندقي</option><option>إداري</option><option>متعدد الاستخدامات</option></select><label>الفكرة المعمارية</label>
+<select id="towerType"><option>سكني</option>
+<option>تجاري</option>
+<option>فندقي</option>
+<option>إداري</option>
+<option>متعدد الاستخدامات</option></select><label>الفكرة المعمارية</label>
 
 <textarea
 id="towerIdea"
-placeholder="مثال: برج مستقبلي بتصميم مستوحى من الذرة..."
+placeholder="اكتب الفكرة المعمارية..."
 ></textarea><label>المميزات</label>
 
 <textarea
 id="towerFeatures"
-placeholder="مثال: مطاعم، مكاتب، منصة مشاهدة، حدائق..."
+placeholder="مثال: مطاعم، مكاتب، منصة مشاهدة..."
 ></textarea><button onclick="createTower()">
 إنشاء بطاقة المشروع 🏗️
-</button><div class="project" id="towerProject"><h3>
-🏙️ بطاقة مشروع البرج
-</h3><div class="project-row"><strong>اسم المشروع</strong>
-
+</button><div class="project" id="towerProject"><h3>🏙️ بطاقة مشروع البرج</h3><div class="project-row">
+<strong>اسم المشروع</strong>
 <span id="pName"></span>
-
-</div><div class="project-row"><strong>الارتفاع</strong>
-
+</div><div class="project-row">
+<strong>الارتفاع</strong>
 <span id="pHeight"></span>
-
-</div><div class="project-row"><strong>عدد الأدوار</strong>
-
+</div><div class="project-row">
+<strong>عدد الأدوار</strong>
 <span id="pFloors"></span>
-
-</div><div class="project-row"><strong>نوع البرج</strong>
-
+</div><div class="project-row">
+<strong>نوع البرج</strong>
 <span id="pType"></span>
-
-</div><div class="project-row"><strong>الفكرة المعمارية</strong>
-
+</div><div class="project-row">
+<strong>الفكرة المعمارية</strong>
 <span id="pIdea"></span>
-
-</div><div class="project-row"><strong>المميزات</strong>
-
+</div><div class="project-row">
+<strong>المميزات</strong>
 <span id="pFeatures"></span>
-
-</div><div class="project-row"><strong>🧮 الحسابات الأولية</strong>
-
-<div
+</div><button onclick="calculateTower()">
+🧮 حساب مساحة المشروع
+</button><div
 id="towerCalculations"
 class="calculation"
-></div></div><button onclick="calculateTower()">
-🧮 حساب مساحة المشروع
-</button><div class="project-row"><strong>الحالة</strong>
-
-<span>
-🟢 تم إنشاء التصور الأولي
-</span></div></div><button
-class="close"
-onclick="closeTools()"
-
-«»
-
+></div><button onclick="createAutomaticTable()">
+📊 إنشاء جدول المشروع تلقائيًا
+</button><div
+id="automaticTable"
+class="table-box"
+></div><div class="project-row">
+<strong>الحالة</strong>
+<span>🟢 تم إنشاء التصور الأولي</span>
+</div></div><button class="close" onclick="closeTools()">
 إغلاق
-</button>
-
-</div><!-- الأفكار المعمارية --><div class="tool" id="architectureTool"><h3>🏛️ الأفكار المعمارية</h3><label>اسم المشروع</label>
+</button></div><!-- الأفكار المعمارية --><div class="tool" id="architectureTool"><h3>🏛️ الأفكار المعمارية</h3><label>اسم المشروع</label>
 
 <input placeholder="اسم المشروع"><label>الفكرة</label>
 
-<textarea
-placeholder="اكتب فكرتك المعمارية..."
-></textarea><button onclick="alert('💡 تم تسجيل الفكرة المعمارية')">
+<textarea placeholder="اكتب فكرتك المعمارية..."></textarea><button onclick="alert('💡 تم تسجيل الفكرة المعمارية')">
 حفظ الفكرة 💡
-</button><button
-class="close"
-onclick="closeTools()"
-
-«»
-
+</button><button class="close" onclick="closeTools()">
 إغلاق
-</button>
-
-</div><!-- المخططات --><div class="tool" id="plansTool"><h3>📐 المخططات الهندسية</h3><label>اسم المشروع</label>
+</button></div><!-- المخططات --><div class="tool" id="plansTool"><h3>📐 المخططات الهندسية</h3><label>اسم المشروع</label>
 
 <input placeholder="اسم المشروع"><label>نوع المخطط</label>
 
-<select><option>مخطط معماري</option><option>مخطط إنشائي</option><option>مخطط كهربائي</option><option>مخطط ميكانيكي</option></select><textarea
-placeholder="اكتب متطلبات المخطط..."
-></textarea><button onclick="alert('📐 تم تسجيل بيانات المخطط')">
+<select>
+<option>مخطط معماري</option>
+<option>مخطط إنشائي</option>
+<option>مخطط كهربائي</option>
+<option>مخطط ميكانيكي</option>
+</select><textarea placeholder="اكتب متطلبات المخطط..."></textarea><button onclick="alert('📐 تم تسجيل بيانات المخطط')">
 حفظ بيانات المخطط
-</button><button
-class="close"
-onclick="closeTools()"
-
-«»
-
+</button><button class="close" onclick="closeTools()">
 إغلاق
-</button>
-
-</div><!-- الجداول --><div class="tool" id="tableTool"><h3>🧮 الجداول والحسابات</h3><label>اسم المشروع</label>
-
-<input placeholder="اسم المشروع"><label>عدد العناصر</label>
-
-<input
-type="number"
-placeholder="مثال: 10"
-
-«»
-
-<textarea
-placeholder="اكتب البيانات التي تريد تنظيمها..."
-></textarea><button onclick="alert('📊 تم إنشاء الجدول الأولي')">
-إنشاء جدول 📊
-</button><button
-class="close"
-onclick="closeTools()"
-
-«»
-
+</button></div><!-- الجداول --><div class="tool" id="tableTool"><h3>🧮 الجداول والحسابات</h3><p style="color:#cbd5e1">
+الجداول يمكن إنشاؤها تلقائيًا من بيانات مشروع البرج.
+</p><button onclick="openTool('towerTool')">
+🏙️ الانتقال إلى تصميم الأبراج
+</button><button class="close" onclick="closeTools()">
 إغلاق
-</button>
-
-</div></section><footer>
+</button></div></section><footer>
 © 2026 KAPO ONE
 </footer><script>
 
@@ -360,7 +356,6 @@ result.innerHTML =
 "⚠️ اكتب سؤالك أو فكرتك أولًا.";
 
 return;
-
 }
 
 result.innerHTML =
@@ -446,11 +441,6 @@ features;
 document.getElementById("towerProject").style.display =
 "block";
 
-document.getElementById("towerProject").scrollIntoView({
-behavior:"smooth",
-block:"start"
-});
-
 }
 
 
@@ -485,7 +475,6 @@ totalArea * 0.15;
 const usableArea =
 totalArea - serviceArea;
 
-
 const result =
 document.getElementById("towerCalculations");
 
@@ -517,7 +506,121 @@ usableArea.toLocaleString()
 
 +
 
-"⚠️ الحسابات تقديرية للتصور الأولي فقط، وليست حسابات هندسية تنفيذية.";
+"⚠️ الحسابات تقديرية للتصور الأولي فقط.";
+
+}
+
+
+function createAutomaticTable(){
+
+const name =
+document.getElementById("towerName").value
+|| "برج كابو ONE";
+
+const height =
+document.getElementById("towerHeight").value
+|| "غير محدد";
+
+const floors =
+Number(
+document.getElementById("towerFloors").value
+) || 0;
+
+const floorArea =
+Number(
+document.getElementById("floorArea").value
+) || 0;
+
+const type =
+document.getElementById("towerType").value;
+
+if(floors <= 0 || floorArea <= 0){
+
+alert(
+"⚠️ أدخل عدد الأدوار ومساحة الدور أولًا."
+);
+
+return;
+
+}
+
+const totalArea =
+floors * floorArea;
+
+const serviceArea =
+totalArea * 0.15;
+
+const usableArea =
+totalArea - serviceArea;
+
+const table =
+document.getElementById("automaticTable");
+
+table.style.display="block";
+
+table.innerHTML =
+
+"<table>" +
+
+"<tr>" +
+"<th>البيان</th>" +
+"<th>القيمة</th>" +
+"</tr>" +
+
+"<tr>" +
+"<td>اسم المشروع</td>" +
+"<td>" + name + "</td>" +
+"</tr>" +
+
+"<tr>" +
+"<td>نوع البرج</td>" +
+"<td>" + type + "</td>" +
+"</tr>" +
+
+"<tr>" +
+"<td>الارتفاع</td>" +
+"<td>" + height + " متر</td>" +
+"</tr>" +
+
+"<tr>" +
+"<td>عدد الأدوار</td>" +
+"<td>" + floors + "</td>" +
+"</tr>" +
+
+"<tr>" +
+"<td>مساحة الدور</td>" +
+"<td>" +
+floorArea.toLocaleString() +
+" م²</td>" +
+"</tr>" +
+
+"<tr>" +
+"<td>إجمالي المساحة</td>" +
+"<td>" +
+totalArea.toLocaleString() +
+" م²</td>" +
+"</tr>" +
+
+"<tr>" +
+"<td>الخدمات التقديرية</td>" +
+"<td>" +
+serviceArea.toLocaleString() +
+" م²</td>" +
+"</tr>" +
+
+"<tr>" +
+"<td>المساحة الصافية التقريبية</td>" +
+"<td>" +
+usableArea.toLocaleString() +
+" م²</td>" +
+"</tr>" +
+
+"</table>";
+
+table.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
 
 }
 
