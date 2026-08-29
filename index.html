@@ -70,10 +70,6 @@ button{
     cursor:pointer;
 }
 
-button:active{
-    transform:scale(.98);
-}
-
 #result{
     margin-top:18px;
     padding:15px;
@@ -81,6 +77,53 @@ button:active{
     border-radius:12px;
     color:#cbd5e1;
     display:none;
+}
+
+.engineering{
+    max-width:900px;
+    margin:35px auto;
+    padding:25px 20px;
+}
+
+.engineering h2{
+    text-align:center;
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.engineering p{
+    text-align:center;
+    color:#cbd5e1;
+    margin-bottom:25px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+}
+
+.card{
+    background:#1e293b;
+    padding:25px 15px;
+    border-radius:18px;
+    text-align:center;
+    border:1px solid #334155;
+}
+
+.card .icon{
+    font-size:40px;
+    margin-bottom:12px;
+}
+
+.card h3{
+    margin:8px 0;
+    font-size:20px;
+}
+
+.card p{
+    font-size:14px;
+    margin:0;
 }
 
 footer{
@@ -100,6 +143,40 @@ footer{
 <button onclick="sendIdea()">إرسال 🚀</button>
 
 <div id="result"></div>
+
+</section><section class="engineering"><h2>🏗️ قسم الهندسة والتصميم</h2>
+
+<p>
+    مساحة متخصصة لتطوير الأفكار الهندسية والمعمارية وتصميم المشاريع.
+</p>
+
+<div class="cards">
+
+    <div class="card">
+        <div class="icon">🏙️</div>
+        <h3>تصميم الأبراج</h3>
+        <p>تطوير أفكار وتصاميم الأبراج والمباني الحديثة.</p>
+    </div>
+
+    <div class="card">
+        <div class="icon">🏛️</div>
+        <h3>الأفكار المعمارية</h3>
+        <p>تحويل الأفكار الإبداعية إلى مفاهيم معمارية.</p>
+    </div>
+
+    <div class="card">
+        <div class="icon">📐</div>
+        <h3>المخططات الهندسية</h3>
+        <p>تنظيم المتطلبات والأبعاد والمعلومات الهندسية للمشروع.</p>
+    </div>
+
+    <div class="card">
+        <div class="icon">🧮</div>
+        <h3>الجداول والحسابات</h3>
+        <p>إنشاء جداول منظمة للمشاريع والمواد والتكاليف.</p>
+    </div>
+
+</div>
 
 </section><footer>
 © 2026 KAPO ONE
