@@ -90,10 +90,12 @@ border-radius:18px;
 text-align:center;
 border:1px solid #334155;
 cursor:pointer;
+transition:.2s;
 }
 
 .card:hover{
 transform:translateY(-3px);
+border-color:#2563eb;
 }
 
 .icon{
@@ -147,6 +149,15 @@ color:#93c5fd;
 margin-bottom:5px;
 }
 
+.calculation{
+display:none;
+margin-top:15px;
+padding:15px;
+background:#0f172a;
+border-radius:12px;
+line-height:2;
+}
+
 .close{
 background:#475569;
 }
@@ -160,110 +171,176 @@ color:#94a3b8;
 }
 </style></head><body><header>
 🚀 KAPO ONE | كابو ون
-</header><section class="hero">
-<h1>مرحبًا بك في كابو ONE</h1>
-<p>منصة للأفكار والهندسة والتصميم.</p>
-</section><section class="editor"><textarea id="idea"
-placeholder="اكتب سؤالك أو فكرتك هنا..."></textarea><button onclick="sendIdea()">إرسال 🚀</button>
-
-<div id="result"></div></section><section class="engineering"><h2 style="text-align:center">🏗️ قسم الهندسة والتصميم</h2><p style="text-align:center;color:#cbd5e1">
+</header><section class="hero"><h1>مرحبًا بك في كابو ONE</h1><p>
+منصة للأفكار والهندسة والتصميم.
+</p></section><section class="editor"><textarea
+id="idea"
+placeholder="اكتب سؤالك أو فكرتك هنا..."
+></textarea><button onclick="sendIdea()">
+إرسال 🚀
+</button><div id="result"></div></section><section class="engineering"><h2 style="text-align:center">
+🏗️ قسم الهندسة والتصميم
+</h2><p style="text-align:center;color:#cbd5e1">
 طوّر مشروعك الهندسي والمعماري من مكان واحد.
-</p><div class="cards"><div class="card" onclick="openTool('towerTool')">
-<div class="icon">🏙️</div>
-<h3>تصميم الأبراج</h3>
-<p>إنشاء بطاقة مشروع برج احترافية.</p>
-</div><div class="card" onclick="openTool('architectureTool')">
-<div class="icon">🏛️</div>
-<h3>الأفكار المعمارية</h3>
-<p>تطوير المفاهيم المعمارية.</p>
-</div><div class="card" onclick="openTool('plansTool')">
-<div class="icon">📐</div>
-<h3>المخططات الهندسية</h3>
-<p>تنظيم بيانات المخططات.</p>
-</div><div class="card" onclick="openTool('tableTool')">
-<div class="icon">🧮</div>
-<h3>الجداول والحسابات</h3>
-<p>تنظيم بيانات المشروع.</p>
-</div></div><!-- أداة تصميم الأبراج --><div class="tool" id="towerTool"><h3>🏙️ تصميم برج جديد</h3><label>اسم البرج</label>
-<input id="towerName" placeholder="مثال: برج كابو">
+</p><div class="cards"><div class="card" onclick="openTool('towerTool')"><div class="icon">🏙️</div><h3>تصميم الأبراج</h3><p>
+تصميم وحسابات أولية للأبراج.
+</p></div><div class="card" onclick="openTool('architectureTool')"><div class="icon">🏛️</div><h3>الأفكار المعمارية</h3><p>
+تطوير الأفكار المعمارية.
+</p></div><div class="card" onclick="openTool('plansTool')"><div class="icon">📐</div><h3>المخططات الهندسية</h3><p>
+تنظيم بيانات المخططات.
+</p></div><div class="card" onclick="openTool('tableTool')"><div class="icon">🧮</div><h3>الجداول والحسابات</h3><p>
+تنظيم بيانات المشروع.
+</p></div></div><!-- تصميم الأبراج --><div class="tool" id="towerTool"><h3>🏙️ تصميم برج جديد</h3><label>اسم البرج</label>
+
+<input
+id="towerName"
+placeholder="مثال: برج كابو ONE"
+
+«»
 
 <label>ارتفاع البرج بالمتر</label>
-<input id="towerHeight" type="number" placeholder="مثال: 300">
+
+<input
+id="towerHeight"
+type="number"
+placeholder="مثال: 300"
+
+«»
 
 <label>عدد الأدوار</label>
-<input id="towerFloors" type="number" placeholder="مثال: 70">
+
+<input
+id="towerFloors"
+type="number"
+placeholder="مثال: 70"
+
+«»
+
+<label>مساحة الدور بالمتر المربع</label>
+
+<input
+id="floorArea"
+type="number"
+placeholder="مثال: 1500"
+
+«»
 
 <label>نوع البرج</label>
-<select id="towerType">
 
-<option>سكني</option>
-<option>تجاري</option>
-<option>فندقي</option>
-<option>إداري</option>
-<option>متعدد الاستخدامات</option>
-</select><label>الفكرة المعمارية</label>
+<select id="towerType"><option>سكني</option><option>تجاري</option><option>فندقي</option><option>إداري</option><option>متعدد الاستخدامات</option></select><label>الفكرة المعمارية</label>
 
-<textarea id="towerIdea"
-placeholder="مثال: برج مستوحى من شكل الذرة..."></textarea><label>المميزات</label>
+<textarea
+id="towerIdea"
+placeholder="مثال: برج مستقبلي بتصميم مستوحى من الذرة..."
+></textarea><label>المميزات</label>
 
-<textarea id="towerFeatures"
-placeholder="مثال: منصة مشاهدة، مطاعم، مكاتب، حدائق..."></textarea><button onclick="createTower()">
+<textarea
+id="towerFeatures"
+placeholder="مثال: مطاعم، مكاتب، منصة مشاهدة، حدائق..."
+></textarea><button onclick="createTower()">
 إنشاء بطاقة المشروع 🏗️
-</button><div class="project" id="towerProject"><h3>🏙️ بطاقة مشروع البرج</h3><div class="project-row">
-<strong>اسم المشروع</strong>
+</button><div class="project" id="towerProject"><h3>
+🏙️ بطاقة مشروع البرج
+</h3><div class="project-row"><strong>اسم المشروع</strong>
+
 <span id="pName"></span>
-</div><div class="project-row">
-<strong>الارتفاع</strong>
+
+</div><div class="project-row"><strong>الارتفاع</strong>
+
 <span id="pHeight"></span>
-</div><div class="project-row">
-<strong>عدد الأدوار</strong>
+
+</div><div class="project-row"><strong>عدد الأدوار</strong>
+
 <span id="pFloors"></span>
-</div><div class="project-row">
-<strong>نوع البرج</strong>
+
+</div><div class="project-row"><strong>نوع البرج</strong>
+
 <span id="pType"></span>
-</div><div class="project-row">
-<strong>الفكرة المعمارية</strong>
+
+</div><div class="project-row"><strong>الفكرة المعمارية</strong>
+
 <span id="pIdea"></span>
-</div><div class="project-row">
-<strong>المميزات</strong>
+
+</div><div class="project-row"><strong>المميزات</strong>
+
 <span id="pFeatures"></span>
-</div><div class="project-row">
-<strong>الحالة</strong>
-<span>🟢 تم إنشاء التصور الأولي</span>
-</div></div><button class="close" onclick="closeTools()">
+
+</div><div class="project-row"><strong>🧮 الحسابات الأولية</strong>
+
+<div
+id="towerCalculations"
+class="calculation"
+></div></div><button onclick="calculateTower()">
+🧮 حساب مساحة المشروع
+</button><div class="project-row"><strong>الحالة</strong>
+
+<span>
+🟢 تم إنشاء التصور الأولي
+</span></div></div><button
+class="close"
+onclick="closeTools()"
+
+«»
+
 إغلاق
-</button></div><!-- الأفكار المعمارية --><div class="tool" id="architectureTool"><h3>🏛️ الأفكار المعمارية</h3><label>اسم المشروع</label>
-<input placeholder="اسم المشروع">
+</button>
 
-<label>الفكرة</label>
+</div><!-- الأفكار المعمارية --><div class="tool" id="architectureTool"><h3>🏛️ الأفكار المعمارية</h3><label>اسم المشروع</label>
 
-<textarea placeholder="اكتب فكرتك المعمارية..."></textarea><button onclick="alert('💡 تم تسجيل الفكرة المعمارية')">
+<input placeholder="اسم المشروع"><label>الفكرة</label>
+
+<textarea
+placeholder="اكتب فكرتك المعمارية..."
+></textarea><button onclick="alert('💡 تم تسجيل الفكرة المعمارية')">
 حفظ الفكرة 💡
-</button><button class="close" onclick="closeTools()">إغلاق</button>
+</button><button
+class="close"
+onclick="closeTools()"
+
+«»
+
+إغلاق
+</button>
 
 </div><!-- المخططات --><div class="tool" id="plansTool"><h3>📐 المخططات الهندسية</h3><label>اسم المشروع</label>
-<input placeholder="اسم المشروع">
 
-<label>نوع المخطط</label>
+<input placeholder="اسم المشروع"><label>نوع المخطط</label>
 
-<select>
-<option>مخطط معماري</option>
-<option>مخطط إنشائي</option>
-<option>مخطط كهربائي</option>
-<option>مخطط ميكانيكي</option>
-</select><textarea placeholder="اكتب متطلبات المخطط..."></textarea><button onclick="alert('📐 تم تسجيل بيانات المخطط')">
+<select><option>مخطط معماري</option><option>مخطط إنشائي</option><option>مخطط كهربائي</option><option>مخطط ميكانيكي</option></select><textarea
+placeholder="اكتب متطلبات المخطط..."
+></textarea><button onclick="alert('📐 تم تسجيل بيانات المخطط')">
 حفظ بيانات المخطط
-</button><button class="close" onclick="closeTools()">إغلاق</button>
+</button><button
+class="close"
+onclick="closeTools()"
+
+«»
+
+إغلاق
+</button>
 
 </div><!-- الجداول --><div class="tool" id="tableTool"><h3>🧮 الجداول والحسابات</h3><label>اسم المشروع</label>
-<input placeholder="اسم المشروع">
 
-<label>عدد العناصر</label>
-<input type="number" placeholder="مثال: 10">
+<input placeholder="اسم المشروع"><label>عدد العناصر</label>
 
-<textarea placeholder="اكتب البيانات التي تريد تنظيمها..."></textarea><button onclick="alert('📊 تم إنشاء الجدول الأولي')">
+<input
+type="number"
+placeholder="مثال: 10"
+
+«»
+
+<textarea
+placeholder="اكتب البيانات التي تريد تنظيمها..."
+></textarea><button onclick="alert('📊 تم إنشاء الجدول الأولي')">
 إنشاء جدول 📊
-</button><button class="close" onclick="closeTools()">إغلاق</button>
+</button><button
+class="close"
+onclick="closeTools()"
+
+«»
+
+إغلاق
+</button>
 
 </div></section><footer>
 © 2026 KAPO ONE
@@ -271,23 +348,33 @@ placeholder="مثال: منصة مشاهدة، مطاعم، مكاتب، حدا�
 
 function sendIdea(){
 
-const idea=document.getElementById("idea").value.trim();
-const result=document.getElementById("result");
+const idea =
+document.getElementById("idea").value.trim();
+
+const result =
+document.getElementById("result");
 
 if(idea===""){
-result.innerHTML="⚠️ اكتب سؤالك أو فكرتك أولًا.";
+
+result.innerHTML =
+"⚠️ اكتب سؤالك أو فكرتك أولًا.";
+
 return;
-}
-
-result.innerHTML="✅ تم استلام فكرتك: "+idea;
 
 }
+
+result.innerHTML =
+"✅ تم استلام فكرتك: " + idea;
+
+}
+
 
 function openTool(id){
 
 closeTools();
 
-const tool=document.getElementById(id);
+const tool =
+document.getElementById(id);
 
 tool.style.display="block";
 
@@ -298,46 +385,139 @@ block:"start"
 
 }
 
+
 function closeTools(){
 
-document.querySelectorAll(".tool").forEach(function(tool){
+document
+.querySelectorAll(".tool")
+.forEach(function(tool){
+
 tool.style.display="none";
+
 });
 
 }
 
+
 function createTower(){
 
-const name=document.getElementById("towerName").value || "برج كابو";
+const name =
+document.getElementById("towerName").value
+|| "برج كابو ONE";
 
-const height=document.getElementById("towerHeight").value || "غير محدد";
+const height =
+document.getElementById("towerHeight").value
+|| "غير محدد";
 
-const floors=document.getElementById("towerFloors").value || "غير محدد";
+const floors =
+document.getElementById("towerFloors").value
+|| "غير محدد";
 
-const type=document.getElementById("towerType").value;
+const type =
+document.getElementById("towerType").value;
 
-const idea=document.getElementById("towerIdea").value || "لم يتم تحديد الفكرة";
+const idea =
+document.getElementById("towerIdea").value
+|| "لم يتم تحديد الفكرة";
 
-const features=document.getElementById("towerFeatures").value || "لم يتم تحديد المميزات";
+const features =
+document.getElementById("towerFeatures").value
+|| "لم يتم تحديد المميزات";
 
-document.getElementById("pName").textContent=name;
 
-document.getElementById("pHeight").textContent=height+" متر";
+document.getElementById("pName").textContent =
+name;
 
-document.getElementById("pFloors").textContent=floors+" دور";
+document.getElementById("pHeight").textContent =
+height + " متر";
 
-document.getElementById("pType").textContent=type;
+document.getElementById("pFloors").textContent =
+floors + " دور";
 
-document.getElementById("pIdea").textContent=idea;
+document.getElementById("pType").textContent =
+type;
 
-document.getElementById("pFeatures").textContent=features;
+document.getElementById("pIdea").textContent =
+idea;
 
-document.getElementById("towerProject").style.display="block";
+document.getElementById("pFeatures").textContent =
+features;
+
+document.getElementById("towerProject").style.display =
+"block";
 
 document.getElementById("towerProject").scrollIntoView({
 behavior:"smooth",
 block:"start"
 });
+
+}
+
+
+function calculateTower(){
+
+const floors =
+Number(
+document.getElementById("towerFloors").value
+);
+
+const floorArea =
+Number(
+document.getElementById("floorArea").value
+);
+
+if(floors <= 0 || floorArea <= 0){
+
+alert(
+"⚠️ أدخل عدد الأدوار ومساحة الدور أولًا."
+);
+
+return;
+
+}
+
+const totalArea =
+floors * floorArea;
+
+const serviceArea =
+totalArea * 0.15;
+
+const usableArea =
+totalArea - serviceArea;
+
+
+const result =
+document.getElementById("towerCalculations");
+
+result.style.display="block";
+
+result.innerHTML =
+
+"🏢 إجمالي مساحة الأدوار: <strong>"
++
+totalArea.toLocaleString()
++
+" م²</strong><br><br>"
+
++
+
+"🔧 مساحة الخدمات التقديرية: <strong>"
++
+serviceArea.toLocaleString()
++
+" م²</strong><br><br>"
+
++
+
+"📐 المساحة الصافية التقريبية: <strong>"
++
+usableArea.toLocaleString()
++
+" م²</strong><br><br>"
+
++
+
+"⚠️ الحسابات تقديرية للتصور الأولي فقط، وليست حسابات هندسية تنفيذية.";
 
 }
 
