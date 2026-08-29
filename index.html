@@ -16,96 +16,80 @@ body{
     font-family:Arial,sans-serif;
     background:#0f172a;
     color:white;
-    padding-bottom:80px;
+    padding-bottom:90px;
 }
 
 header{
     background:#1e293b;
-    padding:25px 15px;
+    padding:18px 15px;
     text-align:center;
-    border-bottom:1px solid #334155;
-}
-
-.logo{
-    font-size:34px;
+    font-size:28px;
     font-weight:bold;
-}
-
-.logo span{
-    color:#38bdf8;
-}
-
-.subtitle{
-    margin-top:8px;
-    color:#cbd5e1;
-    font-size:16px;
+    border-bottom:1px solid #334155;
 }
 
 .hero{
     text-align:center;
-    padding:45px 20px 30px;
+    padding:35px 20px 20px;
 }
 
 .hero h1{
-    font-size:34px;
-    margin:10px 0;
-}
-
-.hero h1 span{
-    color:#38bdf8;
+    font-size:32px;
+    margin:5px 0 10px;
 }
 
 .hero p{
     color:#cbd5e1;
-    font-size:18px;
-    line-height:1.8;
+    font-size:17px;
+    line-height:1.7;
 }
 
-.button{
-    display:inline-block;
-    margin-top:15px;
-    padding:14px 28px;
-    background:#2563eb;
-    color:white;
-    text-decoration:none;
+.search{
+    max-width:650px;
+    margin:20px auto;
+    display:flex;
+    gap:8px;
+}
+
+.search input{
+    flex:1;
+    padding:15px;
+    border:0;
     border-radius:12px;
-    font-size:17px;
+    font-size:16px;
+    outline:none;
+}
+
+button{
+    border:0;
+    cursor:pointer;
+    color:white;
+    background:#2563eb;
+    padding:13px 20px;
+    border-radius:12px;
+    font-size:16px;
+}
+
+button:hover{
+    opacity:.9;
 }
 
 .container{
     max-width:900px;
     margin:auto;
-    padding:20px;
-}
-
-.section-title{
-    text-align:center;
-    font-size:27px;
-    margin:25px 0;
-}
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:15px;
+    padding:10px 18px;
 }
 
 .card{
     background:#1e293b;
-    padding:25px 20px;
-    border-radius:18px;
     border:1px solid #334155;
-    text-align:center;
+    border-radius:18px;
+    padding:22px;
+    margin:15px 0;
 }
 
-.icon{
-    font-size:40px;
-    margin-bottom:12px;
-}
-
-.card h3{
-    margin:10px 0;
-    font-size:21px;
+.card h2{
+    margin-top:0;
 }
 
 .card p{
@@ -113,29 +97,58 @@ header{
     line-height:1.7;
 }
 
-.about{
+.ai-box{
+    background:#111827;
+    border-radius:15px;
+    padding:15px;
+    margin-top:15px;
+}
+
+.ai-input{
+    width:100%;
+    min-height:100px;
+    resize:vertical;
+    border:0;
+    outline:none;
+    border-radius:12px;
+    padding:15px;
+    font-size:16px;
+    font-family:Arial,sans-serif;
+}
+
+.ai-actions{
+    margin-top:10px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+#response{
+    display:none;
+    margin-top:15px;
+    background:#1e293b;
+    border-radius:12px;
+    padding:15px;
+    line-height:1.8;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.feature{
     background:#1e293b;
     border:1px solid #334155;
-    padding:25px;
-    border-radius:18px;
-    margin-top:20px;
+    padding:20px;
+    border-radius:16px;
     text-align:center;
-    line-height:1.9;
 }
 
-.search-box{
-    margin:25px auto;
-    max-width:600px;
-}
-
-.search-box input{
-    width:100%;
-    padding:16px;
-    border:0;
-    border-radius:12px;
-    font-size:17px;
-    text-align:right;
-    outline:none;
+.feature .icon{
+    font-size:35px;
+    margin-bottom:10px;
 }
 
 footer{
@@ -147,31 +160,41 @@ footer{
     border-top:1px solid #334155;
     display:flex;
     justify-content:space-around;
-    padding:13px 5px;
+    padding:12px 5px;
+    z-index:10;
 }
 
-footer a{
-    color:#cbd5e1;
-    text-decoration:none;
+.nav-btn{
+    background:transparent;
+    padding:7px 10px;
     font-size:14px;
-    text-align:center;
 }
 
-footer a:hover{
-    color:#38bdf8;
+.nav-btn span{
+    display:block;
+    font-size:22px;
+    margin-bottom:3px;
+}
+
+.hidden{
+    display:none;
 }
 
 @media(max-width:600px){
+    .grid{
+        grid-template-columns:1fr;
+    }
+
     .hero h1{
-        font-size:28px;
+        font-size:27px;
     }
 
-    .logo{
-        font-size:30px;
+    header{
+        font-size:24px;
     }
 
-    .container{
-        padding:15px;
+    .search{
+        flex-direction:column;
     }
 }
 </style>
@@ -180,117 +203,236 @@ footer a:hover{
 <body>
 
 <header>
-    <div class="logo">🚀 <span>KAPO ONE</span></div>
-    <div class="subtitle">منصة كابو للأفكار والتصاميم المعمارية</div>
+    🚀 KAPO ONE | كابو ون
 </header>
 
 <section class="hero">
-    <h1>مرحبًا بك في <span>KAPO ONE</span></h1>
-
+    <h1>مرحبًا بك في منصة كابو</h1>
     <p>
-        منصة تجمع الأفكار الإبداعية والتصاميم المعمارية
-        والمشاريع المستقبلية في مكان واحد.
+        منصة ذكية تجمع الذكاء الاصطناعي والتصميم والهندسة
+        والمشاريع في مكان واحد.
     </p>
 
-    <a href="#projects" class="button">استكشف المشاريع</a>
+    <div class="search">
+        <input id="searchInput" type="text" placeholder="ابحث في منصة كابو...">
+        <button onclick="searchKapo()">🔎 بحث</button>
+    </div>
 </section>
 
-<div class="container">
+<main class="container">
 
-    <div class="search-box">
-        <input
-            type="text"
-            id="search"
-            placeholder="🔎 ابحث في KAPO ONE..."
-            onkeyup="searchCards()"
-        >
-    </div>
-
-    <h2 class="section-title" id="projects">🚀 أقسام KAPO ONE</h2>
-
-    <div class="cards">
+    <!-- المساعد الذكي -->
+    <section id="home">
 
         <div class="card">
-            <div class="icon">🏗️</div>
-            <h3>التصميم المعماري</h3>
+            <h2>🤖 KAPO AI</h2>
             <p>
-                أفكار وتصاميم معمارية مبتكرة
-                للمباني والأبراج والمشاريع المستقبلية.
+                اكتب سؤالك أو فكرتك، وسنجهز هذه الواجهة لاحقًا
+                لتعمل كمساعد ذكي متكامل.
             </p>
+
+            <div class="ai-box">
+                <textarea
+                    id="aiInput"
+                    class="ai-input"
+                    placeholder="اكتب رسالتك هنا..."></textarea>
+
+                <div class="ai-actions">
+                    <button onclick="sendMessage()">🚀 إرسال</button>
+                    <button onclick="clearMessage()">🗑️ مسح</button>
+                </div>
+
+                <div id="response"></div>
+            </div>
         </div>
 
-        <div class="card">
-            <div class="icon">💡</div>
-            <h3>الأفكار والمشاريع</h3>
-            <p>
-                مساحة لعرض الأفكار الجديدة
-                وتحويلها إلى مشاريع قابلة للتطوير.
-            </p>
+        <div class="grid">
+
+            <div class="feature">
+                <div class="icon">🏗️</div>
+                <h3>التصميم والهندسة</h3>
+                <p>تصاميم وأفكار هندسية ومعمارية.</p>
+            </div>
+
+            <div class="feature">
+                <div class="icon">🎨</div>
+                <h3>التصميم الإبداعي</h3>
+                <p>تطوير الأفكار والتصاميم المستقبلية.</p>
+            </div>
+
+            <div class="feature">
+                <div class="icon">📁</div>
+                <h3>مشاريعي</h3>
+                <p>مكان مخصص لمشاريعك وأفكارك.</p>
+            </div>
+
+            <div class="feature">
+                <div class="icon">🌐</div>
+                <h3>عربي / English</h3>
+                <p>واجهة قابلة للتطوير للغتين.</p>
+            </div>
+
         </div>
 
-        <div class="card">
-            <div class="icon">🏙️</div>
-            <h3>مشاريع مستقبلية</h3>
-            <p>
-                تصورات لمشاريع عمرانية وتقنية
-                بطابع مستقبلي ومميز.
-            </p>
-        </div>
+    </section>
 
-        <div class="card">
-            <div class="icon">🌍</div>
-            <h3>KAPO WORLD</h3>
-            <p>
-                رؤية عالمية تجمع الابتكار
-                والتصميم والأفكار في منصة واحدة.
-            </p>
-        </div>
-
-    </div>
-
-    <h2 class="section-title">ℹ️ عن KAPO ONE</h2>
-
-    <div class="about">
+    <!-- التصميم والهندسة -->
+    <section id="design" class="card hidden">
+        <h2>🏗️ التصميم والهندسة</h2>
         <p>
-            <strong>KAPO ONE</strong> منصة تهدف إلى تقديم
-            الأفكار والتصاميم والمشاريع بطريقة حديثة واحترافية.
+            هذا القسم سيكون مركز التصميم والهندسة في KAPO ONE.
         </p>
+        <button onclick="comingSoon()">فتح القسم</button>
+    </section>
 
+    <!-- المشاريع -->
+    <section id="projects" class="card hidden">
+        <h2>📁 مشاريعي</h2>
         <p>
-            رؤيتنا هي بناء مساحة رقمية تساعد على
-            استعراض الأفكار المعمارية والمشاريع المستقبلية
-            وتطويرها خطوة بخطوة.
+            ستظهر هنا مشاريعك وتصاميمك المحفوظة.
         </p>
-    </div>
+        <button onclick="comingSoon()">إضافة مشروع</button>
+    </section>
 
-</div>
+    <!-- الإعدادات -->
+    <section id="settings" class="card hidden">
+        <h2>⚙️ الإعدادات</h2>
+        <p>
+            إعدادات منصة KAPO ONE.
+        </p>
+        <button onclick="toggleLanguage()">🌐 English</button>
+    </section>
+
+</main>
 
 <footer>
-    <a href="#">🏠<br>الرئيسية</a>
-    <a href="#projects">🏗️<br>المشاريع</a>
-    <a href="#">💡<br>الأفكار</a>
-    <a href="#">👤<br>عن كابو</a>
+
+    <button class="nav-btn" onclick="showSection('home')">
+        <span>🏠</span>
+        الرئيسية
+    </button>
+
+    <button class="nav-btn" onclick="showSection('design')">
+        <span>🏗️</span>
+        التصميم
+    </button>
+
+    <button class="nav-btn" onclick="showSection('projects')">
+        <span>📁</span>
+        مشاريعي
+    </button>
+
+    <button class="nav-btn" onclick="showSection('settings')">
+        <span>⚙️</span>
+        الإعدادات
+    </button>
+
 </footer>
 
 <script>
-function searchCards(){
 
-    let input = document.getElementById("search").value.toLowerCase();
+function showSection(sectionId){
 
-    let cards = document.querySelectorAll(".card");
+    const sections = [
+        "home",
+        "design",
+        "projects",
+        "settings"
+    ];
 
-    cards.forEach(function(card){
+    sections.forEach(function(id){
 
-        let text = card.innerText.toLowerCase();
+        const section = document.getElementById(id);
 
-        if(text.includes(input)){
-            card.style.display = "";
-        }else{
-            card.style.display = "none";
+        if(section){
+            section.classList.add("hidden");
         }
 
     });
+
+    const selected = document.getElementById(sectionId);
+
+    if(selected){
+        selected.classList.remove("hidden");
+    }
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
 }
+
+function sendMessage(){
+
+    const input = document.getElementById("aiInput");
+    const response = document.getElementById("response");
+
+    const message = input.value.trim();
+
+    if(message === ""){
+        alert("اكتب رسالتك أولاً ✍️");
+        return;
+    }
+
+    response.style.display = "block";
+
+    response.innerHTML =
+        "🤖 <strong>KAPO AI</strong><br><br>" +
+        "وصلت رسالتك بنجاح:<br>" +
+        "« " + escapeHTML(message) + " »<br><br>" +
+        "🚀 هذه نسخة تجريبية من المساعد. " +
+        "في المرحلة القادمة سنربطها بالذكاء الاصطناعي الحقيقي.";
+
+}
+
+function clearMessage(){
+
+    document.getElementById("aiInput").value = "";
+
+    const response = document.getElementById("response");
+
+    response.style.display = "none";
+    response.innerHTML = "";
+
+}
+
+function searchKapo(){
+
+    const input = document.getElementById("searchInput");
+
+    const query = input.value.trim();
+
+    if(query === ""){
+        alert("اكتب كلمة للبحث 🔎");
+        return;
+    }
+
+    alert("🔎 بحث KAPO ONE عن: " + query);
+
+}
+
+function comingSoon(){
+
+    alert("🚀 هذا القسم قيد التطوير وسنضيف وظائفه قريبًا.");
+
+}
+
+function toggleLanguage(){
+
+    alert("🌐 دعم اللغة الإنجليزية سيكون ضمن التطوير القادم.");
+
+}
+
+function escapeHTML(text){
+
+    const div = document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+}
+
 </script>
 
 </body>
