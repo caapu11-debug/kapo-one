@@ -46,7 +46,7 @@ header{
 
 textarea{
     width:100%;
-    min-height:160px;
+    min-height:150px;
     padding:16px;
     border:none;
     border-radius:12px;
@@ -70,6 +70,10 @@ button{
     cursor:pointer;
 }
 
+button:hover{
+    opacity:.9;
+}
+
 #result{
     margin-top:18px;
     padding:15px;
@@ -91,7 +95,7 @@ button{
     margin-bottom:10px;
 }
 
-.engineering p{
+.engineering > p{
     text-align:center;
     color:#cbd5e1;
     margin-bottom:25px;
@@ -109,6 +113,13 @@ button{
     border-radius:18px;
     text-align:center;
     border:1px solid #334155;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    border-color:#2563eb;
 }
 
 .card .icon{
@@ -123,7 +134,57 @@ button{
 
 .card p{
     font-size:14px;
+    color:#cbd5e1;
     margin:0;
+}
+
+.tool{
+    display:none;
+    margin-top:25px;
+    background:#1e293b;
+    padding:22px;
+    border-radius:18px;
+    border:1px solid #334155;
+}
+
+.tool h3{
+    margin-top:0;
+    font-size:24px;
+}
+
+.tool label{
+    display:block;
+    margin-top:15px;
+    margin-bottom:7px;
+    color:#cbd5e1;
+}
+
+.tool input,
+.tool select{
+    width:100%;
+    padding:13px;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    outline:none;
+}
+
+.tool textarea{
+    min-height:100px;
+    margin-top:5px;
+}
+
+.tool-result{
+    display:none;
+    margin-top:20px;
+    padding:18px;
+    background:#0f172a;
+    border-radius:12px;
+    line-height:1.9;
+}
+
+.close{
+    background:#475569;
 }
 
 footer{
@@ -152,50 +213,246 @@ footer{
 
 <div class="cards">
 
-    <div class="card">
+    <div class="card" onclick="openTool('towerTool')">
         <div class="icon">🏙️</div>
         <h3>تصميم الأبراج</h3>
-        <p>تطوير أفكار وتصاميم الأبراج والمباني الحديثة.</p>
+        <p>تطوير فكرة ومواصفات البرج.</p>
     </div>
 
-    <div class="card">
+    <div class="card" onclick="openTool('architectureTool')">
         <div class="icon">🏛️</div>
         <h3>الأفكار المعمارية</h3>
-        <p>تحويل الأفكار الإبداعية إلى مفاهيم معمارية.</p>
+        <p>تطوير المفاهيم والأفكار المعمارية.</p>
     </div>
 
-    <div class="card">
+    <div class="card" onclick="openTool('plansTool')">
         <div class="icon">📐</div>
         <h3>المخططات الهندسية</h3>
-        <p>تنظيم المتطلبات والأبعاد والمعلومات الهندسية للمشروع.</p>
+        <p>تنظيم بيانات ومتطلبات المشروع.</p>
     </div>
 
-    <div class="card">
+    <div class="card" onclick="openTool('tableTool')">
         <div class="icon">🧮</div>
         <h3>الجداول والحسابات</h3>
-        <p>إنشاء جداول منظمة للمشاريع والمواد والتكاليف.</p>
+        <p>إنشاء جدول منظم للمشروع.</p>
     </div>
+
+</div>
+
+<!-- تصميم الأبراج -->
+<div class="tool" id="towerTool">
+
+    <h3>🏙️ تصميم الأبراج</h3>
+
+    <label>اسم البرج</label>
+    <input id="towerName" placeholder="مثال: برج كابو">
+
+    <label>ارتفاع البرج بالمتر</label>
+    <input id="towerHeight" type="number" placeholder="مثال: 300">
+
+    <label>عدد الأدوار</label>
+    <input id="towerFloors" type="number" placeholder="مثال: 70">
+
+    <label>نوع البرج</label>
+    <select id="towerType">
+        <option>سكني</option>
+        <option>تجاري</option>
+        <option>فندقي</option>
+        <option>متعدد الاستخدامات</option>
+        <option>مقر إداري</option>
+    </select>
+
+    <label>فكرة التصميم</label>
+    <textarea id="towerIdea" placeholder="اكتب شكل البرج والفكرة المعمارية..."></textarea>
+
+    <button onclick="createTower()">إنشاء تصور البرج 🚀</button>
+
+    <div class="tool-result" id="towerResult"></div>
+
+    <button class="close" onclick="closeTools()">إغلاق</button>
+
+</div>
+
+<!-- الأفكار المعمارية -->
+<div class="tool" id="architectureTool">
+
+    <h3>🏛️ الأفكار المعمارية</h3>
+
+    <label>اسم المشروع</label>
+    <input id="archName" placeholder="اسم المشروع">
+
+    <label>وصف الفكرة</label>
+    <textarea id="archIdea" placeholder="اكتب فكرتك المعمارية هنا..."></textarea>
+
+    <button onclick="createArchitecture()">حفظ الفكرة 💡</button>
+
+    <div class="tool-result" id="archResult"></div>
+
+    <button class="close" onclick="closeTools()">إغلاق</button>
+
+</div>
+
+<!-- المخططات -->
+<div class="tool" id="plansTool">
+
+    <h3>📐 المخططات الهندسية</h3>
+
+    <label>اسم المشروع</label>
+    <input id="planName" placeholder="اسم المشروع">
+
+    <label>نوع المخطط</label>
+    <select id="planType">
+        <option>مخطط معماري</option>
+        <option>مخطط إنشائي</option>
+        <option>مخطط كهربائي</option>
+        <option>مخطط ميكانيكي</option>
+    </select>
+
+    <label>ملاحظات المشروع</label>
+    <textarea id="planNotes" placeholder="اكتب المتطلبات والملاحظات..."></textarea>
+
+    <button onclick="createPlan()">إنشاء بيانات المخطط 📐</button>
+
+    <div class="tool-result" id="planResult"></div>
+
+    <button class="close" onclick="closeTools()">إغلاق</button>
+
+</div>
+
+<!-- الجداول والحسابات -->
+<div class="tool" id="tableTool">
+
+    <h3>🧮 الجداول والحسابات</h3>
+
+    <label>اسم المشروع</label>
+    <input id="tableName" placeholder="اسم المشروع">
+
+    <label>عدد العناصر</label>
+    <input id="tableCount" type="number" placeholder="مثال: 10">
+
+    <label>ملاحظات</label>
+    <textarea id="tableNotes" placeholder="اكتب البيانات التي تريد تنظيمها..."></textarea>
+
+    <button onclick="createTable()">إنشاء جدول 📊</button>
+
+    <div class="tool-result" id="tableResult"></div>
+
+    <button class="close" onclick="closeTools()">إغلاق</button>
 
 </div>
 
 </section><footer>
 © 2026 KAPO ONE
 </footer><script>
+
 function sendIdea(){
 
     const idea = document.getElementById("idea").value.trim();
     const result = document.getElementById("result");
 
+    result.style.display = "block";
+
     if(idea === ""){
-        result.style.display = "block";
         result.innerHTML = "⚠️ اكتب سؤالك أو فكرتك أولًا.";
         return;
     }
 
-    result.style.display = "block";
     result.innerHTML =
         "✅ تم استلام فكرتك بنجاح!<br><br>" +
         "💡 فكرتك: " + idea;
 }
+
+function openTool(id){
+
+    closeTools();
+
+    const tool = document.getElementById(id);
+
+    tool.style.display = "block";
+
+    tool.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+    });
+}
+
+function closeTools(){
+
+    const tools = document.querySelectorAll(".tool");
+
+    tools.forEach(function(tool){
+        tool.style.display = "none";
+    });
+}
+
+function createTower(){
+
+    const name = document.getElementById("towerName").value || "برج بدون اسم";
+    const height = document.getElementById("towerHeight").value || "غير محدد";
+    const floors = document.getElementById("towerFloors").value || "غير محدد";
+    const type = document.getElementById("towerType").value;
+    const idea = document.getElementById("towerIdea").value || "لم يتم إدخال فكرة";
+
+    const result = document.getElementById("towerResult");
+
+    result.style.display = "block";
+
+    result.innerHTML =
+        "🏙️ <strong>" + name + "</strong><br><br>" +
+        "📏 الارتفاع: " + height + " متر<br>" +
+        "🏢 عدد الأدوار: " + floors + "<br>" +
+        "🏗️ النوع: " + type + "<br>" +
+        "💡 الفكرة: " + idea;
+}
+
+function createArchitecture(){
+
+    const name = document.getElementById("archName").value || "مشروع بدون اسم";
+    const idea = document.getElementById("archIdea").value || "لم يتم إدخال فكرة";
+
+    const result = document.getElementById("archResult");
+
+    result.style.display = "block";
+
+    result.innerHTML =
+        "✅ تم حفظ الفكرة المعمارية<br><br>" +
+        "🏛️ المشروع: " + name + "<br>" +
+        "💡 الفكرة: " + idea;
+}
+
+function createPlan(){
+
+    const name = document.getElementById("planName").value || "مشروع بدون اسم";
+    const type = document.getElementById("planType").value;
+    const notes = document.getElementById("planNotes").value || "لا توجد ملاحظات";
+
+    const result = document.getElementById("planResult");
+
+    result.style.display = "block";
+
+    result.innerHTML =
+        "📐 بيانات المخطط<br><br>" +
+        "🏗️ المشروع: " + name + "<br>" +
+        "📋 النوع: " + type + "<br>" +
+        "📝 الملاحظات: " + notes;
+}
+
+function createTable(){
+
+    const name = document.getElementById("tableName").value || "مشروع بدون اسم";
+    const count = document.getElementById("tableCount").value || "غير محدد";
+    const notes = document.getElementById("tableNotes").value || "لا توجد ملاحظات";
+
+    const result = document.getElementById("tableResult");
+
+    result.style.display = "block";
+
+    result.innerHTML =
+        "📊 تم إنشاء بيانات الجدول<br><br>" +
+        "📁 المشروع: " + name + "<br>" +
+        "🔢 عدد العناصر: " + count + "<br>" +
+        "📝 الملاحظات: " + notes;
+}
+
 </script></body>
 </html>
