@@ -191,12 +191,6 @@ padding:18px;
 border-radius:15px;
 }
 
-.cost-title{
-font-size:21px;
-font-weight:bold;
-margin-bottom:15px;
-}
-
 .cost-item{
 padding:12px 0;
 border-bottom:1px solid #475569;
@@ -211,8 +205,37 @@ font-size:20px;
 font-weight:bold;
 }
 
+.report{
+display:none;
+margin-top:25px;
+background:white;
+color:#111827;
+padding:25px;
+border-radius:18px;
+}
+
+.report h2{
+text-align:center;
+margin-top:0;
+}
+
+.report-section{
+margin-top:20px;
+padding:15px;
+background:#f1f5f9;
+border-radius:10px;
+}
+
+.report-section h4{
+margin-top:0;
+}
+
+.report-button{
+background:#16a34a;
+}
+
 .note{
-color:#94a3b8;
+color:#64748b;
 font-size:13px;
 line-height:1.7;
 margin-top:15px;
@@ -258,48 +281,27 @@ placeholder="اكتب سؤالك أو فكرتك هنا..."
 <div class="icon">🧮</div>
 <h3>الجداول والحسابات</h3>
 <p>الجداول والتقديرات الأولية.</p>
-</div></div><!-- تصميم الأبراج --><div class="tool" id="towerTool"><h3>🏙️ تصميم برج جديد</h3><label>اسم البرج</label>
-
-<input
-id="towerName"
-placeholder="مثال: برج كابو ONE"
-
-«»
+</div></div><div class="tool" id="towerTool"><h3>🏙️ تصميم برج جديد</h3><label>اسم البرج</label>
+<input id="towerName" placeholder="مثال: برج كابو ONE">
 
 <label>ارتفاع البرج بالمتر</label>
-
-<input
-id="towerHeight"
-type="number"
-placeholder="مثال: 300"
-
-«»
+<input id="towerHeight" type="number" placeholder="مثال: 300">
 
 <label>عدد الأدوار</label>
-
-<input
-id="towerFloors"
-type="number"
-placeholder="مثال: 70"
-
-«»
+<input id="towerFloors" type="number" placeholder="مثال: 70">
 
 <label>مساحة الدور بالمتر المربع</label>
-
-<input
-id="floorArea"
-type="number"
-placeholder="مثال: 1500"
-
-«»
+<input id="floorArea" type="number" placeholder="مثال: 1500">
 
 <label>نوع البرج</label>
 
-<select id="towerType"><option>سكني</option>
+<select id="towerType">
+<option>سكني</option>
 <option>تجاري</option>
 <option>فندقي</option>
 <option>إداري</option>
-<option>متعدد الاستخدامات</option></select><label>الفكرة المعمارية</label>
+<option>متعدد الاستخدامات</option>
+</select><label>الفكرة المعمارية</label>
 
 <textarea
 id="towerIdea"
@@ -311,9 +313,7 @@ id="towerFeatures"
 placeholder="مثال: مطاعم، مكاتب، منصة مشاهدة..."
 ></textarea><button onclick="createTower()">
 إنشاء بطاقة المشروع 🏗️
-</button><div class="project" id="towerProject"><h3>
-🏙️ بطاقة مشروع البرج
-</h3><div class="project-row">
+</button><div class="project" id="towerProject"><h3>🏙️ بطاقة مشروع البرج</h3><div class="project-row">
 <strong>اسم المشروع</strong>
 <span id="pName"></span>
 </div><div class="project-row">
@@ -346,36 +346,52 @@ class="table-box"
 </button><div
 id="costBox"
 class="cost-box"
-></div><div class="project-row">
-<strong>الحالة</strong>
-<span>🟢 تم إنشاء التصور الأولي</span>
-</div></div><button class="close" onclick="closeTools()">
+></div><button
+class="report-button"
+onclick="createReport()"
+
+«»
+
+📋 إنشاء تقرير المشروع
+</button>
+
+<div
+id="projectReport"
+class="report"
+><h2>📋 تقرير مشروع KAPO ONE</h2><div class="report-section"><h4>🏙️ بيانات المشروع</h4><div id="reportProject"></div></div><div class="report-section"><h4>📐 المساحات</h4><div id="reportArea"></div></div><div class="report-section"><h4>📊 ملخص المشروع</h4><div id="reportSummary"></div></div><div class="report-section"><h4>💰 التكلفة التقديرية</h4><div id="reportCost"></div></div><div class="report-section"><h4>📝 ملاحظات</h4><div>
+هذا التقرير للتصور الأولي ودراسة الفكرة فقط،
+ولا يمثل مخططًا هندسيًا أو عرض سعر معتمدًا.
+</div></div><button onclick="window.print()">
+🖨️ طباعة / حفظ التقرير
+</button></div><div class="project-row"><strong>الحالة</strong>
+
+<span>
+🟢 تم إنشاء التصور الأولي
+</span></div></div><button class="close" onclick="closeTools()">
 إغلاق
-</button></div><!-- الأفكار المعمارية --><div class="tool" id="architectureTool"><h3>🏛️ الأفكار المعمارية</h3><label>اسم المشروع</label>
+</button></div><div class="tool" id="architectureTool"><h3>🏛️ الأفكار المعمارية</h3><label>اسم المشروع</label>
 
 <input placeholder="اسم المشروع"><label>الفكرة</label>
 
-<textarea
-placeholder="اكتب فكرتك المعمارية..."
-></textarea><button onclick="alert('💡 تم تسجيل الفكرة المعمارية')">
+<textarea placeholder="اكتب فكرتك المعمارية..."></textarea><button onclick="alert('💡 تم تسجيل الفكرة المعمارية')">
 حفظ الفكرة 💡
 </button><button class="close" onclick="closeTools()">
 إغلاق
-</button></div><!-- المخططات --><div class="tool" id="plansTool"><h3>📐 المخططات الهندسية</h3><label>اسم المشروع</label>
+</button></div><div class="tool" id="plansTool"><h3>📐 المخططات الهندسية</h3><label>اسم المشروع</label>
 
 <input placeholder="اسم المشروع"><label>نوع المخطط</label>
 
-<select><option>مخطط معماري</option>
+<select>
+<option>مخطط معماري</option>
 <option>مخطط إنشائي</option>
 <option>مخطط كهربائي</option>
-<option>مخطط ميكانيكي</option></select><textarea
-placeholder="اكتب متطلبات المخطط..."
-></textarea><button onclick="alert('📐 تم تسجيل بيانات المخطط')">
+<option>مخطط ميكانيكي</option>
+</select><textarea placeholder="اكتب متطلبات المخطط..."></textarea><button onclick="alert('📐 تم تسجيل بيانات المخطط')">
 حفظ بيانات المخطط
 </button><button class="close" onclick="closeTools()">
 إغلاق
-</button></div><!-- الجداول --><div class="tool" id="tableTool"><h3>🧮 الجداول والحسابات</h3><p style="color:#cbd5e1">
-يمكنك إنشاء جدول المشروع تلقائيًا من بيانات البرج.
+</button></div><div class="tool" id="tableTool"><h3>🧮 الجداول والحسابات</h3><p style="color:#cbd5e1">
+الجداول مرتبطة ببيانات مشروع البرج.
 </p><button onclick="openTool('towerTool')">
 🏙️ الانتقال إلى تصميم الأبراج
 </button><button class="close" onclick="closeTools()">
@@ -398,6 +414,7 @@ result.innerHTML =
 "⚠️ اكتب سؤالك أو فكرتك أولًا.";
 
 return;
+
 }
 
 result.innerHTML =
@@ -687,12 +704,6 @@ return;
 const totalArea =
 floors * floorArea;
 
-
-/*
-تقديرات افتراضية للتصور الأولي
-وليست أسعار سوق أو عروض مقاولين
-*/
-
 const structureCost =
 totalArea * 700;
 
@@ -715,7 +726,6 @@ mechanicalCost +
 electricalCost +
 externalCost;
 
-
 const costBox =
 document.getElementById("costBox");
 
@@ -723,58 +733,220 @@ costBox.style.display="block";
 
 costBox.innerHTML =
 
-"<div class='cost-title'>💰 التكلفة التقديرية الأولية</div>"
-
+"<div class='cost-item'>🧱 الهيكل الإنشائي: "
 +
-
-"<div class='cost-item'>" +
-"🧱 الهيكل الإنشائي: " +
-structureCost.toLocaleString() +
+structureCost.toLocaleString()
++
 " ريال</div>"
 
 +
 
-"<div class='cost-item'>" +
-"🎨 التشطيبات: " +
-finishingCost.toLocaleString() +
+"<div class='cost-item'>🎨 التشطيبات: "
++
+finishingCost.toLocaleString()
++
 " ريال</div>"
 
 +
 
-"<div class='cost-item'>" +
-"❄️ الأعمال الميكانيكية: " +
-mechanicalCost.toLocaleString() +
+"<div class='cost-item'>❄️ الأعمال الميكانيكية: "
++
+mechanicalCost.toLocaleString()
++
 " ريال</div>"
 
 +
 
-"<div class='cost-item'>" +
-"⚡ الأعمال الكهربائية: " +
-electricalCost.toLocaleString() +
+"<div class='cost-item'>⚡ الأعمال الكهربائية: "
++
+electricalCost.toLocaleString()
++
 " ريال</div>"
 
 +
 
-"<div class='cost-item'>" +
-"🏢 الأعمال الخارجية: " +
-externalCost.toLocaleString() +
+"<div class='cost-item'>🏢 الأعمال الخارجية: "
++
+externalCost.toLocaleString()
++
 " ريال</div>"
 
 +
 
-"<div class='cost-total'>" +
-"💰 الإجمالي التقديري: " +
-totalCost.toLocaleString() +
-" ريال" +
-"</div>"
+"<div class='cost-total'>💰 الإجمالي التقديري: "
++
+totalCost.toLocaleString()
++
+" ريال</div>";
+
+}
+
+
+function createReport(){
+
+const name =
+document.getElementById("towerName").value
+|| "برج كابو ONE";
+
+const height =
+document.getElementById("towerHeight").value
+|| "غير محدد";
+
+const floors =
+Number(
+document.getElementById("towerFloors").value
+) || 0;
+
+const floorArea =
+Number(
+document.getElementById("floorArea").value
+) || 0;
+
+const type =
+document.getElementById("towerType").value;
+
+const idea =
+document.getElementById("towerIdea").value
+|| "غير محددة";
+
+const features =
+document.getElementById("towerFeatures").value
+|| "غير محددة";
+
+if(floors <= 0 || floorArea <= 0){
+
+alert(
+"⚠️ أدخل عدد الأدوار ومساحة الدور أولًا."
+);
+
+return;
+
+}
+
+const totalArea =
+floors * floorArea;
+
+const serviceArea =
+totalArea * 0.15;
+
+const usableArea =
+totalArea - serviceArea;
+
+const totalCost =
+totalArea * 2500;
+
+
+document.getElementById("reportProject").innerHTML =
+
+"اسم المشروع: <strong>"
++
+name
++
+"</strong><br><br>"
 
 +
 
-"<div class='note'>" +
-"⚠️ هذا تقدير افتراضي لغرض دراسة الفكرة فقط. " +
-"التكلفة الفعلية تعتمد على الموقع، التصميم، المواصفات، الأسعار المحلية، " +
-"نوع المنشأ، الأنظمة، التشطيبات، والمقاولين." +
-"</div>";
+"نوع البرج: "
++
+type
++
+"<br><br>"
+
++
+
+"الارتفاع: "
++
+height
++
+" متر<br><br>"
+
++
+
+"عدد الأدوار: "
++
+floors
++
+"<br><br>"
+
++
+
+"الفكرة المعمارية: "
++
+idea
++
+"<br><br>"
+
++
+
+"المميزات: "
++
+features;
+
+
+document.getElementById("reportArea").innerHTML =
+
+"إجمالي مساحة الأدوار: <strong>"
++
+totalArea.toLocaleString()
++
+" م²</strong><br><br>"
+
++
+
+"الخدمات التقديرية: "
++
+serviceArea.toLocaleString()
++
+" م²<br><br>"
+
++
+
+"المساحة الصافية التقريبية: "
++
+usableArea.toLocaleString()
++
+" م²";
+
+
+document.getElementById("reportSummary").innerHTML =
+
+"🏗️ مشروع "
++
+name
++
+"<br><br>"
+
++
+
+"📐 مساحة الدور: "
++
+floorArea.toLocaleString()
++
+" م²<br><br>"
+
++
+
+"🏢 عدد الأدوار: "
++
+floors;
+
+
+document.getElementById("reportCost").innerHTML =
+
+"💰 التكلفة التقديرية الأولية: <strong>"
++
+totalCost.toLocaleString()
++
+" ريال</strong>";
+
+
+document.getElementById("projectReport").style.display =
+"block";
+
+document.getElementById("projectReport").scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
 
 }
 
