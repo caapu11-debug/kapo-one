@@ -2,9 +2,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>KAPO ONE | كابو ون 🚀</title><style>
-*{
-box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
 margin:0;
@@ -28,6 +26,7 @@ padding:35px 20px;
 
 .hero h1{
 font-size:30px;
+margin:10px;
 }
 
 .hero p{
@@ -47,6 +46,10 @@ padding:22px;
 margin:18px 0;
 border-radius:18px;
 border:1px solid #334155;
+}
+
+.card h2{
+margin-top:0;
 }
 
 textarea,
@@ -83,45 +86,29 @@ button:hover{
 opacity:.9;
 }
 
-.green{
-background:#16a34a;
-}
-
 .purple{
 background:#7c3aed;
+}
+
+.green{
+background:#16a34a;
 }
 
 .orange{
 background:#ea580c;
 }
 
-.result{
-display:none;
-margin-top:20px;
-background:#0f172a;
-padding:20px;
-border-radius:15px;
-border:1px solid #475569;
-line-height:1.9;
-}
-
-.result h3{
-color:#93c5fd;
-}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:15px;
-}
-
 .small-card{
 background:#1e293b;
-padding:25px 15px;
+padding:22px 15px;
 border-radius:18px;
 text-align:center;
 border:1px solid #334155;
 cursor:pointer;
+}
+
+.small-card:hover{
+border-color:#2563eb;
 }
 
 .icon{
@@ -133,9 +120,14 @@ color:#cbd5e1;
 font-size:14px;
 }
 
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+}
+
 .tool{
 display:none;
-margin-top:20px;
 }
 
 .project{
@@ -151,12 +143,27 @@ background:#1e293b;
 padding:14px;
 border-radius:10px;
 margin:10px 0;
+line-height:1.7;
 }
 
 .project-row strong{
 display:block;
 color:#93c5fd;
 margin-bottom:5px;
+}
+
+.result{
+display:none;
+margin-top:20px;
+background:#0f172a;
+padding:20px;
+border-radius:15px;
+border:1px solid #475569;
+line-height:1.9;
+}
+
+.result h3{
+color:#c4b5fd;
 }
 
 table{
@@ -177,6 +184,7 @@ background:#2563eb;
 }
 
 .cost{
+display:none;
 margin-top:20px;
 padding:18px;
 background:#1e293b;
@@ -202,10 +210,17 @@ margin-top:18px;
 padding:15px;
 background:#f1f5f9;
 border-radius:10px;
+line-height:1.8;
 }
 
 .close{
 background:#475569;
+}
+
+.note{
+color:#64748b;
+font-size:13px;
+margin-top:15px;
 }
 
 footer{
@@ -215,17 +230,43 @@ text-align:center;
 padding:18px;
 color:#94a3b8;
 }
+
+
+/* مولد الأفكار */
+
+.idea-generator{
+border:2px solid #7c3aed;
+background:linear-gradient(
+135deg,
+#1e293b,
+#241044
+);
+}
+
+.idea-title{
+text-align:center;
+color:#c4b5fd;
+font-size:27px;
+margin-bottom:8px;
+}
+
+.idea-description{
+text-align:center;
+color:#cbd5e1;
+margin-bottom:20px;
+}
+
 </style></head><body><header>
 🚀 KAPO ONE | كابو ون
 </header><section class="hero"><h1>
 مرحبًا بك في كابو ONE
 </h1><p>
 منصة للأفكار والهندسة والتصميم
-</p></section><div class="container"><!-- مولد الأفكار --><div class="card"><h2>
+</p></section><div class="container"><!-- مولد الأفكار --><div class="card idea-generator"><div class="idea-title">
 💡 مولّد فكرة المشروع
-</h2><p style="color:#cbd5e1">
-اكتب فكرتك وسيقوم كابو بترتيبها في تصور مشروع.
-</p><textarea
+</div><div class="idea-description">
+اكتب فكرتك ودع كابو يرتبها لك في تصور مشروع احترافي.
+</div><textarea
 id="ideaInput"
 placeholder="مثال: أريد برجًا مستقبليًا على شكل ذرة..."
 ></textarea><button
@@ -234,15 +275,19 @@ onclick="generateIdea()"
 
 «»
 
-توليد فكرة المشروع 💡
+🚀 توليد فكرة المشروع
 </button>
 
 <div
 id="ideaResult"
 class="result"
-><h3>🚀 التصور المقترح</h3><div id="ideaContent"></div></div></div><!-- قسم الهندسة --><div class="card"><h2 style="text-align:center">
+><h3>
+🚀 التصور المقترح
+</h3><div id="ideaContent"></div></div></div><!-- قسم الهندسة --><div class="card"><h2 style="text-align:center">
 🏗️ قسم الهندسة والتصميم
-</h2><div class="cards"><div
+</h2><p style="text-align:center;color:#cbd5e1">
+طوّر مشروعك الهندسي والمعماري من مكان واحد.
+</p><div class="cards"><div
 class="small-card"
 onclick="openTool('towerTool')"
 ><div class="icon">🏙️</div><h3>
@@ -275,66 +320,60 @@ id="towerTool"
 class="card tool"
 ><h2>
 🏙️ تصميم برج جديد
-</h2><label>
-اسم البرج
-</label><input
+</h2><label>اسم البرج</label>
+
+<input
 id="towerName"
 placeholder="مثال: برج كابو ONE"
 
 «»
 
-<label>
-ارتفاع البرج بالمتر
-</label><input
+<label>ارتفاع البرج بالمتر</label>
+
+<input
 id="towerHeight"
 type="number"
 placeholder="مثال: 300"
 
 «»
 
-<label>
-عدد الأدوار
-</label><input
+<label>عدد الأدوار</label>
+
+<input
 id="towerFloors"
 type="number"
 placeholder="مثال: 70"
 
 «»
 
-<label>
-مساحة الدور بالمتر المربع
-</label><input
+<label>مساحة الدور بالمتر المربع</label>
+
+<input
 id="floorArea"
 type="number"
 placeholder="مثال: 1500"
 
 «»
 
-<label>
-نوع البرج
-</label><select id="towerType"><option>سكني</option>
+<label>نوع البرج</label>
+
+<select id="towerType"><option>سكني</option>
 <option>تجاري</option>
 <option>فندقي</option>
 <option>إداري</option>
-<option>متعدد الاستخدامات</option></select><label>
-الفكرة المعمارية
-</label><textarea
+<option>متعدد الاستخدامات</option></select><label>الفكرة المعمارية</label>
+
+<textarea
 id="towerIdea"
 placeholder="اكتب الفكرة..."
-></textarea><label>
-المميزات
-</label><textarea
+></textarea><label>المميزات</label>
+
+<textarea
 id="towerFeatures"
 placeholder="مثال: منصة مشاهدة، مطاعم..."
-></textarea><button
-onclick="createTower()"
-
-«»
-
+></textarea><button onclick="createTower()">
 إنشاء بطاقة المشروع 🏗️
-</button>
-
-<div
+</button><div
 id="towerProject"
 class="project"
 ><h2>
@@ -357,15 +396,9 @@ class="project"
 </div><div class="project-row">
 <strong>المميزات</strong>
 <span id="pFeatures"></span>
-</div><button
-onclick="calculateTower()"
-
-«»
-
+</div><button onclick="calculateTower()">
 🧮 حساب مساحة المشروع
-</button>
-
-<div
+</button><div
 id="areaResult"
 class="result"
 ></div><button
@@ -389,7 +422,6 @@ onclick="calculateCost()"
 <div
 id="costResult"
 class="cost"
-style="display:none"
 ></div><button
 class="purple"
 onclick="createReport()"
@@ -404,9 +436,7 @@ id="report"
 class="report"
 ><h2>
 📋 تقرير مشروع KAPO ONE
-</h2><div
-id="reportContent"
-></div><button onclick="window.print()">
+</h2><div id="reportContent"></div><button onclick="window.print()">
 🖨️ طباعة / حفظ التقرير
 </button></div></div><button
 class="close"
@@ -425,15 +455,9 @@ class="card tool"
 </h2><textarea
 id="architectureIdea"
 placeholder="اكتب فكرتك المعمارية..."
-></textarea><button
-onclick="saveArchitecture()"
-
-«»
-
+></textarea><button onclick="saveArchitecture()">
 حفظ الفكرة 💡
-</button>
-
-<div
+</button><div
 id="architectureResult"
 class="result"
 ></div><button
@@ -476,16 +500,10 @@ class="card tool"
 ><h2>
 🧮 الجداول والحسابات
 </h2><p style="color:#cbd5e1">
-يمكنك إنشاء الجداول تلقائيًا من بيانات البرج.
-</p><button
-onclick="openTool('towerTool')"
-
-«»
-
+الجداول مرتبطة ببيانات مشروع البرج.
+</p><button onclick="openTool('towerTool')">
 🏙️ الانتقال إلى تصميم الأبراج
-</button>
-
-<button
+</button><button
 class="close"
 onclick="closeTools()"
 
@@ -529,7 +547,7 @@ content.innerHTML =
 "<strong>🏷️ اسم المشروع المقترح:</strong><br>" +
 
 "KAPO " +
-text.substring(0,35) +
+text.substring(0,40) +
 
 "<br><br>" +
 
@@ -585,7 +603,8 @@ document
 document
 .getElementById(id)
 .scrollIntoView({
-behavior:"smooth"
+behavior:"smooth",
+block:"start"
 });
 
 }
@@ -609,42 +628,36 @@ function createTower(){
 document
 .getElementById("pName")
 .textContent =
-document.getElementById("towerName")
-.value ||
+document.getElementById("towerName").value ||
 "برج كابو ONE";
 
 document
 .getElementById("pHeight")
 .textContent =
-document.getElementById("towerHeight")
-.value +
+document.getElementById("towerHeight").value +
 " متر";
 
 document
 .getElementById("pFloors")
 .textContent =
-document.getElementById("towerFloors")
-.value +
+document.getElementById("towerFloors").value +
 " دور";
 
 document
 .getElementById("pType")
 .textContent =
-document.getElementById("towerType")
-.value;
+document.getElementById("towerType").value;
 
 document
 .getElementById("pIdea")
 .textContent =
-document.getElementById("towerIdea")
-.value ||
+document.getElementById("towerIdea").value ||
 "غير محددة";
 
 document
 .getElementById("pFeatures")
 .textContent =
-document.getElementById("towerFeatures")
-.value ||
+document.getElementById("towerFeatures").value ||
 "غير محددة";
 
 document
@@ -680,7 +693,7 @@ const total =
 floors * area;
 
 const services =
-total * 0.15;
+total * .15;
 
 const net =
 total - services;
@@ -752,7 +765,15 @@ document
 "<tr>" +
 "<td>اسم المشروع</td>" +
 "<td>" +
-(document.getElementById("towerName").value || "برج كابو ONE") +
+(document.getElementById("towerName").value ||
+"برج كابو ONE") +
+"</td>" +
+"</tr>" +
+
+"<tr>" +
+"<td>نوع البرج</td>" +
+"<td>" +
+document.getElementById("towerType").value +
 "</td>" +
 "</tr>" +
 
@@ -910,6 +931,16 @@ const features =
 document.getElementById("towerFeatures").value ||
 "غير محددة";
 
+if(floors<=0 || area<=0){
+
+alert(
+"⚠️ أدخل عدد الأدوار ومساحة الدور أولًا."
+);
+
+return;
+
+}
+
 const total =
 floors * area;
 
@@ -991,7 +1022,8 @@ document
 function saveArchitecture(){
 
 const value =
-document.getElementById("architectureIdea")
+document
+.getElementById("architectureIdea")
 .value
 .trim();
 
@@ -1039,6 +1071,7 @@ type +
 "</strong><br><br>" +
 
 "📝 المتطلبات:<br>" +
+
 (idea || "لم يتم تحديد المتطلبات.");
 
 }
