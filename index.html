@@ -2,456 +2,343 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>KAPO ONE | كابو ون 🚀</title><style>
-*{
-    box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#0f172a;
-    color:white;
+margin:0;
+font-family:Arial,sans-serif;
+background:#0f172a;
+color:white;
 }
 
 header{
-    background:#1e293b;
-    padding:22px 15px;
-    text-align:center;
-    font-size:30px;
-    font-weight:bold;
+background:#1e293b;
+padding:22px;
+text-align:center;
+font-size:30px;
+font-weight:bold;
 }
 
 .hero{
-    text-align:center;
-    padding:35px 20px 20px;
+text-align:center;
+padding:35px 20px;
 }
 
-.hero h1{
-    font-size:30px;
-    margin:10px 0;
-}
+.hero h1{font-size:30px}
 
 .hero p{
-    color:#cbd5e1;
-    font-size:17px;
+color:#cbd5e1;
+font-size:17px;
+}
+
+.editor,
+.engineering{
+max-width:900px;
+margin:25px auto;
+padding:20px;
 }
 
 .editor{
-    max-width:700px;
-    margin:25px auto;
-    padding:20px;
-    background:#1e293b;
-    border-radius:18px;
+background:#1e293b;
+border-radius:18px;
+}
+
+textarea,
+input,
+select{
+width:100%;
+padding:14px;
+margin-top:8px;
+border:0;
+border-radius:10px;
+font-size:16px;
+outline:none;
 }
 
 textarea{
-    width:100%;
-    min-height:150px;
-    padding:16px;
-    border:none;
-    border-radius:12px;
-    font-size:17px;
-    resize:vertical;
-    outline:none;
-    text-align:right;
-    font-family:Arial,sans-serif;
+min-height:130px;
+resize:vertical;
 }
 
 button{
-    width:100%;
-    margin-top:15px;
-    padding:15px;
-    border:none;
-    border-radius:12px;
-    background:#2563eb;
-    color:white;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
+width:100%;
+padding:15px;
+margin-top:15px;
+border:0;
+border-radius:12px;
+background:#2563eb;
+color:white;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
 }
 
 button:hover{
-    opacity:.9;
-}
-
-#result{
-    margin-top:18px;
-    padding:15px;
-    background:#0f172a;
-    border-radius:12px;
-    color:#cbd5e1;
-    display:none;
-}
-
-.engineering{
-    max-width:900px;
-    margin:35px auto;
-    padding:25px 20px;
-}
-
-.engineering h2{
-    text-align:center;
-    font-size:28px;
-    margin-bottom:10px;
-}
-
-.engineering > p{
-    text-align:center;
-    color:#cbd5e1;
-    margin-bottom:25px;
+opacity:.9;
 }
 
 .cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:15px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
 }
 
 .card{
-    background:#1e293b;
-    padding:25px 15px;
-    border-radius:18px;
-    text-align:center;
-    border:1px solid #334155;
-    cursor:pointer;
-    transition:.2s;
+background:#1e293b;
+padding:25px 15px;
+border-radius:18px;
+text-align:center;
+border:1px solid #334155;
+cursor:pointer;
 }
 
 .card:hover{
-    transform:translateY(-4px);
-    border-color:#2563eb;
+transform:translateY(-3px);
 }
 
-.card .icon{
-    font-size:40px;
-    margin-bottom:12px;
-}
-
-.card h3{
-    margin:8px 0;
-    font-size:20px;
+.icon{
+font-size:40px;
 }
 
 .card p{
-    font-size:14px;
-    color:#cbd5e1;
-    margin:0;
+color:#cbd5e1;
+font-size:14px;
 }
 
 .tool{
-    display:none;
-    margin-top:25px;
-    background:#1e293b;
-    padding:22px;
-    border-radius:18px;
-    border:1px solid #334155;
-}
-
-.tool h3{
-    margin-top:0;
-    font-size:24px;
+display:none;
+margin-top:25px;
+background:#1e293b;
+padding:22px;
+border-radius:18px;
 }
 
 .tool label{
-    display:block;
-    margin-top:15px;
-    margin-bottom:7px;
-    color:#cbd5e1;
+display:block;
+margin-top:15px;
+color:#cbd5e1;
 }
 
-.tool input,
-.tool select{
-    width:100%;
-    padding:13px;
-    border:none;
-    border-radius:10px;
-    font-size:16px;
-    outline:none;
+.project{
+display:none;
+margin-top:25px;
+background:#0f172a;
+border-radius:18px;
+padding:20px;
+border:1px solid #475569;
 }
 
-.tool textarea{
-    min-height:100px;
-    margin-top:5px;
+.project h3{
+text-align:center;
+font-size:25px;
+margin-top:0;
 }
 
-.tool-result{
-    display:none;
-    margin-top:20px;
-    padding:18px;
-    background:#0f172a;
-    border-radius:12px;
-    line-height:1.9;
+.project-row{
+background:#1e293b;
+padding:14px;
+border-radius:10px;
+margin:10px 0;
+}
+
+.project-row strong{
+display:block;
+color:#93c5fd;
+margin-bottom:5px;
 }
 
 .close{
-    background:#475569;
+background:#475569;
 }
 
 footer{
-    margin-top:40px;
-    background:#111827;
-    text-align:center;
-    padding:18px;
-    color:#94a3b8;
+margin-top:40px;
+background:#111827;
+text-align:center;
+padding:18px;
+color:#94a3b8;
 }
 </style></head><body><header>
 🚀 KAPO ONE | كابو ون
 </header><section class="hero">
-    <h1>مرحبًا بك في كابو ONE</h1>
-    <p>اكتب سؤالك أو فكرتك، وابدأ رحلتك مع كابو.</p>
-</section><section class="editor"><textarea id="idea" placeholder="اكتب سؤالك أو فكرتك هنا..."></textarea>
+<h1>مرحبًا بك في كابو ONE</h1>
+<p>منصة للأفكار والهندسة والتصميم.</p>
+</section><section class="editor"><textarea id="idea"
+placeholder="اكتب سؤالك أو فكرتك هنا..."></textarea><button onclick="sendIdea()">إرسال 🚀</button>
 
-<button onclick="sendIdea()">إرسال 🚀</button>
+<div id="result"></div></section><section class="engineering"><h2 style="text-align:center">🏗️ قسم الهندسة والتصميم</h2><p style="text-align:center;color:#cbd5e1">
+طوّر مشروعك الهندسي والمعماري من مكان واحد.
+</p><div class="cards"><div class="card" onclick="openTool('towerTool')">
+<div class="icon">🏙️</div>
+<h3>تصميم الأبراج</h3>
+<p>إنشاء بطاقة مشروع برج احترافية.</p>
+</div><div class="card" onclick="openTool('architectureTool')">
+<div class="icon">🏛️</div>
+<h3>الأفكار المعمارية</h3>
+<p>تطوير المفاهيم المعمارية.</p>
+</div><div class="card" onclick="openTool('plansTool')">
+<div class="icon">📐</div>
+<h3>المخططات الهندسية</h3>
+<p>تنظيم بيانات المخططات.</p>
+</div><div class="card" onclick="openTool('tableTool')">
+<div class="icon">🧮</div>
+<h3>الجداول والحسابات</h3>
+<p>تنظيم بيانات المشروع.</p>
+</div></div><!-- أداة تصميم الأبراج --><div class="tool" id="towerTool"><h3>🏙️ تصميم برج جديد</h3><label>اسم البرج</label>
+<input id="towerName" placeholder="مثال: برج كابو">
 
-<div id="result"></div>
+<label>ارتفاع البرج بالمتر</label>
+<input id="towerHeight" type="number" placeholder="مثال: 300">
 
-</section><section class="engineering"><h2>🏗️ قسم الهندسة والتصميم</h2>
+<label>عدد الأدوار</label>
+<input id="towerFloors" type="number" placeholder="مثال: 70">
 
-<p>
-    مساحة متخصصة لتطوير الأفكار الهندسية والمعمارية وتصميم المشاريع.
-</p>
+<label>نوع البرج</label>
+<select id="towerType">
 
-<div class="cards">
+<option>سكني</option>
+<option>تجاري</option>
+<option>فندقي</option>
+<option>إداري</option>
+<option>متعدد الاستخدامات</option>
+</select><label>الفكرة المعمارية</label>
 
-    <div class="card" onclick="openTool('towerTool')">
-        <div class="icon">🏙️</div>
-        <h3>تصميم الأبراج</h3>
-        <p>تطوير فكرة ومواصفات البرج.</p>
-    </div>
+<textarea id="towerIdea"
+placeholder="مثال: برج مستوحى من شكل الذرة..."></textarea><label>المميزات</label>
 
-    <div class="card" onclick="openTool('architectureTool')">
-        <div class="icon">🏛️</div>
-        <h3>الأفكار المعمارية</h3>
-        <p>تطوير المفاهيم والأفكار المعمارية.</p>
-    </div>
+<textarea id="towerFeatures"
+placeholder="مثال: منصة مشاهدة، مطاعم، مكاتب، حدائق..."></textarea><button onclick="createTower()">
+إنشاء بطاقة المشروع 🏗️
+</button><div class="project" id="towerProject"><h3>🏙️ بطاقة مشروع البرج</h3><div class="project-row">
+<strong>اسم المشروع</strong>
+<span id="pName"></span>
+</div><div class="project-row">
+<strong>الارتفاع</strong>
+<span id="pHeight"></span>
+</div><div class="project-row">
+<strong>عدد الأدوار</strong>
+<span id="pFloors"></span>
+</div><div class="project-row">
+<strong>نوع البرج</strong>
+<span id="pType"></span>
+</div><div class="project-row">
+<strong>الفكرة المعمارية</strong>
+<span id="pIdea"></span>
+</div><div class="project-row">
+<strong>المميزات</strong>
+<span id="pFeatures"></span>
+</div><div class="project-row">
+<strong>الحالة</strong>
+<span>🟢 تم إنشاء التصور الأولي</span>
+</div></div><button class="close" onclick="closeTools()">
+إغلاق
+</button></div><!-- الأفكار المعمارية --><div class="tool" id="architectureTool"><h3>🏛️ الأفكار المعمارية</h3><label>اسم المشروع</label>
+<input placeholder="اسم المشروع">
 
-    <div class="card" onclick="openTool('plansTool')">
-        <div class="icon">📐</div>
-        <h3>المخططات الهندسية</h3>
-        <p>تنظيم بيانات ومتطلبات المشروع.</p>
-    </div>
+<label>الفكرة</label>
 
-    <div class="card" onclick="openTool('tableTool')">
-        <div class="icon">🧮</div>
-        <h3>الجداول والحسابات</h3>
-        <p>إنشاء جدول منظم للمشروع.</p>
-    </div>
+<textarea placeholder="اكتب فكرتك المعمارية..."></textarea><button onclick="alert('💡 تم تسجيل الفكرة المعمارية')">
+حفظ الفكرة 💡
+</button><button class="close" onclick="closeTools()">إغلاق</button>
 
-</div>
+</div><!-- المخططات --><div class="tool" id="plansTool"><h3>📐 المخططات الهندسية</h3><label>اسم المشروع</label>
+<input placeholder="اسم المشروع">
 
-<!-- تصميم الأبراج -->
-<div class="tool" id="towerTool">
+<label>نوع المخطط</label>
 
-    <h3>🏙️ تصميم الأبراج</h3>
+<select>
+<option>مخطط معماري</option>
+<option>مخطط إنشائي</option>
+<option>مخطط كهربائي</option>
+<option>مخطط ميكانيكي</option>
+</select><textarea placeholder="اكتب متطلبات المخطط..."></textarea><button onclick="alert('📐 تم تسجيل بيانات المخطط')">
+حفظ بيانات المخطط
+</button><button class="close" onclick="closeTools()">إغلاق</button>
 
-    <label>اسم البرج</label>
-    <input id="towerName" placeholder="مثال: برج كابو">
+</div><!-- الجداول --><div class="tool" id="tableTool"><h3>🧮 الجداول والحسابات</h3><label>اسم المشروع</label>
+<input placeholder="اسم المشروع">
 
-    <label>ارتفاع البرج بالمتر</label>
-    <input id="towerHeight" type="number" placeholder="مثال: 300">
+<label>عدد العناصر</label>
+<input type="number" placeholder="مثال: 10">
 
-    <label>عدد الأدوار</label>
-    <input id="towerFloors" type="number" placeholder="مثال: 70">
+<textarea placeholder="اكتب البيانات التي تريد تنظيمها..."></textarea><button onclick="alert('📊 تم إنشاء الجدول الأولي')">
+إنشاء جدول 📊
+</button><button class="close" onclick="closeTools()">إغلاق</button>
 
-    <label>نوع البرج</label>
-    <select id="towerType">
-        <option>سكني</option>
-        <option>تجاري</option>
-        <option>فندقي</option>
-        <option>متعدد الاستخدامات</option>
-        <option>مقر إداري</option>
-    </select>
-
-    <label>فكرة التصميم</label>
-    <textarea id="towerIdea" placeholder="اكتب شكل البرج والفكرة المعمارية..."></textarea>
-
-    <button onclick="createTower()">إنشاء تصور البرج 🚀</button>
-
-    <div class="tool-result" id="towerResult"></div>
-
-    <button class="close" onclick="closeTools()">إغلاق</button>
-
-</div>
-
-<!-- الأفكار المعمارية -->
-<div class="tool" id="architectureTool">
-
-    <h3>🏛️ الأفكار المعمارية</h3>
-
-    <label>اسم المشروع</label>
-    <input id="archName" placeholder="اسم المشروع">
-
-    <label>وصف الفكرة</label>
-    <textarea id="archIdea" placeholder="اكتب فكرتك المعمارية هنا..."></textarea>
-
-    <button onclick="createArchitecture()">حفظ الفكرة 💡</button>
-
-    <div class="tool-result" id="archResult"></div>
-
-    <button class="close" onclick="closeTools()">إغلاق</button>
-
-</div>
-
-<!-- المخططات -->
-<div class="tool" id="plansTool">
-
-    <h3>📐 المخططات الهندسية</h3>
-
-    <label>اسم المشروع</label>
-    <input id="planName" placeholder="اسم المشروع">
-
-    <label>نوع المخطط</label>
-    <select id="planType">
-        <option>مخطط معماري</option>
-        <option>مخطط إنشائي</option>
-        <option>مخطط كهربائي</option>
-        <option>مخطط ميكانيكي</option>
-    </select>
-
-    <label>ملاحظات المشروع</label>
-    <textarea id="planNotes" placeholder="اكتب المتطلبات والملاحظات..."></textarea>
-
-    <button onclick="createPlan()">إنشاء بيانات المخطط 📐</button>
-
-    <div class="tool-result" id="planResult"></div>
-
-    <button class="close" onclick="closeTools()">إغلاق</button>
-
-</div>
-
-<!-- الجداول والحسابات -->
-<div class="tool" id="tableTool">
-
-    <h3>🧮 الجداول والحسابات</h3>
-
-    <label>اسم المشروع</label>
-    <input id="tableName" placeholder="اسم المشروع">
-
-    <label>عدد العناصر</label>
-    <input id="tableCount" type="number" placeholder="مثال: 10">
-
-    <label>ملاحظات</label>
-    <textarea id="tableNotes" placeholder="اكتب البيانات التي تريد تنظيمها..."></textarea>
-
-    <button onclick="createTable()">إنشاء جدول 📊</button>
-
-    <div class="tool-result" id="tableResult"></div>
-
-    <button class="close" onclick="closeTools()">إغلاق</button>
-
-</div>
-
-</section><footer>
+</div></section><footer>
 © 2026 KAPO ONE
 </footer><script>
 
 function sendIdea(){
 
-    const idea = document.getElementById("idea").value.trim();
-    const result = document.getElementById("result");
+const idea=document.getElementById("idea").value.trim();
+const result=document.getElementById("result");
 
-    result.style.display = "block";
+if(idea===""){
+result.innerHTML="⚠️ اكتب سؤالك أو فكرتك أولًا.";
+return;
+}
 
-    if(idea === ""){
-        result.innerHTML = "⚠️ اكتب سؤالك أو فكرتك أولًا.";
-        return;
-    }
+result.innerHTML="✅ تم استلام فكرتك: "+idea;
 
-    result.innerHTML =
-        "✅ تم استلام فكرتك بنجاح!<br><br>" +
-        "💡 فكرتك: " + idea;
 }
 
 function openTool(id){
 
-    closeTools();
+closeTools();
 
-    const tool = document.getElementById(id);
+const tool=document.getElementById(id);
 
-    tool.style.display = "block";
+tool.style.display="block";
 
-    tool.scrollIntoView({
-        behavior:"smooth",
-        block:"start"
-    });
+tool.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
 }
 
 function closeTools(){
 
-    const tools = document.querySelectorAll(".tool");
+document.querySelectorAll(".tool").forEach(function(tool){
+tool.style.display="none";
+});
 
-    tools.forEach(function(tool){
-        tool.style.display = "none";
-    });
 }
 
 function createTower(){
 
-    const name = document.getElementById("towerName").value || "برج بدون اسم";
-    const height = document.getElementById("towerHeight").value || "غير محدد";
-    const floors = document.getElementById("towerFloors").value || "غير محدد";
-    const type = document.getElementById("towerType").value;
-    const idea = document.getElementById("towerIdea").value || "لم يتم إدخال فكرة";
+const name=document.getElementById("towerName").value || "برج كابو";
 
-    const result = document.getElementById("towerResult");
+const height=document.getElementById("towerHeight").value || "غير محدد";
 
-    result.style.display = "block";
+const floors=document.getElementById("towerFloors").value || "غير محدد";
 
-    result.innerHTML =
-        "🏙️ <strong>" + name + "</strong><br><br>" +
-        "📏 الارتفاع: " + height + " متر<br>" +
-        "🏢 عدد الأدوار: " + floors + "<br>" +
-        "🏗️ النوع: " + type + "<br>" +
-        "💡 الفكرة: " + idea;
-}
+const type=document.getElementById("towerType").value;
 
-function createArchitecture(){
+const idea=document.getElementById("towerIdea").value || "لم يتم تحديد الفكرة";
 
-    const name = document.getElementById("archName").value || "مشروع بدون اسم";
-    const idea = document.getElementById("archIdea").value || "لم يتم إدخال فكرة";
+const features=document.getElementById("towerFeatures").value || "لم يتم تحديد المميزات";
 
-    const result = document.getElementById("archResult");
+document.getElementById("pName").textContent=name;
 
-    result.style.display = "block";
+document.getElementById("pHeight").textContent=height+" متر";
 
-    result.innerHTML =
-        "✅ تم حفظ الفكرة المعمارية<br><br>" +
-        "🏛️ المشروع: " + name + "<br>" +
-        "💡 الفكرة: " + idea;
-}
+document.getElementById("pFloors").textContent=floors+" دور";
 
-function createPlan(){
+document.getElementById("pType").textContent=type;
 
-    const name = document.getElementById("planName").value || "مشروع بدون اسم";
-    const type = document.getElementById("planType").value;
-    const notes = document.getElementById("planNotes").value || "لا توجد ملاحظات";
+document.getElementById("pIdea").textContent=idea;
 
-    const result = document.getElementById("planResult");
+document.getElementById("pFeatures").textContent=features;
 
-    result.style.display = "block";
+document.getElementById("towerProject").style.display="block";
 
-    result.innerHTML =
-        "📐 بيانات المخطط<br><br>" +
-        "🏗️ المشروع: " + name + "<br>" +
-        "📋 النوع: " + type + "<br>" +
-        "📝 الملاحظات: " + notes;
-}
+document.getElementById("towerProject").scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
 
-function createTable(){
-
-    const name = document.getElementById("tableName").value || "مشروع بدون اسم";
-    const count = document.getElementById("tableCount").value || "غير محدد";
-    const notes = document.getElementById("tableNotes").value || "لا توجد ملاحظات";
-
-    const result = document.getElementById("tableResult");
-
-    result.style.display = "block";
-
-    result.innerHTML =
-        "📊 تم إنشاء بيانات الجدول<br><br>" +
-        "📁 المشروع: " + name + "<br>" +
-        "🔢 عدد العناصر: " + count + "<br>" +
-        "📝 الملاحظات: " + notes;
 }
 
 </script></body>
