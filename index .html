@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -29,53 +28,32 @@ header{
 
 .hero{
     text-align:center;
-    padding:55px 20px 30px;
+    padding:50px 20px 30px;
 }
 
 .hero h1{
-    font-size:40px;
+    font-size:38px;
     margin:10px 0;
 }
 
 .hero p{
     color:#cbd5e1;
-    font-size:19px;
+    font-size:18px;
     line-height:1.8;
 }
 
 .container{
-    max-width:900px;
+    max-width:700px;
     margin:auto;
     padding:20px;
 }
 
-.search{
-    margin:20px auto 35px;
-    text-align:center;
-}
-
-.search input{
-    width:90%;
-    max-width:650px;
-    padding:16px;
-    border-radius:12px;
-    border:none;
-    font-size:17px;
-    text-align:right;
-}
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:18px;
-}
-
 .card{
     background:#1e293b;
+    margin:18px 0;
     padding:25px;
     border-radius:18px;
     text-align:center;
-    box-shadow:0 8px 25px rgba(0,0,0,.25);
 }
 
 .card h2{
@@ -84,25 +62,29 @@ header{
 
 .card p{
     color:#cbd5e1;
-    line-height:1.7;
+    line-height:1.8;
 }
 
-.button{
-    display:inline-block;
-    margin-top:10px;
-    padding:12px 25px;
+button{
     background:#2563eb;
     color:white;
-    text-decoration:none;
-    border-radius:10px;
+    border:none;
+    padding:13px 28px;
+    border-radius:12px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
 }
 
 footer{
-    margin-top:50px;
+    margin-top:40px;
     background:#111827;
     text-align:center;
     padding:20px;
-    color:#cbd5e1;
+    color:#94a3b8;
 }
 </style>
 </head>
@@ -114,52 +96,42 @@ footer{
 </header>
 
 <section class="hero">
-    <h1>مرحبًا بك في كابو ONE</h1>
+    <h1>مرحبًا بك في كابو ون</h1>
     <p>
-        منصة كابو للأفكار والتصاميم المعمارية والمشاريع المستقبلية.
-        <br>
-        KAPO ONE — Ideas, Architecture & Future Projects
+        منصة كابو للأفكار والتصاميم والمشاريع المستقبلية
     </p>
 </section>
 
 <div class="container">
 
-    <div class="search">
-        <input type="text" placeholder="🔎 ابحث في كابو...">
+    <div class="card">
+        <h2>🏗️ التصميم والهندسة</h2>
+        <p>
+            استكشاف أفكار معمارية وتصاميم مبتكرة للمشاريع المستقبلية.
+        </p>
+        <button onclick="alert('مرحبًا بك في KAPO ONE 🚀')">
+            ابدأ الآن
+        </button>
     </div>
 
-    <div class="cards">
+    <div class="card">
+        <h2>💡 أفكار جديدة</h2>
+        <p>
+            مساحة لعرض الأفكار والمشاريع والتصاميم الإبداعية.
+        </p>
+    </div>
 
-        <div class="card">
-            <h2>🏗️ التصميم المعماري</h2>
-            <p>
-                أفكار وتصاميم معمارية مبتكرة للأبراج والمشاريع المستقبلية.
-            </p>
-            <a class="button" href="#">استكشف</a>
-        </div>
-
-        <div class="card">
-            <h2>💡 الأفكار</h2>
-            <p>
-                مساحة لعرض الأفكار والمشاريع الجديدة وتطويرها.
-            </p>
-            <a class="button" href="#">المزيد</a>
-        </div>
-
-        <div class="card">
-            <h2>🌆 المشاريع</h2>
-            <p>
-                مجموعة من المشاريع والرؤى المستقبلية تحت اسم كابو.
-            </p>
-            <a class="button" href="#">عرض المشاريع</a>
-        </div>
-
+    <div class="card">
+        <h2>🌍 KAPO ONE</h2>
+        <p>
+            نعمل على بناء منصة احترافية تجمع الأفكار والتصميم والتقنية.
+        </p>
     </div>
 
 </div>
 
 <footer>
-© 2026 KAPO ONE — كابو ون
+© 2026 KAPO ONE | كابو ون
 </footer>
 
 </body>
