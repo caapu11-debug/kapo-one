@@ -2,9 +2,7 @@
 <html lang="ar" dir="rtl">
 
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>KAPO ONE | تصميم الأبراج</title>
@@ -40,9 +38,8 @@ header{
 }
 
 .subtitle{
-    color:#cbd5e1;
     margin-top:8px;
-    font-size:15px;
+    color:#cbd5e1;
 }
 
 .container{
@@ -83,12 +80,24 @@ header{
     gap:20px;
 }
 
+.card-link{
+    text-decoration:none;
+    color:white;
+    display:block;
+}
+
 .card{
     background:#1e293b;
     border:1px solid #334155;
     border-radius:18px;
     padding:25px 20px;
     text-align:center;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:#38bdf8;
 }
 
 .card-icon{
@@ -105,12 +114,21 @@ header{
     line-height:1.8;
 }
 
+.button{
+    display:inline-block;
+    margin-top:15px;
+    padding:11px 25px;
+    background:#2563eb;
+    color:white;
+    border-radius:10px;
+}
+
 .status{
     display:inline-block;
     margin-top:12px;
     padding:8px 15px;
-    border-radius:8px;
     background:#334155;
+    border-radius:8px;
     color:#cbd5e1;
     font-size:14px;
 }
@@ -141,12 +159,10 @@ header{
 }
 
 </style>
-
 </head>
 
 
 <body>
-
 
 <header>
 
@@ -162,7 +178,6 @@ header{
 
 
 <div class="container">
-
 
 <a class="back" href="design.html">
 ← العودة إلى التصميم والهندسة
@@ -190,6 +205,10 @@ header{
 <div class="grid">
 
 
+<!-- برج KAPO ONE -->
+
+<a href="tower-kapo-one.html" class="card-link">
+
 <div class="card">
 
 <div class="card-icon">
@@ -202,16 +221,19 @@ header{
 
 <p>
 مشروع برج مستقبلي قيد التطوير.
-سيتم إضافة التفاصيل والتصميم لاحقًا.
+اضغط للدخول إلى تفاصيل المشروع.
 </p>
 
-<div class="status">
-قيد التطوير
-</div>
+<span class="button">
+استكشف البرج
+</span>
 
 </div>
 
+</a>
 
+
+<!-- مشروع جديد -->
 
 <div class="card">
 
@@ -228,13 +250,14 @@ header{
 وأفكاره الهندسية والمعمارية.
 </p>
 
-<div class="status">
+<span class="status">
 مشروع جديد
-</div>
+</span>
 
 </div>
 
 
+<!-- فكرة برج -->
 
 <div class="card">
 
@@ -247,13 +270,13 @@ header{
 </h2>
 
 <p>
-هنا يمكن عرض فكرة جديدة وتحويلها
+مساحة لعرض فكرة جديدة وتحويلها
 مستقبلًا إلى تصميم معماري متكامل.
 </p>
 
-<div class="status">
+<span class="status">
 فكرة
-</div>
+</span>
 
 </div>
 
@@ -283,10 +306,7 @@ header{
 
 </div>
 
-
 </div>
 
-
 </body>
-
 </html>
