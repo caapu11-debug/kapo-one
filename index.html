@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>KAPO ONE | الملفات والمخططات</title>
+<title>KAPO ONE | الإحصائيات</title>
 
 <style>
+
 *{
     box-sizing:border-box;
 }
@@ -37,9 +38,9 @@ header{
 }
 
 .container{
-    max-width:1050px;
+    max-width:1100px;
     margin:auto;
-    padding:25px 18px 100px;
+    padding:25px 18px 110px;
 }
 
 .back{
@@ -69,118 +70,99 @@ header{
     line-height:1.8;
 }
 
-.grid{
+.stats{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-    gap:16px;
-    margin-top:20px;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:18px;
 }
 
-.card{
+.stat{
     background:#111827;
     border:1px solid #334155;
-    padding:20px;
-    border-radius:16px;
+    border-radius:18px;
+    padding:25px;
+    text-align:center;
 }
 
-.icon{
-    font-size:35px;
+.stat-icon{
+    font-size:38px;
     margin-bottom:10px;
 }
 
-.card h3{
-    margin:5px 0 10px;
+.stat-number{
+    font-size:36px;
+    font-weight:bold;
     color:#38bdf8;
+    margin:8px 0;
 }
 
-.card p{
+.stat-title{
     color:#cbd5e1;
-    line-height:1.6;
-}
-
-label{
-    display:block;
-    margin-top:8px;
-    color:#e2e8f0;
-}
-
-input,
-textarea,
-select{
-    width:100%;
-    padding:14px;
-    margin:8px 0 15px;
-    border:1px solid #475569;
-    border-radius:10px;
-    background:#0f172a;
-    color:white;
     font-size:16px;
 }
 
-textarea{
-    min-height:110px;
-    resize:vertical;
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:18px;
 }
 
-button{
-    border:none;
-    border-radius:10px;
-    padding:13px 18px;
-    background:#2563eb;
-    color:white;
-    font-size:16px;
-    cursor:pointer;
-}
-
-button:hover{
-    background:#1d4ed8;
-}
-
-.file-card{
+.box{
     background:#111827;
     border:1px solid #334155;
     border-radius:16px;
     padding:20px;
-    margin-top:15px;
 }
 
-.file-icon{
-    font-size:38px;
-}
-
-.file-card h3{
+.box h3{
     color:#38bdf8;
-    margin:10px 0;
+    margin-top:0;
 }
 
-.file-info{
-    color:#cbd5e1;
-    line-height:1.8;
+.row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 0;
+    border-bottom:1px solid #334155;
 }
 
-.delete{
-    background:#b91c1c;
+.row:last-child{
+    border-bottom:none;
+}
+
+.value{
+    font-weight:bold;
+    color:#fff;
+}
+
+.progress{
+    height:12px;
+    background:#334155;
+    border-radius:20px;
+    overflow:hidden;
     margin-top:12px;
 }
 
-.delete:hover{
-    background:#991b1b;
+.progress-bar{
+    height:100%;
+    width:0%;
+    background:#2563eb;
+    transition:width .5s;
 }
 
-.empty{
-    text-align:center;
+.note{
     color:#94a3b8;
-    padding:25px;
+    line-height:1.7;
 }
 
-.notice{
-    background:#172554;
-    border:1px solid #1d4ed8;
-    padding:15px;
-    border-radius:12px;
-    color:#dbeafe;
-    line-height:1.7;
-    margin-top:15px;
+.refresh{
+    background:#2563eb;
+    margin-top:5px;
+}
+
+.refresh:hover{
+    background:#1d4ed8;
 }
 
 footer{
@@ -196,13 +178,15 @@ footer{
 }
 
 footer button{
+    border:none;
     background:transparent;
     color:#cbd5e1;
+    font-size:15px;
+    cursor:pointer;
     padding:6px 12px;
 }
 
 footer button:hover{
-    background:transparent;
     color:#38bdf8;
 }
 
@@ -215,7 +199,13 @@ footer button:hover{
     .section{
         padding:18px;
     }
+
+    .stat-number{
+        font-size:30px;
+    }
+
 }
+
 </style>
 </head>
 
@@ -228,13 +218,14 @@ footer button:hover{
     </div>
 
     <div class="subtitle">
-        📁 الملفات والمخططات
+        📊 لوحة الإحصائيات
     </div>
 
 </header>
 
 
 <div class="container">
+
 
     <button class="back" onclick="goHome()">
         ← العودة إلى لوحة المالك
@@ -244,89 +235,250 @@ footer button:hover{
     <div class="section">
 
         <h1>
-            📁 مركز الملفات والمخططات
+            📊 الإحصائيات العامة
         </h1>
 
         <p class="intro">
-            مساحة منظمة لحفظ بيانات الملفات والمخططات
-            وربطها بالمشاريع والتصاميم داخل منصة KAPO ONE.
+            لوحة تعرض ملخصًا مباشرًا لبيانات المشاريع
+            والتصاميم والملفات المسجلة داخل KAPO ONE.
         </p>
 
+        <button class="refresh" onclick="loadStats()">
+            🔄 تحديث الإحصائيات
+        </button>
 
-        <div class="grid">
+    </div>
 
-            <div class="card">
 
-                <div class="icon">
-                    📐
+    <!-- الأرقام الرئيسية -->
+
+    <div class="section">
+
+        <div class="stats">
+
+
+            <div class="stat">
+
+                <div class="stat-icon">
+                    🏢
                 </div>
 
-                <h3>
-                    المخططات الهندسية
-                </h3>
+                <div
+                    class="stat-number"
+                    id="projectsCount">
+                    0
+                </div>
 
-                <p>
-                    تنظيم بيانات المخططات الهندسية
-                    الخاصة بالمشاريع.
-                </p>
+                <div class="stat-title">
+                    إجمالي المشاريع
+                </div>
 
             </div>
 
 
-            <div class="card">
+            <div class="stat">
 
-                <div class="icon">
+                <div class="stat-icon">
                     🏗️
                 </div>
 
-                <h3>
-                    ملفات التصميم
-                </h3>
+                <div
+                    class="stat-number"
+                    id="designsCount">
+                    0
+                </div>
 
-                <p>
-                    حفظ معلومات التصاميم والأفكار
-                    المعمارية.
-                </p>
+                <div class="stat-title">
+                    إجمالي التصاميم
+                </div>
 
             </div>
 
 
-            <div class="card">
+            <div class="stat">
 
-                <div class="icon">
-                    📄
+                <div class="stat-icon">
+                    📁
                 </div>
 
-                <h3>
-                    المستندات
-                </h3>
+                <div
+                    class="stat-number"
+                    id="filesCount">
+                    0
+                </div>
 
-                <p>
-                    تنظيم المستندات والملاحظات
-                    المرتبطة بالمشاريع.
-                </p>
+                <div class="stat-title">
+                    إجمالي الملفات
+                </div>
 
             </div>
 
 
-            <div class="card">
+            <div class="stat">
 
-                <div class="icon">
-                    🗂️
+                <div class="stat-icon">
+                    📦
                 </div>
 
+                <div
+                    class="stat-number"
+                    id="totalCount">
+                    0
+                </div>
+
+                <div class="stat-title">
+                    إجمالي العناصر
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- تفاصيل المشاريع -->
+
+    <div class="section">
+
+        <h2>
+            🏢 حالة المشاريع
+        </h2>
+
+        <div class="grid">
+
+
+            <div class="box">
+
                 <h3>
-                    أرشيف المشاريع
+                    📌 توزيع المشاريع
                 </h3>
 
-                <p>
-                    الاحتفاظ بسجل منظم لملفات
-                    المشاريع السابقة.
-                </p>
 
+                <div class="row">
+                    <span>فكرة جديدة</span>
+                    <span
+                        class="value"
+                        id="ideaProjects">
+                        0
+                    </span>
+                </div>
+
+
+                <div class="row">
+                    <span>قيد التصميم</span>
+                    <span
+                        class="value"
+                        id="designProjects">
+                        0
+                    </span>
+                </div>
+
+
+                <div class="row">
+                    <span>قيد التطوير</span>
+                    <span
+                        class="value"
+                        id="developmentProjects">
+                        0
+                    </span>
+                </div>
+
+
+                <div class="row">
+                    <span>مكتمل</span>
+                    <span
+                        class="value"
+                        id="completedProjects">
+                        0
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div class="box">
+
+                <h3>
+                    📐 حالة التصاميم
+                </h3>
+
+
+                <div class="row">
+                    <span>أفكار</span>
+                    <span
+                        class="value"
+                        id="ideaDesigns">
+                        0
+                    </span>
+                </div>
+
+
+                <div class="row">
+                    <span>قيد التطوير</span>
+                    <span
+                        class="value"
+                        id="developmentDesigns">
+                        0
+                    </span>
+                </div>
+
+
+                <div class="row">
+                    <span>قيد التصميم</span>
+                    <span
+                        class="value"
+                        id="designingDesigns">
+                        0
+                    </span>
+                </div>
+
+
+                <div class="row">
+                    <span>مكتمل</span>
+                    <span
+                        class="value"
+                        id="completedDesigns">
+                        0
+                    </span>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- نسبة النشاط -->
+
+    <div class="section">
+
+        <h2>
+            📈 مؤشر نشاط المنصة
+        </h2>
+
+        <p class="note">
+            المؤشر يعتمد على إجمالي المشاريع والتصاميم والملفات
+            الموجودة حاليًا في المتصفح.
+        </p>
+
+
+        <div class="progress">
+
+            <div
+                class="progress-bar"
+                id="activityBar">
             </div>
 
         </div>
+
+
+        <p id="activityText" class="note">
+            لا توجد بيانات كافية حتى الآن.
+        </p>
 
     </div>
 
@@ -334,103 +486,17 @@ footer button:hover{
     <div class="section">
 
         <h2>
-            ➕ إضافة ملف جديد
+            ℹ️ معلومات النظام
         </h2>
 
-
-        <label>
-            اسم الملف
-        </label>
-
-        <input
-            id="fileName"
-            type="text"
-            placeholder="مثال: مخطط برج كابو">
-
-
-        <label>
-            نوع الملف
-        </label>
-
-        <select id="fileType">
-
-            <option>
-                مخطط هندسي
-            </option>
-
-            <option>
-                تصميم معماري
-            </option>
-
-            <option>
-                نموذج ثلاثي الأبعاد
-            </option>
-
-            <option>
-                مستند
-            </option>
-
-            <option>
-                صورة
-            </option>
-
-            <option>
-                ملف مشروع
-            </option>
-
-        </select>
-
-
-        <label>
-            المشروع المرتبط
-        </label>
-
-        <input
-            id="fileProject"
-            type="text"
-            placeholder="مثال: برج كابو">
-
-
-        <label>
-            ملاحظات
-        </label>
-
-        <textarea
-            id="fileNotes"
-            placeholder="اكتب أي ملاحظات عن الملف">
-        </textarea>
-
-
-        <button onclick="addFile()">
-            💾 حفظ بيانات الملف
-        </button>
-
-
-        <div class="notice">
-            ℹ️ هذه النسخة تحفظ <strong>بيانات الملف</strong>
-            داخل المتصفح. رفع الملفات الفعلية مثل PDF وDWG
-            سنضيفه في مرحلة التخزين السحابي لاحقًا.
-        </div>
+        <p class="note">
+            KAPO ONE — لوحة المالك.
+            سيتم تطوير الإحصائيات مستقبلًا لتشمل تقارير
+            أكثر تقدمًا وربطًا بقاعدة بيانات فعلية.
+        </p>
 
     </div>
 
-
-    <div class="section">
-
-        <h2>
-            🗂️ الملفات المسجلة
-        </h2>
-
-
-        <div id="filesList">
-
-            <div class="empty">
-                لا توجد ملفات مسجلة حتى الآن.
-            </div>
-
-        </div>
-
-    </div>
 
 </div>
 
@@ -443,15 +509,12 @@ footer button:hover{
 
     <button
         onclick="window.scrollTo({top:0,behavior:'smooth'})">
-
-        📁 الملفات
-
+        📊 الإحصائيات
     </button>
 
-    <button onclick="alert('قسم الإعدادات قيد التجهيز')">
-
+    <button
+        onclick="alert('قسم الإعدادات قيد التجهيز')">
         ⚙️ الإعدادات
-
     </button>
 
 </footer>
@@ -459,191 +522,217 @@ footer button:hover{
 
 <script>
 
-let files =
-JSON.parse(localStorage.getItem("kapoFiles")) || [];
 
+function getData(key){
 
-function saveFiles(){
+    try{
 
-    localStorage.setItem(
-        "kapoFiles",
-        JSON.stringify(files)
-    );
+        return JSON.parse(
+            localStorage.getItem(key)
+        ) || [];
 
-}
+    }catch(error){
 
-
-function addFile(){
-
-    const name =
-        document.getElementById("fileName")
-        .value.trim();
-
-
-    const type =
-        document.getElementById("fileType")
-        .value;
-
-
-    const project =
-        document.getElementById("fileProject")
-        .value.trim();
-
-
-    const notes =
-        document.getElementById("fileNotes")
-        .value.trim();
-
-
-    if(!name){
-
-        alert("فضلاً اكتب اسم الملف");
-
-        return;
-
-    }
-
-
-    const file = {
-
-        id:Date.now(),
-
-        name:name,
-
-        type:type,
-
-        project:
-            project || "غير مرتبط بمشروع",
-
-        notes:
-            notes || "لا توجد ملاحظات"
-
-    };
-
-
-    files.push(file);
-
-
-    saveFiles();
-
-
-    document.getElementById("fileName")
-        .value="";
-
-
-    document.getElementById("fileProject")
-        .value="";
-
-
-    document.getElementById("fileNotes")
-        .value="";
-
-
-    document.getElementById("fileType")
-        .value="مخطط هندسي";
-
-
-    displayFiles();
-
-
-    alert("تم حفظ بيانات الملف بنجاح ✅");
-
-}
-
-
-function deleteFile(id){
-
-    if(
-        confirm(
-            "هل تريد حذف بيانات هذا الملف؟"
-        )
-    ){
-
-        files =
-            files.filter(
-                file => file.id !== id
-            );
-
-
-        saveFiles();
-
-
-        displayFiles();
+        return [];
 
     }
 
 }
 
 
-function displayFiles(){
-
-    const list =
-        document.getElementById("filesList");
+function loadStats(){
 
 
-    if(files.length === 0){
-
-        list.innerHTML = `
-            <div class="empty">
-                لا توجد ملفات مسجلة حتى الآن.
-            </div>
-        `;
-
-        return;
-
-    }
+    const projects =
+        getData("kapoProjects");
 
 
-    list.innerHTML = "";
+    const designs =
+        getData("kapoDesigns");
 
 
-    files.forEach(file => {
-
-        list.innerHTML += `
-
-            <div class="file-card">
-
-                <div class="file-icon">
-                    📄
-                </div>
-
-                <h3>
-                    ${file.name}
-                </h3>
-
-                <div class="file-info">
-
-                    <div>
-                        📌 النوع:
-                        ${file.type}
-                    </div>
-
-                    <div>
-                        🏢 المشروع:
-                        ${file.project}
-                    </div>
-
-                    <div>
-                        📝 الملاحظات:
-                        ${file.notes}
-                    </div>
-
-                </div>
+    const files =
+        getData("kapoFiles");
 
 
-                <button
-                    class="delete"
-                    onclick="deleteFile(${file.id})">
+    const projectCount =
+        projects.length;
 
-                    🗑️ حذف بيانات الملف
 
-                </button>
+    const designCount =
+        designs.length;
 
-            </div>
 
-        `;
+    const fileCount =
+        files.length;
+
+
+    const total =
+        projectCount +
+        designCount +
+        fileCount;
+
+
+    document.getElementById(
+        "projectsCount"
+    ).textContent = projectCount;
+
+
+    document.getElementById(
+        "designsCount"
+    ).textContent = designCount;
+
+
+    document.getElementById(
+        "filesCount"
+    ).textContent = fileCount;
+
+
+    document.getElementById(
+        "totalCount"
+    ).textContent = total;
+
+
+    /* المشاريع */
+
+
+    let ideaProjects = 0;
+    let designProjects = 0;
+    let developmentProjects = 0;
+    let completedProjects = 0;
+
+
+    projects.forEach(project => {
+
+        if(project.status === "فكرة جديدة"){
+            ideaProjects++;
+        }
+
+        if(project.status === "قيد التصميم"){
+            designProjects++;
+        }
+
+        if(project.status === "قيد التطوير"){
+            developmentProjects++;
+        }
+
+        if(project.status === "مكتمل"){
+            completedProjects++;
+        }
 
     });
+
+
+    document.getElementById(
+        "ideaProjects"
+    ).textContent = ideaProjects;
+
+
+    document.getElementById(
+        "designProjects"
+    ).textContent = designProjects;
+
+
+    document.getElementById(
+        "developmentProjects"
+    ).textContent = developmentProjects;
+
+
+    document.getElementById(
+        "completedProjects"
+    ).textContent = completedProjects;
+
+
+    /* التصاميم */
+
+
+    let ideaDesigns = 0;
+    let developmentDesigns = 0;
+    let designingDesigns = 0;
+    let completedDesigns = 0;
+
+
+    designs.forEach(design => {
+
+        if(design.status === "فكرة"){
+            ideaDesigns++;
+        }
+
+        if(design.status === "قيد التطوير"){
+            developmentDesigns++;
+        }
+
+        if(design.status === "قيد التصميم"){
+            designingDesigns++;
+        }
+
+        if(design.status === "مكتمل"){
+            completedDesigns++;
+        }
+
+    });
+
+
+    document.getElementById(
+        "ideaDesigns"
+    ).textContent = ideaDesigns;
+
+
+    document.getElementById(
+        "developmentDesigns"
+    ).textContent = developmentDesigns;
+
+
+    document.getElementById(
+        "designingDesigns"
+    ).textContent = designingDesigns;
+
+
+    document.getElementById(
+        "completedDesigns"
+    ).textContent = completedDesigns;
+
+
+    /* مؤشر النشاط */
+
+
+    let activity = 0;
+
+
+    if(total > 0){
+
+        activity =
+            Math.min(
+                100,
+                total * 10
+            );
+
+    }
+
+
+    document.getElementById(
+        "activityBar"
+    ).style.width =
+        activity + "%";
+
+
+    if(total === 0){
+
+        document.getElementById(
+            "activityText"
+        ).textContent =
+        "ابدأ بإضافة مشاريع وتصاميم وملفات.";
+
+    }else{
+
+        document.getElementById(
+            "activityText"
+        ).textContent =
+        "مستوى نشاط المنصة الحالي: " +
+        activity +
+        "%";
+
+    }
 
 }
 
@@ -656,7 +745,7 @@ function goHome(){
 }
 
 
-displayFiles();
+loadStats();
 
 </script>
 
