@@ -88,6 +88,12 @@ header{
     gap:18px;
 }
 
+.card-link{
+    text-decoration:none;
+    color:white;
+    display:block;
+}
+
 .card{
     background:#1e293b;
     padding:25px 20px;
@@ -166,10 +172,13 @@ footer a:hover{
 
 <header>
     <div class="logo">🚀 KAPO <span>ONE</span></div>
-    <div class="subtitle">منصة كابو للأفكار والتصميم والهندسة</div>
+    <div class="subtitle">
+        منصة كابو للأفكار والتصميم والهندسة
+    </div>
 </header>
 
 <section class="hero">
+
     <h1>مرحبًا بك في KAPO ONE</h1>
 
     <p>
@@ -177,70 +186,129 @@ footer a:hover{
         التصميمات الهندسية والمشاريع المستقبلية.
     </p>
 
-    <a href="#projects" class="start-btn">فلنبدأ 🚀</a>
+    <a href="#projects" class="start-btn">
+        فلنبدأ 🚀
+    </a>
+
 </section>
 
 <div class="container">
 
-    <h2 class="section-title">أقسام المنصة</h2>
+    <h2 class="section-title">
+        أقسام المنصة
+    </h2>
 
     <div class="grid">
 
-        <div class="card">
-            <div class="icon">🏠</div>
-            <h3>الرئيسية</h3>
-            <p>
-                الصفحة الرئيسية لمنصة KAPO ONE
-                ومتابعة أحدث المشاريع والأفكار.
-            </p>
-        </div>
+        <a href="index.html" class="card-link">
+            <div class="card">
 
-        <div class="card">
-            <div class="icon">🏗️</div>
-            <h3>التصميم والهندسة</h3>
-            <p>
-                تصميم الأبراج والمباني والأفكار
-                الهندسية والمعمارية الحديثة.
-            </p>
-        </div>
+                <div class="icon">🏠</div>
 
-        <div class="card" id="projects">
-            <div class="icon">💡</div>
-            <h3>الأفكار والمشاريع</h3>
-            <p>
-                مساحة لعرض المشاريع والأفكار
-                الجديدة والمستقبلية.
-            </p>
-        </div>
+                <h3>الرئيسية</h3>
 
-        <div class="card">
-            <div class="icon">📐</div>
-            <h3>المخططات والتصاميم</h3>
-            <p>
-                عرض المخططات والتصورات الخاصة
-                بالمشاريع الهندسية.
-            </p>
-        </div>
+                <p>
+                    الصفحة الرئيسية لمنصة KAPO ONE
+                    ومتابعة أحدث المشاريع والأفكار.
+                </p>
 
-        <div class="card">
-            <div class="icon">👤</div>
-            <h3>حساب المالك</h3>
-            <p>
-                قسم خاص بإدارة المنصة وبيانات
-                المالك والمشاريع.
-            </p>
-        </div>
+            </div>
+        </a>
 
-        <div class="card">
-            <div class="icon">📞</div>
-            <h3>تواصل معنا</h3>
-            <p>
-                قسم مخصص للتواصل والاستفسارات
-                حول المشاريع والمنصة.
-            </p>
-        </div>
+
+        <!-- التصميم والهندسة -->
+
+        <a href="design.html" class="card-link">
+
+            <div class="card">
+
+                <div class="icon">🏗️</div>
+
+                <h3>التصميم والهندسة</h3>
+
+                <p>
+                    تصميم الأبراج والمباني والأفكار
+                    الهندسية والمعمارية الحديثة.
+                </p>
+
+            </div>
+
+        </a>
+
+
+        <a href="#projects" class="card-link">
+
+            <div class="card">
+
+                <div class="icon">💡</div>
+
+                <h3>الأفكار والمشاريع</h3>
+
+                <p>
+                    مساحة لعرض المشاريع والأفكار
+                    الجديدة والمستقبلية.
+                </p>
+
+            </div>
+
+        </a>
+
+
+        <a href="#designs" class="card-link">
+
+            <div class="card">
+
+                <div class="icon">📐</div>
+
+                <h3>المخططات والتصاميم</h3>
+
+                <p>
+                    عرض المخططات والتصورات الخاصة
+                    بالمشاريع الهندسية.
+                </p>
+
+            </div>
+
+        </a>
+
+
+        <a href="#owner" class="card-link">
+
+            <div class="card">
+
+                <div class="icon">👤</div>
+
+                <h3>حساب المالك</h3>
+
+                <p>
+                    قسم خاص بإدارة المنصة
+                    والمشاريع.
+                </p>
+
+            </div>
+
+        </a>
+
+
+        <a href="#contact" class="card-link">
+
+            <div class="card">
+
+                <div class="icon">📞</div>
+
+                <h3>تواصل معنا</h3>
+
+                <p>
+                    قسم مخصص للتواصل والاستفسارات
+                    حول المشاريع والمنصة.
+                </p>
+
+            </div>
+
+        </a>
 
     </div>
+
 
     <div class="about">
 
@@ -257,15 +325,28 @@ footer a:hover{
 
 </div>
 
+
 <footer>
 
-    <a href="#">🏠<br>الرئيسية</a>
+    <a href="index.html">
+        🏠<br>
+        الرئيسية
+    </a>
 
-    <a href="#projects">💡<br>المشاريع</a>
+    <a href="#projects">
+        💡<br>
+        المشاريع
+    </a>
 
-    <a href="#">📐<br>التصميم</a>
+    <a href="design.html">
+        📐<br>
+        التصميم
+    </a>
 
-    <a href="#">👤<br>المالك</a>
+    <a href="#owner">
+        👤<br>
+        المالك
+    </a>
 
 </footer>
 
