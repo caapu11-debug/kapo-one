@@ -1,559 +1,283 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>KAPO ONE | منصة التصميم والهندسة</title>
+<title>KAPO ONE | لوحة المالك</title>
 
 <style>
-
 *{
     box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
 }
 
 body{
     margin:0;
     font-family:Arial,sans-serif;
-    background:#0b1120;
-    color:white;
-    line-height:1.7;
+    background:#0f172a;
+    color:#fff;
 }
 
 header{
-    position:sticky;
-    top:0;
-    z-index:1000;
-    background:#111827;
-    border-bottom:1px solid #263449;
-}
-
-.nav{
-    max-width:1200px;
-    margin:auto;
-    padding:16px 20px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
+    background:#1e293b;
+    padding:22px 15px;
+    text-align:center;
+    border-bottom:1px solid #334155;
 }
 
 .logo{
-    font-size:28px;
+    font-size:30px;
     font-weight:bold;
-}
-
-.logo span{
     color:#38bdf8;
 }
 
-nav{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-    justify-content:center;
-}
-
-nav a{
+.owner{
+    margin-top:8px;
     color:#cbd5e1;
-    text-decoration:none;
-    padding:8px 12px;
-    border-radius:8px;
-    font-size:14px;
-}
-
-nav a:hover{
-    background:#1e293b;
-    color:#38bdf8;
-}
-
-.hero{
-    min-height:500px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:70px 20px;
-    background:
-    radial-gradient(circle at top,#1e3a8a 0,#0b1120 55%);
-}
-
-.hero-content{
-    max-width:850px;
-}
-
-.badge{
-    display:inline-block;
-    background:#172554;
-    border:1px solid #2563eb;
-    color:#93c5fd;
-    padding:7px 15px;
-    border-radius:30px;
-    font-size:14px;
-}
-
-.hero h1{
-    font-size:48px;
-    margin:15px 0;
-}
-
-.hero h1 span{
-    color:#38bdf8;
-}
-
-.hero p{
-    color:#cbd5e1;
-    font-size:19px;
-    max-width:700px;
-    margin:auto;
-}
-
-.buttons{
-    margin-top:28px;
-}
-
-.btn{
-    display:inline-block;
-    padding:13px 25px;
-    border-radius:10px;
-    text-decoration:none;
-    font-weight:bold;
-    margin:5px;
-}
-
-.btn-primary{
-    background:#2563eb;
-    color:white;
-}
-
-.btn-secondary{
-    background:#1e293b;
-    color:#cbd5e1;
-    border:1px solid #334155;
+    font-size:16px;
 }
 
 .container{
-    max-width:1200px;
+    max-width:1100px;
     margin:auto;
-    padding:60px 20px;
+    padding:25px 18px 100px;
 }
 
-.section-title{
-    text-align:center;
-    margin-bottom:40px;
+.welcome{
+    background:linear-gradient(135deg,#1e293b,#172554);
+    padding:28px;
+    border-radius:20px;
+    margin-bottom:25px;
+    border:1px solid #334155;
 }
 
-.section-title h2{
-    font-size:32px;
-    margin:0 0 8px;
+.welcome h1{
+    margin:0 0 10px;
+    font-size:28px;
 }
 
-.section-title p{
-    color:#94a3b8;
+.welcome p{
+    margin:0;
+    color:#cbd5e1;
+    line-height:1.8;
 }
 
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
 }
 
 .card{
-    background:#111827;
-    border:1px solid #263449;
+    background:#1e293b;
+    padding:22px;
     border-radius:18px;
-    padding:28px 22px;
-    text-align:center;
+    border:1px solid #334155;
+    transition:.2s;
 }
 
-.card-icon{
-    font-size:48px;
+.card:hover{
+    transform:translateY(-3px);
+    border-color:#38bdf8;
 }
 
-.card h3{
-    font-size:21px;
+.icon{
+    font-size:35px;
+    margin-bottom:12px;
+}
+
+.card h2{
+    margin:5px 0 10px;
+    font-size:20px;
 }
 
 .card p{
-    color:#94a3b8;
-    font-size:15px;
-}
-
-.about{
-    background:#111827;
-    border:1px solid #263449;
-    border-radius:20px;
-    padding:35px 25px;
-    text-align:center;
-}
-
-.about p{
-    max-width:800px;
-    margin:auto;
     color:#cbd5e1;
+    line-height:1.6;
+    margin:0 0 18px;
 }
 
-.contact{
+button{
+    width:100%;
+    padding:13px;
+    border:none;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin:25px 0;
+}
+
+.stat{
+    background:#111827;
+    padding:20px;
     text-align:center;
-    background:#172554;
-    border-radius:20px;
-    padding:40px 20px;
+    border-radius:15px;
+    border:1px solid #334155;
 }
 
-.contact p{
+.stat strong{
+    display:block;
+    font-size:28px;
+    color:#38bdf8;
+    margin-bottom:7px;
+}
+
+.stat span{
     color:#cbd5e1;
 }
 
 footer{
-    background:#080d18;
-    border-top:1px solid #263449;
-    padding:30px 20px;
-    text-align:center;
-    color:#94a3b8;
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    background:#111827;
+    border-top:1px solid #334155;
+    display:flex;
+    justify-content:space-around;
+    padding:14px 5px;
 }
 
-.footer-logo{
-    font-size:24px;
-    font-weight:bold;
-    color:white;
+footer button{
+    background:transparent;
+    width:auto;
+    padding:5px 12px;
+    color:#cbd5e1;
 }
 
-.footer-logo span{
+footer button:hover{
     color:#38bdf8;
+    background:transparent;
 }
 
-footer p{
-    font-size:14px;
-}
-
-@media(max-width:700px){
-
-    .nav{
-        flex-direction:column;
+@media(max-width:600px){
+    .stats{
+        grid-template-columns:1fr;
     }
 
-    .hero h1{
-        font-size:36px;
+    .welcome h1{
+        font-size:23px;
     }
 
+    .logo{
+        font-size:26px;
+    }
 }
-
 </style>
-
 </head>
-
 
 <body>
 
-
 <header>
-
-<div class="nav">
-
-<div class="logo">
-🚀 KAPO <span>ONE</span>
-</div>
-
-<nav>
-
-<a href="index.html">
-الرئيسية
-</a>
-
-<a href="design.html">
-التصميم والهندسة
-</a>
-
-<a href="projects.html">
-المشاريع
-</a>
-
-<a href="gallery.html">
-المعرض
-</a>
-
-<a href="#about">
-من نحن
-</a>
-
-<a href="#contact">
-تواصل معنا
-</a>
-
-</nav>
-
-</div>
-
+    <div class="logo">🚀 KAPO ONE</div>
+    <div class="owner">لوحة المالك الرئيسية</div>
 </header>
 
+<div class="container">
 
-<section class="hero">
+    <section class="welcome">
+        <h1>مرحبًا بك في منصة KAPO ONE 👑</h1>
+        <p>
+            هذه هي لوحة التحكم الخاصة بالمالك.
+            من هنا يمكنك إدارة المشاريع والتصميم والهندسة
+            والملفات وإعدادات المنصة.
+        </p>
+    </section>
 
-<div class="hero-content">
+    <div class="stats">
+        <div class="stat">
+            <strong>0</strong>
+            <span>المشاريع</span>
+        </div>
 
-<div class="badge">
-منصة التصميم والهندسة والأفكار
-</div>
+        <div class="stat">
+            <strong>0</strong>
+            <span>التصاميم</span>
+        </div>
 
-<h1>
-مرحبًا بك في <span>KAPO ONE</span>
-</h1>
+        <div class="stat">
+            <strong>0</strong>
+            <span>الملفات</span>
+        </div>
+    </div>
 
-<p>
-منصة رقمية لعرض وتطوير الأفكار المعمارية
-والهندسية والمشاريع المستقبلية في مكان واحد.
-</p>
+    <div class="grid">
 
-<div class="buttons">
+        <div class="card">
+            <div class="icon">🏢</div>
+            <h2>إدارة المشاريع</h2>
+            <p>إدارة ومتابعة مشاريع KAPO ONE.</p>
+            <button onclick="alert('قسم إدارة المشاريع قيد التجهيز')">
+                فتح القسم
+            </button>
+        </div>
 
-<a href="design.html" class="btn btn-primary">
-ابدأ الاستكشاف
-</a>
+        <div class="card">
+            <div class="icon">🏗️</div>
+            <h2>التصميم والهندسة</h2>
+            <p>قسم خاص بالأفكار المعمارية والتصاميم الهندسية.</p>
+            <button onclick="alert('قسم التصميم والهندسة قيد التجهيز')">
+                فتح القسم
+            </button>
+        </div>
 
-<a href="projects.html" class="btn btn-secondary">
-المشاريع
-</a>
+        <div class="card">
+            <div class="icon">📁</div>
+            <h2>الملفات والمخططات</h2>
+            <p>مكان مخصص لحفظ وتنظيم ملفات ومخططات المشاريع.</p>
+            <button onclick="alert('قسم الملفات قيد التجهيز')">
+                فتح القسم
+            </button>
+        </div>
 
-</div>
+        <div class="card">
+            <div class="icon">📊</div>
+            <h2>الإحصائيات</h2>
+            <p>عرض إحصائيات ومؤشرات أداء المنصة والمشاريع.</p>
+            <button onclick="alert('قسم الإحصائيات قيد التجهيز')">
+                فتح القسم
+            </button>
+        </div>
 
-</div>
+        <div class="card">
+            <div class="icon">⚙️</div>
+            <h2>إعدادات المنصة</h2>
+            <p>إدارة إعدادات KAPO ONE والخصائص المستقبلية.</p>
+            <button onclick="alert('الإعدادات قيد التجهيز')">
+                فتح القسم
+            </button>
+        </div>
 
-</section>
+        <div class="card">
+            <div class="icon">🔐</div>
+            <h2>حساب المالك</h2>
+            <p>إدارة بيانات المالك والوصول إلى المنصة.</p>
+            <button onclick="alert('صفحة حساب المالك قيد التجهيز')">
+                فتح الحساب
+            </button>
+        </div>
 
-
-<section class="container">
-
-<div class="section-title">
-
-<h2>
-مجالات KAPO ONE
-</h2>
-
-<p>
-منصة منظمة للأفكار والتصميم والمشاريع.
-</p>
-
-</div>
-
-
-<div class="grid">
-
-
-<div class="card">
-
-<div class="card-icon">
-🏗️
-</div>
-
-<h3>
-التصميم والهندسة
-</h3>
-
-<p>
-التصميم المعماري والهندسي وتطوير التصورات والمخططات.
-</p>
-
-<a href="design.html" class="btn btn-primary">
-دخول القسم
-</a>
-
-</div>
-
-
-<div class="card">
-
-<div class="card-icon">
-💡
-</div>
-
-<h3>
-الأفكار والمشاريع
-</h3>
-
-<p>
-تنظيم الأفكار وتحويلها إلى مشاريع قابلة للتطوير.
-</p>
-
-<a href="projects.html" class="btn btn-primary">
-دخول المشاريع
-</a>
+    </div>
 
 </div>
-
-
-<div class="card">
-
-<div class="card-icon">
-🖼️
-</div>
-
-<h3>
-معرض الأعمال
-</h3>
-
-<p>
-مساحة احترافية لعرض الصور والتصاميم والمخططات.
-</p>
-
-<a href="gallery.html" class="btn btn-primary">
-دخول المعرض
-</a>
-
-</div>
-
-
-<div class="card">
-
-<div class="card-icon">
-📐
-</div>
-
-<h3>
-المخططات والتصاميم
-</h3>
-
-<p>
-تنظيم وعرض المخططات والتصورات الخاصة بالمشاريع.
-</p>
-
-<a href="design.html" class="btn btn-secondary">
-التصميم والهندسة
-</a>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<section class="container">
-
-<div class="section-title">
-
-<h2>
-المشاريع
-</h2>
-
-<p>
-استكشف مشاريع وأفكار KAPO ONE.
-</p>
-
-</div>
-
-<div class="about">
-
-<p>
-سيكون قسم المشاريع مركزًا لعرض الأفكار
-والتصاميم والمشاريع المعمارية والهندسية
-وتفاصيل مراحل تطويرها.
-</p>
-
-<a href="projects.html" class="btn btn-primary">
-عرض المشاريع
-</a>
-
-</div>
-
-</section>
-
-
-<section class="container" id="about">
-
-<div class="section-title">
-
-<h2>
-من نحن
-</h2>
-
-</div>
-
-<div class="about">
-
-<p>
-KAPO ONE منصة تهتم بالأفكار المعمارية والهندسية
-والتصميم والمشاريع المستقبلية، وتهدف إلى بناء
-بيئة رقمية منظمة لعرض الأفكار وتطويرها وتحويلها
-إلى مشاريع قابلة للدراسة والتطوير.
-</p>
-
-</div>
-
-</section>
-
-
-<section class="container">
-
-<div class="section-title">
-
-<h2>
-المعرض
-</h2>
-
-<p>
-استكشف معرض أعمال KAPO ONE.
-</p>
-
-</div>
-
-<div class="about">
-
-<p>
-يضم المعرض مستقبلًا الصور والتصاميم
-والمخططات والنماذج ثلاثية الأبعاد.
-</p>
-
-<a href="gallery.html" class="btn btn-primary">
-فتح المعرض
-</a>
-
-</div>
-
-</section>
-
-
-<section class="container" id="contact">
-
-<div class="contact">
-
-<h2>
-تواصل معنا
-</h2>
-
-<p>
-سيتم إضافة نموذج التواصل ووسائل الاتصال
-في المرحلة القادمة.
-</p>
-
-</div>
-
-</section>
-
 
 <footer>
-
-<div class="footer-logo">
-KAPO <span>ONE</span>
-</div>
-
-<p>
-منصة التصميم والهندسة والأفكار المعمارية
-</p>
-
-<p>
-© 2026 KAPO ONE — جميع الحقوق محفوظة
-</p>
-
+    <button onclick="window.scrollTo({top:0,behavior:'smooth'})">🏠 الرئيسية</button>
+    <button onclick="alert('لوحة المالك')">👑 المالك</button>
+    <button onclick="alert('الإعدادات قيد التجهيز')">⚙️ الإعدادات</button>
 </footer>
 
-
 </body>
-
 </html>
