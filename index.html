@@ -4,10 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>KAPO ONE | الإحصائيات</title>
+<title>KAPO ONE | كابو ون</title>
 
 <style>
-
 *{
     box-sizing:border-box;
 }
@@ -21,148 +20,108 @@ body{
 
 header{
     background:#1e293b;
-    padding:22px 15px;
+    padding:20px;
     text-align:center;
     border-bottom:1px solid #334155;
 }
 
 .logo{
-    font-size:28px;
+    font-size:30px;
     font-weight:bold;
-    color:#38bdf8;
 }
 
 .subtitle{
+    color:#94a3b8;
     margin-top:8px;
-    color:#cbd5e1;
 }
 
 .container{
-    max-width:1100px;
+    max-width:1000px;
     margin:auto;
-    padding:25px 18px 110px;
+    padding:25px 18px 90px;
 }
 
-.back{
-    background:#334155;
-    margin-bottom:20px;
-}
-
-.back:hover{
-    background:#475569;
-}
-
-.section{
-    background:#1e293b;
-    padding:22px;
-    border-radius:18px;
-    border:1px solid #334155;
-    margin-bottom:22px;
-}
-
-.section h1,
-.section h2{
-    margin-top:0;
-}
-
-.intro{
-    color:#cbd5e1;
-    line-height:1.8;
-}
-
-.stats{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:18px;
-}
-
-.stat{
-    background:#111827;
-    border:1px solid #334155;
-    border-radius:18px;
-    padding:25px;
+.welcome{
     text-align:center;
+    padding:25px 10px;
 }
 
-.stat-icon{
-    font-size:38px;
-    margin-bottom:10px;
+.welcome h1{
+    font-size:30px;
+    margin:10px 0;
 }
 
-.stat-number{
-    font-size:36px;
-    font-weight:bold;
-    color:#38bdf8;
-    margin:8px 0;
-}
-
-.stat-title{
+.welcome p{
     color:#cbd5e1;
-    font-size:16px;
+    font-size:17px;
 }
 
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
     gap:18px;
 }
 
-.box{
-    background:#111827;
+.card{
+    background:#1e293b;
     border:1px solid #334155;
-    border-radius:16px;
-    padding:20px;
+    border-radius:18px;
+    padding:24px 18px;
+    text-align:center;
+    transition:0.2s;
 }
 
-.box h3{
-    color:#38bdf8;
+.card:hover{
+    transform:translateY(-3px);
+    border-color:#64748b;
+}
+
+.icon{
+    font-size:42px;
+    margin-bottom:12px;
+}
+
+.card h2{
+    font-size:20px;
+    margin:10px 0;
+}
+
+.card p{
+    color:#94a3b8;
+    line-height:1.6;
+    font-size:14px;
+}
+
+button{
+    margin-top:12px;
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:11px 22px;
+    border-radius:10px;
+    font-size:15px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+.owner{
+    margin-top:25px;
+    background:#172033;
+    border:1px solid #334155;
+    border-radius:18px;
+    padding:22px;
+    text-align:center;
+}
+
+.owner h2{
     margin-top:0;
 }
 
-.row{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:12px 0;
-    border-bottom:1px solid #334155;
-}
-
-.row:last-child{
-    border-bottom:none;
-}
-
-.value{
-    font-weight:bold;
-    color:#fff;
-}
-
-.progress{
-    height:12px;
-    background:#334155;
-    border-radius:20px;
-    overflow:hidden;
-    margin-top:12px;
-}
-
-.progress-bar{
-    height:100%;
-    width:0%;
-    background:#2563eb;
-    transition:width .5s;
-}
-
-.note{
-    color:#94a3b8;
-    line-height:1.7;
-}
-
-.refresh{
-    background:#2563eb;
-    margin-top:5px;
-}
-
-.refresh:hover{
-    background:#1d4ed8;
+.owner p{
+    color:#cbd5e1;
 }
 
 footer{
@@ -174,580 +133,105 @@ footer{
     border-top:1px solid #334155;
     display:flex;
     justify-content:space-around;
-    padding:12px;
+    padding:13px 5px;
+    font-size:14px;
 }
 
-footer button{
-    border:none;
-    background:transparent;
+footer span{
     color:#cbd5e1;
-    font-size:15px;
-    cursor:pointer;
-    padding:6px 12px;
 }
-
-footer button:hover{
-    color:#38bdf8;
-}
-
-@media(max-width:600px){
-
-    .logo{
-        font-size:25px;
-    }
-
-    .section{
-        padding:18px;
-    }
-
-    .stat-number{
-        font-size:30px;
-    }
-
-}
-
 </style>
 </head>
 
 <body>
 
 <header>
-
-    <div class="logo">
-        🚀 KAPO ONE
-    </div>
-
-    <div class="subtitle">
-        📊 لوحة الإحصائيات
-    </div>
-
+    <div class="logo">🚀 KAPO ONE</div>
+    <div class="subtitle">منصة التصميم والأفكار المعمارية</div>
 </header>
-
 
 <div class="container">
 
-
-    <button class="back" onclick="goHome()">
-        ← العودة إلى لوحة المالك
-    </button>
-
-
-    <div class="section">
-
-        <h1>
-            📊 الإحصائيات العامة
-        </h1>
-
-        <p class="intro">
-            لوحة تعرض ملخصًا مباشرًا لبيانات المشاريع
-            والتصاميم والملفات المسجلة داخل KAPO ONE.
+    <section class="welcome">
+        <h1>مرحباً بك في منصة كابو ون</h1>
+        <p>
+            مركزك المتكامل لإدارة المشاريع والتصاميم والأفكار المعمارية
         </p>
+    </section>
 
-        <button class="refresh" onclick="loadStats()">
-            🔄 تحديث الإحصائيات
-        </button>
+    <section class="grid">
 
-    </div>
-
-
-    <!-- الأرقام الرئيسية -->
-
-    <div class="section">
-
-        <div class="stats">
-
-
-            <div class="stat">
-
-                <div class="stat-icon">
-                    🏢
-                </div>
-
-                <div
-                    class="stat-number"
-                    id="projectsCount">
-                    0
-                </div>
-
-                <div class="stat-title">
-                    إجمالي المشاريع
-                </div>
-
-            </div>
-
-
-            <div class="stat">
-
-                <div class="stat-icon">
-                    🏗️
-                </div>
-
-                <div
-                    class="stat-number"
-                    id="designsCount">
-                    0
-                </div>
-
-                <div class="stat-title">
-                    إجمالي التصاميم
-                </div>
-
-            </div>
-
-
-            <div class="stat">
-
-                <div class="stat-icon">
-                    📁
-                </div>
-
-                <div
-                    class="stat-number"
-                    id="filesCount">
-                    0
-                </div>
-
-                <div class="stat-title">
-                    إجمالي الملفات
-                </div>
-
-            </div>
-
-
-            <div class="stat">
-
-                <div class="stat-icon">
-                    📦
-                </div>
-
-                <div
-                    class="stat-number"
-                    id="totalCount">
-                    0
-                </div>
-
-                <div class="stat-title">
-                    إجمالي العناصر
-                </div>
-
-            </div>
-
-
+        <div class="card">
+            <div class="icon">🏠</div>
+            <h2>الرئيسية</h2>
+            <p>العودة إلى الصفحة الرئيسية للمنصة.</p>
+            <button onclick="alert('أنت الآن في الصفحة الرئيسية')">
+                دخول
+            </button>
         </div>
 
-    </div>
-
-
-    <!-- تفاصيل المشاريع -->
-
-    <div class="section">
-
-        <h2>
-            🏢 حالة المشاريع
-        </h2>
-
-        <div class="grid">
-
-
-            <div class="box">
-
-                <h3>
-                    📌 توزيع المشاريع
-                </h3>
-
-
-                <div class="row">
-                    <span>فكرة جديدة</span>
-                    <span
-                        class="value"
-                        id="ideaProjects">
-                        0
-                    </span>
-                </div>
-
-
-                <div class="row">
-                    <span>قيد التصميم</span>
-                    <span
-                        class="value"
-                        id="designProjects">
-                        0
-                    </span>
-                </div>
-
-
-                <div class="row">
-                    <span>قيد التطوير</span>
-                    <span
-                        class="value"
-                        id="developmentProjects">
-                        0
-                    </span>
-                </div>
-
-
-                <div class="row">
-                    <span>مكتمل</span>
-                    <span
-                        class="value"
-                        id="completedProjects">
-                        0
-                    </span>
-                </div>
-
-            </div>
-
-
-            <div class="box">
-
-                <h3>
-                    📐 حالة التصاميم
-                </h3>
-
-
-                <div class="row">
-                    <span>أفكار</span>
-                    <span
-                        class="value"
-                        id="ideaDesigns">
-                        0
-                    </span>
-                </div>
-
-
-                <div class="row">
-                    <span>قيد التطوير</span>
-                    <span
-                        class="value"
-                        id="developmentDesigns">
-                        0
-                    </span>
-                </div>
-
-
-                <div class="row">
-                    <span>قيد التصميم</span>
-                    <span
-                        class="value"
-                        id="designingDesigns">
-                        0
-                    </span>
-                </div>
-
-
-                <div class="row">
-                    <span>مكتمل</span>
-                    <span
-                        class="value"
-                        id="completedDesigns">
-                        0
-                    </span>
-                </div>
-
-            </div>
-
-
+        <div class="card">
+            <div class="icon">🏗️</div>
+            <h2>المشاريع والتصاميم</h2>
+            <p>إدارة المشاريع والتصاميم المعمارية الجديدة.</p>
+            <button onclick="alert('قسم المشاريع والتصاميم قيد التجهيز')">
+                فتح القسم
+            </button>
         </div>
 
-    </div>
-
-
-    <!-- نسبة النشاط -->
-
-    <div class="section">
-
-        <h2>
-            📈 مؤشر نشاط المنصة
-        </h2>
-
-        <p class="note">
-            المؤشر يعتمد على إجمالي المشاريع والتصاميم والملفات
-            الموجودة حاليًا في المتصفح.
-        </p>
-
-
-        <div class="progress">
-
-            <div
-                class="progress-bar"
-                id="activityBar">
-            </div>
-
+        <div class="card">
+            <div class="icon">📐</div>
+            <h2>التصميم والهندسة</h2>
+            <p>مساحة مخصصة للتصميم والهندسة والأفكار الإنشائية.</p>
+            <button onclick="alert('قسم التصميم والهندسة قيد التجهيز')">
+                فتح القسم
+            </button>
         </div>
 
+        <div class="card">
+            <div class="icon">💡</div>
+            <h2>الأفكار المعمارية</h2>
+            <p>تسجيل وتطوير الأفكار والمفاهيم المعمارية المميزة.</p>
+            <button onclick="alert('قسم الأفكار المعمارية قيد التجهيز')">
+                فتح القسم
+            </button>
+        </div>
 
-        <p id="activityText" class="note">
-            لا توجد بيانات كافية حتى الآن.
+        <div class="card">
+            <div class="icon">📁</div>
+            <h2>الملفات والمشاريع</h2>
+            <p>تنظيم ملفات المشاريع والمستندات الخاصة بالمنصة.</p>
+            <button onclick="alert('قسم الملفات قيد التجهيز')">
+                فتح القسم
+            </button>
+        </div>
+
+        <div class="card">
+            <div class="icon">👤</div>
+            <h2>صفحة المالك</h2>
+            <p>إدارة بيانات المالك وحقوق الملكية الخاصة بالمنصة.</p>
+            <button onclick="alert('صفحة المالك محفوظة وسيتم ربطها لاحقاً')">
+                دخول
+            </button>
+        </div>
+
+    </section>
+
+    <section class="owner">
+        <h2>🔐 KAPO ONE</h2>
+        <p>
+            منصة شخصية احترافية لإدارة التصاميم والمشاريع والأفكار المعمارية.
         </p>
-
-    </div>
-
-
-    <div class="section">
-
-        <h2>
-            ℹ️ معلومات النظام
-        </h2>
-
-        <p class="note">
-            KAPO ONE — لوحة المالك.
-            سيتم تطوير الإحصائيات مستقبلًا لتشمل تقارير
-            أكثر تقدمًا وربطًا بقاعدة بيانات فعلية.
-        </p>
-
-    </div>
-
+    </section>
 
 </div>
 
-
 <footer>
-
-    <button onclick="goHome()">
-        🏠 الرئيسية
-    </button>
-
-    <button
-        onclick="window.scrollTo({top:0,behavior:'smooth'})">
-        📊 الإحصائيات
-    </button>
-
-    <button
-        onclick="alert('قسم الإعدادات قيد التجهيز')">
-        ⚙️ الإعدادات
-    </button>
-
+    <span>🏠 الرئيسية</span>
+    <span>📁 المشاريع</span>
+    <span>💡 الأفكار</span>
+    <span>👤 المالك</span>
 </footer>
-
-
-<script>
-
-
-function getData(key){
-
-    try{
-
-        return JSON.parse(
-            localStorage.getItem(key)
-        ) || [];
-
-    }catch(error){
-
-        return [];
-
-    }
-
-}
-
-
-function loadStats(){
-
-
-    const projects =
-        getData("kapoProjects");
-
-
-    const designs =
-        getData("kapoDesigns");
-
-
-    const files =
-        getData("kapoFiles");
-
-
-    const projectCount =
-        projects.length;
-
-
-    const designCount =
-        designs.length;
-
-
-    const fileCount =
-        files.length;
-
-
-    const total =
-        projectCount +
-        designCount +
-        fileCount;
-
-
-    document.getElementById(
-        "projectsCount"
-    ).textContent = projectCount;
-
-
-    document.getElementById(
-        "designsCount"
-    ).textContent = designCount;
-
-
-    document.getElementById(
-        "filesCount"
-    ).textContent = fileCount;
-
-
-    document.getElementById(
-        "totalCount"
-    ).textContent = total;
-
-
-    /* المشاريع */
-
-
-    let ideaProjects = 0;
-    let designProjects = 0;
-    let developmentProjects = 0;
-    let completedProjects = 0;
-
-
-    projects.forEach(project => {
-
-        if(project.status === "فكرة جديدة"){
-            ideaProjects++;
-        }
-
-        if(project.status === "قيد التصميم"){
-            designProjects++;
-        }
-
-        if(project.status === "قيد التطوير"){
-            developmentProjects++;
-        }
-
-        if(project.status === "مكتمل"){
-            completedProjects++;
-        }
-
-    });
-
-
-    document.getElementById(
-        "ideaProjects"
-    ).textContent = ideaProjects;
-
-
-    document.getElementById(
-        "designProjects"
-    ).textContent = designProjects;
-
-
-    document.getElementById(
-        "developmentProjects"
-    ).textContent = developmentProjects;
-
-
-    document.getElementById(
-        "completedProjects"
-    ).textContent = completedProjects;
-
-
-    /* التصاميم */
-
-
-    let ideaDesigns = 0;
-    let developmentDesigns = 0;
-    let designingDesigns = 0;
-    let completedDesigns = 0;
-
-
-    designs.forEach(design => {
-
-        if(design.status === "فكرة"){
-            ideaDesigns++;
-        }
-
-        if(design.status === "قيد التطوير"){
-            developmentDesigns++;
-        }
-
-        if(design.status === "قيد التصميم"){
-            designingDesigns++;
-        }
-
-        if(design.status === "مكتمل"){
-            completedDesigns++;
-        }
-
-    });
-
-
-    document.getElementById(
-        "ideaDesigns"
-    ).textContent = ideaDesigns;
-
-
-    document.getElementById(
-        "developmentDesigns"
-    ).textContent = developmentDesigns;
-
-
-    document.getElementById(
-        "designingDesigns"
-    ).textContent = designingDesigns;
-
-
-    document.getElementById(
-        "completedDesigns"
-    ).textContent = completedDesigns;
-
-
-    /* مؤشر النشاط */
-
-
-    let activity = 0;
-
-
-    if(total > 0){
-
-        activity =
-            Math.min(
-                100,
-                total * 10
-            );
-
-    }
-
-
-    document.getElementById(
-        "activityBar"
-    ).style.width =
-        activity + "%";
-
-
-    if(total === 0){
-
-        document.getElementById(
-            "activityText"
-        ).textContent =
-        "ابدأ بإضافة مشاريع وتصاميم وملفات.";
-
-    }else{
-
-        document.getElementById(
-            "activityText"
-        ).textContent =
-        "مستوى نشاط المنصة الحالي: " +
-        activity +
-        "%";
-
-    }
-
-}
-
-
-function goHome(){
-
-    window.location.href =
-        "index.html";
-
-}
-
-
-loadStats();
-
-</script>
 
 </body>
 </html>
