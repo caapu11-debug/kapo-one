@@ -4,10 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>KAPO ONE | إدارة المشاريع</title>
+<title>KAPO ONE | التصميم والهندسة</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+    box-sizing:border-box;
+}
 
 body{
     margin:0;
@@ -30,12 +32,12 @@ header{
 }
 
 .subtitle{
-    margin-top:7px;
+    margin-top:8px;
     color:#cbd5e1;
 }
 
 .container{
-    max-width:1000px;
+    max-width:1050px;
     margin:auto;
     padding:25px 18px 100px;
 }
@@ -62,12 +64,46 @@ header{
     margin-top:0;
 }
 
+.intro{
+    color:#cbd5e1;
+    line-height:1.8;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:16px;
+    margin-top:20px;
+}
+
+.card{
+    background:#111827;
+    border:1px solid #334155;
+    padding:20px;
+    border-radius:16px;
+}
+
+.icon{
+    font-size:36px;
+    margin-bottom:10px;
+}
+
+.card h3{
+    margin:5px 0 10px;
+    color:#38bdf8;
+}
+
+.card p{
+    color:#cbd5e1;
+    line-height:1.6;
+}
+
 input,
 textarea,
 select{
     width:100%;
     padding:14px;
-    margin:8px 0 14px;
+    margin:8px 0 15px;
     border:1px solid #475569;
     border-radius:10px;
     background:#0f172a;
@@ -76,7 +112,7 @@ select{
 }
 
 textarea{
-    min-height:110px;
+    min-height:120px;
     resize:vertical;
 }
 
@@ -94,29 +130,29 @@ button:hover{
     background:#1d4ed8;
 }
 
-.project{
+.design{
     background:#111827;
-    padding:20px;
-    border-radius:15px;
     border:1px solid #334155;
+    border-radius:16px;
+    padding:20px;
     margin-top:15px;
 }
 
-.project h3{
+.design h3{
     color:#38bdf8;
     margin-top:0;
 }
 
-.project p{
+.design p{
     color:#cbd5e1;
     line-height:1.7;
 }
 
 .status{
     display:inline-block;
+    background:#334155;
     padding:7px 12px;
     border-radius:20px;
-    background:#334155;
     margin-bottom:12px;
 }
 
@@ -130,8 +166,8 @@ button:hover{
 }
 
 .empty{
-    color:#94a3b8;
     text-align:center;
+    color:#94a3b8;
     padding:20px;
 }
 
@@ -157,6 +193,16 @@ footer button:hover{
     background:transparent;
     color:#38bdf8;
 }
+
+@media(max-width:600px){
+    .logo{
+        font-size:25px;
+    }
+
+    .section{
+        padding:18px;
+    }
+}
 </style>
 </head>
 
@@ -164,7 +210,7 @@ footer button:hover{
 
 <header>
     <div class="logo">🚀 KAPO ONE</div>
-    <div class="subtitle">👑 لوحة المالك | إدارة المشاريع</div>
+    <div class="subtitle">🏗️ التصميم والهندسة</div>
 </header>
 
 <div class="container">
@@ -174,161 +220,284 @@ footer button:hover{
     </button>
 
     <div class="section">
-        <h1>🏢 إدارة المشاريع</h1>
-        <p>أضف مشاريعك المعمارية والهندسية ونظّمها من مكان واحد.</p>
+        <h1>🏗️ قسم التصميم والهندسة</h1>
+
+        <p class="intro">
+            مساحة متخصصة لتطوير الأفكار المعمارية والهندسية
+            وتصنيف التصاميم والمخططات ومتابعة مراحل التطوير.
+        </p>
+
+        <div class="grid">
+
+            <div class="card">
+                <div class="icon">🏙️</div>
+                <h3>الأفكار المعمارية</h3>
+                <p>
+                    تسجيل وتطوير الأفكار الجديدة للمباني والأبراج
+                    والمشاريع المستقبلية.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">📐</div>
+                <h3>المخططات</h3>
+                <p>
+                    تنظيم المخططات والرسومات الهندسية الخاصة
+                    بالمشاريع.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🧱</div>
+                <h3>الهندسة</h3>
+                <p>
+                    تسجيل الملاحظات والمعلومات الهندسية
+                    لكل تصميم.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🎨</div>
+                <h3>التصميم ثلاثي الأبعاد</h3>
+                <p>
+                    تجهيز مساحة مستقبلية لنماذج وتصاميم
+                    3D للمشاريع.
+                </p>
+            </div>
+
+        </div>
     </div>
 
     <div class="section">
-        <h2>➕ إضافة مشروع جديد</h2>
 
-        <label>اسم المشروع</label>
-        <input id="projectName" type="text" placeholder="مثال: برج كابو">
+        <h2>➕ إضافة تصميم جديد</h2>
 
-        <label>وصف المشروع</label>
-        <textarea id="projectDescription"
-        placeholder="اكتب وصفًا مختصرًا للمشروع"></textarea>
+        <label>اسم التصميم</label>
+        <input id="designName"
+        type="text"
+        placeholder="مثال: برج كابو">
 
-        <label>حالة المشروع</label>
-        <select id="projectStatus">
-            <option>فكرة جديدة</option>
-            <option>قيد التصميم</option>
+        <label>نوع التصميم</label>
+        <select id="designType">
+            <option>برج</option>
+            <option>مبنى</option>
+            <option>مشروع حضري</option>
+            <option>فكرة معمارية</option>
+            <option>تصميم هندسي</option>
+        </select>
+
+        <label>وصف التصميم</label>
+        <textarea id="designDescription"
+        placeholder="اكتب تفاصيل وفكرة التصميم"></textarea>
+
+        <label>حالة التصميم</label>
+        <select id="designStatus">
+            <option>فكرة</option>
             <option>قيد التطوير</option>
+            <option>قيد التصميم</option>
+            <option>جاهز للمراجعة</option>
             <option>مكتمل</option>
         </select>
 
-        <label>تاريخ المشروع</label>
-        <input id="projectDate" type="date">
-
-        <button onclick="addProject()">
-            💾 حفظ المشروع
+        <button onclick="addDesign()">
+            💾 حفظ التصميم
         </button>
+
     </div>
 
     <div class="section">
-        <h2>📁 المشاريع المسجلة</h2>
 
-        <div id="projectsList">
+        <h2>📐 التصاميم المسجلة</h2>
+
+        <div id="designsList">
             <div class="empty">
-                لا توجد مشاريع حتى الآن.
+                لا توجد تصاميم مسجلة حتى الآن.
             </div>
         </div>
+
     </div>
 
 </div>
 
 <footer>
-    <button onclick="goHome()">🏠 الرئيسية</button>
-    <button onclick="window.scrollTo({top:0,behavior:'smooth'})">
-        👑 المالك
+
+    <button onclick="goHome()">
+        🏠 الرئيسية
     </button>
-    <button onclick="alert('الإعدادات قيد التجهيز')">
+
+    <button onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        🏗️ التصميم
+    </button>
+
+    <button onclick="alert('قسم الإعدادات قيد التجهيز')">
         ⚙️ الإعدادات
     </button>
+
 </footer>
 
 <script>
 
-let projects = JSON.parse(localStorage.getItem("kapoProjects")) || [];
+let designs =
+JSON.parse(localStorage.getItem("kapoDesigns")) || [];
 
-function saveProjects(){
-    localStorage.setItem("kapoProjects", JSON.stringify(projects));
+
+function saveDesigns(){
+
+    localStorage.setItem(
+        "kapoDesigns",
+        JSON.stringify(designs)
+    );
+
 }
 
-function addProject(){
 
-    const name = document.getElementById("projectName").value.trim();
-    const description = document.getElementById("projectDescription").value.trim();
-    const status = document.getElementById("projectStatus").value;
-    const date = document.getElementById("projectDate").value;
+function addDesign(){
+
+    const name =
+    document.getElementById("designName").value.trim();
+
+    const type =
+    document.getElementById("designType").value;
+
+    const description =
+    document.getElementById("designDescription").value.trim();
+
+    const status =
+    document.getElementById("designStatus").value;
+
 
     if(!name){
-        alert("فضلاً اكتب اسم المشروع");
+
+        alert("فضلاً اكتب اسم التصميم");
+
         return;
+
     }
 
-    const project = {
-        id: Date.now(),
+
+    const design = {
+
+        id:Date.now(),
+
         name:name,
-        description:description || "لا يوجد وصف للمشروع.",
-        status:status,
-        date:date || "غير محدد"
+
+        type:type,
+
+        description:
+        description || "لا يوجد وصف للتصميم.",
+
+        status:status
+
     };
 
-    projects.push(project);
 
-    saveProjects();
+    designs.push(design);
 
-    document.getElementById("projectName").value="";
-    document.getElementById("projectDescription").value="";
-    document.getElementById("projectStatus").value="فكرة جديدة";
-    document.getElementById("projectDate").value="";
+    saveDesigns();
 
-    displayProjects();
+    document.getElementById("designName").value="";
 
-    alert("تم حفظ المشروع بنجاح ✅");
+    document.getElementById("designDescription").value="";
+
+    document.getElementById("designType").value="برج";
+
+    document.getElementById("designStatus").value="فكرة";
+
+
+    displayDesigns();
+
+    alert("تم حفظ التصميم بنجاح ✅");
+
 }
 
-function deleteProject(id){
 
-    if(confirm("هل تريد حذف هذا المشروع؟")){
+function deleteDesign(id){
 
-        projects = projects.filter(project => project.id !== id);
+    if(confirm("هل تريد حذف هذا التصميم؟")){
 
-        saveProjects();
+        designs =
+        designs.filter(
+            design => design.id !== id
+        );
 
-        displayProjects();
+        saveDesigns();
+
+        displayDesigns();
+
     }
+
 }
 
-function displayProjects(){
 
-    const list = document.getElementById("projectsList");
+function displayDesigns(){
 
-    if(projects.length === 0){
+    const list =
+    document.getElementById("designsList");
+
+
+    if(designs.length === 0){
+
         list.innerHTML = `
         <div class="empty">
-            لا توجد مشاريع حتى الآن.
+            لا توجد تصاميم مسجلة حتى الآن.
         </div>`;
+
         return;
+
     }
+
 
     list.innerHTML = "";
 
-    projects.forEach(project => {
+
+    designs.forEach(design => {
 
         list.innerHTML += `
-        <div class="project">
+
+        <div class="design">
 
             <div class="status">
-                ${project.status}
+                ${design.status}
             </div>
 
-            <h3>🏢 ${project.name}</h3>
+            <h3>
+                🏗️ ${design.name}
+            </h3>
 
             <p>
-                ${project.description}
+                <strong>نوع التصميم:</strong>
+                ${design.type}
             </p>
 
             <p>
-                📅 تاريخ المشروع: ${project.date}
+                ${design.description}
             </p>
 
-            <button class="delete"
-            onclick="deleteProject(${project.id})">
-                🗑️ حذف المشروع
+            <button
+            class="delete"
+            onclick="deleteDesign(${design.id})">
+
+                🗑️ حذف التصميم
+
             </button>
 
         </div>
+
         `;
+
     });
+
 }
+
 
 function goHome(){
 
-    window.location.href = "index.html";
+    window.location.href="index.html";
+
 }
 
-displayProjects();
+
+displayDesigns();
 
 </script>
 
