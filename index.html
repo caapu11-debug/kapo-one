@@ -22,7 +22,7 @@ body{
     margin:0;
     font-family:Arial,sans-serif;
     background:#0b1120;
-    color:#fff;
+    color:white;
     line-height:1.7;
 }
 
@@ -49,7 +49,6 @@ header{
 .logo{
     font-size:28px;
     font-weight:bold;
-    white-space:nowrap;
 }
 
 .logo span{
@@ -101,12 +100,11 @@ nav a:hover{
     padding:7px 15px;
     border-radius:30px;
     font-size:14px;
-    margin-bottom:18px;
 }
 
 .hero h1{
     font-size:48px;
-    margin:10px 0;
+    margin:15px 0;
 }
 
 .hero h1 span{
@@ -117,15 +115,11 @@ nav a:hover{
     color:#cbd5e1;
     font-size:19px;
     max-width:700px;
-    margin:15px auto;
+    margin:auto;
 }
 
 .buttons{
     margin-top:28px;
-    display:flex;
-    justify-content:center;
-    gap:12px;
-    flex-wrap:wrap;
 }
 
 .btn{
@@ -134,6 +128,7 @@ nav a:hover{
     border-radius:10px;
     text-decoration:none;
     font-weight:bold;
+    margin:5px;
 }
 
 .btn-primary{
@@ -152,7 +147,7 @@ nav a:hover{
 .container{
     max-width:1200px;
     margin:auto;
-    padding:65px 20px;
+    padding:60px 20px;
 }
 
 .section-title{
@@ -183,12 +178,6 @@ nav a:hover{
     border-radius:18px;
     padding:28px 22px;
     text-align:center;
-    transition:.25s;
-}
-
-.card:hover{
-    transform:translateY(-5px);
-    border-color:#38bdf8;
 }
 
 .card-icon{
@@ -197,7 +186,6 @@ nav a:hover{
 
 .card h3{
     font-size:21px;
-    margin:15px 0 8px;
 }
 
 .card p{
@@ -205,14 +193,8 @@ nav a:hover{
     font-size:15px;
 }
 
-/* PROJECTS */
-
-.project{
-    text-align:right;
-}
-
-.project .card-icon{
-    font-size:40px;
+.card .btn{
+    margin-top:10px;
 }
 
 /* ABOUT */
@@ -265,7 +247,6 @@ footer{
 }
 
 footer p{
-    margin:8px 0;
     font-size:14px;
 }
 
@@ -277,20 +258,8 @@ footer p{
         flex-direction:column;
     }
 
-    nav a{
-        font-size:13px;
-    }
-
     .hero h1{
         font-size:36px;
-    }
-
-    .hero p{
-        font-size:17px;
-    }
-
-    .container{
-        padding:45px 16px;
     }
 
 }
@@ -315,13 +284,15 @@ footer p{
 
 <nav>
 
-<a href="#home">الرئيسية</a>
+<a href="index.html">
+الرئيسية
+</a>
 
 <a href="design.html">
 التصميم والهندسة
 </a>
 
-<a href="#projects">
+<a href="projects.html">
 المشاريع
 </a>
 
@@ -346,7 +317,7 @@ footer p{
 
 <!-- HERO -->
 
-<section class="hero" id="home">
+<section class="hero">
 
 <div class="hero-content">
 
@@ -369,8 +340,8 @@ footer p{
 ابدأ الاستكشاف
 </a>
 
-<a href="#about" class="btn btn-secondary">
-تعرف على KAPO ONE
+<a href="projects.html" class="btn btn-secondary">
+المشاريع
 </a>
 
 </div>
@@ -391,7 +362,7 @@ footer p{
 </h2>
 
 <p>
-نحوّل الأفكار إلى تصورات ومشاريع منظمة.
+منصة منظمة للأفكار والتصميم والمشاريع.
 </p>
 
 </div>
@@ -435,7 +406,28 @@ footer p{
 تنظيم الأفكار وتحويلها إلى مشاريع قابلة للتطوير.
 </p>
 
-<a href="#projects" class="btn btn-secondary">
+<a href="projects.html" class="btn btn-primary">
+دخول القسم
+</a>
+
+</div>
+
+
+<div class="card" id="gallery">
+
+<div class="card-icon">
+🖼️
+</div>
+
+<h3>
+معرض الأعمال
+</h3>
+
+<p>
+مساحة مستقبلية لعرض الصور والتصاميم والمخططات.
+</p>
+
+<a href="#gallery-info" class="btn btn-secondary">
 قريبًا
 </a>
 
@@ -453,32 +445,11 @@ footer p{
 </h3>
 
 <p>
-عرض التصورات والمخططات الخاصة بالمشاريع.
+تنظيم وعرض المخططات والتصورات الخاصة بالمشاريع.
 </p>
 
-<a href="#gallery" class="btn btn-secondary">
-قريبًا
-</a>
-
-</div>
-
-
-<div class="card">
-
-<div class="card-icon">
-🖼️
-</div>
-
-<h3>
-معرض الأعمال
-</h3>
-
-<p>
-مساحة مستقبلية لعرض صور وتصاميم ومراحل المشاريع.
-</p>
-
-<a href="#gallery" class="btn btn-secondary">
-قريبًا
+<a href="design.html" class="btn btn-secondary">
+التصميم والهندسة
 </a>
 
 </div>
@@ -491,7 +462,7 @@ footer p{
 
 <!-- PROJECTS -->
 
-<section class="container" id="projects">
+<section class="container">
 
 <div class="section-title">
 
@@ -500,93 +471,21 @@ footer p{
 </h2>
 
 <p>
-سيتم إضافة المشاريع وتفاصيلها هنا.
+استكشف قسم المشاريع في KAPO ONE.
 </p>
 
 </div>
-
-
-<div class="grid">
-
-<div class="card project">
-
-<div class="card-icon">
-🚀
-</div>
-
-<h3>
-مشاريع KAPO ONE
-</h3>
-
-<p>
-سيتم تطوير قاعدة خاصة للمشاريع والأفكار
-مع إمكانية إضافة التفاصيل والصور والمخططات.
-</p>
-
-</div>
-
-
-<div class="card project">
-
-<div class="card-icon">
-🏛️
-</div>
-
-<h3>
-مشاريع معمارية
-</h3>
-
-<p>
-قسم مخصص للمشاريع المعمارية والتصورات المستقبلية.
-</p>
-
-</div>
-
-
-<div class="card project">
-
-<div class="card-icon">
-⚙️
-</div>
-
-<h3>
-مشاريع هندسية
-</h3>
-
-<p>
-قسم مخصص للمشاريع والحلول الهندسية.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- GALLERY -->
-
-<section class="container" id="gallery">
-
-<div class="section-title">
-
-<h2>
-معرض الأعمال
-</h2>
-
-<p>
-سيتم إضافة الصور والتصاميم والمخططات هنا مستقبلًا.
-</p>
-
-</div>
-
 
 <div class="about">
 
 <p>
-معرض KAPO ONE سيكون مساحة منظمة لعرض
-التصاميم والصور والمخططات والنماذج ثلاثية الأبعاد.
+يتم تطوير قسم المشاريع ليكون مركزًا لعرض
+الأفكار والمشاريع المعمارية والهندسية وتفاصيلها.
 </p>
+
+<a href="projects.html" class="btn btn-primary">
+عرض المشاريع
+</a>
 
 </div>
 
@@ -605,7 +504,6 @@ footer p{
 
 </div>
 
-
 <div class="about">
 
 <p>
@@ -613,6 +511,34 @@ KAPO ONE منصة تهتم بالأفكار المعمارية والهندسي�
 والتصميم والمشاريع المستقبلية، وتهدف إلى بناء
 بيئة رقمية منظمة لعرض الأفكار وتطويرها وتحويلها
 إلى مشاريع قابلة للدراسة والتطوير.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- GALLERY -->
+
+<section class="container" id="gallery-info">
+
+<div class="section-title">
+
+<h2>
+معرض الأعمال
+</h2>
+
+<p>
+سيتم تطوير المعرض في المرحلة القادمة.
+</p>
+
+</div>
+
+<div class="about">
+
+<p>
+سيكون معرض KAPO ONE مساحة لعرض الصور
+والتصاميم والمخططات والنماذج ثلاثية الأبعاد.
 </p>
 
 </div>
@@ -631,13 +557,9 @@ KAPO ONE منصة تهتم بالأفكار المعمارية والهندسي�
 </h2>
 
 <p>
-سيتم إضافة وسائل التواصل ونموذج التواصل
+سيتم إضافة نموذج التواصل ووسائل الاتصال
 في المرحلة القادمة.
 </p>
-
-<a href="mailto:" class="btn btn-primary">
-تواصل قريبًا
-</a>
 
 </div>
 
