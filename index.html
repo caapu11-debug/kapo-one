@@ -1,106 +1,189 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>KAPO ONE | كابو ون</title>
+<title>KAPO ONE | منصة التصميم والهندسة</title>
 
 <style>
+
 *{
     box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
     margin:0;
     font-family:Arial,sans-serif;
-    background:#0f172a;
-    color:white;
-    padding-bottom:80px;
+    background:#0b1120;
+    color:#fff;
+    line-height:1.7;
 }
 
+/* HEADER */
+
 header{
-    background:#1e293b;
-    padding:22px 15px;
-    text-align:center;
-    border-bottom:1px solid #334155;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#111827;
+    border-bottom:1px solid #263449;
+}
+
+.nav{
+    max-width:1200px;
+    margin:auto;
+    padding:16px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
 }
 
 .logo{
-    font-size:32px;
+    font-size:28px;
     font-weight:bold;
+    white-space:nowrap;
 }
 
 .logo span{
     color:#38bdf8;
 }
 
-.subtitle{
-    margin-top:8px;
-    color:#cbd5e1;
-    font-size:15px;
+nav{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    justify-content:center;
 }
 
+nav a{
+    color:#cbd5e1;
+    text-decoration:none;
+    padding:8px 12px;
+    border-radius:8px;
+    font-size:14px;
+}
+
+nav a:hover{
+    background:#1e293b;
+    color:#38bdf8;
+}
+
+/* HERO */
+
 .hero{
+    min-height:500px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     text-align:center;
-    padding:50px 20px 35px;
-    background:linear-gradient(180deg,#172554,#0f172a);
+    padding:70px 20px;
+    background:
+    radial-gradient(circle at top,#1e3a8a 0,#0b1120 55%);
+}
+
+.hero-content{
+    max-width:850px;
+}
+
+.badge{
+    display:inline-block;
+    background:#172554;
+    border:1px solid #2563eb;
+    color:#93c5fd;
+    padding:7px 15px;
+    border-radius:30px;
+    font-size:14px;
+    margin-bottom:18px;
 }
 
 .hero h1{
-    font-size:34px;
+    font-size:48px;
     margin:10px 0;
+}
+
+.hero h1 span{
+    color:#38bdf8;
 }
 
 .hero p{
     color:#cbd5e1;
-    font-size:18px;
-    line-height:1.8;
+    font-size:19px;
+    max-width:700px;
+    margin:15px auto;
 }
 
-.start-btn{
+.buttons{
+    margin-top:28px;
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.btn{
     display:inline-block;
-    margin-top:20px;
-    background:#2563eb;
-    color:white;
-    padding:14px 32px;
-    border-radius:12px;
+    padding:13px 25px;
+    border-radius:10px;
     text-decoration:none;
-    font-size:18px;
     font-weight:bold;
 }
 
+.btn-primary{
+    background:#2563eb;
+    color:white;
+}
+
+.btn-secondary{
+    background:#1e293b;
+    color:#cbd5e1;
+    border:1px solid #334155;
+}
+
+/* GENERAL */
+
 .container{
-    max-width:1000px;
+    max-width:1200px;
     margin:auto;
-    padding:25px 18px;
+    padding:65px 20px;
 }
 
 .section-title{
     text-align:center;
-    font-size:27px;
-    margin:20px 0 25px;
+    margin-bottom:40px;
 }
+
+.section-title h2{
+    font-size:32px;
+    margin:0 0 8px;
+}
+
+.section-title p{
+    color:#94a3b8;
+}
+
+/* CARDS */
 
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:18px;
-}
-
-.card-link{
-    text-decoration:none;
-    color:white;
-    display:block;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:20px;
 }
 
 .card{
-    background:#1e293b;
-    padding:25px 20px;
+    background:#111827;
+    border:1px solid #263449;
     border-radius:18px;
-    border:1px solid #334155;
+    padding:28px 22px;
     text-align:center;
-    transition:0.3s;
+    transition:.25s;
 }
 
 .card:hover{
@@ -108,247 +191,478 @@ header{
     border-color:#38bdf8;
 }
 
-.icon{
-    font-size:42px;
-    margin-bottom:12px;
+.card-icon{
+    font-size:48px;
 }
 
 .card h3{
-    margin:10px 0;
     font-size:21px;
+    margin:15px 0 8px;
 }
 
 .card p{
-    color:#cbd5e1;
-    line-height:1.7;
+    color:#94a3b8;
     font-size:15px;
 }
 
-.about{
-    background:#1e293b;
-    border-radius:18px;
-    padding:25px;
-    margin-top:30px;
-    text-align:center;
-    border:1px solid #334155;
+/* PROJECTS */
+
+.project{
+    text-align:right;
 }
 
-.about h2{
-    font-size:25px;
+.project .card-icon{
+    font-size:40px;
+}
+
+/* ABOUT */
+
+.about{
+    background:#111827;
+    border:1px solid #263449;
+    border-radius:20px;
+    padding:35px 25px;
+    text-align:center;
 }
 
 .about p{
+    max-width:800px;
+    margin:auto;
     color:#cbd5e1;
-    line-height:2;
 }
+
+/* CONTACT */
+
+.contact{
+    text-align:center;
+    background:#172554;
+    border-radius:20px;
+    padding:40px 20px;
+}
+
+.contact p{
+    color:#cbd5e1;
+}
+
+/* FOOTER */
 
 footer{
-    position:fixed;
-    bottom:0;
-    left:0;
-    right:0;
-    background:#111827;
-    border-top:1px solid #334155;
-    display:flex;
-    justify-content:space-around;
-    padding:13px 5px;
-    z-index:100;
-}
-
-footer a{
-    color:#cbd5e1;
-    text-decoration:none;
-    font-size:14px;
+    background:#080d18;
+    border-top:1px solid #263449;
+    padding:30px 20px;
     text-align:center;
+    color:#94a3b8;
 }
 
-footer a:hover{
+.footer-logo{
+    font-size:24px;
+    font-weight:bold;
+    color:white;
+}
+
+.footer-logo span{
     color:#38bdf8;
 }
+
+footer p{
+    margin:8px 0;
+    font-size:14px;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    .nav{
+        flex-direction:column;
+    }
+
+    nav a{
+        font-size:13px;
+    }
+
+    .hero h1{
+        font-size:36px;
+    }
+
+    .hero p{
+        font-size:17px;
+    }
+
+    .container{
+        padding:45px 16px;
+    }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- HEADER -->
+
 <header>
-    <div class="logo">🚀 KAPO <span>ONE</span></div>
-    <div class="subtitle">
-        منصة كابو للأفكار والتصميم والهندسة
-    </div>
+
+<div class="nav">
+
+<div class="logo">
+🚀 KAPO <span>ONE</span>
+</div>
+
+<nav>
+
+<a href="#home">الرئيسية</a>
+
+<a href="design.html">
+التصميم والهندسة
+</a>
+
+<a href="#projects">
+المشاريع
+</a>
+
+<a href="#gallery">
+المعرض
+</a>
+
+<a href="#about">
+من نحن
+</a>
+
+<a href="#contact">
+تواصل معنا
+</a>
+
+</nav>
+
+</div>
+
 </header>
 
-<section class="hero">
 
-    <h1>مرحبًا بك في KAPO ONE</h1>
+<!-- HERO -->
 
-    <p>
-        منصة احترافية لعرض الأفكار المعمارية،
-        التصميمات الهندسية والمشاريع المستقبلية.
-    </p>
+<section class="hero" id="home">
 
-    <a href="#projects" class="start-btn">
-        فلنبدأ 🚀
-    </a>
+<div class="hero-content">
+
+<div class="badge">
+منصة التصميم والهندسة والأفكار
+</div>
+
+<h1>
+مرحبًا بك في <span>KAPO ONE</span>
+</h1>
+
+<p>
+منصة رقمية لعرض وتطوير الأفكار المعمارية
+والهندسية والمشاريع المستقبلية في مكان واحد.
+</p>
+
+<div class="buttons">
+
+<a href="design.html" class="btn btn-primary">
+ابدأ الاستكشاف
+</a>
+
+<a href="#about" class="btn btn-secondary">
+تعرف على KAPO ONE
+</a>
+
+</div>
+
+</div>
 
 </section>
 
-<div class="container">
 
-    <h2 class="section-title">
-        أقسام المنصة
-    </h2>
+<!-- SERVICES -->
 
-    <div class="grid">
+<section class="container">
 
-        <a href="index.html" class="card-link">
-            <div class="card">
+<div class="section-title">
 
-                <div class="icon">🏠</div>
+<h2>
+مجالات KAPO ONE
+</h2>
 
-                <h3>الرئيسية</h3>
-
-                <p>
-                    الصفحة الرئيسية لمنصة KAPO ONE
-                    ومتابعة أحدث المشاريع والأفكار.
-                </p>
-
-            </div>
-        </a>
-
-
-        <!-- التصميم والهندسة -->
-
-        <a href="design.html" class="card-link">
-
-            <div class="card">
-
-                <div class="icon">🏗️</div>
-
-                <h3>التصميم والهندسة</h3>
-
-                <p>
-                    تصميم الأبراج والمباني والأفكار
-                    الهندسية والمعمارية الحديثة.
-                </p>
-
-            </div>
-
-        </a>
-
-
-        <a href="#projects" class="card-link">
-
-            <div class="card">
-
-                <div class="icon">💡</div>
-
-                <h3>الأفكار والمشاريع</h3>
-
-                <p>
-                    مساحة لعرض المشاريع والأفكار
-                    الجديدة والمستقبلية.
-                </p>
-
-            </div>
-
-        </a>
-
-
-        <a href="#designs" class="card-link">
-
-            <div class="card">
-
-                <div class="icon">📐</div>
-
-                <h3>المخططات والتصاميم</h3>
-
-                <p>
-                    عرض المخططات والتصورات الخاصة
-                    بالمشاريع الهندسية.
-                </p>
-
-            </div>
-
-        </a>
-
-
-        <a href="#owner" class="card-link">
-
-            <div class="card">
-
-                <div class="icon">👤</div>
-
-                <h3>حساب المالك</h3>
-
-                <p>
-                    قسم خاص بإدارة المنصة
-                    والمشاريع.
-                </p>
-
-            </div>
-
-        </a>
-
-
-        <a href="#contact" class="card-link">
-
-            <div class="card">
-
-                <div class="icon">📞</div>
-
-                <h3>تواصل معنا</h3>
-
-                <p>
-                    قسم مخصص للتواصل والاستفسارات
-                    حول المشاريع والمنصة.
-                </p>
-
-            </div>
-
-        </a>
-
-    </div>
-
-
-    <div class="about">
-
-        <h2>عن KAPO ONE</h2>
-
-        <p>
-            KAPO ONE هي منصة تهدف إلى جمع الأفكار
-            والتصاميم والمشاريع المعمارية والهندسية
-            في مكان واحد، مع تطويرها مستقبلًا
-            إلى منصة احترافية متكاملة.
-        </p>
-
-    </div>
+<p>
+نحوّل الأفكار إلى تصورات ومشاريع منظمة.
+</p>
 
 </div>
 
 
+<div class="grid">
+
+
+<div class="card">
+
+<div class="card-icon">
+🏗️
+</div>
+
+<h3>
+التصميم والهندسة
+</h3>
+
+<p>
+التصميم المعماري والهندسي وتطوير التصورات والمخططات.
+</p>
+
+<a href="design.html" class="btn btn-primary">
+دخول القسم
+</a>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+💡
+</div>
+
+<h3>
+الأفكار والمشاريع
+</h3>
+
+<p>
+تنظيم الأفكار وتحويلها إلى مشاريع قابلة للتطوير.
+</p>
+
+<a href="#projects" class="btn btn-secondary">
+قريبًا
+</a>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+📐
+</div>
+
+<h3>
+المخططات والتصاميم
+</h3>
+
+<p>
+عرض التصورات والمخططات الخاصة بالمشاريع.
+</p>
+
+<a href="#gallery" class="btn btn-secondary">
+قريبًا
+</a>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+🖼️
+</div>
+
+<h3>
+معرض الأعمال
+</h3>
+
+<p>
+مساحة مستقبلية لعرض صور وتصاميم ومراحل المشاريع.
+</p>
+
+<a href="#gallery" class="btn btn-secondary">
+قريبًا
+</a>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section class="container" id="projects">
+
+<div class="section-title">
+
+<h2>
+المشاريع
+</h2>
+
+<p>
+سيتم إضافة المشاريع وتفاصيلها هنا.
+</p>
+
+</div>
+
+
+<div class="grid">
+
+<div class="card project">
+
+<div class="card-icon">
+🚀
+</div>
+
+<h3>
+مشاريع KAPO ONE
+</h3>
+
+<p>
+سيتم تطوير قاعدة خاصة للمشاريع والأفكار
+مع إمكانية إضافة التفاصيل والصور والمخططات.
+</p>
+
+</div>
+
+
+<div class="card project">
+
+<div class="card-icon">
+🏛️
+</div>
+
+<h3>
+مشاريع معمارية
+</h3>
+
+<p>
+قسم مخصص للمشاريع المعمارية والتصورات المستقبلية.
+</p>
+
+</div>
+
+
+<div class="card project">
+
+<div class="card-icon">
+⚙️
+</div>
+
+<h3>
+مشاريع هندسية
+</h3>
+
+<p>
+قسم مخصص للمشاريع والحلول الهندسية.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- GALLERY -->
+
+<section class="container" id="gallery">
+
+<div class="section-title">
+
+<h2>
+معرض الأعمال
+</h2>
+
+<p>
+سيتم إضافة الصور والتصاميم والمخططات هنا مستقبلًا.
+</p>
+
+</div>
+
+
+<div class="about">
+
+<p>
+معرض KAPO ONE سيكون مساحة منظمة لعرض
+التصاميم والصور والمخططات والنماذج ثلاثية الأبعاد.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="container" id="about">
+
+<div class="section-title">
+
+<h2>
+من نحن
+</h2>
+
+</div>
+
+
+<div class="about">
+
+<p>
+KAPO ONE منصة تهتم بالأفكار المعمارية والهندسية
+والتصميم والمشاريع المستقبلية، وتهدف إلى بناء
+بيئة رقمية منظمة لعرض الأفكار وتطويرها وتحويلها
+إلى مشاريع قابلة للدراسة والتطوير.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="container" id="contact">
+
+<div class="contact">
+
+<h2>
+تواصل معنا
+</h2>
+
+<p>
+سيتم إضافة وسائل التواصل ونموذج التواصل
+في المرحلة القادمة.
+</p>
+
+<a href="mailto:" class="btn btn-primary">
+تواصل قريبًا
+</a>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
 <footer>
 
-    <a href="index.html">
-        🏠<br>
-        الرئيسية
-    </a>
+<div class="footer-logo">
+KAPO <span>ONE</span>
+</div>
 
-    <a href="#projects">
-        💡<br>
-        المشاريع
-    </a>
+<p>
+منصة التصميم والهندسة والأفكار المعمارية
+</p>
 
-    <a href="design.html">
-        📐<br>
-        التصميم
-    </a>
-
-    <a href="#owner">
-        👤<br>
-        المالك
-    </a>
+<p>
+© 2026 KAPO ONE — جميع الحقوق محفوظة
+</p>
 
 </footer>
 
+
 </body>
+
 </html>
