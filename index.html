@@ -1,4 +1,7 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>KAPO ONE | كابو ون: 🚀</title><style>
+<!DOCTYPE html><html lang="ar" dir="rtl"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KAPO ONE | كابو ون 🚀</title><style>
 
 *{
 box-sizing:border-box;
@@ -12,7 +15,7 @@ font-family:Arial,sans-serif;
 }
 
 .container{
-max-width:850px;
+max-width:900px;
 margin:auto;
 padding:20px;
 }
@@ -31,6 +34,10 @@ margin-top:20px;
 background:#1e293b;
 padding:25px;
 border-radius:18px;
+border:1px solid #334155;
+}
+
+.generator{
 border:2px solid #7c3aed;
 }
 
@@ -45,36 +52,96 @@ color:#cbd5e1;
 line-height:1.8;
 }
 
-textarea{
+textarea,
+input,
+select{
 width:100%;
-height:130px;
 padding:15px;
-margin-top:15px;
+margin-top:12px;
 border:0;
 border-radius:12px;
-font-size:18px;
+font-size:17px;
 font-family:Arial,sans-serif;
+}
+
+textarea{
+height:120px;
+resize:vertical;
 }
 
 button{
 display:block;
 width:100%;
-padding:18px;
+padding:16px;
 margin-top:15px;
 border:0;
 border-radius:12px;
-background:#7c3aed;
 color:white;
-font-size:20px;
+font-size:18px;
 font-weight:bold;
 cursor:pointer;
 }
 
-button:hover{
-opacity:.9;
+.purple{
+background:#7c3aed;
 }
 
-#result{
+.blue{
+background:#2563eb;
+}
+
+.green{
+background:#16a34a;
+}
+
+.orange{
+background:#ea580c;
+}
+
+.gray{
+background:#475569;
+}
+
+.options{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+gap:15px;
+margin-top:20px;
+}
+
+.option{
+background:#0f172a;
+border:1px solid #475569;
+padding:20px 12px;
+border-radius:16px;
+text-align:center;
+cursor:pointer;
+}
+
+.option:hover{
+border-color:#7c3aed;
+transform:translateY(-2px);
+}
+
+.option-icon{
+font-size:40px;
+}
+
+.option h3{
+margin:10px 0;
+}
+
+.option p{
+color:#cbd5e1;
+font-size:14px;
+line-height:1.6;
+}
+
+.tool{
+display:none;
+}
+
+.result{
 display:none;
 margin-top:20px;
 padding:20px;
@@ -93,27 +160,34 @@ border-radius:10px;
 .visual{
 display:none;
 margin-top:20px;
-padding:25px;
+padding:20px;
 background:#020617;
 border-radius:18px;
-text-align:center;
 border:2px solid #475569;
+}
+
+.visual-box{
+background:#1e293b;
+padding:18px;
+margin-top:12px;
+border-radius:12px;
+line-height:1.8;
 }
 
 .tower{
 position:relative;
 width:220px;
-height:400px;
-margin:30px auto;
+height:380px;
+margin:25px auto;
 }
 
 .towerBody{
 position:absolute;
 left:50%;
-top:40px;
+top:35px;
 transform:translateX(-50%);
-width:80px;
-height:310px;
+width:75px;
+height:300px;
 border-radius:45px;
 background:linear-gradient(
 to right,
@@ -128,80 +202,73 @@ box-shadow:0 0 35px #7c3aed;
 position:absolute;
 left:50%;
 transform:translateX(-50%);
-width:135px;
-height:7px;
+width:130px;
+height:6px;
 background:#c4b5fd;
 border-radius:10px;
 }
 
-.f1{top:80px}
-.f2{top:120px}
-.f3{top:160px}
-.f4{top:200px}
-.f5{top:240px}
-.f6{top:280px}
-.f7{top:320px}
+.f1{top:75px}
+.f2{top:115px}
+.f3{top:155px}
+.f4{top:195px}
+.f5{top:235px}
+.f6{top:275px}
 
-.orbit1{
+.orbit{
 position:absolute;
 left:50%;
-top:125px;
+top:105px;
 transform:translateX(-50%) rotate(20deg);
-width:215px;
-height:100px;
-border:3px solid #a78bfa;
+width:210px;
+height:105px;
+border:3px solid #7c3aed;
 border-radius:50%;
 }
 
 .orbit2{
 position:absolute;
 left:50%;
-top:125px;
+top:105px;
 transform:translateX(-50%) rotate(-20deg);
-width:215px;
-height:100px;
-border:3px solid #7c3aed;
+width:210px;
+height:105px;
+border:3px solid #a78bfa;
 border-radius:50%;
 }
 
-.atom{
+.dot{
 position:absolute;
-width:24px;
-height:24px;
-background:#c4b5fd;
+width:22px;
+height:22px;
 border-radius:50%;
-box-shadow:0 0 20px #7c3aed;
+background:#c4b5fd;
+box-shadow:0 0 18px #7c3aed;
 }
 
-.atom1{
-top:90px;
+.dot1{
+top:80px;
 left:5px;
 }
 
-.atom2{
-top:185px;
+.dot2{
+top:180px;
 right:0;
 }
 
-.atom3{
-top:285px;
-left:15px;
+.dot3{
+top:275px;
+left:10px;
 }
 
 .base{
 position:absolute;
 bottom:15px;
-left:35px;
-width:150px;
-height:22px;
+left:30px;
+width:160px;
+height:20px;
 background:#475569;
 border-radius:50%;
-}
-
-.note{
-color:#94a3b8;
-font-size:14px;
-margin-top:20px;
 }
 
 footer{
@@ -212,59 +279,244 @@ color:#94a3b8;
 }
 
 </style></head><body><div class="container"><header>
-🚀 KAPO ONE | كابو ون 🚀
-</header><div class="card"><h2>
-💡 مولّد فكرة المشروع
-</h2><p class="description">
+🚀 KAPO ONE | كابو ون
+</header><!-- مولد الأفكار --><div class="card generator"><h2>💡 مولّد فكرة المشروع</h2><p class="description">
 اكتب فكرتك هنا ليقوم كابو بتحليلها وتحويلها إلى تصور مشروع.
 </p><textarea
 id="idea"
-placeholder="مثال: برج على شكل ذرة"
-></textarea><button
+placeholder="مثال: برج على شكل ذرة">
+</textarea><button
 id="analyzeButton"
+class="purple"
 type="button">
 🚀 حلّل الفكرة
 </button>
 
-<div id="result"></div><div
-id="visual"
-class="visual"><h2>
-🖼️ التصور البصري للمشروع
-</h2><p>
-KAPO ATOM | برج كابو الذري
-</p><div class="tower"><div class="orbit1"></div><div class="orbit2"></div><div class="towerBody"></div><div class="floor f1"></div>
+<div id="result" class="result"></div></div><!-- الخيارات --><div class="card"><h2>🏗️ قسم الهندسة والتصميم</h2><p class="description">
+اختر الأداة التي تريد استخدامها في مشروعك.
+</p><div class="options"><div class="option" onclick="openTool('towerTool')">
+<div class="option-icon">🏙️</div>
+<h3>تصميم الأبراج</h3>
+<p>إنشاء وتطوير فكرة برج.</p>
+</div><div class="option" onclick="openTool('architectureTool')">
+<div class="option-icon">🏛️</div>
+<h3>الأفكار المعمارية</h3>
+<p>تطوير الأفكار المعمارية.</p>
+</div><div class="option" onclick="openTool('plansTool')">
+<div class="option-icon">📐</div>
+<h3>المخططات الهندسية</h3>
+<p>تنظيم متطلبات المخططات.</p>
+</div><div class="option" onclick="openTool('tableTool')">
+<div class="option-icon">🧮</div>
+<h3>الجداول والحسابات</h3>
+<p>حساب المساحات والبيانات.</p>
+</div><div class="option" onclick="openTool('visualTool')">
+<div class="option-icon">🖼️</div>
+<h3>التصوير البصري</h3>
+<p>إنشاء تصور بصري للفكرة.</p>
+</div></div></div><!-- تصميم الأبراج --><div id="towerTool" class="card tool"><h2>🏙️ تصميم برج جديد</h2><label>اسم البرج</label>
+
+<input
+id="towerName"
+placeholder="مثال: برج كابو ONE">
+
+<label>ارتفاع البرج بالمتر</label>
+
+<input
+id="towerHeight"
+type="number"
+placeholder="مثال: 300">
+
+<label>عدد الأدوار</label>
+
+<input
+id="towerFloors"
+type="number"
+placeholder="مثال: 70">
+
+<label>مساحة الدور بالمتر المربع</label>
+
+<input
+id="floorArea"
+type="number"
+placeholder="مثال: 1500">
+
+<label>نوع البرج</label>
+
+<select id="towerType"><option>سكني</option>
+<option>تجاري</option>
+<option>فندقي</option>
+<option>إداري</option>
+<option>متعدد الاستخدامات</option></select><label>الفكرة المعمارية</label>
+
+<textarea
+id="towerIdea"
+placeholder="اكتب الفكرة...">
+</textarea><label>المميزات</label>
+
+<textarea
+id="towerFeatures"
+placeholder="مثال: منصة مشاهدة، مطاعم...">
+</textarea><button
+class="blue"
+onclick="createTower()">
+إنشاء بطاقة المشروع 🏗️
+</button>
+
+<div id="towerProject" class="result"><h2>📋 بطاقة المشروع</h2><div class="section">
+<strong>اسم المشروع</strong><br>
+<span id="pName"></span>
+</div><div class="section">
+<strong>الارتفاع</strong><br>
+<span id="pHeight"></span>
+</div><div class="section">
+<strong>عدد الأدوار</strong><br>
+<span id="pFloors"></span>
+</div><div class="section">
+<strong>نوع البرج</strong><br>
+<span id="pType"></span>
+</div><div class="section">
+<strong>الفكرة</strong><br>
+<span id="pIdea"></span>
+</div><div class="section">
+<strong>المميزات</strong><br>
+<span id="pFeatures"></span>
+</div><button
+class="green"
+onclick="calculateArea()">
+🧮 حساب مساحة المشروع
+</button>
+
+<div id="areaResult" class="result"></div><button
+class="orange"
+onclick="calculateCost()">
+💰 حساب التكلفة التقديرية
+</button>
+
+<div id="costResult" class="result"></div></div><button
+class="gray"
+onclick="closeTools()">
+إغلاق
+</button>
+
+</div><!-- الأفكار المعمارية --><div id="architectureTool" class="card tool"><h2>🏛️ الأفكار المعمارية</h2><textarea
+id="architectureIdea"
+placeholder="اكتب فكرتك المعمارية...">
+</textarea><button
+class="purple"
+onclick="saveArchitecture()">
+حفظ الفكرة 💡
+</button>
+
+<div id="architectureResult" class="result"></div><button
+class="gray"
+onclick="closeTools()">
+إغلاق
+</button>
+
+</div><!-- المخططات --><div id="plansTool" class="card tool"><h2>📐 المخططات الهندسية</h2><select id="planType"><option>مخطط معماري</option>
+<option>مخطط إنشائي</option>
+<option>مخطط كهربائي</option>
+<option>مخطط ميكانيكي</option></select><textarea
+id="planIdea"
+placeholder="اكتب متطلبات المخطط...">
+</textarea><button
+class="blue"
+onclick="savePlan()">
+حفظ بيانات المخطط
+</button>
+
+<div id="planResult" class="result"></div><button
+class="gray"
+onclick="closeTools()">
+إغلاق
+</button>
+
+</div><!-- الجداول --><div id="tableTool" class="card tool"><h2>🧮 الجداول والحسابات</h2><p class="description">
+يمكنك استخدام بيانات البرج لحساب المساحات والتكلفة.
+</p><button
+class="blue"
+onclick="openTool('towerTool')">
+🏙️ الانتقال إلى تصميم الأبراج
+</button>
+
+<button
+class="gray"
+onclick="closeTools()">
+إغلاق
+</button>
+
+</div><!-- التصوير البصري --><div id="visualTool" class="card tool"><h2>🖼️ التصوير البصري</h2><p class="description">
+حوّل فكرة المشروع إلى تصور بصري يساعدك على تخيل التصميم.
+</p><textarea
+id="visualIdea"
+placeholder="مثال: برج على شكل ذرة مع واجهات زجاجية وإضاءة ليلية">
+</textarea><button
+class="purple"
+onclick="createVisual()">
+🖼️ إنشاء التصور البصري
+</button>
+
+<div id="visualResult" class="visual"><h2>🏙️ KAPO ATOM</h2><div class="tower"><div class="orbit"></div>
+<div class="orbit2"></div><div class="towerBody"></div><div class="floor f1"></div>
 <div class="floor f2"></div>
 <div class="floor f3"></div>
 <div class="floor f4"></div>
 <div class="floor f5"></div>
-<div class="floor f6"></div>
-<div class="floor f7"></div><div class="atom atom1"></div>
-<div class="atom atom2"></div>
-<div class="atom atom3"></div><div class="base"></div></div><div class="section"><strong>
-🏗️ فكرة التصميم
-</strong><br>برج مستقبلي مستوحى من تركيب الذرة،
-مع نواة مركزية ومدارات معمارية تحيط بالبرج.
+<div class="floor f6"></div><div class="dot dot1"></div>
+<div class="dot dot2"></div>
+<div class="dot dot3"></div><div class="base"></div></div><div id="visualDescription"></div></div><button
+class="gray"
+onclick="closeTools()">
+إغلاق
+</button>
 
-</div><p class="note">
-⚠️ هذا تصور بصري أولي للفكرة وليس مخططًا هندسيًا معتمدًا.
-</p></div></div></div><footer>
-© 2026 KAPO ONE
+</div></div><footer>
+© 2026 KAPO ONE 🚀
 </footer><script>
+
+function openTool(id){
+
+closeTools();
+
+document
+.getElementById(id)
+.style.display="block";
+
+document
+.getElementById(id)
+.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
+}
+
+function closeTools(){
+
+document
+.querySelectorAll(".tool")
+.forEach(function(item){
+
+item.style.display="none";
+
+});
+
+}
 
 document
 .getElementById("analyzeButton")
 .addEventListener("click",function(){
 
 var idea =
-document.getElementById("idea")
+document
+.getElementById("idea")
 .value
 .trim();
 
 var result =
-document.getElementById("result");
-
-var visual =
-document.getElementById("visual");
+document
+.getElementById("result");
 
 if(idea===""){
 
@@ -272,8 +524,6 @@ result.innerHTML=
 "⚠️ اكتب فكرة المشروع أولًا.";
 
 result.style.display="block";
-
-visual.style.display="none";
 
 return;
 
@@ -295,15 +545,14 @@ result.innerHTML=
 "</div>"+
 
 "<div class='section'>"+
-"<strong>💡 الفكرة المعمارية</strong><br>"+
+"<strong>💡 الفكرة</strong><br>"+
 "برج مستقبلي مستوحى من شكل الذرة، "+
-"حيث تمثل النواة مركز البرج، "+
-"وتحيط بها مدارات وكتل معمارية."
+"مع نواة مركزية ومدارات معمارية حول البرج."
 +
 "</div>"+
 
 "<div class='section'>"+
-"<strong>🏢 الاستخدامات المقترحة</strong><br>"+
+"<strong>🏢 الاستخدامات</strong><br>"+
 "فندق، مكاتب، شقق فندقية، مطاعم، "+
 "منصة مشاهدة ومساحات للفعاليات."
 +
@@ -311,12 +560,10 @@ result.innerHTML=
 
 "<div class='section'>"+
 "<strong>🌟 المميزات</strong><br>"+
-"شكل معماري مميز، واجهات ديناميكية، "+
-"إضاءة ليلية ومساحات متعددة الاستخدام."
+"واجهات ديناميكية، إضاءة ليلية، "+
+"شكل معماري مميز ومساحات متعددة الاستخدام."
 +
 "</div>";
-
-visual.style.display="block";
 
 }else{
 
@@ -325,21 +572,231 @@ result.innerHTML=
 "<h2>🏗️ تحليل فكرة المشروع</h2>"+
 
 "<div class='section'>"+
-"<strong>📌 الفكرة التي أدخلتها:</strong><br>"+
+"<strong>📌 الفكرة:</strong><br>"+
 idea+
 "</div>"+
 
 "<div class='section'>"+
-"✅ تم استلام الفكرة بنجاح."
-+
-"<br><br>"+
-"يمكن تطويرها إلى تصور معماري متكامل."
+"✅ تم استلام الفكرة ويمكن تطويرها إلى مشروع معماري متكامل."
 +
 "</div>";
 
-visual.style.display="none";
+}
+
+result.style.display="block";
+
+});
+
+function createTower(){
+
+document.getElementById("pName").textContent=
+document.getElementById("towerName").value ||
+"برج كابو ONE";
+
+document.getElementById("pHeight").textContent=
+(document.getElementById("towerHeight").value || "غير محدد")
++" متر";
+
+document.getElementById("pFloors").textContent=
+(document.getElementById("towerFloors").value || "غير محدد")
++" دور";
+
+document.getElementById("pType").textContent=
+document.getElementById("towerType").value;
+
+document.getElementById("pIdea").textContent=
+document.getElementById("towerIdea").value ||
+"غير محددة";
+
+document.getElementById("pFeatures").textContent=
+document.getElementById("towerFeatures").value ||
+"غير محددة";
+
+document.getElementById("towerProject").style.display="block";
 
 }
+
+function calculateArea(){
+
+var floors=
+Number(document.getElementById("towerFloors").value);
+
+var area=
+Number(document.getElementById("floorArea").value);
+
+if(floors<=0 || area<=0){
+
+alert("⚠️ أدخل عدد الأدوار ومساحة الدور.");
+
+return;
+
+}
+
+var total=floors*area;
+
+var services=total*0.15;
+
+var net=total-services;
+
+var result=
+document.getElementById("areaResult");
+
+result.innerHTML=
+
+"🏢 إجمالي المساحة: <strong>"+
+total.toLocaleString()+
+" م²</strong><br><br>"+
+
+"🔧 الخدمات التقديرية: <strong>"+
+services.toLocaleString()+
+" م²</strong><br><br>"+
+
+"📐 المساحة الصافية التقريبية: <strong>"+
+net.toLocaleString()+
+" م²</strong>";
+
+result.style.display="block";
+
+}
+
+function calculateCost(){
+
+var floors=
+Number(document.getElementById("towerFloors").value);
+
+var area=
+Number(document.getElementById("floorArea").value);
+
+if(floors<=0 || area<=0){
+
+alert("⚠️ أدخل بيانات البرج أولًا.");
+
+return;
+
+}
+
+var total=floors*area;
+
+var cost=total*2500;
+
+var result=
+document.getElementById("costResult");
+
+result.innerHTML=
+
+"💰 التكلفة التقديرية: <strong>"+
+cost.toLocaleString()+
+" ريال</strong><br><br>"+
+
+"<small>⚠️ تقدير أولي فقط وليس عرض سعر معتمد.</small>";
+
+result.style.display="block";
+
+}
+
+function saveArchitecture(){
+
+var value=
+document
+.getElementById("architectureIdea")
+.value
+.trim();
+
+if(value===""){
+
+alert("⚠️ اكتب الفكرة أولًا.");
+
+return;
+
+}
+
+var result=
+document.getElementById("architectureResult");
+
+result.innerHTML=
+"✅ تم حفظ الفكرة المعمارية:<br><br>"+
+value;
+
+result.style.display="block";
+
+}
+
+function savePlan(){
+
+var type=
+document.getElementById("planType").value;
+
+var idea=
+document.getElementById("planIdea").value;
+
+var result=
+document.getElementById("planResult");
+
+result.innerHTML=
+
+"📐 نوع المخطط: <strong>"+
+type+
+"</strong><br><br>"+
+
+"📝 المتطلبات:<br>"+
+(idea || "لم يتم تحديد المتطلبات.");
+
+result.style.display="block";
+
+}
+
+function createVisual(){
+
+var idea=
+document
+.getElementById("visualIdea")
+.value
+.trim();
+
+if(idea===""){
+
+alert("⚠️ اكتب وصف التصميم أولًا.");
+
+return;
+
+}
+
+var result=
+document.getElementById("visualResult");
+
+var description=
+document.getElementById("visualDescription");
+
+description.innerHTML=
+
+"<div class='visual-box'>"+
+"<strong>🎨 وصف التصور:</strong><br>"+
+idea+
+"</div>"+
+
+"<div class='visual-box'>"+
+"<strong>👁️ المنظر الأمامي:</strong><br>"+
+"يوضح الشكل العام للبرج وواجهاته."
++
+"</div>"+
+
+"<div class='visual-box'>"+
+"<strong>↔️ المنظر الجانبي:</strong><br>"+
+"يوضح توزيع الكتل والمدارات حول البرج."
++
+"</div>"+
+
+"<div class='visual-box'>"+
+"<strong>⬆️ المنظر العلوي:</strong><br>"+
+"يوضح العلاقة بين النواة المركزية والمدارات."
++
+"</div>"+
+
+"<div class='visual-box'>"+
+"<strong>🌙 التصور الليلي:</strong><br>"+
+"إضاءة معمارية تبرز شكل البرج والمدارات."
++
+"</div>";
 
 result.style.display="block";
 
@@ -348,6 +805,7 @@ behavior:"smooth",
 block:"start"
 });
 
-});
+}
 
-</script></body></html>
+</script></body>
+</html>
