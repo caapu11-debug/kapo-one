@@ -1,28 +1,169 @@
 <!DOCTYPE html><html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>KAPO TEST</title>
-<style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KAPO ONE | كابو ون</title><style>
 body{
-background:#0f172a;
-color:white;
-font-family:Arial;
-text-align:center;
-padding:40px;
+    margin:0;
+    padding:30px 20px;
+    background:#0f172a;
+    color:white;
+    font-family:Arial,sans-serif;
 }
+
+.container{
+    max-width:700px;
+    margin:auto;
+}
+
+header{
+    text-align:center;
+    background:#1e293b;
+    padding:25px;
+    border-radius:18px;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.card{
+    margin-top:20px;
+    padding:25px;
+    background:#1e293b;
+    border-radius:18px;
+    border:2px solid #7c3aed;
+}
+
+h2{
+    text-align:center;
+    color:#c4b5fd;
+}
+
+p{
+    color:#cbd5e1;
+    text-align:center;
+}
+
+textarea{
+    width:100%;
+    height:130px;
+    padding:15px;
+    border:0;
+    border-radius:12px;
+    font-size:18px;
+    box-sizing:border-box;
+    margin-top:15px;
+}
+
 button{
-background:#7c3aed;
-color:white;
-border:0;
-padding:20px;
-width:100%;
-max-width:500px;
-border-radius:12px;
-font-size:22px;
-font-weight:bold;
+    display:block;
+    width:100%;
+    margin-top:15px;
+    padding:18px;
+    border:0;
+    border-radius:12px;
+    background:#7c3aed;
+    color:white;
+    font-size:20px;
+    font-weight:bold;
 }
-</style>
-</head><body><h1>🚀 KAPO ONE</h1><button onclick="alert('✅ زر كابو يعمل بنجاح')">
+
+#result{
+    display:none;
+    margin-top:20px;
+    padding:20px;
+    background:#0f172a;
+    border-radius:15px;
+    line-height:2;
+    border:1px solid #475569;
+}
+</style></head><body><div class="container"><header>
+🚀 KAPO ONE | كابو ون
+</header><div class="card"><h2>
+💡 مولّد فكرة المشروع
+</h2><p>
+اكتب فكرتك هنا، وسيقوم كابو بتحليلها.
+</p><textarea
+id="idea"
+placeholder="مثال: برج على شكل ذرة"
+></textarea><button
+type="button"
+onclick="analyzeIdea()"
+
+«»
+
 🚀 حلّل الفكرة
-</button></body>
+</button>
+
+<div id="result"></div></div></div><script>
+
+function analyzeIdea(){
+
+    var idea =
+    document.getElementById("idea").value.trim();
+
+    if(idea === ""){
+
+        alert("⚠️ اكتب فكرتك أولًا");
+
+        return;
+    }
+
+    var result =
+    document.getElementById("result");
+
+    var analysis = "";
+
+    if(
+        idea.includes("ذرة") ||
+        idea.includes("ذره")
+    ){
+
+        analysis =
+        "<h3>🏗️ تحليل فكرة برج على شكل ذرة</h3>" +
+
+        "<strong>اسم مقترح:</strong><br>" +
+        "KAPO ATOM | برج كابو الذري" +
+
+        "<br><br>" +
+
+        "<strong>💡 الفكرة:</strong><br>" +
+        "برج مستقبلي مستوحى من تركيب الذرة، " +
+        "حيث تمثل النواة مركز البرج وتوزع الكتل المعمارية حولها." +
+
+        "<br><br>" +
+
+        "<strong>🏢 الاستخدامات المقترحة:</strong><br>" +
+        "فندق، مكاتب، شقق فندقية، مطاعم، ومنصة مشاهدة." +
+
+        "<br><br>" +
+
+        "<strong>🌟 المميزات:</strong><br>" +
+        "شكل معماري مميز، واجهات ديناميكية، إضاءة ليلية، " +
+        "ومساحات متعددة الاستخدام.";
+
+    }else{
+
+        analysis =
+        "<h3>🏗️ تحليل فكرة المشروع</h3>" +
+
+        "<strong>الفكرة التي أدخلتها:</strong><br>" +
+        idea +
+
+        "<br><br>" +
+
+        "✅ يمكن تطوير هذه الفكرة إلى مشروع معماري متكامل." +
+
+        "<br><br>" +
+
+        "📐 الخطوة التالية يمكن أن تكون تحديد " +
+        "الارتفاع والمساحة وعدد الأدوار والاستخدام.";
+
+    }
+
+    result.innerHTML = analysis;
+
+    result.style.display = "block";
+}
+
+</script></body>
 </html>
