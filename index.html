@@ -1,8 +1,8 @@
-<!DOCTYPE html><html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KAPO ONE | كابو ون 🚀:</title><style>
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>KAPO ONE | كابو ون: 🚀</title><style>
+
+*{
+box-sizing:border-box;
+}
 
 body{
 margin:0;
@@ -12,7 +12,7 @@ font-family:Arial,sans-serif;
 }
 
 .container{
-max-width:800px;
+max-width:850px;
 margin:auto;
 padding:20px;
 }
@@ -26,7 +26,7 @@ font-size:30px;
 font-weight:bold;
 }
 
-.box{
+.card{
 margin-top:20px;
 background:#1e293b;
 padding:25px;
@@ -39,7 +39,7 @@ text-align:center;
 color:#c4b5fd;
 }
 
-p{
+.description{
 text-align:center;
 color:#cbd5e1;
 line-height:1.8;
@@ -50,13 +50,14 @@ width:100%;
 height:130px;
 padding:15px;
 margin-top:15px;
-border-radius:12px;
 border:0;
+border-radius:12px;
 font-size:18px;
-box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
 button{
+display:block;
 width:100%;
 padding:18px;
 margin-top:15px;
@@ -84,7 +85,7 @@ line-height:2;
 
 .section{
 background:#1e293b;
-padding:15px;
+padding:16px;
 margin-top:12px;
 border-radius:10px;
 }
@@ -92,92 +93,115 @@ border-radius:10px;
 .visual{
 display:none;
 margin-top:20px;
-padding:20px;
+padding:25px;
 background:#020617;
 border-radius:18px;
 text-align:center;
+border:2px solid #475569;
 }
 
 .tower{
 position:relative;
-width:180px;
-height:360px;
+width:220px;
+height:400px;
 margin:30px auto;
 }
 
-.core{
+.towerBody{
 position:absolute;
 left:50%;
 top:40px;
 transform:translateX(-50%);
-width:75px;
-height:280px;
-border-radius:40px;
-background:linear-gradient(to right,#64748b,#e2e8f0,#64748b);
-box-shadow:0 0 30px #7c3aed;
+width:80px;
+height:310px;
+border-radius:45px;
+background:linear-gradient(
+to right,
+#475569,
+#f8fafc,
+#94a3b8
+);
+box-shadow:0 0 35px #7c3aed;
 }
 
 .floor{
 position:absolute;
 left:50%;
 transform:translateX(-50%);
-width:125px;
+width:135px;
 height:7px;
 background:#c4b5fd;
 border-radius:10px;
 }
 
-.f1{top:75px}
-.f2{top:110px}
-.f3{top:145px}
-.f4{top:180px}
-.f5{top:215px}
-.f6{top:250px}
-.f7{top:285px}
+.f1{top:80px}
+.f2{top:120px}
+.f3{top:160px}
+.f4{top:200px}
+.f5{top:240px}
+.f6{top:280px}
+.f7{top:320px}
 
-.orbit{
+.orbit1{
 position:absolute;
 left:50%;
-top:130px;
-width:190px;
-height:90px;
+top:125px;
+transform:translateX(-50%) rotate(20deg);
+width:215px;
+height:100px;
 border:3px solid #a78bfa;
 border-radius:50%;
+}
+
+.orbit2{
+position:absolute;
+left:50%;
+top:125px;
 transform:translateX(-50%) rotate(-20deg);
+width:215px;
+height:100px;
+border:3px solid #7c3aed;
+border-radius:50%;
 }
 
 .atom{
 position:absolute;
-width:22px;
-height:22px;
+width:24px;
+height:24px;
 background:#c4b5fd;
 border-radius:50%;
 box-shadow:0 0 20px #7c3aed;
 }
 
 .atom1{
-top:95px;
+top:90px;
 left:5px;
 }
 
 .atom2{
-top:180px;
+top:185px;
 right:0;
 }
 
 .atom3{
-top:250px;
-left:10px;
+top:285px;
+left:15px;
 }
 
 .base{
 position:absolute;
-bottom:0;
-left:20px;
-width:140px;
-height:20px;
+bottom:15px;
+left:35px;
+width:150px;
+height:22px;
 background:#475569;
 border-radius:50%;
+}
+
+.note{
+color:#94a3b8;
+font-size:14px;
+margin-top:20px;
 }
 
 footer{
@@ -188,11 +212,11 @@ color:#94a3b8;
 }
 
 </style></head><body><div class="container"><header>
-🚀 KAPO ONE | كابو ون
-</header><div class="box"><h2>
+🚀 KAPO ONE | كابو ون 🚀
+</header><div class="card"><h2>
 💡 مولّد فكرة المشروع
-</h2><p>
-اكتب فكرتك هنا ليقوم كابو بتحويلها إلى تصور مشروع.
+</h2><p class="description">
+اكتب فكرتك هنا ليقوم كابو بتحليلها وتحويلها إلى تصور مشروع.
 </p><textarea
 id="idea"
 placeholder="مثال: برج على شكل ذرة"
@@ -202,11 +226,13 @@ type="button">
 🚀 حلّل الفكرة
 </button>
 
-<div id="result"></div><div id="visual" class="visual"><h2>
-🖼️ التصور البصري
+<div id="result"></div><div
+id="visual"
+class="visual"><h2>
+🖼️ التصور البصري للمشروع
 </h2><p>
-تصور أولي لبرج KAPO ATOM
-</p><div class="tower"><div class="orbit"></div><div class="core"></div><div class="floor f1"></div>
+KAPO ATOM | برج كابو الذري
+</p><div class="tower"><div class="orbit1"></div><div class="orbit2"></div><div class="towerBody"></div><div class="floor f1"></div>
 <div class="floor f2"></div>
 <div class="floor f3"></div>
 <div class="floor f4"></div>
@@ -214,24 +240,36 @@ type="button">
 <div class="floor f6"></div>
 <div class="floor f7"></div><div class="atom atom1"></div>
 <div class="atom atom2"></div>
-<div class="atom atom3"></div><div class="base"></div></div><div class="section">
-<strong>🏗️ KAPO ATOM</strong><br>
-برج مستقبلي مستوحى من تركيب الذرة.
-</div></div></div></div><footer>
+<div class="atom atom3"></div><div class="base"></div></div><div class="section"><strong>
+🏗️ فكرة التصميم
+</strong><br>برج مستقبلي مستوحى من تركيب الذرة،
+مع نواة مركزية ومدارات معمارية تحيط بالبرج.
+
+</div><p class="note">
+⚠️ هذا تصور بصري أولي للفكرة وليس مخططًا هندسيًا معتمدًا.
+</p></div></div></div><footer>
 © 2026 KAPO ONE
 </footer><script>
 
-document.getElementById("analyzeButton").addEventListener("click",function(){
+document
+.getElementById("analyzeButton")
+.addEventListener("click",function(){
 
-var idea=document.getElementById("idea").value.trim();
+var idea =
+document.getElementById("idea")
+.value
+.trim();
 
-var result=document.getElementById("result");
+var result =
+document.getElementById("result");
 
-var visual=document.getElementById("visual");
+var visual =
+document.getElementById("visual");
 
 if(idea===""){
 
-result.innerHTML="⚠️ اكتب فكرتك أولًا.";
+result.innerHTML=
+"⚠️ اكتب فكرة المشروع أولًا.";
 
 result.style.display="block";
 
@@ -259,13 +297,13 @@ result.innerHTML=
 "<div class='section'>"+
 "<strong>💡 الفكرة المعمارية</strong><br>"+
 "برج مستقبلي مستوحى من شكل الذرة، "+
-"حيث تمثل النواة مركز البرج وتحيط بها "+
-"كتل معمارية مستوحاة من الإلكترونات."
+"حيث تمثل النواة مركز البرج، "+
+"وتحيط بها مدارات وكتل معمارية."
 +
 "</div>"+
 
 "<div class='section'>"+
-"<strong>🏢 الاستخدامات</strong><br>"+
+"<strong>🏢 الاستخدامات المقترحة</strong><br>"+
 "فندق، مكاتب، شقق فندقية، مطاعم، "+
 "منصة مشاهدة ومساحات للفعاليات."
 +
@@ -287,12 +325,15 @@ result.innerHTML=
 "<h2>🏗️ تحليل فكرة المشروع</h2>"+
 
 "<div class='section'>"+
-"<strong>📌 فكرتك:</strong><br>"+
+"<strong>📌 الفكرة التي أدخلتها:</strong><br>"+
 idea+
 "</div>"+
 
 "<div class='section'>"+
-"✅ تم استلام الفكرة بنجاح ويمكن تطويرها إلى تصور معماري."
+"✅ تم استلام الفكرة بنجاح."
++
+"<br><br>"+
+"يمكن تطويرها إلى تصور معماري متكامل."
 +
 "</div>";
 
@@ -309,5 +350,4 @@ block:"start"
 
 });
 
-</script></body>
-</html>
+</script></body></html>
