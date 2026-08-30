@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>KAPO ONE | التصميم والهندسة</title>
+<title>KAPO ONE | الملفات والمخططات</title>
 
 <style>
 *{
@@ -71,7 +71,7 @@ header{
 
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
     gap:16px;
     margin-top:20px;
 }
@@ -84,7 +84,7 @@ header{
 }
 
 .icon{
-    font-size:36px;
+    font-size:35px;
     margin-bottom:10px;
 }
 
@@ -96,6 +96,12 @@ header{
 .card p{
     color:#cbd5e1;
     line-height:1.6;
+}
+
+label{
+    display:block;
+    margin-top:8px;
+    color:#e2e8f0;
 }
 
 input,
@@ -112,7 +118,7 @@ select{
 }
 
 textarea{
-    min-height:120px;
+    min-height:110px;
     resize:vertical;
 }
 
@@ -130,7 +136,7 @@ button:hover{
     background:#1d4ed8;
 }
 
-.design{
+.file-card{
     background:#111827;
     border:1px solid #334155;
     border-radius:16px;
@@ -138,27 +144,23 @@ button:hover{
     margin-top:15px;
 }
 
-.design h3{
+.file-icon{
+    font-size:38px;
+}
+
+.file-card h3{
     color:#38bdf8;
-    margin-top:0;
+    margin:10px 0;
 }
 
-.design p{
+.file-info{
     color:#cbd5e1;
-    line-height:1.7;
-}
-
-.status{
-    display:inline-block;
-    background:#334155;
-    padding:7px 12px;
-    border-radius:20px;
-    margin-bottom:12px;
+    line-height:1.8;
 }
 
 .delete{
     background:#b91c1c;
-    margin-top:10px;
+    margin-top:12px;
 }
 
 .delete:hover{
@@ -168,7 +170,17 @@ button:hover{
 .empty{
     text-align:center;
     color:#94a3b8;
-    padding:20px;
+    padding:25px;
+}
+
+.notice{
+    background:#172554;
+    border:1px solid #1d4ed8;
+    padding:15px;
+    border-radius:12px;
+    color:#dbeafe;
+    line-height:1.7;
+    margin-top:15px;
 }
 
 footer{
@@ -195,6 +207,7 @@ footer button:hover{
 }
 
 @media(max-width:600px){
+
     .logo{
         font-size:25px;
     }
@@ -209,9 +222,17 @@ footer button:hover{
 <body>
 
 <header>
-    <div class="logo">🚀 KAPO ONE</div>
-    <div class="subtitle">🏗️ التصميم والهندسة</div>
+
+    <div class="logo">
+        🚀 KAPO ONE
+    </div>
+
+    <div class="subtitle">
+        📁 الملفات والمخططات
+    </div>
+
 </header>
+
 
 <div class="container">
 
@@ -219,105 +240,200 @@ footer button:hover{
         ← العودة إلى لوحة المالك
     </button>
 
+
     <div class="section">
-        <h1>🏗️ قسم التصميم والهندسة</h1>
+
+        <h1>
+            📁 مركز الملفات والمخططات
+        </h1>
 
         <p class="intro">
-            مساحة متخصصة لتطوير الأفكار المعمارية والهندسية
-            وتصنيف التصاميم والمخططات ومتابعة مراحل التطوير.
+            مساحة منظمة لحفظ بيانات الملفات والمخططات
+            وربطها بالمشاريع والتصاميم داخل منصة KAPO ONE.
         </p>
+
 
         <div class="grid">
 
             <div class="card">
-                <div class="icon">🏙️</div>
-                <h3>الأفكار المعمارية</h3>
+
+                <div class="icon">
+                    📐
+                </div>
+
+                <h3>
+                    المخططات الهندسية
+                </h3>
+
                 <p>
-                    تسجيل وتطوير الأفكار الجديدة للمباني والأبراج
-                    والمشاريع المستقبلية.
+                    تنظيم بيانات المخططات الهندسية
+                    الخاصة بالمشاريع.
                 </p>
+
             </div>
 
-            <div class="card">
-                <div class="icon">📐</div>
-                <h3>المخططات</h3>
-                <p>
-                    تنظيم المخططات والرسومات الهندسية الخاصة
-                    بالمشاريع.
-                </p>
-            </div>
 
             <div class="card">
-                <div class="icon">🧱</div>
-                <h3>الهندسة</h3>
+
+                <div class="icon">
+                    🏗️
+                </div>
+
+                <h3>
+                    ملفات التصميم
+                </h3>
+
                 <p>
-                    تسجيل الملاحظات والمعلومات الهندسية
-                    لكل تصميم.
+                    حفظ معلومات التصاميم والأفكار
+                    المعمارية.
                 </p>
+
             </div>
 
+
             <div class="card">
-                <div class="icon">🎨</div>
-                <h3>التصميم ثلاثي الأبعاد</h3>
+
+                <div class="icon">
+                    📄
+                </div>
+
+                <h3>
+                    المستندات
+                </h3>
+
                 <p>
-                    تجهيز مساحة مستقبلية لنماذج وتصاميم
-                    3D للمشاريع.
+                    تنظيم المستندات والملاحظات
+                    المرتبطة بالمشاريع.
                 </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">
+                    🗂️
+                </div>
+
+                <h3>
+                    أرشيف المشاريع
+                </h3>
+
+                <p>
+                    الاحتفاظ بسجل منظم لملفات
+                    المشاريع السابقة.
+                </p>
+
             </div>
 
         </div>
+
     </div>
+
 
     <div class="section">
 
-        <h2>➕ إضافة تصميم جديد</h2>
+        <h2>
+            ➕ إضافة ملف جديد
+        </h2>
 
-        <label>اسم التصميم</label>
-        <input id="designName"
-        type="text"
-        placeholder="مثال: برج كابو">
 
-        <label>نوع التصميم</label>
-        <select id="designType">
-            <option>برج</option>
-            <option>مبنى</option>
-            <option>مشروع حضري</option>
-            <option>فكرة معمارية</option>
-            <option>تصميم هندسي</option>
+        <label>
+            اسم الملف
+        </label>
+
+        <input
+            id="fileName"
+            type="text"
+            placeholder="مثال: مخطط برج كابو">
+
+
+        <label>
+            نوع الملف
+        </label>
+
+        <select id="fileType">
+
+            <option>
+                مخطط هندسي
+            </option>
+
+            <option>
+                تصميم معماري
+            </option>
+
+            <option>
+                نموذج ثلاثي الأبعاد
+            </option>
+
+            <option>
+                مستند
+            </option>
+
+            <option>
+                صورة
+            </option>
+
+            <option>
+                ملف مشروع
+            </option>
+
         </select>
 
-        <label>وصف التصميم</label>
-        <textarea id="designDescription"
-        placeholder="اكتب تفاصيل وفكرة التصميم"></textarea>
 
-        <label>حالة التصميم</label>
-        <select id="designStatus">
-            <option>فكرة</option>
-            <option>قيد التطوير</option>
-            <option>قيد التصميم</option>
-            <option>جاهز للمراجعة</option>
-            <option>مكتمل</option>
-        </select>
+        <label>
+            المشروع المرتبط
+        </label>
 
-        <button onclick="addDesign()">
-            💾 حفظ التصميم
+        <input
+            id="fileProject"
+            type="text"
+            placeholder="مثال: برج كابو">
+
+
+        <label>
+            ملاحظات
+        </label>
+
+        <textarea
+            id="fileNotes"
+            placeholder="اكتب أي ملاحظات عن الملف">
+        </textarea>
+
+
+        <button onclick="addFile()">
+            💾 حفظ بيانات الملف
         </button>
 
+
+        <div class="notice">
+            ℹ️ هذه النسخة تحفظ <strong>بيانات الملف</strong>
+            داخل المتصفح. رفع الملفات الفعلية مثل PDF وDWG
+            سنضيفه في مرحلة التخزين السحابي لاحقًا.
+        </div>
+
     </div>
+
 
     <div class="section">
 
-        <h2>📐 التصاميم المسجلة</h2>
+        <h2>
+            🗂️ الملفات المسجلة
+        </h2>
 
-        <div id="designsList">
+
+        <div id="filesList">
+
             <div class="empty">
-                لا توجد تصاميم مسجلة حتى الآن.
+                لا توجد ملفات مسجلة حتى الآن.
             </div>
+
         </div>
 
     </div>
 
 </div>
+
 
 <footer>
 
@@ -325,57 +441,70 @@ footer button:hover{
         🏠 الرئيسية
     </button>
 
-    <button onclick="window.scrollTo({top:0,behavior:'smooth'})">
-        🏗️ التصميم
+    <button
+        onclick="window.scrollTo({top:0,behavior:'smooth'})">
+
+        📁 الملفات
+
     </button>
 
     <button onclick="alert('قسم الإعدادات قيد التجهيز')">
+
         ⚙️ الإعدادات
+
     </button>
 
 </footer>
 
+
 <script>
 
-let designs =
-JSON.parse(localStorage.getItem("kapoDesigns")) || [];
+let files =
+JSON.parse(localStorage.getItem("kapoFiles")) || [];
 
 
-function saveDesigns(){
+function saveFiles(){
 
     localStorage.setItem(
-        "kapoDesigns",
-        JSON.stringify(designs)
+        "kapoFiles",
+        JSON.stringify(files)
     );
 
 }
 
 
-function addDesign(){
+function addFile(){
 
     const name =
-    document.getElementById("designName").value.trim();
+        document.getElementById("fileName")
+        .value.trim();
+
 
     const type =
-    document.getElementById("designType").value;
+        document.getElementById("fileType")
+        .value;
 
-    const description =
-    document.getElementById("designDescription").value.trim();
 
-    const status =
-    document.getElementById("designStatus").value;
+    const project =
+        document.getElementById("fileProject")
+        .value.trim();
+
+
+    const notes =
+        document.getElementById("fileNotes")
+        .value.trim();
 
 
     if(!name){
 
-        alert("فضلاً اكتب اسم التصميم");
+        alert("فضلاً اكتب اسم الملف");
 
         return;
 
     }
 
 
-    const design = {
+    const file = {
 
         id:Date.now(),
 
@@ -383,64 +512,82 @@ function addDesign(){
 
         type:type,
 
-        description:
-        description || "لا يوجد وصف للتصميم.",
+        project:
+            project || "غير مرتبط بمشروع",
 
-        status:status
+        notes:
+            notes || "لا توجد ملاحظات"
 
     };
 
 
-    designs.push(design);
-
-    saveDesigns();
-
-    document.getElementById("designName").value="";
-
-    document.getElementById("designDescription").value="";
-
-    document.getElementById("designType").value="برج";
-
-    document.getElementById("designStatus").value="فكرة";
+    files.push(file);
 
 
-    displayDesigns();
+    saveFiles();
 
-    alert("تم حفظ التصميم بنجاح ✅");
+
+    document.getElementById("fileName")
+        .value="";
+
+
+    document.getElementById("fileProject")
+        .value="";
+
+
+    document.getElementById("fileNotes")
+        .value="";
+
+
+    document.getElementById("fileType")
+        .value="مخطط هندسي";
+
+
+    displayFiles();
+
+
+    alert("تم حفظ بيانات الملف بنجاح ✅");
 
 }
 
 
-function deleteDesign(id){
+function deleteFile(id){
 
-    if(confirm("هل تريد حذف هذا التصميم؟")){
+    if(
+        confirm(
+            "هل تريد حذف بيانات هذا الملف؟"
+        )
+    ){
 
-        designs =
-        designs.filter(
-            design => design.id !== id
-        );
+        files =
+            files.filter(
+                file => file.id !== id
+            );
 
-        saveDesigns();
 
-        displayDesigns();
+        saveFiles();
+
+
+        displayFiles();
 
     }
 
 }
 
 
-function displayDesigns(){
+function displayFiles(){
 
     const list =
-    document.getElementById("designsList");
+        document.getElementById("filesList");
 
 
-    if(designs.length === 0){
+    if(files.length === 0){
 
         list.innerHTML = `
-        <div class="empty">
-            لا توجد تصاميم مسجلة حتى الآن.
-        </div>`;
+            <div class="empty">
+                لا توجد ملفات مسجلة حتى الآن.
+            </div>
+        `;
 
         return;
 
@@ -450,38 +597,49 @@ function displayDesigns(){
     list.innerHTML = "";
 
 
-    designs.forEach(design => {
+    files.forEach(file => {
 
         list.innerHTML += `
 
-        <div class="design">
+            <div class="file-card">
 
-            <div class="status">
-                ${design.status}
+                <div class="file-icon">
+                    📄
+                </div>
+
+                <h3>
+                    ${file.name}
+                </h3>
+
+                <div class="file-info">
+
+                    <div>
+                        📌 النوع:
+                        ${file.type}
+                    </div>
+
+                    <div>
+                        🏢 المشروع:
+                        ${file.project}
+                    </div>
+
+                    <div>
+                        📝 الملاحظات:
+                        ${file.notes}
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="delete"
+                    onclick="deleteFile(${file.id})">
+
+                    🗑️ حذف بيانات الملف
+
+                </button>
+
             </div>
-
-            <h3>
-                🏗️ ${design.name}
-            </h3>
-
-            <p>
-                <strong>نوع التصميم:</strong>
-                ${design.type}
-            </p>
-
-            <p>
-                ${design.description}
-            </p>
-
-            <button
-            class="delete"
-            onclick="deleteDesign(${design.id})">
-
-                🗑️ حذف التصميم
-
-            </button>
-
-        </div>
 
         `;
 
@@ -492,12 +650,13 @@ function displayDesigns(){
 
 function goHome(){
 
-    window.location.href="index.html";
+    window.location.href =
+        "index.html";
 
 }
 
 
-displayDesigns();
+displayFiles();
 
 </script>
 
