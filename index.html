@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>KAPO ONE | كابو ون</title>
+<title>KAPO ONE | المنصة العالمية</title>
 
 <style>
-
 *{
     box-sizing:border-box;
 }
@@ -21,8 +19,8 @@ body{
 }
 
 header{
-    background:#1e293b;
-    padding:20px;
+    background:#111827;
+    padding:18px;
     text-align:center;
     border-bottom:1px solid #334155;
 }
@@ -32,33 +30,55 @@ header{
     font-weight:bold;
 }
 
-.subtitle{
-    color:#94a3b8;
-    margin-top:8px;
+.logo span{
+    color:#38bdf8;
 }
 
-.container{
-    max-width:1000px;
-    margin:auto;
-    padding:25px 18px 90px;
-}
-
-.welcome{
+.hero{
     text-align:center;
-    padding:25px 10px;
+    padding:55px 20px 35px;
 }
 
-.welcome h1{
-    font-size:30px;
+.hero h1{
+    font-size:36px;
     margin:10px 0;
 }
 
-.welcome p{
+.hero p{
     color:#cbd5e1;
-    font-size:17px;
+    font-size:18px;
+    line-height:1.8;
+    max-width:700px;
+    margin:auto;
 }
 
-.grid{
+.search{
+    max-width:650px;
+    margin:30px auto 10px;
+}
+
+.search input{
+    width:100%;
+    padding:17px;
+    border:none;
+    border-radius:14px;
+    font-size:17px;
+    outline:none;
+    text-align:right;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+}
+
+.section-title{
+    font-size:26px;
+    margin:25px 0;
+}
+
+.cards{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
     gap:18px;
@@ -66,16 +86,15 @@ header{
 
 .card{
     background:#1e293b;
-    border:1px solid #334155;
+    padding:25px;
     border-radius:18px;
-    padding:24px 18px;
     text-align:center;
-    transition:0.2s;
+    border:1px solid #334155;
+    transition:.3s;
 }
 
 .card:hover{
-    transform:translateY(-3px);
-    border-color:#64748b;
+    transform:translateY(-5px);
 }
 
 .icon{
@@ -83,231 +102,140 @@ header{
     margin-bottom:12px;
 }
 
-.card h2{
-    font-size:20px;
+.card h3{
     margin:10px 0;
 }
 
 .card p{
-    color:#94a3b8;
+    color:#cbd5e1;
     line-height:1.6;
-    font-size:14px;
 }
 
 button{
-    margin-top:12px;
-    background:#2563eb;
+    background:#0284c7;
     color:white;
     border:none;
-    padding:11px 22px;
+    padding:13px 24px;
     border-radius:10px;
-    font-size:15px;
+    font-size:16px;
     cursor:pointer;
 }
 
 button:hover{
-    background:#1d4ed8;
-}
-
-.owner{
-    margin-top:25px;
-    background:#172033;
-    border:1px solid #334155;
-    border-radius:18px;
-    padding:22px;
-    text-align:center;
-}
-
-.owner h2{
-    margin-top:0;
-}
-
-.owner p{
-    color:#cbd5e1;
+    background:#0369a1;
 }
 
 footer{
-    position:fixed;
-    bottom:0;
-    left:0;
-    right:0;
+    margin-top:50px;
     background:#111827;
-    border-top:1px solid #334155;
-    display:flex;
-    justify-content:space-around;
-    padding:13px 5px;
-    font-size:14px;
+    padding:25px;
+    text-align:center;
+    color:#94a3b8;
 }
-
-footer span{
-    color:#cbd5e1;
-}
-
 </style>
 </head>
 
 <body>
 
 <header>
-
-<div class="logo">
-🚀 KAPO ONE
-</div>
-
-<div class="subtitle">
-منصة التصميم والأفكار المعمارية
-</div>
-
+    <div class="logo">
+        KAPO <span>ONE</span> 🚀
+    </div>
+    <div>المنصة العالمية للأعمال والمشاريع</div>
 </header>
 
+<section class="hero">
 
-<div class="container">
+    <h1>مرحبًا بك في KAPO ONE 🌍</h1>
 
-<section class="welcome">
+    <p>
+        منصة عالمية تجمع الأعمال والمشاريع والأفكار والإنجازات
+        من مختلف أنحاء العالم في مكان واحد.
+    </p>
 
-<h1>
-مرحباً بك في منصة كابو ون
-</h1>
-
-<p>
-مركزك المتكامل لإدارة المشاريع والتصاميم والأفكار المعمارية
-</p>
-
-</section>
-
-
-<section class="grid">
-
-
-<div class="card">
-
-<div class="icon">🏠</div>
-
-<h2>الرئيسية</h2>
-
-<p>
-العودة إلى الصفحة الرئيسية للمنصة.
-</p>
-
-<button onclick="location.href='index.html'">
-دخول
-</button>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">🏗️</div>
-
-<h2>المشاريع والتصاميم</h2>
-
-<p>
-إدارة المشاريع والتصاميم المعمارية الجديدة.
-</p>
-
-<button onclick="location.href='projects.html'">
-فتح القسم
-</button>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">📐</div>
-
-<h2>التصميم والهندسة</h2>
-
-<p>
-مساحة مخصصة للتصميم والهندسة والأفكار الإنشائية.
-</p>
-
-<button onclick="location.href='design.html'">
-فتح القسم
-</button>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">💡</div>
-
-<h2>الأفكار المعمارية</h2>
-
-<p>
-تسجيل وتطوير الأفكار والمفاهيم المعمارية المميزة.
-</p>
-
-<button onclick="location.href='ideas.html'">
-فتح القسم
-</button>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">📁</div>
-
-<h2>الملفات والمشاريع</h2>
-
-<p>
-تنظيم ملفات المشاريع والمستندات الخاصة بالمنصة.
-</p>
-
-<button onclick="location.href='files.html'">
-فتح القسم
-</button>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">👤</div>
-
-<h2>صفحة المالك</h2>
-
-<p>
-لوحة إدارة خاصة بمالك منصة KAPO ONE.
-</p>
-
-<button onclick="location.href='owner.html'">
-دخول المالك
-</button>
-
-</div>
-
+    <div class="search">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="ابحث عن مشروع، شركة، تصميم أو عمل..."
+        >
+    </div>
 
 </section>
 
+<main class="container">
 
-<section class="owner">
+    <h2 class="section-title">استكشف المنصة</h2>
 
-<h2>
-🔐 KAPO ONE
-</h2>
+    <div class="cards">
 
-<p>
-منصة شخصية احترافية لإدارة التصاميم والمشاريع والأفكار المعمارية.
-</p>
+        <div class="card">
+            <div class="icon">🏗️</div>
+            <h3>المشاريع</h3>
+            <p>
+                استكشف المشاريع والأعمال من مختلف دول العالم.
+            </p>
+            <button onclick="showMessage('المشاريع')">
+                دخول
+            </button>
+        </div>
 
-</section>
+        <div class="card">
+            <div class="icon">🏢</div>
+            <h3>الشركات</h3>
+            <p>
+                مساحة تجمع الشركات والأعمال والخدمات العالمية.
+            </p>
+            <button onclick="showMessage('الشركات')">
+                دخول
+            </button>
+        </div>
 
-</div>
+        <div class="card">
+            <div class="icon">🎨</div>
+            <h3>التصاميم</h3>
+            <p>
+                معرض عالمي للتصاميم والأفكار والإبداعات.
+            </p>
+            <button onclick="showMessage('التصاميم')">
+                دخول
+            </button>
+        </div>
 
+        <div class="card">
+            <div class="icon">💡</div>
+            <h3>الأفكار</h3>
+            <p>
+                شارك الأفكار والمشاريع المستقبلية مع العالم.
+            </p>
+            <button onclick="showMessage('الأفكار')">
+                دخول
+            </button>
+        </div>
+
+    </div>
+
+</main>
 
 <footer>
-
-<span>🏠 الرئيسية</span>
-<span>📁 المشاريع</span>
-<span>💡 الأفكار</span>
-<span>👤 المالك</span>
-
+    KAPO ONE © 2026
+    <br>
+    المنصة العالمية للأعمال والمشاريع والأفكار
 </footer>
 
-</body>
+<script>
 
+function showMessage(section){
+
+    alert(
+        "مرحبًا بك في قسم " +
+        section +
+        " 🚀\nسيتم تطوير هذا القسم في الخطوة القادمة."
+    );
+
+}
+
+</script>
+
+</body>
 </html>
