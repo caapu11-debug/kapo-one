@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
 <title>KAPO ONE | المنصة العالمية</title>
 
 <style>
+
 *{
     box-sizing:border-box;
 }
@@ -36,35 +38,30 @@ header{
 
 .hero{
     text-align:center;
-    padding:55px 20px 35px;
+    padding:45px 20px 25px;
 }
 
 .hero h1{
-    font-size:36px;
+    font-size:34px;
     margin:10px 0;
 }
 
 .hero p{
     color:#cbd5e1;
-    font-size:18px;
     line-height:1.8;
-    max-width:700px;
-    margin:auto;
 }
 
 .search{
     max-width:650px;
-    margin:30px auto 10px;
+    margin:25px auto;
 }
 
 .search input{
     width:100%;
-    padding:17px;
+    padding:16px;
     border:none;
     border-radius:14px;
-    font-size:17px;
-    outline:none;
-    text-align:right;
+    font-size:16px;
 }
 
 .container{
@@ -73,56 +70,143 @@ header{
     padding:20px;
 }
 
-.section-title{
-    font-size:26px;
-    margin:25px 0;
+.section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    margin-bottom:20px;
 }
 
-.cards{
+.section-head h2{
+    margin:0;
+}
+
+.add-button{
+    background:#0284c7;
+    color:white;
+    border:none;
+    border-radius:50%;
+    width:55px;
+    height:55px;
+    font-size:34px;
+    cursor:pointer;
+    box-shadow:0 5px 20px #0008;
+}
+
+.gallery{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:18px;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:20px;
 }
 
-.card{
+.project{
     background:#1e293b;
-    padding:25px;
-    border-radius:18px;
-    text-align:center;
     border:1px solid #334155;
-    transition:.3s;
+    border-radius:18px;
+    overflow:hidden;
 }
 
-.card:hover{
-    transform:translateY(-5px);
+.project img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    display:block;
 }
 
-.icon{
-    font-size:42px;
-    margin-bottom:12px;
+.project-info{
+    padding:18px;
 }
 
-.card h3{
-    margin:10px 0;
+.project-info h3{
+    margin:0 0 10px;
 }
 
-.card p{
+.project-info p{
     color:#cbd5e1;
     line-height:1.6;
 }
 
-button{
-    background:#0284c7;
-    color:white;
-    border:none;
-    padding:13px 24px;
-    border-radius:10px;
-    font-size:16px;
-    cursor:pointer;
+.country{
+    color:#38bdf8;
+    font-size:14px;
 }
 
-button:hover{
-    background:#0369a1;
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#000b;
+    z-index:1000;
+    padding:20px;
+    overflow:auto;
+}
+
+.modal-box{
+    max-width:500px;
+    margin:40px auto;
+    background:#1e293b;
+    border-radius:20px;
+    padding:25px;
+}
+
+.modal-box h2{
+    margin-top:0;
+}
+
+.modal-box input,
+.modal-box textarea{
+    width:100%;
+    padding:14px;
+    margin:8px 0 14px;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+}
+
+.modal-box textarea{
+    height:100px;
+    resize:none;
+}
+
+.file{
+    background:#0f172a;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
+.actions{
+    display:flex;
+    gap:10px;
+}
+
+.save{
+    flex:1;
+    background:#16a34a;
+    color:white;
+    border:none;
+    padding:14px;
+    border-radius:10px;
+    font-size:16px;
+}
+
+.cancel{
+    flex:1;
+    background:#475569;
+    color:white;
+    border:none;
+    padding:14px;
+    border-radius:10px;
+    font-size:16px;
+}
+
+.empty{
+    text-align:center;
+    padding:50px 20px;
+    background:#1e293b;
+    border-radius:18px;
+    color:#94a3b8;
 }
 
 footer{
@@ -132,110 +216,397 @@ footer{
     text-align:center;
     color:#94a3b8;
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
-    <div class="logo">
-        KAPO <span>ONE</span> 🚀
-    </div>
-    <div>المنصة العالمية للأعمال والمشاريع</div>
+
+<div class="logo">
+KAPO <span>ONE</span> 🚀
+</div>
+
+<div>
+المنصة العالمية للأعمال والمشاريع
+</div>
+
 </header>
+
 
 <section class="hero">
 
-    <h1>مرحبًا بك في KAPO ONE 🌍</h1>
+<h1>مرحبًا بك في KAPO ONE 🌍</h1>
 
-    <p>
-        منصة عالمية تجمع الأعمال والمشاريع والأفكار والإنجازات
-        من مختلف أنحاء العالم في مكان واحد.
-    </p>
+<p>
+مكان واحد لعرض المشاريع والأعمال والتصاميم والأفكار من جميع أنحاء العالم.
+</p>
 
-    <div class="search">
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="ابحث عن مشروع، شركة، تصميم أو عمل..."
-        >
-    </div>
+<div class="search">
+
+<input
+type="text"
+id="search"
+placeholder="🔎 ابحث عن مشروع أو عمل..."
+oninput="searchProjects()">
+
+</div>
 
 </section>
 
+
 <main class="container">
 
-    <h2 class="section-title">استكشف المنصة</h2>
+<div class="section-head">
 
-    <div class="cards">
+<h2>
+🖼️ معرض الأعمال
+</h2>
 
-        <div class="card">
-            <div class="icon">🏗️</div>
-            <h3>المشاريع</h3>
-            <p>
-                استكشف المشاريع والأعمال من مختلف دول العالم.
-            </p>
-            <button onclick="showMessage('المشاريع')">
-                دخول
-            </button>
-        </div>
+<button
+class="add-button"
+onclick="openModal()">
++
+</button>
 
-        <div class="card">
-            <div class="icon">🏢</div>
-            <h3>الشركات</h3>
-            <p>
-                مساحة تجمع الشركات والأعمال والخدمات العالمية.
-            </p>
-            <button onclick="showMessage('الشركات')">
-                دخول
-            </button>
-        </div>
+</div>
 
-        <div class="card">
-            <div class="icon">🎨</div>
-            <h3>التصاميم</h3>
-            <p>
-                معرض عالمي للتصاميم والأفكار والإبداعات.
-            </p>
-            <button onclick="showMessage('التصاميم')">
-                دخول
-            </button>
-        </div>
 
-        <div class="card">
-            <div class="icon">💡</div>
-            <h3>الأفكار</h3>
-            <p>
-                شارك الأفكار والمشاريع المستقبلية مع العالم.
-            </p>
-            <button onclick="showMessage('الأفكار')">
-                دخول
-            </button>
-        </div>
+<div id="gallery" class="gallery">
 
-    </div>
+<div class="empty" id="empty">
+
+📁 لا توجد أعمال مضافة حتى الآن
+
+<br><br>
+
+اضغط على علامة
+<strong>+</strong>
+لإضافة أول مشروع.
+
+</div>
+
+</div>
 
 </main>
 
+
 <footer>
-    KAPO ONE © 2026
-    <br>
-    المنصة العالمية للأعمال والمشاريع والأفكار
+
+KAPO ONE © 2026
+
+<br>
+
+المنصة العالمية للأعمال والمشاريع والأفكار
+
 </footer>
+
+
+<!-- نافذة إضافة مشروع -->
+
+<div class="modal" id="modal">
+
+<div class="modal-box">
+
+<h2>
+➕ إضافة عمل جديد
+</h2>
+
+<label>
+اسم المشروع
+</label>
+
+<input
+type="text"
+id="projectName"
+placeholder="مثال: برج المستقبل">
+
+
+<label>
+الدولة
+</label>
+
+<input
+type="text"
+id="projectCountry"
+placeholder="مثال: السعودية">
+
+
+<label>
+وصف المشروع
+</label>
+
+<textarea
+id="projectDescription"
+placeholder="اكتب وصفًا مختصرًا للمشروع...">
+</textarea>
+
+
+<label>
+صورة المشروع
+</label>
+
+<div class="file">
+
+<input
+type="file"
+id="projectImage"
+accept="image/*">
+
+</div>
+
+
+<div class="actions">
+
+<button
+class="save"
+onclick="addProject()">
+
+حفظ المشروع
+
+</button>
+
+<button
+class="cancel"
+onclick="closeModal()">
+
+إلغاء
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
 
 <script>
 
-function showMessage(section){
+let projects =
+JSON.parse(localStorage.getItem("kapoProjects")) || [];
 
-    alert(
-        "مرحبًا بك في قسم " +
-        section +
-        " 🚀\nسيتم تطوير هذا القسم في الخطوة القادمة."
-    );
+
+function openModal(){
+
+document.getElementById("modal").style.display="block";
 
 }
+
+
+function closeModal(){
+
+document.getElementById("modal").style.display="none";
+
+}
+
+
+function addProject(){
+
+let name =
+document.getElementById("projectName").value.trim();
+
+let country =
+document.getElementById("projectCountry").value.trim();
+
+let description =
+document.getElementById("projectDescription").value.trim();
+
+let image =
+document.getElementById("projectImage").files[0];
+
+
+if(!name){
+
+alert("اكتب اسم المشروع أولاً");
+
+return;
+
+}
+
+
+if(!image){
+
+alert("اختر صورة للمشروع");
+
+return;
+
+}
+
+
+let reader = new FileReader();
+
+
+reader.onload = function(e){
+
+let project = {
+
+name:name,
+
+country:country || "غير محدد",
+
+description:
+description || "لا يوجد وصف",
+
+image:e.target.result
+
+};
+
+
+projects.push(project);
+
+
+localStorage.setItem(
+"kapoProjects",
+JSON.stringify(projects)
+);
+
+
+document.getElementById("projectName").value="";
+
+document.getElementById("projectCountry").value="";
+
+document.getElementById("projectDescription").value="";
+
+document.getElementById("projectImage").value="";
+
+
+closeModal();
+
+displayProjects();
+
+
+alert("تمت إضافة المشروع بنجاح 🚀");
+
+};
+
+
+reader.readAsDataURL(image);
+
+}
+
+
+function displayProjects(){
+
+let gallery =
+document.getElementById("gallery");
+
+gallery.innerHTML="";
+
+
+if(projects.length===0){
+
+gallery.innerHTML=
+
+'<div class="empty">📁 لا توجد أعمال مضافة حتى الآن<br><br>اضغط على علامة + لإضافة أول مشروع.</div>';
+
+return;
+
+}
+
+
+projects.forEach(function(project,index){
+
+let card=document.createElement("div");
+
+card.className="project";
+
+card.innerHTML=
+
+`
+
+<img src="${project.image}">
+
+<div class="project-info">
+
+<h3>${project.name}</h3>
+
+<div class="country">
+🌍 ${project.country}
+</div>
+
+<p>
+${project.description}
+</p>
+
+<button
+onclick="deleteProject(${index})"
+style="
+background:#dc2626;
+color:white;
+border:none;
+padding:9px 15px;
+border-radius:8px;
+cursor:pointer;
+">
+
+حذف
+
+</button>
+
+</div>
+
+`;
+
+gallery.appendChild(card);
+
+});
+
+}
+
+
+function deleteProject(index){
+
+if(confirm("هل تريد حذف هذا المشروع؟")){
+
+projects.splice(index,1);
+
+localStorage.setItem(
+"kapoProjects",
+JSON.stringify(projects)
+);
+
+displayProjects();
+
+}
+
+}
+
+
+function searchProjects(){
+
+let search =
+document.getElementById("search").value.toLowerCase();
+
+let cards =
+document.querySelectorAll(".project");
+
+
+cards.forEach(function(card){
+
+let text =
+card.innerText.toLowerCase();
+
+if(text.includes(search)){
+
+card.style.display="block";
+
+}else{
+
+card.style.display="none";
+
+}
+
+});
+
+}
+
+
+displayProjects();
 
 </script>
 
 </body>
+
 </html>
