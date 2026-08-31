@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>KAPO ONE | كابو ون</title>
+<title>KAPO ONE | معرض الأعمال</title>
 
 <style>
 *{
@@ -36,100 +36,105 @@ header{
 }
 
 .container{
-    max-width:1000px;
+    max-width:1100px;
     margin:auto;
     padding:20px;
 }
 
 .hero{
     text-align:center;
-    padding:35px 10px;
+    padding:30px 10px;
 }
 
 .hero h1{
-    font-size:34px;
-    margin:10px 0;
+    font-size:32px;
 }
 
 .hero p{
     color:#cbd5e1;
-    font-size:18px;
 }
 
-.search{
-    margin:25px auto;
-    max-width:600px;
-}
-
-.search input{
-    width:100%;
-    padding:15px;
-    border:0;
-    border-radius:12px;
-    font-size:17px;
-    text-align:right;
-    outline:none;
-}
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:18px;
-}
-
-.card{
+.add-box{
     background:#1e293b;
-    padding:25px;
+    border:2px dashed #475569;
     border-radius:18px;
+    padding:30px 20px;
     text-align:center;
-    border:1px solid #334155;
+    margin:20px 0 30px;
 }
 
-.card h2{
+.add-box h2{
     margin-top:0;
 }
 
-.card p{
-    color:#cbd5e1;
-    line-height:1.7;
-}
-
-button{
+.add-button{
+    display:inline-block;
     background:#2563eb;
     color:white;
-    border:0;
-    padding:12px 22px;
-    border-radius:10px;
-    font-size:16px;
+    padding:14px 25px;
+    border-radius:12px;
     cursor:pointer;
+    font-size:18px;
+    font-weight:bold;
 }
 
-button:hover{
+.add-button:hover{
     background:#1d4ed8;
 }
 
-.settings{
-    margin-top:25px;
-    background:#111827;
-    padding:20px;
+#imageInput{
+    display:none;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:20px;
+}
+
+.image-card{
+    background:#1e293b;
     border-radius:18px;
+    overflow:hidden;
     border:1px solid #334155;
 }
 
-.settings h2{
-    margin-top:0;
+.image-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    display:block;
 }
 
-.setting-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 0;
-    border-bottom:1px solid #334155;
+.image-info{
+    padding:15px;
 }
 
-.setting-row:last-child{
-    border-bottom:0;
+.image-info h3{
+    margin:0 0 8px;
+}
+
+.image-info p{
+    color:#94a3b8;
+    margin:0;
+}
+
+.empty{
+    text-align:center;
+    color:#94a3b8;
+    padding:40px;
+    background:#111827;
+    border-radius:18px;
+}
+
+.back{
+    display:inline-block;
+    margin-top:30px;
+    background:#334155;
+    color:white;
+    padding:12px 22px;
+    border-radius:10px;
+    text-decoration:none;
 }
 
 footer{
@@ -138,18 +143,6 @@ footer{
     padding:20px;
     text-align:center;
     color:#94a3b8;
-}
-
-@media(max-width:600px){
-    .hero h1{
-        font-size:28px;
-    }
-
-    .setting-row{
-        flex-direction:column;
-        gap:10px;
-        text-align:center;
-    }
 }
 </style>
 </head>
@@ -164,74 +157,46 @@ footer{
 <div class="container">
 
     <section class="hero">
-        <h1>مرحباً بك في KAPO ONE</h1>
+        <h1>🖼️ معرض الأعمال</h1>
         <p>
-            منصة عالمية تجمع الأعمال والمشاريع والأفكار والإبداعات في مكان واحد.
+            اعرض مشاريعك وتصاميمك وأعمالك في منصة KAPO ONE
+        </p>
+    </section>
+
+    <section class="add-box">
+
+        <h2>➕ إضافة عمل جديد</h2>
+
+        <p>
+            اختر صورة من جهازك لإضافتها إلى المعرض
         </p>
 
-        <div class="search">
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="🔎 ابحث في المنصة..."
-                onkeyup="searchCards()"
-            >
-        </div>
+        <label for="imageInput" class="add-button">
+            📷 إضافة صورة
+        </label>
+
+        <input
+            type="file"
+            id="imageInput"
+            accept="image/*"
+            onchange="addImage(event)"
+        >
+
     </section>
 
-    <section class="cards">
+    <section id="gallery" class="gallery">
 
-        <div class="card">
-            <h2>🏢 الأعمال</h2>
-            <p>استكشف الشركات والمشاريع والأعمال من مختلف أنحاء العالم.</p>
-            <button onclick="showMessage('قسم الأعمال')">دخول</button>
-        </div>
-
-        <div class="card">
-            <h2>🏗️ الهندسة والتصميم</h2>
-            <p>عرض التصاميم الهندسية والمعمارية والمشاريع المبتكرة.</p>
-            <button onclick="showMessage('قسم الهندسة والتصميم')">دخول</button>
-        </div>
-
-        <div class="card">
-            <h2>💡 الأفكار والمشاريع</h2>
-            <p>مساحة لعرض الأفكار والمشاريع الجديدة والمستقبلية.</p>
-            <button onclick="showMessage('قسم الأفكار والمشاريع')">دخول</button>
-        </div>
-
-        <div class="card">
-            <h2>🖼️ معرض الأعمال</h2>
-            <p>معرض لعرض الصور والتصاميم والمشاريع.</p>
-            <button onclick="showMessage('معرض الأعمال')">دخول</button>
+        <div class="empty" id="emptyMessage">
+            لا توجد أعمال مضافة حتى الآن
+            <br><br>
+            اضغط «إضافة صورة» لبدء المعرض 🚀
         </div>
 
     </section>
 
-    <section class="settings">
-
-        <h2>⚙️ الإعدادات</h2>
-
-        <div class="setting-row">
-            <span>🌐 اللغة</span>
-            <button onclick="changeLanguage()">العربية</button>
-        </div>
-
-        <div class="setting-row">
-            <span>🌓 الوضع الليلي</span>
-            <button onclick="toggleTheme()">تغيير الوضع</button>
-        </div>
-
-        <div class="setting-row">
-            <span>👤 حساب المالك</span>
-            <button onclick="showMessage('حساب المالك')">فتح</button>
-        </div>
-
-        <div class="setting-row">
-            <span>🔐 تسجيل الدخول</span>
-            <button onclick="showMessage('تسجيل الدخول')">دخول</button>
-        </div>
-
-    </section>
+    <a href="index.html" class="back">
+        🏠 العودة إلى الرئيسية
+    </a>
 
 </div>
 
@@ -241,50 +206,43 @@ footer{
 
 <script>
 
-function showMessage(section){
-    alert("سيتم فتح " + section + " قريباً 🚀");
-}
+function addImage(event){
 
-function searchCards(){
+    const file = event.target.files[0];
 
-    let input = document
-        .getElementById("searchInput")
-        .value
-        .toLowerCase();
+    if(!file){
+        return;
+    }
 
-    let cards = document.querySelectorAll(".card");
+    const reader = new FileReader();
 
-    cards.forEach(function(card){
+    reader.onload = function(e){
 
-        let text = card.innerText.toLowerCase();
+        const gallery = document.getElementById("gallery");
+        const emptyMessage = document.getElementById("emptyMessage");
 
-        if(text.includes(input)){
-            card.style.display = "block";
-        }else{
-            card.style.display = "none";
+        if(emptyMessage){
+            emptyMessage.remove();
         }
 
-    });
-}
+        const card = document.createElement("div");
 
-function toggleTheme(){
+        card.className = "image-card";
 
-    if(document.body.style.background === "white"){
+        card.innerHTML = `
+            <img src="${e.target.result}" alt="عمل جديد">
 
-        document.body.style.background = "#0f172a";
-        document.body.style.color = "white";
+            <div class="image-info">
+                <h3>عمل جديد</h3>
+                <p>تمت إضافة الصورة إلى معرض KAPO ONE</p>
+            </div>
+        `;
 
-    }else{
+        gallery.appendChild(card);
 
-        document.body.style.background = "white";
-        document.body.style.color = "#111827";
+    };
 
-    }
-}
-
-function changeLanguage(){
-
-    alert("سيتم إضافة اللغة الإنجليزية في المرحلة القادمة 🌍");
+    reader.readAsDataURL(file);
 
 }
 
