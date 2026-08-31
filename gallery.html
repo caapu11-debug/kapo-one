@@ -1,592 +1,98 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>KAPO ONE | المعرض</title>
-
-<style>
-
-*{
-box-sizing:border-box;
-}
-
-body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#0b1120;
-color:white;
-line-height:1.7;
-}
-
-header{
-background:#111827;
-padding:20px;
-text-align:center;
-border-bottom:1px solid #263449;
-}
-
-.logo{
-font-size:30px;
-font-weight:bold;
-}
-
-.logo span{
-color:#38bdf8;
-}
-
-.container{
-max-width:1100px;
-margin:auto;
-padding:35px 20px 60px;
-}
-
-.hero{
-text-align:center;
-margin-bottom:30px;
-}
-
-.hero-icon{
-font-size:60px;
-}
-
-.hero h1{
-font-size:36px;
-margin:10px 0;
-}
-
-.hero p{
-color:#94a3b8;
-}
-
-.menu{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:15px;
-margin-bottom:30px;
-}
-
-.menu button{
-border:1px solid #334155;
-background:#111827;
-color:white;
-padding:22px 15px;
-border-radius:16px;
-cursor:pointer;
-font-size:17px;
-}
-
-.menu button:hover{
-background:#1e293b;
-border-color:#38bdf8;
-}
-
-.menu .active{
-background:#2563eb;
-border-color:#2563eb;
-}
-
-.section{
-display:none;
-background:#111827;
-border:1px solid #263449;
-border-radius:20px;
-padding:25px;
-margin-bottom:25px;
-}
-
-.section.active{
-display:block;
-}
-
-.section h2{
-margin-top:0;
-}
-
-.form{
-max-width:700px;
-margin:auto;
-}
-
-label{
-display:block;
-margin:12px 0 6px;
-color:#cbd5e1;
-}
-
-input,
-select,
-textarea{
-width:100%;
-padding:13px;
-border-radius:10px;
-border:1px solid #334155;
-background:#0b1120;
-color:white;
-font-size:15px;
-font-family:Arial,sans-serif;
-}
-
-textarea{
-min-height:100px;
-resize:vertical;
-}
-
-input[type="file"]{
-padding:10px;
-}
-
-.save{
-width:100%;
-margin-top:18px;
-padding:14px;
-border:0;
-border-radius:10px;
-background:#16a34a;
-color:white;
-font-size:16px;
-cursor:pointer;
-}
-
-.save:hover{
-background:#15803d;
-}
-
-.photo-button{
-display:inline-block;
-background:#2563eb;
-color:white;
-padding:14px 25px;
-border-radius:10px;
-cursor:pointer;
-font-size:17px;
-}
-
-#photoInput{
-display:none;
-}
-
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:20px;
-}
-
-.card{
-background:#0b1120;
-border:1px solid #334155;
-border-radius:16px;
-overflow:hidden;
-}
-
-.card img{
-width:100%;
-height:220px;
-object-fit:cover;
-display:block;
-}
-
-.card-body{
-padding:18px;
-text-align:center;
-}
-
-.card-body h3{
-margin:0 0 8px;
-}
-
-.card-body p{
-color:#94a3b8;
-}
-
-.type{
-display:inline-block;
-background:#1e293b;
-border:1px solid #334155;
-padding:5px 12px;
-border-radius:8px;
-color:#93c5fd;
-font-size:13px;
-}
-
-.empty{
-text-align:center;
-padding:40px 20px;
-color:#94a3b8;
-}
-
-.back{
-text-align:center;
-margin-top:30px;
-}
-
-.back a{
-display:inline-block;
-background:#334155;
-color:white;
-text-decoration:none;
-padding:12px 25px;
-border-radius:10px;
-}
-
-footer{
-background:#080d18;
-padding:25px;
-text-align:center;
-color:#94a3b8;
-}
-
-.footer-logo{
-font-size:24px;
-font-weight:bold;
-color:white;
-}
-
-.footer-logo span{
-color:#38bdf8;
-}
-
-@media(max-width:600px){
-
-.hero h1{
-font-size:30px;
-}
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-
-<header>
-
-<div class="logo">
-🚀 KAPO <span>ONE</span>
-</div>
-
-</header>
-
-
-<div class="container">
-
-
-<section class="hero">
-
-<div class="hero-icon">
-🖼️
-</div>
-
-<h1>
-معرض KAPO ONE
-</h1>
-
-<p>
-مساحة احترافية لعرض التصاميم والمشاريع والأعمال.
-</p>
-
-</section>
-
-
-<!-- قائمة المعرض -->
-
-<div class="menu">
-
-<button
-id="galleryBtn"
-class="active"
-onclick="showSection('gallerySection','galleryBtn')">
-
-🖼️
-<br>
-معرض الأعمال
-
-</button>
-
-
-<button
-id="workBtn"
-onclick="showSection('workSection','workBtn')">
-
-➕
-<br>
-إضافة عمل جديد
-
-</button>
-
-
-<button
-id="photoBtn"
-onclick="openPhotoPicker()">
-
-📷
-<br>
-إضافة صورة فقط
-
-</button>
-
-</div>
-
-
-<!-- معرض الأعمال -->
-
-<section
-class="section active"
-id="gallerySection">
-
-<h2>
-🖼️ معرض الأعمال
-</h2>
-
-<div
-class="gallery"
-id="gallery">
-
-<div
-class="empty"
-id="empty">
-
-لا توجد أعمال مضافة حتى الآن.
-
-<br><br>
-
-أضف عملًا جديدًا أو صورة من الخيارات أعلاه 🚀
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- إضافة عمل جديد -->
-
-<section
-class="section"
-id="workSection">
-
-<h2>
-➕ إضافة عمل جديد
-</h2>
-
-<div class="form">
-
-<label>
-اسم العمل
-</label>
-
-<input
-type="text"
-id="workName"
-placeholder="مثال: برج كابو">
-
-
-<label>
-نوع العمل
-</label>
-
-<select id="workType">
-
-<option value="">
-اختر نوع العمل
-</option>
-
-<option value="تصميم معماري">
-تصميم معماري
-</option>
-
-<option value="مخطط هندسي">
-مخطط هندسي
-</option>
-
-<option value="فكرة معمارية">
-فكرة معمارية
-</option>
-
-<option value="مشروع مستقبلي">
-مشروع مستقبلي
-</option>
-
-</select>
-
-
-<label>
-صورة العمل
-</label>
-
-<input
-type="file"
-id="workImage"
-accept="image/*">
-
-
-<label>
-وصف العمل
-</label>
-
-<textarea
-id="workDescription"
-placeholder="اكتب وصف العمل أو المشروع">
-</textarea>
-
-
-<button
-class="save"
-onclick="addWork()">
-
-💾 إضافة العمل إلى المعرض
-
-</button>
-
-</div>
-
-</section>
-
-
-<!-- إضافة صورة فقط -->
-
-<section
-class="section"
-id="photoSection">
-
-<h2>
-📷 إضافة صورة فقط
-</h2>
-
-<p>
-اختر صورة من هاتفك وسيتم عرضها مباشرة في المعرض.
-</p>
-
-<label
-for="photoInput"
-class="photo-button">
-
-📷 اختيار صورة
-
-</label>
-
-<input
-type="file"
-id="photoInput"
-accept="image/*">
-
-</section>
-
-
-<div class="back">
-
-<a href="index.html">
-🏠 العودة إلى الرئيسية
-</a>
-
-</div>
-
-
-</div>
-
-
-<footer>
-
-<div class="footer-logo">
-KAPO <span>ONE</span>
-</div>
-
-<p>
-منصة الأعمال والأفكار والتصاميم
-</p>
-
-<p>
-© 2026 KAPO ONE — جميع الحقوق محفوظة
-</p>
-
-</footer>
-
-
 <script>
 
-/* فتح الأقسام */
-
-function showSection(sectionId,buttonId){
-
-let sections =
-document.querySelectorAll(".section");
-
-sections.forEach(function(section){
-
-section.classList.remove("active");
-
-});
+let works =
+JSON.parse(localStorage.getItem("KAPO_ONE_WORKS")) || [];
 
 
-let buttons =
-document.querySelectorAll(".menu button");
+/* إخفاء جميع الصفحات */
 
-buttons.forEach(function(button){
+function hidePages(){
 
-button.classList.remove("active");
+document.getElementById("galleryPage").classList.remove("show");
 
-});
+document.getElementById("workPage").classList.remove("show");
 
-
-document
-.getElementById(sectionId)
-.classList.add("active");
-
-
-document
-.getElementById(buttonId)
-.classList.add("active");
+document.getElementById("photoPage").classList.remove("show");
 
 }
 
 
-/* إضافة صورة فقط */
+/* فتح معرض الأعمال */
 
-function openPhotoPicker(){
+function openGallery(){
 
-showSection(
-"photoSection",
-"photoBtn"
-);
+hidePages();
 
-document
-.getElementById("photoInput")
-.click();
+document.getElementById("galleryPage").classList.add("show");
+
+displayWorks();
 
 }
 
 
-/* اختيار الصورة */
+/* فتح إضافة عمل */
 
-document
-.getElementById("photoInput")
-.addEventListener(
+function openWork(){
+
+hidePages();
+
+document.getElementById("workPage").classList.add("show");
+
+}
+
+
+/* فتح إضافة صورة */
+
+function choosePhoto(){
+
+hidePages();
+
+document.getElementById("photoPage").classList.add("show");
+
+document.getElementById("photoInput").click();
+
+}
+
+
+/* اختيار صورة فقط */
+
+document.getElementById("photoInput").addEventListener(
 "change",
 function(){
 
-let file =
-this.files[0];
+let file = this.files[0];
 
 if(!file){
 return;
 }
 
-addImageToGallery(
-file,
-"صورة جديدة",
-"صورة مضافة إلى معرض KAPO ONE",
-""
-);
+let reader = new FileReader();
 
-showSection(
-"gallerySection",
-"galleryBtn"
-);
+reader.onload = function(e){
+
+let work = {
+
+name:"صورة جديدة",
+
+type:"",
+
+description:"صورة مضافة إلى معرض KAPO ONE",
+
+image:e.target.result
+
+};
+
+works.push(work);
+
+saveWorks();
+
+displayWorks();
+
+openGallery();
+
+};
+
+reader.readAsDataURL(file);
 
 this.value="";
 
@@ -595,29 +101,19 @@ this.value="";
 
 /* إضافة عمل كامل */
 
-function addWork(){
+function saveWork(){
 
 let name =
-document
-.getElementById("workName")
-.value
-.trim();
+document.getElementById("name").value.trim();
 
 let type =
-document
-.getElementById("workType")
-.value;
+document.getElementById("type").value;
 
 let description =
-document
-.getElementById("workDescription")
-.value
-.trim();
+document.getElementById("description").value.trim();
 
-let imageFile =
-document
-.getElementById("workImage")
-.files[0];
+let image =
+document.getElementById("workImage").files[0];
 
 
 if(name===""){
@@ -644,76 +140,105 @@ return;
 
 }
 
-if(!imageFile){
+if(!image){
 
-alert("يرجى اختيار صورة للعمل.");
+alert("يرجى اختيار صورة العمل.");
 
 return;
 
 }
 
 
-addImageToGallery(
-imageFile,
-name,
-description,
-type
+let reader = new FileReader();
+
+
+reader.onload = function(e){
+
+let work = {
+
+name:name,
+
+type:type,
+
+description:description,
+
+image:e.target.result
+
+};
+
+
+works.push(work);
+
+saveWorks();
+
+displayWorks();
+
+
+document.getElementById("name").value="";
+
+document.getElementById("type").value="";
+
+document.getElementById("description").value="";
+
+document.getElementById("workImage").value="";
+
+
+openGallery();
+
+alert("✅ تم حفظ العمل بنجاح.");
+
+};
+
+
+reader.readAsDataURL(image);
+
+}
+
+
+/* حفظ البيانات */
+
+function saveWorks(){
+
+localStorage.setItem(
+"KAPO_ONE_WORKS",
+JSON.stringify(works)
 );
-
-
-document
-.getElementById("workName")
-.value="";
-
-document
-.getElementById("workType")
-.value="";
-
-document
-.getElementById("workDescription")
-.value="";
-
-document
-.getElementById("workImage")
-.value="";
-
-
-showSection(
-"gallerySection",
-"galleryBtn"
-);
-
-alert("✅ تمت إضافة العمل إلى المعرض.");
 
 }
 
 
-/* إضافة الصورة للمعرض */
+/* عرض الأعمال */
 
-function addImageToGallery(
-file,
-name,
-description,
-type
-){
+function displayWorks(){
 
-let reader =
-new FileReader();
+let gallery =
+document.getElementById("gallery");
+
+gallery.innerHTML="";
 
 
-reader.onload =
-function(event){
+if(works.length===0){
 
-let empty =
-document.getElementById("empty");
+gallery.innerHTML=`
 
+<div class="empty" id="empty">
 
-if(empty){
+لا توجد أعمال مضافة حتى الآن.
 
-empty.remove();
+<br><br>
+
+يمكنك إضافة عمل جديد أو صورة.
+
+</div>
+
+`;
+
+return;
 
 }
 
+
+works.forEach(function(work,index){
 
 let card =
 document.createElement("div");
@@ -724,11 +249,9 @@ card.className="card";
 let image =
 document.createElement("img");
 
-image.src =
-event.target.result;
+image.src=work.image;
 
-image.alt =
-name;
+image.alt=work.name;
 
 
 let body =
@@ -740,56 +263,91 @@ body.className="card-body";
 let title =
 document.createElement("h3");
 
-title.textContent =
-name;
+title.textContent=work.name;
 
 
-let text =
+let description =
 document.createElement("p");
 
-text.textContent =
-description;
+description.textContent=work.description;
 
 
 body.appendChild(title);
 
-body.appendChild(text);
+body.appendChild(description);
 
 
-if(type){
+if(work.type){
 
-let badge =
-document.createElement("span");
+let type =
+document.createElement("p");
 
-badge.className="type";
+type.textContent=work.type;
 
-badge.textContent =
-type;
+type.className="type";
 
-body.appendChild(badge);
+body.appendChild(type);
 
 }
 
+
+let deleteButton =
+document.createElement("button");
+
+deleteButton.textContent="🗑️ حذف";
+
+deleteButton.style.marginTop="15px";
+
+deleteButton.style.padding="10px 20px";
+
+deleteButton.style.border="0";
+
+deleteButton.style.borderRadius="8px";
+
+deleteButton.style.background="#dc2626";
+
+deleteButton.style.color="white";
+
+deleteButton.style.cursor="pointer";
+
+
+deleteButton.onclick=function(){
+
+if(confirm("هل تريد حذف هذا العمل؟")){
+
+works.splice(index,1);
+
+saveWorks();
+
+displayWorks();
+
+}
+
+};
+
+
+body.appendChild(deleteButton);
 
 card.appendChild(image);
 
 card.appendChild(body);
 
+gallery.appendChild(card);
 
-document
-.getElementById("gallery")
-.appendChild(card);
-
-};
-
-
-reader.readAsDataURL(file);
+});
 
 }
 
+
+/* تحميل الأعمال عند فتح الصفحة */
+
+document.addEventListener(
+"DOMContentLoaded",
+function(){
+
+displayWorks();
+
+}
+);
+
 </script>
-
-
-</body>
-
-</html>
