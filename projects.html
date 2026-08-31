@@ -107,6 +107,7 @@ text-decoration:none;
 padding:13px 25px;
 border-radius:10px;
 font-size:16px;
+cursor:pointer;
 }
 
 .add-button:hover{
@@ -156,6 +157,10 @@ font-size:16px;
 cursor:pointer;
 }
 
+.save:hover{
+background:#15803d;
+}
+
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -201,6 +206,20 @@ border-radius:8px;
 background:#1e293b;
 color:#93c5fd;
 font-size:13px;
+}
+
+.delete{
+margin-top:15px;
+padding:9px 15px;
+border:0;
+border-radius:8px;
+background:#991b1b;
+color:white;
+cursor:pointer;
+}
+
+.delete:hover{
+background:#b91c1c;
 }
 
 .info{
@@ -307,10 +326,10 @@ font-size:14px;
 </h2>
 
 <p>
-يمكنك إضافة مشروع جديد من هنا.
+أضف مشاريعك واحفظها داخل المتصفح.
 </p>
 
-<a href="#" class="add-button" onclick="showForm(); return false;">
+<a class="add-button" onclick="showForm()">
 ➕ إضافة مشروع جديد
 </a>
 
@@ -338,21 +357,10 @@ placeholder="اكتب اسم المشروع"
 اختر نوع المشروع
 </option>
 
-<option>
-مشروع معماري
-</option>
-
-<option>
-مشروع هندسي
-</option>
-
-<option>
-برج
-</option>
-
-<option>
-فكرة مستقبلية
-</option>
+<option>مشروع معماري</option>
+<option>مشروع هندسي</option>
+<option>برج</option>
+<option>فكرة مستقبلية</option>
 
 </select>
 
@@ -373,21 +381,10 @@ placeholder="اكتب وصف المشروع"
 
 <select id="status">
 
-<option>
-قيد التطوير
-</option>
-
-<option>
-قريبًا
-</option>
-
-<option>
-مكتمل
-</option>
-
-<option>
-فكرة
-</option>
+<option>قيد التطوير</option>
+<option>قريبًا</option>
+<option>مكتمل</option>
+<option>فكرة</option>
 
 </select>
 
@@ -403,94 +400,6 @@ placeholder="اكتب وصف المشروع"
 
 <section class="grid" id="projectsGrid">
 
-
-<div class="project">
-
-<div class="project-top">
-
-<div class="project-icon">
-🏢
-</div>
-
-</div>
-
-<div class="project-body">
-
-<h2>
-مشاريع معمارية
-</h2>
-
-<p>
-مساحة لعرض المشاريع والتصاميم المعمارية الخاصة بمنصة KAPO ONE.
-</p>
-
-<span class="status">
-قريبًا
-</span>
-
-</div>
-
-</div>
-
-
-<div class="project">
-
-<div class="project-top">
-
-<div class="project-icon">
-📐
-</div>
-
-</div>
-
-<div class="project-body">
-
-<h2>
-مشاريع هندسية
-</h2>
-
-<p>
-عرض الأفكار والحلول الهندسية والمخططات الخاصة بالمشاريع.
-</p>
-
-<span class="status">
-قريبًا
-</span>
-
-</div>
-
-</div>
-
-
-<div class="project">
-
-<div class="project-top">
-
-<div class="project-icon">
-💡
-</div>
-
-</div>
-
-<div class="project-body">
-
-<h2>
-أفكار مستقبلية
-</h2>
-
-<p>
-مساحة مخصصة للأفكار الجديدة والابتكارات والمشاريع المستقبلية.
-</p>
-
-<span class="status">
-قيد التطوير
-</span>
-
-</div>
-
-</div>
-
-
 </section>
 
 
@@ -501,8 +410,8 @@ placeholder="اكتب وصف المشروع"
 </h2>
 
 <p>
-من هنا سيتم تطوير وإدارة المشاريع وإضافة التفاصيل
-والصور والمخططات ومراحل التطوير.
+المشاريع التي تضيفها من هذا القسم سيتم حفظها
+داخل المتصفح، وستبقى بعد تحديث الصفحة على نفس الجهاز والمتصفح.
 </p>
 
 </section>
@@ -539,6 +448,10 @@ KAPO <span>ONE</span>
 
 <script>
 
+let projects =
+JSON.parse(localStorage.getItem("kapoProjects")) || [];
+
+
 function showForm(){
 
 document.getElementById("projectForm").style.display="block";
@@ -570,7 +483,84 @@ return;
 }
 
 
-let card = document.createElement("div");
+let project = {
+
+id:Date.now(),
+
+name:name,
+
+type:type,
+
+description:description,
+
+status:status
+
+};
+
+
+projects.push(project);
+
+localStorage.setItem(
+"kapoProjects",
+JSON.stringify(projects)
+);
+
+
+document.getElementById("name").value="";
+document.getElementById("type").value="";
+document.getElementById("description").value="";
+document.getElementById("status").value="قيد التطوير";
+
+
+document.getElementById("projectForm").style.display="none";
+
+
+displayProjects();
+
+alert("✅ تم حفظ المشروع بنجاح.");
+
+}
+
+
+function displayProjects(){
+
+let grid =
+document.getElementById("projectsGrid");
+
+grid.innerHTML="";
+
+
+if(projects.length === 0){
+
+grid.innerHTML=`
+
+<div class="project">
+
+<div class="project-body">
+
+<h2>
+لا توجد مشاريع مضافة بعد
+</h2>
+
+<p>
+اضغط على «إضافة مشروع جديد» لإضافة أول مشروع.
+</p>
+
+</div>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+projects.forEach(function(project){
+
+let card =
+document.createElement("div");
 
 card.className="project";
 
@@ -587,37 +577,82 @@ card.innerHTML=`
 <div class="project-body">
 
 <h2>
-${name}
+${escapeHTML(project.name)}
 </h2>
 
 <p>
-${description}
+${escapeHTML(project.description)}
 </p>
 
 <p>
-<strong>النوع:</strong> ${type}
+<strong>النوع:</strong>
+${escapeHTML(project.type)}
 </p>
 
 <span class="status">
-${status}
+${escapeHTML(project.status)}
 </span>
+
+<br>
+
+<button
+class="delete"
+onclick="deleteProject(${project.id})">
+حذف المشروع
+</button>
 
 </div>
 
 `;
 
+grid.appendChild(card);
 
-document.getElementById("projectsGrid").appendChild(card);
-
-
-document.getElementById("name").value="";
-document.getElementById("type").value="";
-document.getElementById("description").value="";
-document.getElementById("status").value="قيد التطوير";
-
-alert("✅ تمت إضافة المشروع بنجاح.");
+});
 
 }
+
+
+function deleteProject(id){
+
+if(!confirm("هل تريد حذف هذا المشروع؟")){
+
+return;
+
+}
+
+
+projects =
+projects.filter(function(project){
+
+return project.id !== id;
+
+});
+
+
+localStorage.setItem(
+"kapoProjects",
+JSON.stringify(projects)
+);
+
+
+displayProjects();
+
+}
+
+
+function escapeHTML(text){
+
+let div =
+document.createElement("div");
+
+div.textContent=text;
+
+return div.innerHTML;
+
+}
+
+
+displayProjects();
 
 </script>
 
