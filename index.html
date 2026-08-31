@@ -5,8 +5,7 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>KAPO ONE</title>
 
@@ -335,6 +334,72 @@ color:#94a3b8;
 line-height:1.7;
 }
 
+.add-box{
+display:none;
+max-width:900px;
+margin:30px auto;
+background:#111827;
+border:1px solid #334155;
+border-radius:18px;
+padding:22px;
+}
+
+.add-box h2{
+margin-top:0;
+font-size:28px;
+}
+
+.form-input,
+.form-select,
+.form-textarea{
+width:100%;
+padding:14px;
+margin:8px 0;
+background:#07101f;
+color:white;
+border:1px solid #334155;
+border-radius:10px;
+font-size:16px;
+font-family:Arial;
+}
+
+.form-textarea{
+height:120px;
+resize:none;
+}
+
+.publish{
+width:100%;
+padding:14px;
+margin-top:12px;
+background:#38bdf8;
+color:#082f49;
+border:0;
+border-radius:10px;
+font-weight:bold;
+font-size:16px;
+}
+
+.cancel{
+width:100%;
+padding:14px;
+margin-top:10px;
+background:#1e293b;
+color:white;
+border:1px solid #334155;
+border-radius:10px;
+font-size:16px;
+}
+
+.preview{
+display:none;
+margin-top:15px;
+border-radius:12px;
+max-height:250px;
+width:100%;
+object-fit:cover;
+}
+
 textarea{
 width:100%;
 height:110px;
@@ -531,14 +596,113 @@ onkeyup="searchProjects()">
 
 </div>
 
-<button class="add">
+
+<button
+class="add"
+onclick="openAddProject()">
+
 ＋ إضافة مشروع
+
 </button>
 
 </div>
 
 
-<div class="projects" id="projects">
+<div
+id="addProjectBox"
+class="add-box">
+
+<h2>
+🚀 إضافة مشروع جديد
+</h2>
+
+<p style="color:#94a3b8;">
+أدخل معلومات المشروع ثم اضغط نشر المشروع.
+</p>
+
+
+<input
+id="newName"
+class="form-input"
+placeholder="اسم المشروع">
+
+
+<input
+id="newOwner"
+class="form-input"
+placeholder="اسم صاحب المشروع">
+
+
+<input
+id="newLocation"
+class="form-input"
+placeholder="الدولة أو المدينة">
+
+
+<select
+id="newCategory"
+class="form-select">
+
+<option value="🏢 العمارة">
+🏢 العمارة
+</option>
+
+<option value="🏗️ الهندسة">
+🏗️ الهندسة
+</option>
+
+<option value="🌆 الأبراج">
+🌆 الأبراج
+</option>
+
+<option value="💡 الأفكار">
+💡 الأفكار
+</option>
+
+</select>
+
+
+<textarea
+id="newDescription"
+class="form-textarea"
+placeholder="نبذة عن المشروع...">
+</textarea>
+
+
+<input
+id="newImage"
+class="form-input"
+placeholder="رابط صورة المشروع">
+
+
+<img
+id="preview"
+class="preview">
+
+
+<button
+class="publish"
+onclick="publishProject()">
+
+🚀 نشر المشروع
+
+</button>
+
+
+<button
+class="cancel"
+onclick="closeAddProject()">
+
+إلغاء
+
+</button>
+
+</div>
+
+
+<div
+class="projects"
+id="projects">
 
 
 <div class="project">
@@ -579,7 +743,13 @@ src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fi
 
 <button
 class="open"
-onclick="openProject()">
+onclick="openProject(
+'برج المستقبل',
+'🌆 أبراج',
+'KAPO Design',
+'مشروع معماري مستقبلي يجمع بين التصميم المبتكر والهندسة الحديثة والتقنيات الجديدة.',
+'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80'
+)">
 
 استكشف المشروع
 
@@ -628,7 +798,13 @@ src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fi
 
 <button
 class="open"
-onclick="openSmartCity()">
+onclick="openProject(
+'المدينة الذكية',
+'🏢 عمارة',
+'Future Architecture',
+'تصور معماري لمدينة حديثة تعتمد على التقنية والاستدامة والحلول الذكية.',
+'https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1200&q=80'
+)">
 
 استكشف المشروع
 
@@ -677,7 +853,13 @@ src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=c
 
 <button
 class="open"
-onclick="openEngineering()">
+onclick="openProject(
+'الهيكل الهندسي',
+'🏗️ هندسة',
+'Engineering Lab',
+'حلول هندسية مبتكرة للمباني الحديثة والمشاريع المستقبلية.',
+'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80'
+)">
 
 استكشف المشروع
 
@@ -711,32 +893,24 @@ onclick="showHome()">
 
 <div class="details-image">
 
-<img
-id="detailImage"
-src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80">
+<img id="detailImage">
 
 </div>
 
 
-<div class="category">
-🌆 مشاريع الأبراج
+<div
+id="detailCategory"
+class="category">
 </div>
 
 
 <h1 id="detailTitle">
-برج المستقبل
 </h1>
 
 
 <p
 id="detailText"
 class="details-text">
-
-مشروع معماري مستقبلي يجمع بين التصميم
-المبتكر والهندسة الحديثة والتقنيات الجديدة.
-تم تطوير الفكرة لتقديم رؤية مختلفة للأبراج
-والمدن المستقبلية.
-
 </p>
 
 
@@ -754,12 +928,13 @@ class="details-text">
 
 <div>
 
-<div class="owner-name">
-KAPO Design
+<div
+id="detailOwner"
+class="owner-name">
 </div>
 
 <div class="owner-role">
-تصميم وهندسة معمارية
+صاحب المشروع
 </div>
 
 </div>
@@ -792,13 +967,9 @@ KAPO Design
 📐 نبذة عن المشروع
 </h2>
 
-<p class="details-text">
-
-رؤية معمارية مستقبلية تهدف إلى تقديم
-تصميم مختلف للأبراج والمدن الحديثة،
-مع التركيز على الابتكار والاستدامة
-والهندسة والتقنيات الجديدة.
-
+<p
+id="detailAbout"
+class="details-text">
 </p>
 
 </div>
@@ -919,11 +1090,7 @@ window.scrollTo(0,0);
 
 function showProjects(){
 
-document.getElementById("home")
-.style.display="block";
-
-document.getElementById("details")
-.style.display="none";
+showHome();
 
 document.getElementById("projects")
 .scrollIntoView({
@@ -933,17 +1100,31 @@ behavior:"smooth"
 }
 
 
-function openProject(){
+function openProject(
+title,
+category,
+owner,
+description,
+image
+){
 
 document.getElementById("detailTitle")
-.innerText="برج المستقبل";
+.innerText=title;
 
-document.getElementById("detailImage")
-.src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80";
+document.getElementById("detailCategory")
+.innerText=category;
+
+document.getElementById("detailOwner")
+.innerText=owner;
 
 document.getElementById("detailText")
-.innerText=
-"مشروع معماري مستقبلي يجمع بين التصميم المبتكر والهندسة الحديثة والتقنيات الجديدة. تم تطوير الفكرة لتقديم رؤية مختلفة للأبراج والمدن المستقبلية.";
+.innerText=description;
+
+document.getElementById("detailAbout")
+.innerText=description;
+
+document.getElementById("detailImage")
+.src=image;
 
 document.getElementById("home")
 .style.display="none";
@@ -956,55 +1137,162 @@ window.scrollTo(0,0);
 }
 
 
-function openSmartCity(){
+function openAddProject(){
 
-document.getElementById("detailTitle")
-.innerText="المدينة الذكية";
-
-document.getElementById("detailImage")
-.src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1200&q=80";
-
-document.getElementById("detailText")
-.innerText=
-"تصور معماري لمدينة حديثة تعتمد على التقنية والاستدامة والحلول الذكية.";
-
-document.getElementById("home")
-.style.display="none";
-
-document.getElementById("details")
+document.getElementById("addProjectBox")
 .style.display="block";
 
-window.scrollTo(0,0);
+document.getElementById("addProjectBox")
+.scrollIntoView({
+behavior:"smooth"
+});
 
 }
 
 
-function openEngineering(){
+function closeAddProject(){
 
-document.getElementById("detailTitle")
-.innerText="الهيكل الهندسي";
-
-document.getElementById("detailImage")
-.src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80";
-
-document.getElementById("detailText")
-.innerText=
-"حلول هندسية مبتكرة للمباني الحديثة والمشاريع المستقبلية.";
-
-document.getElementById("home")
+document.getElementById("addProjectBox")
 .style.display="none";
 
-document.getElementById("details")
-.style.display="block";
+}
 
-window.scrollTo(0,0);
+
+function publishProject(){
+
+let name=
+document.getElementById("newName")
+.value.trim();
+
+let owner=
+document.getElementById("newOwner")
+.value.trim();
+
+let location=
+document.getElementById("newLocation")
+.value.trim();
+
+let category=
+document.getElementById("newCategory")
+.value;
+
+let description=
+document.getElementById("newDescription")
+.value.trim();
+
+let image=
+document.getElementById("newImage")
+.value.trim();
+
+
+if(
+name==="" ||
+owner==="" ||
+description===""
+){
+
+alert(
+"يرجى تعبئة اسم المشروع وصاحب المشروع والنبذة."
+);
+
+return;
+
+}
+
+
+if(image===""){
+
+image=
+"https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80";
+
+}
+
+
+let project=
+document.createElement("div");
+
+project.className="project";
+
+project.innerHTML=`
+
+<div class="project-img">
+
+<img src="${image}">
+
+</div>
+
+<div class="project-body">
+
+<span class="badge">
+${category}
+</span>
+
+<h3>
+${name}
+</h3>
+
+<p>
+${description}
+</p>
+
+<div class="bottom">
+
+<span>
+👤 ${owner}
+</span>
+
+<span>
+📍 ${location}
+</span>
+
+</div>
+
+<button
+class="open"
+onclick="openProject(
+'${name.replace(/'/g,"\\'")}',
+'${category}',
+'${owner.replace(/'/g,"\\'")}',
+'${description.replace(/'/g,"\\'")}',
+'${image.replace(/'/g,"\\'")}'
+)">
+
+استكشف المشروع
+
+</button>
+
+</div>
+
+`;
+
+
+document
+.getElementById("projects")
+.prepend(project);
+
+
+closeAddProject();
+
+
+document.getElementById("newName").value="";
+document.getElementById("newOwner").value="";
+document.getElementById("newLocation").value="";
+document.getElementById("newDescription").value="";
+document.getElementById("newImage").value="";
+
+
+alert(
+"تمت إضافة المشروع إلى معرض KAPO ONE بنجاح."
+);
 
 }
 
 
 function likeProject(button){
 
-if(button.innerText.includes("♡")){
+if(
+button.innerText.includes("♡")
+){
 
 button.innerText="♥ تم الإعجاب";
 
@@ -1019,7 +1307,9 @@ button.innerText="♡ إعجاب";
 
 function saveProject(button){
 
-if(button.innerText.includes("🔖")){
+if(
+button.innerText.includes("🔖")
+){
 
 button.innerText="✓ تم الحفظ";
 
@@ -1046,7 +1336,9 @@ text:"شاهد هذا المشروع على KAPO ONE"
 
 }else{
 
-alert("ميزة المشاركة ستتطور لاحقًا.");
+alert(
+"ميزة المشاركة ستتطور لاحقًا."
+);
 
 }
 
@@ -1061,13 +1353,17 @@ document.getElementById("comment")
 
 if(text===""){
 
-alert("اكتب تعليقك أولًا.");
+alert(
+"اكتب تعليقك أولًا."
+);
 
 return;
 
 }
 
-alert("تم استلام تعليقك.");
+alert(
+"تم استلام تعليقك."
+);
 
 document.getElementById("comment")
 .value="";
@@ -1086,9 +1382,11 @@ document.querySelectorAll(".project");
 
 projects.forEach(function(project){
 
-if(project.innerText
+if(
+project.innerText
 .toLowerCase()
-.includes(value)){
+.includes(value)
+){
 
 project.style.display="";
 
