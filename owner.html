@@ -66,14 +66,14 @@ nav a:hover{
 }
 
 .container{
-    max-width:1200px;
+    max-width:1100px;
     margin:auto;
     padding:40px 20px 70px;
 }
 
 .hero{
     text-align:center;
-    padding:20px 10px 40px;
+    padding:20px 10px 35px;
 }
 
 .hero-icon{
@@ -89,33 +89,97 @@ nav a:hover{
     color:#94a3b8;
 }
 
-.dashboard{
+.panel{
+    margin-top:25px;
+    background:#111827;
+    border:1px solid #263449;
+    border-radius:20px;
+    padding:30px;
+}
+
+.panel h2{
+    text-align:center;
+    margin-top:0;
+    font-size:26px;
+}
+
+.form{
+    max-width:750px;
+    margin:auto;
+}
+
+label{
+    display:block;
+    margin:15px 0 7px;
+    color:#cbd5e1;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:13px;
+    border-radius:10px;
+    border:1px solid #334155;
+    background:#0b1120;
+    color:white;
+    font-size:15px;
+    font-family:Arial,sans-serif;
+}
+
+textarea{
+    min-height:120px;
+    resize:vertical;
+}
+
+button{
+    width:100%;
+    margin-top:20px;
+    padding:13px;
+    border:0;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+.message{
+    display:none;
+    margin-top:18px;
+    padding:14px;
+    border-radius:10px;
+    background:#064e3b;
+    border:1px solid #10b981;
+    color:#d1fae5;
+    text-align:center;
+}
+
+.cards{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+    margin-top:25px;
 }
 
 .card{
-    background:#111827;
+    background:#0b1120;
     border:1px solid #263449;
-    border-radius:18px;
-    padding:25px;
+    border-radius:16px;
+    padding:22px;
     text-align:center;
-    transition:.2s;
 }
 
-.card:hover{
-    transform:translateY(-4px);
-    border-color:#38bdf8;
+.card-icon{
+    font-size:40px;
 }
 
-.icon{
-    font-size:45px;
-}
-
-.card h2{
-    font-size:21px;
-    margin:12px 0 8px;
+.card h3{
+    margin:10px 0;
 }
 
 .card p{
@@ -123,69 +187,9 @@ nav a:hover{
     font-size:14px;
 }
 
-.btn{
-    display:inline-block;
-    margin-top:12px;
-    padding:10px 20px;
-    border-radius:10px;
-    background:#2563eb;
-    color:white;
-    text-decoration:none;
-    border:0;
-    cursor:pointer;
-    font-size:14px;
-}
-
-.btn:hover{
-    background:#1d4ed8;
-}
-
-.panel{
-    margin-top:30px;
-    background:#111827;
-    border:1px solid #263449;
-    border-radius:18px;
-    padding:25px;
-}
-
-.panel h2{
-    text-align:center;
-    margin-top:0;
-}
-
-.list{
-    display:grid;
-    gap:12px;
-}
-
-.item{
-    background:#0b1120;
-    border:1px solid #263449;
-    border-radius:12px;
-    padding:15px;
-    color:#cbd5e1;
-}
-
-.security{
-    margin-top:30px;
-    background:#172554;
-    border:1px solid #2563eb;
-    border-radius:18px;
-    padding:22px;
-    text-align:center;
-}
-
-.security h2{
-    margin-top:0;
-}
-
-.security p{
-    color:#cbd5e1;
-}
-
 .back{
     text-align:center;
-    margin-top:35px;
+    margin-top:30px;
 }
 
 .back a{
@@ -248,29 +252,12 @@ footer p{
 
 <nav>
 
-<a href="index.html">
-الرئيسية
-</a>
-
-<a href="projects.html">
-المشاريع
-</a>
-
-<a href="design.html">
-التصميم والهندسة
-</a>
-
-<a href="ideas.html">
-الأفكار المعمارية
-</a>
-
-<a href="files.html">
-الملفات
-</a>
-
-<a href="owner.html">
-المالك
-</a>
+<a href="index.html">الرئيسية</a>
+<a href="projects.html">المشاريع</a>
+<a href="design.html">التصميم والهندسة</a>
+<a href="ideas.html">الأفكار المعمارية</a>
+<a href="files.html">الملفات</a>
+<a href="owner.html">المالك</a>
 
 </nav>
 
@@ -293,140 +280,8 @@ footer p{
 </h1>
 
 <p>
-مركز إدارة المنصة والمشاريع والأفكار والمحتوى
+إدارة المشاريع والأفكار والمحتوى
 </p>
-
-</section>
-
-
-<section class="dashboard">
-
-
-<div class="card">
-
-<div class="icon">
-📁
-</div>
-
-<h2>
-إدارة المشاريع
-</h2>
-
-<p>
-عرض وتنظيم مشاريع KAPO ONE.
-</p>
-
-<a class="btn" href="projects.html">
-فتح المشاريع
-</a>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">
-📐
-</div>
-
-<h2>
-التصميم والهندسة
-</h2>
-
-<p>
-إدارة محتوى التصميم والهندسة.
-</p>
-
-<a class="btn" href="design.html">
-فتح القسم
-</a>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">
-💡
-</div>
-
-<h2>
-الأفكار المعمارية
-</h2>
-
-<p>
-عرض وتطوير الأفكار المعمارية.
-</p>
-
-<a class="btn" href="ideas.html">
-فتح الأفكار
-</a>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">
-📂
-</div>
-
-<h2>
-الملفات والمشاريع
-</h2>
-
-<p>
-تنظيم ملفات ومستندات المنصة.
-</p>
-
-<a class="btn" href="files.html">
-فتح الملفات
-</a>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">
-🖼️
-</div>
-
-<h2>
-المعرض
-</h2>
-
-<p>
-قسم الصور والتصاميم والنماذج.
-</p>
-
-<a class="btn" href="gallery.html">
-فتح المعرض
-</a>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">
-📨
-</div>
-
-<h2>
-الرسائل
-</h2>
-
-<p>
-متابعة استفسارات ورسائل الزوار.
-</p>
-
-<button class="btn" onclick="alert('قسم الرسائل سيتم تطويره لاحقًا')">
-فتح الرسائل
-</button>
-
-</div>
-
 
 </section>
 
@@ -434,33 +289,93 @@ footer p{
 <section class="panel">
 
 <h2>
-📊 حالة منصة KAPO ONE
+➕ إضافة مشروع جديد
 </h2>
 
-<div class="list">
+<div class="form">
 
-<div class="item">
-✅ الصفحة الرئيسية — تعمل
-</div>
+<label>
+اسم المشروع
+</label>
 
-<div class="item">
-✅ المشاريع — تعمل
-</div>
+<input
+type="text"
+id="projectName"
+placeholder="اكتب اسم المشروع"
+>
 
-<div class="item">
-✅ التصميم والهندسة — تعمل
-</div>
 
-<div class="item">
-✅ الأفكار المعمارية — تعمل
-</div>
+<label>
+نوع المشروع
+</label>
 
-<div class="item">
-✅ الملفات — تعمل
-</div>
+<select id="projectType">
 
-<div class="item">
-✅ صفحة المالك — تعمل
+<option value="">
+اختر نوع المشروع
+</option>
+
+<option>
+مشروع معماري
+</option>
+
+<option>
+مشروع هندسي
+</option>
+
+<option>
+برج
+</option>
+
+<option>
+فكرة مستقبلية
+</option>
+
+</select>
+
+
+<label>
+وصف المشروع
+</label>
+
+<textarea
+id="projectDescription"
+placeholder="اكتب وصف المشروع"
+></textarea>
+
+
+<label>
+حالة المشروع
+</label>
+
+<select id="projectStatus">
+
+<option>
+قيد التطوير
+</option>
+
+<option>
+قريبًا
+</option>
+
+<option>
+مكتمل
+</option>
+
+<option>
+فكرة
+</option>
+
+</select>
+
+
+<button onclick="addProject()">
+إضافة المشروع
+</button>
+
+
+<div class="message" id="message">
+✅ تم تسجيل المشروع بنجاح داخل واجهة المنصة.
 </div>
 
 </div>
@@ -468,18 +383,100 @@ footer p{
 </section>
 
 
-<section class="security">
+<section class="panel">
 
 <h2>
-🛡️ حماية المالك
+📊 أقسام الإدارة
 </h2>
 
+<div class="cards">
+
+
+<div class="card">
+
+<div class="card-icon">
+📁
+</div>
+
+<h3>
+المشاريع
+</h3>
+
 <p>
-هذه الصفحة حاليًا واجهة إدارة فقط.
-لن يتم حفظ كلمة المرور داخل HTML.
-سيتم إضافة نظام تسجيل دخول آمن
-عند ربط المنصة بخدمة مصادقة وقاعدة بيانات.
+إدارة المشاريع والتصاميم.
 </p>
+
+<a href="projects.html">
+فتح
+</a>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+📐
+</div>
+
+<h3>
+التصميم والهندسة
+</h3>
+
+<p>
+إدارة التصاميم والأفكار الهندسية.
+</p>
+
+<a href="design.html">
+فتح
+</a>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+💡
+</div>
+
+<h3>
+الأفكار المعمارية
+</h3>
+
+<p>
+تطوير الأفكار والمفاهيم المستقبلية.
+</p>
+
+<a href="ideas.html">
+فتح
+</a>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+📂
+</div>
+
+<h3>
+الملفات
+</h3>
+
+<p>
+تنظيم ملفات المشاريع والمستندات.
+</p>
+
+<a href="files.html">
+فتح
+</a>
+
+</div>
+
+
+</div>
 
 </section>
 
@@ -487,7 +484,7 @@ footer p{
 <div class="back">
 
 <a href="index.html">
-⬅ العودة إلى الصفحة الرئيسية
+⬅ العودة إلى الرئيسية
 </a>
 
 </div>
@@ -511,6 +508,43 @@ KAPO <span>ONE</span>
 </p>
 
 </footer>
+
+
+<script>
+
+function addProject(){
+
+    const name =
+    document.getElementById("projectName").value.trim();
+
+    const type =
+    document.getElementById("projectType").value;
+
+    const description =
+    document.getElementById("projectDescription").value.trim();
+
+    const status =
+    document.getElementById("projectStatus").value;
+
+    if(name === "" || type === "" || description === ""){
+
+        alert("يرجى تعبئة جميع بيانات المشروع.");
+
+        return;
+    }
+
+    document.getElementById("message").style.display = "block";
+
+    console.log({
+        name:name,
+        type:type,
+        description:description,
+        status:status
+    });
+
+}
+
+</script>
 
 
 </body>
