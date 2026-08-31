@@ -2,308 +2,334 @@
 <html lang="ar" dir="rtl">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>KAPO ONE | تفاصيل المشروع</title>
 
 <style>
 
 *{
-    box-sizing:border-box;
+box-sizing:border-box;
 }
 
 body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#080f1d;
-    color:white;
+margin:0;
+font-family:Arial,sans-serif;
+background:#070d19;
+color:white;
 }
 
 header{
-    background:#0f172a;
-    border-bottom:1px solid #263244;
-    padding:16px 20px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+background:#0f172a;
+border-bottom:1px solid #263244;
+padding:16px 20px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+position:sticky;
+top:0;
+z-index:20;
 }
 
 .logo{
-    font-size:26px;
-    font-weight:bold;
+font-size:27px;
+font-weight:bold;
 }
 
 .logo span{
-    color:#38bdf8;
+color:#38bdf8;
 }
 
 .back{
-    background:#1e293b;
-    color:white;
-    border:1px solid #334155;
-    padding:11px 17px;
-    border-radius:10px;
-    cursor:pointer;
-}
-
-.back:hover{
-    background:#2563eb;
+background:#1e293b;
+color:white;
+border:1px solid #334155;
+padding:11px 17px;
+border-radius:10px;
+cursor:pointer;
 }
 
 .container{
-    max-width:1100px;
-    margin:auto;
-    padding:35px 20px 80px;
+max-width:1100px;
+margin:auto;
+padding:30px 20px 90px;
 }
 
-.project-cover{
-    height:380px;
-    border-radius:24px;
-    background:linear-gradient(135deg,#172554,#1e293b);
-    border:1px solid #334155;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:120px;
-    margin-bottom:30px;
+.cover{
+width:100%;
+height:430px;
+border-radius:24px;
+overflow:hidden;
+border:1px solid #334155;
+background:#111827;
+}
+
+.cover img{
+width:100%;
+height:100%;
+object-fit:cover;
 }
 
 .type{
-    color:#38bdf8;
-    font-size:15px;
-    font-weight:bold;
+color:#38bdf8;
+font-size:14px;
+font-weight:bold;
+margin-top:30px;
 }
 
 h1{
-    font-size:38px;
-    margin:10px 0;
+font-size:40px;
+margin:10px 0;
 }
 
 .description{
-    color:#cbd5e1;
-    font-size:18px;
-    line-height:1.9;
-    max-width:850px;
+color:#b7c2d1;
+font-size:18px;
+line-height:1.9;
+max-width:850px;
 }
 
 .owner{
-    margin-top:25px;
-    background:#111827;
-    border:1px solid #263244;
-    border-radius:16px;
-    padding:18px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
+margin-top:25px;
+background:#111827;
+border:1px solid #263244;
+border-radius:17px;
+padding:18px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
 }
 
 .owner-info{
-    display:flex;
-    align-items:center;
-    gap:12px;
+display:flex;
+align-items:center;
+gap:13px;
 }
 
 .avatar{
-    width:48px;
-    height:48px;
-    border-radius:50%;
-    background:#1e293b;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:24px;
+width:52px;
+height:52px;
+border-radius:50%;
+background:#1e293b;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:25px;
 }
 
 .owner-name{
-    font-weight:bold;
+font-weight:bold;
+font-size:17px;
 }
 
 .owner-role{
-    color:#94a3b8;
-    font-size:13px;
-    margin-top:4px;
+color:#94a3b8;
+font-size:13px;
+margin-top:5px;
 }
 
 .follow{
-    background:#2563eb;
-    color:white;
-    border:0;
-    padding:11px 18px;
-    border-radius:10px;
-    cursor:pointer;
-}
-
-.info-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-    margin:30px 0;
+background:#2563eb;
+color:white;
+border:0;
+padding:11px 20px;
+border-radius:10px;
+cursor:pointer;
 }
 
 .info{
-    background:#111827;
-    border:1px solid #263244;
-    border-radius:15px;
-    padding:20px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+margin:25px 0;
 }
 
-.info-title{
-    color:#94a3b8;
-    font-size:14px;
-    margin-bottom:8px;
+.info-card{
+background:#111827;
+border:1px solid #263244;
+border-radius:15px;
+padding:20px;
+}
+
+.info-label{
+color:#94a3b8;
+font-size:13px;
+margin-bottom:8px;
 }
 
 .info-value{
-    font-size:17px;
-    font-weight:bold;
+font-size:17px;
+font-weight:bold;
 }
 
 .actions{
-    display:flex;
-    gap:10px;
-    margin:25px 0;
+display:flex;
+gap:10px;
+margin:25px 0;
 }
 
 .action{
-    background:#111827;
-    color:white;
-    border:1px solid #334155;
-    padding:13px 20px;
-    border-radius:11px;
-    cursor:pointer;
+background:#111827;
+color:white;
+border:1px solid #334155;
+padding:13px 20px;
+border-radius:11px;
+cursor:pointer;
 }
 
 .action:hover{
-    background:#2563eb;
+background:#2563eb;
 }
 
 .section{
-    margin-top:45px;
+margin-top:45px;
 }
 
 .section h2{
-    font-size:27px;
+font-size:27px;
 }
 
 .features{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:15px;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
 }
 
 .feature{
-    background:#111827;
-    border:1px solid #263244;
-    border-radius:15px;
-    padding:20px;
+background:#111827;
+border:1px solid #263244;
+border-radius:15px;
+padding:20px;
 }
 
-.feature strong{
-    display:block;
-    margin-bottom:8px;
+.feature-title{
+font-weight:bold;
+margin-bottom:9px;
 }
 
-.feature span{
-    color:#94a3b8;
+.feature-text{
+color:#94a3b8;
+line-height:1.7;
 }
 
 .comments{
-    margin-top:25px;
+margin-top:40px;
 }
 
 .comment-box{
-    background:#111827;
-    border:1px solid #263244;
-    border-radius:15px;
-    padding:20px;
+background:#111827;
+border:1px solid #263244;
+border-radius:16px;
+padding:20px;
 }
 
-.comment-box textarea{
-    width:100%;
-    min-height:110px;
-    resize:vertical;
-    background:#0b1120;
-    border:1px solid #334155;
-    color:white;
-    border-radius:11px;
-    padding:15px;
-    font-family:Arial;
-    font-size:16px;
+textarea{
+width:100%;
+height:120px;
+background:#080f1d;
+color:white;
+border:1px solid #334155;
+border-radius:11px;
+padding:15px;
+font-family:Arial;
+font-size:16px;
+resize:vertical;
 }
 
-.comment-box button{
-    margin-top:12px;
-    background:#38bdf8;
-    color:#082f49;
-    border:0;
-    padding:12px 20px;
-    border-radius:10px;
-    font-weight:bold;
-    cursor:pointer;
+.comment-button{
+margin-top:12px;
+background:#38bdf8;
+color:#082f49;
+border:0;
+padding:12px 20px;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
 }
 
 footer{
-    background:#060b14;
-    border-top:1px solid #263244;
-    text-align:center;
-    padding:25px;
-    color:#64748b;
+background:#050a12;
+border-top:1px solid #263244;
+padding:28px 20px;
+text-align:center;
+color:#64748b;
 }
 
 @media(max-width:700px){
 
-    .project-cover{
-        height:250px;
-        font-size:80px;
-    }
+header{
+flex-direction:column;
+gap:15px;
+}
 
-    h1{
-        font-size:30px;
-    }
+.back{
+width:100%;
+}
 
-    .owner{
-        align-items:flex-start;
-        flex-direction:column;
-    }
+.cover{
+height:250px;
+}
 
-    .follow{
-        width:100%;
-    }
+h1{
+font-size:30px;
+}
 
-    .info-grid{
-        grid-template-columns:1fr;
-    }
+.owner{
+align-items:flex-start;
+flex-direction:column;
+}
 
-    .features{
-        grid-template-columns:1fr;
-    }
+.follow{
+width:100%;
+}
 
-    .actions{
-        flex-wrap:wrap;
-    }
+.info{
+grid-template-columns:1fr;
+}
 
-    .action{
-        flex:1;
-    }
+.features{
+grid-template-columns:1fr;
+}
+
+.actions{
+flex-wrap:wrap;
+}
+
+.action{
+flex:1;
+}
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
+
 <header>
 
-    <div class="logo">
-        KAPO <span>ONE</span>
-    </div>
+<div class="logo">
 
-    <button class="back" onclick="backToGallery()">
-        ← العودة إلى المعرض
-    </button>
+KAPO <span>ONE</span>
+
+</div>
+
+
+<button
+class="back"
+onclick="backToGallery()">
+
+← العودة إلى معرض الأعمال
+
+</button>
 
 </header>
 
@@ -311,198 +337,263 @@ footer{
 <main class="container">
 
 
-    <div class="project-cover">
-        🌆
-    </div>
+<div class="cover">
 
+<img
+src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
+alt="برج المستقبل">
 
-    <div class="type">
-        مشاريع الأبراج
-    </div>
+</div>
 
 
-    <h1>
-        برج المستقبل
-    </h1>
+<div class="type">
 
+🏙️ مشاريع الأبراج
 
-    <p class="description">
-        مشروع معماري مستقبلي يجمع بين الابتكار والهندسة
-        والتصميم الحديث. يهدف المشروع إلى تقديم رؤية
-        جديدة للأبراج والمدن المستقبلية، مع التركيز على
-        الجمال المعماري والاستدامة والتقنيات الحديثة.
-    </p>
+</div>
 
 
-    <div class="owner">
+<h1>
 
-        <div class="owner-info">
+برج المستقبل
 
-            <div class="avatar">
-                👤
-            </div>
+</h1>
 
-            <div>
 
-                <div class="owner-name">
-                    KAPO Design
-                </div>
+<p class="description">
 
-                <div class="owner-role">
-                    مصمم ومطور مشاريع معمارية
-                </div>
+مشروع معماري مستقبلي يجمع بين التصميم
+المبتكر والهندسة الحديثة والتقنيات الجديدة.
+تم تطوير الفكرة لتقديم رؤية مختلفة للأبراج
+والمدن المستقبلية.
 
-            </div>
+</p>
 
-        </div>
 
-        <button class="follow" onclick="followOwner()">
-            متابعة
-        </button>
+<div class="owner">
 
-    </div>
 
+<div class="owner-info">
 
-    <div class="info-grid">
+<div class="avatar">
+👤
+</div>
 
-        <div class="info">
 
-            <div class="info-title">
-                نوع المشروع
-            </div>
+<div>
 
-            <div class="info-value">
-                برج معماري
-            </div>
+<div class="owner-name">
+KAPO Design
+</div>
 
-        </div>
+<div class="owner-role">
+تصميم وهندسة معمارية
+</div>
 
+</div>
 
-        <div class="info">
+</div>
 
-            <div class="info-title">
-                المجال
-            </div>
 
-            <div class="info-value">
-                العمارة والهندسة
-            </div>
+<button
+class="follow"
+onclick="followOwner()">
 
-        </div>
+متابعة المصمم
 
+</button>
 
-        <div class="info">
 
-            <div class="info-title">
-                الموقع
-            </div>
+</div>
 
-            <div class="info-value">
-                مشروع عالمي
-            </div>
 
-        </div>
+<div class="info">
 
-    </div>
 
+<div class="info-card">
 
-    <div class="actions">
+<div class="info-label">
+نوع المشروع
+</div>
 
-        <button class="action" onclick="likeProject(this)">
-            ♡ إعجاب
-        </button>
+<div class="info-value">
+برج معماري
+</div>
 
-        <button class="action" onclick="saveProject(this)">
-            🔖 حفظ
-        </button>
+</div>
 
-        <button class="action" onclick="shareProject()">
-            📤 مشاركة
-        </button>
 
-    </div>
+<div class="info-card">
 
+<div class="info-label">
+المجال
+</div>
 
-    <section class="section">
+<div class="info-value">
+العمارة والهندسة
+</div>
 
-        <h2>
-            عن المشروع
-        </h2>
+</div>
 
-        <div class="features">
 
-            <div class="feature">
+<div class="info-card">
 
-                <strong>🏗️ التصميم</strong>
+<div class="info-label">
+الموقع
+</div>
 
-                <span>
-                    تصميم معماري يركز على الشكل
-                    والوظيفة وتجربة المستخدم.
-                </span>
+<div class="info-value">
+مشروع عالمي
+</div>
 
-            </div>
+</div>
 
 
-            <div class="feature">
+</div>
 
-                <strong>💡 الابتكار</strong>
 
-                <span>
-                    دمج الأفكار الحديثة مع الحلول
-                    الهندسية المستقبلية.
-                </span>
+<div class="actions">
 
-            </div>
 
+<button
+class="action"
+onclick="likeProject(this)">
 
-            <div class="feature">
+♡ إعجاب
 
-                <strong>🌱 الاستدامة</strong>
+</button>
 
-                <span>
-                    توجه نحو إنشاء مبانٍ أكثر
-                    كفاءة واستدامة.
-                </span>
 
-            </div>
+<button
+class="action"
+onclick="saveProject(this)">
 
+🔖 حفظ
 
-            <div class="feature">
+</button>
 
-                <strong>🌍 الرؤية العالمية</strong>
 
-                <span>
-                    مشروع قابل للتطوير ليكون جزءًا
-                    من مستقبل المدن حول العالم.
-                </span>
+<button
+class="action"
+onclick="shareProject()">
 
-            </div>
+📤 مشاركة
 
-        </div>
+</button>
 
-    </section>
 
+</div>
 
-    <section class="section comments">
 
-        <h2>
-            التعليقات
-        </h2>
+<section class="section">
 
-        <div class="comment-box">
 
-            <textarea
-                id="comment"
-                placeholder="اكتب تعليقك على المشروع..."
-            ></textarea>
+<h2>
+عن المشروع
+</h2>
 
-            <button onclick="addComment()">
-                إرسال التعليق
-            </button>
 
-        </div>
+<div class="features">
 
-    </section>
+
+<div class="feature">
+
+<div class="feature-title">
+🏗️ التصميم
+</div>
+
+<div class="feature-text">
+
+تصميم معماري يركز على الشكل
+والوظيفة وتجربة المستخدم.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+💡 الابتكار
+</div>
+
+<div class="feature-text">
+
+دمج الأفكار الحديثة مع الحلول
+الهندسية المستقبلية.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+🌱 الاستدامة
+</div>
+
+<div class="feature-text">
+
+التوجه نحو مبانٍ أكثر كفاءة
+وأفضل استخدامًا للطاقة والموارد.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+🌍 الرؤية العالمية
+</div>
+
+<div class="feature-text">
+
+فكرة قابلة للتطوير لتناسب
+المدن المستقبلية حول العالم.
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<section class="section comments">
+
+
+<h2>
+التعليقات
+</h2>
+
+
+<div class="comment-box">
+
+
+<textarea
+id="comment"
+placeholder="اكتب تعليقك على المشروع...">
+</textarea>
+
+
+<button
+class="comment-button"
+onclick="addComment()">
+
+إرسال التعليق
+
+</button>
+
+
+</div>
+
+</section>
 
 
 </main>
@@ -510,102 +601,109 @@ footer{
 
 <footer>
 
-    KAPO ONE © 2026
+KAPO ONE © 2026
 
-    <br><br>
+<br><br>
 
-    منصة عالمية للأعمال والمشاريع والتصميم
+منصة عالمية للأعمال والمشاريع والتصميم
 
 </footer>
 
 
 <script>
 
+
 function backToGallery(){
 
-    window.location.href="index.html";
+window.location.href="index.html";
 
 }
 
 
 function likeProject(button){
 
-    if(button.innerText.includes("♡")){
+if(button.innerText.includes("♡")){
 
-        button.innerText="♥ تم الإعجاب";
+button.innerText="♥ تم الإعجاب";
 
-    }else{
+}else{
 
-        button.innerText="♡ إعجاب";
+button.innerText="♡ إعجاب";
 
-    }
+}
 
 }
 
 
 function saveProject(button){
 
-    if(button.innerText.includes("🔖")){
+if(button.innerText.includes("🔖")){
 
-        button.innerText="✓ تم الحفظ";
+button.innerText="✓ تم الحفظ";
 
-    }else{
+}else{
 
-        button.innerText="🔖 حفظ";
+button.innerText="🔖 حفظ";
 
-    }
+}
 
 }
 
 
 function shareProject(){
 
-    if(navigator.share){
+if(navigator.share){
 
-        navigator.share({
+navigator.share({
 
-            title:"KAPO ONE | برج المستقبل",
+title:"KAPO ONE | برج المستقبل",
 
-            text:"شاهد هذا المشروع على منصة KAPO ONE"
+text:"شاهد مشروع برج المستقبل على KAPO ONE"
 
-        });
+});
 
-    }else{
+}else{
 
-        alert("يمكن مشاركة رابط المشروع بعد ربط المنصة بالنظام الكامل.");
+alert("يمكن مشاركة المشروع بعد ربط النظام بالكامل.");
 
-    }
+}
 
 }
 
 
 function followOwner(){
 
-    alert("ميزة متابعة المصممين سيتم تفعيلها في المرحلة القادمة.");
+alert(
+"ميزة متابعة المصممين سيتم تفعيلها مع نظام المستخدمين."
+);
 
 }
 
 
 function addComment(){
 
-    let comment =
-        document.getElementById("comment").value.trim();
+let comment=
+document.getElementById("comment").value.trim();
 
-    if(comment===""){
+if(comment===""){
 
-        alert("اكتب تعليقًا أولًا.");
+alert("اكتب تعليقًا أولًا.");
 
-        return;
-
-    }
-
-    alert("تم استلام تعليقك. سيتم تفعيل التعليقات بشكل كامل مع قاعدة البيانات.");
-
-    document.getElementById("comment").value="";
+return;
 
 }
 
+alert(
+"تم استلام تعليقك. سيتم تفعيل التعليقات بشكل كامل لاحقًا."
+);
+
+document.getElementById("comment").value="";
+
+}
+
+
 </script>
+
 
 </body>
 
