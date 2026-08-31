@@ -2,7 +2,6 @@
 <html lang="ar" dir="rtl">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -11,227 +10,230 @@
 <style>
 
 *{
-    box-sizing:border-box;
+box-sizing:border-box;
 }
 
 body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#0b1120;
-    color:white;
-    line-height:1.7;
+margin:0;
+font-family:Arial,sans-serif;
+background:#0b1120;
+color:white;
+line-height:1.8;
 }
 
 header{
-    background:#111827;
-    border-bottom:1px solid #263449;
-    padding:20px;
+background:#111827;
+padding:20px;
+border-bottom:1px solid #263449;
 }
 
 .nav{
-    max-width:1200px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
+max-width:1200px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
 }
 
 .logo{
-    font-size:28px;
-    font-weight:bold;
+font-size:28px;
+font-weight:bold;
 }
 
 .logo span{
-    color:#38bdf8;
+color:#38bdf8;
 }
 
 nav{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
+display:flex;
+gap:8px;
+flex-wrap:wrap;
 }
 
 nav a{
-    color:#cbd5e1;
-    text-decoration:none;
-    padding:8px 12px;
-    border-radius:8px;
-    font-size:14px;
+color:#cbd5e1;
+text-decoration:none;
+padding:8px 12px;
+border-radius:8px;
+font-size:14px;
 }
 
 nav a:hover{
-    background:#1e293b;
-    color:#38bdf8;
+background:#1e293b;
+color:#38bdf8;
 }
 
 .container{
-    max-width:1100px;
-    margin:auto;
-    padding:40px 20px 70px;
+max-width:1100px;
+margin:auto;
+padding:40px 20px 70px;
 }
 
 .hero{
-    text-align:center;
-    padding:20px 10px 35px;
+text-align:center;
+padding:20px 10px 35px;
 }
 
 .hero-icon{
-    font-size:60px;
+font-size:60px;
 }
 
 .hero h1{
-    font-size:36px;
-    margin:12px 0;
+font-size:36px;
+margin:12px 0;
 }
 
 .hero p{
-    color:#94a3b8;
+color:#94a3b8;
 }
 
 .panel{
-    margin-top:25px;
-    background:#111827;
-    border:1px solid #263449;
-    border-radius:20px;
-    padding:30px;
+margin-top:25px;
+background:#111827;
+border:1px solid #263449;
+border-radius:20px;
+padding:30px;
 }
 
 .panel h2{
-    text-align:center;
-    margin-top:0;
-    font-size:26px;
+text-align:center;
+margin-top:0;
+font-size:26px;
 }
 
 .form{
-    max-width:750px;
-    margin:auto;
+max-width:750px;
+margin:auto;
 }
 
 label{
-    display:block;
-    margin:15px 0 7px;
-    color:#cbd5e1;
+display:block;
+margin:15px 0 7px;
+color:#cbd5e1;
 }
 
 input,
 select,
 textarea{
-    width:100%;
-    padding:13px;
-    border-radius:10px;
-    border:1px solid #334155;
-    background:#0b1120;
-    color:white;
-    font-size:15px;
-    font-family:Arial,sans-serif;
+width:100%;
+padding:13px;
+border-radius:10px;
+border:1px solid #334155;
+background:#0b1120;
+color:white;
+font-size:15px;
+font-family:Arial,sans-serif;
 }
 
 textarea{
-    min-height:120px;
-    resize:vertical;
+min-height:120px;
+resize:vertical;
 }
 
 button{
-    width:100%;
-    margin-top:20px;
-    padding:13px;
-    border:0;
-    border-radius:10px;
-    background:#2563eb;
-    color:white;
-    font-size:16px;
-    cursor:pointer;
+width:100%;
+margin-top:20px;
+padding:14px;
+border:0;
+border-radius:10px;
+background:#2563eb;
+color:white;
+font-size:16px;
+cursor:pointer;
 }
 
 button:hover{
-    background:#1d4ed8;
+background:#1d4ed8;
 }
 
 .message{
-    display:none;
-    margin-top:18px;
-    padding:14px;
-    border-radius:10px;
-    background:#064e3b;
-    border:1px solid #10b981;
-    color:#d1fae5;
-    text-align:center;
+display:none;
+margin-top:18px;
+padding:14px;
+border-radius:10px;
+background:#064e3b;
+border:1px solid #10b981;
+color:#d1fae5;
+text-align:center;
 }
 
 .cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:18px;
-    margin-top:25px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:18px;
+margin-top:25px;
 }
 
 .card{
-    background:#0b1120;
-    border:1px solid #263449;
-    border-radius:16px;
-    padding:22px;
-    text-align:center;
+background:#0b1120;
+border:1px solid #263449;
+border-radius:16px;
+padding:22px;
+text-align:center;
 }
 
 .card-icon{
-    font-size:40px;
+font-size:40px;
 }
 
 .card h3{
-    margin:10px 0;
+margin:10px 0;
 }
 
 .card p{
-    color:#94a3b8;
-    font-size:14px;
+color:#94a3b8;
+font-size:14px;
+}
+
+.card a{
+display:inline-block;
+margin-top:10px;
+color:#38bdf8;
+text-decoration:none;
 }
 
 .back{
-    text-align:center;
-    margin-top:30px;
+text-align:center;
+margin-top:30px;
 }
 
 .back a{
-    color:#cbd5e1;
-    text-decoration:none;
-}
-
-.back a:hover{
-    color:#38bdf8;
+color:#cbd5e1;
+text-decoration:none;
 }
 
 footer{
-    background:#080d18;
-    border-top:1px solid #263449;
-    padding:30px 20px;
-    text-align:center;
-    color:#94a3b8;
+background:#080d18;
+border-top:1px solid #263449;
+padding:30px 20px;
+text-align:center;
+color:#94a3b8;
 }
 
 .footer-logo{
-    color:white;
-    font-size:23px;
-    font-weight:bold;
+color:white;
+font-size:23px;
+font-weight:bold;
 }
 
 .footer-logo span{
-    color:#38bdf8;
+color:#38bdf8;
 }
 
 footer p{
-    font-size:14px;
+font-size:14px;
 }
 
 @media(max-width:700px){
 
-    .nav{
-        flex-direction:column;
-    }
+.nav{
+flex-direction:column;
+}
 
-    .hero h1{
-        font-size:30px;
-    }
+.hero h1{
+font-size:30px;
+}
 
 }
 
@@ -240,7 +242,6 @@ footer p{
 </head>
 
 <body>
-
 
 <header>
 
@@ -253,10 +254,15 @@ footer p{
 <nav>
 
 <a href="index.html">الرئيسية</a>
+
 <a href="projects.html">المشاريع</a>
+
 <a href="design.html">التصميم والهندسة</a>
+
 <a href="ideas.html">الأفكار المعمارية</a>
+
 <a href="files.html">الملفات</a>
+
 <a href="owner.html">المالك</a>
 
 </nav>
@@ -370,12 +376,12 @@ placeholder="اكتب وصف المشروع"
 
 
 <button onclick="addProject()">
-إضافة المشروع
+➕ إضافة المشروع
 </button>
 
 
 <div class="message" id="message">
-✅ تم تسجيل المشروع بنجاح داخل واجهة المنصة.
+✅ تم تسجيل المشروع بنجاح.
 </div>
 
 </div>
@@ -391,23 +397,20 @@ placeholder="اكتب وصف المشروع"
 
 <div class="cards">
 
-
 <div class="card">
 
-<div class="card-icon">
-📁
-</div>
+<div class="card-icon">📁</div>
 
 <h3>
 المشاريع
 </h3>
 
 <p>
-إدارة المشاريع والتصاميم.
+إدارة مشاريع KAPO ONE.
 </p>
 
 <a href="projects.html">
-فتح
+فتح المشاريع
 </a>
 
 </div>
@@ -415,9 +418,7 @@ placeholder="اكتب وصف المشروع"
 
 <div class="card">
 
-<div class="card-icon">
-📐
-</div>
+<div class="card-icon">📐</div>
 
 <h3>
 التصميم والهندسة
@@ -428,7 +429,7 @@ placeholder="اكتب وصف المشروع"
 </p>
 
 <a href="design.html">
-فتح
+فتح القسم
 </a>
 
 </div>
@@ -436,9 +437,7 @@ placeholder="اكتب وصف المشروع"
 
 <div class="card">
 
-<div class="card-icon">
-💡
-</div>
+<div class="card-icon">💡</div>
 
 <h3>
 الأفكار المعمارية
@@ -449,7 +448,7 @@ placeholder="اكتب وصف المشروع"
 </p>
 
 <a href="ideas.html">
-فتح
+فتح الأفكار
 </a>
 
 </div>
@@ -457,24 +456,21 @@ placeholder="اكتب وصف المشروع"
 
 <div class="card">
 
-<div class="card-icon">
-📂
-</div>
+<div class="card-icon">📂</div>
 
 <h3>
-الملفات
+الملفات والمشاريع
 </h3>
 
 <p>
-تنظيم ملفات المشاريع والمستندات.
+تنظيم ملفات ومستندات المنصة.
 </p>
 
 <a href="files.html">
-فتح
+فتح الملفات
 </a>
 
 </div>
-
 
 </div>
 
@@ -514,38 +510,38 @@ KAPO <span>ONE</span>
 
 function addProject(){
 
-    const name =
-    document.getElementById("projectName").value.trim();
+let name =
+document.getElementById("projectName").value.trim();
 
-    const type =
-    document.getElementById("projectType").value;
+let type =
+document.getElementById("projectType").value;
 
-    const description =
-    document.getElementById("projectDescription").value.trim();
+let description =
+document.getElementById("projectDescription").value.trim();
 
-    const status =
-    document.getElementById("projectStatus").value;
+let status =
+document.getElementById("projectStatus").value;
 
-    if(name === "" || type === "" || description === ""){
+if(name === "" || type === "" || description === ""){
 
-        alert("يرجى تعبئة جميع بيانات المشروع.");
+alert("يرجى تعبئة بيانات المشروع كاملة.");
 
-        return;
-    }
+return;
 
-    document.getElementById("message").style.display = "block";
+}
 
-    console.log({
-        name:name,
-        type:type,
-        description:description,
-        status:status
-    });
+document.getElementById("message").style.display="block";
+
+console.log({
+name:name,
+type:type,
+description:description,
+status:status
+});
 
 }
 
 </script>
-
 
 </body>
 
