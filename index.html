@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>KAPO ONE | منصة الأعمال والتصميم</title>
+<title>KAPO ONE | معرض الأعمال</title>
 
 <style>
+
 *{
     box-sizing:border-box;
 }
@@ -14,38 +16,37 @@
 body{
     margin:0;
     font-family:Arial,sans-serif;
-    background:#0b1120;
+    background:#080f1d;
     color:white;
 }
 
 header{
-    background:#111827;
-    padding:18px 20px;
+    background:#0f172a;
+    border-bottom:1px solid #243044;
+    padding:16px 20px;
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    border-bottom:1px solid #263244;
+    justify-content:space-between;
     position:sticky;
     top:0;
-    z-index:10;
+    z-index:100;
 }
 
 .logo{
-    font-size:25px;
+    font-size:26px;
     font-weight:bold;
-    letter-spacing:1px;
 }
 
 .logo span{
     color:#38bdf8;
 }
 
-.menu{
+nav{
     display:flex;
-    gap:10px;
+    gap:8px;
 }
 
-.menu button{
+nav button{
     background:#1e293b;
     color:white;
     border:1px solid #334155;
@@ -54,15 +55,18 @@ header{
     cursor:pointer;
 }
 
+nav button:hover{
+    background:#2563eb;
+}
+
 .hero{
-    padding:65px 20px 45px;
     text-align:center;
-    background:linear-gradient(180deg,#111827,#0b1120);
+    padding:55px 20px 35px;
 }
 
 .hero h1{
-    font-size:42px;
-    margin:0 0 15px;
+    font-size:40px;
+    margin:0 0 12px;
 }
 
 .hero h1 span{
@@ -70,73 +74,85 @@ header{
 }
 
 .hero p{
-    color:#cbd5e1;
-    font-size:19px;
+    color:#94a3b8;
+    font-size:18px;
     line-height:1.8;
     max-width:750px;
     margin:auto;
 }
 
-.search{
-    max-width:650px;
-    margin:30px auto 0;
+.search-box{
+    max-width:700px;
+    margin:28px auto 0;
 }
 
-.search input{
+.search-box input{
     width:100%;
     padding:17px;
     border-radius:14px;
     border:1px solid #334155;
-    background:#1e293b;
+    background:#111827;
     color:white;
     font-size:17px;
     outline:none;
 }
 
-.container{
-    max-width:1100px;
-    margin:auto;
-    padding:35px 20px 100px;
-}
-
-.section-title{
-    font-size:28px;
-    margin:15px 0 25px;
-}
-
-.categories{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-    margin-bottom:45px;
-}
-
-.category{
-    background:#111827;
-    border:1px solid #263244;
-    border-radius:16px;
-    padding:25px 15px;
-    text-align:center;
-    transition:.2s;
-}
-
-.category:hover{
-    transform:translateY(-4px);
+.search-box input:focus{
     border-color:#38bdf8;
 }
 
-.category .icon{
-    font-size:35px;
-    margin-bottom:12px;
+.container{
+    max-width:1150px;
+    margin:auto;
+    padding:20px 20px 100px;
 }
 
-.category h3{
-    margin:5px 0;
+.section-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    margin:25px 0;
 }
 
-.category p{
-    color:#94a3b8;
-    font-size:14px;
+.section-head h2{
+    margin:0;
+    font-size:28px;
+}
+
+.add-btn{
+    background:#38bdf8;
+    color:#082f49;
+    border:0;
+    padding:12px 18px;
+    border-radius:11px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.filters{
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+    padding-bottom:12px;
+    margin-bottom:25px;
+}
+
+.filter{
+    white-space:nowrap;
+    background:#111827;
+    color:#cbd5e1;
+    border:1px solid #334155;
+    padding:10px 16px;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+.filter.active,
+.filter:hover{
+    background:#2563eb;
+    color:white;
+    border-color:#2563eb;
 }
 
 .projects{
@@ -150,106 +166,134 @@ header{
     border:1px solid #263244;
     border-radius:18px;
     overflow:hidden;
+    transition:.25s;
+}
+
+.project:hover{
+    transform:translateY(-5px);
+    border-color:#38bdf8;
 }
 
 .project-image{
-    height:180px;
+    height:210px;
+    background:linear-gradient(135deg,#172554,#1e293b);
     display:flex;
     align-items:center;
     justify-content:center;
-    background:linear-gradient(135deg,#1e293b,#172554);
-    font-size:55px;
+    font-size:70px;
 }
 
-.project-content{
-    padding:20px;
+.project-body{
+    padding:18px;
 }
 
-.project-content h3{
-    margin-top:0;
+.project-type{
+    display:inline-block;
+    font-size:13px;
+    color:#38bdf8;
+    margin-bottom:8px;
 }
 
-.project-content p{
+.project h3{
+    margin:5px 0 10px;
+    font-size:21px;
+}
+
+.project p{
     color:#94a3b8;
     line-height:1.6;
+    margin:0 0 15px;
 }
 
-.project button{
-    width:100%;
-    padding:12px;
-    border:0;
-    border-radius:10px;
-    background:#2563eb;
+.owner{
+    border-top:1px solid #263244;
+    padding-top:14px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.owner-name{
+    color:#cbd5e1;
+    font-size:14px;
+}
+
+.actions{
+    display:flex;
+    gap:7px;
+}
+
+.action{
+    background:#1e293b;
     color:white;
-    font-size:16px;
+    border:1px solid #334155;
+    width:38px;
+    height:36px;
+    border-radius:9px;
     cursor:pointer;
 }
 
-.add-project{
-    margin:45px 0;
-    background:linear-gradient(135deg,#172554,#0f172a);
-    border:1px solid #1d4ed8;
-    border-radius:20px;
-    padding:35px 20px;
+.action:hover{
+    background:#2563eb;
+}
+
+.empty{
+    display:none;
     text-align:center;
-}
-
-.add-project h2{
-    margin-top:0;
-}
-
-.add-project button{
-    background:#38bdf8;
-    color:#082f49;
-    border:0;
-    padding:14px 25px;
-    border-radius:12px;
-    font-weight:bold;
-    font-size:16px;
-}
-
-footer{
-    background:#080d18;
-    border-top:1px solid #263244;
-    padding:25px 15px;
-    text-align:center;
+    padding:50px 20px;
     color:#94a3b8;
 }
 
-@media(max-width:800px){
+footer{
+    background:#060b14;
+    border-top:1px solid #243044;
+    text-align:center;
+    padding:25px;
+    color:#64748b;
+}
+
+@media(max-width:850px){
+
+    .projects{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px){
 
     header{
         flex-direction:column;
         gap:15px;
     }
 
-    .hero h1{
-        font-size:32px;
+    nav{
+        width:100%;
     }
 
-    .categories{
-        grid-template-columns:repeat(2,1fr);
+    nav button{
+        flex:1;
+    }
+
+    .hero h1{
+        font-size:31px;
+    }
+
+    .section-head{
+        align-items:stretch;
+        flex-direction:column;
+    }
+
+    .add-btn{
+        width:100%;
     }
 
     .projects{
         grid-template-columns:1fr;
     }
+
 }
 
-@media(max-width:450px){
-
-    .categories{
-        grid-template-columns:1fr;
-    }
-
-    .menu{
-        width:100%;
-    }
-
-    .menu button{
-        flex:1;
-    }
-}
 </style>
 </head>
 
@@ -261,185 +305,526 @@ footer{
         KAPO <span>ONE</span>
     </div>
 
-    <div class="menu">
-        <button onclick="goHome()">الرئيسية</button>
-        <button onclick="showMessage()">المشاريع</button>
-        <button onclick="showMessage()">تسجيل الدخول</button>
-    </div>
+    <nav>
+        <button onclick="home()">الرئيسية</button>
+        <button onclick="scrollToProjects()">المشاريع</button>
+        <button onclick="login()">تسجيل الدخول</button>
+    </nav>
 
 </header>
+
 
 <section class="hero">
 
     <h1>
-        مرحبًا بك في <span>KAPO ONE</span>
+        معرض أعمال <span>KAPO ONE</span>
     </h1>
 
     <p>
-        منصة عالمية تجمع الأعمال والمشاريع والأفكار
-        في مكان واحد، وتفتح المجال للمصممين والمهندسين
-        وأصحاب المشاريع لعرض أعمالهم والوصول إلى العالم.
+        اكتشف المشاريع والتصاميم والأفكار المميزة
+        من المهندسين والمصممين وأصحاب المشاريع حول العالم.
     </p>
 
-    <div class="search">
+    <div class="search-box">
+
         <input
             type="text"
-            id="searchInput"
-            placeholder="ابحث عن مشروع، تصميم، برج، مهندس..."
+            id="search"
+            placeholder="🔎 ابحث عن مشروع أو تصميم أو مهندس..."
             onkeyup="searchProjects()"
         >
+
     </div>
 
 </section>
 
-<main class="container">
 
-    <h2 class="section-title">استكشف المنصة</h2>
+<main class="container" id="projectsSection">
 
-    <div class="categories">
+    <div class="section-head">
 
-        <div class="category">
-            <div class="icon">🏗️</div>
-            <h3>الهندسة</h3>
-            <p>مشاريع وأعمال هندسية</p>
-        </div>
+        <h2>أحدث المشاريع</h2>
 
-        <div class="category">
-            <div class="icon">🏢</div>
-            <h3>العمارة</h3>
-            <p>تصاميم ومشاريع معمارية</p>
-        </div>
-
-        <div class="category">
-            <div class="icon">🌆</div>
-            <h3>الأبراج</h3>
-            <p>أفكار وتصاميم الأبراج</p>
-        </div>
-
-        <div class="category">
-            <div class="icon">💡</div>
-            <h3>الأفكار</h3>
-            <p>ابتكارات ومشاريع جديدة</p>
-        </div>
-
-    </div>
-
-    <h2 class="section-title">أبرز المشاريع</h2>
-
-    <div class="projects" id="projects">
-
-        <div class="project">
-
-            <div class="project-image">🏙️</div>
-
-            <div class="project-content">
-                <h3>مشروع برج المستقبل</h3>
-                <p>
-                    فكرة معمارية مستقبلية تجمع بين
-                    التصميم والهندسة والتقنية.
-                </p>
-
-                <button onclick="showMessage()">
-                    استكشف المشروع
-                </button>
-            </div>
-
-        </div>
-
-        <div class="project">
-
-            <div class="project-image">🏗️</div>
-
-            <div class="project-content">
-                <h3>مشروع هندسي</h3>
-                <p>
-                    مساحة لعرض المشاريع والأعمال
-                    الهندسية من مختلف أنحاء العالم.
-                </p>
-
-                <button onclick="showMessage()">
-                    استكشف المشروع
-                </button>
-            </div>
-
-        </div>
-
-        <div class="project">
-
-            <div class="project-image">🌍</div>
-
-            <div class="project-content">
-                <h3>مشاريع العالم</h3>
-                <p>
-                    اكتشف أفكارًا ومشاريع مميزة
-                    من مختلف الدول.
-                </p>
-
-                <button onclick="showMessage()">
-                    استكشف المشروع
-                </button>
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="add-project">
-
-        <h2>لديك مشروع أو فكرة؟</h2>
-
-        <p>
-            قريبًا يمكنك إنشاء صفحتك وإضافة مشاريعك
-            وعرض أعمالك على منصة KAPO ONE.
-        </p>
-
-        <button onclick="showMessage()">
-            + إضافة مشروع
+        <button class="add-btn" onclick="addProject()">
+            ＋ إضافة مشروع
         </button>
 
     </div>
 
+
+    <div class="filters">
+
+        <button class="filter active" onclick="filterProjects('all',this)">
+            الكل
+        </button>
+
+        <button class="filter" onclick="filterProjects('architecture',this)">
+            🏢 العمارة
+        </button>
+
+        <button class="filter" onclick="filterProjects('engineering',this)">
+            🏗️ الهندسة
+        </button>
+
+        <button class="filter" onclick="filterProjects('towers',this)">
+            🌆 الأبراج
+        </button>
+
+        <button class="filter" onclick="filterProjects('ideas',this)">
+            💡 الأفكار
+        </button>
+
+    </div>
+
+
+    <div class="projects" id="projects">
+
+
+        <div class="project" data-category="towers">
+
+            <div class="project-image">
+                🌆
+            </div>
+
+            <div class="project-body">
+
+                <span class="project-type">
+                    أبراج
+                </span>
+
+                <h3>
+                    برج المستقبل
+                </h3>
+
+                <p>
+                    تصميم معماري مستقبلي يجمع بين
+                    الابتكار والهندسة الحديثة.
+                </p>
+
+                <div class="owner">
+
+                    <span class="owner-name">
+                        👤 KAPO Design
+                    </span>
+
+                    <div class="actions">
+
+                        <button class="action"
+                        onclick="like(this)">
+                            ♡
+                        </button>
+
+                        <button class="action"
+                        onclick="saveProject(this)">
+                            🔖
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="project" data-category="architecture">
+
+            <div class="project-image">
+                🏢
+            </div>
+
+            <div class="project-body">
+
+                <span class="project-type">
+                    عمارة
+                </span>
+
+                <h3>
+                    المدينة الذكية
+                </h3>
+
+                <p>
+                    رؤية معمارية لمدينة حديثة تعتمد
+                    على التصميم الذكي والاستدامة.
+                </p>
+
+                <div class="owner">
+
+                    <span class="owner-name">
+                        👤 Future Architecture
+                    </span>
+
+                    <div class="actions">
+
+                        <button class="action"
+                        onclick="like(this)">
+                            ♡
+                        </button>
+
+                        <button class="action"
+                        onclick="saveProject(this)">
+                            🔖
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="project" data-category="engineering">
+
+            <div class="project-image">
+                🏗️
+            </div>
+
+            <div class="project-body">
+
+                <span class="project-type">
+                    هندسة
+                </span>
+
+                <h3>
+                    الهيكل الهندسي
+                </h3>
+
+                <p>
+                    فكرة هندسية متطورة لتصميم مبانٍ
+                    أكثر كفاءة واستدامة.
+                </p>
+
+                <div class="owner">
+
+                    <span class="owner-name">
+                        👤 Engineering Lab
+                    </span>
+
+                    <div class="actions">
+
+                        <button class="action"
+                        onclick="like(this)">
+                            ♡
+                        </button>
+
+                        <button class="action"
+                        onclick="saveProject(this)">
+                            🔖
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="project" data-category="ideas">
+
+            <div class="project-image">
+                💡
+            </div>
+
+            <div class="project-body">
+
+                <span class="project-type">
+                    فكرة
+                </span>
+
+                <h3>
+                    مشروع مبتكر
+                </h3>
+
+                <p>
+                    مساحة للأفكار الجديدة والمشاريع
+                    التي يمكن أن تصنع المستقبل.
+                </p>
+
+                <div class="owner">
+
+                    <span class="owner-name">
+                        👤 Creative Studio
+                    </span>
+
+                    <div class="actions">
+
+                        <button class="action"
+                        onclick="like(this)">
+                            ♡
+                        </button>
+
+                        <button class="action"
+                        onclick="saveProject(this)">
+                            🔖
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="project" data-category="towers">
+
+            <div class="project-image">
+                🏙️
+            </div>
+
+            <div class="project-body">
+
+                <span class="project-type">
+                    أبراج
+                </span>
+
+                <h3>
+                    برج KAPO ONE
+                </h3>
+
+                <p>
+                    نموذج تجريبي لهوية KAPO ONE
+                    المعمارية المستقبلية.
+                </p>
+
+                <div class="owner">
+
+                    <span class="owner-name">
+                        👤 KAPO ONE
+                    </span>
+
+                    <div class="actions">
+
+                        <button class="action"
+                        onclick="like(this)">
+                            ♡
+                        </button>
+
+                        <button class="action"
+                        onclick="saveProject(this)">
+                            🔖
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="project" data-category="architecture">
+
+            <div class="project-image">
+                🌍
+            </div>
+
+            <div class="project-body">
+
+                <span class="project-type">
+                    عمارة
+                </span>
+
+                <h3>
+                    مشاريع العالم
+                </h3>
+
+                <p>
+                    منصة لعرض الأعمال المعمارية
+                    المميزة من مختلف أنحاء العالم.
+                </p>
+
+                <div class="owner">
+
+                    <span class="owner-name">
+                        👤 World Projects
+                    </span>
+
+                    <div class="actions">
+
+                        <button class="action"
+                        onclick="like(this)">
+                            ♡
+                        </button>
+
+                        <button class="action"
+                        onclick="saveProject(this)">
+                            🔖
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="empty" id="empty">
+        لا توجد مشاريع مطابقة للبحث.
+    </div>
+
 </main>
 
+
 <footer>
-    KAPO ONE © 2026 — منصة عالمية للأعمال والمشاريع والتصميم
+
+    KAPO ONE © 2026
+
+    <br><br>
+
+    منصة عالمية للأعمال والمشاريع والتصميم
+
 </footer>
+
 
 <script>
 
-function showMessage(){
-    alert("هذه الميزة سيتم تفعيلها في المرحلة القادمة 🚀");
-}
+function home(){
 
-function goHome(){
     window.scrollTo({
         top:0,
         behavior:"smooth"
     });
+
 }
+
+
+function scrollToProjects(){
+
+    document.getElementById("projectsSection")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+function login(){
+
+    alert("تسجيل الدخول سيتم تفعيله في المرحلة الأخيرة.");
+
+}
+
+
+function addProject(){
+
+    alert("إضافة المشاريع سيتم ربطها بقاعدة البيانات في المرحلة الأخيرة.");
+
+}
+
+
+function like(button){
+
+    if(button.innerText === "♡"){
+
+        button.innerText = "♥";
+
+    }else{
+
+        button.innerText = "♡";
+
+    }
+
+}
+
+
+function saveProject(button){
+
+    if(button.innerText === "🔖"){
+
+        button.innerText = "✓";
+
+    }else{
+
+        button.innerText = "🔖";
+
+    }
+
+}
+
 
 function searchProjects(){
 
-    let input =
-        document.getElementById("searchInput")
+    let search =
+        document.getElementById("search")
         .value
         .toLowerCase();
 
     let projects =
         document.querySelectorAll(".project");
 
+    let count = 0;
+
     projects.forEach(function(project){
 
         let text =
             project.innerText.toLowerCase();
 
-        if(text.includes(input)){
+        if(text.includes(search)){
+
             project.style.display="";
+            count++;
+
         }else{
+
             project.style.display="none";
+
         }
 
     });
+
+    document.getElementById("empty").style.display =
+        count === 0 ? "block" : "none";
+
+}
+
+
+function filterProjects(category,button){
+
+    document.querySelectorAll(".filter")
+    .forEach(function(item){
+
+        item.classList.remove("active");
+
+    });
+
+    button.classList.add("active");
+
+    let projects =
+        document.querySelectorAll(".project");
+
+    let count = 0;
+
+    projects.forEach(function(project){
+
+        if(category === "all" ||
+           project.dataset.category === category){
+
+            project.style.display="";
+            count++;
+
+        }else{
+
+            project.style.display="none";
+
+        }
+
+    });
+
+    document.getElementById("empty").style.display =
+        count === 0 ? "block" : "none";
 
 }
 
