@@ -109,6 +109,7 @@ padding:13px 25px;
 border-radius:10px;
 cursor:pointer;
 font-size:16px;
+border:0;
 }
 
 .add-button:hover{
@@ -165,6 +166,18 @@ cursor:pointer;
 
 .save:hover{
 background:#15803d;
+}
+
+.cancel{
+width:100%;
+margin-top:10px;
+padding:12px;
+border:0;
+border-radius:10px;
+background:#475569;
+color:white;
+font-size:15px;
+cursor:pointer;
 }
 
 .gallery{
@@ -385,12 +398,12 @@ flex-direction:column;
 </h2>
 
 <p>
-أضف أعمالك وتصاميمك إلى المعرض.
+أضف أعمالك وتصاميمك إلى معرض KAPO ONE.
 </p>
 
-<div class="add-button" onclick="showForm()">
+<button class="add-button" onclick="showForm()">
 ➕ إضافة تصميم أو عمل
-</div>
+</button>
 
 
 <div class="form" id="galleryForm">
@@ -416,19 +429,19 @@ placeholder="مثال: برج كابو"
 اختر النوع
 </option>
 
-<option>
+<option value="تصميم معماري">
 تصميم معماري
 </option>
 
-<option>
+<option value="مخطط هندسي">
 مخطط هندسي
 </option>
 
-<option>
+<option value="فكرة معمارية">
 فكرة معمارية
 </option>
 
-<option>
+<option value="مشروع مستقبلي">
 مشروع مستقبلي
 </option>
 
@@ -456,8 +469,12 @@ placeholder="اكتب وصف التصميم أو المشروع"
 ></textarea>
 
 
-<button class="save" onclick="addWork()">
+<button class="save" onclick="saveWork()">
 💾 إضافة إلى المعرض
+</button>
+
+<button class="cancel" onclick="cancelForm()">
+إلغاء
 </button>
 
 </div>
@@ -466,7 +483,6 @@ placeholder="اكتب وصف التصميم أو المشروع"
 
 
 <section class="gallery" id="gallery">
-
 
 <div class="item">
 
@@ -567,7 +583,6 @@ placeholder="اكتب وصف التصميم أو المشروع"
 
 </div>
 
-
 </section>
 
 
@@ -618,23 +633,37 @@ KAPO <span>ONE</span>
 let editingItem = null;
 
 
-/* إظهار نموذج الإضافة */
+/* إظهار النموذج */
 
 function showForm(){
 
 document.getElementById("galleryForm").style.display="block";
 
-window.scrollTo({
-top:document.getElementById("galleryForm").offsetTop,
-behavior:"smooth"
-});
+}
+
+
+/* إلغاء */
+
+function cancelForm(){
+
+editingItem = null;
+
+document.getElementById("workName").value="";
+document.getElementById("workType").value="";
+document.getElementById("workImage").value="";
+document.getElementById("workDescription").value="";
+
+document.querySelector(".save").textContent =
+"💾 إضافة إلى المعرض";
+
+document.getElementById("galleryForm").style.display="none";
 
 }
 
 
-/* إضافة أو تعديل العمل */
+/* حفظ العمل */
 
-function addWork(){
+function saveWork(){
 
 let name =
 document.getElementById("workName").value.trim();
@@ -649,16 +678,32 @@ let imageFile =
 document.getElementById("workImage").files[0];
 
 
-if(name === "" || type === "" || description === ""){
+if(name === ""){
 
-alert("يرجى تعبئة اسم العمل والنوع والوصف.");
+alert("يرجى كتابة اسم العمل.");
+
+return;
+
+}
+
+if(type === ""){
+
+alert("يرجى اختيار نوع العمل.");
+
+return;
+
+}
+
+if(description === ""){
+
+alert("يرجى كتابة وصف العمل.");
 
 return;
 
 }
 
 
-/* إذا كنا نعدل عملاً موجوداً */
+/* تعديل عمل موجود */
 
 if(editingItem){
 
@@ -668,6 +713,7 @@ editingItem.querySelector("p").textContent = description;
 
 editingItem.querySelector(".status").textContent = type;
 
+
 if(imageFile){
 
 let reader = new FileReader();
@@ -675,7 +721,7 @@ let reader = new FileReader();
 reader.onload = function(e){
 
 editingItem.querySelector(".image-box").innerHTML =
-'<img src="' + e.target.result + '" alt="' + escapeHTML(name) + '">';
+'<img src="' + e.target.result + '" alt="صورة العمل">';
 
 };
 
@@ -683,21 +729,19 @@ reader.readAsDataURL(imageFile);
 
 }
 
+
 editingItem = null;
 
-document.querySelector(".save").textContent =
-"💾 إضافة إلى المعرض";
-
-clearForm();
-
 alert("✅ تم تعديل العمل بنجاح.");
+
+cancelForm();
 
 return;
 
 }
 
 
-/* إضافة عمل جديد */
+/* إنشاء عمل جديد */
 
 let item =
 document.createElement("div");
@@ -705,45 +749,19 @@ document.createElement("div");
 item.className="item";
 
 
-let imageHTML =
-"🏗️";
-
-
-if(imageFile){
-
-let reader = new FileReader();
-
-reader.onload = function(e){
-
-item.querySelector(".image-box").innerHTML =
-'<img src="' + e.target.result + '" alt="' + escapeHTML(name) + '">';
-
-};
-
-reader.readAsDataURL(imageFile);
-
-}
-
-
-item.innerHTML=`
+item.innerHTML = `
 
 <div class="image-box">
-${imageHTML}
+🏗️
 </div>
 
 <div class="item-body">
 
-<h2>
-${escapeHTML(name)}
-</h2>
+<h2></h2>
 
-<p>
-${escapeHTML(description)}
-</p>
+<p></p>
 
-<span class="status">
-${escapeHTML(type)}
-</span>
+<span class="status"></span>
 
 <div class="actions">
 
@@ -762,16 +780,41 @@ ${escapeHTML(type)}
 `;
 
 
-document.getElementById("gallery").appendChild(item);
+item.querySelector("h2").textContent = name;
 
-clearForm();
+item.querySelector("p").textContent = description;
 
-alert("✅ تمت إضافة العمل إلى المعرض.");
+item.querySelector(".status").textContent = type;
+
+
+/* الصورة */
+
+if(imageFile){
+
+let reader = new FileReader();
+
+reader.onload = function(e){
+
+item.querySelector(".image-box").innerHTML =
+'<img src="' + e.target.result + '" alt="صورة العمل">';
+
+};
+
+reader.readAsDataURL(imageFile);
 
 }
 
 
-/* تعديل العمل */
+document.getElementById("gallery").appendChild(item);
+
+alert("✅ تمت إضافة العمل إلى المعرض.");
+
+cancelForm();
+
+}
+
+
+/* تعديل */
 
 function editWork(button){
 
@@ -789,13 +832,13 @@ let type =
 editingItem.querySelector(".status").textContent;
 
 
-document.getElementById("workName").value=name;
+document.getElementById("workName").value = name;
 
-document.getElementById("workType").value=type;
+document.getElementById("workType").value = type;
 
-document.getElementById("workDescription").value=description;
+document.getElementById("workDescription").value = description;
 
-document.getElementById("workImage").value="";
+document.getElementById("workImage").value = "";
 
 
 document.querySelector(".save").textContent =
@@ -804,58 +847,24 @@ document.querySelector(".save").textContent =
 document.getElementById("galleryForm").style.display="block";
 
 window.scrollTo({
-top:document.getElementById("galleryForm").offsetTop,
+top:0,
 behavior:"smooth"
 });
 
 }
 
 
-/* حذف العمل */
+/* حذف */
 
 function deleteWork(button){
 
-let item =
-button.closest(".item");
-
-
 if(confirm("هل تريد حذف هذا العمل؟")){
 
-item.remove();
+button.closest(".item").remove();
 
 alert("🗑️ تم حذف العمل.");
 
 }
-
-}
-
-
-/* تنظيف النموذج */
-
-function clearForm(){
-
-document.getElementById("workName").value="";
-
-document.getElementById("workType").value="";
-
-document.getElementById("workDescription").value="";
-
-document.getElementById("workImage").value="";
-
-document.getElementById("galleryForm").style.display="none";
-
-}
-
-
-/* حماية النصوص */
-
-function escapeHTML(text){
-
-let div=document.createElement("div");
-
-div.textContent=text;
-
-return div.innerHTML;
 
 }
 
