@@ -2,660 +2,610 @@
 <html lang="ar" dir="rtl">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>KAPO ONE | المشاريع</title>
+<title>KAPO ONE | تفاصيل المشروع</title>
 
 <style>
 
 *{
-box-sizing:border-box;
+    box-sizing:border-box;
 }
 
 body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#0b1120;
-color:white;
-line-height:1.8;
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#080f1d;
+    color:white;
 }
 
 header{
-background:#111827;
-border-bottom:1px solid #263449;
-padding:20px;
-}
-
-.nav{
-max-width:1200px;
-margin:auto;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:20px;
+    background:#0f172a;
+    border-bottom:1px solid #263244;
+    padding:16px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
 .logo{
-font-size:28px;
-font-weight:bold;
+    font-size:26px;
+    font-weight:bold;
 }
 
 .logo span{
-color:#38bdf8;
-}
-
-nav{
-display:flex;
-gap:8px;
-flex-wrap:wrap;
-}
-
-nav a{
-color:#cbd5e1;
-text-decoration:none;
-padding:8px 12px;
-border-radius:8px;
-font-size:14px;
-}
-
-nav a:hover{
-background:#1e293b;
-color:#38bdf8;
-}
-
-.container{
-max-width:1100px;
-margin:auto;
-padding:40px 20px 70px;
-}
-
-.hero{
-text-align:center;
-padding:20px 10px 35px;
-}
-
-.hero-icon{
-font-size:60px;
-}
-
-.hero h1{
-font-size:38px;
-margin:12px 0;
-}
-
-.hero p{
-color:#94a3b8;
-font-size:17px;
-}
-
-.add-box{
-background:#111827;
-border:1px solid #263449;
-border-radius:20px;
-padding:25px;
-margin-bottom:30px;
-text-align:center;
-}
-
-.add-button{
-display:inline-block;
-background:#2563eb;
-color:white;
-text-decoration:none;
-padding:13px 25px;
-border-radius:10px;
-font-size:16px;
-cursor:pointer;
-}
-
-.add-button:hover{
-background:#1d4ed8;
-}
-
-.form{
-display:none;
-max-width:750px;
-margin:25px auto 0;
-text-align:right;
-}
-
-label{
-display:block;
-margin:12px 0 6px;
-color:#cbd5e1;
-}
-
-input,
-select,
-textarea{
-width:100%;
-padding:13px;
-border-radius:10px;
-border:1px solid #334155;
-background:#0b1120;
-color:white;
-font-size:15px;
-font-family:Arial,sans-serif;
-}
-
-textarea{
-min-height:110px;
-resize:vertical;
-}
-
-.save{
-width:100%;
-margin-top:18px;
-padding:13px;
-border:0;
-border-radius:10px;
-background:#16a34a;
-color:white;
-font-size:16px;
-cursor:pointer;
-}
-
-.save:hover{
-background:#15803d;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-
-.project{
-background:#111827;
-border:1px solid #263449;
-border-radius:18px;
-overflow:hidden;
-}
-
-.project-top{
-background:#172554;
-padding:30px;
-text-align:center;
-}
-
-.project-icon{
-font-size:55px;
-}
-
-.project-body{
-padding:22px;
-}
-
-.project h2{
-margin-top:0;
-font-size:21px;
-}
-
-.project p{
-color:#94a3b8;
-font-size:14px;
-}
-
-.status{
-display:inline-block;
-margin-top:8px;
-padding:6px 12px;
-border-radius:8px;
-background:#1e293b;
-color:#93c5fd;
-font-size:13px;
-}
-
-.delete{
-margin-top:15px;
-padding:9px 15px;
-border:0;
-border-radius:8px;
-background:#991b1b;
-color:white;
-cursor:pointer;
-}
-
-.delete:hover{
-background:#b91c1c;
-}
-
-.info{
-margin-top:30px;
-background:#111827;
-border:1px solid #263449;
-border-radius:18px;
-padding:25px;
-text-align:center;
-}
-
-.info p{
-color:#cbd5e1;
+    color:#38bdf8;
 }
 
 .back{
-text-align:center;
-margin-top:30px;
+    background:#1e293b;
+    color:white;
+    border:1px solid #334155;
+    padding:11px 17px;
+    border-radius:10px;
+    cursor:pointer;
 }
 
-.back a{
-color:#cbd5e1;
-text-decoration:none;
+.back:hover{
+    background:#2563eb;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:35px 20px 80px;
+}
+
+.project-cover{
+    height:380px;
+    border-radius:24px;
+    background:linear-gradient(135deg,#172554,#1e293b);
+    border:1px solid #334155;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:120px;
+    margin-bottom:30px;
+}
+
+.type{
+    color:#38bdf8;
+    font-size:15px;
+    font-weight:bold;
+}
+
+h1{
+    font-size:38px;
+    margin:10px 0;
+}
+
+.description{
+    color:#cbd5e1;
+    font-size:18px;
+    line-height:1.9;
+    max-width:850px;
+}
+
+.owner{
+    margin-top:25px;
+    background:#111827;
+    border:1px solid #263244;
+    border-radius:16px;
+    padding:18px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.owner-info{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.avatar{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    background:#1e293b;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+}
+
+.owner-name{
+    font-weight:bold;
+}
+
+.owner-role{
+    color:#94a3b8;
+    font-size:13px;
+    margin-top:4px;
+}
+
+.follow{
+    background:#2563eb;
+    color:white;
+    border:0;
+    padding:11px 18px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin:30px 0;
+}
+
+.info{
+    background:#111827;
+    border:1px solid #263244;
+    border-radius:15px;
+    padding:20px;
+}
+
+.info-title{
+    color:#94a3b8;
+    font-size:14px;
+    margin-bottom:8px;
+}
+
+.info-value{
+    font-size:17px;
+    font-weight:bold;
+}
+
+.actions{
+    display:flex;
+    gap:10px;
+    margin:25px 0;
+}
+
+.action{
+    background:#111827;
+    color:white;
+    border:1px solid #334155;
+    padding:13px 20px;
+    border-radius:11px;
+    cursor:pointer;
+}
+
+.action:hover{
+    background:#2563eb;
+}
+
+.section{
+    margin-top:45px;
+}
+
+.section h2{
+    font-size:27px;
+}
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.feature{
+    background:#111827;
+    border:1px solid #263244;
+    border-radius:15px;
+    padding:20px;
+}
+
+.feature strong{
+    display:block;
+    margin-bottom:8px;
+}
+
+.feature span{
+    color:#94a3b8;
+}
+
+.comments{
+    margin-top:25px;
+}
+
+.comment-box{
+    background:#111827;
+    border:1px solid #263244;
+    border-radius:15px;
+    padding:20px;
+}
+
+.comment-box textarea{
+    width:100%;
+    min-height:110px;
+    resize:vertical;
+    background:#0b1120;
+    border:1px solid #334155;
+    color:white;
+    border-radius:11px;
+    padding:15px;
+    font-family:Arial;
+    font-size:16px;
+}
+
+.comment-box button{
+    margin-top:12px;
+    background:#38bdf8;
+    color:#082f49;
+    border:0;
+    padding:12px 20px;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
 footer{
-margin-top:40px;
-background:#080d18;
-border-top:1px solid #263449;
-padding:30px 20px;
-text-align:center;
-color:#94a3b8;
+    background:#060b14;
+    border-top:1px solid #263244;
+    text-align:center;
+    padding:25px;
+    color:#64748b;
 }
 
-.footer-logo{
-color:white;
-font-size:24px;
-font-weight:bold;
-}
+@media(max-width:700px){
 
-.footer-logo span{
-color:#38bdf8;
-}
+    .project-cover{
+        height:250px;
+        font-size:80px;
+    }
 
-footer p{
-font-size:14px;
+    h1{
+        font-size:30px;
+    }
+
+    .owner{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .follow{
+        width:100%;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .features{
+        grid-template-columns:1fr;
+    }
+
+    .actions{
+        flex-wrap:wrap;
+    }
+
+    .action{
+        flex:1;
+    }
+
 }
 
 </style>
-
 </head>
 
 <body>
 
-
 <header>
 
-<div class="nav">
+    <div class="logo">
+        KAPO <span>ONE</span>
+    </div>
 
-<div class="logo">
-🚀 KAPO <span>ONE</span>
-</div>
-
-<nav>
-
-<a href="index.html">الرئيسية</a>
-<a href="projects.html">المشاريع</a>
-<a href="design.html">التصميم والهندسة</a>
-<a href="ideas.html">الأفكار المعمارية</a>
-<a href="files.html">الملفات</a>
-<a href="owner.html">المالك</a>
-
-</nav>
-
-</div>
+    <button class="back" onclick="backToGallery()">
+        ← العودة إلى المعرض
+    </button>
 
 </header>
 
 
-<div class="container">
+<main class="container">
 
 
-<section class="hero">
-
-<div class="hero-icon">
-🏗️
-</div>
-
-<h1>
-مشاريع KAPO ONE
-</h1>
-
-<p>
-مساحة إدارة وعرض المشاريع والتصاميم المعمارية والهندسية.
-</p>
-
-</section>
+    <div class="project-cover">
+        🌆
+    </div>
 
 
-<section class="add-box">
-
-<h2>
-📁 إدارة المشاريع
-</h2>
-
-<p>
-أضف مشاريعك واحفظها داخل المتصفح.
-</p>
-
-<a class="add-button" onclick="showForm()">
-➕ إضافة مشروع جديد
-</a>
+    <div class="type">
+        مشاريع الأبراج
+    </div>
 
 
-<div class="form" id="projectForm">
-
-<label>
-اسم المشروع
-</label>
-
-<input
-type="text"
-id="name"
-placeholder="اكتب اسم المشروع"
->
+    <h1>
+        برج المستقبل
+    </h1>
 
 
-<label>
-نوع المشروع
-</label>
-
-<select id="type">
-
-<option value="">
-اختر نوع المشروع
-</option>
-
-<option>مشروع معماري</option>
-<option>مشروع هندسي</option>
-<option>برج</option>
-<option>فكرة مستقبلية</option>
-
-</select>
+    <p class="description">
+        مشروع معماري مستقبلي يجمع بين الابتكار والهندسة
+        والتصميم الحديث. يهدف المشروع إلى تقديم رؤية
+        جديدة للأبراج والمدن المستقبلية، مع التركيز على
+        الجمال المعماري والاستدامة والتقنيات الحديثة.
+    </p>
 
 
-<label>
-وصف المشروع
-</label>
+    <div class="owner">
 
-<textarea
-id="description"
-placeholder="اكتب وصف المشروع"
-></textarea>
+        <div class="owner-info">
 
+            <div class="avatar">
+                👤
+            </div>
 
-<label>
-حالة المشروع
-</label>
+            <div>
 
-<select id="status">
+                <div class="owner-name">
+                    KAPO Design
+                </div>
 
-<option>قيد التطوير</option>
-<option>قريبًا</option>
-<option>مكتمل</option>
-<option>فكرة</option>
+                <div class="owner-role">
+                    مصمم ومطور مشاريع معمارية
+                </div>
 
-</select>
+            </div>
 
+        </div>
 
-<button class="save" onclick="saveProject()">
-💾 حفظ المشروع
-</button>
+        <button class="follow" onclick="followOwner()">
+            متابعة
+        </button>
 
-</div>
-
-</section>
+    </div>
 
 
-<section class="grid" id="projectsGrid">
+    <div class="info-grid">
 
-</section>
+        <div class="info">
 
+            <div class="info-title">
+                نوع المشروع
+            </div>
 
-<section class="info">
+            <div class="info-value">
+                برج معماري
+            </div>
 
-<h2>
-🚀 مركز مشاريع KAPO ONE
-</h2>
-
-<p>
-المشاريع التي تضيفها من هذا القسم سيتم حفظها
-داخل المتصفح، وستبقى بعد تحديث الصفحة على نفس الجهاز والمتصفح.
-</p>
-
-</section>
+        </div>
 
 
-<div class="back">
+        <div class="info">
 
-<a href="index.html">
-⬅ العودة إلى الرئيسية
-</a>
+            <div class="info-title">
+                المجال
+            </div>
 
-</div>
+            <div class="info-value">
+                العمارة والهندسة
+            </div>
+
+        </div>
 
 
-</div>
+        <div class="info">
+
+            <div class="info-title">
+                الموقع
+            </div>
+
+            <div class="info-value">
+                مشروع عالمي
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="actions">
+
+        <button class="action" onclick="likeProject(this)">
+            ♡ إعجاب
+        </button>
+
+        <button class="action" onclick="saveProject(this)">
+            🔖 حفظ
+        </button>
+
+        <button class="action" onclick="shareProject()">
+            📤 مشاركة
+        </button>
+
+    </div>
+
+
+    <section class="section">
+
+        <h2>
+            عن المشروع
+        </h2>
+
+        <div class="features">
+
+            <div class="feature">
+
+                <strong>🏗️ التصميم</strong>
+
+                <span>
+                    تصميم معماري يركز على الشكل
+                    والوظيفة وتجربة المستخدم.
+                </span>
+
+            </div>
+
+
+            <div class="feature">
+
+                <strong>💡 الابتكار</strong>
+
+                <span>
+                    دمج الأفكار الحديثة مع الحلول
+                    الهندسية المستقبلية.
+                </span>
+
+            </div>
+
+
+            <div class="feature">
+
+                <strong>🌱 الاستدامة</strong>
+
+                <span>
+                    توجه نحو إنشاء مبانٍ أكثر
+                    كفاءة واستدامة.
+                </span>
+
+            </div>
+
+
+            <div class="feature">
+
+                <strong>🌍 الرؤية العالمية</strong>
+
+                <span>
+                    مشروع قابل للتطوير ليكون جزءًا
+                    من مستقبل المدن حول العالم.
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section comments">
+
+        <h2>
+            التعليقات
+        </h2>
+
+        <div class="comment-box">
+
+            <textarea
+                id="comment"
+                placeholder="اكتب تعليقك على المشروع..."
+            ></textarea>
+
+            <button onclick="addComment()">
+                إرسال التعليق
+            </button>
+
+        </div>
+
+    </section>
+
+
+</main>
 
 
 <footer>
 
-<div class="footer-logo">
-KAPO <span>ONE</span>
-</div>
+    KAPO ONE © 2026
 
-<p>
-منصة التصميم والهندسة والأفكار المعمارية
-</p>
+    <br><br>
 
-<p>
-© 2026 KAPO ONE — جميع الحقوق محفوظة
-</p>
+    منصة عالمية للأعمال والمشاريع والتصميم
 
 </footer>
 
 
 <script>
 
-let projects =
-JSON.parse(localStorage.getItem("kapoProjects")) || [];
+function backToGallery(){
 
-
-function showForm(){
-
-document.getElementById("projectForm").style.display="block";
+    window.location.href="index.html";
 
 }
 
 
-function saveProject(){
+function likeProject(button){
 
-let name =
-document.getElementById("name").value.trim();
+    if(button.innerText.includes("♡")){
 
-let type =
-document.getElementById("type").value;
+        button.innerText="♥ تم الإعجاب";
 
-let description =
-document.getElementById("description").value.trim();
+    }else{
 
-let status =
-document.getElementById("status").value;
+        button.innerText="♡ إعجاب";
 
-
-if(name === "" || type === "" || description === ""){
-
-alert("يرجى تعبئة بيانات المشروع كاملة.");
-
-return;
+    }
 
 }
 
 
-let project = {
+function saveProject(button){
 
-id:Date.now(),
+    if(button.innerText.includes("🔖")){
 
-name:name,
+        button.innerText="✓ تم الحفظ";
 
-type:type,
+    }else{
 
-description:description,
+        button.innerText="🔖 حفظ";
 
-status:status
-
-};
-
-
-projects.push(project);
-
-localStorage.setItem(
-"kapoProjects",
-JSON.stringify(projects)
-);
-
-
-document.getElementById("name").value="";
-document.getElementById("type").value="";
-document.getElementById("description").value="";
-document.getElementById("status").value="قيد التطوير";
-
-
-document.getElementById("projectForm").style.display="none";
-
-
-displayProjects();
-
-alert("✅ تم حفظ المشروع بنجاح.");
+    }
 
 }
 
 
-function displayProjects(){
+function shareProject(){
 
-let grid =
-document.getElementById("projectsGrid");
+    if(navigator.share){
 
-grid.innerHTML="";
+        navigator.share({
 
+            title:"KAPO ONE | برج المستقبل",
 
-if(projects.length === 0){
+            text:"شاهد هذا المشروع على منصة KAPO ONE"
 
-grid.innerHTML=`
+        });
 
-<div class="project">
+    }else{
 
-<div class="project-body">
+        alert("يمكن مشاركة رابط المشروع بعد ربط المنصة بالنظام الكامل.");
 
-<h2>
-لا توجد مشاريع مضافة بعد
-</h2>
-
-<p>
-اضغط على «إضافة مشروع جديد» لإضافة أول مشروع.
-</p>
-
-</div>
-
-</div>
-
-`;
-
-return;
+    }
 
 }
 
 
-projects.forEach(function(project){
+function followOwner(){
 
-let card =
-document.createElement("div");
-
-card.className="project";
-
-card.innerHTML=`
-
-<div class="project-top">
-
-<div class="project-icon">
-🏗️
-</div>
-
-</div>
-
-<div class="project-body">
-
-<h2>
-${escapeHTML(project.name)}
-</h2>
-
-<p>
-${escapeHTML(project.description)}
-</p>
-
-<p>
-<strong>النوع:</strong>
-${escapeHTML(project.type)}
-</p>
-
-<span class="status">
-${escapeHTML(project.status)}
-</span>
-
-<br>
-
-<button
-class="delete"
-onclick="deleteProject(${project.id})">
-حذف المشروع
-</button>
-
-</div>
-
-`;
-
-grid.appendChild(card);
-
-});
+    alert("ميزة متابعة المصممين سيتم تفعيلها في المرحلة القادمة.");
 
 }
 
 
-function deleteProject(id){
+function addComment(){
 
-if(!confirm("هل تريد حذف هذا المشروع؟")){
+    let comment =
+        document.getElementById("comment").value.trim();
 
-return;
+    if(comment===""){
 
-}
+        alert("اكتب تعليقًا أولًا.");
 
+        return;
 
-projects =
-projects.filter(function(project){
+    }
 
-return project.id !== id;
+    alert("تم استلام تعليقك. سيتم تفعيل التعليقات بشكل كامل مع قاعدة البيانات.");
 
-});
-
-
-localStorage.setItem(
-"kapoProjects",
-JSON.stringify(projects)
-);
-
-
-displayProjects();
+    document.getElementById("comment").value="";
 
 }
-
-
-function escapeHTML(text){
-
-let div =
-document.createElement("div");
-
-div.textContent=text;
-
-return div.innerHTML;
-
-}
-
-
-displayProjects();
 
 </script>
-
 
 </body>
 
