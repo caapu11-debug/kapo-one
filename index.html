@@ -4,7 +4,6 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>KAPO ONE</title>
@@ -54,7 +53,7 @@ margin-right:5px;
 
 .hero{
 text-align:center;
-padding:55px 20px 40px;
+padding:50px 20px 35px;
 }
 
 .hero h1{
@@ -114,10 +113,6 @@ text-align:center;
 
 .category-icon{
 font-size:38px;
-}
-
-.category h3{
-margin-bottom:5px;
 }
 
 .category p{
@@ -270,10 +265,6 @@ padding:20px;
 margin-top:18px;
 }
 
-.detail-card h2{
-margin-top:0;
-}
-
 .owner{
 display:flex;
 align-items:center;
@@ -368,10 +359,45 @@ height:120px;
 resize:none;
 }
 
+.upload-area{
+border:2px dashed #38bdf8;
+border-radius:15px;
+padding:25px;
+text-align:center;
+margin-top:10px;
+background:#0b1526;
+}
+
+.upload-area label{
+display:block;
+font-size:17px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.upload-area small{
+display:block;
+color:#94a3b8;
+margin-top:8px;
+}
+
+#imageFile{
+display:none;
+}
+
+.preview{
+display:none;
+width:100%;
+max-height:300px;
+object-fit:cover;
+border-radius:12px;
+margin-top:15px;
+}
+
 .publish{
 width:100%;
 padding:14px;
-margin-top:12px;
+margin-top:15px;
 background:#38bdf8;
 color:#082f49;
 border:0;
@@ -389,15 +415,6 @@ color:white;
 border:1px solid #334155;
 border-radius:10px;
 font-size:16px;
-}
-
-.preview{
-display:none;
-margin-top:15px;
-border-radius:12px;
-max-height:250px;
-width:100%;
-object-fit:cover;
 }
 
 textarea{
@@ -617,7 +634,7 @@ class="add-box">
 </h2>
 
 <p style="color:#94a3b8;">
-أدخل معلومات المشروع ثم اضغط نشر المشروع.
+أدخل معلومات مشروعك وارفع صورته من هاتفك.
 </p>
 
 
@@ -643,19 +660,19 @@ placeholder="الدولة أو المدينة">
 id="newCategory"
 class="form-select">
 
-<option value="🏢 العمارة">
+<option>
 🏢 العمارة
 </option>
 
-<option value="🏗️ الهندسة">
+<option>
 🏗️ الهندسة
 </option>
 
-<option value="🌆 الأبراج">
+<option>
 🌆 الأبراج
 </option>
 
-<option value="💡 الأفكار">
+<option>
 💡 الأفكار
 </option>
 
@@ -669,10 +686,25 @@ placeholder="نبذة عن المشروع...">
 </textarea>
 
 
+<div class="upload-area">
+
+<label for="imageFile">
+
+📷 اختر صورة المشروع من الهاتف
+
+</label>
+
+<small>
+اضغط هنا لاختيار صورة من الاستديو
+</small>
+
 <input
-id="newImage"
-class="form-input"
-placeholder="رابط صورة المشروع">
+id="imageFile"
+type="file"
+accept="image/*"
+onchange="previewImage(event)">
+
+</div>
 
 
 <img
@@ -1075,6 +1107,9 @@ KAPO ONE © 2026
 <script>
 
 
+let selectedImage="";
+
+
 function showHome(){
 
 document.getElementById("home")
@@ -1158,6 +1193,36 @@ document.getElementById("addProjectBox")
 }
 
 
+function previewImage(event){
+
+let file=event.target.files[0];
+
+if(!file){
+
+return;
+
+}
+
+let reader=new FileReader();
+
+reader.onload=function(e){
+
+selectedImage=e.target.result;
+
+let preview=
+document.getElementById("preview");
+
+preview.src=selectedImage;
+
+preview.style.display="block";
+
+};
+
+reader.readAsDataURL(file);
+
+}
+
+
 function publishProject(){
 
 let name=
@@ -1180,10 +1245,6 @@ let description=
 document.getElementById("newDescription")
 .value.trim();
 
-let image=
-document.getElementById("newImage")
-.value.trim();
-
 
 if(
 name==="" ||
@@ -1200,6 +1261,9 @@ return;
 }
 
 
+let image=selectedImage;
+
+
 if(image===""){
 
 image=
@@ -1212,6 +1276,7 @@ let project=
 document.createElement("div");
 
 project.className="project";
+
 
 project.innerHTML=`
 
@@ -1247,15 +1312,7 @@ ${description}
 
 </div>
 
-<button
-class="open"
-onclick="openProject(
-'${name.replace(/'/g,"\\'")}',
-'${category}',
-'${owner.replace(/'/g,"\\'")}',
-'${description.replace(/'/g,"\\'")}',
-'${image.replace(/'/g,"\\'")}'
-)">
+<button class="open">
 
 استكشف المشروع
 
@@ -1264,6 +1321,21 @@ onclick="openProject(
 </div>
 
 `;
+
+
+project
+.querySelector(".open")
+.onclick=function(){
+
+openProject(
+name,
+category,
+owner,
+description,
+image
+);
+
+};
 
 
 document
@@ -1278,11 +1350,16 @@ document.getElementById("newName").value="";
 document.getElementById("newOwner").value="";
 document.getElementById("newLocation").value="";
 document.getElementById("newDescription").value="";
-document.getElementById("newImage").value="";
+document.getElementById("imageFile").value="";
+
+document.getElementById("preview")
+.style.display="none";
+
+selectedImage="";
 
 
 alert(
-"تمت إضافة المشروع إلى معرض KAPO ONE بنجاح."
+"تمت إضافة المشروع إلى KAPO ONE."
 );
 
 }
