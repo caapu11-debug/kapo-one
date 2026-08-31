@@ -5,10 +5,9 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>KAPO ONE | المشروع</title>
+<title>KAPO ONE | تفاصيل المشروع</title>
 
 <style>
 
@@ -40,32 +39,30 @@ color:#38bdf8;
 }
 
 .container{
-width:100%;
 max-width:900px;
 margin:auto;
-padding:20px;
+padding:18px;
 }
 
 .back{
 width:100%;
 padding:14px;
+margin-bottom:18px;
 background:#2563eb;
 color:white;
 border:0;
 border-radius:12px;
 font-size:16px;
-margin-bottom:20px;
 }
 
-.image{
+.hero-image{
 width:100%;
-height:280px;
-border-radius:18px;
+height:260px;
 overflow:hidden;
-background:#1e293b;
+border-radius:18px;
 }
 
-.image img{
+.hero-image img{
 width:100%;
 height:100%;
 object-fit:cover;
@@ -73,38 +70,32 @@ object-fit:cover;
 
 .category{
 color:#38bdf8;
-font-size:15px;
+margin-top:22px;
 font-weight:bold;
-margin-top:25px;
 }
 
 h1{
-font-size:36px;
+font-size:34px;
 margin:10px 0;
 }
 
 .description{
 color:#cbd5e1;
-font-size:18px;
+font-size:17px;
 line-height:1.9;
 }
 
-.card{
+.box{
 background:#111c30;
 border:1px solid #263750;
-border-radius:16px;
-padding:20px;
-margin-top:20px;
+border-radius:15px;
+padding:18px;
+margin-top:18px;
 }
 
-.card h2{
+.box h2{
 margin-top:0;
 font-size:22px;
-}
-
-.card p{
-color:#a8b3c2;
-line-height:1.8;
 }
 
 .owner{
@@ -114,19 +105,18 @@ gap:12px;
 }
 
 .avatar{
-width:55px;
-height:55px;
+width:50px;
+height:50px;
 border-radius:50%;
 background:#263750;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:25px;
+font-size:23px;
 }
 
 .owner-name{
 font-weight:bold;
-font-size:17px;
 }
 
 .owner-role{
@@ -138,98 +128,95 @@ margin-top:5px;
 .info{
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:12px;
+gap:10px;
+margin-top:18px;
 }
 
-.info-box{
+.info div{
 background:#0b1526;
-padding:17px;
-border-radius:12px;
+padding:15px;
+border-radius:10px;
 }
 
 .label{
 color:#94a3b8;
-font-size:13px;
-margin-bottom:7px;
+font-size:12px;
+margin-bottom:6px;
 }
 
 .value{
 font-weight:bold;
 }
 
-.actions{
+.buttons{
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:10px;
+margin-top:18px;
 }
 
-.action{
-padding:13px;
+.buttons button{
+padding:14px;
 background:#1e293b;
 color:white;
 border:1px solid #334155;
 border-radius:10px;
 font-size:15px;
-cursor:pointer;
 }
 
-.action:hover{
+.buttons button:hover{
 background:#2563eb;
+}
+
+.box p{
+color:#b7c2d1;
+line-height:1.8;
 }
 
 textarea{
 width:100%;
-height:110px;
+height:100px;
 background:#07101f;
-color:white;
 border:1px solid #334155;
 border-radius:10px;
-padding:14px;
+color:white;
+padding:12px;
+font-size:15px;
 font-family:Arial;
-font-size:16px;
-resize:none;
 }
 
-.comment-button{
-margin-top:10px;
+.send{
 width:100%;
+margin-top:10px;
 padding:13px;
 background:#38bdf8;
 color:#082f49;
 border:0;
 border-radius:10px;
 font-weight:bold;
-font-size:16px;
 }
 
 footer{
-text-align:center;
-padding:30px 15px;
 margin-top:30px;
 background:#050a12;
+border-top:1px solid #263244;
+padding:25px;
+text-align:center;
 color:#64748b;
 }
 
 @media(max-width:600px){
 
-.container{
-padding:15px;
-}
-
-.image{
-height:230px;
-}
-
-h1{
-font-size:30px;
-}
-
 .info{
 grid-template-columns:1fr;
 }
 
-.actions{
+.buttons{
 grid-template-columns:1fr;
+}
+
+h1{
+font-size:29px;
 }
 
 }
@@ -245,9 +232,7 @@ grid-template-columns:1fr;
 <header>
 
 <div class="logo">
-
 KAPO <span>ONE</span>
-
 </div>
 
 </header>
@@ -258,14 +243,14 @@ KAPO <span>ONE</span>
 
 <button
 class="back"
-onclick="goBack()">
+onclick="goHome()">
 
 ← العودة إلى معرض الأعمال
 
 </button>
 
 
-<div class="image">
+<div class="hero-image">
 
 <img
 src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80"
@@ -275,34 +260,29 @@ alt="برج المستقبل">
 
 
 <div class="category">
-
 🌆 مشاريع الأبراج
-
 </div>
 
 
 <h1>
-
 برج المستقبل
-
 </h1>
 
 
 <p class="description">
 
-مشروع معماري مستقبلي يجمع بين
-التصميم المبتكر والهندسة الحديثة.
-يقدم رؤية جديدة للأبراج والمدن
-المستقبلية مع التركيز على الجمال
-والاستدامة والتقنية.
+مشروع معماري مستقبلي يجمع بين التصميم
+المبتكر والهندسة الحديثة والتقنيات الجديدة.
+هذا نموذج أولي لعرض المشاريع داخل منصة
+KAPO ONE.
 
 </p>
 
 
-<div class="card">
+<div class="box">
 
 <h2>
-صاحب المشروع
+👤 صاحب المشروع
 </h2>
 
 <div class="owner">
@@ -330,8 +310,7 @@ KAPO Design
 
 <div class="info">
 
-
-<div class="info-box">
+<div>
 
 <div class="label">
 نوع المشروع
@@ -344,7 +323,7 @@ KAPO Design
 </div>
 
 
-<div class="info-box">
+<div>
 
 <div class="label">
 المجال
@@ -357,7 +336,7 @@ KAPO Design
 </div>
 
 
-<div class="info-box">
+<div>
 
 <div class="label">
 الموقع
@@ -369,88 +348,67 @@ KAPO Design
 
 </div>
 
-
 </div>
 
 
-<div class="actions">
+<div class="buttons">
 
-<button
-class="action"
-onclick="likeProject(this)">
-
+<button onclick="like(this)">
 ♡ إعجاب
-
 </button>
 
-
-<button
-class="action"
-onclick="saveProject(this)">
-
+<button onclick="save(this)">
 🔖 حفظ
-
 </button>
 
-
-<button
-class="action"
-onclick="shareProject()">
-
+<button onclick="share()">
 📤 مشاركة
-
 </button>
 
 </div>
 
 
-<div class="card">
+<div class="box">
 
 <h2>
-عن المشروع
+📐 عن المشروع
 </h2>
 
 <p>
 
-هذا المشروع نموذج أولي لمنصة KAPO ONE.
-في النسخة النهائية سيتمكن صاحب المشروع
-من إضافة الصور والمخططات والمعلومات
-والفيديوهات والملفات الخاصة بالمشروع.
+تم تصميم المشروع ليقدم رؤية مستقبلية
+للأبراج والمدن الحديثة، مع التركيز على
+التصميم المعماري والهندسة والاستدامة
+والتقنيات الحديثة.
 
 </p>
 
 </div>
 
 
-<div class="card">
+<div class="box">
 
 <h2>
-المميزات
+⭐ المميزات
 </h2>
 
-<p>
-🏗️ تصميم معماري حديث
-</p>
+<p>🏗️ تصميم معماري حديث</p>
 
-<p>
-💡 أفكار مبتكرة
-</p>
+<p>💡 أفكار مبتكرة</p>
 
-<p>
-🌱 توجه نحو الاستدامة
-</p>
+<p>🌱 توجه نحو الاستدامة</p>
 
-<p>
-🌍 قابل للتطوير عالميًا
-</p>
+<p>🌍 رؤية عالمية</p>
+
+<p>📐 حلول هندسية مستقبلية</p>
 
 </div>
 
 
-<div class="card">
+<div class="box">
 
 <h2>
-التعليقات
+💬 التعليقات
 </h2>
 
 <textarea
@@ -459,8 +417,8 @@ placeholder="اكتب تعليقك على المشروع...">
 </textarea>
 
 <button
-class="comment-button"
-onclick="comment()">
+class="send"
+onclick="sendComment()">
 
 إرسال التعليق
 
@@ -485,14 +443,14 @@ KAPO ONE © 2026
 
 <script>
 
-function goBack(){
+function goHome(){
 
 window.location.href="index.html";
 
 }
 
 
-function likeProject(button){
+function like(button){
 
 if(button.innerText.includes("♡")){
 
@@ -507,7 +465,7 @@ button.innerText="♡ إعجاب";
 }
 
 
-function saveProject(button){
+function save(button){
 
 if(button.innerText.includes("🔖")){
 
@@ -522,7 +480,7 @@ button.innerText="🔖 حفظ";
 }
 
 
-function shareProject(){
+function share(){
 
 if(navigator.share){
 
@@ -530,27 +488,27 @@ navigator.share({
 
 title:"برج المستقبل - KAPO ONE",
 
-text:"شاهد هذا المشروع على KAPO ONE"
+text:"شاهد مشروع برج المستقبل على KAPO ONE"
 
 });
 
 }else{
 
-alert("المشاركة ستعمل بشكل كامل بعد تطوير النظام.");
+alert("ميزة المشاركة ستتطور لاحقًا.");
 
 }
 
 }
 
 
-function comment(){
+function sendComment(){
 
 let text=
 document.getElementById("comment").value.trim();
 
 if(text===""){
 
-alert("اكتب تعليقك أولًا.");
+alert("اكتب تعليقًا أولًا.");
 
 return;
 
