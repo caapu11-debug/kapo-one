@@ -11,207 +11,242 @@
 <style>
 
 *{
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
+box-sizing:border-box;
 }
 
 body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#0b1120;
-    color:white;
-    line-height:1.7;
+margin:0;
+font-family:Arial,sans-serif;
+background:#0b1120;
+color:white;
+line-height:1.8;
 }
 
 header{
-    background:#111827;
-    border-bottom:1px solid #263449;
-    padding:20px;
+background:#111827;
+border-bottom:1px solid #263449;
+padding:20px;
 }
 
 .nav{
-    max-width:1200px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
+max-width:1200px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
 }
 
 .logo{
-    font-size:28px;
-    font-weight:bold;
+font-size:28px;
+font-weight:bold;
 }
 
 .logo span{
-    color:#38bdf8;
+color:#38bdf8;
 }
 
 nav{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
+display:flex;
+gap:8px;
+flex-wrap:wrap;
 }
 
 nav a{
-    color:#cbd5e1;
-    text-decoration:none;
-    padding:8px 12px;
-    border-radius:8px;
-    font-size:14px;
+color:#cbd5e1;
+text-decoration:none;
+padding:8px 12px;
+border-radius:8px;
+font-size:14px;
 }
 
 nav a:hover{
-    background:#1e293b;
-    color:#38bdf8;
+background:#1e293b;
+color:#38bdf8;
 }
 
 .container{
-    max-width:1200px;
-    margin:auto;
-    padding:50px 20px;
+max-width:1100px;
+margin:auto;
+padding:40px 20px 70px;
 }
 
 .hero{
-    text-align:center;
-    padding:35px 15px 50px;
+text-align:center;
+padding:20px 10px 35px;
 }
 
 .hero-icon{
-    font-size:65px;
+font-size:60px;
 }
 
 .hero h1{
-    font-size:40px;
-    margin:15px 0 8px;
+font-size:38px;
+margin:12px 0;
 }
 
 .hero p{
-    color:#94a3b8;
-    font-size:18px;
-    max-width:700px;
-    margin:auto;
+color:#94a3b8;
+font-size:17px;
 }
 
-.filters{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-bottom:35px;
+.add-box{
+background:#111827;
+border:1px solid #263449;
+border-radius:20px;
+padding:25px;
+margin-bottom:30px;
+text-align:center;
 }
 
-.filter{
-    background:#1e293b;
-    border:1px solid #334155;
-    color:#cbd5e1;
-    padding:10px 18px;
-    border-radius:10px;
+.add-button{
+display:inline-block;
+background:#2563eb;
+color:white;
+text-decoration:none;
+padding:13px 25px;
+border-radius:10px;
+font-size:16px;
+}
+
+.add-button:hover{
+background:#1d4ed8;
+}
+
+.form{
+display:none;
+max-width:750px;
+margin:25px auto 0;
+text-align:right;
+}
+
+label{
+display:block;
+margin:12px 0 6px;
+color:#cbd5e1;
+}
+
+input,
+select,
+textarea{
+width:100%;
+padding:13px;
+border-radius:10px;
+border:1px solid #334155;
+background:#0b1120;
+color:white;
+font-size:15px;
+font-family:Arial,sans-serif;
+}
+
+textarea{
+min-height:110px;
+resize:vertical;
+}
+
+.save{
+width:100%;
+margin-top:18px;
+padding:13px;
+border:0;
+border-radius:10px;
+background:#16a34a;
+color:white;
+font-size:16px;
+cursor:pointer;
 }
 
 .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:22px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
 }
 
 .project{
-    background:#111827;
-    border:1px solid #263449;
-    border-radius:18px;
-    overflow:hidden;
+background:#111827;
+border:1px solid #263449;
+border-radius:18px;
+overflow:hidden;
 }
 
 .project-top{
-    background:#172554;
-    padding:30px;
-    text-align:center;
+background:#172554;
+padding:30px;
+text-align:center;
 }
 
 .project-icon{
-    font-size:55px;
+font-size:55px;
 }
 
 .project-body{
-    padding:25px;
+padding:22px;
 }
 
 .project h2{
-    margin-top:0;
-    font-size:22px;
+margin-top:0;
+font-size:21px;
 }
 
 .project p{
-    color:#94a3b8;
-    font-size:15px;
+color:#94a3b8;
+font-size:14px;
 }
 
 .status{
-    display:inline-block;
-    background:#1e293b;
-    color:#93c5fd;
-    border:1px solid #334155;
-    padding:6px 12px;
-    border-radius:8px;
-    font-size:13px;
-    margin-top:8px;
+display:inline-block;
+margin-top:8px;
+padding:6px 12px;
+border-radius:8px;
+background:#1e293b;
+color:#93c5fd;
+font-size:13px;
 }
 
 .info{
-    margin-top:35px;
-    background:#111827;
-    border:1px solid #263449;
-    border-radius:18px;
-    padding:30px;
-    text-align:center;
-}
-
-.info h2{
-    font-size:27px;
+margin-top:30px;
+background:#111827;
+border:1px solid #263449;
+border-radius:18px;
+padding:25px;
+text-align:center;
 }
 
 .info p{
-    color:#cbd5e1;
-    max-width:800px;
-    margin:auto;
+color:#cbd5e1;
+}
+
+.back{
+text-align:center;
+margin-top:30px;
+}
+
+.back a{
+color:#cbd5e1;
+text-decoration:none;
 }
 
 footer{
-    margin-top:40px;
-    background:#080d18;
-    border-top:1px solid #263449;
-    padding:30px 20px;
-    text-align:center;
-    color:#94a3b8;
+margin-top:40px;
+background:#080d18;
+border-top:1px solid #263449;
+padding:30px 20px;
+text-align:center;
+color:#94a3b8;
 }
 
 .footer-logo{
-    color:white;
-    font-size:24px;
-    font-weight:bold;
+color:white;
+font-size:24px;
+font-weight:bold;
 }
 
 .footer-logo span{
-    color:#38bdf8;
+color:#38bdf8;
 }
 
 footer p{
-    font-size:14px;
-}
-
-@media(max-width:700px){
-
-    .nav{
-        flex-direction:column;
-    }
-
-    .hero h1{
-        font-size:32px;
-    }
-
+font-size:14px;
 }
 
 </style>
@@ -219,6 +254,7 @@ footer p{
 </head>
 
 <body>
+
 
 <header>
 
@@ -230,29 +266,12 @@ footer p{
 
 <nav>
 
-<a href="index.html">
-الرئيسية
-</a>
-
-<a href="design.html">
-التصميم والهندسة
-</a>
-
-<a href="Project.html">
-المشاريع
-</a>
-
-<a href="gallery.html">
-المعرض
-</a>
-
-<a href="about.html">
-من نحن
-</a>
-
-<a href="contact.html">
-تواصل معنا
-</a>
+<a href="index.html">الرئيسية</a>
+<a href="projects.html">المشاريع</a>
+<a href="design.html">التصميم والهندسة</a>
+<a href="ideas.html">الأفكار المعمارية</a>
+<a href="files.html">الملفات</a>
+<a href="owner.html">المالك</a>
 
 </nav>
 
@@ -260,51 +279,139 @@ footer p{
 
 </header>
 
-<section class="container">
 
-<div class="hero">
+<div class="container">
+
+
+<section class="hero">
 
 <div class="hero-icon">
 🏗️
 </div>
 
 <h1>
-المشاريع
+مشاريع KAPO ONE
 </h1>
 
 <p>
-مساحة منظمة لعرض مشاريع KAPO ONE
-والأفكار المعمارية والهندسية المستقبلية.
+مساحة إدارة وعرض المشاريع والتصاميم المعمارية والهندسية.
 </p>
 
+</section>
+
+
+<section class="add-box">
+
+<h2>
+📁 إدارة المشاريع
+</h2>
+
+<p>
+يمكنك إضافة مشروع جديد من هنا.
+</p>
+
+<a href="#" class="add-button" onclick="showForm(); return false;">
+➕ إضافة مشروع جديد
+</a>
+
+
+<div class="form" id="projectForm">
+
+<label>
+اسم المشروع
+</label>
+
+<input
+type="text"
+id="name"
+placeholder="اكتب اسم المشروع"
+>
+
+
+<label>
+نوع المشروع
+</label>
+
+<select id="type">
+
+<option value="">
+اختر نوع المشروع
+</option>
+
+<option>
+مشروع معماري
+</option>
+
+<option>
+مشروع هندسي
+</option>
+
+<option>
+برج
+</option>
+
+<option>
+فكرة مستقبلية
+</option>
+
+</select>
+
+
+<label>
+وصف المشروع
+</label>
+
+<textarea
+id="description"
+placeholder="اكتب وصف المشروع"
+></textarea>
+
+
+<label>
+حالة المشروع
+</label>
+
+<select id="status">
+
+<option>
+قيد التطوير
+</option>
+
+<option>
+قريبًا
+</option>
+
+<option>
+مكتمل
+</option>
+
+<option>
+فكرة
+</option>
+
+</select>
+
+
+<button class="save" onclick="saveProject()">
+💾 حفظ المشروع
+</button>
+
 </div>
 
-<div class="filters">
+</section>
 
-<div class="filter">
-جميع المشاريع
-</div>
 
-<div class="filter">
-معماري
-</div>
+<section class="grid" id="projectsGrid">
 
-<div class="filter">
-هندسي
-</div>
-
-<div class="filter">
-أفكار مستقبلية
-</div>
-
-</div>
-
-<div class="grid">
 
 <div class="project">
 
 <div class="project-top">
-<div class="project-icon">🏗️</div>
+
+<div class="project-icon">
+🏢
+</div>
+
 </div>
 
 <div class="project-body">
@@ -314,8 +421,7 @@ footer p{
 </h2>
 
 <p>
-مساحة لعرض المشاريع والتصاميم
-المعمارية الخاصة بمنصة KAPO ONE.
+مساحة لعرض المشاريع والتصاميم المعمارية الخاصة بمنصة KAPO ONE.
 </p>
 
 <span class="status">
@@ -326,10 +432,15 @@ footer p{
 
 </div>
 
+
 <div class="project">
 
 <div class="project-top">
-<div class="project-icon">📐</div>
+
+<div class="project-icon">
+📐
+</div>
+
 </div>
 
 <div class="project-body">
@@ -339,8 +450,7 @@ footer p{
 </h2>
 
 <p>
-عرض الأفكار والحلول الهندسية
-والمخططات الخاصة بالمشاريع.
+عرض الأفكار والحلول الهندسية والمخططات الخاصة بالمشاريع.
 </p>
 
 <span class="status">
@@ -351,10 +461,15 @@ footer p{
 
 </div>
 
+
 <div class="project">
 
 <div class="project-top">
-<div class="project-icon">💡</div>
+
+<div class="project-icon">
+💡
+</div>
+
 </div>
 
 <div class="project-body">
@@ -364,8 +479,7 @@ footer p{
 </h2>
 
 <p>
-مساحة مخصصة للأفكار الجديدة
-والابتكارات والمشاريع المستقبلية.
+مساحة مخصصة للأفكار الجديدة والابتكارات والمشاريع المستقبلية.
 </p>
 
 <span class="status">
@@ -376,48 +490,35 @@ footer p{
 
 </div>
 
-<div class="project">
-
-<div class="project-top">
-<div class="project-icon">🚀</div>
-</div>
-
-<div class="project-body">
-
-<h2>
-مشاريع KAPO ONE
-</h2>
-
-<p>
-سيتم هنا إضافة المشاريع الرسمية
-وتفاصيلها وصورها ومراحل تطويرها.
-</p>
-
-<span class="status">
-سيتم الإضافة
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="info">
-
-<h2>
-منصة المشاريع
-</h2>
-
-<p>
-سيتم تطوير هذا القسم ليصبح مركزًا متكاملًا
-لعرض المشاريع، الصور، المخططات، مراحل التطوير
-والتفاصيل الخاصة بكل مشروع.
-</p>
-
-</div>
 
 </section>
+
+
+<section class="info">
+
+<h2>
+🚀 مركز مشاريع KAPO ONE
+</h2>
+
+<p>
+من هنا سيتم تطوير وإدارة المشاريع وإضافة التفاصيل
+والصور والمخططات ومراحل التطوير.
+</p>
+
+</section>
+
+
+<div class="back">
+
+<a href="index.html">
+⬅ العودة إلى الرئيسية
+</a>
+
+</div>
+
+
+</div>
+
 
 <footer>
 
@@ -434,6 +535,92 @@ KAPO <span>ONE</span>
 </p>
 
 </footer>
+
+
+<script>
+
+function showForm(){
+
+document.getElementById("projectForm").style.display="block";
+
+}
+
+
+function saveProject(){
+
+let name =
+document.getElementById("name").value.trim();
+
+let type =
+document.getElementById("type").value;
+
+let description =
+document.getElementById("description").value.trim();
+
+let status =
+document.getElementById("status").value;
+
+
+if(name === "" || type === "" || description === ""){
+
+alert("يرجى تعبئة بيانات المشروع كاملة.");
+
+return;
+
+}
+
+
+let card = document.createElement("div");
+
+card.className="project";
+
+card.innerHTML=`
+
+<div class="project-top">
+
+<div class="project-icon">
+🏗️
+</div>
+
+</div>
+
+<div class="project-body">
+
+<h2>
+${name}
+</h2>
+
+<p>
+${description}
+</p>
+
+<p>
+<strong>النوع:</strong> ${type}
+</p>
+
+<span class="status">
+${status}
+</span>
+
+</div>
+
+`;
+
+
+document.getElementById("projectsGrid").appendChild(card);
+
+
+document.getElementById("name").value="";
+document.getElementById("type").value="";
+document.getElementById("description").value="";
+document.getElementById("status").value="قيد التطوير";
+
+alert("✅ تمت إضافة المشروع بنجاح.");
+
+}
+
+</script>
+
 
 </body>
 
