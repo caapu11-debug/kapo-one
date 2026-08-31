@@ -1,724 +1,449 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>KAPO ONE | المعرض</title>
+<title>KAPO ONE | منصة الأعمال والتصميم</title>
 
 <style>
-
 *{
-box-sizing:border-box;
+    box-sizing:border-box;
 }
 
 body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#0b1120;
-color:white;
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#0b1120;
+    color:white;
 }
 
 header{
-background:#111827;
-padding:20px;
-text-align:center;
-border-bottom:1px solid #263449;
+    background:#111827;
+    padding:18px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #263244;
+    position:sticky;
+    top:0;
+    z-index:10;
 }
 
 .logo{
-font-size:30px;
-font-weight:bold;
+    font-size:25px;
+    font-weight:bold;
+    letter-spacing:1px;
 }
 
 .logo span{
-color:#38bdf8;
+    color:#38bdf8;
 }
 
-.container{
-max-width:1100px;
-margin:auto;
-padding:35px 20px 60px;
+.menu{
+    display:flex;
+    gap:10px;
+}
+
+.menu button{
+    background:#1e293b;
+    color:white;
+    border:1px solid #334155;
+    padding:10px 15px;
+    border-radius:10px;
+    cursor:pointer;
 }
 
 .hero{
-text-align:center;
-margin-bottom:30px;
+    padding:65px 20px 45px;
+    text-align:center;
+    background:linear-gradient(180deg,#111827,#0b1120);
 }
 
-.hero-icon{
-font-size:60px;
+.hero h1{
+    font-size:42px;
+    margin:0 0 15px;
 }
 
-h1{
-font-size:36px;
-margin:10px 0;
+.hero h1 span{
+    color:#38bdf8;
 }
 
 .hero p{
-color:#94a3b8;
+    color:#cbd5e1;
+    font-size:19px;
+    line-height:1.8;
+    max-width:750px;
+    margin:auto;
 }
 
-.menu{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:15px;
-margin-bottom:25px;
+.search{
+    max-width:650px;
+    margin:30px auto 0;
 }
 
-.menu a,
-.menu button{
-display:block;
-width:100%;
-text-align:center;
-text-decoration:none;
-border:1px solid #334155;
-background:#111827;
-color:white;
-padding:20px 10px;
-border-radius:15px;
-font-size:17px;
-cursor:pointer;
+.search input{
+    width:100%;
+    padding:17px;
+    border-radius:14px;
+    border:1px solid #334155;
+    background:#1e293b;
+    color:white;
+    font-size:17px;
+    outline:none;
 }
 
-.menu a:hover,
-.menu button:hover{
-background:#2563eb;
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:35px 20px 100px;
 }
 
-.page{
-display:none;
-background:#111827;
-border:1px solid #263449;
-border-radius:18px;
-padding:25px;
+.section-title{
+    font-size:28px;
+    margin:15px 0 25px;
 }
 
-.page.show{
-display:block;
+.categories{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-bottom:45px;
 }
 
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:20px;
+.category{
+    background:#111827;
+    border:1px solid #263244;
+    border-radius:16px;
+    padding:25px 15px;
+    text-align:center;
+    transition:.2s;
 }
 
-.empty{
-text-align:center;
-padding:40px 20px;
-color:#94a3b8;
+.category:hover{
+    transform:translateY(-4px);
+    border-color:#38bdf8;
 }
 
-.card{
-background:#0b1120;
-border:1px solid #334155;
-border-radius:15px;
-overflow:hidden;
+.category .icon{
+    font-size:35px;
+    margin-bottom:12px;
 }
 
-.card img{
-width:100%;
-height:220px;
-object-fit:cover;
-display:block;
+.category h3{
+    margin:5px 0;
 }
 
-.card-body{
-padding:18px;
-text-align:center;
+.category p{
+    color:#94a3b8;
+    font-size:14px;
 }
 
-.card-body h3{
-margin:0 0 8px;
+.projects{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
 }
 
-.card-body p{
-color:#94a3b8;
+.project{
+    background:#111827;
+    border:1px solid #263244;
+    border-radius:18px;
+    overflow:hidden;
 }
 
-label{
-display:block;
-margin:15px 0 7px;
-color:#cbd5e1;
+.project-image{
+    height:180px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#1e293b,#172554);
+    font-size:55px;
 }
 
-input,
-select,
-textarea{
-width:100%;
-padding:13px;
-border-radius:10px;
-border:1px solid #334155;
-background:#0b1120;
-color:white;
-font-size:15px;
+.project-content{
+    padding:20px;
 }
 
-textarea{
-min-height:100px;
+.project-content h3{
+    margin-top:0;
 }
 
-.save{
-width:100%;
-margin-top:20px;
-padding:14px;
-border:0;
-border-radius:10px;
-background:#16a34a;
-color:white;
-font-size:17px;
-cursor:pointer;
+.project-content p{
+    color:#94a3b8;
+    line-height:1.6;
 }
 
-.photo{
-display:inline-block;
-background:#2563eb;
-padding:14px 25px;
-border-radius:10px;
-cursor:pointer;
+.project button{
+    width:100%;
+    padding:12px;
+    border:0;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
 }
 
-#photoInput{
-display:none;
+.add-project{
+    margin:45px 0;
+    background:linear-gradient(135deg,#172554,#0f172a);
+    border:1px solid #1d4ed8;
+    border-radius:20px;
+    padding:35px 20px;
+    text-align:center;
 }
 
-.back{
-text-align:center;
-margin-top:30px;
+.add-project h2{
+    margin-top:0;
 }
 
-.back a{
-display:inline-block;
-background:#334155;
-color:white;
-text-decoration:none;
-padding:12px 25px;
-border-radius:10px;
+.add-project button{
+    background:#38bdf8;
+    color:#082f49;
+    border:0;
+    padding:14px 25px;
+    border-radius:12px;
+    font-weight:bold;
+    font-size:16px;
 }
 
 footer{
-background:#080d18;
-padding:25px;
-text-align:center;
-color:#94a3b8;
+    background:#080d18;
+    border-top:1px solid #263244;
+    padding:25px 15px;
+    text-align:center;
+    color:#94a3b8;
 }
 
-.footer-logo{
-font-size:24px;
-font-weight:bold;
-color:white;
+@media(max-width:800px){
+
+    header{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .categories{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .projects{
+        grid-template-columns:1fr;
+    }
 }
 
-.footer-logo span{
-color:#38bdf8;
+@media(max-width:450px){
+
+    .categories{
+        grid-template-columns:1fr;
+    }
+
+    .menu{
+        width:100%;
+    }
+
+    .menu button{
+        flex:1;
+    }
 }
-
-@media(max-width:600px){
-
-.menu{
-grid-template-columns:1fr;
-}
-
-h1{
-font-size:30px;
-}
-
-}
-
 </style>
-
 </head>
 
 <body>
 
-
 <header>
 
-<div class="logo">
+    <div class="logo">
+        KAPO <span>ONE</span>
+    </div>
 
-🚀 KAPO <span>ONE</span>
-
-</div>
+    <div class="menu">
+        <button onclick="goHome()">الرئيسية</button>
+        <button onclick="showMessage()">المشاريع</button>
+        <button onclick="showMessage()">تسجيل الدخول</button>
+    </div>
 
 </header>
 
-
-<div class="container">
-
-
 <section class="hero">
 
-<div class="hero-icon">
-🖼️
-</div>
+    <h1>
+        مرحبًا بك في <span>KAPO ONE</span>
+    </h1>
 
-<h1>
-معرض KAPO ONE
-</h1>
+    <p>
+        منصة عالمية تجمع الأعمال والمشاريع والأفكار
+        في مكان واحد، وتفتح المجال للمصممين والمهندسين
+        وأصحاب المشاريع لعرض أعمالهم والوصول إلى العالم.
+    </p>
 
-<p>
-مساحة احترافية لعرض أعمال وتصاميم KAPO ONE
-</p>
-
-</section>
-
-
-<!-- الأزرار -->
-
-<div class="menu">
-
-<button onclick="openGallery()">
-
-🖼️
-<br>
-معرض الأعمال
-
-</button>
-
-
-<button onclick="openWork()">
-
-➕
-<br>
-إضافة عمل جديد
-
-</button>
-
-
-<button onclick="choosePhoto()">
-
-📷
-<br>
-إضافة صورة فقط
-
-</button>
-
-</div>
-
-
-<!-- معرض الأعمال -->
-
-<section
-id="galleryPage"
-class="page show">
-
-<h2>
-🖼️ معرض الأعمال
-</h2>
-
-<div
-class="gallery"
-id="gallery">
-
-<div
-class="empty"
-id="empty">
-
-لا توجد أعمال مضافة حتى الآن.
-
-<br><br>
-
-يمكنك إضافة عمل جديد أو صورة.
-
-</div>
-
-</div>
+    <div class="search">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="ابحث عن مشروع، تصميم، برج، مهندس..."
+            onkeyup="searchProjects()"
+        >
+    </div>
 
 </section>
 
+<main class="container">
 
-<!-- إضافة عمل -->
+    <h2 class="section-title">استكشف المنصة</h2>
 
-<section
-id="workPage"
-class="page">
+    <div class="categories">
 
-<h2>
-➕ إضافة عمل جديد
-</h2>
+        <div class="category">
+            <div class="icon">🏗️</div>
+            <h3>الهندسة</h3>
+            <p>مشاريع وأعمال هندسية</p>
+        </div>
 
-<label>
-اسم العمل
-</label>
+        <div class="category">
+            <div class="icon">🏢</div>
+            <h3>العمارة</h3>
+            <p>تصاميم ومشاريع معمارية</p>
+        </div>
 
-<input
-id="name"
-type="text"
-placeholder="مثال: برج كابو">
+        <div class="category">
+            <div class="icon">🌆</div>
+            <h3>الأبراج</h3>
+            <p>أفكار وتصاميم الأبراج</p>
+        </div>
 
+        <div class="category">
+            <div class="icon">💡</div>
+            <h3>الأفكار</h3>
+            <p>ابتكارات ومشاريع جديدة</p>
+        </div>
 
-<label>
-نوع العمل
-</label>
+    </div>
 
-<select id="type">
+    <h2 class="section-title">أبرز المشاريع</h2>
 
-<option value="">
-اختر النوع
-</option>
+    <div class="projects" id="projects">
 
-<option>
-تصميم معماري
-</option>
+        <div class="project">
 
-<option>
-مخطط هندسي
-</option>
+            <div class="project-image">🏙️</div>
 
-<option>
-فكرة معمارية
-</option>
+            <div class="project-content">
+                <h3>مشروع برج المستقبل</h3>
+                <p>
+                    فكرة معمارية مستقبلية تجمع بين
+                    التصميم والهندسة والتقنية.
+                </p>
 
-<option>
-مشروع مستقبلي
-</option>
+                <button onclick="showMessage()">
+                    استكشف المشروع
+                </button>
+            </div>
 
-</select>
+        </div>
 
+        <div class="project">
 
-<label>
-الصورة
-</label>
+            <div class="project-image">🏗️</div>
 
-<input
-id="workImage"
-type="file"
-accept="image/*">
+            <div class="project-content">
+                <h3>مشروع هندسي</h3>
+                <p>
+                    مساحة لعرض المشاريع والأعمال
+                    الهندسية من مختلف أنحاء العالم.
+                </p>
 
+                <button onclick="showMessage()">
+                    استكشف المشروع
+                </button>
+            </div>
 
-<label>
-وصف العمل
-</label>
+        </div>
 
-<textarea
-id="description"
-placeholder="اكتب وصف العمل">
-</textarea>
+        <div class="project">
 
+            <div class="project-image">🌍</div>
 
-<button
-class="save"
-onclick="saveWork()">
+            <div class="project-content">
+                <h3>مشاريع العالم</h3>
+                <p>
+                    اكتشف أفكارًا ومشاريع مميزة
+                    من مختلف الدول.
+                </p>
 
-💾 إضافة العمل
+                <button onclick="showMessage()">
+                    استكشف المشروع
+                </button>
+            </div>
 
-</button>
+        </div>
 
-</section>
+    </div>
 
+    <div class="add-project">
 
-<!-- إضافة صورة -->
+        <h2>لديك مشروع أو فكرة؟</h2>
 
-<section
-id="photoPage"
-class="page">
+        <p>
+            قريبًا يمكنك إنشاء صفحتك وإضافة مشاريعك
+            وعرض أعمالك على منصة KAPO ONE.
+        </p>
 
-<h2>
-📷 إضافة صورة فقط
-</h2>
+        <button onclick="showMessage()">
+            + إضافة مشروع
+        </button>
 
-<p>
-اختر صورة من هاتفك لإضافتها إلى المعرض.
-</p>
+    </div>
 
-<label
-class="photo"
-for="photoInput">
-
-📷 اختيار صورة
-
-</label>
-
-<input
-id="photoInput"
-type="file"
-accept="image/*">
-
-</section>
-
-
-<div class="back">
-
-<a href="index.html">
-🏠 العودة إلى الرئيسية
-</a>
-
-</div>
-
-
-</div>
-
+</main>
 
 <footer>
-
-<div class="footer-logo">
-
-KAPO <span>ONE</span>
-
-</div>
-
-<p>
-منصة الأعمال والأفكار والتصاميم
-</p>
-
-<p>
-© 2026 KAPO ONE
-</p>
-
+    KAPO ONE © 2026 — منصة عالمية للأعمال والمشاريع والتصميم
 </footer>
-
 
 <script>
 
-
-function hidePages(){
-
-document
-.getElementById("galleryPage")
-.classList.remove("show");
-
-document
-.getElementById("workPage")
-.classList.remove("show");
-
-document
-.getElementById("photoPage")
-.classList.remove("show");
-
+function showMessage(){
+    alert("هذه الميزة سيتم تفعيلها في المرحلة القادمة 🚀");
 }
 
-
-function openGallery(){
-
-hidePages();
-
-document
-.getElementById("galleryPage")
-.classList.add("show");
-
+function goHome(){
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
 }
 
+function searchProjects(){
 
-function openWork(){
+    let input =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase();
 
-hidePages();
+    let projects =
+        document.querySelectorAll(".project");
 
-document
-.getElementById("workPage")
-.classList.add("show");
+    projects.forEach(function(project){
 
-}
+        let text =
+            project.innerText.toLowerCase();
 
+        if(text.includes(input)){
+            project.style.display="";
+        }else{
+            project.style.display="none";
+        }
 
-function choosePhoto(){
-
-hidePages();
-
-document
-.getElementById("photoPage")
-.classList.add("show");
-
-document
-.getElementById("photoInput")
-.click();
-
-}
-
-
-document
-.getElementById("photoInput")
-.addEventListener(
-"change",
-function(){
-
-let file=this.files[0];
-
-if(!file){
-
-return;
+    });
 
 }
-
-addPhoto(
-file,
-"صورة جديدة",
-"صورة مضافة إلى معرض KAPO ONE"
-);
-
-openGallery();
-
-this.value="";
-
-});
-
-
-function saveWork(){
-
-let name=
-document.getElementById("name").value.trim();
-
-let type=
-document.getElementById("type").value;
-
-let description=
-document.getElementById("description").value.trim();
-
-let image=
-document.getElementById("workImage").files[0];
-
-
-if(name===""){
-
-alert("اكتب اسم العمل");
-
-return;
-
-}
-
-if(type===""){
-
-alert("اختر نوع العمل");
-
-return;
-
-}
-
-if(description===""){
-
-alert("اكتب وصف العمل");
-
-return;
-
-}
-
-if(!image){
-
-alert("اختر صورة العمل");
-
-return;
-
-}
-
-
-addPhoto(
-image,
-name,
-description,
-type
-);
-
-
-document.getElementById("name").value="";
-
-document.getElementById("type").value="";
-
-document.getElementById("description").value="";
-
-document.getElementById("workImage").value="";
-
-
-openGallery();
-
-alert("✅ تمت إضافة العمل إلى المعرض");
-
-}
-
-
-function addPhoto(
-file,
-name,
-description,
-type
-){
-
-let reader=
-new FileReader();
-
-
-reader.onload=function(e){
-
-let empty=
-document.getElementById("empty");
-
-if(empty){
-
-empty.remove();
-
-}
-
-
-let card=
-document.createElement("div");
-
-card.className="card";
-
-
-let img=
-document.createElement("img");
-
-img.src=e.target.result;
-
-img.alt=name;
-
-
-let body=
-document.createElement("div");
-
-body.className="card-body";
-
-
-let title=
-document.createElement("h3");
-
-title.textContent=name;
-
-
-let text=
-document.createElement("p");
-
-text.textContent=description;
-
-
-body.appendChild(title);
-
-body.appendChild(text);
-
-
-if(type){
-
-let label=
-document.createElement("p");
-
-label.textContent=type;
-
-body.appendChild(label);
-
-}
-
-
-card.appendChild(img);
-
-card.appendChild(body);
-
-
-document
-.getElementById("gallery")
-.appendChild(card);
-
-};
-
-
-reader.readAsDataURL(file);
-
-}
-
 
 </script>
 
-
 </body>
-
 </html>
