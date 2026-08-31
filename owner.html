@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>KAPO ONE | إدارة المنصة</title>
+<title>KAPO ONE | لوحة المالك</title>
 
 <style>
 
@@ -19,7 +19,7 @@ body{
     font-family:Arial,sans-serif;
     background:#0b1120;
     color:white;
-    line-height:1.8;
+    line-height:1.7;
 }
 
 header{
@@ -66,43 +66,32 @@ nav a:hover{
 }
 
 .container{
-    max-width:1100px;
+    max-width:1200px;
     margin:auto;
-    padding:50px 20px;
+    padding:40px 20px 70px;
 }
 
 .hero{
     text-align:center;
-    padding:25px 10px 45px;
+    padding:20px 10px 40px;
 }
 
-.lock{
-    font-size:65px;
+.hero-icon{
+    font-size:60px;
 }
 
 .hero h1{
-    font-size:38px;
-    margin:15px 0 8px;
+    font-size:36px;
+    margin:12px 0;
 }
 
 .hero p{
     color:#94a3b8;
-    font-size:17px;
-}
-
-.warning{
-    max-width:750px;
-    margin:20px auto;
-    background:#172554;
-    border:1px solid #2563eb;
-    border-radius:15px;
-    padding:18px;
-    color:#cbd5e1;
 }
 
 .dashboard{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
     gap:20px;
 }
 
@@ -112,79 +101,103 @@ nav a:hover{
     border-radius:18px;
     padding:25px;
     text-align:center;
+    transition:.2s;
 }
 
-.card-icon{
+.card:hover{
+    transform:translateY(-4px);
+    border-color:#38bdf8;
+}
+
+.icon{
     font-size:45px;
 }
 
 .card h2{
     font-size:21px;
-    margin:12px 0;
+    margin:12px 0 8px;
 }
 
 .card p{
     color:#94a3b8;
-    font-size:15px;
+    font-size:14px;
 }
 
-.status{
+.btn{
     display:inline-block;
-    margin-top:10px;
-    padding:6px 13px;
-    border-radius:8px;
-    background:#1e293b;
-    color:#93c5fd;
-    font-size:13px;
+    margin-top:12px;
+    padding:10px 20px;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    text-decoration:none;
+    border:0;
+    cursor:pointer;
+    font-size:14px;
 }
 
-.section{
+.btn:hover{
+    background:#1d4ed8;
+}
+
+.panel{
     margin-top:30px;
     background:#111827;
     border:1px solid #263449;
-    border-radius:20px;
-    padding:30px;
+    border-radius:18px;
+    padding:25px;
 }
 
-.section h2{
+.panel h2{
     text-align:center;
-    font-size:26px;
+    margin-top:0;
 }
 
 .list{
     display:grid;
     gap:12px;
-    max-width:800px;
-    margin:auto;
 }
 
-.list-item{
+.item{
     background:#0b1120;
     border:1px solid #263449;
     border-radius:12px;
-    padding:14px 18px;
+    padding:15px;
     color:#cbd5e1;
 }
 
 .security{
     margin-top:30px;
-    background:#111827;
-    border:1px solid #263449;
-    border-radius:20px;
-    padding:25px;
+    background:#172554;
+    border:1px solid #2563eb;
+    border-radius:18px;
+    padding:22px;
     text-align:center;
 }
 
 .security h2{
-    font-size:24px;
+    margin-top:0;
 }
 
 .security p{
-    color:#94a3b8;
+    color:#cbd5e1;
+}
+
+.back{
+    text-align:center;
+    margin-top:35px;
+}
+
+.back a{
+    color:#cbd5e1;
+    text-decoration:none;
+}
+
+.back a:hover{
+    color:#38bdf8;
 }
 
 footer{
-    margin-top:40px;
     background:#080d18;
     border-top:1px solid #263449;
     padding:30px 20px;
@@ -194,7 +207,7 @@ footer{
 
 .footer-logo{
     color:white;
-    font-size:24px;
+    font-size:23px;
     font-weight:bold;
 }
 
@@ -222,7 +235,6 @@ footer p{
 
 </head>
 
-
 <body>
 
 
@@ -240,24 +252,24 @@ footer p{
 الرئيسية
 </a>
 
-<a href="design.html">
-التصميم والهندسة
-</a>
-
 <a href="projects.html">
 المشاريع
 </a>
 
-<a href="gallery.html">
-المعرض
+<a href="design.html">
+التصميم والهندسة
 </a>
 
-<a href="about.html">
-من نحن
+<a href="ideas.html">
+الأفكار المعمارية
 </a>
 
-<a href="contact.html">
-تواصل معنا
+<a href="files.html">
+الملفات
+</a>
+
+<a href="owner.html">
+المالك
 </a>
 
 </nav>
@@ -272,33 +284,27 @@ footer p{
 
 <section class="hero">
 
-<div class="lock">
+<div class="hero-icon">
 🔐
 </div>
 
 <h1>
-إدارة KAPO ONE
+لوحة مالك KAPO ONE
 </h1>
 
 <p>
-لوحة التحكم الخاصة بمالك المنصة
+مركز إدارة المنصة والمشاريع والأفكار والمحتوى
 </p>
-
-<div class="warning">
-هذه الصفحة هي واجهة الإدارة فقط.
-نظام تسجيل الدخول الآمن سيتم ربطه لاحقًا
-بحساب المالك ونظام مصادقة حقيقي.
-</div>
 
 </section>
 
 
-<div class="dashboard">
+<section class="dashboard">
 
 
 <div class="card">
 
-<div class="card-icon">
+<div class="icon">
 📁
 </div>
 
@@ -307,40 +313,19 @@ footer p{
 </h2>
 
 <p>
-إضافة وتعديل وحذف المشاريع والأفكار.
+عرض وتنظيم مشاريع KAPO ONE.
 </p>
 
-<span class="status">
-قيد التطوير
-</span>
+<a class="btn" href="projects.html">
+فتح المشاريع
+</a>
 
 </div>
 
 
 <div class="card">
 
-<div class="card-icon">
-🖼️
-</div>
-
-<h2>
-إدارة المعرض
-</h2>
-
-<p>
-إدارة الصور والتصاميم والمخططات.
-</p>
-
-<span class="status">
-قيد التطوير
-</span>
-
-</div>
-
-
-<div class="card">
-
-<div class="card-icon">
+<div class="icon">
 📐
 </div>
 
@@ -349,19 +334,82 @@ footer p{
 </h2>
 
 <p>
-إدارة محتوى قسم التصميم والهندسة.
+إدارة محتوى التصميم والهندسة.
 </p>
 
-<span class="status">
-قيد التطوير
-</span>
+<a class="btn" href="design.html">
+فتح القسم
+</a>
 
 </div>
 
 
 <div class="card">
 
-<div class="card-icon">
+<div class="icon">
+💡
+</div>
+
+<h2>
+الأفكار المعمارية
+</h2>
+
+<p>
+عرض وتطوير الأفكار المعمارية.
+</p>
+
+<a class="btn" href="ideas.html">
+فتح الأفكار
+</a>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+📂
+</div>
+
+<h2>
+الملفات والمشاريع
+</h2>
+
+<p>
+تنظيم ملفات ومستندات المنصة.
+</p>
+
+<a class="btn" href="files.html">
+فتح الملفات
+</a>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+🖼️
+</div>
+
+<h2>
+المعرض
+</h2>
+
+<p>
+قسم الصور والتصاميم والنماذج.
+</p>
+
+<a class="btn" href="gallery.html">
+فتح المعرض
+</a>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
 📨
 </div>
 
@@ -370,67 +418,77 @@ footer p{
 </h2>
 
 <p>
-متابعة رسائل واستفسارات الزوار.
+متابعة استفسارات ورسائل الزوار.
 </p>
 
-<span class="status">
-قيد التطوير
-</span>
+<button class="btn" onclick="alert('قسم الرسائل سيتم تطويره لاحقًا')">
+فتح الرسائل
+</button>
 
 </div>
 
 
-</div>
+</section>
 
 
-<div class="section">
+<section class="panel">
 
 <h2>
-وظائف لوحة الإدارة
+📊 حالة منصة KAPO ONE
 </h2>
 
 <div class="list">
 
-<div class="list-item">
-🔹 إضافة مشروع جديد
+<div class="item">
+✅ الصفحة الرئيسية — تعمل
 </div>
 
-<div class="list-item">
-🔹 تعديل بيانات المشروع
+<div class="item">
+✅ المشاريع — تعمل
 </div>
 
-<div class="list-item">
-🔹 حذف مشروع
+<div class="item">
+✅ التصميم والهندسة — تعمل
 </div>
 
-<div class="list-item">
-🔹 إضافة صور وتصاميم
+<div class="item">
+✅ الأفكار المعمارية — تعمل
 </div>
 
-<div class="list-item">
-🔹 إدارة محتوى المنصة
+<div class="item">
+✅ الملفات — تعمل
 </div>
 
-<div class="list-item">
-🔹 متابعة الرسائل
+<div class="item">
+✅ صفحة المالك — تعمل
 </div>
 
 </div>
 
-</div>
+</section>
 
 
-<div class="security">
+<section class="security">
 
 <h2>
 🛡️ حماية المالك
 </h2>
 
 <p>
-لن يتم وضع كلمة المرور داخل ملفات HTML.
-سيتم استخدام نظام تسجيل دخول حقيقي وآمن
-عند ربط المنصة بخدمة المصادقة وقاعدة البيانات.
+هذه الصفحة حاليًا واجهة إدارة فقط.
+لن يتم حفظ كلمة المرور داخل HTML.
+سيتم إضافة نظام تسجيل دخول آمن
+عند ربط المنصة بخدمة مصادقة وقاعدة بيانات.
 </p>
+
+</section>
+
+
+<div class="back">
+
+<a href="index.html">
+⬅ العودة إلى الصفحة الرئيسية
+</a>
 
 </div>
 
