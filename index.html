@@ -27,6 +27,14 @@ header{
     border-bottom:1px solid #334155;
 }
 
+.top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    max-width:1100px;
+    margin:auto;
+}
+
 .logo{
     font-size:30px;
     font-weight:bold;
@@ -34,6 +42,20 @@ header{
 
 .logo span{
     color:#38bdf8;
+}
+
+.owner-button{
+    background:#334155;
+    color:white;
+    border:1px solid #475569;
+    padding:11px 18px;
+    border-radius:10px;
+    font-size:15px;
+    cursor:pointer;
+}
+
+.owner-button:hover{
+    background:#475569;
 }
 
 .hero{
@@ -74,7 +96,6 @@ header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    gap:10px;
     margin-bottom:20px;
 }
 
@@ -130,6 +151,10 @@ header{
 .country{
     color:#38bdf8;
     font-size:14px;
+}
+
+button{
+    cursor:pointer;
 }
 
 .modal{
@@ -222,10 +247,23 @@ footer{
 
 <body>
 
+
 <header>
+
+<div class="top">
 
 <div class="logo">
 KAPO <span>ONE</span> 🚀
+</div>
+
+<button
+class="owner-button"
+onclick="openOwner()">
+
+👤 المالك
+
+</button>
+
 </div>
 
 <div>
@@ -237,10 +275,13 @@ KAPO <span>ONE</span> 🚀
 
 <section class="hero">
 
-<h1>مرحبًا بك في KAPO ONE 🌍</h1>
+<h1>
+مرحبًا بك في KAPO ONE 🌍
+</h1>
 
 <p>
-مكان واحد لعرض المشاريع والأعمال والتصاميم والأفكار من جميع أنحاء العالم.
+مكان واحد لعرض المشاريع والأعمال والتصاميم والأفكار
+من جميع أنحاء العالم.
 </p>
 
 <div class="search">
@@ -258,6 +299,7 @@ oninput="searchProjects()">
 
 <main class="container">
 
+
 <div class="section-head">
 
 <h2>
@@ -267,7 +309,9 @@ oninput="searchProjects()">
 <button
 class="add-button"
 onclick="openModal()">
+
 +
+
 </button>
 
 </div>
@@ -275,7 +319,7 @@ onclick="openModal()">
 
 <div id="gallery" class="gallery">
 
-<div class="empty" id="empty">
+<div class="empty">
 
 📁 لا توجد أعمال مضافة حتى الآن
 
@@ -288,6 +332,7 @@ onclick="openModal()">
 </div>
 
 </div>
+
 
 </main>
 
@@ -303,7 +348,8 @@ KAPO ONE © 2026
 </footer>
 
 
-<!-- نافذة إضافة مشروع -->
+
+<!-- إضافة مشروع -->
 
 <div class="modal" id="modal">
 
@@ -382,10 +428,57 @@ onclick="closeModal()">
 </div>
 
 
+
+<!-- حساب المالك -->
+
+<div class="modal" id="ownerModal">
+
+<div class="modal-box">
+
+<h2>
+👤 حساب مالك KAPO ONE
+</h2>
+
+<p style="color:#cbd5e1;line-height:1.8;">
+
+مرحبًا بك في منطقة المالك.
+
+<br>
+
+سيتم تجهيز نظام تسجيل الدخول الآمن
+ولوحة التحكم الخاصة بالمالك في الخطوة القادمة.
+
+</p>
+
+<button
+class="save"
+onclick="ownerLogin()">
+
+🔐 تسجيل الدخول
+
+</button>
+
+<br><br>
+
+<button
+class="cancel"
+onclick="closeOwner()">
+
+إغلاق
+
+</button>
+
+</div>
+
+</div>
+
+
+
 <script>
 
 let projects =
 JSON.parse(localStorage.getItem("kapoProjects")) || [];
+
 
 
 function openModal(){
@@ -395,11 +488,39 @@ document.getElementById("modal").style.display="block";
 }
 
 
+
 function closeModal(){
 
 document.getElementById("modal").style.display="none";
 
 }
+
+
+
+function openOwner(){
+
+document.getElementById("ownerModal").style.display="block";
+
+}
+
+
+
+function closeOwner(){
+
+document.getElementById("ownerModal").style.display="none";
+
+}
+
+
+
+function ownerLogin(){
+
+alert(
+"سيتم تجهيز تسجيل دخول المالك الآمن في المرحلة القادمة 🔐"
+);
+
+}
+
 
 
 function addProject(){
@@ -487,6 +608,7 @@ reader.readAsDataURL(image);
 }
 
 
+
 function displayProjects(){
 
 let gallery =
@@ -538,7 +660,6 @@ color:white;
 border:none;
 padding:9px 15px;
 border-radius:8px;
-cursor:pointer;
 ">
 
 حذف
@@ -554,6 +675,7 @@ gallery.appendChild(card);
 });
 
 }
+
 
 
 function deleteProject(index){
@@ -572,6 +694,7 @@ displayProjects();
 }
 
 }
+
 
 
 function searchProjects(){
@@ -601,6 +724,7 @@ card.style.display="none";
 });
 
 }
+
 
 
 displayProjects();
