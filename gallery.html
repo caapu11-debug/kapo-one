@@ -141,6 +141,11 @@ font-size:15px;
 font-family:Arial,sans-serif;
 }
 
+input[type="file"]{
+padding:10px;
+background:#111827;
+}
+
 textarea{
 min-height:100px;
 resize:vertical;
@@ -176,12 +181,20 @@ overflow:hidden;
 }
 
 .image-box{
-height:190px;
+height:220px;
 background:#172554;
 display:flex;
 align-items:center;
 justify-content:center;
 font-size:65px;
+overflow:hidden;
+}
+
+.image-box img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
 }
 
 .item-body{
@@ -208,6 +221,38 @@ background:#1e293b;
 border:1px solid #334155;
 color:#93c5fd;
 font-size:13px;
+}
+
+.actions{
+display:flex;
+gap:8px;
+margin-top:18px;
+}
+
+.actions button{
+flex:1;
+padding:10px;
+border:0;
+border-radius:8px;
+color:white;
+cursor:pointer;
+font-size:14px;
+}
+
+.edit{
+background:#2563eb;
+}
+
+.delete{
+background:#dc2626;
+}
+
+.edit:hover{
+background:#1d4ed8;
+}
+
+.delete:hover{
+background:#b91c1c;
 }
 
 .info{
@@ -276,6 +321,10 @@ flex-direction:column;
 font-size:32px;
 }
 
+.actions{
+flex-direction:column;
+}
+
 }
 
 </style>
@@ -283,7 +332,6 @@ font-size:32px;
 </head>
 
 <body>
-
 
 <header>
 
@@ -296,17 +344,11 @@ font-size:32px;
 <nav>
 
 <a href="index.html">الرئيسية</a>
-
 <a href="projects.html">المشاريع</a>
-
 <a href="design.html">التصميم والهندسة</a>
-
 <a href="ideas.html">الأفكار المعمارية</a>
-
 <a href="files.html">الملفات</a>
-
 <a href="gallery.html">المعرض</a>
-
 <a href="owner.html">المالك</a>
 
 </nav>
@@ -317,7 +359,6 @@ font-size:32px;
 
 
 <div class="container">
-
 
 <section class="hero">
 
@@ -344,7 +385,7 @@ font-size:32px;
 </h2>
 
 <p>
-يمكنك إضافة عمل جديد إلى المعرض.
+أضف أعمالك وتصاميمك إلى المعرض.
 </p>
 
 <div class="add-button" onclick="showForm()">
@@ -392,6 +433,17 @@ placeholder="مثال: برج كابو"
 </option>
 
 </select>
+
+
+<label>
+صورة العمل
+</label>
+
+<input
+type="file"
+id="workImage"
+accept="image/*"
+>
 
 
 <label>
@@ -526,7 +578,7 @@ placeholder="اكتب وصف التصميم أو المشروع"
 </h2>
 
 <p>
-سيتم تطوير المعرض مستقبلًا ليشمل الصور الحقيقية
+سيتم تطوير المعرض ليشمل الصور الحقيقية
 والتصاميم ثلاثية الأبعاد والمخططات ومراحل تطور المشاريع.
 </p>
 
@@ -540,7 +592,6 @@ placeholder="اكتب وصف التصميم أو المشروع"
 </a>
 
 </div>
-
 
 </div>
 
@@ -564,12 +615,24 @@ KAPO <span>ONE</span>
 
 <script>
 
+let editingItem = null;
+
+
+/* إظهار نموذج الإضافة */
+
 function showForm(){
 
 document.getElementById("galleryForm").style.display="block";
 
+window.scrollTo({
+top:document.getElementById("galleryForm").offsetTop,
+behavior:"smooth"
+});
+
 }
 
+
+/* إضافة أو تعديل العمل */
 
 function addWork(){
 
@@ -582,25 +645,90 @@ document.getElementById("workType").value;
 let description =
 document.getElementById("workDescription").value.trim();
 
+let imageFile =
+document.getElementById("workImage").files[0];
+
 
 if(name === "" || type === "" || description === ""){
 
-alert("يرجى تعبئة جميع البيانات.");
+alert("يرجى تعبئة اسم العمل والنوع والوصف.");
 
 return;
 
 }
 
 
+/* إذا كنا نعدل عملاً موجوداً */
+
+if(editingItem){
+
+editingItem.querySelector("h2").textContent = name;
+
+editingItem.querySelector("p").textContent = description;
+
+editingItem.querySelector(".status").textContent = type;
+
+if(imageFile){
+
+let reader = new FileReader();
+
+reader.onload = function(e){
+
+editingItem.querySelector(".image-box").innerHTML =
+'<img src="' + e.target.result + '" alt="' + escapeHTML(name) + '">';
+
+};
+
+reader.readAsDataURL(imageFile);
+
+}
+
+editingItem = null;
+
+document.querySelector(".save").textContent =
+"💾 إضافة إلى المعرض";
+
+clearForm();
+
+alert("✅ تم تعديل العمل بنجاح.");
+
+return;
+
+}
+
+
+/* إضافة عمل جديد */
+
 let item =
 document.createElement("div");
 
 item.className="item";
 
+
+let imageHTML =
+"🏗️";
+
+
+if(imageFile){
+
+let reader = new FileReader();
+
+reader.onload = function(e){
+
+item.querySelector(".image-box").innerHTML =
+'<img src="' + e.target.result + '" alt="' + escapeHTML(name) + '">';
+
+};
+
+reader.readAsDataURL(imageFile);
+
+}
+
+
 item.innerHTML=`
 
 <div class="image-box">
-🏗️
+${imageHTML}
 </div>
 
 <div class="item-body">
@@ -617,6 +745,18 @@ ${escapeHTML(description)}
 ${escapeHTML(type)}
 </span>
 
+<div class="actions">
+
+<button class="edit" onclick="editWork(this)">
+✏️ تعديل
+</button>
+
+<button class="delete" onclick="deleteWork(this)">
+🗑️ حذف
+</button>
+
+</div>
+
 </div>
 
 `;
@@ -624,18 +764,90 @@ ${escapeHTML(type)}
 
 document.getElementById("gallery").appendChild(item);
 
-
-document.getElementById("workName").value="";
-document.getElementById("workType").value="";
-document.getElementById("workDescription").value="";
-
-document.getElementById("galleryForm").style.display="none";
-
+clearForm();
 
 alert("✅ تمت إضافة العمل إلى المعرض.");
 
 }
 
+
+/* تعديل العمل */
+
+function editWork(button){
+
+editingItem =
+button.closest(".item");
+
+
+let name =
+editingItem.querySelector("h2").textContent;
+
+let description =
+editingItem.querySelector("p").textContent;
+
+let type =
+editingItem.querySelector(".status").textContent;
+
+
+document.getElementById("workName").value=name;
+
+document.getElementById("workType").value=type;
+
+document.getElementById("workDescription").value=description;
+
+document.getElementById("workImage").value="";
+
+
+document.querySelector(".save").textContent =
+"💾 حفظ التعديل";
+
+document.getElementById("galleryForm").style.display="block";
+
+window.scrollTo({
+top:document.getElementById("galleryForm").offsetTop,
+behavior:"smooth"
+});
+
+}
+
+
+/* حذف العمل */
+
+function deleteWork(button){
+
+let item =
+button.closest(".item");
+
+
+if(confirm("هل تريد حذف هذا العمل؟")){
+
+item.remove();
+
+alert("🗑️ تم حذف العمل.");
+
+}
+
+}
+
+
+/* تنظيف النموذج */
+
+function clearForm(){
+
+document.getElementById("workName").value="";
+
+document.getElementById("workType").value="";
+
+document.getElementById("workDescription").value="";
+
+document.getElementById("workImage").value="";
+
+document.getElementById("galleryForm").style.display="none";
+
+}
+
+
+/* حماية النصوص */
 
 function escapeHTML(text){
 
@@ -648,7 +860,6 @@ return div.innerHTML;
 }
 
 </script>
-
 
 </body>
 
