@@ -2,10 +2,13 @@
 <html lang="ar" dir="rtl">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>KAPO ONE | منصة الأعمال العالمية</title>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>KAPO ONE</title>
 
 <style>
 
@@ -22,18 +25,18 @@ color:white;
 
 header{
 background:#0f172a;
-border-bottom:1px solid #263244;
-padding:16px 20px;
+padding:18px;
 display:flex;
-align-items:center;
 justify-content:space-between;
+align-items:center;
+border-bottom:1px solid #263244;
 position:sticky;
 top:0;
-z-index:50;
+z-index:10;
 }
 
 .logo{
-font-size:27px;
+font-size:28px;
 font-weight:bold;
 }
 
@@ -41,29 +44,22 @@ font-weight:bold;
 color:#38bdf8;
 }
 
-nav{
-display:flex;
-gap:8px;
-}
-
 nav button{
 background:#1e293b;
 color:white;
 border:1px solid #334155;
-padding:10px 15px;
+padding:10px 14px;
 border-radius:10px;
-cursor:pointer;
+margin-right:5px;
 }
 
 .hero{
 text-align:center;
-padding:60px 20px 40px;
-background:linear-gradient(180deg,#111827,#070d19);
+padding:55px 20px 40px;
 }
 
 .hero h1{
-font-size:42px;
-margin:0 0 15px;
+font-size:40px;
 }
 
 .hero h1 span{
@@ -71,152 +67,125 @@ color:#38bdf8;
 }
 
 .hero p{
-max-width:800px;
-margin:auto;
 color:#a8b3c2;
 font-size:18px;
-line-height:1.9;
+line-height:1.8;
 }
 
 .search{
 max-width:700px;
-margin:28px auto 0;
+margin:25px auto;
 }
 
 .search input{
 width:100%;
-padding:18px;
+padding:17px;
 background:#111827;
-border:1px solid #334155;
-border-radius:15px;
 color:white;
-font-size:17px;
-outline:none;
+border:1px solid #334155;
+border-radius:13px;
+font-size:16px;
 }
 
 .container{
 max-width:1200px;
 margin:auto;
-padding:25px 20px 100px;
+padding:20px;
 }
 
-.section-title{
+.title{
 font-size:28px;
-margin:25px 0 20px;
+margin:25px 0;
 }
 
 .categories{
 display:grid;
 grid-template-columns:repeat(4,1fr);
 gap:15px;
-margin-bottom:45px;
+margin-bottom:35px;
 }
 
 .category{
 background:#111827;
 border:1px solid #263244;
-border-radius:17px;
 padding:25px 15px;
+border-radius:16px;
 text-align:center;
-cursor:pointer;
-transition:.2s;
-}
-
-.category:hover{
-transform:translateY(-5px);
-border-color:#38bdf8;
 }
 
 .category-icon{
 font-size:38px;
-margin-bottom:12px;
 }
 
 .category h3{
-margin:5px 0;
+margin-bottom:5px;
 }
 
 .category p{
-margin:0;
 color:#94a3b8;
-font-size:14px;
+font-size:13px;
 }
 
 .tools{
 display:flex;
 justify-content:space-between;
-align-items:center;
-gap:15px;
+gap:10px;
 margin-bottom:20px;
 }
 
 .filters{
 display:flex;
 gap:8px;
-overflow-x:auto;
+overflow:auto;
 }
 
 .filter{
-white-space:nowrap;
 background:#111827;
-color:#cbd5e1;
+color:white;
 border:1px solid #334155;
-padding:10px 16px;
+padding:10px 15px;
 border-radius:20px;
-cursor:pointer;
+white-space:nowrap;
 }
 
-.filter.active,
-.filter:hover{
+.filter.active{
 background:#2563eb;
-color:white;
 }
 
 .add{
-white-space:nowrap;
 background:#38bdf8;
 color:#082f49;
 border:0;
 padding:12px 18px;
-border-radius:11px;
+border-radius:10px;
 font-weight:bold;
-cursor:pointer;
 }
 
 .projects{
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:22px;
+gap:20px;
 }
 
 .project{
 background:#111827;
 border:1px solid #263244;
-border-radius:19px;
+border-radius:17px;
 overflow:hidden;
-transition:.25s;
-}
-
-.project:hover{
-transform:translateY(-6px);
-border-color:#38bdf8;
 }
 
 .project-img{
-height:230px;
-overflow:hidden;
-background:#1e293b;
+height:220px;
 }
 
 .project-img img{
 width:100%;
 height:100%;
 object-fit:cover;
-display:block;
 }
 
 .project-body{
-padding:20px;
+padding:18px;
 }
 
 .badge{
@@ -225,123 +194,184 @@ font-size:13px;
 }
 
 .project h3{
-margin:8px 0;
 font-size:21px;
+margin:8px 0;
 }
 
 .project p{
 color:#94a3b8;
 line-height:1.7;
-min-height:55px;
 }
 
-.project-bottom{
-border-top:1px solid #263244;
-margin-top:15px;
-padding-top:15px;
+.bottom{
 display:flex;
-align-items:center;
 justify-content:space-between;
-}
-
-.owner{
-color:#cbd5e1;
-font-size:14px;
-}
-
-.likes{
+border-top:1px solid #263244;
+padding-top:13px;
+margin-top:15px;
 color:#94a3b8;
+font-size:14px;
 }
 
 .open{
 width:100%;
 margin-top:15px;
-padding:12px;
+padding:13px;
 background:#2563eb;
 color:white;
 border:0;
 border-radius:10px;
-cursor:pointer;
 font-size:16px;
 }
 
-.empty{
+.details{
 display:none;
-text-align:center;
-padding:50px;
-color:#94a3b8;
+max-width:1000px;
+margin:auto;
+padding:25px 20px 80px;
 }
 
-.modal{
-display:none;
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.78);
-z-index:100;
-align-items:center;
-justify-content:center;
-padding:20px;
-}
-
-.modal-box{
+.details-image{
 width:100%;
-max-width:650px;
-background:#111827;
-border:1px solid #334155;
+height:400px;
 border-radius:20px;
-padding:20px;
-}
-
-.modal-image{
-width:100%;
-height:250px;
-border-radius:15px;
 overflow:hidden;
-background:#1e293b;
 }
 
-.modal-image img{
+.details-image img{
 width:100%;
 height:100%;
 object-fit:cover;
 }
 
-.close{
-float:left;
+.back{
 background:#1e293b;
 color:white;
 border:1px solid #334155;
-width:38px;
-height:38px;
-border-radius:9px;
-cursor:pointer;
+padding:12px 18px;
+border-radius:10px;
+margin-bottom:20px;
 }
 
-.modal-box h2{
-margin-top:25px;
+.details h1{
+font-size:38px;
 }
 
-.modal-box p{
-color:#a8b3c2;
-line-height:1.8;
+.details-text{
+font-size:18px;
+line-height:1.9;
+color:#cbd5e1;
+}
+
+.detail-card{
+background:#111827;
+border:1px solid #263244;
+border-radius:16px;
+padding:20px;
+margin-top:18px;
+}
+
+.detail-card h2{
+margin-top:0;
+}
+
+.owner{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.avatar{
+width:55px;
+height:55px;
+border-radius:50%;
+background:#263244;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:25px;
+}
+
+.owner-name{
+font-weight:bold;
+}
+
+.owner-role{
+color:#94a3b8;
+font-size:13px;
+margin-top:5px;
+}
+
+.actions{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-top:18px;
+}
+
+.actions button{
+padding:14px;
+background:#1e293b;
+color:white;
+border:1px solid #334155;
+border-radius:10px;
+font-size:15px;
+}
+
+.features{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+}
+
+.feature{
+background:#0b1526;
+padding:18px;
+border-radius:12px;
+}
+
+.feature p{
+color:#94a3b8;
+line-height:1.7;
+}
+
+textarea{
+width:100%;
+height:110px;
+background:#07101f;
+color:white;
+border:1px solid #334155;
+border-radius:10px;
+padding:13px;
+font-size:15px;
+}
+
+.send{
+width:100%;
+margin-top:10px;
+padding:13px;
+background:#38bdf8;
+border:0;
+border-radius:10px;
+font-weight:bold;
 }
 
 footer{
-background:#050a12;
-border-top:1px solid #263244;
-padding:28px 20px;
 text-align:center;
+padding:30px;
+background:#050a12;
 color:#64748b;
+margin-top:30px;
 }
 
-@media(max-width:850px){
-
-.projects{
-grid-template-columns:repeat(2,1fr);
-}
+@media(max-width:800px){
 
 .categories{
 grid-template-columns:repeat(2,1fr);
+}
+
+.projects{
+grid-template-columns:1fr;
 }
 
 }
@@ -353,20 +383,15 @@ flex-direction:column;
 gap:15px;
 }
 
-nav{
-width:100%;
-}
-
-nav button{
-flex:1;
-}
-
 .hero h1{
-font-size:31px;
+font-size:30px;
+}
+
+.categories{
+grid-template-columns:1fr;
 }
 
 .tools{
-align-items:stretch;
 flex-direction:column;
 }
 
@@ -374,21 +399,26 @@ flex-direction:column;
 width:100%;
 }
 
-.projects{
+.details-image{
+height:240px;
+}
+
+.details h1{
+font-size:30px;
+}
+
+.actions{
 grid-template-columns:1fr;
 }
 
-.categories{
+.features{
 grid-template-columns:1fr;
-}
-
-.project-img{
-height:220px;
 }
 
 }
 
 </style>
+
 </head>
 
 
@@ -403,21 +433,20 @@ KAPO <span>ONE</span>
 
 <nav>
 
-<button onclick="topPage()">
+<button onclick="showHome()">
 الرئيسية
 </button>
 
-<button onclick="projectsArea()">
+<button onclick="showProjects()">
 المشاريع
-</button>
-
-<button onclick="login()">
-تسجيل الدخول
 </button>
 
 </nav>
 
 </header>
+
+
+<div id="home">
 
 
 <section class="hero">
@@ -427,104 +456,54 @@ KAPO <span>ONE</span>
 </h1>
 
 <p>
-منصة عالمية لعرض الأعمال والمشاريع والتصاميم
-والأفكار، تجمع المبدعين والمهندسين والمصممين
-وأصحاب المشاريع في مكان واحد.
+منصة عالمية لعرض الأعمال والمشاريع
+والتصاميم والأفكار في مكان واحد.
 </p>
 
 <div class="search">
 
 <input
 id="search"
-type="text"
-placeholder="🔎 ابحث عن مشروع أو تصميم أو مهندس..."
-onkeyup="searchProjects()"
->
+placeholder="🔎 ابحث عن مشروع..."
+onkeyup="searchProjects()">
 
 </div>
 
 </section>
 
 
-<main class="container" id="projectsArea">
+<main class="container">
 
 
-<h2 class="section-title">
+<h2 class="title">
 استكشف المجالات
 </h2>
 
 
 <div class="categories">
 
-<div class="category"
-onclick="filterByCategory('architecture')">
-
-<div class="category-icon">
-🏢
+<div class="category">
+<div class="category-icon">🏢</div>
+<h3>العمارة</h3>
+<p>التصاميم المعمارية</p>
 </div>
 
-<h3>
-العمارة
-</h3>
-
-<p>
-التصاميم والمشاريع المعمارية
-</p>
-
+<div class="category">
+<div class="category-icon">🏗️</div>
+<h3>الهندسة</h3>
+<p>المشاريع الهندسية</p>
 </div>
 
-
-<div class="category"
-onclick="filterByCategory('engineering')">
-
-<div class="category-icon">
-🏗️
+<div class="category">
+<div class="category-icon">🌆</div>
+<h3>الأبراج</h3>
+<p>تصاميم الأبراج</p>
 </div>
 
-<h3>
-الهندسة
-</h3>
-
-<p>
-المشاريع والحلول الهندسية
-</p>
-
-</div>
-
-
-<div class="category"
-onclick="filterByCategory('towers')">
-
-<div class="category-icon">
-🌆
-</div>
-
-<h3>
-الأبراج
-</h3>
-
-<p>
-أفكار وتصاميم الأبراج
-</p>
-
-</div>
-
-
-<div class="category"
-onclick="filterByCategory('ideas')">
-
-<div class="category-icon">
-💡
-</div>
-
-<h3>
-الأفكار
-</h3>
-
-<p>
-الابتكار والمشاريع المستقبلية
-</p>
-
+<div class="category">
+<div class="category-icon">💡</div>
+<h3>الأفكار</h3>
+<p>الأفكار المستقبلية</p>
 </div>
 
 </div>
@@ -534,35 +513,25 @@ onclick="filterByCategory('ideas')">
 
 <div class="filters">
 
-<button class="filter active"
-onclick="filterProjects('all',this)">
+<button class="filter active">
 الكل
 </button>
 
-<button class="filter"
-onclick="filterProjects('architecture',this)">
+<button class="filter">
 🏢 العمارة
 </button>
 
-<button class="filter"
-onclick="filterProjects('engineering',this)">
+<button class="filter">
 🏗️ الهندسة
 </button>
 
-<button class="filter"
-onclick="filterProjects('towers',this)">
+<button class="filter">
 🌆 الأبراج
-</button>
-
-<button class="filter"
-onclick="filterProjects('ideas',this)">
-💡 الأفكار
 </button>
 
 </div>
 
-<button class="add"
-onclick="addProject()">
+<button class="add">
 ＋ إضافة مشروع
 </button>
 
@@ -572,23 +541,19 @@ onclick="addProject()">
 <div class="projects" id="projects">
 
 
-<!-- المشروع الأول -->
-
-<div class="project" data-category="towers">
+<div class="project">
 
 <div class="project-img">
 
 <img
-src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80"
-alt="برج حديث"
->
+src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80">
 
 </div>
 
 <div class="project-body">
 
 <span class="badge">
-أبراج
+🌆 أبراج
 </span>
 
 <h3>
@@ -596,30 +561,28 @@ alt="برج حديث"
 </h3>
 
 <p>
-رؤية معمارية مستقبلية لتصميم برج
-يجمع بين الجمال والتقنية.
+تصميم معماري مستقبلي يجمع بين
+الجمال والهندسة والتقنية.
 </p>
 
-<div class="project-bottom">
+<div class="bottom">
 
-<span class="owner">
+<span>
 👤 KAPO Design
 </span>
 
-<span class="likes">
+<span>
 ♡ 128
 </span>
 
 </div>
 
-<button class="open"
-onclick="openProject(
-'برج المستقبل',
-'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80',
-'أبراج',
-'رؤية معمارية مستقبلية لتصميم برج يجمع بين الجمال والتقنية.'
-)">
+<button
+class="open"
+onclick="openProject()">
+
 استكشف المشروع
+
 </button>
 
 </div>
@@ -627,23 +590,19 @@ onclick="openProject(
 </div>
 
 
-<!-- المشروع الثاني -->
-
-<div class="project" data-category="architecture">
+<div class="project">
 
 <div class="project-img">
 
 <img
-src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1000&q=80"
-alt="تصميم معماري"
->
+src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1200&q=80">
 
 </div>
 
 <div class="project-body">
 
 <span class="badge">
-عمارة
+🏢 عمارة
 </span>
 
 <h3>
@@ -651,30 +610,28 @@ alt="تصميم معماري"
 </h3>
 
 <p>
-تصور معماري لمدينة حديثة تعتمد
-على التقنية والاستدامة.
+تصور معماري لمدينة حديثة
+تعتمد على التقنية والاستدامة.
 </p>
 
-<div class="project-bottom">
+<div class="bottom">
 
-<span class="owner">
+<span>
 👤 Future Architecture
 </span>
 
-<span class="likes">
+<span>
 ♡ 96
 </span>
 
 </div>
 
-<button class="open"
-onclick="openProject(
-'المدينة الذكية',
-'https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1000&q=80',
-'عمارة',
-'تصور معماري لمدينة حديثة تعتمد على التقنية والاستدامة.'
-)">
+<button
+class="open"
+onclick="openSmartCity()">
+
 استكشف المشروع
+
 </button>
 
 </div>
@@ -682,23 +639,19 @@ onclick="openProject(
 </div>
 
 
-<!-- المشروع الثالث -->
-
-<div class="project" data-category="engineering">
+<div class="project">
 
 <div class="project-img">
 
 <img
-src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1000&q=80"
-alt="هندسة ومخططات"
->
+src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80">
 
 </div>
 
 <div class="project-body">
 
 <span class="badge">
-هندسة
+🏗️ هندسة
 </span>
 
 <h3>
@@ -706,195 +659,28 @@ alt="هندسة ومخططات"
 </h3>
 
 <p>
-حلول هندسية مبتكرة للمباني الحديثة
+حلول هندسية مبتكرة للمباني
 والمشاريع المستقبلية.
 </p>
 
-<div class="project-bottom">
+<div class="bottom">
 
-<span class="owner">
+<span>
 👤 Engineering Lab
 </span>
 
-<span class="likes">
+<span>
 ♡ 74
 </span>
 
 </div>
 
-<button class="open"
-onclick="openProject(
-'الهيكل الهندسي',
-'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1000&q=80',
-'هندسة',
-'حلول هندسية مبتكرة للمباني الحديثة والمشاريع المستقبلية.'
-)">
+<button
+class="open"
+onclick="openEngineering()">
+
 استكشف المشروع
-</button>
 
-</div>
-
-</div>
-
-
-<!-- المشروع الرابع -->
-
-<div class="project" data-category="ideas">
-
-<div class="project-img">
-
-<img
-src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1000&q=80"
-alt="فكرة تصميم"
->
-
-</div>
-
-<div class="project-body">
-
-<span class="badge">
-فكرة
-</span>
-
-<h3>
-مشروع مبتكر
-</h3>
-
-<p>
-فكرة جديدة تهدف إلى تطوير حلول
-مستقبلية للمجتمعات والمدن.
-</p>
-
-<div class="project-bottom">
-
-<span class="owner">
-👤 Creative Studio
-</span>
-
-<span class="likes">
-♡ 61
-</span>
-
-</div>
-
-<button class="open"
-onclick="openProject(
-'مشروع مبتكر',
-'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1000&q=80',
-'فكرة',
-'فكرة جديدة تهدف إلى تطوير حلول مستقبلية للمجتمعات والمدن.'
-)">
-استكشف المشروع
-</button>
-
-</div>
-
-</div>
-
-
-<!-- المشروع الخامس -->
-
-<div class="project" data-category="towers">
-
-<div class="project-img">
-
-<img
-src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1000&q=80"
-alt="مدينة وأبراج"
->
-
-</div>
-
-<div class="project-body">
-
-<span class="badge">
-أبراج
-</span>
-
-<h3>
-KAPO ONE Tower
-</h3>
-
-<p>
-نموذج تجريبي لهوية KAPO ONE
-في عالم الأبراج المستقبلية.
-</p>
-
-<div class="project-bottom">
-
-<span class="owner">
-👤 KAPO ONE
-</span>
-
-<span class="likes">
-♡ 152
-</span>
-
-</div>
-
-<button class="open"
-onclick="openProject(
-'KAPO ONE Tower',
-'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1000&q=80',
-'أبراج',
-'نموذج تجريبي لهوية KAPO ONE في عالم الأبراج المستقبلية.'
-)">
-استكشف المشروع
-</button>
-
-</div>
-
-</div>
-
-
-<!-- المشروع السادس -->
-
-<div class="project" data-category="architecture">
-
-<div class="project-img">
-
-<img
-src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=1000&q=80"
-alt="مشاريع معمارية"
->
-
-</div>
-
-<div class="project-body">
-
-<span class="badge">
-عمارة
-</span>
-
-<h3>
-مشاريع العالم
-</h3>
-
-<p>
-مساحة عالمية لعرض الأعمال المعمارية
-المميزة من مختلف الدول.
-</p>
-
-<div class="project-bottom">
-
-<span class="owner">
-👤 World Projects
-</span>
-
-<span class="likes">
-♡ 203
-</span>
-
-</div>
-
-<button class="open"
-onclick="openProject(
-'مشاريع العالم',
-'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=1000&q=80',
-'عمارة',
-'مساحة عالمية لعرض الأعمال المعمارية المميزة من مختلف الدول.'
-)">
-استكشف المشروع
 </button>
 
 </div>
@@ -903,55 +689,205 @@ onclick="openProject(
 
 
 </div>
-
-
-<div class="empty" id="empty">
-
-لا توجد مشاريع مطابقة للبحث.
-
-</div>
-
 
 </main>
 
+</div>
 
-<div class="modal" id="modal">
 
-<div class="modal-box">
+<section
+id="details"
+class="details">
 
-<button class="close"
-onclick="closeModal()">
-×
+
+<button
+class="back"
+onclick="showHome()">
+
+← العودة إلى معرض الأعمال
+
 </button>
 
-<div class="modal-image">
+
+<div class="details-image">
 
 <img
-id="modalImg"
-src=""
-alt="صورة المشروع"
->
+id="detailImage"
+src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80">
 
 </div>
 
-<h2 id="modalTitle">
-</h2>
 
-<span class="badge"
-id="modalType">
-</span>
+<div class="category">
+🌆 مشاريع الأبراج
+</div>
 
-<p id="modalDescription">
+
+<h1 id="detailTitle">
+برج المستقبل
+</h1>
+
+
+<p
+id="detailText"
+class="details-text">
+
+مشروع معماري مستقبلي يجمع بين التصميم
+المبتكر والهندسة الحديثة والتقنيات الجديدة.
+تم تطوير الفكرة لتقديم رؤية مختلفة للأبراج
+والمدن المستقبلية.
+
 </p>
 
-<button class="open"
-onclick="closeModal()">
-إغلاق
+
+<div class="detail-card">
+
+<h2>
+👤 صاحب المشروع
+</h2>
+
+<div class="owner">
+
+<div class="avatar">
+👤
+</div>
+
+<div>
+
+<div class="owner-name">
+KAPO Design
+</div>
+
+<div class="owner-role">
+تصميم وهندسة معمارية
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="actions">
+
+<button onclick="likeProject(this)">
+♡ إعجاب
+</button>
+
+<button onclick="saveProject(this)">
+🔖 حفظ
+</button>
+
+<button onclick="shareProject()">
+📤 مشاركة
 </button>
 
 </div>
 
+
+<div class="detail-card">
+
+<h2>
+📐 نبذة عن المشروع
+</h2>
+
+<p class="details-text">
+
+رؤية معمارية مستقبلية تهدف إلى تقديم
+تصميم مختلف للأبراج والمدن الحديثة،
+مع التركيز على الابتكار والاستدامة
+والهندسة والتقنيات الجديدة.
+
+</p>
+
 </div>
+
+
+<div class="detail-card">
+
+<h2>
+⭐ المميزات
+</h2>
+
+<div class="features">
+
+<div class="feature">
+
+<strong>
+🏗️ التصميم
+</strong>
+
+<p>
+تصميم معماري حديث ومميز.
+</p>
+
+</div>
+
+<div class="feature">
+
+<strong>
+💡 الابتكار
+</strong>
+
+<p>
+أفكار جديدة للمباني المستقبلية.
+</p>
+
+</div>
+
+<div class="feature">
+
+<strong>
+🌱 الاستدامة
+</strong>
+
+<p>
+توجه نحو استخدام أفضل للطاقة والموارد.
+</p>
+
+</div>
+
+<div class="feature">
+
+<strong>
+🌍 الرؤية العالمية
+</strong>
+
+<p>
+فكرة قابلة للتطوير حول العالم.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="detail-card">
+
+<h2>
+💬 التعليقات
+</h2>
+
+<textarea
+id="comment"
+placeholder="اكتب تعليقك على المشروع...">
+</textarea>
+
+<button
+class="send"
+onclick="sendComment()">
+
+إرسال التعليق
+
+</button>
+
+</div>
+
+
+</section>
 
 
 <footer>
@@ -967,148 +903,174 @@ KAPO ONE © 2026
 
 <script>
 
-function topPage(){
 
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+function showHome(){
 
-}
+document.getElementById("home")
+.style.display="block";
 
-
-function projectsArea(){
-
-document.getElementById("projectsArea")
-.scrollIntoView({
-behavior:"smooth"
-});
-
-}
-
-
-function login(){
-
-alert(
-"تسجيل الدخول سيتم تفعيله في المرحلة الأخيرة."
-);
-
-}
-
-
-function addProject(){
-
-alert(
-"إضافة المشاريع سيتم تفعيلها لاحقًا مع نظام المستخدمين وقاعدة البيانات."
-);
-
-}
-
-
-function openProject(
-title,
-image,
-type,
-description
-){
-
-document.getElementById("modalTitle")
-.innerText=title;
-
-document.getElementById("modalImg")
-.src=image;
-
-document.getElementById("modalType")
-.innerText=type;
-
-document.getElementById("modalDescription")
-.innerText=description;
-
-document.getElementById("modal")
-.style.display="flex";
-
-}
-
-
-function closeModal(){
-
-document.getElementById("modal")
+document.getElementById("details")
 .style.display="none";
 
-}
-
-
-function filterProjects(category,button){
-
-document.querySelectorAll(".filter")
-.forEach(function(item){
-
-item.classList.remove("active");
-
-});
-
-button.classList.add("active");
-
-let projects=
-document.querySelectorAll(".project");
-
-let count=0;
-
-projects.forEach(function(project){
-
-if(
-category==="all" ||
-project.dataset.category===category
-){
-
-project.style.display="";
-count++;
-
-}else{
-
-project.style.display="none";
-
-}
-
-});
-
-document.getElementById("empty")
-.style.display=
-count===0 ? "block":"none";
+window.scrollTo(0,0);
 
 }
 
 
-function filterByCategory(category){
+function showProjects(){
 
-let projects=
-document.querySelectorAll(".project");
+document.getElementById("home")
+.style.display="block";
 
-let count=0;
+document.getElementById("details")
+.style.display="none";
 
-projects.forEach(function(project){
-
-if(project.dataset.category===category){
-
-project.style.display="";
-count++;
-
-}else{
-
-project.style.display="none";
-
-}
-
-});
-
-document.getElementById("empty")
-.style.display=
-count===0 ? "block":"none";
-
-document.getElementById("projectsArea")
+document.getElementById("projects")
 .scrollIntoView({
 behavior:"smooth"
 });
+
+}
+
+
+function openProject(){
+
+document.getElementById("detailTitle")
+.innerText="برج المستقبل";
+
+document.getElementById("detailImage")
+.src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80";
+
+document.getElementById("detailText")
+.innerText=
+"مشروع معماري مستقبلي يجمع بين التصميم المبتكر والهندسة الحديثة والتقنيات الجديدة. تم تطوير الفكرة لتقديم رؤية مختلفة للأبراج والمدن المستقبلية.";
+
+document.getElementById("home")
+.style.display="none";
+
+document.getElementById("details")
+.style.display="block";
+
+window.scrollTo(0,0);
+
+}
+
+
+function openSmartCity(){
+
+document.getElementById("detailTitle")
+.innerText="المدينة الذكية";
+
+document.getElementById("detailImage")
+.src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1200&q=80";
+
+document.getElementById("detailText")
+.innerText=
+"تصور معماري لمدينة حديثة تعتمد على التقنية والاستدامة والحلول الذكية.";
+
+document.getElementById("home")
+.style.display="none";
+
+document.getElementById("details")
+.style.display="block";
+
+window.scrollTo(0,0);
+
+}
+
+
+function openEngineering(){
+
+document.getElementById("detailTitle")
+.innerText="الهيكل الهندسي";
+
+document.getElementById("detailImage")
+.src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80";
+
+document.getElementById("detailText")
+.innerText=
+"حلول هندسية مبتكرة للمباني الحديثة والمشاريع المستقبلية.";
+
+document.getElementById("home")
+.style.display="none";
+
+document.getElementById("details")
+.style.display="block";
+
+window.scrollTo(0,0);
+
+}
+
+
+function likeProject(button){
+
+if(button.innerText.includes("♡")){
+
+button.innerText="♥ تم الإعجاب";
+
+}else{
+
+button.innerText="♡ إعجاب";
+
+}
+
+}
+
+
+function saveProject(button){
+
+if(button.innerText.includes("🔖")){
+
+button.innerText="✓ تم الحفظ";
+
+}else{
+
+button.innerText="🔖 حفظ";
+
+}
+
+}
+
+
+function shareProject(){
+
+if(navigator.share){
+
+navigator.share({
+
+title:"KAPO ONE",
+
+text:"شاهد هذا المشروع على KAPO ONE"
+
+});
+
+}else{
+
+alert("ميزة المشاركة ستتطور لاحقًا.");
+
+}
+
+}
+
+
+function sendComment(){
+
+let text=
+document.getElementById("comment")
+.value.trim();
+
+if(text===""){
+
+alert("اكتب تعليقك أولًا.");
+
+return;
+
+}
+
+alert("تم استلام تعليقك.");
+
+document.getElementById("comment")
+.value="";
 
 }
 
@@ -1117,23 +1079,18 @@ function searchProjects(){
 
 let value=
 document.getElementById("search")
-.value
-.toLowerCase();
+.value.toLowerCase();
 
 let projects=
 document.querySelectorAll(".project");
 
-let count=0;
-
 projects.forEach(function(project){
 
-let text=
-project.innerText.toLowerCase();
-
-if(text.includes(value)){
+if(project.innerText
+.toLowerCase()
+.includes(value)){
 
 project.style.display="";
-count++;
 
 }else{
 
@@ -1143,14 +1100,11 @@ project.style.display="none";
 
 });
 
-document.getElementById("empty")
-.style.display=
-count===0 ? "block":"none";
-
 }
 
 </script>
 
 
 </body>
+
 </html>
