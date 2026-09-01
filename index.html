@@ -36,12 +36,14 @@ font-weight:bold;
 color:#38bdf8;
 }
 
-.home-btn{
+.home-btn,
+.back-btn{
 background:#1e293b;
 color:white;
 border:1px solid #334155;
 padding:10px 16px;
 border-radius:10px;
+cursor:pointer;
 }
 
 .owner-page{
@@ -284,6 +286,11 @@ border-radius:15px;
 padding:22px;
 text-align:right;
 font-size:16px;
+cursor:pointer;
+}
+
+.management button:active{
+transform:scale(.99);
 }
 
 .management strong{
@@ -305,6 +312,99 @@ padding:6px 10px;
 border-radius:20px;
 font-size:12px;
 margin-top:15px;
+}
+
+/* إدارة المستخدمين */
+
+.users-page{
+display:none;
+max-width:1100px;
+margin:auto;
+padding:25px 20px 70px;
+}
+
+.page-head{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+margin-bottom:20px;
+}
+
+.page-head h2{
+margin:0;
+font-size:28px;
+}
+
+.users-box{
+background:#111827;
+border:1px solid #263244;
+border-radius:18px;
+padding:20px;
+overflow-x:auto;
+}
+
+.loading{
+text-align:center;
+padding:30px;
+color:#94a3b8;
+}
+
+.user-row{
+display:grid;
+grid-template-columns:70px 1fr 1fr 150px;
+gap:15px;
+align-items:center;
+padding:15px 5px;
+border-bottom:1px solid #263244;
+}
+
+.user-row:last-child{
+border-bottom:0;
+}
+
+.user-avatar-small{
+width:45px;
+height:45px;
+border-radius:50%;
+background:#1e293b;
+border:1px solid #38bdf8;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:20px;
+}
+
+.user-name{
+font-weight:bold;
+}
+
+.user-email{
+color:#94a3b8;
+font-size:14px;
+direction:ltr;
+text-align:right;
+}
+
+.user-date{
+color:#94a3b8;
+font-size:13px;
+}
+
+.user-status{
+display:inline-block;
+background:#14532d;
+color:#86efac;
+padding:6px 10px;
+border-radius:20px;
+font-size:12px;
+text-align:center;
+}
+
+.empty{
+text-align:center;
+padding:35px;
+color:#94a3b8;
 }
 
 footer{
@@ -329,6 +429,15 @@ align-items:stretch;
 width:100%;
 }
 
+.user-row{
+grid-template-columns:55px 1fr;
+}
+
+.user-date,
+.user-status{
+grid-column:2;
+}
+
 }
 
 @media(max-width:500px){
@@ -343,6 +452,15 @@ grid-template-columns:1fr;
 
 .management{
 grid-template-columns:1fr;
+}
+
+.page-head{
+flex-direction:column;
+align-items:stretch;
+}
+
+.page-head h2{
+font-size:23px;
 }
 
 }
@@ -364,6 +482,8 @@ KAPO <span>ONE</span>
 
 </header>
 
+
+<!-- تسجيل الدخول -->
 
 <section id="ownerLogin" class="owner-page">
 
@@ -388,7 +508,6 @@ KAPO <span>ONE</span>
 
 <div id="message" class="message"></div>
 
-
 <div class="form-group">
 
 <label>اسم المالك</label>
@@ -401,7 +520,6 @@ placeholder="كابو">
 
 </div>
 
-
 <div class="form-group">
 
 <label>البريد الإلكتروني للمالك</label>
@@ -413,7 +531,6 @@ type="email"
 placeholder="البريد الإلكتروني">
 
 </div>
-
 
 <div class="form-group">
 
@@ -438,7 +555,6 @@ onclick="togglePassword()">
 
 </div>
 
-
 <button
 type="button"
 class="login-btn"
@@ -447,7 +563,6 @@ onclick="ownerLogin()">
 👑 دخول المالك
 
 </button>
-
 
 <button
 type="button"
@@ -462,6 +577,8 @@ onclick="resetPassword()">
 
 </section>
 
+
+<!-- لوحة المالك -->
 
 <section id="ownerDashboard" class="owner-dashboard">
 
@@ -497,72 +614,166 @@ onclick="ownerLogout()">
 
 </div>
 
-
 <span class="badge">
 حساب مالك المنصة
 </span>
-
 
 <h2 class="dashboard-title">
 🎛️ لوحة تحكم KAPO ONE
 </h2>
 
-
 <div class="cards">
 
 <div class="card">
-<div class="card-icon">👥</div>
-<div class="card-number">0</div>
-<div class="card-name">المستخدمون</div>
+
+<div class="card-icon">
+👥
+</div>
+
+<div id="usersCount" class="card-number">
+0
+</div>
+
+<div class="card-name">
+المستخدمون
+</div>
+
 </div>
 
 <div class="card">
-<div class="card-icon">🏗️</div>
-<div class="card-number">0</div>
-<div class="card-name">المشاريع</div>
+
+<div class="card-icon">
+🏗️
+</div>
+
+<div class="card-number">
+0
+</div>
+
+<div class="card-name">
+المشاريع
+</div>
+
 </div>
 
 <div class="card">
-<div class="card-icon">💬</div>
-<div class="card-number">0</div>
-<div class="card-name">التعليقات</div>
+
+<div class="card-icon">
+💬
+</div>
+
+<div class="card-number">
+0
+</div>
+
+<div class="card-name">
+التعليقات
+</div>
+
 </div>
 
 <div class="card">
-<div class="card-icon">❤️</div>
-<div class="card-number">0</div>
-<div class="card-name">الإعجابات</div>
+
+<div class="card-icon">
+❤️
+</div>
+
+<div class="card-number">
+0
+</div>
+
+<div class="card-name">
+الإعجابات
 </div>
 
 </div>
 
+</div>
 
 <h2 class="dashboard-title">
 ⚙️ إدارة المنصة
 </h2>
 
-
 <div class="management">
 
-<button>
-<strong>👥 إدارة المستخدمين</strong>
-<span>عرض المستخدمين وإدارة الحسابات والصلاحيات.</span>
+<button onclick="showUsers()">
+
+<strong>
+👥 إدارة المستخدمين
+</strong>
+
+<span>
+عرض المستخدمين المسجلين في المنصة.
+</span>
+
 </button>
 
 <button>
-<strong>🏗️ إدارة المشاريع</strong>
-<span>مراجعة المشاريع المنشورة وإدارتها.</span>
+
+<strong>
+🏗️ إدارة المشاريع
+</strong>
+
+<span>
+مراجعة المشاريع المنشورة وإدارتها.
+</span>
+
 </button>
 
 <button>
-<strong>💬 إدارة التعليقات</strong>
-<span>مراجعة التعليقات والمحتوى.</span>
+
+<strong>
+💬 إدارة التعليقات
+</strong>
+
+<span>
+مراجعة التعليقات والمحتوى.
+</span>
+
 </button>
 
 <button>
-<strong>🛡️ إعدادات الأمان</strong>
-<span>إعدادات الحماية والصلاحيات.</span>
+
+<strong>
+🛡️ إعدادات الأمان
+</strong>
+
+<span>
+إعدادات الحماية والصلاحيات.
+</span>
+
 </button>
+
+</div>
+
+</section>
+
+
+<!-- صفحة المستخدمين -->
+
+<section id="usersPage" class="users-page">
+
+<div class="page-head">
+
+<h2>
+👥 إدارة المستخدمين
+</h2>
+
+<button
+class="back-btn"
+onclick="backToDashboard()">
+
+⬅️ العودة للوحة التحكم
+
+</button>
+
+</div>
+
+<div class="users-box">
+
+<div id="usersList" class="loading">
+جاري تحميل المستخدمين...
+</div>
 
 </div>
 
@@ -582,16 +793,13 @@ KAPO ONE © 2026
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-
 <script>
 
 const SUPABASE_URL =
 "https://ehmeircigoqfhftaotba.supabase.co";
 
-
 const SUPABASE_PUBLISHABLE_KEY =
 "sb_publishable_54N-aEBjhTQK1wUzpWl0fg_MQRq5D-T";
-
 
 const db =
 supabase.createClient(
@@ -599,9 +807,11 @@ SUPABASE_URL,
 SUPABASE_PUBLISHABLE_KEY
 );
 
-
 const SITE_URL =
 "https://caapu11-debug.github.io/kapo-one/";
+
+const OWNER_ID =
+"dfe5695d-c77a-4ccb-a1eb-901d28169be2";
 
 
 function showOwnerLogin(){
@@ -610,6 +820,9 @@ document.getElementById("ownerLogin")
 .style.display="flex";
 
 document.getElementById("ownerDashboard")
+.style.display="none";
+
+document.getElementById("usersPage")
 .style.display="none";
 
 window.scrollTo(0,0);
@@ -653,7 +866,6 @@ const password =
 document.getElementById("ownerPassword")
 .value;
 
-
 if(email==="" || password===""){
 
 showMessage(
@@ -664,11 +876,9 @@ return;
 
 }
 
-
 showMessage(
 "جاري تسجيل الدخول..."
 );
-
 
 try{
 
@@ -680,7 +890,6 @@ email:email,
 password:password
 
 });
-
 
 if(error){
 
@@ -698,7 +907,6 @@ return;
 
 }
 
-
 if(!data || !data.user){
 
 showMessage(
@@ -709,10 +917,22 @@ return;
 
 }
 
-
 const user =
 data.user;
 
+/* حماية لوحة المالك */
+
+if(user.id !== OWNER_ID){
+
+await db.auth.signOut();
+
+showMessage(
+"❌ هذا الحساب ليس حساب مالك KAPO ONE."
+);
+
+return;
+
+}
 
 const ownerName =
 user.user_metadata?.name ||
@@ -721,24 +941,23 @@ document.getElementById("ownerName")
 .trim() ||
 "كابو";
 
-
 document.getElementById(
 "dashboardOwnerName"
 ).innerText=ownerName;
-
 
 document.getElementById(
 "ownerLogin"
 ).style.display="none";
 
+document.getElementById(
+"usersPage"
+).style.display="none";
 
 document.getElementById(
 "ownerDashboard"
 ).style.display="block";
 
-
 window.scrollTo(0,0);
-
 
 }catch(error){
 
@@ -764,7 +983,6 @@ document.getElementById("ownerEmail")
 .value
 .trim();
 
-
 if(email===""){
 
 showMessage(
@@ -775,11 +993,9 @@ return;
 
 }
 
-
 showMessage(
 "جاري إرسال رابط استعادة كلمة المرور..."
 );
-
 
 try{
 
@@ -794,7 +1010,6 @@ redirectTo:SITE_URL
 
 );
 
-
 if(error){
 
 showMessage(
@@ -807,7 +1022,6 @@ console.error(error);
 return;
 
 }
-
 
 showMessage(
 "تم إرسال رابط استعادة كلمة المرور إلى بريدك الإلكتروني."
@@ -830,7 +1044,6 @@ async function ownerLogout(){
 const { error } =
 await db.auth.signOut();
 
-
 if(error){
 
 showMessage(
@@ -842,21 +1055,21 @@ return;
 
 }
 
-
 document.getElementById(
 "ownerDashboard"
 ).style.display="none";
 
+document.getElementById(
+"usersPage"
+).style.display="none";
 
 document.getElementById(
 "ownerLogin"
 ).style.display="flex";
 
-
 document.getElementById(
 "ownerPassword"
 ).value="";
-
 
 showMessage(
 "تم تسجيل الخروج من حساب المالك."
@@ -870,7 +1083,6 @@ async function checkSession(){
 const { data, error } =
 await db.auth.getSession();
 
-
 if(error){
 
 console.error(
@@ -882,31 +1094,35 @@ return;
 
 }
 
-
 const session =
 data.session;
-
 
 if(session){
 
 const user =
 session.user;
 
+/* منع أي حساب آخر من دخول لوحة المالك */
+
+if(user.id !== OWNER_ID){
+
+await db.auth.signOut();
+
+return;
+
+}
 
 const ownerName =
 user.user_metadata?.name ||
 "كابو";
 
-
 document.getElementById(
 "dashboardOwnerName"
 ).innerText=ownerName;
 
-
 document.getElementById(
 "ownerLogin"
 ).style.display="none";
-
 
 document.getElementById(
 "ownerDashboard"
@@ -916,6 +1132,177 @@ document.getElementById(
 
 }
 
+
+/* فتح إدارة المستخدمين */
+
+async function showUsers(){
+
+document.getElementById(
+"ownerDashboard"
+).style.display="none";
+
+document.getElementById(
+"usersPage"
+).style.display="block";
+
+window.scrollTo(0,0);
+
+await loadUsers();
+
+}
+
+
+/* تحميل المستخدمين من profiles */
+
+async function loadUsers(){
+
+const usersList =
+document.getElementById("usersList");
+
+usersList.innerHTML =
+'<div class="loading">جاري تحميل المستخدمين...</div>';
+
+try{
+
+const { data, error } =
+await db
+.from("profiles")
+.select("id,name,email,created_at")
+.order("created_at",{ascending:false});
+
+if(error){
+
+console.error(
+"PROFILES ERROR:",
+error
+);
+
+usersList.innerHTML =
+'<div class="empty">❌ تعذر تحميل المستخدمين:<br>' +
+error.message +
+'</div>';
+
+return;
+
+}
+
+if(!data || data.length===0){
+
+usersList.innerHTML =
+'<div class="empty">لا يوجد مستخدمون حاليًا.</div>';
+
+document.getElementById(
+"usersCount"
+).innerText="0";
+
+return;
+
+}
+
+document.getElementById(
+"usersCount"
+).innerText=data.length;
+
+let html="";
+
+data.forEach(function(user){
+
+const name =
+user.name ||
+"مستخدم KAPO";
+
+const email =
+user.email ||
+"بدون بريد";
+
+const date =
+user.created_at
+? new Date(user.created_at)
+.toLocaleDateString("ar-SA")
+: "-";
+
+html += `
+
+<div class="user-row">
+
+<div class="user-avatar-small">
+👤
+</div>
+
+<div>
+<div class="user-name">
+${escapeHtml(name)}
+</div>
+</div>
+
+<div>
+<div class="user-email">
+${escapeHtml(email)}
+</div>
+</div>
+
+<div>
+<div class="user-date">
+${date}
+</div>
+
+<span class="user-status">
+نشط
+</span>
+</div>
+
+</div>
+
+`;
+
+});
+
+usersList.innerHTML=html;
+
+}catch(error){
+
+console.error(error);
+
+usersList.innerHTML =
+'<div class="empty">❌ حدث خطأ أثناء تحميل البيانات.</div>';
+
+}
+
+}
+
+
+/* حماية عرض النصوص */
+
+function escapeHtml(text){
+
+return String(text)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* العودة للوحة */
+
+function backToDashboard(){
+
+document.getElementById(
+"usersPage"
+).style.display="none";
+
+document.getElementById(
+"ownerDashboard"
+).style.display="block";
+
+window.scrollTo(0,0);
+
+}
+
+
+/* مراقبة الجلسة */
 
 db.auth.onAuthStateChange(
 
@@ -926,21 +1313,25 @@ if(session){
 const user =
 session.user;
 
+if(user.id !== OWNER_ID){
+
+db.auth.signOut();
+
+return;
+
+}
 
 const ownerName =
 user.user_metadata?.name ||
 "كابو";
 
-
 document.getElementById(
 "dashboardOwnerName"
 ).innerText=ownerName;
 
-
 document.getElementById(
 "ownerLogin"
 ).style.display="none";
-
 
 document.getElementById(
 "ownerDashboard"
@@ -950,6 +1341,10 @@ document.getElementById(
 
 document.getElementById(
 "ownerDashboard"
+).style.display="none";
+
+document.getElementById(
+"usersPage"
 ).style.display="none";
 
 document.getElementById(
