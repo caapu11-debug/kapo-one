@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>KAPO ONE</title>
+<title>KAPO ONE | تسجيل الدخول</title>
 
 <style>
 
@@ -19,18 +19,16 @@ margin:0;
 font-family:Arial,sans-serif;
 background:#070d19;
 color:white;
+min-height:100vh;
 }
 
 header{
 background:#0f172a;
-padding:15px 18px;
+padding:16px 20px;
+border-bottom:1px solid #263244;
 display:flex;
 justify-content:space-between;
 align-items:center;
-border-bottom:1px solid #263244;
-position:sticky;
-top:0;
-z-index:20;
 }
 
 .logo{
@@ -42,574 +40,248 @@ font-weight:bold;
 color:#38bdf8;
 }
 
-nav{
-display:flex;
-gap:8px;
-}
-
-nav button{
+.home-btn{
 background:#1e293b;
 color:white;
 border:1px solid #334155;
-padding:10px 14px;
+padding:10px 16px;
 border-radius:10px;
 }
 
-.profile-btn{
-background:#2563eb;
-color:white;
-border:0;
-padding:10px 14px;
-border-radius:10px;
-font-weight:bold;
+.login-page{
+min-height:calc(100vh - 75px);
+display:flex;
+align-items:center;
+justify-content:center;
+padding:30px 20px;
 }
 
-.hero{
+.login-box{
+width:100%;
+max-width:450px;
+background:#111827;
+border:1px solid #263244;
+border-radius:22px;
+padding:30px;
+box-shadow:0 20px 50px rgba(0,0,0,.3);
+}
+
+.login-logo{
 text-align:center;
-padding:50px 20px 35px;
-}
-
-.hero h1{
 font-size:40px;
-margin:10px 0;
-}
-
-.hero h1 span{
-color:#38bdf8;
-}
-
-.hero p{
-color:#a8b3c2;
-font-size:18px;
-line-height:1.8;
-}
-
-.search{
-max-width:700px;
-margin:25px auto;
-}
-
-.search input{
-width:100%;
-padding:17px;
-background:#111827;
-color:white;
-border:1px solid #334155;
-border-radius:13px;
-font-size:16px;
-}
-
-.container{
-max-width:1200px;
-margin:auto;
-padding:20px;
-}
-
-.title{
-font-size:28px;
-margin:25px 0;
-}
-
-.categories{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:15px;
-margin-bottom:35px;
-}
-
-.category{
-background:#111827;
-border:1px solid #263244;
-padding:25px 15px;
-border-radius:16px;
-text-align:center;
-}
-
-.category-icon{
-font-size:38px;
-}
-
-.category p{
-color:#94a3b8;
-font-size:13px;
-}
-
-.tools{
-display:flex;
-justify-content:space-between;
-gap:10px;
-margin-bottom:20px;
-}
-
-.filters{
-display:flex;
-gap:8px;
-overflow:auto;
-}
-
-.filter{
-background:#111827;
-color:white;
-border:1px solid #334155;
-padding:10px 15px;
-border-radius:20px;
-white-space:nowrap;
-}
-
-.filter.active{
-background:#2563eb;
-}
-
-.add{
-background:#38bdf8;
-color:#082f49;
-border:0;
-padding:12px 18px;
-border-radius:10px;
 font-weight:bold;
+margin-bottom:5px;
 }
 
-.projects{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
-}
-
-.project{
-background:#111827;
-border:1px solid #263244;
-border-radius:17px;
-overflow:hidden;
-}
-
-.project-img{
-height:220px;
-}
-
-.project-img img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-.project-body{
-padding:18px;
-}
-
-.badge{
+.login-logo span{
 color:#38bdf8;
-font-size:13px;
 }
 
-.project h3{
-font-size:21px;
-margin:8px 0;
-}
-
-.project p{
+.login-subtitle{
+text-align:center;
 color:#94a3b8;
+margin-bottom:28px;
 line-height:1.7;
 }
 
-.bottom{
+.tabs{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:8px;
+margin-bottom:25px;
+}
+
+.tab{
+padding:13px;
+background:#1e293b;
+border:1px solid #334155;
+color:#cbd5e1;
+border-radius:10px;
+font-size:16px;
+}
+
+.tab.active{
+background:#2563eb;
+color:white;
+border-color:#2563eb;
+}
+
+.form-group{
+margin-bottom:16px;
+}
+
+.form-group label{
+display:block;
+margin-bottom:8px;
+font-size:14px;
+color:#cbd5e1;
+}
+
+.input{
+width:100%;
+padding:14px;
+background:#07101f;
+border:1px solid #334155;
+border-radius:11px;
+color:white;
+font-size:16px;
+outline:none;
+}
+
+.input:focus{
+border-color:#38bdf8;
+}
+
+.password-box{
+position:relative;
+}
+
+.password-box .input{
+padding-left:48px;
+}
+
+.show-password{
+position:absolute;
+left:10px;
+top:50%;
+transform:translateY(-50%);
+background:none;
+border:0;
+color:#94a3b8;
+font-size:20px;
+}
+
+.forgot{
+display:block;
+text-align:left;
+color:#38bdf8;
+font-size:14px;
+margin:5px 0 18px;
+text-decoration:none;
+}
+
+.main-btn{
+width:100%;
+padding:15px;
+border:0;
+border-radius:11px;
+background:#38bdf8;
+color:#082f49;
+font-size:17px;
+font-weight:bold;
+}
+
+.divider{
 display:flex;
-justify-content:space-between;
-border-top:1px solid #263244;
-padding-top:13px;
-margin-top:15px;
+align-items:center;
+gap:10px;
+margin:22px 0;
+color:#64748b;
+font-size:13px;
+}
+
+.divider:before,
+.divider:after{
+content:"";
+height:1px;
+background:#263244;
+flex:1;
+}
+
+.social{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+.social button{
+padding:13px;
+border-radius:10px;
+background:#1e293b;
+border:1px solid #334155;
+color:white;
+font-size:14px;
+}
+
+.notice{
+margin-top:20px;
+padding:13px;
+background:#0b1526;
+border-radius:10px;
+color:#94a3b8;
+font-size:12px;
+line-height:1.7;
+text-align:center;
+}
+
+.register-extra{
+display:none;
+}
+
+.back{
+display:block;
+text-align:center;
+margin-top:22px;
 color:#94a3b8;
 font-size:14px;
 }
 
-.open{
-width:100%;
-margin-top:15px;
-padding:13px;
-background:#2563eb;
-color:white;
-border:0;
-border-radius:10px;
-font-size:16px;
-}
-
-.details{
-display:none;
-max-width:1000px;
-margin:auto;
-padding:25px 20px 80px;
-}
-
-.details-image{
-width:100%;
-height:400px;
-border-radius:20px;
-overflow:hidden;
-}
-
-.details-image img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-.back{
-background:#1e293b;
-color:white;
-border:1px solid #334155;
-padding:12px 18px;
-border-radius:10px;
-margin-bottom:20px;
-}
-
-.details h1{
-font-size:38px;
-}
-
-.details-text{
-font-size:18px;
-line-height:1.9;
-color:#cbd5e1;
-}
-
-.detail-card{
-background:#111827;
-border:1px solid #263244;
-border-radius:16px;
-padding:20px;
-margin-top:18px;
-}
-
-.owner{
-display:flex;
-align-items:center;
-gap:12px;
-}
-
-.avatar{
-width:55px;
-height:55px;
-border-radius:50%;
-background:#263244;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:25px;
-overflow:hidden;
-}
-
-.avatar img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-.owner-name{
-font-weight:bold;
-}
-
-.owner-role{
-color:#94a3b8;
-font-size:13px;
-margin-top:5px;
-}
-
-.actions{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px;
-margin-top:18px;
-}
-
-.actions button{
-padding:14px;
-background:#1e293b;
-color:white;
-border:1px solid #334155;
-border-radius:10px;
-font-size:15px;
-}
-
-.features{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px;
-}
-
-.feature{
-background:#0b1526;
-padding:18px;
-border-radius:12px;
-}
-
-.feature p{
-color:#94a3b8;
-line-height:1.7;
-}
-
-.add-box{
-display:none;
-max-width:900px;
-margin:30px auto;
-background:#111827;
-border:1px solid #334155;
-border-radius:18px;
-padding:22px;
-}
-
-.form-input,
-.form-select,
-.form-textarea{
-width:100%;
-padding:14px;
-margin:8px 0;
-background:#07101f;
-color:white;
-border:1px solid #334155;
-border-radius:10px;
-font-size:16px;
-font-family:Arial;
-}
-
-.form-textarea{
-height:120px;
-resize:none;
-}
-
-.upload-area{
-border:2px dashed #38bdf8;
-border-radius:15px;
-padding:25px;
-text-align:center;
-margin-top:10px;
-}
-
-.upload-area label{
-display:block;
-font-size:17px;
-font-weight:bold;
+.back span{
+color:#38bdf8;
 cursor:pointer;
 }
 
-.upload-area small{
-display:block;
-color:#94a3b8;
-margin-top:8px;
-}
-
-#imageFile,
-#profileFile{
+.user-menu{
 display:none;
-}
-
-.preview{
-display:none;
-width:100%;
-max-height:300px;
-object-fit:cover;
-border-radius:12px;
-margin-top:15px;
-}
-
-.publish,
-.save-profile{
-width:100%;
-padding:14px;
-margin-top:15px;
-background:#38bdf8;
-color:#082f49;
-border:0;
-border-radius:10px;
-font-weight:bold;
-font-size:16px;
-}
-
-.cancel{
-width:100%;
-padding:14px;
-margin-top:10px;
-background:#1e293b;
-color:white;
-border:1px solid #334155;
-border-radius:10px;
-font-size:16px;
-}
-
-.profile-page{
-display:none;
-max-width:1000px;
+position:fixed;
+top:75px;
+left:15px;
+right:15px;
+max-width:400px;
 margin:auto;
-padding:30px 20px 80px;
-}
-
-.profile-header{
 background:#111827;
-border:1px solid #263244;
-border-radius:20px;
-padding:25px;
-text-align:center;
-}
-
-.profile-avatar{
-width:110px;
-height:110px;
-border-radius:50%;
-background:#1e293b;
-margin:0 auto 15px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:45px;
-overflow:hidden;
-border:3px solid #38bdf8;
-}
-
-.profile-avatar img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-.profile-name{
-font-size:28px;
-font-weight:bold;
-}
-
-.profile-bio{
-color:#94a3b8;
-line-height:1.8;
-margin:10px auto;
-max-width:600px;
-}
-
-.profile-stats{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px;
-margin-top:20px;
-}
-
-.stat{
-background:#0b1526;
-padding:15px;
-border-radius:12px;
-}
-
-.stat strong{
-display:block;
-font-size:22px;
-}
-
-.stat span{
-color:#94a3b8;
-font-size:13px;
-}
-
-.profile-form{
-background:#111827;
-border:1px solid #263244;
-border-radius:18px;
+border:1px solid #334155;
+border-radius:15px;
 padding:20px;
-margin-top:20px;
+z-index:50;
 }
 
-.profile-form h2{
+.user-menu h3{
 margin-top:0;
 }
 
-.profile-tabs{
-display:flex;
-gap:10px;
-margin:20px 0;
-}
-
-.profile-tab{
-flex:1;
-padding:13px;
-background:#1e293b;
+.logout{
+width:100%;
+padding:12px;
+background:#7f1d1d;
 color:white;
-border:1px solid #334155;
+border:0;
 border-radius:10px;
+margin-top:15px;
 }
 
-.profile-tab.active{
-background:#2563eb;
-}
-
-.comment{
+#message{
+display:none;
+padding:13px;
+border-radius:10px;
+margin-bottom:15px;
 background:#0b1526;
-padding:15px;
-border-radius:12px;
-margin-top:10px;
-}
-
-footer{
+color:#38bdf8;
 text-align:center;
-padding:30px;
-background:#050a12;
-color:#64748b;
-margin-top:30px;
+font-size:14px;
 }
 
-@media(max-width:800px){
+@media(max-width:500px){
 
-.categories{
-grid-template-columns:repeat(2,1fr);
+.login-box{
+padding:22px;
 }
 
-.projects{
-grid-template-columns:1fr;
+.login-logo{
+font-size:34px;
 }
 
-}
-
-@media(max-width:600px){
-
-header{
-flex-wrap:wrap;
-gap:10px;
-}
-
-nav{
-width:100%;
-}
-
-nav button{
-flex:1;
-}
-
-.hero h1{
-font-size:30px;
-}
-
-.categories{
-grid-template-columns:1fr;
-}
-
-.tools{
-flex-direction:column;
-}
-
-.add{
-width:100%;
-}
-
-.details-image{
-height:240px;
-}
-
-.details h1{
-font-size:30px;
-}
-
-.actions{
-grid-template-columns:1fr;
-}
-
-.features{
-grid-template-columns:1fr;
-}
-
-.profile-stats{
+.social{
 grid-template-columns:1fr;
 }
 
@@ -629,271 +301,206 @@ grid-template-columns:1fr;
 KAPO <span>ONE</span>
 </div>
 
-<nav>
-
-<button onclick="showHome()">
-الرئيسية
-</button>
-
-<button onclick="showProjects()">
-المشاريع
-</button>
-
 <button
-class="profile-btn"
-onclick="showProfile()">
+class="home-btn"
+onclick="goHome()">
 
-👤 حسابي
+← الرئيسية
 
 </button>
-
-</nav>
 
 </header>
 
 
-<div id="home">
+<main class="login-page">
 
 
-<section class="hero">
+<div class="login-box">
 
-<h1>
-اكتشف عالم <span>KAPO ONE</span>
-</h1>
 
-<p>
-منصة عالمية لعرض الأعمال والمشاريع
-والتصاميم والأفكار في مكان واحد.
-</p>
-
-<div class="search">
-
-<input
-id="search"
-placeholder="🔎 ابحث عن مشروع..."
-onkeyup="searchProjects()">
-
+<div class="login-logo">
+KAPO <span>ONE</span>
 </div>
 
-</section>
 
+<div class="login-subtitle">
 
-<main class="container">
+مرحبًا بك في منصة KAPO ONE<br>
 
-
-<h2 class="title">
-استكشف المجالات
-</h2>
-
-
-<div class="categories">
-
-<div class="category">
-<div class="category-icon">🏢</div>
-<h3>العمارة</h3>
-<p>التصاميم المعمارية</p>
-</div>
-
-<div class="category">
-<div class="category-icon">🏗️</div>
-<h3>الهندسة</h3>
-<p>المشاريع الهندسية</p>
-</div>
-
-<div class="category">
-<div class="category-icon">🌆</div>
-<h3>الأبراج</h3>
-<p>تصاميم الأبراج</p>
-</div>
-
-<div class="category">
-<div class="category-icon">💡</div>
-<h3>الأفكار</h3>
-<p>الأفكار المستقبلية</p>
-</div>
+سجّل دخولك أو أنشئ حسابًا جديدًا
 
 </div>
 
 
-<div class="tools">
-
-<div class="filters">
-
-<button class="filter active">
-الكل
-</button>
-
-<button class="filter">
-🏢 العمارة
-</button>
-
-<button class="filter">
-🏗️ الهندسة
-</button>
-
-<button class="filter">
-🌆 الأبراج
-</button>
-
-</div>
-
+<div class="tabs">
 
 <button
-class="add"
-onclick="openAddProject()">
+id="loginTab"
+class="tab active"
+onclick="showLogin()">
 
-＋ إضافة مشروع
+تسجيل الدخول
+
+</button>
+
+<button
+id="registerTab"
+class="tab"
+onclick="showRegister()">
+
+إنشاء حساب
 
 </button>
 
 </div>
 
 
-<div
-id="addProjectBox"
-class="add-box">
-
-<h2>
-🚀 إضافة مشروع جديد
-</h2>
-
-<p style="color:#94a3b8;">
-أدخل معلومات مشروعك وارفع صورته من الهاتف.
-</p>
+<div id="message"></div>
 
 
-<input
-id="newName"
-class="form-input"
-placeholder="اسم المشروع">
+<!-- تسجيل الدخول -->
+
+<div id="loginForm">
 
 
-<input
-id="newOwner"
-class="form-input"
-placeholder="اسم صاحب المشروع">
+<div class="form-group">
 
-
-<input
-id="newLocation"
-class="form-input"
-placeholder="الدولة أو المدينة">
-
-
-<select
-id="newCategory"
-class="form-select">
-
-<option>🏢 العمارة</option>
-<option>🏗️ الهندسة</option>
-<option>🌆 الأبراج</option>
-<option>💡 الأفكار</option>
-
-</select>
-
-
-<textarea
-id="newDescription"
-class="form-textarea"
-placeholder="نبذة عن المشروع...">
-</textarea>
-
-
-<div class="upload-area">
-
-<label for="imageFile">
-📷 اختر صورة المشروع من الهاتف
+<label>
+البريد الإلكتروني
 </label>
 
-<small>
-اضغط هنا لاختيار صورة من الاستديو
-</small>
+<input
+id="loginEmail"
+class="input"
+type="email"
+placeholder="example@email.com">
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+كلمة المرور
+</label>
+
+<div class="password-box">
 
 <input
-id="imageFile"
-type="file"
-accept="image/*"
-onchange="previewImage(event)">
-
-</div>
-
-
-<img
-id="preview"
-class="preview">
-
+id="loginPassword"
+class="input"
+type="password"
+placeholder="أدخل كلمة المرور">
 
 <button
-class="publish"
-onclick="publishProject()">
+class="show-password"
+onclick="togglePassword('loginPassword')">
 
-🚀 نشر المشروع
-
-</button>
-
-
-<button
-class="cancel"
-onclick="closeAddProject()">
-
-إلغاء
+👁
 
 </button>
 
 </div>
 
+</div>
+
+
+<a
+href="#"
+class="forgot"
+onclick="forgotPassword();return false;">
+
+نسيت كلمة المرور؟
+
+</a>
+
+
+<button
+class="main-btn"
+onclick="loginUser()">
+
+🔐 تسجيل الدخول
+
+</button>
+
+
+<div class="divider">
+أو
+</div>
+
+
+<div class="social">
+
+<button onclick="socialLogin('Google')">
+🌐 Google
+</button>
+
+<button onclick="socialLogin('Apple')">
+ Apple
+</button>
+
+</div>
+
+
+</div>
+
+
+<!-- إنشاء الحساب -->
 
 <div
-class="projects"
-id="projects">
+id="registerForm"
+style="display:none;">
 
 
-<div class="project">
+<div class="form-group">
 
-<div class="project-img">
+<label>
+اسم المستخدم
+</label>
 
-<img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80">
+<input
+id="registerName"
+class="input"
+type="text"
+placeholder="اكتب اسمك">
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+البريد الإلكتروني
+</label>
+
+<input
+id="registerEmail"
+class="input"
+type="email"
+placeholder="example@email.com">
 
 </div>
 
-<div class="project-body">
 
-<span class="badge">
-🌆 أبراج
-</span>
+<div class="form-group">
 
-<h3>
-برج المستقبل
-</h3>
+<label>
+كلمة المرور
+</label>
 
-<p>
-تصميم معماري مستقبلي يجمع بين
-الجمال والهندسة والتقنية.
-</p>
+<div class="password-box">
 
-<div class="bottom">
-
-<span>
-👤 KAPO Design
-</span>
-
-<span>
-♡ 128
-</span>
-
-</div>
+<input
+id="registerPassword"
+class="input"
+type="password"
+placeholder="أنشئ كلمة مرور">
 
 <button
-class="open"
-onclick="openProject(
-'برج المستقبل',
-'🌆 أبراج',
-'KAPO Design',
-'مشروع معماري مستقبلي يجمع بين التصميم المبتكر والهندسة الحديثة والتقنيات الجديدة.',
-'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80'
-)">
+class="show-password"
+onclick="togglePassword('registerPassword')">
 
-استكشف المشروع
+👁
 
 </button>
 
@@ -902,110 +509,45 @@ onclick="openProject(
 </div>
 
 
-<div class="project">
+<div class="form-group">
 
-<div class="project-img">
+<label>
+تأكيد كلمة المرور
+</label>
 
-<img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1200&q=80">
-
-</div>
-
-<div class="project-body">
-
-<span class="badge">
-🏢 عمارة
-</span>
-
-<h3>
-المدينة الذكية
-</h3>
-
-<p>
-تصور معماري لمدينة حديثة
-تعتمد على التقنية والاستدامة.
-</p>
-
-<div class="bottom">
-
-<span>
-👤 Future Architecture
-</span>
-
-<span>
-♡ 96
-</span>
+<input
+id="registerConfirm"
+class="input"
+type="password"
+placeholder="أعد كتابة كلمة المرور">
 
 </div>
+
 
 <button
-class="open"
-onclick="openProject(
-'المدينة الذكية',
-'🏢 عمارة',
-'Future Architecture',
-'تصور معماري لمدينة حديثة تعتمد على التقنية والاستدامة والحلول الذكية.',
-'https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1200&q=80'
-)">
+class="main-btn"
+onclick="registerUser()">
 
-استكشف المشروع
+🚀 إنشاء الحساب
 
 </button>
 
-</div>
+
+<div class="notice">
+
+بإنشاء حساب في KAPO ONE أنت توافق على شروط
+استخدام المنصة وسياسة الخصوصية.
 
 </div>
 
 
-<div class="project">
-
-<div class="project-img">
-
-<img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80">
-
 </div>
 
-<div class="project-body">
 
-<span class="badge">
-🏗️ هندسة
-</span>
+<div class="back">
 
-<h3>
-الهيكل الهندسي
-</h3>
-
-<p>
-حلول هندسية مبتكرة للمباني
-والمشاريع المستقبلية.
-</p>
-
-<div class="bottom">
-
-<span>
-👤 Engineering Lab
-</span>
-
-<span>
-♡ 74
-</span>
-
-</div>
-
-<button
-class="open"
-onclick="openProject(
-'الهيكل الهندسي',
-'🏗️ هندسة',
-'Engineering Lab',
-'حلول هندسية مبتكرة للمباني الحديثة والمشاريع المستقبلية.',
-'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80'
-)">
-
-استكشف المشروع
-
-</button>
-
-</div>
+يمكنك الدخول لاحقًا وربط الحساب الحقيقي
+بقاعدة البيانات.
 
 </div>
 
@@ -1014,646 +556,135 @@ onclick="openProject(
 
 </main>
 
-</div>
-
-
-<section
-id="details"
-class="details">
-
-
-<button
-class="back"
-onclick="showHome()">
-
-← العودة إلى معرض الأعمال
-
-</button>
-
-
-<div class="details-image">
-
-<img id="detailImage">
-
-</div>
-
 
 <div
-id="detailCategory"
-class="category">
-</div>
+id="userMenu"
+class="user-menu">
 
+<h3>
+👤 تم تسجيل الدخول
+</h3>
 
-<h1 id="detailTitle">
-</h1>
-
-
-<p
-id="detailText"
-class="details-text">
-</p>
-
-
-<div class="detail-card">
-
-<h2>
-👤 صاحب المشروع
-</h2>
-
-<div class="owner">
-
-<div class="avatar">
-
-<img
-id="detailAvatar"
-style="display:none">
-
-<span id="detailAvatarIcon">
-👤
-</span>
-
-</div>
-
-<div>
-
-<div
-id="detailOwner"
-class="owner-name">
-</div>
-
-<div class="owner-role">
-صاحب المشروع
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="actions">
-
-<button onclick="likeProject(this)">
-♡ إعجاب
-</button>
-
-<button onclick="saveProject(this)">
-🔖 حفظ
-</button>
-
-<button onclick="shareProject()">
-📤 مشاركة
-</button>
-
-</div>
-
-
-<div class="detail-card">
-
-<h2>
-📐 نبذة عن المشروع
-</h2>
-
-<p
-id="detailAbout"
-class="details-text">
-</p>
-
-</div>
-
-
-<div class="detail-card">
-
-<h2>
-⭐ المميزات
-</h2>
-
-<div class="features">
-
-<div class="feature">
-<strong>🏗️ التصميم</strong>
-<p>تصميم معماري حديث ومميز.</p>
-</div>
-
-<div class="feature">
-<strong>💡 الابتكار</strong>
-<p>أفكار جديدة للمباني المستقبلية.</p>
-</div>
-
-<div class="feature">
-<strong>🌱 الاستدامة</strong>
-<p>توجه نحو استخدام أفضل للطاقة والموارد.</p>
-</div>
-
-<div class="feature">
-<strong>🌍 الرؤية العالمية</strong>
-<p>فكرة قابلة للتطوير حول العالم.</p>
-</div>
-
-</div>
-
-</div>
-
-
-<div class="detail-card">
-
-<h2>
-💬 التعليقات
-</h2>
-
-<textarea
-id="comment"
-placeholder="اكتب تعليقك على المشروع...">
-</textarea>
+<p id="welcomeUser"></p>
 
 <button
-class="send"
-onclick="sendComment()">
+class="logout"
+onclick="logoutUser()">
 
-إرسال التعليق
-
-</button>
-
-</div>
-
-
-</section>
-
-
-<section
-id="profilePage"
-class="profile-page">
-
-
-<button
-class="back"
-onclick="showHome()">
-
-← العودة إلى KAPO ONE
-
-</button>
-
-
-<div class="profile-header">
-
-
-<div class="profile-avatar">
-
-<img
-id="profileImage"
-style="display:none">
-
-<span id="profileIcon">
-👤
-</span>
-
-</div>
-
-
-<div
-id="profileName"
-class="profile-name">
-
-مستخدم KAPO ONE
-
-</div>
-
-
-<div
-id="profileBio"
-class="profile-bio">
-
-مصمم ومبدع على منصة KAPO ONE.
-شارك مشاريعك وأفكارك مع العالم.
-
-</div>
-
-
-<div class="profile-stats">
-
-<div class="stat">
-
-<strong id="projectCount">
-0
-</strong>
-
-<span>
-المشاريع
-</span>
-
-</div>
-
-<div class="stat">
-
-<strong>
-0
-</strong>
-
-<span>
-المتابعون
-</span>
-
-</div>
-
-<div class="stat">
-
-<strong>
-0
-</strong>
-
-<span>
-يتابع
-</span>
-
-</div>
-
-</div>
-
-
-</div>
-
-
-<div class="profile-form">
-
-<h2>
-✏️ تعديل الملف الشخصي
-</h2>
-
-
-<input
-id="profileNameInput"
-class="form-input"
-placeholder="اسمك">
-
-
-<textarea
-id="profileBioInput"
-class="form-textarea"
-placeholder="اكتب نبذة عنك...">
-</textarea>
-
-
-<div class="upload-area">
-
-<label for="profileFile">
-📷 اختر الصورة الشخصية
-</label>
-
-<small>
-يمكنك اختيار صورة من هاتفك
-</small>
-
-<input
-id="profileFile"
-type="file"
-accept="image/*"
-onchange="previewProfile(event)">
-
-</div>
-
-
-<img
-id="profilePreview"
-class="preview">
-
-
-<button
-class="save-profile"
-onclick="saveProfile()">
-
-💾 حفظ الملف الشخصي
+تسجيل الخروج
 
 </button>
 
 </div>
-
-
-<div class="profile-tabs">
-
-<button class="profile-tab active">
-📁 مشاريعي
-</button>
-
-<button class="profile-tab">
-🔖 المحفوظة
-</button>
-
-<button class="profile-tab">
-❤️ إعجاباتي
-</button>
-
-</div>
-
-
-<div class="detail-card">
-
-<h2>
-📁 مشاريعي
-</h2>
-
-<p
-style="color:#94a3b8;line-height:1.8;">
-
-ستظهر هنا المشاريع التي تنشرها في KAPO ONE.
-
-</p>
-
-</div>
-
-
-</section>
-
-
-<footer>
-
-KAPO ONE © 2026
-
-<br><br>
-
-منصة عالمية للأعمال والمشاريع والتصميم
-
-</footer>
 
 
 <script>
 
 
-let selectedImage="";
+function showLogin(){
 
-let selectedProfileImage="";
-
-
-function showHome(){
-
-document.getElementById("home")
+document.getElementById("loginForm")
 .style.display="block";
 
-document.getElementById("details")
+document.getElementById("registerForm")
 .style.display="none";
 
-document.getElementById("profilePage")
-.style.display="none";
+document.getElementById("loginTab")
+.classList.add("active");
 
-window.scrollTo(0,0);
+document.getElementById("registerTab")
+.classList.remove("active");
+
+clearMessage();
 
 }
 
 
-function showProjects(){
+function showRegister(){
 
-showHome();
-
-document.getElementById("projects")
-.scrollIntoView({
-behavior:"smooth"
-});
-
-}
-
-
-function showProfile(){
-
-document.getElementById("home")
+document.getElementById("loginForm")
 .style.display="none";
 
-document.getElementById("details")
-.style.display="none";
-
-document.getElementById("profilePage")
+document.getElementById("registerForm")
 .style.display="block";
 
-document.getElementById("profileNameInput")
-.value=
-localStorage.getItem("kapoName") || "";
+document.getElementById("loginTab")
+.classList.remove("active");
 
-document.getElementById("profileBioInput")
-.value=
-localStorage.getItem("kapoBio") || "";
+document.getElementById("registerTab")
+.classList.add("active");
 
-window.scrollTo(0,0);
+clearMessage();
 
 }
 
 
-function openProject(
-title,
-category,
-owner,
-description,
-image
-){
+function togglePassword(id){
 
-document.getElementById("detailTitle")
-.innerText=title;
+let input=
+document.getElementById(id);
 
-document.getElementById("detailCategory")
-.innerText=category;
+if(input.type==="password"){
 
-document.getElementById("detailOwner")
-.innerText=owner;
+input.type="text";
 
-document.getElementById("detailText")
-.innerText=description;
+}else{
 
-document.getElementById("detailAbout")
-.innerText=description;
+input.type="password";
 
-document.getElementById("detailImage")
-.src=image;
-
-document.getElementById("home")
-.style.display="none";
-
-document.getElementById("profilePage")
-.style.display="none";
-
-document.getElementById("details")
-.style.display="block";
-
-window.scrollTo(0,0);
+}
 
 }
 
 
-function openAddProject(){
+function showMessage(text){
 
-document.getElementById("addProjectBox")
-.style.display="block";
+let box=
+document.getElementById("message");
 
-document.getElementById("addProjectBox")
-.scrollIntoView({
-behavior:"smooth"
-});
+box.innerText=text;
+
+box.style.display="block";
 
 }
 
 
-function closeAddProject(){
+function clearMessage(){
 
-document.getElementById("addProjectBox")
+document.getElementById("message")
 .style.display="none";
 
 }
 
 
-function previewImage(event){
-
-let file=event.target.files[0];
-
-if(!file){
-
-return;
-
-}
-
-let reader=new FileReader();
-
-reader.onload=function(e){
-
-selectedImage=e.target.result;
-
-let preview=
-document.getElementById("preview");
-
-preview.src=selectedImage;
-
-preview.style.display="block";
-
-};
-
-reader.readAsDataURL(file);
-
-}
-
-
-function previewProfile(event){
-
-let file=event.target.files[0];
-
-if(!file){
-
-return;
-
-}
-
-let reader=new FileReader();
-
-reader.onload=function(e){
-
-selectedProfileImage=e.target.result;
-
-let preview=
-document.getElementById("profilePreview");
-
-preview.src=selectedProfileImage;
-
-preview.style.display="block";
-
-};
-
-reader.readAsDataURL(file);
-
-}
-
-
-function saveProfile(){
+function registerUser(){
 
 let name=
-document.getElementById("profileNameInput")
+document.getElementById("registerName")
 .value.trim();
 
-let bio=
-document.getElementById("profileBioInput")
+let email=
+document.getElementById("registerEmail")
 .value.trim();
 
-
-if(name===""){
-
-alert("اكتب اسمك أولًا.");
-
-return;
-
-}
-
-
-localStorage.setItem(
-"kapoName",
-name
-);
-
-localStorage.setItem(
-"kapoBio",
-bio
-);
-
-
-document.getElementById("profileName")
-.innerText=name;
-
-document.getElementById("profileBio")
-.innerText=
-bio ||
-"مصمم ومبدع على منصة KAPO ONE.";
-
-
-if(selectedProfileImage!==""){
-
-localStorage.setItem(
-"kapoProfileImage",
-selectedProfileImage
-);
-
-document.getElementById("profileImage")
-.src=selectedProfileImage;
-
-document.getElementById("profileImage")
-.style.display="block";
-
-document.getElementById("profileIcon")
-.style.display="none";
-
-}
-
-
-alert(
-"تم حفظ الملف الشخصي."
-);
-
-}
-
-
-function publishProject(){
-
-let name=
-document.getElementById("newName")
-.value.trim();
-
-let owner=
-document.getElementById("newOwner")
-.value.trim();
-
-let location=
-document.getElementById("newLocation")
-.value.trim();
-
-let category=
-document.getElementById("newCategory")
+let password=
+document.getElementById("registerPassword")
 .value;
 
-let description=
-document.getElementById("newDescription")
-.value.trim();
+let confirm=
+document.getElementById("registerConfirm")
+.value;
 
 
 if(
 name==="" ||
-owner==="" ||
-description===""
+email==="" ||
+password==="" ||
+confirm===""
 ){
 
-alert(
-"يرجى تعبئة اسم المشروع وصاحب المشروع والنبذة."
+showMessage(
+"يرجى تعبئة جميع البيانات."
 );
 
 return;
@@ -1661,279 +692,164 @@ return;
 }
 
 
-let image=selectedImage;
+if(password.length<6){
 
-
-if(image===""){
-
-image=
-"https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80";
-
-}
-
-
-let project=
-document.createElement("div");
-
-project.className="project";
-
-
-project.innerHTML=`
-
-<div class="project-img">
-
-<img src="${image}">
-
-</div>
-
-<div class="project-body">
-
-<span class="badge">
-${category}
-</span>
-
-<h3>
-${name}
-</h3>
-
-<p>
-${description}
-</p>
-
-<div class="bottom">
-
-<span>
-👤 ${owner}
-</span>
-
-<span>
-📍 ${location}
-</span>
-
-</div>
-
-<button class="open">
-استكشف المشروع
-</button>
-
-</div>
-
-`;
-
-
-project
-.querySelector(".open")
-.onclick=function(){
-
-openProject(
-name,
-category,
-owner,
-description,
-image
+showMessage(
+"كلمة المرور يجب أن تكون 6 أحرف على الأقل."
 );
 
-};
+return;
+
+}
 
 
-document
-.getElementById("projects")
-.prepend(project);
+if(password!==confirm){
 
-
-let current=
-parseInt(
-document.getElementById("projectCount")
-.innerText
+showMessage(
+"كلمتا المرور غير متطابقتين."
 );
 
-document.getElementById("projectCount")
-.innerText=current+1;
+return;
+
+}
 
 
-closeAddProject();
-
-
-document.getElementById("newName").value="";
-document.getElementById("newOwner").value="";
-document.getElementById("newLocation").value="";
-document.getElementById("newDescription").value="";
-document.getElementById("imageFile").value="";
-
-document.getElementById("preview")
-.style.display="none";
-
-selectedImage="";
-
-
-alert(
-"تمت إضافة المشروع إلى KAPO ONE."
+localStorage.setItem(
+"kapoUserName",
+name
 );
 
-}
-
-
-function likeProject(button){
-
-if(
-button.innerText.includes("♡")
-){
-
-button.innerText="♥ تم الإعجاب";
-
-}else{
-
-button.innerText="♡ إعجاب";
-
-}
-
-}
-
-
-function saveProject(button){
-
-if(
-button.innerText.includes("🔖")
-){
-
-button.innerText="✓ تم الحفظ";
-
-}else{
-
-button.innerText="🔖 حفظ";
-
-}
-
-}
-
-
-function shareProject(){
-
-if(navigator.share){
-
-navigator.share({
-
-title:"KAPO ONE",
-
-text:"شاهد هذا المشروع على KAPO ONE"
-
-});
-
-}else{
-
-alert(
-"ميزة المشاركة ستتطور لاحقًا."
+localStorage.setItem(
+"kapoUserEmail",
+email
 );
 
-}
+localStorage.setItem(
+"kapoLoggedIn",
+"true"
+);
+
+
+showMessage(
+"🎉 تم إنشاء الحساب بنجاح!"
+);
+
+
+setTimeout(function(){
+
+goProfile();
+
+},1000);
 
 }
 
 
-function sendComment(){
+function loginUser(){
 
-let text=
-document.getElementById("comment")
+let email=
+document.getElementById("loginEmail")
 .value.trim();
 
-if(text===""){
+let password=
+document.getElementById("loginPassword")
+.value;
 
-alert(
-"اكتب تعليقك أولًا."
+
+if(email==="" || password===""){
+
+showMessage(
+"أدخل البريد الإلكتروني وكلمة المرور."
 );
 
 return;
 
 }
 
-alert(
-"تم استلام تعليقك."
-);
 
-document.getElementById("comment")
-.value="";
+let savedEmail=
+localStorage.getItem("kapoUserEmail");
 
-}
-
-
-function searchProjects(){
-
-let value=
-document.getElementById("search")
-.value.toLowerCase();
-
-let projects=
-document.querySelectorAll(".project");
-
-projects.forEach(function(project){
 
 if(
-project.innerText
-.toLowerCase()
-.includes(value)
+savedEmail &&
+email!==savedEmail
 ){
 
-project.style.display="";
+showMessage(
+"البريد الإلكتروني غير مطابق للحساب التجريبي."
+);
 
-}else{
-
-project.style.display="none";
-
-}
-
-});
+return;
 
 }
 
 
-window.onload=function(){
-
-let name=
-localStorage.getItem("kapoName");
-
-let bio=
-localStorage.getItem("kapoBio");
-
-let image=
-localStorage.getItem("kapoProfileImage");
+localStorage.setItem(
+"kapoLoggedIn",
+"true"
+);
 
 
-if(name){
+showMessage(
+"✅ تم تسجيل الدخول بنجاح."
+);
 
-document.getElementById("profileName")
-.innerText=name;
 
-document.getElementById("profileNameInput")
-.value=name;
+setTimeout(function(){
+
+goProfile();
+
+},1000);
 
 }
 
 
-if(bio){
+function forgotPassword(){
 
-document.getElementById("profileBio")
-.innerText=bio;
-
-document.getElementById("profileBioInput")
-.value=bio;
+showMessage(
+"سيتم تفعيل استعادة كلمة المرور عند ربط KAPO ONE بالمصادقة الحقيقية."
+);
 
 }
 
 
-if(image){
+function socialLogin(provider){
 
-document.getElementById("profileImage")
-.src=image;
+showMessage(
+"تسجيل الدخول بواسطة "+provider+
+" سيتم تفعيله عند ربط Supabase Auth."
+);
 
-document.getElementById("profileImage")
-.style.display="block";
+}
 
-document.getElementById("profileIcon")
+
+function goProfile(){
+
+window.location.href="index.html";
+
+}
+
+
+function goHome(){
+
+window.location.href="index.html";
+
+}
+
+
+function logoutUser(){
+
+localStorage.removeItem("kapoLoggedIn");
+
+document.getElementById("userMenu")
 .style.display="none";
 
+showMessage(
+"تم تسجيل الخروج."
+);
+
 }
 
-};
 
 </script>
 
