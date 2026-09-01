@@ -8,10 +8,7 @@
 <title>KAPO ONE | حساب المالك</title>
 
 <style>
-
-*{
-box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
 margin:0;
@@ -35,9 +32,7 @@ font-size:28px;
 font-weight:bold;
 }
 
-.logo span{
-color:#38bdf8;
-}
+.logo span{color:#38bdf8}
 
 .home-btn{
 background:#1e293b;
@@ -68,7 +63,6 @@ box-shadow:0 20px 60px rgba(0,0,0,.35);
 .crown{
 text-align:center;
 font-size:55px;
-margin-bottom:5px;
 }
 
 .title{
@@ -77,9 +71,7 @@ font-size:30px;
 font-weight:bold;
 }
 
-.title span{
-color:#38bdf8;
-}
+.title span{color:#38bdf8}
 
 .subtitle{
 text-align:center;
@@ -99,9 +91,7 @@ font-size:13px;
 line-height:1.7;
 }
 
-.form-group{
-margin-bottom:17px;
-}
+.form-group{margin-bottom:17px}
 
 label{
 display:block;
@@ -121,17 +111,9 @@ font-size:16px;
 outline:none;
 }
 
-.input:focus{
-border-color:#38bdf8;
-}
+.password-box{position:relative}
 
-.password-box{
-position:relative;
-}
-
-.password-box .input{
-padding-left:50px;
-}
+.password-box .input{padding-left:50px}
 
 .eye{
 position:absolute;
@@ -166,7 +148,6 @@ background:#0b1526;
 color:#38bdf8;
 text-align:center;
 font-size:14px;
-line-height:1.6;
 }
 
 .owner-dashboard{
@@ -243,9 +224,7 @@ border-radius:16px;
 padding:22px;
 }
 
-.card-icon{
-font-size:30px;
-}
+.card-icon{font-size:30px}
 
 .card-number{
 font-size:30px;
@@ -304,39 +283,21 @@ color:#64748b;
 }
 
 @media(max-width:800px){
-
-.cards{
-grid-template-columns:repeat(2,1fr);
-}
-
+.cards{grid-template-columns:repeat(2,1fr)}
 .dashboard-top{
 flex-direction:column;
 align-items:stretch;
 }
-
-.logout{
-width:100%;
-}
-
+.logout{width:100%}
 }
 
 @media(max-width:500px){
-
-.owner-box{
-padding:22px;
+.owner-box{padding:22px}
+.cards{grid-template-columns:1fr}
+.management{grid-template-columns:1fr}
 }
-
-.cards{
-grid-template-columns:1fr;
-}
-
-.management{
-grid-template-columns:1fr;
-}
-
-}
-
 </style>
+
 </head>
 
 <body>
@@ -369,12 +330,9 @@ KAPO <span>ONE</span>
 </div>
 
 <div class="security">
-
 🛡️ <strong>منطقة خاصة بالمالك</strong><br>
-
 هذا الحساب مخصص لإدارة المنصة.
 الدخول محمي بواسطة Supabase.
-
 </div>
 
 <div id="message" class="message"></div>
@@ -418,11 +376,7 @@ placeholder="كلمة المرور">
 <button
 type="button"
 class="eye"
-onclick="togglePassword()">
-
-👁
-
-</button>
+onclick="togglePassword()">👁</button>
 
 </div>
 
@@ -553,7 +507,7 @@ const SUPABASE_URL =
 "https://ehmeircigoqfhftaotba.supabase.co";
 
 const SUPABASE_PUBLISHABLE_KEY =
-"الصق_قيمة_Publishable_key_هنا";
+"sb_publishable_54N-aEBjhTQK1wUzpWl0fg_MQRq5D";
 
 const db = supabase.createClient(
 SUPABASE_URL,
@@ -617,18 +571,7 @@ return;
 
 }
 
-if(password.length<6){
-
-showMessage(
-"كلمة المرور يجب أن تكون 6 أحرف على الأقل."
-);
-
-return;
-
-}
-
 showMessage("جاري تسجيل الدخول...");
-
 
 const { data, error } =
 await db.auth.signInWithPassword({
@@ -638,7 +581,6 @@ email:email,
 password:password
 
 });
-
 
 if(error){
 
@@ -650,7 +592,6 @@ return;
 
 }
 
-
 const user =
 data.user;
 
@@ -659,18 +600,14 @@ user.user_metadata?.name ||
 document.getElementById("ownerName").value.trim() ||
 "كابو";
 
-
 document.getElementById("dashboardOwnerName")
 .innerText=ownerName;
-
 
 document.getElementById("ownerLogin")
 .style.display="none";
 
-
 document.getElementById("ownerDashboard")
 .style.display="block";
-
 
 window.scrollTo(0,0);
 
@@ -682,7 +619,6 @@ async function ownerLogout(){
 const { error } =
 await db.auth.signOut();
 
-
 if(error){
 
 showMessage(
@@ -693,18 +629,14 @@ return;
 
 }
 
-
 document.getElementById("ownerDashboard")
 .style.display="none";
-
 
 document.getElementById("ownerLogin")
 .style.display="flex";
 
-
 document.getElementById("ownerPassword")
 .value="";
-
 
 showMessage(
 "تم تسجيل الخروج من حساب المالك."
@@ -721,50 +653,7 @@ await db.auth.getSession();
 const session =
 data.session;
 
-
 if(session){
 
 const user =
-session.user;
-
-const ownerName =
-user.user_metadata?.name ||
-"كابو";
-
-
-document.getElementById("dashboardOwnerName")
-.innerText=ownerName;
-
-
-document.getElementById("ownerLogin")
-.style.display="none";
-
-
-document.getElementById("ownerDashboard")
-.style.display="block";
-
-}else{
-
-document.getElementById("ownerLogin")
-.style.display="flex";
-
-
-document.getElementById("ownerDashboard")
-.style.display="none";
-
-}
-
-}
-
-
-window.onload=function(){
-
-checkSession();
-
-};
-
-</script>
-
-</body>
-
-</html>
+session.user
