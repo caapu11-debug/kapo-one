@@ -2,7 +2,6 @@
 <html lang="ar" dir="rtl">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -155,10 +154,7 @@ color:#082f49;
 font-size:17px;
 font-weight:bold;
 margin-top:5px;
-}
-
-.login-btn:active{
-transform:scale(.99);
+cursor:pointer;
 }
 
 .message{
@@ -226,6 +222,7 @@ color:white;
 border:0;
 padding:12px 18px;
 border-radius:10px;
+cursor:pointer;
 }
 
 .dashboard-title{
@@ -340,12 +337,9 @@ grid-template-columns:1fr;
 }
 
 </style>
-
 </head>
 
-
 <body>
-
 
 <header>
 
@@ -353,95 +347,65 @@ grid-template-columns:1fr;
 KAPO <span>ONE</span>
 </div>
 
-<button
-class="home-btn"
-onclick="showOwnerLogin()">
-
+<button class="home-btn" onclick="showOwnerLogin()">
 🔐 حساب المالك
-
 </button>
 
 </header>
 
-
-<!-- تسجيل دخول المالك -->
-
-<section
-id="ownerLogin"
-class="owner-page">
+<section id="ownerLogin" class="owner-page">
 
 <div class="owner-box">
 
-
-<div class="crown">
-👑
-</div>
-
+<div class="crown">👑</div>
 
 <div class="title">
 مالك <span>KAPO ONE</span>
 </div>
 
-
 <div class="subtitle">
-
 الدخول إلى الحساب الرئيسي
 لإدارة منصة KAPO ONE
-
 </div>
-
 
 <div class="security">
 
 🛡️ <strong>منطقة خاصة بالمالك</strong><br>
 
 هذا الحساب مخصص لإدارة المنصة.
-سنربطه لاحقًا بالمصادقة الآمنة في Supabase.
+الدخول محمي بواسطة Supabase.
 
 </div>
 
-
-<div
-id="message"
-class="message">
-</div>
-
+<div id="message" class="message"></div>
 
 <div class="form-group">
 
-<label>
-اسم المالك
-</label>
+<label>اسم المالك</label>
 
 <input
 id="ownerName"
 class="input"
 type="text"
-placeholder="اسم المالك">
+placeholder="كابو">
 
 </div>
 
-
 <div class="form-group">
 
-<label>
-البريد الإلكتروني للمالك
-</label>
+<label>البريد الإلكتروني للمالك</label>
 
 <input
 id="ownerEmail"
 class="input"
 type="email"
-placeholder="owner@example.com">
+placeholder="البريد الإلكتروني">
 
 </div>
 
-
 <div class="form-group">
 
-<label>
-كلمة مرور المالك
-</label>
+<label>كلمة مرور المالك</label>
 
 <div class="password-box">
 
@@ -452,6 +416,7 @@ type="password"
 placeholder="كلمة المرور">
 
 <button
+type="button"
 class="eye"
 onclick="togglePassword()">
 
@@ -463,8 +428,8 @@ onclick="togglePassword()">
 
 </div>
 
-
 <button
+type="button"
 class="login-btn"
 onclick="ownerLogin()">
 
@@ -472,211 +437,103 @@ onclick="ownerLogin()">
 
 </button>
 
-
 </div>
 
 </section>
 
-
-<!-- لوحة تحكم المالك -->
-
-<section
-id="ownerDashboard"
-class="owner-dashboard">
-
+<section id="ownerDashboard" class="owner-dashboard">
 
 <div class="dashboard-top">
 
-
 <div class="owner-info">
 
-<div class="owner-avatar">
-👑
-</div>
-
+<div class="owner-avatar">👑</div>
 
 <div>
 
-<div
-id="dashboardOwnerName"
-class="owner-name">
-
-مالك KAPO ONE
-
+<div id="dashboardOwnerName" class="owner-name">
+كابو
 </div>
 
 <div class="owner-role">
-
 👑 المالك الرئيسي للمنصة
-
 </div>
 
 </div>
 
 </div>
 
-
-<button
-class="logout"
-onclick="ownerLogout()">
-
+<button class="logout" onclick="ownerLogout()">
 🚪 تسجيل الخروج
-
 </button>
 
-
 </div>
-
 
 <span class="badge">
 حساب مالك المنصة
 </span>
 
-
 <h2 class="dashboard-title">
 🎛️ لوحة تحكم KAPO ONE
 </h2>
 
-
 <div class="cards">
 
+<div class="card">
+<div class="card-icon">👥</div>
+<div class="card-number">0</div>
+<div class="card-name">المستخدمون</div>
+</div>
 
 <div class="card">
-
-<div class="card-icon">
-👥
+<div class="card-icon">🏗️</div>
+<div class="card-number">0</div>
+<div class="card-name">المشاريع</div>
 </div>
-
-<div class="card-number">
-0
-</div>
-
-<div class="card-name">
-المستخدمون
-</div>
-
-</div>
-
 
 <div class="card">
-
-<div class="card-icon">
-🏗️
+<div class="card-icon">💬</div>
+<div class="card-number">0</div>
+<div class="card-name">التعليقات</div>
 </div>
-
-<div class="card-number">
-0
-</div>
-
-<div class="card-name">
-المشاريع
-</div>
-
-</div>
-
 
 <div class="card">
-
-<div class="card-icon">
-💬
-</div>
-
-<div class="card-number">
-0
-</div>
-
-<div class="card-name">
-التعليقات
+<div class="card-icon">❤️</div>
+<div class="card-number">0</div>
+<div class="card-name">الإعجابات</div>
 </div>
 
 </div>
-
-
-<div class="card">
-
-<div class="card-icon">
-❤️
-</div>
-
-<div class="card-number">
-0
-</div>
-
-<div class="card-name">
-الإعجابات
-</div>
-
-</div>
-
-
-</div>
-
 
 <h2 class="dashboard-title">
 ⚙️ إدارة المنصة
 </h2>
 
-
 <div class="management">
 
-
 <button>
-
-<strong>
-👥 إدارة المستخدمين
-</strong>
-
-<span>
-عرض المستخدمين وإدارة الحسابات والصلاحيات.
-</span>
-
+<strong>👥 إدارة المستخدمين</strong>
+<span>عرض المستخدمين وإدارة الحسابات والصلاحيات.</span>
 </button>
 
-
 <button>
-
-<strong>
-🏗️ إدارة المشاريع
-</strong>
-
-<span>
-مراجعة المشاريع المنشورة وإدارتها.
-</span>
-
+<strong>🏗️ إدارة المشاريع</strong>
+<span>مراجعة المشاريع المنشورة وإدارتها.</span>
 </button>
 
-
 <button>
-
-<strong>
-💬 إدارة التعليقات
-</strong>
-
-<span>
-مراجعة التعليقات والمحتوى.
-</span>
-
+<strong>💬 إدارة التعليقات</strong>
+<span>مراجعة التعليقات والمحتوى.</span>
 </button>
 
-
 <button>
-
-<strong>
-🛡️ إعدادات الأمان
-</strong>
-
-<span>
-إعدادات الحماية والصلاحيات.
-</span>
-
+<strong>🛡️ إعدادات الأمان</strong>
+<span>إعدادات الحماية والصلاحيات.</span>
 </button>
-
 
 </div>
 
-
 </section>
-
 
 <footer>
 
@@ -688,17 +545,27 @@ KAPO ONE © 2026
 
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
+
+const SUPABASE_URL =
+"https://ehmeircigoqfhftaotba.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+"الصق_قيمة_Publishable_key_هنا";
+
+const db = supabase.createClient(
+SUPABASE_URL,
+SUPABASE_PUBLISHABLE_KEY
+);
 
 
 function showOwnerLogin(){
 
-document.getElementById("ownerLogin")
-.style.display="flex";
+document.getElementById("ownerLogin").style.display="flex";
 
-document.getElementById("ownerDashboard")
-.style.display="none";
+document.getElementById("ownerDashboard").style.display="none";
 
 window.scrollTo(0,0);
 
@@ -707,25 +574,20 @@ window.scrollTo(0,0);
 
 function togglePassword(){
 
-let input=
+const input =
 document.getElementById("ownerPassword");
 
-if(input.type==="password"){
-
-input.type="text";
-
-}else{
-
-input.type="password";
-
-}
+input.type =
+input.type === "password"
+? "text"
+: "password";
 
 }
 
 
 function showMessage(text){
 
-let message=
+const message =
 document.getElementById("message");
 
 message.innerText=text;
@@ -735,35 +597,25 @@ message.style.display="block";
 }
 
 
-function ownerLogin(){
+async function ownerLogin(){
 
-let name=
-document.getElementById("ownerName")
-.value.trim();
-
-let email=
+const email =
 document.getElementById("ownerEmail")
 .value.trim();
 
-let password=
+const password =
 document.getElementById("ownerPassword")
 .value;
 
-
-if(
-name==="" ||
-email==="" ||
-password===""
-){
+if(email==="" || password===""){
 
 showMessage(
-"يرجى إدخال اسم المالك والبريد الإلكتروني وكلمة المرور."
+"يرجى إدخال البريد الإلكتروني وكلمة المرور."
 );
 
 return;
 
 }
-
 
 if(password.length<6){
 
@@ -775,35 +627,46 @@ return;
 
 }
 
+showMessage("جاري تسجيل الدخول...");
 
-/*
-هذا تسجيل تجريبي فقط.
-لن يتم تخزين كلمة المرور.
-لاحقًا سنستخدم Supabase Auth.
-*/
 
-localStorage.setItem(
-"kapoOwnerName",
-name
+const { data, error } =
+await db.auth.signInWithPassword({
+
+email:email,
+
+password:password
+
+});
+
+
+if(error){
+
+showMessage(
+"فشل تسجيل الدخول. تأكد من البريد الإلكتروني وكلمة المرور."
 );
 
-localStorage.setItem(
-"kapoOwnerEmail",
-email
-);
+return;
 
-localStorage.setItem(
-"kapoOwnerLoggedIn",
-"true"
-);
+}
+
+
+const user =
+data.user;
+
+const ownerName =
+user.user_metadata?.name ||
+document.getElementById("ownerName").value.trim() ||
+"كابو";
 
 
 document.getElementById("dashboardOwnerName")
-.innerText=name;
+.innerText=ownerName;
 
 
 document.getElementById("ownerLogin")
 .style.display="none";
+
 
 document.getElementById("ownerDashboard")
 .style.display="block";
@@ -814,20 +677,34 @@ window.scrollTo(0,0);
 }
 
 
-function ownerLogout(){
+async function ownerLogout(){
 
-localStorage.removeItem(
-"kapoOwnerLoggedIn"
+const { error } =
+await db.auth.signOut();
+
+
+if(error){
+
+showMessage(
+"حدث خطأ أثناء تسجيل الخروج."
 );
+
+return;
+
+}
+
 
 document.getElementById("ownerDashboard")
 .style.display="none";
 
+
 document.getElementById("ownerLogin")
 .style.display="flex";
 
+
 document.getElementById("ownerPassword")
 .value="";
+
 
 showMessage(
 "تم تسجيل الخروج من حساب المالك."
@@ -836,37 +713,57 @@ showMessage(
 }
 
 
-window.onload=function(){
+async function checkSession(){
 
-let logged=
-localStorage.getItem(
-"kapoOwnerLoggedIn"
-);
+const { data } =
+await db.auth.getSession();
 
-let name=
-localStorage.getItem(
-"kapoOwnerName"
-);
+const session =
+data.session;
 
 
-if(logged==="true"){
+if(session){
+
+const user =
+session.user;
+
+const ownerName =
+user.user_metadata?.name ||
+"كابو";
+
 
 document.getElementById("dashboardOwnerName")
-.innerText=
-name || "مالك KAPO ONE";
+.innerText=ownerName;
+
 
 document.getElementById("ownerLogin")
 .style.display="none";
 
+
 document.getElementById("ownerDashboard")
 .style.display="block";
 
+}else{
+
+document.getElementById("ownerLogin")
+.style.display="flex";
+
+
+document.getElementById("ownerDashboard")
+.style.display="none";
+
 }
+
+}
+
+
+window.onload=function(){
+
+checkSession();
 
 };
 
 </script>
-
 
 </body>
 
