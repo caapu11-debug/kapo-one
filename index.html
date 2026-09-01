@@ -177,6 +177,7 @@ text-align:center;
 font-size:14px;
 line-height:1.7;
 word-break:break-word;
+white-space:pre-wrap;
 }
 
 .owner-dashboard{
@@ -510,70 +511,27 @@ onclick="ownerLogout()">
 <div class="cards">
 
 <div class="card">
-
-<div class="card-icon">
-👥
+<div class="card-icon">👥</div>
+<div class="card-number">0</div>
+<div class="card-name">المستخدمون</div>
 </div>
-
-<div class="card-number">
-0
-</div>
-
-<div class="card-name">
-المستخدمون
-</div>
-
-</div>
-
 
 <div class="card">
-
-<div class="card-icon">
-🏗️
+<div class="card-icon">🏗️</div>
+<div class="card-number">0</div>
+<div class="card-name">المشاريع</div>
 </div>
-
-<div class="card-number">
-0
-</div>
-
-<div class="card-name">
-المشاريع
-</div>
-
-</div>
-
 
 <div class="card">
-
-<div class="card-icon">
-💬
+<div class="card-icon">💬</div>
+<div class="card-number">0</div>
+<div class="card-name">التعليقات</div>
 </div>
-
-<div class="card-number">
-0
-</div>
-
-<div class="card-name">
-التعليقات
-</div>
-
-</div>
-
 
 <div class="card">
-
-<div class="card-icon">
-❤️
-</div>
-
-<div class="card-number">
-0
-</div>
-
-<div class="card-name">
-الإعجابات
-</div>
-
+<div class="card-icon">❤️</div>
+<div class="card-number">0</div>
+<div class="card-name">الإعجابات</div>
 </div>
 
 </div>
@@ -587,54 +545,23 @@ onclick="ownerLogout()">
 <div class="management">
 
 <button>
-
-<strong>
-👥 إدارة المستخدمين
-</strong>
-
-<span>
-عرض المستخدمين وإدارة الحسابات والصلاحيات.
-</span>
-
+<strong>👥 إدارة المستخدمين</strong>
+<span>عرض المستخدمين وإدارة الحسابات والصلاحيات.</span>
 </button>
 
-
 <button>
-
-<strong>
-🏗️ إدارة المشاريع
-</strong>
-
-<span>
-مراجعة المشاريع المنشورة وإدارتها.
-</span>
-
+<strong>🏗️ إدارة المشاريع</strong>
+<span>مراجعة المشاريع المنشورة وإدارتها.</span>
 </button>
 
-
 <button>
-
-<strong>
-💬 إدارة التعليقات
-</strong>
-
-<span>
-مراجعة التعليقات والمحتوى.
-</span>
-
+<strong>💬 إدارة التعليقات</strong>
+<span>مراجعة التعليقات والمحتوى.</span>
 </button>
 
-
 <button>
-
-<strong>
-🛡️ إعدادات الأمان
-</strong>
-
-<span>
-إعدادات الحماية والصلاحيات.
-</span>
-
+<strong>🛡️ إعدادات الأمان</strong>
+<span>إعدادات الحماية والصلاحيات.</span>
 </button>
 
 </div>
@@ -743,6 +670,8 @@ showMessage(
 );
 
 
+try{
+
 const { data, error } =
 await db.auth.signInWithPassword({
 
@@ -755,12 +684,26 @@ password:password
 
 if(error){
 
+console.error(
+"SUPABASE LOGIN ERROR:",
+error
+);
+
 showMessage(
-"خطأ تسجيل الدخول: " +
+"❌ سبب الخطأ:\n" +
 error.message
 );
 
-console.error(error);
+return;
+
+}
+
+
+if(!data || !data.user){
+
+showMessage(
+"❌ لم يتم العثور على حساب المستخدم."
+);
 
 return;
 
@@ -796,6 +739,21 @@ document.getElementById(
 
 window.scrollTo(0,0);
 
+
+}catch(error){
+
+console.error(
+"LOGIN ERROR:",
+error
+);
+
+showMessage(
+"❌ حدث خطأ أثناء الاتصال بـ Supabase:\n" +
+error.message
+);
+
+}
+
 }
 
 
@@ -822,6 +780,8 @@ showMessage(
 "جاري إرسال رابط استعادة كلمة المرور..."
 );
 
+
+try{
 
 const { error } =
 await db.auth.resetPasswordForEmail(
@@ -852,6 +812,15 @@ return;
 showMessage(
 "تم إرسال رابط استعادة كلمة المرور إلى بريدك الإلكتروني."
 );
+
+}catch(error){
+
+showMessage(
+"خطأ الاتصال: " +
+error.message
+);
+
+}
 
 }
 
@@ -898,8 +867,20 @@ showMessage(
 
 async function checkSession(){
 
-const { data } =
+const { data, error } =
 await db.auth.getSession();
+
+
+if(error){
+
+console.error(
+"SESSION ERROR:",
+error
+);
+
+return;
+
+}
 
 
 const session =
@@ -964,6 +945,16 @@ document.getElementById(
 document.getElementById(
 "ownerDashboard"
 ).style.display="block";
+
+}else{
+
+document.getElementById(
+"ownerDashboard"
+).style.display="none";
+
+document.getElementById(
+"ownerLogin"
+).style.display="flex";
 
 }
 
