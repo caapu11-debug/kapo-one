@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
 <head>
@@ -26,8 +27,14 @@ justify-content:space-between;
 align-items:center;
 }
 
-.logo{font-size:28px;font-weight:bold}
-.logo span{color:#38bdf8}
+.logo{
+font-size:28px;
+font-weight:bold;
+}
+
+.logo span{
+color:#38bdf8;
+}
 
 .home-btn{
 background:#1e293b;
@@ -55,7 +62,10 @@ padding:30px;
 box-shadow:0 20px 60px rgba(0,0,0,.35);
 }
 
-.crown{text-align:center;font-size:55px}
+.crown{
+text-align:center;
+font-size:55px;
+}
 
 .title{
 text-align:center;
@@ -63,7 +73,9 @@ font-size:30px;
 font-weight:bold;
 }
 
-.title span{color:#38bdf8}
+.title span{
+color:#38bdf8;
+}
 
 .subtitle{
 text-align:center;
@@ -83,7 +95,9 @@ font-size:13px;
 line-height:1.7;
 }
 
-.form-group{margin-bottom:17px}
+.form-group{
+margin-bottom:17px;
+}
 
 label{
 display:block;
@@ -103,8 +117,17 @@ font-size:16px;
 outline:none;
 }
 
-.password-box{position:relative}
-.password-box .input{padding-left:50px}
+.input:focus{
+border-color:#38bdf8;
+}
+
+.password-box{
+position:relative;
+}
+
+.password-box .input{
+padding-left:50px;
+}
 
 .eye{
 position:absolute;
@@ -115,6 +138,7 @@ background:none;
 border:0;
 color:#94a3b8;
 font-size:20px;
+cursor:pointer;
 }
 
 .login-btn{
@@ -151,6 +175,8 @@ background:#0b1526;
 color:#38bdf8;
 text-align:center;
 font-size:14px;
+line-height:1.7;
+word-break:break-word;
 }
 
 .owner-dashboard{
@@ -227,7 +253,9 @@ border-radius:16px;
 padding:22px;
 }
 
-.card-icon{font-size:30px}
+.card-icon{
+font-size:30px;
+}
 
 .card-number{
 font-size:30px;
@@ -286,18 +314,36 @@ color:#64748b;
 }
 
 @media(max-width:800px){
-.cards{grid-template-columns:repeat(2,1fr)}
+
+.cards{
+grid-template-columns:repeat(2,1fr);
+}
+
 .dashboard-top{
 flex-direction:column;
 align-items:stretch;
 }
-.logout{width:100%}
+
+.logout{
+width:100%;
+}
+
 }
 
 @media(max-width:500px){
-.owner-box{padding:22px}
-.cards{grid-template-columns:1fr}
-.management{grid-template-columns:1fr}
+
+.owner-box{
+padding:22px;
+}
+
+.cards{
+grid-template-columns:1fr;
+}
+
+.management{
+grid-template-columns:1fr;
+}
+
 }
 </style>
 
@@ -316,6 +362,7 @@ KAPO <span>ONE</span>
 </button>
 
 </header>
+
 
 <section id="ownerLogin" class="owner-page">
 
@@ -340,6 +387,7 @@ KAPO <span>ONE</span>
 
 <div id="message" class="message"></div>
 
+
 <div class="form-group">
 
 <label>اسم المالك</label>
@@ -352,6 +400,7 @@ placeholder="كابو">
 
 </div>
 
+
 <div class="form-group">
 
 <label>البريد الإلكتروني للمالك</label>
@@ -363,6 +412,7 @@ type="email"
 placeholder="البريد الإلكتروني">
 
 </div>
+
 
 <div class="form-group">
 
@@ -379,11 +429,16 @@ placeholder="كلمة المرور">
 <button
 type="button"
 class="eye"
-onclick="togglePassword()">👁</button>
+onclick="togglePassword()">
+
+👁
+
+</button>
 
 </div>
 
 </div>
+
 
 <button
 type="button"
@@ -393,6 +448,7 @@ onclick="ownerLogin()">
 👑 دخول المالك
 
 </button>
+
 
 <button
 type="button"
@@ -407,13 +463,16 @@ onclick="resetPassword()">
 
 </section>
 
+
 <section id="ownerDashboard" class="owner-dashboard">
 
 <div class="dashboard-top">
 
 <div class="owner-info">
 
-<div class="owner-avatar">👑</div>
+<div class="owner-avatar">
+👑
+</div>
 
 <div>
 
@@ -429,77 +488,161 @@ onclick="resetPassword()">
 
 </div>
 
-<button class="logout" onclick="ownerLogout()">
+<button
+class="logout"
+onclick="ownerLogout()">
+
 🚪 تسجيل الخروج
+
 </button>
 
 </div>
+
 
 <span class="badge">
 حساب مالك المنصة
 </span>
 
+
 <h2 class="dashboard-title">
 🎛️ لوحة تحكم KAPO ONE
 </h2>
 
+
 <div class="cards">
 
 <div class="card">
-<div class="card-icon">👥</div>
-<div class="card-number">0</div>
-<div class="card-name">المستخدمون</div>
+
+<div class="card-icon">
+👥
 </div>
+
+<div class="card-number">
+0
+</div>
+
+<div class="card-name">
+المستخدمون
+</div>
+
+</div>
+
 
 <div class="card">
-<div class="card-icon">🏗️</div>
-<div class="card-number">0</div>
-<div class="card-name">المشاريع</div>
+
+<div class="card-icon">
+🏗️
 </div>
+
+<div class="card-number">
+0
+</div>
+
+<div class="card-name">
+المشاريع
+</div>
+
+</div>
+
 
 <div class="card">
-<div class="card-icon">💬</div>
-<div class="card-number">0</div>
-<div class="card-name">التعليقات</div>
+
+<div class="card-icon">
+💬
 </div>
+
+<div class="card-number">
+0
+</div>
+
+<div class="card-name">
+التعليقات
+</div>
+
+</div>
+
 
 <div class="card">
-<div class="card-icon">❤️</div>
-<div class="card-number">0</div>
-<div class="card-name">الإعجابات</div>
+
+<div class="card-icon">
+❤️
+</div>
+
+<div class="card-number">
+0
+</div>
+
+<div class="card-name">
+الإعجابات
 </div>
 
 </div>
+
+</div>
+
 
 <h2 class="dashboard-title">
 ⚙️ إدارة المنصة
 </h2>
 
+
 <div class="management">
 
 <button>
-<strong>👥 إدارة المستخدمين</strong>
-<span>عرض المستخدمين وإدارة الحسابات والصلاحيات.</span>
+
+<strong>
+👥 إدارة المستخدمين
+</strong>
+
+<span>
+عرض المستخدمين وإدارة الحسابات والصلاحيات.
+</span>
+
 </button>
 
-<button>
-<strong>🏗️ إدارة المشاريع</strong>
-<span>مراجعة المشاريع المنشورة وإدارتها.</span>
-</button>
 
 <button>
-<strong>💬 إدارة التعليقات</strong>
-<span>مراجعة التعليقات والمحتوى.</span>
+
+<strong>
+🏗️ إدارة المشاريع
+</strong>
+
+<span>
+مراجعة المشاريع المنشورة وإدارتها.
+</span>
+
 </button>
 
+
 <button>
-<strong>🛡️ إعدادات الأمان</strong>
-<span>إعدادات الحماية والصلاحيات.</span>
+
+<strong>
+💬 إدارة التعليقات
+</strong>
+
+<span>
+مراجعة التعليقات والمحتوى.
+</span>
+
+</button>
+
+
+<button>
+
+<strong>
+🛡️ إعدادات الأمان
+</strong>
+
+<span>
+إعدادات الحماية والصلاحيات.
+</span>
+
 </button>
 
 </div>
 
 </section>
+
 
 <footer>
 
@@ -511,20 +654,26 @@ KAPO ONE © 2026
 
 </footer>
 
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 
 <script>
 
 const SUPABASE_URL =
 "https://ehmeircigoqfhftaotba.supabase.co";
 
+
 const SUPABASE_PUBLISHABLE_KEY =
 "sb_publishable_54N-aEBjhTQK1wUzpWl0fg_MQRq5D";
 
-const db = supabase.createClient(
+
+const db =
+supabase.createClient(
 SUPABASE_URL,
 SUPABASE_PUBLISHABLE_KEY
 );
+
 
 const SITE_URL =
 "https://caapu11-debug.github.io/kapo-one/";
@@ -532,9 +681,11 @@ const SITE_URL =
 
 function showOwnerLogin(){
 
-document.getElementById("ownerLogin").style.display="flex";
+document.getElementById("ownerLogin")
+.style.display="flex";
 
-document.getElementById("ownerDashboard").style.display="none";
+document.getElementById("ownerDashboard")
+.style.display="none";
 
 window.scrollTo(0,0);
 
@@ -570,11 +721,13 @@ async function ownerLogin(){
 
 const email =
 document.getElementById("ownerEmail")
-.value.trim();
+.value
+.trim();
 
 const password =
 document.getElementById("ownerPassword")
 .value;
+
 
 if(email==="" || password===""){
 
@@ -586,7 +739,11 @@ return;
 
 }
 
-showMessage("جاري تسجيل الدخول...");
+
+showMessage(
+"جاري تسجيل الدخول..."
+);
+
 
 const { data, error } =
 await db.auth.signInWithPassword({
@@ -597,32 +754,47 @@ password:password
 
 });
 
+
 if(error){
 
 showMessage(
-"فشل تسجيل الدخول. تأكد من البريد الإلكتروني وكلمة المرور."
+"فشل تسجيل الدخول: " +
+error.message
 );
+
+console.error(error);
 
 return;
 
 }
 
+
 const user =
 data.user;
 
+
 const ownerName =
 user.user_metadata?.name ||
-document.getElementById("ownerName").value.trim() ||
+document.getElementById("ownerName")
+.value
+.trim() ||
 "كابو";
 
-document.getElementById("dashboardOwnerName")
-.innerText=ownerName;
 
-document.getElementById("ownerLogin")
-.style.display="none";
+document.getElementById(
+"dashboardOwnerName"
+).innerText=ownerName;
 
-document.getElementById("ownerDashboard")
-.style.display="block";
+
+document.getElementById(
+"ownerLogin"
+).style.display="none";
+
+
+document.getElementById(
+"ownerDashboard"
+).style.display="block";
+
 
 window.scrollTo(0,0);
 
@@ -633,7 +805,9 @@ async function resetPassword(){
 
 const email =
 document.getElementById("ownerEmail")
-.value.trim();
+.value
+.trim();
+
 
 if(email===""){
 
@@ -645,7 +819,11 @@ return;
 
 }
 
-showMessage("جاري إرسال رابط استعادة كلمة المرور...");
+
+showMessage(
+"جاري إرسال رابط استعادة كلمة المرور..."
+);
+
 
 const { error } =
 await db.auth.resetPasswordForEmail(
@@ -653,21 +831,25 @@ await db.auth.resetPasswordForEmail(
 email,
 
 {
-redirectTo:
-SITE_URL
+redirectTo:SITE_URL
 }
 
 );
+
 
 if(error){
 
 showMessage(
-"تعذر إرسال رسالة الاستعادة. تأكد من إعدادات البريد."
+"خطأ الاستعادة: " +
+error.message
 );
+
+console.error(error);
 
 return;
 
 }
+
 
 showMessage(
 "تم إرسال رابط استعادة كلمة المرور إلى بريدك الإلكتروني."
@@ -681,24 +863,33 @@ async function ownerLogout(){
 const { error } =
 await db.auth.signOut();
 
+
 if(error){
 
 showMessage(
-"حدث خطأ أثناء تسجيل الخروج."
+"خطأ تسجيل الخروج: " +
+error.message
 );
 
 return;
 
 }
 
-document.getElementById("ownerDashboard")
-.style.display="none";
 
-document.getElementById("ownerLogin")
-.style.display="flex";
+document.getElementById(
+"ownerDashboard"
+).style.display="none";
 
-document.getElementById("ownerPassword")
-.value="";
+
+document.getElementById(
+"ownerLogin"
+).style.display="flex";
+
+
+document.getElementById(
+"ownerPassword"
+).value="";
+
 
 showMessage(
 "تم تسجيل الخروج من حساب المالك."
@@ -712,26 +903,35 @@ async function checkSession(){
 const { data } =
 await db.auth.getSession();
 
+
 const session =
 data.session;
+
 
 if(session){
 
 const user =
 session.user;
 
+
 const ownerName =
 user.user_metadata?.name ||
 "كابو";
 
-document.getElementById("dashboardOwnerName")
-.innerText=ownerName;
 
-document.getElementById("ownerLogin")
-.style.display="none";
+document.getElementById(
+"dashboardOwnerName"
+).innerText=ownerName;
 
-document.getElementById("ownerDashboard")
-.style.display="block";
+
+document.getElementById(
+"ownerLogin"
+).style.display="none";
+
+
+document.getElementById(
+"ownerDashboard"
+).style.display="block";
 
 }
 
@@ -747,18 +947,25 @@ if(session){
 const user =
 session.user;
 
+
 const ownerName =
 user.user_metadata?.name ||
 "كابو";
 
-document.getElementById("dashboardOwnerName")
-.innerText=ownerName;
 
-document.getElementById("ownerLogin")
-.style.display="none";
+document.getElementById(
+"dashboardOwnerName"
+).innerText=ownerName;
 
-document.getElementById("ownerDashboard")
-.style.display="block";
+
+document.getElementById(
+"ownerLogin"
+).style.display="none";
+
+
+document.getElementById(
+"ownerDashboard"
+).style.display="block";
 
 }
 
