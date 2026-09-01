@@ -430,9 +430,7 @@ placeholder="كلمة المرور">
 type="button"
 class="eye"
 onclick="togglePassword()">
-
 👁
-
 </button>
 
 </div>
@@ -665,7 +663,7 @@ const SUPABASE_URL =
 
 
 const SUPABASE_PUBLISHABLE_KEY =
-"sb_publishable_54N-aEBjhTQK1wUzpWl0fg_MQRq5D";
+"sb_publishable_54N-aEBjhTQK1wUzpWl0fg_MQRq5D-T";
 
 
 const db =
@@ -758,7 +756,7 @@ password:password
 if(error){
 
 showMessage(
-"فشل تسجيل الدخول: " +
+"خطأ تسجيل الدخول: " +
 error.message
 );
 
@@ -969,9 +967,7 @@ document.getElementById(
 
 }
 
-}
-
-);
+});
 
 
 checkSession();
