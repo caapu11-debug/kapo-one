@@ -182,7 +182,11 @@ word-break:break-word;
 white-space:pre-wrap;
 }
 
-.owner-dashboard{
+.owner-dashboard,
+.users-page,
+.projects-page,
+.comments-page,
+.security-page{
 display:none;
 max-width:1100px;
 margin:auto;
@@ -314,15 +318,6 @@ font-size:12px;
 margin-top:15px;
 }
 
-/* إدارة المستخدمين */
-
-.users-page{
-display:none;
-max-width:1100px;
-margin:auto;
-padding:25px 20px 70px;
-}
-
 .page-head{
 display:flex;
 justify-content:space-between;
@@ -334,6 +329,50 @@ margin-bottom:20px;
 .page-head h2{
 margin:0;
 font-size:28px;
+}
+
+.content-box{
+background:#111827;
+border:1px solid #263244;
+border-radius:18px;
+padding:25px;
+}
+
+.empty{
+text-align:center;
+padding:40px 20px;
+color:#94a3b8;
+line-height:2;
+}
+
+.action-box{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+margin-top:20px;
+}
+
+.action-button{
+background:#1e293b;
+color:white;
+border:1px solid #334155;
+border-radius:12px;
+padding:15px;
+cursor:pointer;
+font-size:15px;
+}
+
+.action-button:hover{
+border-color:#38bdf8;
+}
+
+.info-card{
+background:#0b1526;
+border:1px solid #263244;
+border-radius:14px;
+padding:18px;
+margin-bottom:15px;
+line-height:1.8;
 }
 
 .users-box{
@@ -401,12 +440,6 @@ font-size:12px;
 text-align:center;
 }
 
-.empty{
-text-align:center;
-padding:35px;
-color:#94a3b8;
-}
-
 footer{
 text-align:center;
 padding:30px;
@@ -450,7 +483,8 @@ padding:22px;
 grid-template-columns:1fr;
 }
 
-.management{
+.management,
+.action-box{
 grid-template-columns:1fr;
 }
 
@@ -625,67 +659,27 @@ onclick="ownerLogout()">
 <div class="cards">
 
 <div class="card">
-
-<div class="card-icon">
-👥
-</div>
-
-<div id="usersCount" class="card-number">
-0
-</div>
-
-<div class="card-name">
-المستخدمون
-</div>
-
+<div class="card-icon">👥</div>
+<div id="usersCount" class="card-number">0</div>
+<div class="card-name">المستخدمون</div>
 </div>
 
 <div class="card">
-
-<div class="card-icon">
-🏗️
-</div>
-
-<div class="card-number">
-0
-</div>
-
-<div class="card-name">
-المشاريع
-</div>
-
+<div class="card-icon">🏗️</div>
+<div id="projectsCount" class="card-number">0</div>
+<div class="card-name">المشاريع</div>
 </div>
 
 <div class="card">
-
-<div class="card-icon">
-💬
-</div>
-
-<div class="card-number">
-0
-</div>
-
-<div class="card-name">
-التعليقات
-</div>
-
+<div class="card-icon">💬</div>
+<div id="commentsCount" class="card-number">0</div>
+<div class="card-name">التعليقات</div>
 </div>
 
 <div class="card">
-
-<div class="card-icon">
-❤️
-</div>
-
-<div class="card-number">
-0
-</div>
-
-<div class="card-name">
-الإعجابات
-</div>
-
+<div class="card-icon">❤️</div>
+<div id="likesCount" class="card-number">0</div>
+<div class="card-name">الإعجابات</div>
 </div>
 
 </div>
@@ -697,51 +691,23 @@ onclick="ownerLogout()">
 <div class="management">
 
 <button onclick="showUsers()">
-
-<strong>
-👥 إدارة المستخدمين
-</strong>
-
-<span>
-عرض المستخدمين المسجلين في المنصة.
-</span>
-
+<strong>👥 إدارة المستخدمين</strong>
+<span>عرض المستخدمين المسجلين في المنصة.</span>
 </button>
 
-<button>
-
-<strong>
-🏗️ إدارة المشاريع
-</strong>
-
-<span>
-مراجعة المشاريع المنشورة وإدارتها.
-</span>
-
+<button onclick="showProjects()">
+<strong>🏗️ إدارة المشاريع</strong>
+<span>مراجعة المشاريع المنشورة وإدارتها.</span>
 </button>
 
-<button>
-
-<strong>
-💬 إدارة التعليقات
-</strong>
-
-<span>
-مراجعة التعليقات والمحتوى.
-</span>
-
+<button onclick="showComments()">
+<strong>💬 إدارة التعليقات</strong>
+<span>مراجعة التعليقات والمحتوى.</span>
 </button>
 
-<button>
-
-<strong>
-🛡️ إعدادات الأمان
-</strong>
-
-<span>
-إعدادات الحماية والصلاحيات.
-</span>
-
+<button onclick="showSecurity()">
+<strong>🛡️ إعدادات الأمان</strong>
+<span>إعدادات الحماية والصلاحيات.</span>
 </button>
 
 </div>
@@ -749,22 +715,16 @@ onclick="ownerLogout()">
 </section>
 
 
-<!-- صفحة المستخدمين -->
+<!-- المستخدمون -->
 
 <section id="usersPage" class="users-page">
 
 <div class="page-head">
 
-<h2>
-👥 إدارة المستخدمين
-</h2>
+<h2>👥 إدارة المستخدمين</h2>
 
-<button
-class="back-btn"
-onclick="backToDashboard()">
-
+<button class="back-btn" onclick="backToDashboard()">
 ⬅️ العودة للوحة التحكم
-
 </button>
 
 </div>
@@ -773,6 +733,135 @@ onclick="backToDashboard()">
 
 <div id="usersList" class="loading">
 جاري تحميل المستخدمين...
+</div>
+
+</div>
+
+</section>
+
+
+<!-- المشاريع -->
+
+<section id="projectsPage" class="projects-page">
+
+<div class="page-head">
+
+<h2>🏗️ إدارة المشاريع</h2>
+
+<button class="back-btn" onclick="backToDashboard()">
+⬅️ العودة للوحة التحكم
+</button>
+
+</div>
+
+<div class="content-box">
+
+<div class="info-card">
+<strong>🏗️ مشاريع KAPO ONE</strong><br>
+هذه الصفحة مخصصة لإدارة المشاريع المنشورة في المنصة.
+</div>
+
+<div class="empty">
+لا توجد مشاريع مرتبطة بالمنصة حاليًا.
+<br>
+سنقوم في الخطوة التالية بربط المشاريع بقاعدة البيانات.
+</div>
+
+<div class="action-box">
+
+<button class="action-button" onclick="showInfo('إضافة مشروع')">
+➕ إضافة مشروع
+</button>
+
+<button class="action-button" onclick="showInfo('مراجعة المشاريع')">
+🔎 مراجعة المشاريع
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- التعليقات -->
+
+<section id="commentsPage" class="comments-page">
+
+<div class="page-head">
+
+<h2>💬 إدارة التعليقات</h2>
+
+<button class="back-btn" onclick="backToDashboard()">
+⬅️ العودة للوحة التحكم
+</button>
+
+</div>
+
+<div class="content-box">
+
+<div class="info-card">
+<strong>💬 إدارة التعليقات</strong><br>
+من هنا سيتمكن مالك المنصة من مراجعة التعليقات وإدارتها.
+</div>
+
+<div class="empty">
+لا توجد تعليقات مرتبطة بالمنصة حاليًا.
+<br>
+سنقوم في الخطوة التالية بربط التعليقات بقاعدة البيانات.
+</div>
+
+<div class="action-box">
+
+<button class="action-button" onclick="showInfo('مراجعة التعليقات')">
+🔎 مراجعة التعليقات
+</button>
+
+<button class="action-button" onclick="showInfo('التعليقات المبلغ عنها')">
+⚠️ التعليقات المبلغ عنها
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- الأمان -->
+
+<section id="securityPage" class="security-page">
+
+<div class="page-head">
+
+<h2>🛡️ إعدادات الأمان</h2>
+
+<button class="back-btn" onclick="backToDashboard()">
+⬅️ العودة للوحة التحكم
+</button>
+
+</div>
+
+<div class="content-box">
+
+<div class="info-card">
+<strong>🔐 حماية حساب المالك</strong><br>
+الحساب محمي بواسطة Supabase Authentication.
+</div>
+
+<div class="info-card">
+<strong>👑 صلاحيات المالك</strong><br>
+الوصول إلى لوحة المالك مرتبط بمعرّف حساب المالك المحدد في النظام.
+</div>
+
+<div class="info-card">
+<strong>🚪 تسجيل الخروج</strong><br>
+يمكنك تسجيل الخروج من حساب المالك في أي وقت من أعلى لوحة التحكم.
+</div>
+
+<div class="info-card">
+<strong>⚠️ تنبيه أمني</strong><br>
+لن نقوم بتغيير إعدادات الأمان أو صلاحيات قاعدة البيانات في هذه المرحلة حتى نتأكد من عمل النظام بالكامل.
 </div>
 
 </div>
@@ -814,16 +903,23 @@ const OWNER_ID =
 "dfe5695d-c77a-4ccb-a1eb-901d28169be2";
 
 
+function hideAllPages(){
+
+document.getElementById("ownerLogin").style.display="none";
+document.getElementById("ownerDashboard").style.display="none";
+document.getElementById("usersPage").style.display="none";
+document.getElementById("projectsPage").style.display="none";
+document.getElementById("commentsPage").style.display="none";
+document.getElementById("securityPage").style.display="none";
+
+}
+
+
 function showOwnerLogin(){
 
-document.getElementById("ownerLogin")
-.style.display="flex";
+hideAllPages();
 
-document.getElementById("ownerDashboard")
-.style.display="none";
-
-document.getElementById("usersPage")
-.style.display="none";
+document.getElementById("ownerLogin").style.display="flex";
 
 window.scrollTo(0,0);
 
@@ -920,8 +1016,6 @@ return;
 const user =
 data.user;
 
-/* حماية لوحة المالك */
-
 if(user.id !== OWNER_ID){
 
 await db.auth.signOut();
@@ -945,17 +1039,13 @@ document.getElementById(
 "dashboardOwnerName"
 ).innerText=ownerName;
 
-document.getElementById(
-"ownerLogin"
-).style.display="none";
-
-document.getElementById(
-"usersPage"
-).style.display="none";
+hideAllPages();
 
 document.getElementById(
 "ownerDashboard"
 ).style.display="block";
+
+await loadUsers();
 
 window.scrollTo(0,0);
 
@@ -1001,13 +1091,10 @@ try{
 
 const { error } =
 await db.auth.resetPasswordForEmail(
-
 email,
-
 {
 redirectTo:SITE_URL
 }
-
 );
 
 if(error){
@@ -1056,20 +1143,10 @@ return;
 }
 
 document.getElementById(
-"ownerDashboard"
-).style.display="none";
-
-document.getElementById(
-"usersPage"
-).style.display="none";
-
-document.getElementById(
-"ownerLogin"
-).style.display="flex";
-
-document.getElementById(
 "ownerPassword"
 ).value="";
+
+showOwnerLogin();
 
 showMessage(
 "تم تسجيل الخروج من حساب المالك."
@@ -1102,8 +1179,6 @@ if(session){
 const user =
 session.user;
 
-/* منع أي حساب آخر من دخول لوحة المالك */
-
 if(user.id !== OWNER_ID){
 
 await db.auth.signOut();
@@ -1120,26 +1195,24 @@ document.getElementById(
 "dashboardOwnerName"
 ).innerText=ownerName;
 
-document.getElementById(
-"ownerLogin"
-).style.display="none";
+hideAllPages();
 
 document.getElementById(
 "ownerDashboard"
 ).style.display="block";
 
-}
+await loadUsers();
 
 }
 
+}
 
-/* فتح إدارة المستخدمين */
+
+/* المستخدمون */
 
 async function showUsers(){
 
-document.getElementById(
-"ownerDashboard"
-).style.display="none";
+hideAllPages();
 
 document.getElementById(
 "usersPage"
@@ -1152,12 +1225,14 @@ await loadUsers();
 }
 
 
-/* تحميل المستخدمين من profiles */
-
 async function loadUsers(){
 
 const usersList =
 document.getElementById("usersList");
+
+if(!usersList){
+return;
+}
 
 usersList.innerHTML =
 '<div class="loading">جاري تحميل المستخدمين...</div>';
@@ -1179,7 +1254,7 @@ error
 
 usersList.innerHTML =
 '<div class="empty">❌ تعذر تحميل المستخدمين:<br>' +
-error.message +
+escapeHtml(error.message) +
 '</div>';
 
 return;
@@ -1271,7 +1346,65 @@ usersList.innerHTML =
 }
 
 
-/* حماية عرض النصوص */
+/* المشاريع */
+
+function showProjects(){
+
+hideAllPages();
+
+document.getElementById(
+"projectsPage"
+).style.display="block";
+
+window.scrollTo(0,0);
+
+}
+
+
+/* التعليقات */
+
+function showComments(){
+
+hideAllPages();
+
+document.getElementById(
+"commentsPage"
+).style.display="block";
+
+window.scrollTo(0,0);
+
+}
+
+
+/* الأمان */
+
+function showSecurity(){
+
+hideAllPages();
+
+document.getElementById(
+"securityPage"
+).style.display="block";
+
+window.scrollTo(0,0);
+
+}
+
+
+/* رسائل مؤقتة للأزرار غير المرتبطة بقاعدة البيانات */
+
+function showInfo(title){
+
+alert(
+"قسم " +
+title +
+" سيُفعّل في المرحلة التالية بعد ربط قاعدة البيانات."
+);
+
+}
+
+
+/* حماية النصوص */
 
 function escapeHtml(text){
 
@@ -1285,13 +1418,11 @@ return String(text)
 }
 
 
-/* العودة للوحة */
+/* العودة */
 
 function backToDashboard(){
 
-document.getElementById(
-"usersPage"
-).style.display="none";
+hideAllPages();
 
 document.getElementById(
 "ownerDashboard"
@@ -1329,9 +1460,7 @@ document.getElementById(
 "dashboardOwnerName"
 ).innerText=ownerName;
 
-document.getElementById(
-"ownerLogin"
-).style.display="none";
+hideAllPages();
 
 document.getElementById(
 "ownerDashboard"
@@ -1339,13 +1468,7 @@ document.getElementById(
 
 }else{
 
-document.getElementById(
-"ownerDashboard"
-).style.display="none";
-
-document.getElementById(
-"usersPage"
-).style.display="none";
+hideAllPages();
 
 document.getElementById(
 "ownerLogin"
