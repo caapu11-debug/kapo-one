@@ -26,11 +26,7 @@ justify-content:space-between;
 align-items:center;
 }
 
-.logo{
-font-size:28px;
-font-weight:bold;
-}
-
+.logo{font-size:28px;font-weight:bold}
 .logo span{color:#38bdf8}
 
 .home-btn{
@@ -59,10 +55,7 @@ padding:30px;
 box-shadow:0 20px 60px rgba(0,0,0,.35);
 }
 
-.crown{
-text-align:center;
-font-size:55px;
-}
+.crown{text-align:center;font-size:55px}
 
 .title{
 text-align:center;
@@ -111,7 +104,6 @@ outline:none;
 }
 
 .password-box{position:relative}
-
 .password-box .input{padding-left:50px}
 
 .eye{
@@ -135,6 +127,18 @@ color:#082f49;
 font-size:17px;
 font-weight:bold;
 margin-top:5px;
+cursor:pointer;
+}
+
+.reset-btn{
+width:100%;
+padding:12px;
+border:1px solid #334155;
+border-radius:11px;
+background:#1e293b;
+color:#7dd3fc;
+font-size:14px;
+margin-top:12px;
 cursor:pointer;
 }
 
@@ -390,6 +394,15 @@ onclick="ownerLogin()">
 
 </button>
 
+<button
+type="button"
+class="reset-btn"
+onclick="resetPassword()">
+
+🔑 نسيت كلمة المرور؟
+
+</button>
+
 </div>
 
 </section>
@@ -513,6 +526,9 @@ SUPABASE_URL,
 SUPABASE_PUBLISHABLE_KEY
 );
 
+const SITE_URL =
+"https://caapu11-debug.github.io/kapo-one/";
+
 
 function showOwnerLogin(){
 
@@ -613,6 +629,53 @@ window.scrollTo(0,0);
 }
 
 
+async function resetPassword(){
+
+const email =
+document.getElementById("ownerEmail")
+.value.trim();
+
+if(email===""){
+
+showMessage(
+"اكتب بريد المالك أولًا ثم اضغط نسيت كلمة المرور."
+);
+
+return;
+
+}
+
+showMessage("جاري إرسال رابط استعادة كلمة المرور...");
+
+const { error } =
+await db.auth.resetPasswordForEmail(
+
+email,
+
+{
+redirectTo:
+SITE_URL
+}
+
+);
+
+if(error){
+
+showMessage(
+"تعذر إرسال رسالة الاستعادة. تأكد من إعدادات البريد."
+);
+
+return;
+
+}
+
+showMessage(
+"تم إرسال رابط استعادة كلمة المرور إلى بريدك الإلكتروني."
+);
+
+}
+
+
 async function ownerLogout(){
 
 const { error } =
@@ -655,4 +718,59 @@ data.session;
 if(session){
 
 const user =
-session.user
+session.user;
+
+const ownerName =
+user.user_metadata?.name ||
+"كابو";
+
+document.getElementById("dashboardOwnerName")
+.innerText=ownerName;
+
+document.getElementById("ownerLogin")
+.style.display="none";
+
+document.getElementById("ownerDashboard")
+.style.display="block";
+
+}
+
+}
+
+
+db.auth.onAuthStateChange(
+
+(event, session) => {
+
+if(session){
+
+const user =
+session.user;
+
+const ownerName =
+user.user_metadata?.name ||
+"كابو";
+
+document.getElementById("dashboardOwnerName")
+.innerText=ownerName;
+
+document.getElementById("ownerLogin")
+.style.display="none";
+
+document.getElementById("ownerDashboard")
+.style.display="block";
+
+}
+
+}
+
+);
+
+
+checkSession();
+
+</script>
+
+</body>
+
+</html>
