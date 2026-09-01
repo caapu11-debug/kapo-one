@@ -23,14 +23,14 @@ color:white;
 
 header{
 background:#0f172a;
-padding:18px;
+padding:15px 18px;
 display:flex;
 justify-content:space-between;
 align-items:center;
 border-bottom:1px solid #263244;
 position:sticky;
 top:0;
-z-index:10;
+z-index:20;
 }
 
 .logo{
@@ -42,13 +42,26 @@ font-weight:bold;
 color:#38bdf8;
 }
 
+nav{
+display:flex;
+gap:8px;
+}
+
 nav button{
 background:#1e293b;
 color:white;
 border:1px solid #334155;
 padding:10px 14px;
 border-radius:10px;
-margin-right:5px;
+}
+
+.profile-btn{
+background:#2563eb;
+color:white;
+border:0;
+padding:10px 14px;
+border-radius:10px;
+font-weight:bold;
 }
 
 .hero{
@@ -58,6 +71,7 @@ padding:50px 20px 35px;
 
 .hero h1{
 font-size:40px;
+margin:10px 0;
 }
 
 .hero h1 span{
@@ -280,6 +294,13 @@ display:flex;
 align-items:center;
 justify-content:center;
 font-size:25px;
+overflow:hidden;
+}
+
+.avatar img{
+width:100%;
+height:100%;
+object-fit:cover;
 }
 
 .owner-name{
@@ -335,11 +356,6 @@ border-radius:18px;
 padding:22px;
 }
 
-.add-box h2{
-margin-top:0;
-font-size:28px;
-}
-
 .form-input,
 .form-select,
 .form-textarea{
@@ -365,7 +381,6 @@ border-radius:15px;
 padding:25px;
 text-align:center;
 margin-top:10px;
-background:#0b1526;
 }
 
 .upload-area label{
@@ -381,7 +396,8 @@ color:#94a3b8;
 margin-top:8px;
 }
 
-#imageFile{
+#imageFile,
+#profileFile{
 display:none;
 }
 
@@ -394,7 +410,8 @@ border-radius:12px;
 margin-top:15px;
 }
 
-.publish{
+.publish,
+.save-profile{
 width:100%;
 padding:14px;
 margin-top:15px;
@@ -417,25 +434,112 @@ border-radius:10px;
 font-size:16px;
 }
 
-textarea{
-width:100%;
+.profile-page{
+display:none;
+max-width:1000px;
+margin:auto;
+padding:30px 20px 80px;
+}
+
+.profile-header{
+background:#111827;
+border:1px solid #263244;
+border-radius:20px;
+padding:25px;
+text-align:center;
+}
+
+.profile-avatar{
+width:110px;
 height:110px;
-background:#07101f;
+border-radius:50%;
+background:#1e293b;
+margin:0 auto 15px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:45px;
+overflow:hidden;
+border:3px solid #38bdf8;
+}
+
+.profile-avatar img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.profile-name{
+font-size:28px;
+font-weight:bold;
+}
+
+.profile-bio{
+color:#94a3b8;
+line-height:1.8;
+margin:10px auto;
+max-width:600px;
+}
+
+.profile-stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-top:20px;
+}
+
+.stat{
+background:#0b1526;
+padding:15px;
+border-radius:12px;
+}
+
+.stat strong{
+display:block;
+font-size:22px;
+}
+
+.stat span{
+color:#94a3b8;
+font-size:13px;
+}
+
+.profile-form{
+background:#111827;
+border:1px solid #263244;
+border-radius:18px;
+padding:20px;
+margin-top:20px;
+}
+
+.profile-form h2{
+margin-top:0;
+}
+
+.profile-tabs{
+display:flex;
+gap:10px;
+margin:20px 0;
+}
+
+.profile-tab{
+flex:1;
+padding:13px;
+background:#1e293b;
 color:white;
 border:1px solid #334155;
 border-radius:10px;
-padding:13px;
-font-size:15px;
 }
 
-.send{
-width:100%;
+.profile-tab.active{
+background:#2563eb;
+}
+
+.comment{
+background:#0b1526;
+padding:15px;
+border-radius:12px;
 margin-top:10px;
-padding:13px;
-background:#38bdf8;
-border:0;
-border-radius:10px;
-font-weight:bold;
 }
 
 footer{
@@ -461,8 +565,16 @@ grid-template-columns:1fr;
 @media(max-width:600px){
 
 header{
-flex-direction:column;
-gap:15px;
+flex-wrap:wrap;
+gap:10px;
+}
+
+nav{
+width:100%;
+}
+
+nav button{
+flex:1;
 }
 
 .hero h1{
@@ -497,6 +609,10 @@ grid-template-columns:1fr;
 grid-template-columns:1fr;
 }
 
+.profile-stats{
+grid-template-columns:1fr;
+}
+
 }
 
 </style>
@@ -521,6 +637,14 @@ KAPO <span>ONE</span>
 
 <button onclick="showProjects()">
 المشاريع
+</button>
+
+<button
+class="profile-btn"
+onclick="showProfile()">
+
+👤 حسابي
+
 </button>
 
 </nav>
@@ -634,7 +758,7 @@ class="add-box">
 </h2>
 
 <p style="color:#94a3b8;">
-أدخل معلومات مشروعك وارفع صورته من هاتفك.
+أدخل معلومات مشروعك وارفع صورته من الهاتف.
 </p>
 
 
@@ -660,21 +784,10 @@ placeholder="الدولة أو المدينة">
 id="newCategory"
 class="form-select">
 
-<option>
-🏢 العمارة
-</option>
-
-<option>
-🏗️ الهندسة
-</option>
-
-<option>
-🌆 الأبراج
-</option>
-
-<option>
-💡 الأفكار
-</option>
+<option>🏢 العمارة</option>
+<option>🏗️ الهندسة</option>
+<option>🌆 الأبراج</option>
+<option>💡 الأفكار</option>
 
 </select>
 
@@ -689,9 +802,7 @@ placeholder="نبذة عن المشروع...">
 <div class="upload-area">
 
 <label for="imageFile">
-
 📷 اختر صورة المشروع من الهاتف
-
 </label>
 
 <small>
@@ -741,8 +852,7 @@ id="projects">
 
 <div class="project-img">
 
-<img
-src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80">
+<img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80">
 
 </div>
 
@@ -796,8 +906,7 @@ onclick="openProject(
 
 <div class="project-img">
 
-<img
-src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1200&q=80">
+<img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1200&q=80">
 
 </div>
 
@@ -851,8 +960,7 @@ onclick="openProject(
 
 <div class="project-img">
 
-<img
-src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80">
+<img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80">
 
 </div>
 
@@ -955,7 +1063,15 @@ class="details-text">
 <div class="owner">
 
 <div class="avatar">
+
+<img
+id="detailAvatar"
+style="display:none">
+
+<span id="detailAvatarIcon">
 👤
+</span>
+
 </div>
 
 <div>
@@ -1016,51 +1132,23 @@ class="details-text">
 <div class="features">
 
 <div class="feature">
-
-<strong>
-🏗️ التصميم
-</strong>
-
-<p>
-تصميم معماري حديث ومميز.
-</p>
-
+<strong>🏗️ التصميم</strong>
+<p>تصميم معماري حديث ومميز.</p>
 </div>
 
 <div class="feature">
-
-<strong>
-💡 الابتكار
-</strong>
-
-<p>
-أفكار جديدة للمباني المستقبلية.
-</p>
-
+<strong>💡 الابتكار</strong>
+<p>أفكار جديدة للمباني المستقبلية.</p>
 </div>
 
 <div class="feature">
-
-<strong>
-🌱 الاستدامة
-</strong>
-
-<p>
-توجه نحو استخدام أفضل للطاقة والموارد.
-</p>
-
+<strong>🌱 الاستدامة</strong>
+<p>توجه نحو استخدام أفضل للطاقة والموارد.</p>
 </div>
 
 <div class="feature">
-
-<strong>
-🌍 الرؤية العالمية
-</strong>
-
-<p>
-فكرة قابلة للتطوير حول العالم.
-</p>
-
+<strong>🌍 الرؤية العالمية</strong>
+<p>فكرة قابلة للتطوير حول العالم.</p>
 </div>
 
 </div>
@@ -1093,6 +1181,190 @@ onclick="sendComment()">
 </section>
 
 
+<section
+id="profilePage"
+class="profile-page">
+
+
+<button
+class="back"
+onclick="showHome()">
+
+← العودة إلى KAPO ONE
+
+</button>
+
+
+<div class="profile-header">
+
+
+<div class="profile-avatar">
+
+<img
+id="profileImage"
+style="display:none">
+
+<span id="profileIcon">
+👤
+</span>
+
+</div>
+
+
+<div
+id="profileName"
+class="profile-name">
+
+مستخدم KAPO ONE
+
+</div>
+
+
+<div
+id="profileBio"
+class="profile-bio">
+
+مصمم ومبدع على منصة KAPO ONE.
+شارك مشاريعك وأفكارك مع العالم.
+
+</div>
+
+
+<div class="profile-stats">
+
+<div class="stat">
+
+<strong id="projectCount">
+0
+</strong>
+
+<span>
+المشاريع
+</span>
+
+</div>
+
+<div class="stat">
+
+<strong>
+0
+</strong>
+
+<span>
+المتابعون
+</span>
+
+</div>
+
+<div class="stat">
+
+<strong>
+0
+</strong>
+
+<span>
+يتابع
+</span>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="profile-form">
+
+<h2>
+✏️ تعديل الملف الشخصي
+</h2>
+
+
+<input
+id="profileNameInput"
+class="form-input"
+placeholder="اسمك">
+
+
+<textarea
+id="profileBioInput"
+class="form-textarea"
+placeholder="اكتب نبذة عنك...">
+</textarea>
+
+
+<div class="upload-area">
+
+<label for="profileFile">
+📷 اختر الصورة الشخصية
+</label>
+
+<small>
+يمكنك اختيار صورة من هاتفك
+</small>
+
+<input
+id="profileFile"
+type="file"
+accept="image/*"
+onchange="previewProfile(event)">
+
+</div>
+
+
+<img
+id="profilePreview"
+class="preview">
+
+
+<button
+class="save-profile"
+onclick="saveProfile()">
+
+💾 حفظ الملف الشخصي
+
+</button>
+
+</div>
+
+
+<div class="profile-tabs">
+
+<button class="profile-tab active">
+📁 مشاريعي
+</button>
+
+<button class="profile-tab">
+🔖 المحفوظة
+</button>
+
+<button class="profile-tab">
+❤️ إعجاباتي
+</button>
+
+</div>
+
+
+<div class="detail-card">
+
+<h2>
+📁 مشاريعي
+</h2>
+
+<p
+style="color:#94a3b8;line-height:1.8;">
+
+ستظهر هنا المشاريع التي تنشرها في KAPO ONE.
+
+</p>
+
+</div>
+
+
+</section>
+
+
 <footer>
 
 KAPO ONE © 2026
@@ -1109,6 +1381,8 @@ KAPO ONE © 2026
 
 let selectedImage="";
 
+let selectedProfileImage="";
+
 
 function showHome(){
 
@@ -1116,6 +1390,9 @@ document.getElementById("home")
 .style.display="block";
 
 document.getElementById("details")
+.style.display="none";
+
+document.getElementById("profilePage")
 .style.display="none";
 
 window.scrollTo(0,0);
@@ -1131,6 +1408,30 @@ document.getElementById("projects")
 .scrollIntoView({
 behavior:"smooth"
 });
+
+}
+
+
+function showProfile(){
+
+document.getElementById("home")
+.style.display="none";
+
+document.getElementById("details")
+.style.display="none";
+
+document.getElementById("profilePage")
+.style.display="block";
+
+document.getElementById("profileNameInput")
+.value=
+localStorage.getItem("kapoName") || "";
+
+document.getElementById("profileBioInput")
+.value=
+localStorage.getItem("kapoBio") || "";
+
+window.scrollTo(0,0);
 
 }
 
@@ -1162,6 +1463,9 @@ document.getElementById("detailImage")
 .src=image;
 
 document.getElementById("home")
+.style.display="none";
+
+document.getElementById("profilePage")
 .style.display="none";
 
 document.getElementById("details")
@@ -1219,6 +1523,102 @@ preview.style.display="block";
 };
 
 reader.readAsDataURL(file);
+
+}
+
+
+function previewProfile(event){
+
+let file=event.target.files[0];
+
+if(!file){
+
+return;
+
+}
+
+let reader=new FileReader();
+
+reader.onload=function(e){
+
+selectedProfileImage=e.target.result;
+
+let preview=
+document.getElementById("profilePreview");
+
+preview.src=selectedProfileImage;
+
+preview.style.display="block";
+
+};
+
+reader.readAsDataURL(file);
+
+}
+
+
+function saveProfile(){
+
+let name=
+document.getElementById("profileNameInput")
+.value.trim();
+
+let bio=
+document.getElementById("profileBioInput")
+.value.trim();
+
+
+if(name===""){
+
+alert("اكتب اسمك أولًا.");
+
+return;
+
+}
+
+
+localStorage.setItem(
+"kapoName",
+name
+);
+
+localStorage.setItem(
+"kapoBio",
+bio
+);
+
+
+document.getElementById("profileName")
+.innerText=name;
+
+document.getElementById("profileBio")
+.innerText=
+bio ||
+"مصمم ومبدع على منصة KAPO ONE.";
+
+
+if(selectedProfileImage!==""){
+
+localStorage.setItem(
+"kapoProfileImage",
+selectedProfileImage
+);
+
+document.getElementById("profileImage")
+.src=selectedProfileImage;
+
+document.getElementById("profileImage")
+.style.display="block";
+
+document.getElementById("profileIcon")
+.style.display="none";
+
+}
+
+
+alert(
+"تم حفظ الملف الشخصي."
+);
 
 }
 
@@ -1313,9 +1713,7 @@ ${description}
 </div>
 
 <button class="open">
-
 استكشف المشروع
-
 </button>
 
 </div>
@@ -1341,6 +1739,16 @@ image
 document
 .getElementById("projects")
 .prepend(project);
+
+
+let current=
+parseInt(
+document.getElementById("projectCount")
+.innerText
+);
+
+document.getElementById("projectCount")
+.innerText=current+1;
 
 
 closeAddProject();
@@ -1476,6 +1884,56 @@ project.style.display="none";
 });
 
 }
+
+
+window.onload=function(){
+
+let name=
+localStorage.getItem("kapoName");
+
+let bio=
+localStorage.getItem("kapoBio");
+
+let image=
+localStorage.getItem("kapoProfileImage");
+
+
+if(name){
+
+document.getElementById("profileName")
+.innerText=name;
+
+document.getElementById("profileNameInput")
+.value=name;
+
+}
+
+
+if(bio){
+
+document.getElementById("profileBio")
+.innerText=bio;
+
+document.getElementById("profileBioInput")
+.value=bio;
+
+}
+
+
+if(image){
+
+document.getElementById("profileImage")
+.src=image;
+
+document.getElementById("profileImage")
+.style.display="block";
+
+document.getElementById("profileIcon")
+.style.display="none";
+
+}
+
+};
 
 </script>
 
