@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>KAPO ONE | تسجيل الدخول</title>
+<title>KAPO ONE | حساب المالك</title>
 
 <style>
 
@@ -48,7 +48,7 @@ padding:10px 16px;
 border-radius:10px;
 }
 
-.login-page{
+.owner-page{
 min-height:calc(100vh - 75px);
 display:flex;
 align-items:center;
@@ -56,70 +56,64 @@ justify-content:center;
 padding:30px 20px;
 }
 
-.login-box{
+.owner-box{
 width:100%;
-max-width:450px;
+max-width:460px;
 background:#111827;
 border:1px solid #263244;
 border-radius:22px;
 padding:30px;
-box-shadow:0 20px 50px rgba(0,0,0,.3);
+box-shadow:0 20px 60px rgba(0,0,0,.35);
 }
 
-.login-logo{
+.crown{
 text-align:center;
-font-size:40px;
-font-weight:bold;
+font-size:55px;
 margin-bottom:5px;
 }
 
-.login-logo span{
+.title{
+text-align:center;
+font-size:30px;
+font-weight:bold;
+}
+
+.title span{
 color:#38bdf8;
 }
 
-.login-subtitle{
+.subtitle{
 text-align:center;
 color:#94a3b8;
-margin-bottom:28px;
-line-height:1.7;
-}
-
-.tabs{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:8px;
+line-height:1.8;
 margin-bottom:25px;
 }
 
-.tab{
-padding:13px;
-background:#1e293b;
-border:1px solid #334155;
+.security{
+background:#0b1526;
+border:1px solid #263244;
+padding:14px;
+border-radius:12px;
+margin-bottom:20px;
 color:#cbd5e1;
-border-radius:10px;
-font-size:16px;
-}
-
-.tab.active{
-background:#2563eb;
-color:white;
-border-color:#2563eb;
+font-size:13px;
+line-height:1.7;
 }
 
 .form-group{
-margin-bottom:16px;
+margin-bottom:17px;
 }
 
-.form-group label{
+label{
 display:block;
 margin-bottom:8px;
-font-size:14px;
 color:#cbd5e1;
+font-size:14px;
 }
 
 .input{
 width:100%;
-padding:14px;
+padding:15px;
 background:#07101f;
 border:1px solid #334155;
 border-radius:11px;
@@ -137,10 +131,10 @@ position:relative;
 }
 
 .password-box .input{
-padding-left:48px;
+padding-left:50px;
 }
 
-.show-password{
+.eye{
 position:absolute;
 left:10px;
 top:50%;
@@ -151,16 +145,7 @@ color:#94a3b8;
 font-size:20px;
 }
 
-.forgot{
-display:block;
-text-align:left;
-color:#38bdf8;
-font-size:14px;
-margin:5px 0 18px;
-text-decoration:none;
-}
-
-.main-btn{
+.login-btn{
 width:100%;
 padding:15px;
 border:0;
@@ -169,119 +154,186 @@ background:#38bdf8;
 color:#082f49;
 font-size:17px;
 font-weight:bold;
+margin-top:5px;
 }
 
-.divider{
+.login-btn:active{
+transform:scale(.99);
+}
+
+.message{
+display:none;
+padding:13px;
+margin-bottom:15px;
+border-radius:10px;
+background:#0b1526;
+color:#38bdf8;
+text-align:center;
+font-size:14px;
+line-height:1.6;
+}
+
+.owner-dashboard{
+display:none;
+max-width:1100px;
+margin:auto;
+padding:25px 20px 70px;
+}
+
+.dashboard-top{
+background:#111827;
+border:1px solid #263244;
+border-radius:20px;
+padding:25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+}
+
+.owner-info{
 display:flex;
 align-items:center;
-gap:10px;
-margin:22px 0;
-color:#64748b;
+gap:15px;
+}
+
+.owner-avatar{
+width:70px;
+height:70px;
+border-radius:50%;
+background:#1e293b;
+border:2px solid #38bdf8;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:32px;
+}
+
+.owner-name{
+font-size:24px;
+font-weight:bold;
+}
+
+.owner-role{
+color:#38bdf8;
+margin-top:6px;
+font-size:14px;
+}
+
+.logout{
+background:#7f1d1d;
+color:white;
+border:0;
+padding:12px 18px;
+border-radius:10px;
+}
+
+.dashboard-title{
+font-size:28px;
+margin:30px 0 18px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+}
+
+.card{
+background:#111827;
+border:1px solid #263244;
+border-radius:16px;
+padding:22px;
+}
+
+.card-icon{
+font-size:30px;
+}
+
+.card-number{
+font-size:30px;
+font-weight:bold;
+margin-top:10px;
+}
+
+.card-name{
+color:#94a3b8;
+margin-top:5px;
+}
+
+.management{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+margin-top:20px;
+}
+
+.management button{
+background:#111827;
+color:white;
+border:1px solid #334155;
+border-radius:15px;
+padding:22px;
+text-align:right;
+font-size:16px;
+}
+
+.management strong{
+display:block;
+font-size:19px;
+margin-bottom:8px;
+}
+
+.management span{
+color:#94a3b8;
 font-size:13px;
 }
 
-.divider:before,
-.divider:after{
-content:"";
-height:1px;
-background:#263244;
-flex:1;
-}
-
-.social{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
-}
-
-.social button{
-padding:13px;
-border-radius:10px;
-background:#1e293b;
-border:1px solid #334155;
-color:white;
-font-size:14px;
-}
-
-.notice{
-margin-top:20px;
-padding:13px;
-background:#0b1526;
-border-radius:10px;
-color:#94a3b8;
+.badge{
+display:inline-block;
+background:#0c4a6e;
+color:#7dd3fc;
+padding:6px 10px;
+border-radius:20px;
 font-size:12px;
-line-height:1.7;
+margin-top:15px;
+}
+
+footer{
 text-align:center;
+padding:30px;
+background:#050a12;
+color:#64748b;
 }
 
-.register-extra{
-display:none;
+@media(max-width:800px){
+
+.cards{
+grid-template-columns:repeat(2,1fr);
 }
 
-.back{
-display:block;
-text-align:center;
-margin-top:22px;
-color:#94a3b8;
-font-size:14px;
-}
-
-.back span{
-color:#38bdf8;
-cursor:pointer;
-}
-
-.user-menu{
-display:none;
-position:fixed;
-top:75px;
-left:15px;
-right:15px;
-max-width:400px;
-margin:auto;
-background:#111827;
-border:1px solid #334155;
-border-radius:15px;
-padding:20px;
-z-index:50;
-}
-
-.user-menu h3{
-margin-top:0;
+.dashboard-top{
+flex-direction:column;
+align-items:stretch;
 }
 
 .logout{
 width:100%;
-padding:12px;
-background:#7f1d1d;
-color:white;
-border:0;
-border-radius:10px;
-margin-top:15px;
 }
 
-#message{
-display:none;
-padding:13px;
-border-radius:10px;
-margin-bottom:15px;
-background:#0b1526;
-color:#38bdf8;
-text-align:center;
-font-size:14px;
 }
 
 @media(max-width:500px){
 
-.login-box{
+.owner-box{
 padding:22px;
 }
 
-.login-logo{
-font-size:34px;
+.cards{
+grid-template-columns:1fr;
 }
 
-.social{
+.management{
 grid-template-columns:1fr;
 }
 
@@ -303,166 +355,69 @@ KAPO <span>ONE</span>
 
 <button
 class="home-btn"
-onclick="goHome()">
+onclick="showOwnerLogin()">
 
-← الرئيسية
+🔐 حساب المالك
 
 </button>
 
 </header>
 
 
-<main class="login-page">
+<!-- تسجيل دخول المالك -->
+
+<section
+id="ownerLogin"
+class="owner-page">
+
+<div class="owner-box">
 
 
-<div class="login-box">
-
-
-<div class="login-logo">
-KAPO <span>ONE</span>
+<div class="crown">
+👑
 </div>
 
 
-<div class="login-subtitle">
-
-مرحبًا بك في منصة KAPO ONE<br>
-
-سجّل دخولك أو أنشئ حسابًا جديدًا
-
+<div class="title">
+مالك <span>KAPO ONE</span>
 </div>
 
 
-<div class="tabs">
+<div class="subtitle">
 
-<button
-id="loginTab"
-class="tab active"
-onclick="showLogin()">
-
-تسجيل الدخول
-
-</button>
-
-<button
-id="registerTab"
-class="tab"
-onclick="showRegister()">
-
-إنشاء حساب
-
-</button>
+الدخول إلى الحساب الرئيسي
+لإدارة منصة KAPO ONE
 
 </div>
 
 
-<div id="message"></div>
+<div class="security">
 
+🛡️ <strong>منطقة خاصة بالمالك</strong><br>
 
-<!-- تسجيل الدخول -->
-
-<div id="loginForm">
-
-
-<div class="form-group">
-
-<label>
-البريد الإلكتروني
-</label>
-
-<input
-id="loginEmail"
-class="input"
-type="email"
-placeholder="example@email.com">
+هذا الحساب مخصص لإدارة المنصة.
+سنربطه لاحقًا بالمصادقة الآمنة في Supabase.
 
 </div>
 
-
-<div class="form-group">
-
-<label>
-كلمة المرور
-</label>
-
-<div class="password-box">
-
-<input
-id="loginPassword"
-class="input"
-type="password"
-placeholder="أدخل كلمة المرور">
-
-<button
-class="show-password"
-onclick="togglePassword('loginPassword')">
-
-👁
-
-</button>
-
-</div>
-
-</div>
-
-
-<a
-href="#"
-class="forgot"
-onclick="forgotPassword();return false;">
-
-نسيت كلمة المرور؟
-
-</a>
-
-
-<button
-class="main-btn"
-onclick="loginUser()">
-
-🔐 تسجيل الدخول
-
-</button>
-
-
-<div class="divider">
-أو
-</div>
-
-
-<div class="social">
-
-<button onclick="socialLogin('Google')">
-🌐 Google
-</button>
-
-<button onclick="socialLogin('Apple')">
- Apple
-</button>
-
-</div>
-
-
-</div>
-
-
-<!-- إنشاء الحساب -->
 
 <div
-id="registerForm"
-style="display:none;">
+id="message"
+class="message">
+</div>
 
 
 <div class="form-group">
 
 <label>
-اسم المستخدم
+اسم المالك
 </label>
 
 <input
-id="registerName"
+id="ownerName"
 class="input"
 type="text"
-placeholder="اكتب اسمك">
+placeholder="اسم المالك">
 
 </div>
 
@@ -470,14 +425,14 @@ placeholder="اكتب اسمك">
 <div class="form-group">
 
 <label>
-البريد الإلكتروني
+البريد الإلكتروني للمالك
 </label>
 
 <input
-id="registerEmail"
+id="ownerEmail"
 class="input"
 type="email"
-placeholder="example@email.com">
+placeholder="owner@example.com">
 
 </div>
 
@@ -485,20 +440,20 @@ placeholder="example@email.com">
 <div class="form-group">
 
 <label>
-كلمة المرور
+كلمة مرور المالك
 </label>
 
 <div class="password-box">
 
 <input
-id="registerPassword"
+id="ownerPassword"
 class="input"
 type="password"
-placeholder="أنشئ كلمة مرور">
+placeholder="كلمة المرور">
 
 <button
-class="show-password"
-onclick="togglePassword('registerPassword')">
+class="eye"
+onclick="togglePassword()">
 
 👁
 
@@ -509,120 +464,251 @@ onclick="togglePassword('registerPassword')">
 </div>
 
 
-<div class="form-group">
-
-<label>
-تأكيد كلمة المرور
-</label>
-
-<input
-id="registerConfirm"
-class="input"
-type="password"
-placeholder="أعد كتابة كلمة المرور">
-
-</div>
-
-
 <button
-class="main-btn"
-onclick="registerUser()">
+class="login-btn"
+onclick="ownerLogin()">
 
-🚀 إنشاء الحساب
+👑 دخول المالك
 
 </button>
 
 
-<div class="notice">
+</div>
 
-بإنشاء حساب في KAPO ONE أنت توافق على شروط
-استخدام المنصة وسياسة الخصوصية.
+</section>
 
+
+<!-- لوحة تحكم المالك -->
+
+<section
+id="ownerDashboard"
+class="owner-dashboard">
+
+
+<div class="dashboard-top">
+
+
+<div class="owner-info">
+
+<div class="owner-avatar">
+👑
 </div>
 
 
-</div>
-
-
-<div class="back">
-
-يمكنك الدخول لاحقًا وربط الحساب الحقيقي
-بقاعدة البيانات.
-
-</div>
-
-
-</div>
-
-</main>
-
+<div>
 
 <div
-id="userMenu"
-class="user-menu">
+id="dashboardOwnerName"
+class="owner-name">
 
-<h3>
-👤 تم تسجيل الدخول
-</h3>
+مالك KAPO ONE
 
-<p id="welcomeUser"></p>
+</div>
+
+<div class="owner-role">
+
+👑 المالك الرئيسي للمنصة
+
+</div>
+
+</div>
+
+</div>
+
 
 <button
 class="logout"
-onclick="logoutUser()">
+onclick="ownerLogout()">
 
-تسجيل الخروج
+🚪 تسجيل الخروج
 
 </button>
 
+
 </div>
+
+
+<span class="badge">
+حساب مالك المنصة
+</span>
+
+
+<h2 class="dashboard-title">
+🎛️ لوحة تحكم KAPO ONE
+</h2>
+
+
+<div class="cards">
+
+
+<div class="card">
+
+<div class="card-icon">
+👥
+</div>
+
+<div class="card-number">
+0
+</div>
+
+<div class="card-name">
+المستخدمون
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+🏗️
+</div>
+
+<div class="card-number">
+0
+</div>
+
+<div class="card-name">
+المشاريع
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+💬
+</div>
+
+<div class="card-number">
+0
+</div>
+
+<div class="card-name">
+التعليقات
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+❤️
+</div>
+
+<div class="card-number">
+0
+</div>
+
+<div class="card-name">
+الإعجابات
+</div>
+
+</div>
+
+
+</div>
+
+
+<h2 class="dashboard-title">
+⚙️ إدارة المنصة
+</h2>
+
+
+<div class="management">
+
+
+<button>
+
+<strong>
+👥 إدارة المستخدمين
+</strong>
+
+<span>
+عرض المستخدمين وإدارة الحسابات والصلاحيات.
+</span>
+
+</button>
+
+
+<button>
+
+<strong>
+🏗️ إدارة المشاريع
+</strong>
+
+<span>
+مراجعة المشاريع المنشورة وإدارتها.
+</span>
+
+</button>
+
+
+<button>
+
+<strong>
+💬 إدارة التعليقات
+</strong>
+
+<span>
+مراجعة التعليقات والمحتوى.
+</span>
+
+</button>
+
+
+<button>
+
+<strong>
+🛡️ إعدادات الأمان
+</strong>
+
+<span>
+إعدادات الحماية والصلاحيات.
+</span>
+
+</button>
+
+
+</div>
+
+
+</section>
+
+
+<footer>
+
+KAPO ONE © 2026
+
+<br><br>
+
+لوحة إدارة مالك المنصة
+
+</footer>
 
 
 <script>
 
 
-function showLogin(){
+function showOwnerLogin(){
 
-document.getElementById("loginForm")
-.style.display="block";
+document.getElementById("ownerLogin")
+.style.display="flex";
 
-document.getElementById("registerForm")
+document.getElementById("ownerDashboard")
 .style.display="none";
 
-document.getElementById("loginTab")
-.classList.add("active");
-
-document.getElementById("registerTab")
-.classList.remove("active");
-
-clearMessage();
+window.scrollTo(0,0);
 
 }
 
 
-function showRegister(){
-
-document.getElementById("loginForm")
-.style.display="none";
-
-document.getElementById("registerForm")
-.style.display="block";
-
-document.getElementById("loginTab")
-.classList.remove("active");
-
-document.getElementById("registerTab")
-.classList.add("active");
-
-clearMessage();
-
-}
-
-
-function togglePassword(id){
+function togglePassword(){
 
 let input=
-document.getElementById(id);
+document.getElementById("ownerPassword");
 
 if(input.type==="password"){
 
@@ -639,52 +725,39 @@ input.type="password";
 
 function showMessage(text){
 
-let box=
+let message=
 document.getElementById("message");
 
-box.innerText=text;
+message.innerText=text;
 
-box.style.display="block";
-
-}
-
-
-function clearMessage(){
-
-document.getElementById("message")
-.style.display="none";
+message.style.display="block";
 
 }
 
 
-function registerUser(){
+function ownerLogin(){
 
 let name=
-document.getElementById("registerName")
+document.getElementById("ownerName")
 .value.trim();
 
 let email=
-document.getElementById("registerEmail")
+document.getElementById("ownerEmail")
 .value.trim();
 
 let password=
-document.getElementById("registerPassword")
-.value;
-
-let confirm=
-document.getElementById("registerConfirm")
+document.getElementById("ownerPassword")
 .value;
 
 
 if(
 name==="" ||
 email==="" ||
-password==="" ||
-confirm===""
+password===""
 ){
 
 showMessage(
-"يرجى تعبئة جميع البيانات."
+"يرجى إدخال اسم المالك والبريد الإلكتروني وكلمة المرور."
 );
 
 return;
@@ -703,153 +776,94 @@ return;
 }
 
 
-if(password!==confirm){
-
-showMessage(
-"كلمتا المرور غير متطابقتين."
-);
-
-return;
-
-}
-
+/*
+هذا تسجيل تجريبي فقط.
+لن يتم تخزين كلمة المرور.
+لاحقًا سنستخدم Supabase Auth.
+*/
 
 localStorage.setItem(
-"kapoUserName",
+"kapoOwnerName",
 name
 );
 
 localStorage.setItem(
-"kapoUserEmail",
+"kapoOwnerEmail",
 email
 );
 
 localStorage.setItem(
-"kapoLoggedIn",
+"kapoOwnerLoggedIn",
 "true"
 );
 
 
-showMessage(
-"🎉 تم إنشاء الحساب بنجاح!"
-);
+document.getElementById("dashboardOwnerName")
+.innerText=name;
 
 
-setTimeout(function(){
-
-goProfile();
-
-},1000);
-
-}
-
-
-function loginUser(){
-
-let email=
-document.getElementById("loginEmail")
-.value.trim();
-
-let password=
-document.getElementById("loginPassword")
-.value;
-
-
-if(email==="" || password===""){
-
-showMessage(
-"أدخل البريد الإلكتروني وكلمة المرور."
-);
-
-return;
-
-}
-
-
-let savedEmail=
-localStorage.getItem("kapoUserEmail");
-
-
-if(
-savedEmail &&
-email!==savedEmail
-){
-
-showMessage(
-"البريد الإلكتروني غير مطابق للحساب التجريبي."
-);
-
-return;
-
-}
-
-
-localStorage.setItem(
-"kapoLoggedIn",
-"true"
-);
-
-
-showMessage(
-"✅ تم تسجيل الدخول بنجاح."
-);
-
-
-setTimeout(function(){
-
-goProfile();
-
-},1000);
-
-}
-
-
-function forgotPassword(){
-
-showMessage(
-"سيتم تفعيل استعادة كلمة المرور عند ربط KAPO ONE بالمصادقة الحقيقية."
-);
-
-}
-
-
-function socialLogin(provider){
-
-showMessage(
-"تسجيل الدخول بواسطة "+provider+
-" سيتم تفعيله عند ربط Supabase Auth."
-);
-
-}
-
-
-function goProfile(){
-
-window.location.href="index.html";
-
-}
-
-
-function goHome(){
-
-window.location.href="index.html";
-
-}
-
-
-function logoutUser(){
-
-localStorage.removeItem("kapoLoggedIn");
-
-document.getElementById("userMenu")
+document.getElementById("ownerLogin")
 .style.display="none";
 
+document.getElementById("ownerDashboard")
+.style.display="block";
+
+
+window.scrollTo(0,0);
+
+}
+
+
+function ownerLogout(){
+
+localStorage.removeItem(
+"kapoOwnerLoggedIn"
+);
+
+document.getElementById("ownerDashboard")
+.style.display="none";
+
+document.getElementById("ownerLogin")
+.style.display="flex";
+
+document.getElementById("ownerPassword")
+.value="";
+
 showMessage(
-"تم تسجيل الخروج."
+"تم تسجيل الخروج من حساب المالك."
 );
 
 }
 
+
+window.onload=function(){
+
+let logged=
+localStorage.getItem(
+"kapoOwnerLoggedIn"
+);
+
+let name=
+localStorage.getItem(
+"kapoOwnerName"
+);
+
+
+if(logged==="true"){
+
+document.getElementById("dashboardOwnerName")
+.innerText=
+name || "مالك KAPO ONE";
+
+document.getElementById("ownerLogin")
+.style.display="none";
+
+document.getElementById("ownerDashboard")
+.style.display="block";
+
+}
+
+};
 
 </script>
 
