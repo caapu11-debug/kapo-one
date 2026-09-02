@@ -8,565 +8,435 @@
 <title>KAPO ONE</title>
 
 <style>
-*{
-    box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
-html{
-    scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:
-        radial-gradient(circle at 50% -10%,#1e3a8a 0,#070d19 38%),
-        #070d19;
-    color:white;
-    min-height:100vh;
+margin:0;
+font-family:Arial,sans-serif;
+background:
+radial-gradient(circle at 50% -10%,#1e3a8a 0,#070d19 38%),
+#070d19;
+color:white;
+min-height:100vh;
 }
 
-/* =========================
-   HEADER
-========================= */
-
 header{
-    background:rgba(15,23,42,.92);
-    padding:30px 20px;
-    text-align:center;
-    border-bottom:1px solid rgba(96,165,250,.18);
-    box-shadow:0 10px 35px rgba(0,0,0,.25);
+background:rgba(15,23,42,.92);
+padding:30px 20px;
+text-align:center;
+border-bottom:1px solid rgba(96,165,250,.18);
+box-shadow:0 10px 35px rgba(0,0,0,.25);
 }
 
 header h1{
-    margin:0;
-    font-size:34px;
-    font-weight:800;
-    letter-spacing:1px;
-    background:linear-gradient(90deg,#60a5fa,#a78bfa,#38bdf8);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+margin:0;
+font-size:34px;
+font-weight:800;
+letter-spacing:1px;
+background:linear-gradient(90deg,#60a5fa,#a78bfa,#38bdf8);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 header p{
-    color:#94a3b8;
-    margin:10px 0 0;
-    font-size:16px;
+color:#94a3b8;
+margin:10px 0 0;
+font-size:16px;
 }
-
-/* =========================
-   CONTAINER
-========================= */
 
 .container{
-    width:92%;
-    max-width:1100px;
-    margin:28px auto;
+width:92%;
+max-width:1100px;
+margin:28px auto;
 }
 
-/* =========================
-   CARDS
-========================= */
-
 .card{
-    position:relative;
-    background:rgba(15,23,42,.84);
-    border:1px solid rgba(148,163,184,.14);
-    border-radius:22px;
-    padding:25px;
-    margin-bottom:22px;
-    box-shadow:
-        0 15px 45px rgba(0,0,0,.22),
-        inset 0 1px 0 rgba(255,255,255,.03);
+position:relative;
+background:rgba(15,23,42,.84);
+border:1px solid rgba(148,163,184,.14);
+border-radius:22px;
+padding:25px;
+margin-bottom:22px;
+box-shadow:
+0 15px 45px rgba(0,0,0,.22),
+inset 0 1px 0 rgba(255,255,255,.03);
 }
 
 .card h2{
-    margin-top:0;
-    font-size:24px;
+margin-top:0;
+font-size:24px;
 }
 
-.card p{
-    line-height:1.8;
+.card p{line-height:1.8}
+
+input,textarea{
+width:100%;
+padding:15px 16px;
+margin:8px 0;
+border:1px solid #334155;
+border-radius:13px;
+background:#020617;
+color:white;
+font-size:16px;
+outline:none;
+transition:.25s;
 }
 
-/* =========================
-   INPUTS
-========================= */
-
-input,
-textarea{
-    width:100%;
-    padding:15px 16px;
-    margin:8px 0;
-    border:1px solid #334155;
-    border-radius:13px;
-    background:#020617;
-    color:white;
-    font-size:16px;
-    outline:none;
-    transition:.25s;
+input:focus,textarea:focus{
+border-color:#3b82f6;
+box-shadow:0 0 0 3px rgba(59,130,246,.12);
 }
 
-input:focus,
-textarea:focus{
-    border-color:#3b82f6;
-    box-shadow:0 0 0 3px rgba(59,130,246,.12);
-}
-
-input::placeholder,
-textarea::placeholder{
-    color:#64748b;
+input::placeholder,textarea::placeholder{
+color:#64748b;
 }
 
 textarea{
-    min-height:110px;
-    resize:vertical;
+min-height:110px;
+resize:vertical;
 }
-
-/* =========================
-   BUTTONS
-========================= */
 
 button{
-    border:0;
-    border-radius:12px;
-    padding:13px 20px;
-    margin:5px;
-    font-size:15px;
-    font-weight:bold;
-    cursor:pointer;
-    background:linear-gradient(135deg,#2563eb,#3b82f6);
-    color:white;
-    box-shadow:0 8px 20px rgba(37,99,235,.18);
-    transition:.2s;
+border:0;
+border-radius:12px;
+padding:13px 20px;
+margin:5px;
+font-size:15px;
+font-weight:bold;
+cursor:pointer;
+background:linear-gradient(135deg,#2563eb,#3b82f6);
+color:white;
+box-shadow:0 8px 20px rgba(37,99,235,.18);
+transition:.2s;
 }
 
 button:hover{
-    transform:translateY(-2px);
-    opacity:.95;
+transform:translateY(-2px);
+opacity:.95;
 }
 
-button:active{
-    transform:translateY(0);
-}
+button:active{transform:translateY(0)}
 
 .btn-danger{
-    background:linear-gradient(135deg,#dc2626,#ef4444);
+background:linear-gradient(135deg,#dc2626,#ef4444);
 }
 
 .btn-secondary{
-    background:linear-gradient(135deg,#334155,#475569);
+background:linear-gradient(135deg,#334155,#475569);
 }
 
 .btn-success{
-    background:linear-gradient(135deg,#15803d,#22c55e);
+background:linear-gradient(135deg,#15803d,#22c55e);
 }
 
-.hidden{
-    display:none !important;
-}
-
-/* =========================
-   MESSAGE
-========================= */
+.hidden{display:none!important}
 
 .message{
-    padding:14px 16px;
-    border-radius:13px;
-    margin-top:12px;
-    background:rgba(23,32,51,.9);
-    border:1px solid #263449;
-    line-height:1.8;
+padding:14px 16px;
+border-radius:13px;
+margin-top:12px;
+background:rgba(23,32,51,.9);
+border:1px solid #263449;
+line-height:1.8;
 }
 
-/* =========================
-   AUTH
-========================= */
-
 .auth-tabs{
-    display:flex;
-    gap:10px;
-    margin-bottom:17px;
+display:flex;
+gap:10px;
+margin-bottom:17px;
 }
 
 .auth-tabs button{
-    flex:1;
-    margin:0;
+flex:1;
+margin:0;
 }
 
-/* =========================
-   PROJECTS
-========================= */
-
 .project-card{
-    position:relative;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(17,24,39,.98),
-            rgba(11,18,32,.98)
-        );
-    border:1px solid rgba(96,165,250,.13);
-    border-radius:22px;
-    padding:20px;
-    margin-bottom:22px;
-    overflow:hidden;
-    box-shadow:0 18px 45px rgba(0,0,0,.22);
-    transition:.25s;
+position:relative;
+background:
+linear-gradient(
+145deg,
+rgba(17,24,39,.98),
+rgba(11,18,32,.98)
+);
+border:1px solid rgba(96,165,250,.13);
+border-radius:22px;
+padding:20px;
+margin-bottom:22px;
+overflow:hidden;
+box-shadow:0 18px 45px rgba(0,0,0,.22);
+transition:.25s;
 }
 
 .project-card:hover{
-    transform:translateY(-3px);
-    border-color:rgba(96,165,250,.28);
+transform:translateY(-3px);
+border-color:rgba(96,165,250,.28);
 }
 
 .project-card img{
-    width:100%;
-    max-height:380px;
-    object-fit:cover;
-    border-radius:17px;
-    margin-bottom:17px;
-    display:block;
-    box-shadow:0 10px 30px rgba(0,0,0,.3);
+width:100%;
+max-height:380px;
+object-fit:cover;
+border-radius:17px;
+margin-bottom:17px;
+display:block;
+box-shadow:0 10px 30px rgba(0,0,0,.3);
 }
 
 .project-title{
-    font-size:24px;
-    font-weight:bold;
-    margin-bottom:9px;
-    color:#f8fafc;
+font-size:24px;
+font-weight:bold;
+margin-bottom:9px;
+color:#f8fafc;
 }
 
 .project-description{
-    color:#cbd5e1;
-    line-height:1.9;
-    white-space:pre-wrap;
+color:#cbd5e1;
+line-height:1.9;
+white-space:pre-wrap;
 }
 
 .project-date{
-    color:#64748b;
-    font-size:13px;
-    margin-top:12px;
+color:#64748b;
+font-size:13px;
+margin-top:12px;
 }
-
-/* =========================
-   LIKES
-========================= */
 
 .like-box{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-top:17px;
-    padding-top:17px;
-    border-top:1px solid #263449;
+display:flex;
+align-items:center;
+gap:10px;
+flex-wrap:wrap;
+margin-top:17px;
+padding-top:17px;
+border-top:1px solid #263449;
 }
 
-.like-btn{
-    background:#334155;
-}
+.like-btn{background:#334155}
 
 .like-btn.liked{
-    background:linear-gradient(135deg,#be123c,#e11d48);
+background:linear-gradient(135deg,#be123c,#e11d48);
 }
 
-.like-count{
-    color:#cbd5e1;
-}
-
-/* =========================
-   COMMENTS
-========================= */
+.like-count{color:#cbd5e1}
 
 .comments-section{
-    margin-top:20px;
-    padding-top:20px;
-    border-top:1px solid #263449;
+margin-top:20px;
+padding-top:20px;
+border-top:1px solid #263449;
 }
 
-.comments-section h3{
-    margin-top:0;
-}
+.comments-section h3{margin-top:0}
 
 .comment-item{
-    background:rgba(11,18,32,.9);
-    border:1px solid #263449;
-    border-radius:14px;
-    padding:15px;
-    margin-top:11px;
+background:rgba(11,18,32,.9);
+border:1px solid #263449;
+border-radius:14px;
+padding:15px;
+margin-top:11px;
 }
 
 .comment-user{
-    font-weight:bold;
-    color:#60a5fa;
+font-weight:bold;
+color:#60a5fa;
 }
 
 .comment-date{
-    color:#64748b;
-    font-size:12px;
-    margin-top:6px;
+color:#64748b;
+font-size:12px;
+margin-top:6px;
 }
 
 .comment-content{
-    margin-top:10px;
-    color:#e2e8f0;
-    line-height:1.8;
-    white-space:pre-wrap;
+margin-top:10px;
+color:#e2e8f0;
+line-height:1.8;
+white-space:pre-wrap;
 }
 
-/* =========================
-   USER
-========================= */
-
 .user-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:10px;
-    flex-wrap:wrap;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+flex-wrap:wrap;
 }
 
 .welcome{
-    font-size:19px;
-    color:#cbd5e1;
+font-size:19px;
+color:#cbd5e1;
 }
 
-.welcome strong{
-    color:#60a5fa;
-}
-
-/* =========================
-   EMPTY
-========================= */
+.welcome strong{color:#60a5fa}
 
 .empty{
-    text-align:center;
-    color:#94a3b8;
-    padding:40px 20px;
+text-align:center;
+color:#94a3b8;
+padding:40px 20px;
 }
-
-/* =========================
-   FOOTER
-========================= */
 
 footer{
-    text-align:center;
-    padding:30px 20px;
-    color:#64748b;
-    border-top:1px solid rgba(148,163,184,.08);
-    margin-top:35px;
+text-align:center;
+padding:30px 20px;
+color:#64748b;
+border-top:1px solid rgba(148,163,184,.08);
+margin-top:35px;
 }
-
-/* =========================
-   MOBILE
-========================= */
 
 @media(max-width:600px){
 
-    header{
-        padding:25px 15px;
-    }
+header{padding:25px 15px}
 
-    header h1{
-        font-size:28px;
-    }
+header h1{font-size:28px}
 
-    header p{
-        font-size:14px;
-    }
+header p{font-size:14px}
 
-    .container{
-        width:94%;
-        margin:20px auto;
-    }
+.container{
+width:94%;
+margin:20px auto;
+}
 
-    .card{
-        padding:19px;
-        border-radius:18px;
-    }
+.card{
+padding:19px;
+border-radius:18px;
+}
 
-    .project-card{
-        padding:15px;
-        border-radius:18px;
-    }
+.project-card{
+padding:15px;
+border-radius:18px;
+}
 
-    .project-title{
-        font-size:21px;
-    }
+.project-title{font-size:21px}
 
-    .auth-tabs{
-        flex-direction:column;
-    }
+.auth-tabs{flex-direction:column}
 
-    .user-top{
-        align-items:stretch;
-    }
+.user-top{align-items:stretch}
 
-    button{
-        padding:12px 16px;
-    }
+button{padding:12px 16px}
+
 }
 </style>
-
 </head>
 
 <body>
 
 <header>
-    <h1>🚀 KAPO ONE</h1>
-    <p>منصة عالمية للأعمال والأفكار والتصاميم</p>
+<h1>🚀 KAPO ONE</h1>
+<p>منصة عالمية للأعمال والأفكار والتصاميم</p>
 </header>
-
-
-<!-- =========================
-     دخول وتسجيل المستخدم
-========================= -->
 
 <div id="userAuth" class="container">
 
-    <div class="card">
+<div class="card">
 
-        <h2>👤 حساب المستخدم</h2>
+<h2>👤 حساب المستخدم</h2>
 
-        <div class="auth-tabs">
+<div class="auth-tabs">
 
-            <button onclick="showLoginForm()">
-                🔐 تسجيل الدخول
-            </button>
+<button onclick="showLoginForm()">
+🔐 تسجيل الدخول
+</button>
 
-            <button
-                class="btn-secondary"
-                onclick="showRegisterForm()"
-            >
-                📝 إنشاء حساب
-            </button>
-
-        </div>
-
-
-        <!-- تسجيل الدخول -->
-
-        <div id="loginForm">
-
-            <input
-                id="userLoginEmail"
-                type="email"
-                placeholder="البريد الإلكتروني"
-            >
-
-            <input
-                id="userLoginPassword"
-                type="password"
-                placeholder="كلمة المرور"
-            >
-
-            <button onclick="loginUser()">
-                دخول
-            </button>
-
-            <button
-                class="btn-secondary"
-                onclick="resetUserPassword()"
-            >
-                استعادة كلمة المرور
-            </button>
-
-        </div>
-
-
-        <!-- إنشاء الحساب -->
-
-        <div
-            id="registerForm"
-            class="hidden"
-        >
-
-            <input
-                id="registerName"
-                type="text"
-                placeholder="الاسم"
-            >
-
-            <input
-                id="registerEmail"
-                type="email"
-                placeholder="البريد الإلكتروني"
-            >
-
-            <input
-                id="registerPassword"
-                type="password"
-                placeholder="كلمة المرور"
-            >
-
-            <button
-                class="btn-success"
-                onclick="registerUser()"
-            >
-                إنشاء الحساب
-            </button>
-
-        </div>
-
-
-        <div id="authMessage"></div>
-
-    </div>
+<button class="btn-secondary" onclick="showRegisterForm()">
+📝 إنشاء حساب
+</button>
 
 </div>
 
+<div id="loginForm">
 
-<!-- =========================
-     واجهة المستخدم
-========================= -->
+<input
+id="userLoginEmail"
+type="email"
+placeholder="البريد الإلكتروني">
 
-<div
-    id="userApp"
-    class="container hidden"
->
+<input
+id="userLoginPassword"
+type="password"
+placeholder="كلمة المرور">
 
-    <div class="card">
+<button onclick="loginUser()">
+دخول
+</button>
 
-        <div class="user-top">
-
-            <div class="welcome">
-                👋 مرحبًا
-                <strong id="userName"></strong>
-            </div>
-
-            <button
-                class="btn-danger"
-                onclick="logoutUser()"
-            >
-                🚪 تسجيل الخروج
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <div class="card">
-
-        <h2>🏗️ المشاريع</h2>
-
-        <p style="color:#94a3b8">
-            استكشف الأعمال والتصاميم، وأضف إعجابك أو تعليقك.
-        </p>
-
-    </div>
-
-
-    <div id="userProjectsList"></div>
+<button
+class="btn-secondary"
+onclick="resetUserPassword()">
+استعادة كلمة المرور
+</button>
 
 </div>
 
+<div id="registerForm" class="hidden">
+
+<input
+id="registerName"
+type="text"
+placeholder="الاسم">
+
+<input
+id="registerEmail"
+type="email"
+placeholder="البريد الإلكتروني">
+
+<input
+id="registerPassword"
+type="password"
+placeholder="كلمة المرور">
+
+<button
+class="btn-success"
+onclick="registerUser()">
+إنشاء الحساب
+</button>
+
+</div>
+
+<div id="authMessage"></div>
+
+</div>
+</div>
+
+<div id="userApp" class="container hidden">
+
+<div class="card">
+
+<div class="user-top">
+
+<div class="welcome">
+👋 مرحبًا
+<strong id="userName"></strong>
+</div>
+
+<button
+class="btn-danger"
+onclick="logoutUser()">
+🚪 تسجيل الخروج
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>🏗️ المشاريع</h2>
+
+<p style="color:#94a3b8">
+استكشف الأعمال والتصاميم، وأضف إعجابك أو تعليقك.
+</p>
+
+</div>
+
+<div id="userProjectsList"></div>
+
+</div>
 
 <footer>
-    KAPO ONE © 2026
+KAPO ONE © 2026
 </footer>
-
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -584,184 +454,937 @@ const OWNER_ID =
 const SITE_URL =
 "https://caapu11-debug.github.io/kapo-one/";
 
-
 const db =
 supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
+SUPABASE_URL,
+SUPABASE_KEY
 );
 
 
 /* =========================
-   تبديل النماذج
+   النماذج
 ========================= */
 
 function showLoginForm(){
 
-    document
-    .getElementById("loginForm")
-    .classList.remove("hidden");
+document.getElementById("loginForm")
+.classList.remove("hidden");
 
-    document
-    .getElementById("registerForm")
-    .classList.add("hidden");
+document.getElementById("registerForm")
+.classList.add("hidden");
 
-    document
-    .getElementById("authMessage")
-    .innerHTML = "";
+document.getElementById("authMessage")
+.innerHTML="";
 
 }
 
-
 function showRegisterForm(){
 
-    document
-    .getElementById("loginForm")
-    .classList.add("hidden");
+document.getElementById("loginForm")
+.classList.add("hidden");
 
-    document
-    .getElementById("registerForm")
-    .classList.remove("hidden");
+document.getElementById("registerForm")
+.classList.remove("hidden");
 
-    document
-    .getElementById("authMessage")
-    .innerHTML = "";
+document.getElementById("authMessage")
+.innerHTML="";
 
 }
 
 
 /* =========================
-   إنشاء مستخدم
+   إنشاء الحساب
 ========================= */
 
 async function registerUser(){
 
-    const name =
-        document
-        .getElementById("registerName")
-        .value
-        .trim();
+const name=
+document.getElementById("registerName").value.trim();
 
-    const email =
-        document
-        .getElementById("registerEmail")
-        .value
-        .trim();
+const email=
+document.getElementById("registerEmail").value.trim();
 
-    const password =
-        document
-        .getElementById("registerPassword")
-        .value;
+const password=
+document.getElementById("registerPassword").value;
 
-    const message =
-        document
-        .getElementById("authMessage");
+const message=
+document.getElementById("authMessage");
 
+if(!name||!email||!password){
 
-    if(!name || !email || !password){
+message.innerHTML=
+`<div class="message">
+❌ املأ جميع الخانات.
+</div>`;
 
-        message.innerHTML =
-        `<div class="message">
-            ❌ املأ جميع الخانات.
-        </div>`;
+return;
+}
 
-        return;
-    }
+if(password.length<6){
 
+message.innerHTML=
+`<div class="message">
+❌ كلمة المرور يجب أن تكون 6 أحرف على الأقل.
+</div>`;
 
-    if(password.length < 6){
+return;
+}
 
-        message.innerHTML =
-        `<div class="message">
-            ❌ كلمة المرور يجب أن تكون 6 أحرف على الأقل.
-        </div>`;
+message.innerHTML=
+`<div class="message">
+جاري إنشاء الحساب...
+</div>`;
 
-        return;
-    }
+try{
 
+const {data,error}=
+await db.auth.signUp({
 
-    message.innerHTML =
-    `<div class="message">
-        جاري إنشاء الحساب...
-    </div>`;
+email:email,
+password:password,
 
+options:{
+data:{
+name:name
+}
+}
 
-    const {data,error} =
-        await db.auth.signUp({
+});
 
-            email:email,
+if(error){
 
-            password:password,
+message.innerHTML=
+`<div class="message">
+❌ ${escapeHtml(error.message)}
+</div>`;
 
-            options:{
-                data:{
-                    name:name
-                }
-            }
+return;
+}
 
-        });
+if(data.user){
 
+await createProfile(data.user,name);
 
-    if(error){
+}
 
-        message.innerHTML =
-        `<div class="message">
-            ❌ ${escapeHtml(error.message)}
-        </div>`;
+if(!data.session){
 
-        return;
-    }
+message.innerHTML=
+`<div class="message">
+✅ تم إنشاء الحساب.
+<br>
+تحقق من بريدك الإلكتروني لتفعيل الحساب،
+ثم سجّل الدخول.
+</div>`;
 
+return;
+}
 
-    if(data.user){
+message.innerHTML=
+`<div class="message">
+✅ تم إنشاء الحساب بنجاح.
+</div>`;
 
-        await createProfile(
-            data.user,
-            name
-        );
+await loadUserApp(data.user);
 
-    }
+}catch(error){
 
+message.innerHTML=
+`<div class="message">
+❌ حدث خطأ: ${escapeHtml(error.message)}
+</div>`;
 
-    if(!data.session){
-
-        message.innerHTML =
-        `<div class="message">
-            ✅ تم إنشاء الحساب.
-            <br>
-            تحقق من بريدك الإلكتروني لتفعيل الحساب،
-            ثم سجّل الدخول.
-        </div>`;
-
-        return;
-    }
-
-
-    message.innerHTML =
-    `<div class="message">
-        ✅ تم إنشاء الحساب بنجاح.
-    </div>`;
-
-
-    await loadUserApp(
-        data.user
-    );
+}
 
 }
 
 
 /* =========================
-   إنشاء Profile
+   PROFILE
 ========================= */
 
-async function createProfile(
-    user,
-    name
+async function createProfile(user,name){
+
+if(!user)return;
+
+const {error}=
+await db
+.from("profiles")
+.upsert({
+
+id:user.id,
+
+name:
+name ||
+user.user_metadata?.name ||
+"مستخدم",
+
+email:user.email
+
+});
+
+if(error){
+
+console.log(
+"Profile error:",
+error.message
+);
+
+}
+
+}
+
+
+/* =========================
+   تسجيل الدخول
+========================= */
+
+async function loginUser(){
+
+const email=
+document.getElementById("userLoginEmail")
+.value.trim();
+
+const password=
+document.getElementById("userLoginPassword")
+.value;
+
+const message=
+document.getElementById("authMessage");
+
+if(!email||!password){
+
+message.innerHTML=
+`<div class="message">
+❌ اكتب البريد وكلمة المرور.
+</div>`;
+
+return;
+}
+
+message.innerHTML=
+`<div class="message">
+جاري تسجيل الدخول...
+</div>`;
+
+try{
+
+const {data,error}=
+await db.auth.signInWithPassword({
+
+email:email,
+password:password
+
+});
+
+if(error){
+
+message.innerHTML=
+`<div class="message">
+❌ ${escapeHtml(error.message)}
+</div>`;
+
+return;
+}
+
+if(data.user&&data.user.id===OWNER_ID){
+
+message.innerHTML=
+`<div class="message">
+👑 هذا حساب المالك.
+<br>
+استخدم لوحة المالك.
+</div>`;
+
+return;
+}
+
+await createProfile(
+data.user,
+data.user.user_metadata?.name||"مستخدم"
+);
+
+await loadUserApp(data.user);
+
+}catch(error){
+
+message.innerHTML=
+`<div class="message">
+❌ حدث خطأ: ${escapeHtml(error.message)}
+</div>`;
+
+}
+
+}
+
+
+/* =========================
+   استعادة كلمة المرور
+========================= */
+
+async function resetUserPassword(){
+
+const email=
+document.getElementById("userLoginEmail")
+.value.trim();
+
+const message=
+document.getElementById("authMessage");
+
+if(!email){
+
+message.innerHTML=
+`<div class="message">
+❌ اكتب البريد الإلكتروني أولاً.
+</div>`;
+
+return;
+}
+
+try{
+
+const {error}=
+await db.auth.resetPasswordForEmail(
+email,
+{
+redirectTo:SITE_URL
+}
+);
+
+if(error){
+
+message.innerHTML=
+`<div class="message">
+❌ ${escapeHtml(error.message)}
+</div>`;
+
+return;
+}
+
+message.innerHTML=
+`<div class="message">
+✅ تم إرسال رابط الاستعادة إلى بريدك الإلكتروني.
+</div>`;
+
+}catch(error){
+
+message.innerHTML=
+`<div class="message">
+❌ ${escapeHtml(error.message)}
+</div>`;
+
+}
+
+}
+
+
+/* =========================
+   واجهة المستخدم
+========================= */
+
+async function loadUserApp(user){
+
+if(!user)return;
+
+if(user.id===OWNER_ID)return;
+
+document.getElementById("userAuth")
+.classList.add("hidden");
+
+document.getElementById("userApp")
+.classList.remove("hidden");
+
+let name=
+user.user_metadata?.name;
+
+if(!name){
+
+const {data}=
+await db
+.from("profiles")
+.select("name")
+.eq("id",user.id)
+.maybeSingle();
+
+name=
+data?.name||"مستخدم";
+
+}
+
+document.getElementById("userName")
+.textContent=name;
+
+await loadUserProjects();
+
+}
+
+
+/* =========================
+   تسجيل الخروج
+========================= */
+
+async function logoutUser(){
+
+await db.auth.signOut();
+
+document.getElementById("userApp")
+.classList.add("hidden");
+
+document.getElementById("userAuth")
+.classList.remove("hidden");
+
+showLoginForm();
+
+}
+
+
+/* =========================
+   تحميل المشاريع
+========================= */
+
+async function loadUserProjects(){
+
+const list=
+document.getElementById("userProjectsList");
+
+list.innerHTML=
+`<div class="card">
+جاري تحميل المشاريع...
+</div>`;
+
+try{
+
+const {data:projects,error}=
+await db
+.from("projects")
+.select("*")
+.order("created_at",{ascending:false});
+
+if(error){
+
+list.innerHTML=
+`<div class="card message">
+❌ ${escapeHtml(error.message)}
+</div>`;
+
+return;
+}
+
+const {data:likesData}=
+await db
+.from("likes")
+.select("id,project_id,user_id");
+
+const {data:sessionData}=
+await db.auth.getSession();
+
+const currentUser=
+sessionData.session?.user;
+
+if(!projects||!projects.length){
+
+list.innerHTML=
+`<div class="card empty">
+لا توجد مشاريع منشورة حاليًا.
+</div>`;
+
+return;
+}
+
+list.innerHTML=
+projects.map(project=>{
+
+const projectLikes=
+(likesData||[])
+.filter(
+like=>like.project_id===project.id
+);
+
+const likeCount=
+projectLikes.length;
+
+const isLiked=
+currentUser&&
+projectLikes.some(
+like=>like.user_id===currentUser.id
+);
+
+return `
+
+<div class="project-card">
+
+${
+project.image_url
+?
+`<img
+src="${escapeHtml(project.image_url)}"
+alt="${escapeHtml(project.title)}">`
+:""
+}
+
+<div class="project-title">
+${escapeHtml(project.title)}
+</div>
+
+<div class="project-description">
+${escapeHtml(project.description||"")}
+</div>
+
+<div class="project-date">
+${formatDate(project.created_at)}
+</div>
+
+<div class="like-box">
+
+<button
+class="like-btn ${isLiked?"liked":""}"
+onclick="toggleUserLike('${project.id}')">
+
+${isLiked?"❤️ تم الإعجاب":"🤍 إعجاب"}
+
+</button>
+
+<div class="like-count">
+❤️ ${likeCount} إعجاب
+</div>
+
+</div>
+
+<div class="comments-section">
+
+<h3>💬 التعليقات</h3>
+
+<div id="userProjectComments-${project.id}">
+جاري تحميل التعليقات...
+</div>
+
+<textarea
+id="userCommentInput-${project.id}"
+placeholder="اكتب تعليقك..."></textarea>
+
+<button
+class="btn-success"
+onclick="addUserComment('${project.id}')">
+💬 إضافة تعليق
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}).join("");
+
+for(const project of projects){
+
+await loadUserProjectComments(
+project.id
+);
+
+}
+
+}catch(error){
+
+list.innerHTML=
+`<div class="card message">
+❌ حدث خطأ: ${escapeHtml(error.message)}
+</div>`;
+
+}
+
+}
+
+
+/* =========================
+   الإعجاب
+========================= */
+
+async function toggleUserLike(projectId){
+
+const {data:sessionData}=
+await db.auth.getSession();
+
+const user=
+sessionData.session?.user;
+
+if(!user){
+
+alert("يجب تسجيل الدخول أولاً.");
+
+return;
+}
+
+if(user.id===OWNER_ID)return;
+
+const {data:existing,error:checkError}=
+await db
+.from("likes")
+.select("id")
+.eq("project_id",projectId)
+.eq("user_id",user.id)
+.maybeSingle();
+
+if(checkError){
+
+alert("خطأ: "+checkError.message);
+
+return;
+}
+
+if(existing){
+
+const {error}=
+await db
+.from("likes")
+.delete()
+.eq("id",existing.id);
+
+if(error){
+
+alert("خطأ: "+error.message);
+
+return;
+}
+
+}else{
+
+const {error}=
+await db
+.from("likes")
+.insert({
+
+project_id:projectId,
+user_id:user.id
+
+});
+
+if(error){
+
+alert("خطأ: "+error.message);
+
+return;
+}
+
+}
+
+await loadUserProjects();
+
+}
+
+
+/* =========================
+   التعليقات
+========================= */
+
+async function loadUserProjectComments(projectId){
+
+const box=
+document.getElementById(
+`userProjectComments-${projectId}`
+);
+
+if(!box)return;
+
+const {data,error}=
+await db
+.from("comments")
+.select(
+"id,content,created_at,user_id,profiles(name,email)"
+)
+.eq("project_id",projectId)
+.order("created_at",{ascending:true});
+
+if(error){
+
+box.innerHTML=
+`<div class="message">
+❌ ${escapeHtml(error.message)}
+</div>`;
+
+return;
+}
+
+if(!data||!data.length){
+
+box.innerHTML=
+`<div style="color:#64748b">
+لا توجد تعليقات حتى الآن.
+</div>`;
+
+return;
+}
+
+const {data:sessionData}=
+await db.auth.getSession();
+
+const currentUser=
+sessionData.session?.user;
+
+box.innerHTML=
+data.map(comment=>{
+
+const canDelete=
+currentUser&&
+(
+currentUser.id===comment.user_id||
+currentUser.id===OWNER_ID
+);
+
+return `
+
+<div class="comment-item">
+
+<div class="comment-user">
+👤 ${escapeHtml(
+comment.profiles?.name||
+comment.profiles?.email||
+"مستخدم"
+)}
+</div>
+
+<div class="comment-content">
+${escapeHtml(comment.content)}
+</div>
+
+<div class="comment-date">
+${formatDate(comment.created_at)}
+</div>
+
+${
+canDelete
+?
+`<button
+class="btn-danger"
+onclick="deleteUserComment('${comment.id}')">
+🗑️ حذف
+</button>`
+:""
+}
+
+</div>
+
+`;
+
+}).join("");
+
+}
+
+
+/* =========================
+   إضافة تعليق
+========================= */
+
+async function addUserComment(projectId){
+
+const input=
+document.getElementById(
+`userCommentInput-${projectId}`
+);
+
+if(!input)return;
+
+const content=
+input.value.trim();
+
+if(!content){
+
+alert("اكتب التعليق أولاً.");
+
+return;
+}
+
+const {data:sessionData}=
+await db.auth.getSession();
+
+const user=
+sessionData.session?.user;
+
+if(!user){
+
+alert("يجب تسجيل الدخول أولاً.");
+
+return;
+}
+
+const {error}=
+await db
+.from("comments")
+.insert({
+
+project_id:projectId,
+user_id:user.id,
+content:content
+
+});
+
+if(error){
+
+alert(
+"خطأ في إضافة التعليق: "+
+error.message
+);
+
+return;
+}
+
+input.value="";
+
+await loadUserProjectComments(
+projectId
+);
+
+}
+
+
+/* =========================
+   حذف تعليق
+========================= */
+
+async function deleteUserComment(id){
+
+if(!confirm("هل تريد حذف هذا التعليق؟"))
+return;
+
+const {data:sessionData}=
+await db.auth.getSession();
+
+const user=
+sessionData.session?.user;
+
+if(!user)return;
+
+const {error}=
+await db
+.from("comments")
+.delete()
+.eq("id",id);
+
+if(error){
+
+alert("خطأ: "+error.message);
+
+return;
+}
+
+await loadUserProjects();
+
+}
+
+
+/* =========================
+   أدوات
+========================= */
+
+function formatDate(date){
+
+if(!date)return"";
+
+try{
+
+return new Date(date)
+.toLocaleString("ar-SA");
+
+}catch(e){
+
+return date;
+
+}
+
+}
+
+
+function escapeHtml(value){
+
+if(value===null||value===undefined)
+return"";
+
+return String(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================
+   فحص الجلسة
+========================= */
+
+async function checkUserSession(){
+
+try{
+
+const {data}=await db.auth.getSession();
+
+const user=
+data.session?.user;
+
+if(!user){
+
+document.getElementById("userAuth")
+.classList.remove("hidden");
+
+document.getElementById("userApp")
+.classList.add("hidden");
+
+return;
+}
+
+if(user.id===OWNER_ID){
+
+return;
+}
+
+await createProfile(
+user,
+user.user_metadata?.name||"مستخدم"
+);
+
+await loadUserApp(user);
+
+}catch(error){
+
+console.log(
+"Session error:",
+error.message
+);
+
+}
+
+}
+
+
+/* =========================
+   مراقبة تسجيل الدخول
+========================= */
+
+db.auth.onAuthStateChange(
+async function(event,session){
+
+if(
+session &&
+session.user &&
+session.user.id!==OWNER_ID
 ){
 
-    if(!user) return;
+await loadUserApp(
+session.user
+);
+
+}
+
+}
+);
 
 
-    const {error} =
-        await db
-        .from("profiles
+/* تشغيل المنصة */
+
+checkUserSession();
+
+</script>
+
+</body>
+</html>
