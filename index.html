@@ -12,152 +12,254 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     margin:0;
     font-family:Arial,sans-serif;
-    background:#070d19;
+    background:
+        radial-gradient(circle at 50% -10%,#1e3a8a 0,#070d19 38%),
+        #070d19;
     color:white;
     min-height:100vh;
 }
 
+/* =========================
+   HEADER
+========================= */
+
 header{
-    background:#0f172a;
-    padding:20px;
+    background:rgba(15,23,42,.92);
+    padding:30px 20px;
     text-align:center;
-    border-bottom:1px solid #1e293b;
+    border-bottom:1px solid rgba(96,165,250,.18);
+    box-shadow:0 10px 35px rgba(0,0,0,.25);
 }
 
 header h1{
     margin:0;
-    font-size:30px;
+    font-size:34px;
+    font-weight:800;
+    letter-spacing:1px;
+    background:linear-gradient(90deg,#60a5fa,#a78bfa,#38bdf8);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
 }
 
 header p{
     color:#94a3b8;
-    margin:8px 0 0;
+    margin:10px 0 0;
+    font-size:16px;
 }
+
+/* =========================
+   CONTAINER
+========================= */
 
 .container{
     width:92%;
     max-width:1100px;
-    margin:25px auto;
+    margin:28px auto;
 }
 
+/* =========================
+   CARDS
+========================= */
+
 .card{
-    background:#0f172a;
-    border:1px solid #1e293b;
-    border-radius:18px;
-    padding:22px;
-    margin-bottom:20px;
+    position:relative;
+    background:rgba(15,23,42,.84);
+    border:1px solid rgba(148,163,184,.14);
+    border-radius:22px;
+    padding:25px;
+    margin-bottom:22px;
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.22),
+        inset 0 1px 0 rgba(255,255,255,.03);
 }
+
+.card h2{
+    margin-top:0;
+    font-size:24px;
+}
+
+.card p{
+    line-height:1.8;
+}
+
+/* =========================
+   INPUTS
+========================= */
 
 input,
 textarea{
     width:100%;
-    padding:14px;
+    padding:15px 16px;
     margin:8px 0;
     border:1px solid #334155;
-    border-radius:10px;
+    border-radius:13px;
     background:#020617;
     color:white;
     font-size:16px;
+    outline:none;
+    transition:.25s;
+}
+
+input:focus,
+textarea:focus{
+    border-color:#3b82f6;
+    box-shadow:0 0 0 3px rgba(59,130,246,.12);
+}
+
+input::placeholder,
+textarea::placeholder{
+    color:#64748b;
 }
 
 textarea{
-    min-height:100px;
+    min-height:110px;
     resize:vertical;
 }
 
+/* =========================
+   BUTTONS
+========================= */
+
 button{
     border:0;
-    border-radius:10px;
-    padding:12px 18px;
+    border-radius:12px;
+    padding:13px 20px;
     margin:5px;
     font-size:15px;
+    font-weight:bold;
     cursor:pointer;
-    background:#2563eb;
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
     color:white;
+    box-shadow:0 8px 20px rgba(37,99,235,.18);
+    transition:.2s;
 }
 
 button:hover{
-    opacity:.9;
+    transform:translateY(-2px);
+    opacity:.95;
+}
+
+button:active{
+    transform:translateY(0);
 }
 
 .btn-danger{
-    background:#dc2626;
+    background:linear-gradient(135deg,#dc2626,#ef4444);
 }
 
 .btn-secondary{
-    background:#475569;
+    background:linear-gradient(135deg,#334155,#475569);
 }
 
 .btn-success{
-    background:#16a34a;
+    background:linear-gradient(135deg,#15803d,#22c55e);
 }
 
 .hidden{
     display:none !important;
 }
 
+/* =========================
+   MESSAGE
+========================= */
+
 .message{
-    padding:12px;
-    border-radius:10px;
-    margin-top:10px;
-    background:#172033;
-    line-height:1.7;
+    padding:14px 16px;
+    border-radius:13px;
+    margin-top:12px;
+    background:rgba(23,32,51,.9);
+    border:1px solid #263449;
+    line-height:1.8;
 }
+
+/* =========================
+   AUTH
+========================= */
 
 .auth-tabs{
     display:flex;
-    gap:8px;
-    margin-bottom:15px;
+    gap:10px;
+    margin-bottom:17px;
 }
 
 .auth-tabs button{
     flex:1;
+    margin:0;
 }
 
+/* =========================
+   PROJECTS
+========================= */
+
 .project-card{
-    background:#111827;
-    border:1px solid #263449;
-    border-radius:18px;
-    padding:18px;
-    margin-bottom:18px;
+    position:relative;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(17,24,39,.98),
+            rgba(11,18,32,.98)
+        );
+    border:1px solid rgba(96,165,250,.13);
+    border-radius:22px;
+    padding:20px;
+    margin-bottom:22px;
+    overflow:hidden;
+    box-shadow:0 18px 45px rgba(0,0,0,.22);
+    transition:.25s;
+}
+
+.project-card:hover{
+    transform:translateY(-3px);
+    border-color:rgba(96,165,250,.28);
 }
 
 .project-card img{
     width:100%;
-    max-height:350px;
+    max-height:380px;
     object-fit:cover;
-    border-radius:14px;
-    margin-bottom:15px;
+    border-radius:17px;
+    margin-bottom:17px;
+    display:block;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
 }
 
 .project-title{
-    font-size:22px;
+    font-size:24px;
     font-weight:bold;
-    margin-bottom:8px;
+    margin-bottom:9px;
+    color:#f8fafc;
 }
 
 .project-description{
     color:#cbd5e1;
-    line-height:1.8;
+    line-height:1.9;
     white-space:pre-wrap;
 }
 
 .project-date{
     color:#64748b;
     font-size:13px;
-    margin-top:10px;
+    margin-top:12px;
 }
+
+/* =========================
+   LIKES
+========================= */
 
 .like-box{
     display:flex;
     align-items:center;
     gap:10px;
     flex-wrap:wrap;
-    margin-top:15px;
-    padding-top:15px;
+    margin-top:17px;
+    padding-top:17px;
     border-top:1px solid #263449;
 }
 
@@ -166,25 +268,33 @@ button:hover{
 }
 
 .like-btn.liked{
-    background:#be123c;
+    background:linear-gradient(135deg,#be123c,#e11d48);
 }
 
 .like-count{
     color:#cbd5e1;
 }
 
+/* =========================
+   COMMENTS
+========================= */
+
 .comments-section{
-    margin-top:18px;
-    padding-top:18px;
+    margin-top:20px;
+    padding-top:20px;
     border-top:1px solid #263449;
 }
 
+.comments-section h3{
+    margin-top:0;
+}
+
 .comment-item{
-    background:#0b1220;
+    background:rgba(11,18,32,.9);
     border:1px solid #263449;
-    border-radius:12px;
-    padding:14px;
-    margin-top:10px;
+    border-radius:14px;
+    padding:15px;
+    margin-top:11px;
 }
 
 .comment-user{
@@ -195,15 +305,19 @@ button:hover{
 .comment-date{
     color:#64748b;
     font-size:12px;
-    margin-top:5px;
+    margin-top:6px;
 }
 
 .comment-content{
     margin-top:10px;
     color:#e2e8f0;
-    line-height:1.7;
+    line-height:1.8;
     white-space:pre-wrap;
 }
+
+/* =========================
+   USER
+========================= */
 
 .user-top{
     display:flex;
@@ -214,23 +328,72 @@ button:hover{
 }
 
 .welcome{
-    font-size:18px;
+    font-size:19px;
     color:#cbd5e1;
 }
+
+.welcome strong{
+    color:#60a5fa;
+}
+
+/* =========================
+   EMPTY
+========================= */
 
 .empty{
     text-align:center;
     color:#94a3b8;
-    padding:30px;
+    padding:40px 20px;
 }
+
+/* =========================
+   FOOTER
+========================= */
 
 footer{
     text-align:center;
-    padding:25px;
+    padding:30px 20px;
     color:#64748b;
+    border-top:1px solid rgba(148,163,184,.08);
+    margin-top:35px;
 }
 
+/* =========================
+   MOBILE
+========================= */
+
 @media(max-width:600px){
+
+    header{
+        padding:25px 15px;
+    }
+
+    header h1{
+        font-size:28px;
+    }
+
+    header p{
+        font-size:14px;
+    }
+
+    .container{
+        width:94%;
+        margin:20px auto;
+    }
+
+    .card{
+        padding:19px;
+        border-radius:18px;
+    }
+
+    .project-card{
+        padding:15px;
+        border-radius:18px;
+    }
+
+    .project-title{
+        font-size:21px;
+    }
 
     .auth-tabs{
         flex-direction:column;
@@ -241,7 +404,7 @@ footer{
     }
 
     button{
-        width:auto;
+        padding:12px 16px;
     }
 }
 </style>
@@ -550,11 +713,6 @@ async function registerUser(){
     }
 
 
-    /*
-      إذا تم إنشاء المستخدم وتسجيل دخوله مباشرة
-      ننشئ ملفه في profiles.
-    */
-
     if(data.user){
 
         await createProfile(
@@ -564,10 +722,6 @@ async function registerUser(){
 
     }
 
-
-    /*
-      قد تكون خاصية تأكيد البريد مفعلة في Supabase.
-    */
 
     if(!data.session){
 
@@ -610,989 +764,4 @@ async function createProfile(
 
     const {error} =
         await db
-        .from("profiles")
-        .upsert({
-
-            id:user.id,
-
-            name:name ||
-                 user.user_metadata?.name ||
-                 "مستخدم",
-
-            email:user.email
-
-        });
-
-
-    if(error){
-
-        console.log(
-            "Profile error:",
-            error.message
-        );
-
-    }
-
-}
-
-
-/* =========================
-   تسجيل الدخول
-========================= */
-
-async function loginUser(){
-
-    const email =
-        document
-        .getElementById("userLoginEmail")
-        .value
-        .trim();
-
-    const password =
-        document
-        .getElementById("userLoginPassword")
-        .value;
-
-    const message =
-        document
-        .getElementById("authMessage");
-
-
-    if(!email || !password){
-
-        message.innerHTML =
-        `<div class="message">
-            ❌ اكتب البريد وكلمة المرور.
-        </div>`;
-
-        return;
-    }
-
-
-    message.innerHTML =
-    `<div class="message">
-        جاري تسجيل الدخول...
-    </div>`;
-
-
-    const {data,error} =
-        await db.auth.signInWithPassword({
-
-            email:email,
-
-            password:password
-
-        });
-
-
-    if(error){
-
-        message.innerHTML =
-        `<div class="message">
-            ❌ ${escapeHtml(error.message)}
-        </div>`;
-
-        return;
-    }
-
-
-    if(
-        data.user &&
-        data.user.id === OWNER_ID
-    ){
-
-        message.innerHTML =
-        `<div class="message">
-            👑 هذا حساب المالك.
-            <br>
-            استخدم لوحة المالك.
-        </div>`;
-
-        return;
-    }
-
-
-    await createProfile(
-        data.user,
-        data.user.user_metadata?.name ||
-        "مستخدم"
-    );
-
-
-    await loadUserApp(
-        data.user
-    );
-
-}
-
-
-/* =========================
-   استعادة كلمة المرور
-========================= */
-
-async function resetUserPassword(){
-
-    const email =
-        document
-        .getElementById("userLoginEmail")
-        .value
-        .trim();
-
-    const message =
-        document
-        .getElementById("authMessage");
-
-
-    if(!email){
-
-        message.innerHTML =
-        `<div class="message">
-            اكتب البريد الإلكتروني أولاً.
-        </div>`;
-
-        return;
-    }
-
-
-    const {error} =
-        await db.auth.resetPasswordForEmail(
-            email,
-            {
-                redirectTo:SITE_URL
-            }
-        );
-
-
-    if(error){
-
-        message.innerHTML =
-        `<div class="message">
-            ❌ ${escapeHtml(error.message)}
-        </div>`;
-
-        return;
-    }
-
-
-    message.innerHTML =
-    `<div class="message">
-        ✅ تم إرسال رابط الاستعادة إلى بريدك الإلكتروني.
-    </div>`;
-
-}
-
-
-/* =========================
-   تشغيل التطبيق
-========================= */
-
-async function loadUserApp(user){
-
-    if(!user) return;
-
-
-    if(user.id === OWNER_ID){
-
-        return;
-    }
-
-
-    document
-    .getElementById("userAuth")
-    .classList.add("hidden");
-
-
-    document
-    .getElementById("userApp")
-    .classList.remove("hidden");
-
-
-    let name =
-        user.user_metadata?.name;
-
-
-    if(!name){
-
-        const {data} =
-            await db
-            .from("profiles")
-            .select("name")
-            .eq(
-                "id",
-                user.id
-            )
-            .maybeSingle();
-
-        name =
-            data?.name || "مستخدم";
-
-    }
-
-
-    document
-    .getElementById("userName")
-    .textContent =
-        name;
-
-
-    await loadUserProjects();
-
-}
-
-
-/* =========================
-   تسجيل خروج المستخدم
-========================= */
-
-async function logoutUser(){
-
-    await db.auth.signOut();
-
-    document
-    .getElementById("userApp")
-    .classList.add("hidden");
-
-    document
-    .getElementById("userAuth")
-    .classList.remove("hidden");
-
-    showLoginForm();
-
-}
-
-
-/* =========================
-   تحميل المشاريع
-========================= */
-
-async function loadUserProjects(){
-
-    const list =
-        document
-        .getElementById(
-            "userProjectsList"
-        );
-
-
-    list.innerHTML =
-    `<div class="card">
-        جاري تحميل المشاريع...
-    </div>`;
-
-
-    const {data:projects,error} =
-        await db
-        .from("projects")
-        .select("*")
-        .order(
-            "created_at",
-            {
-                ascending:false
-            }
-        );
-
-
-    if(error){
-
-        list.innerHTML =
-        `<div class="card message">
-            ❌ ${escapeHtml(error.message)}
-        </div>`;
-
-        return;
-    }
-
-
-    const {data:likesData} =
-        await db
-        .from("likes")
-        .select(
-            "id,project_id,user_id"
-        );
-
-
-    const {data:sessionData} =
-        await db.auth.getSession();
-
-
-    const currentUser =
-        sessionData.session?.user;
-
-
-    if(!projects || !projects.length){
-
-        list.innerHTML =
-        `<div class="card empty">
-            لا توجد مشاريع منشورة حاليًا.
-        </div>`;
-
-        return;
-    }
-
-
-    list.innerHTML =
-    projects.map(project => {
-
-        const projectLikes =
-            (likesData || [])
-            .filter(
-                like =>
-                like.project_id === project.id
-            );
-
-
-        const likeCount =
-            projectLikes.length;
-
-
-        const isLiked =
-            currentUser &&
-            projectLikes.some(
-                like =>
-                like.user_id === currentUser.id
-            );
-
-
-        return `
-
-        <div class="project-card">
-
-            ${
-                project.image_url
-                ?
-                `<img
-                    src="${escapeHtml(project.image_url)}"
-                    alt="${escapeHtml(project.title)}"
-                >`
-                :
-                ""
-            }
-
-
-            <div class="project-title">
-                ${escapeHtml(project.title)}
-            </div>
-
-
-            <div class="project-description">
-                ${escapeHtml(
-                    project.description || ""
-                )}
-            </div>
-
-
-            <div class="project-date">
-                ${formatDate(
-                    project.created_at
-                )}
-            </div>
-
-
-            <div class="like-box">
-
-                <button
-                    class="like-btn ${
-                        isLiked
-                        ?
-                        "liked"
-                        :
-                        ""
-                    }"
-                    onclick="
-                        toggleUserLike(
-                            '${project.id}'
-                        )
-                    "
-                >
-
-                    ${
-                        isLiked
-                        ?
-                        "❤️ تم الإعجاب"
-                        :
-                        "🤍 إعجاب"
-                    }
-
-                </button>
-
-
-                <div class="like-count">
-
-                    ❤️ ${likeCount} إعجاب
-
-                </div>
-
-            </div>
-
-
-            <div class="comments-section">
-
-                <h3>
-                    💬 التعليقات
-                </h3>
-
-
-                <div
-                    id="userProjectComments-${project.id}"
-                >
-                    جاري تحميل التعليقات...
-                </div>
-
-
-                <textarea
-                    id="userCommentInput-${project.id}"
-                    placeholder="اكتب تعليقك..."
-                ></textarea>
-
-
-                <button
-                    class="btn-success"
-                    onclick="
-                        addUserComment(
-                            '${project.id}'
-                        )
-                    "
-                >
-                    💬 إضافة تعليق
-                </button>
-
-            </div>
-
-        </div>
-
-        `;
-
-    }).join("");
-
-
-    for(
-        const project of projects
-    ){
-
-        await loadUserProjectComments(
-            project.id
-        );
-
-    }
-
-}
-
-
-/* =========================
-   إعجاب المستخدم
-========================= */
-
-async function toggleUserLike(
-    projectId
-){
-
-    const {data:sessionData} =
-        await db.auth.getSession();
-
-
-    const user =
-        sessionData.session?.user;
-
-
-    if(!user){
-
-        alert(
-            "يجب تسجيل الدخول أولاً."
-        );
-
-        return;
-    }
-
-
-    if(user.id === OWNER_ID){
-
-        return;
-    }
-
-
-    const {data:existing,error:checkError} =
-        await db
-        .from("likes")
-        .select("id")
-        .eq(
-            "project_id",
-            projectId
-        )
-        .eq(
-            "user_id",
-            user.id
-        )
-        .maybeSingle();
-
-
-    if(checkError){
-
-        alert(
-            "خطأ: " +
-            checkError.message
-        );
-
-        return;
-    }
-
-
-    if(existing){
-
-        const {error} =
-            await db
-            .from("likes")
-            .delete()
-            .eq(
-                "id",
-                existing.id
-            );
-
-
-        if(error){
-
-            alert(
-                "خطأ: " +
-                error.message
-            );
-
-            return;
-        }
-
-    }else{
-
-        const {error} =
-            await db
-            .from("likes")
-            .insert({
-
-                project_id:projectId,
-
-                user_id:user.id
-
-            });
-
-
-        if(error){
-
-            alert(
-                "خطأ: " +
-                error.message
-            );
-
-            return;
-        }
-
-    }
-
-
-    await loadUserProjects();
-
-}
-
-
-/* =========================
-   تعليقات المشروع
-========================= */
-
-async function loadUserProjectComments(
-    projectId
-){
-
-    const box =
-        document
-        .getElementById(
-            `userProjectComments-${projectId}`
-        );
-
-
-    if(!box) return;
-
-
-    const {data,error} =
-        await db
-        .from("comments")
-        .select(`
-            id,
-            content,
-            created_at,
-            user_id,
-            profiles(name,email)
-        `)
-        .eq(
-            "project_id",
-            projectId
-        )
-        .order(
-            "created_at",
-            {
-                ascending:true
-            }
-        );
-
-
-    if(error){
-
-        box.innerHTML =
-        `<div class="message">
-            ❌ ${escapeHtml(error.message)}
-        </div>`;
-
-        return;
-    }
-
-
-    if(!data || !data.length){
-
-        box.innerHTML =
-        `<div style="color:#64748b">
-            لا توجد تعليقات حتى الآن.
-        </div>`;
-
-        return;
-    }
-
-
-    const {data:sessionData} =
-        await db.auth.getSession();
-
-
-    const currentUser =
-        sessionData.session?.user;
-
-
-    box.innerHTML =
-    data.map(comment => {
-
-        const canDelete =
-            currentUser &&
-            (
-                currentUser.id === comment.user_id ||
-                currentUser.id === OWNER_ID
-            );
-
-
-        return `
-
-        <div class="comment-item">
-
-            <div class="comment-user">
-
-                👤 ${
-                    escapeHtml(
-                        comment.profiles?.name ||
-                        comment.profiles?.email ||
-                        "مستخدم"
-                    )
-                }
-
-            </div>
-
-
-            <div class="comment-content">
-
-                ${escapeHtml(
-                    comment.content
-                )}
-
-            </div>
-
-
-            <div class="comment-date">
-
-                ${formatDate(
-                    comment.created_at
-                )}
-
-            </div>
-
-
-            ${
-                canDelete
-                ?
-                `<button
-                    class="btn-danger"
-                    onclick="
-                        deleteUserComment(
-                            '${comment.id}'
-                        )
-                    "
-                >
-                    🗑️ حذف
-                </button>`
-                :
-                ""
-            }
-
-        </div>
-
-        `;
-
-    }).join("");
-
-}
-
-
-/* =========================
-   إضافة تعليق
-========================= */
-
-async function addUserComment(
-    projectId
-){
-
-    const input =
-        document
-        .getElementById(
-            `userCommentInput-${projectId}`
-        );
-
-
-    if(!input) return;
-
-
-    const content =
-        input.value.trim();
-
-
-    if(!content){
-
-        alert(
-            "اكتب التعليق أولاً."
-        );
-
-        return;
-    }
-
-
-    const {data:sessionData} =
-        await db.auth.getSession();
-
-
-    const user =
-        sessionData.session?.user;
-
-
-    if(!user){
-
-        alert(
-            "يجب تسجيل الدخول أولاً."
-        );
-
-        return;
-    }
-
-
-    const {error} =
-        await db
-        .from("comments")
-        .insert({
-
-            project_id:projectId,
-
-            user_id:user.id,
-
-            content:content
-
-        });
-
-
-    if(error){
-
-        alert(
-            "خطأ في إضافة التعليق: " +
-            error.message
-        );
-
-        return;
-    }
-
-
-    input.value = "";
-
-
-    await loadUserProjectComments(
-        projectId
-    );
-
-}
-
-
-/* =========================
-   حذف تعليق
-========================= */
-
-async function deleteUserComment(
-    id
-){
-
-    if(
-        !confirm(
-            "هل تريد حذف هذا التعليق؟"
-        )
-    ){
-
-        return;
-    }
-
-
-    const {data:sessionData} =
-        await db.auth.getSession();
-
-
-    const user =
-        sessionData.session?.user;
-
-
-    if(!user){
-
-        return;
-    }
-
-
-    const {error} =
-        await db
-        .from("comments")
-        .delete()
-        .eq(
-            "id",
-            id
-        );
-
-
-    if(error){
-
-        alert(
-            "خطأ: " +
-            error.message
-        );
-
-        return;
-    }
-
-
-    await loadUserProjects();
-
-}
-
-
-/* =========================
-   أدوات
-========================= */
-
-function formatDate(date){
-
-    if(!date) return "";
-
-    try{
-
-        return new Date(date)
-        .toLocaleString(
-            "ar-SA"
-        );
-
-    }catch(e){
-
-        return date;
-
-    }
-
-}
-
-
-function escapeHtml(value){
-
-    if(
-        value === null ||
-        value === undefined
-    ){
-
-        return "";
-
-    }
-
-    return String(value)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
-}
-
-
-/* =========================
-   فحص الجلسة عند فتح الموقع
-========================= */
-
-async function checkUserSession(){
-
-    const {data} =
-        await db.auth.getSession();
-
-
-    const user =
-        data.session?.user;
-
-
-    if(!user){
-
-        document
-        .getElementById("userAuth")
-        .classList.remove("hidden");
-
-        document
-        .getElementById("userApp")
-        .classList.add("hidden");
-
-        return;
-    }
-
-
-    if(user.id === OWNER_ID){
-
-        return;
-    }
-
-
-    await createProfile(
-        user,
-        user.user_metadata?.name ||
-        "مستخدم"
-    );
-
-
-    await loadUserApp(
-        user
-    );
-
-}
-
-
-checkUserSession();
-
-
-db.auth.onAuthStateChange(
-    async function(
-        event,
-        session
-    ){
-
-        if(
-            session &&
-            session.user &&
-            session.user.id !== OWNER_ID
-        ){
-
-            await loadUserApp(
-                session.user
-            );
-
-        }
-
-    }
-);
-
-</script>
-
-</body>
-</html>
+        .from("profiles
