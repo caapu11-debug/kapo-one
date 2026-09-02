@@ -469,6 +469,7 @@ margin-bottom:10px;
 .project-date{
 color:#64748b;
 font-size:13px;
+margin-bottom:15px;
 }
 
 .project-image{
@@ -477,6 +478,35 @@ max-height:300px;
 object-fit:cover;
 border-radius:12px;
 margin-bottom:15px;
+}
+
+.project-actions{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-top:15px;
+}
+
+.edit-btn{
+width:100%;
+padding:12px;
+border:1px solid #0369a1;
+border-radius:10px;
+background:#0c4a6e;
+color:#7dd3fc;
+font-size:15px;
+cursor:pointer;
+}
+
+.delete-btn{
+width:100%;
+padding:12px;
+border:1px solid #991b1b;
+border-radius:10px;
+background:#7f1d1d;
+color:#fecaca;
+font-size:15px;
+cursor:pointer;
 }
 
 .form-actions{
@@ -567,7 +597,8 @@ grid-template-columns:1fr;
 
 .management,
 .action-box,
-.form-actions{
+.form-actions,
+.project-actions{
 grid-template-columns:1fr;
 }
 
@@ -944,13 +975,13 @@ onclick="backToDashboard()">
 </section>
 
 
-<!-- نافذة إضافة مشروع -->
+<!-- نافذة إضافة / تعديل مشروع -->
 
 <div id="projectModal" class="modal">
 
 <div class="modal-box">
 
-<div class="modal-title">
+<div id="projectModalTitle" class="modal-title">
 ➕ إضافة مشروع جديد
 </div>
 
@@ -1000,6 +1031,7 @@ placeholder="https://...">
 <div class="form-actions">
 
 <button
+id="projectSaveButton"
 class="save-btn"
 onclick="saveProject()">
 
@@ -1054,6 +1086,8 @@ const SITE_URL =
 
 const OWNER_ID =
 "dfe5695d-c77a-4ccb-a1eb-901d28169be2";
+
+let editingProjectId = null;
 
 
 function hideAllPages(){
@@ -1642,6 +1676,26 @@ ${escapeHtml(description)}
 تاريخ الإضافة: ${date}
 </div>
 
+<div class="project-actions">
+
+<button
+class="edit-btn"
+onclick="editProject('${project.id}')">
+
+✏️ تعديل المشروع
+
+</button>
+
+<button
+class="delete-btn"
+onclick="deleteProject('${project.id}')">
+
+🗑️ حذف المشروع
+
+</button>
+
+</div>
+
 </div>
 
 `;
@@ -1678,13 +1732,21 @@ list.innerHTML =
 }
 
 
-/* فتح نموذج المشروع */
+/* فتح نموذج إضافة */
 
 function openProjectModal(){
 
+editingProjectId = null;
+
 document.getElementById(
-"projectModal"
-).style.display="block";
+"projectModalTitle"
+).innerText =
+"➕ إضافة مشروع جديد";
+
+document.getElementById(
+"projectSaveButton"
+).innerText =
+"💾 حفظ المشروع";
 
 document.getElementById(
 "projectTitle"
@@ -1702,6 +1764,89 @@ document.getElementById(
 "projectMessage"
 ).style.display="none";
 
+document.getElementById(
+"projectModal"
+).style.display="block";
+
+}
+
+
+/* فتح نموذج التعديل */
+
+async function editProject(id){
+
+editingProjectId = id;
+
+showProjectMessage("");
+
+document.getElementById(
+"projectModalTitle"
+).innerText =
+"✏️ تعديل المشروع";
+
+document.getElementById(
+"projectSaveButton"
+).innerText =
+"💾 حفظ التعديلات";
+
+document.getElementById(
+"projectMessage"
+).style.display="none";
+
+document.getElementById(
+"projectModal"
+).style.display="block";
+
+try{
+
+const { data, error } =
+await db
+.from("projects")
+.select("*")
+.eq("id",id)
+.single();
+
+if(error){
+
+console.error(
+"GET PROJECT ERROR:",
+error
+);
+
+showProjectMessage(
+"❌ تعذر تحميل المشروع:\n" +
+error.message
+);
+
+return;
+
+}
+
+document.getElementById(
+"projectTitle"
+).value =
+data.title || "";
+
+document.getElementById(
+"projectDescription"
+).value =
+data.description || "";
+
+document.getElementById(
+"projectImage"
+).value =
+data.image_url || "";
+
+}catch(error){
+
+console.error(error);
+
+showProjectMessage(
+"❌ حدث خطأ أثناء تحميل المشروع."
+);
+
+}
+
 }
 
 
@@ -1713,10 +1858,12 @@ document.getElementById(
 "projectModal"
 ).style.display="none";
 
+editingProjectId = null;
+
 }
 
 
-/* حفظ المشروع */
+/* حفظ أو تعديل المشروع */
 
 async function saveProject(){
 
@@ -1746,7 +1893,9 @@ return;
 }
 
 showProjectMessage(
-"جاري حفظ المشروع..."
+editingProjectId
+? "جاري حفظ التعديلات..."
+: "جاري حفظ المشروع..."
 );
 
 try{
@@ -1770,14 +1919,37 @@ return;
 if(session.user.id !== OWNER_ID){
 
 showProjectMessage(
-"❌ غير مصرح لك بإضافة مشروع."
+"❌ غير مصرح لك بإدارة المشاريع."
 );
 
 return;
 
 }
 
-const { data, error } =
+let error;
+
+if(editingProjectId){
+
+const result =
+await db
+.from("projects")
+.update({
+
+title:title,
+
+description:description || null,
+
+image_url:image || null
+
+})
+.eq("id",editingProjectId)
+.eq("user_id",session.user.id);
+
+error=result.error;
+
+}else{
+
+const result =
 await db
 .from("projects")
 .insert({
@@ -1794,15 +1966,19 @@ image_url:image || null
 .select()
 .single();
 
+error=result.error;
+
+}
+
 if(error){
 
 console.error(
-"INSERT PROJECT ERROR:",
+"SAVE PROJECT ERROR:",
 error
 );
 
 showProjectMessage(
-"❌ تعذر حفظ المشروع:\n" +
+"❌ تعذر حفظ البيانات:\n" +
 error.message
 );
 
@@ -1811,7 +1987,9 @@ return;
 }
 
 showProjectMessage(
-"✅ تم حفظ المشروع بنجاح."
+editingProjectId
+? "✅ تم تعديل المشروع بنجاح."
+: "✅ تم حفظ المشروع بنجاح."
 );
 
 setTimeout(async function(){
@@ -1827,8 +2005,91 @@ await loadProjects();
 console.error(error);
 
 showProjectMessage(
-"❌ حدث خطأ أثناء حفظ المشروع:\n" +
+"❌ حدث خطأ أثناء حفظ البيانات:\n" +
 error.message
+);
+
+}
+
+}
+
+
+/* حذف المشروع */
+
+async function deleteProject(id){
+
+const confirmed =
+confirm(
+"⚠️ هل أنت متأكد من حذف هذا المشروع؟\n\nلا يمكن التراجع عن عملية الحذف."
+);
+
+if(!confirmed){
+return;
+}
+
+try{
+
+const { data:sessionData } =
+await db.auth.getSession();
+
+const session =
+sessionData.session;
+
+if(!session || !session.user){
+
+alert(
+"❌ انتهت جلسة الدخول. سجّل الدخول مرة أخرى."
+);
+
+return;
+
+}
+
+if(session.user.id !== OWNER_ID){
+
+alert(
+"❌ غير مصرح لك بحذف المشاريع."
+);
+
+return;
+
+}
+
+const { error } =
+await db
+.from("projects")
+.delete()
+.eq("id",id)
+.eq("user_id",session.user.id);
+
+if(error){
+
+console.error(
+"DELETE PROJECT ERROR:",
+error
+);
+
+alert(
+"❌ تعذر حذف المشروع:\n" +
+error.message
+);
+
+return;
+
+}
+
+alert(
+"✅ تم حذف المشروع بنجاح."
+);
+
+await loadProjects();
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"❌ حدث خطأ أثناء حذف المشروع."
 );
 
 }
