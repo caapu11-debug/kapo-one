@@ -552,6 +552,67 @@ font-weight:bold;
 margin-bottom:20px;
 }
 
+/* التعليقات */
+
+.comment-card{
+background:#0b1526;
+border:1px solid #263244;
+border-radius:15px;
+padding:18px;
+margin-bottom:15px;
+}
+
+.comment-top{
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+gap:15px;
+margin-bottom:12px;
+}
+
+.comment-user{
+font-weight:bold;
+font-size:17px;
+}
+
+.comment-email{
+color:#64748b;
+font-size:12px;
+margin-top:5px;
+direction:ltr;
+text-align:right;
+}
+
+.comment-project{
+color:#38bdf8;
+font-size:14px;
+margin-bottom:10px;
+}
+
+.comment-text{
+color:#cbd5e1;
+line-height:1.9;
+background:#07101f;
+border-radius:10px;
+padding:12px;
+margin-bottom:12px;
+}
+
+.comment-date{
+color:#64748b;
+font-size:12px;
+}
+
+.comment-delete{
+background:#7f1d1d;
+border:1px solid #991b1b;
+color:#fecaca;
+border-radius:9px;
+padding:9px 13px;
+cursor:pointer;
+font-size:13px;
+}
+
 footer{
 text-align:center;
 padding:30px;
@@ -609,6 +670,14 @@ align-items:stretch;
 
 .page-head h2{
 font-size:23px;
+}
+
+.comment-top{
+flex-direction:column;
+}
+
+.comment-delete{
+width:100%;
 }
 
 }
@@ -816,7 +885,7 @@ onclick="ownerLogout()">
 
 <button onclick="showComments()">
 <strong>💬 إدارة التعليقات</strong>
-<span>مراجعة التعليقات والمحتوى.</span>
+<span>مراجعة التعليقات وحذف المحتوى المخالف.</span>
 </button>
 
 <button onclick="showSecurity()">
@@ -917,15 +986,12 @@ onclick="backToDashboard()">
 
 <div class="content-box">
 
-<div class="info-card">
-<strong>💬 إدارة التعليقات</strong><br>
-من هنا سيتمكن مالك المنصة من مراجعة التعليقات وإدارتها.
+<div id="commentsList">
+
+<div class="loading">
+جاري تحميل التعليقات...
 </div>
 
-<div class="empty">
-لا توجد تعليقات مرتبطة بالمنصة حاليًا.
-<br>
-سنربط التعليقات بقاعدة البيانات في المرحلة التالية.
 </div>
 
 </div>
@@ -1246,6 +1312,7 @@ document.getElementById(
 
 await loadUsers();
 await loadProjects();
+await loadComments();
 
 window.scrollTo(0,0);
 
@@ -1403,6 +1470,7 @@ document.getElementById(
 
 await loadUsers();
 await loadProjects();
+await loadComments();
 
 }
 
@@ -1777,8 +1845,6 @@ async function editProject(id){
 
 editingProjectId = id;
 
-showProjectMessage("");
-
 document.getElementById(
 "projectModalTitle"
 ).innerText =
@@ -2097,7 +2163,9 @@ alert(
 }
 
 
-/* التعليقات */
+/* =========================
+   التعليقات
+========================= */
 
 function showComments(){
 
@@ -2108,6 +2176,251 @@ document.getElementById(
 ).style.display="block";
 
 window.scrollTo(0,0);
+
+loadComments();
+
+}
+
+
+async function loadComments(){
+
+const list =
+document.getElementById("commentsList");
+
+if(!list){
+return;
+}
+
+list.innerHTML =
+'<div class="loading">جاري تحميل التعليقات...</div>';
+
+try{
+
+const { data, error } =
+await db
+.from("comments")
+.select(`
+id,
+content,
+created_at,
+project_id,
+user_id,
+profiles(name,email),
+projects(title)
+`)
+.order("created_at",{ascending:false});
+
+if(error){
+
+console.error(
+"COMMENTS ERROR:",
+error
+);
+
+list.innerHTML =
+'<div class="empty">❌ تعذر تحميل التعليقات:<br>' +
+escapeHtml(error.message) +
+'</div>';
+
+return;
+
+}
+
+document.getElementById(
+"commentsCount"
+).innerText =
+data ? data.length : 0;
+
+if(!data || data.length===0){
+
+list.innerHTML = `
+
+<div class="empty">
+
+💬 لا توجد تعليقات حاليًا.
+
+<br>
+
+ستظهر التعليقات هنا عندما يبدأ المستخدمون بالتفاعل مع المشاريع.
+
+</div>
+
+`;
+
+return;
+
+}
+
+let html="";
+
+data.forEach(function(comment){
+
+const profile =
+comment.profiles || {};
+
+const project =
+comment.projects || {};
+
+const name =
+profile.name ||
+"مستخدم KAPO";
+
+const email =
+profile.email ||
+"بدون بريد";
+
+const projectTitle =
+project.title ||
+"مشروع غير معروف";
+
+const content =
+comment.content ||
+"تعليق فارغ";
+
+const date =
+comment.created_at
+? new Date(comment.created_at)
+.toLocaleString("ar-SA")
+: "-";
+
+html += `
+
+<div class="comment-card">
+
+<div class="comment-top">
+
+<div>
+
+<div class="comment-user">
+👤 ${escapeHtml(name)}
+</div>
+
+<div class="comment-email">
+${escapeHtml(email)}
+</div>
+
+</div>
+
+<button
+class="comment-delete"
+onclick="deleteComment('${comment.id}')">
+
+🗑️ حذف
+
+</button>
+
+</div>
+
+<div class="comment-project">
+🏗️ المشروع: ${escapeHtml(projectTitle)}
+</div>
+
+<div class="comment-text">
+${escapeHtml(content)}
+</div>
+
+<div class="comment-date">
+📅 ${escapeHtml(date)}
+</div>
+
+</div>
+
+`;
+
+});
+
+list.innerHTML=html;
+
+}catch(error){
+
+console.error(error);
+
+list.innerHTML =
+'<div class="empty">❌ حدث خطأ أثناء تحميل التعليقات.</div>';
+
+}
+
+}
+
+
+/* حذف تعليق */
+
+async function deleteComment(id){
+
+const confirmed =
+confirm(
+"⚠️ هل أنت متأكد من حذف هذا التعليق؟\n\nلا يمكن التراجع عن عملية الحذف."
+);
+
+if(!confirmed){
+return;
+}
+
+try{
+
+const { data:sessionData } =
+await db.auth.getSession();
+
+const session =
+sessionData.session;
+
+if(!session || !session.user){
+
+alert(
+"❌ انتهت جلسة الدخول. سجّل الدخول مرة أخرى."
+);
+
+return;
+
+}
+
+if(session.user.id !== OWNER_ID){
+
+alert(
+"❌ غير مصرح لك بإدارة التعليقات."
+);
+
+return;
+
+}
+
+const { error } =
+await db
+.from("comments")
+.delete()
+.eq("id",id);
+
+if(error){
+
+console.error(
+"DELETE COMMENT ERROR:",
+error
+);
+
+alert(
+"❌ تعذر حذف التعليق:\n" +
+error.message
+);
+
+return;
+
+}
+
+alert(
+"✅ تم حذف التعليق بنجاح."
+);
+
+await loadComments();
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"❌ حدث خطأ أثناء حذف التعليق."
+);
+
+}
 
 }
 
