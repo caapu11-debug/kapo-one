@@ -509,6 +509,47 @@ font-size:15px;
 cursor:pointer;
 }
 
+/* الإعجاب */
+
+.like-box{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+margin-top:15px;
+padding-top:15px;
+border-top:1px solid #263244;
+}
+
+.like-btn{
+flex:1;
+padding:12px 15px;
+border-radius:10px;
+border:1px solid #334155;
+background:#1e293b;
+color:#e2e8f0;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.like-btn:hover{
+border-color:#f43f5e;
+}
+
+.like-btn.liked{
+background:#4c0519;
+border-color:#e11d48;
+color:#fb7185;
+}
+
+.like-count{
+color:#94a3b8;
+font-size:14px;
+min-width:90px;
+text-align:center;
+}
+
 .form-actions{
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -1156,6 +1197,10 @@ const OWNER_ID =
 let editingProjectId = null;
 
 
+/* =========================
+   الصفحات
+========================= */
+
 function hideAllPages(){
 
 document.getElementById("ownerLogin").style.display="none";
@@ -1192,6 +1237,10 @@ input.type === "password"
 }
 
 
+/* =========================
+   الرسائل
+========================= */
+
 function showMessage(text){
 
 const message =
@@ -1215,6 +1264,10 @@ message.style.display="block";
 
 }
 
+
+/* =========================
+   تسجيل الدخول
+========================= */
 
 async function ownerLogin(){
 
@@ -1313,6 +1366,7 @@ document.getElementById(
 await loadUsers();
 await loadProjects();
 await loadComments();
+await loadLikesTotal();
 
 window.scrollTo(0,0);
 
@@ -1332,6 +1386,10 @@ error.message
 
 }
 
+
+/* =========================
+   استعادة كلمة المرور
+========================= */
 
 async function resetPassword(){
 
@@ -1393,6 +1451,10 @@ error.message
 }
 
 
+/* =========================
+   تسجيل الخروج
+========================= */
+
 async function ownerLogout(){
 
 const { error } =
@@ -1421,6 +1483,10 @@ showMessage(
 
 }
 
+
+/* =========================
+   الجلسة
+========================= */
 
 async function checkSession(){
 
@@ -1471,13 +1537,16 @@ document.getElementById(
 await loadUsers();
 await loadProjects();
 await loadComments();
+await loadLikesTotal();
 
 }
 
 }
 
 
-/* المستخدمون */
+/* =========================
+   المستخدمون
+========================= */
 
 async function showUsers(){
 
@@ -1615,7 +1684,9 @@ usersList.innerHTML =
 }
 
 
-/* المشاريع */
+/* =========================
+   المشاريع
+========================= */
 
 function showProjects(){
 
@@ -1703,6 +1774,32 @@ return;
 
 }
 
+
+/* جلب الإعجابات */
+
+const { data:likesData, error:likesError } =
+await db
+.from("likes")
+.select("id,project_id,user_id");
+
+if(likesError){
+
+console.error(
+"LIKES ERROR:",
+likesError
+);
+
+}
+
+const likes =
+likesData || [];
+
+const currentSession =
+(await db.auth.getSession()).data.session;
+
+const currentUserId =
+currentSession?.user?.id || null;
+
 let html="";
 
 data.forEach(function(project){
@@ -1726,6 +1823,24 @@ project.image_url
 ? `<img class="project-image" src="${escapeHtml(project.image_url)}" alt="صورة المشروع" onerror="this.style.display='none'">`
 : "";
 
+const projectLikes =
+likes.filter(function(like){
+
+return like.project_id === project.id;
+
+});
+
+const likeCount =
+projectLikes.length;
+
+const isLiked =
+currentUserId &&
+projectLikes.some(function(like){
+
+return like.user_id === currentUserId;
+
+});
+
 html += `
 
 <div class="project-card">
@@ -1742,6 +1857,22 @@ ${escapeHtml(description)}
 
 <div class="project-date">
 تاريخ الإضافة: ${date}
+</div>
+
+<div class="like-box">
+
+<button
+class="like-btn ${isLiked ? "liked" : ""}"
+onclick="toggleLike('${project.id}')">
+
+${isLiked ? "❤️ تم الإعجاب" : "🤍 إعجاب"}
+
+</button>
+
+<div class="like-count">
+❤️ ${likeCount} إعجاب
+</div>
+
 </div>
 
 <div class="project-actions">
@@ -1800,7 +1931,197 @@ list.innerHTML =
 }
 
 
-/* فتح نموذج إضافة */
+/* =========================
+   إجمالي الإعجابات
+========================= */
+
+async function loadLikesTotal(){
+
+const countElement =
+document.getElementById("likesCount");
+
+if(!countElement){
+return;
+}
+
+try{
+
+const { count, error } =
+await db
+.from("likes")
+.select("*",{count:"exact",head:true});
+
+if(error){
+
+console.error(
+"LIKES TOTAL ERROR:",
+error
+);
+
+countElement.innerText="0";
+
+return;
+
+}
+
+countElement.innerText =
+count || 0;
+
+}catch(error){
+
+console.error(error);
+
+countElement.innerText="0";
+
+}
+
+}
+
+
+/* =========================
+   إعجاب / إزالة إعجاب
+========================= */
+
+async function toggleLike(projectId){
+
+try{
+
+const { data:sessionData, error:sessionError } =
+await db.auth.getSession();
+
+if(sessionError){
+
+alert(
+"❌ تعذر التحقق من تسجيل الدخول."
+);
+
+return;
+
+}
+
+const session =
+sessionData.session;
+
+if(!session || !session.user){
+
+alert(
+"🔐 يجب تسجيل الدخول أولًا حتى تتمكن من الإعجاب بالمشروع."
+);
+
+return;
+
+}
+
+const userId =
+session.user.id;
+
+
+/* هل يوجد إعجاب سابق؟ */
+
+const { data:existingLike, error:checkError } =
+await db
+.from("likes")
+.select("id")
+.eq("project_id",projectId)
+.eq("user_id",userId)
+.maybeSingle();
+
+if(checkError){
+
+console.error(
+"CHECK LIKE ERROR:",
+checkError
+);
+
+alert(
+"❌ تعذر التحقق من الإعجاب:\n" +
+checkError.message
+);
+
+return;
+
+}
+
+
+/* إزالة الإعجاب */
+
+if(existingLike){
+
+const { error } =
+await db
+.from("likes")
+.delete()
+.eq("id",existingLike.id)
+.eq("user_id",userId);
+
+if(error){
+
+console.error(
+"REMOVE LIKE ERROR:",
+error
+);
+
+alert(
+"❌ تعذر إزالة الإعجاب:\n" +
+error.message
+);
+
+return;
+
+}
+
+}else{
+
+/* إضافة الإعجاب */
+
+const { error } =
+await db
+.from("likes")
+.insert({
+
+project_id:projectId,
+
+user_id:userId
+
+});
+
+if(error){
+
+console.error(
+"ADD LIKE ERROR:",
+error
+);
+
+alert(
+"❌ تعذر إضافة الإعجاب:\n" +
+error.message
+);
+
+return;
+
+}
+
+}
+
+await loadProjects();
+await loadLikesTotal();
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"❌ حدث خطأ أثناء تنفيذ الإعجاب."
+);
+
+}
+
+}
+
+
+/* =========================
+   فتح نموذج إضافة
+========================= */
 
 function openProjectModal(){
 
@@ -1839,7 +2160,9 @@ document.getElementById(
 }
 
 
-/* فتح نموذج التعديل */
+/* =========================
+   تعديل المشروع
+========================= */
 
 async function editProject(id){
 
@@ -1916,7 +2239,9 @@ showProjectMessage(
 }
 
 
-/* إغلاق النموذج */
+/* =========================
+   إغلاق النموذج
+========================= */
 
 function closeProjectModal(){
 
@@ -1929,7 +2254,9 @@ editingProjectId = null;
 }
 
 
-/* حفظ أو تعديل المشروع */
+/* =========================
+   حفظ المشروع
+========================= */
 
 async function saveProject(){
 
@@ -2080,7 +2407,9 @@ error.message
 }
 
 
-/* حذف المشروع */
+/* =========================
+   حذف المشروع
+========================= */
 
 async function deleteProject(id){
 
@@ -2149,6 +2478,7 @@ alert(
 );
 
 await loadProjects();
+await loadLikesTotal();
 
 }catch(error){
 
@@ -2343,7 +2673,9 @@ list.innerHTML =
 }
 
 
-/* حذف تعليق */
+/* =========================
+   حذف تعليق
+========================= */
 
 async function deleteComment(id){
 
@@ -2425,7 +2757,9 @@ alert(
 }
 
 
-/* الأمان */
+/* =========================
+   الأمان
+========================= */
 
 function showSecurity(){
 
@@ -2440,7 +2774,9 @@ window.scrollTo(0,0);
 }
 
 
-/* العودة */
+/* =========================
+   العودة
+========================= */
 
 function backToDashboard(){
 
@@ -2455,7 +2791,9 @@ window.scrollTo(0,0);
 }
 
 
-/* حماية النصوص */
+/* =========================
+   حماية النصوص
+========================= */
 
 function escapeHtml(text){
 
@@ -2469,7 +2807,9 @@ return String(text)
 }
 
 
-/* مراقبة الجلسة */
+/* =========================
+   مراقبة الجلسة
+========================= */
 
 db.auth.onAuthStateChange(
 
@@ -2501,6 +2841,11 @@ hideAllPages();
 document.getElementById(
 "ownerDashboard"
 ).style.display="block";
+
+loadUsers();
+loadProjects();
+loadComments();
+loadLikesTotal();
 
 }else{
 
