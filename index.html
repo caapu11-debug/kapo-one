@@ -108,7 +108,8 @@ color:#cbd5e1;
 font-size:14px;
 }
 
-.input{
+.input,
+.textarea{
 width:100%;
 padding:15px;
 background:#07101f;
@@ -119,7 +120,14 @@ font-size:16px;
 outline:none;
 }
 
-.input:focus{
+.textarea{
+min-height:120px;
+resize:vertical;
+font-family:Arial,sans-serif;
+}
+
+.input:focus,
+.textarea:focus{
 border-color:#38bdf8;
 }
 
@@ -143,7 +151,8 @@ font-size:20px;
 cursor:pointer;
 }
 
-.login-btn{
+.login-btn,
+.save-btn{
 width:100%;
 padding:15px;
 border:0;
@@ -331,11 +340,18 @@ margin:0;
 font-size:28px;
 }
 
-.content-box{
+.content-box,
+.users-box{
 background:#111827;
 border:1px solid #263244;
 border-radius:18px;
 padding:25px;
+}
+
+.loading{
+text-align:center;
+padding:30px;
+color:#94a3b8;
 }
 
 .empty{
@@ -375,19 +391,7 @@ margin-bottom:15px;
 line-height:1.8;
 }
 
-.users-box{
-background:#111827;
-border:1px solid #263244;
-border-radius:18px;
-padding:20px;
-overflow-x:auto;
-}
-
-.loading{
-text-align:center;
-padding:30px;
-color:#94a3b8;
-}
+/* المستخدمون */
 
 .user-row{
 display:grid;
@@ -440,6 +444,84 @@ font-size:12px;
 text-align:center;
 }
 
+/* المشاريع */
+
+.project-card{
+background:#0b1526;
+border:1px solid #263244;
+border-radius:15px;
+padding:20px;
+margin-bottom:15px;
+}
+
+.project-title{
+font-size:20px;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.project-description{
+color:#cbd5e1;
+line-height:1.8;
+margin-bottom:10px;
+}
+
+.project-date{
+color:#64748b;
+font-size:13px;
+}
+
+.project-image{
+width:100%;
+max-height:300px;
+object-fit:cover;
+border-radius:12px;
+margin-bottom:15px;
+}
+
+.form-actions{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin-top:15px;
+}
+
+.cancel-btn{
+width:100%;
+padding:14px;
+border:1px solid #334155;
+border-radius:11px;
+background:#1e293b;
+color:white;
+font-size:15px;
+cursor:pointer;
+}
+
+.modal{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.75);
+z-index:1000;
+padding:20px;
+overflow-y:auto;
+}
+
+.modal-box{
+max-width:520px;
+margin:50px auto;
+background:#111827;
+border:1px solid #334155;
+border-radius:20px;
+padding:25px;
+}
+
+.modal-title{
+font-size:24px;
+font-weight:bold;
+margin-bottom:20px;
+}
+
 footer{
 text-align:center;
 padding:30px;
@@ -484,7 +566,8 @@ grid-template-columns:1fr;
 }
 
 .management,
-.action-box{
+.action-box,
+.form-actions{
 grid-template-columns:1fr;
 }
 
@@ -721,10 +804,16 @@ onclick="ownerLogout()">
 
 <div class="page-head">
 
-<h2>👥 إدارة المستخدمين</h2>
+<h2>
+👥 إدارة المستخدمين
+</h2>
 
-<button class="back-btn" onclick="backToDashboard()">
+<button
+class="back-btn"
+onclick="backToDashboard()">
+
 ⬅️ العودة للوحة التحكم
+
 </button>
 
 </div>
@@ -740,42 +829,33 @@ onclick="ownerLogout()">
 </section>
 
 
-<!-- المشاريع -->
+<!-- إدارة المشاريع -->
 
 <section id="projectsPage" class="projects-page">
 
 <div class="page-head">
 
-<h2>🏗️ إدارة المشاريع</h2>
+<h2>
+🏗️ إدارة المشاريع
+</h2>
 
-<button class="back-btn" onclick="backToDashboard()">
+<button
+class="back-btn"
+onclick="backToDashboard()">
+
 ⬅️ العودة للوحة التحكم
+
 </button>
 
 </div>
 
 <div class="content-box">
 
-<div class="info-card">
-<strong>🏗️ مشاريع KAPO ONE</strong><br>
-هذه الصفحة مخصصة لإدارة المشاريع المنشورة في المنصة.
+<div id="projectsList">
+
+<div class="loading">
+جاري تحميل المشاريع...
 </div>
-
-<div class="empty">
-لا توجد مشاريع مرتبطة بالمنصة حاليًا.
-<br>
-سنقوم في الخطوة التالية بربط المشاريع بقاعدة البيانات.
-</div>
-
-<div class="action-box">
-
-<button class="action-button" onclick="showInfo('إضافة مشروع')">
-➕ إضافة مشروع
-</button>
-
-<button class="action-button" onclick="showInfo('مراجعة المشاريع')">
-🔎 مراجعة المشاريع
-</button>
 
 </div>
 
@@ -784,16 +864,22 @@ onclick="ownerLogout()">
 </section>
 
 
-<!-- التعليقات -->
+<!-- إدارة التعليقات -->
 
 <section id="commentsPage" class="comments-page">
 
 <div class="page-head">
 
-<h2>💬 إدارة التعليقات</h2>
+<h2>
+💬 إدارة التعليقات
+</h2>
 
-<button class="back-btn" onclick="backToDashboard()">
+<button
+class="back-btn"
+onclick="backToDashboard()">
+
 ⬅️ العودة للوحة التحكم
+
 </button>
 
 </div>
@@ -808,19 +894,7 @@ onclick="ownerLogout()">
 <div class="empty">
 لا توجد تعليقات مرتبطة بالمنصة حاليًا.
 <br>
-سنقوم في الخطوة التالية بربط التعليقات بقاعدة البيانات.
-</div>
-
-<div class="action-box">
-
-<button class="action-button" onclick="showInfo('مراجعة التعليقات')">
-🔎 مراجعة التعليقات
-</button>
-
-<button class="action-button" onclick="showInfo('التعليقات المبلغ عنها')">
-⚠️ التعليقات المبلغ عنها
-</button>
-
+سنربط التعليقات بقاعدة البيانات في المرحلة التالية.
 </div>
 
 </div>
@@ -834,10 +908,16 @@ onclick="ownerLogout()">
 
 <div class="page-head">
 
-<h2>🛡️ إعدادات الأمان</h2>
+<h2>
+🛡️ إعدادات الأمان
+</h2>
 
-<button class="back-btn" onclick="backToDashboard()">
+<button
+class="back-btn"
+onclick="backToDashboard()">
+
 ⬅️ العودة للوحة التحكم
+
 </button>
 
 </div>
@@ -851,22 +931,95 @@ onclick="ownerLogout()">
 
 <div class="info-card">
 <strong>👑 صلاحيات المالك</strong><br>
-الوصول إلى لوحة المالك مرتبط بمعرّف حساب المالك المحدد في النظام.
+الوصول إلى لوحة المالك مرتبط بمعرّف حساب المالك.
 </div>
 
 <div class="info-card">
 <strong>🚪 تسجيل الخروج</strong><br>
-يمكنك تسجيل الخروج من حساب المالك في أي وقت من أعلى لوحة التحكم.
-</div>
-
-<div class="info-card">
-<strong>⚠️ تنبيه أمني</strong><br>
-لن نقوم بتغيير إعدادات الأمان أو صلاحيات قاعدة البيانات في هذه المرحلة حتى نتأكد من عمل النظام بالكامل.
+يمكنك تسجيل الخروج من حساب المالك في أي وقت.
 </div>
 
 </div>
 
 </section>
+
+
+<!-- نافذة إضافة مشروع -->
+
+<div id="projectModal" class="modal">
+
+<div class="modal-box">
+
+<div class="modal-title">
+➕ إضافة مشروع جديد
+</div>
+
+<div id="projectMessage" class="message"></div>
+
+<div class="form-group">
+
+<label>
+اسم المشروع
+</label>
+
+<input
+id="projectTitle"
+class="input"
+type="text"
+placeholder="مثال: برج KAPO ONE">
+
+</div>
+
+<div class="form-group">
+
+<label>
+وصف المشروع
+</label>
+
+<textarea
+id="projectDescription"
+class="textarea"
+placeholder="اكتب وصف المشروع هنا..."></textarea>
+
+</div>
+
+<div class="form-group">
+
+<label>
+رابط صورة المشروع
+</label>
+
+<input
+id="projectImage"
+class="input"
+type="url"
+placeholder="https://...">
+
+</div>
+
+<div class="form-actions">
+
+<button
+class="save-btn"
+onclick="saveProject()">
+
+💾 حفظ المشروع
+
+</button>
+
+<button
+class="cancel-btn"
+onclick="closeProjectModal()">
+
+إلغاء
+
+</button>
+
+</div>
+
+</div>
+
+</div>
 
 
 <footer>
@@ -943,6 +1096,18 @@ function showMessage(text){
 
 const message =
 document.getElementById("message");
+
+message.innerText=text;
+
+message.style.display="block";
+
+}
+
+
+function showProjectMessage(text){
+
+const message =
+document.getElementById("projectMessage");
 
 message.innerText=text;
 
@@ -1046,6 +1211,7 @@ document.getElementById(
 ).style.display="block";
 
 await loadUsers();
+await loadProjects();
 
 window.scrollTo(0,0);
 
@@ -1202,6 +1368,7 @@ document.getElementById(
 ).style.display="block";
 
 await loadUsers();
+await loadProjects();
 
 }
 
@@ -1358,6 +1525,314 @@ document.getElementById(
 
 window.scrollTo(0,0);
 
+loadProjects();
+
+}
+
+
+async function loadProjects(){
+
+const list =
+document.getElementById("projectsList");
+
+if(!list){
+return;
+}
+
+list.innerHTML =
+'<div class="loading">جاري تحميل المشاريع...</div>';
+
+try{
+
+const { data, error } =
+await db
+.from("projects")
+.select("*")
+.order("created_at",{ascending:false});
+
+if(error){
+
+console.error(
+"PROJECTS ERROR:",
+error
+);
+
+list.innerHTML =
+'<div class="empty">❌ تعذر تحميل المشاريع:<br>' +
+escapeHtml(error.message) +
+'</div>';
+
+return;
+
+}
+
+document.getElementById(
+"projectsCount"
+).innerText =
+data ? data.length : 0;
+
+if(!data || data.length===0){
+
+list.innerHTML = `
+
+<div class="empty">
+
+🏗️ لا توجد مشاريع حاليًا.
+
+<br>
+
+اضغط على الزر أدناه لإضافة أول مشروع.
+
+<br><br>
+
+<button
+class="action-button"
+onclick="openProjectModal()">
+
+➕ إضافة مشروع
+
+</button>
+
+</div>
+
+`;
+
+return;
+
+}
+
+let html="";
+
+data.forEach(function(project){
+
+const title =
+project.title ||
+"مشروع بدون اسم";
+
+const description =
+project.description ||
+"لا يوجد وصف للمشروع.";
+
+const date =
+project.created_at
+? new Date(project.created_at)
+.toLocaleDateString("ar-SA")
+: "-";
+
+const image =
+project.image_url
+? `<img class="project-image" src="${escapeHtml(project.image_url)}" alt="صورة المشروع" onerror="this.style.display='none'">`
+: "";
+
+html += `
+
+<div class="project-card">
+
+${image}
+
+<div class="project-title">
+🏗️ ${escapeHtml(title)}
+</div>
+
+<div class="project-description">
+${escapeHtml(description)}
+</div>
+
+<div class="project-date">
+تاريخ الإضافة: ${date}
+</div>
+
+</div>
+
+`;
+
+});
+
+html += `
+
+<div style="margin-top:20px;text-align:center">
+
+<button
+class="action-button"
+onclick="openProjectModal()">
+
+➕ إضافة مشروع جديد
+
+</button>
+
+</div>
+
+`;
+
+list.innerHTML=html;
+
+}catch(error){
+
+console.error(error);
+
+list.innerHTML =
+'<div class="empty">❌ حدث خطأ أثناء تحميل المشاريع.</div>';
+
+}
+
+}
+
+
+/* فتح نموذج المشروع */
+
+function openProjectModal(){
+
+document.getElementById(
+"projectModal"
+).style.display="block";
+
+document.getElementById(
+"projectTitle"
+).value="";
+
+document.getElementById(
+"projectDescription"
+).value="";
+
+document.getElementById(
+"projectImage"
+).value="";
+
+document.getElementById(
+"projectMessage"
+).style.display="none";
+
+}
+
+
+/* إغلاق النموذج */
+
+function closeProjectModal(){
+
+document.getElementById(
+"projectModal"
+).style.display="none";
+
+}
+
+
+/* حفظ المشروع */
+
+async function saveProject(){
+
+const title =
+document.getElementById(
+"projectTitle"
+).value.trim();
+
+const description =
+document.getElementById(
+"projectDescription"
+).value.trim();
+
+const image =
+document.getElementById(
+"projectImage"
+).value.trim();
+
+if(title===""){
+
+showProjectMessage(
+"يرجى كتابة اسم المشروع."
+);
+
+return;
+
+}
+
+showProjectMessage(
+"جاري حفظ المشروع..."
+);
+
+try{
+
+const { data:sessionData } =
+await db.auth.getSession();
+
+const session =
+sessionData.session;
+
+if(!session || !session.user){
+
+showProjectMessage(
+"❌ انتهت جلسة الدخول. سجّل الدخول مرة أخرى."
+);
+
+return;
+
+}
+
+if(session.user.id !== OWNER_ID){
+
+showProjectMessage(
+"❌ غير مصرح لك بإضافة مشروع."
+);
+
+return;
+
+}
+
+const { data, error } =
+await db
+.from("projects")
+.insert({
+
+user_id:session.user.id,
+
+title:title,
+
+description:description || null,
+
+image_url:image || null
+
+})
+.select()
+.single();
+
+if(error){
+
+console.error(
+"INSERT PROJECT ERROR:",
+error
+);
+
+showProjectMessage(
+"❌ تعذر حفظ المشروع:\n" +
+error.message
+);
+
+return;
+
+}
+
+showProjectMessage(
+"✅ تم حفظ المشروع بنجاح."
+);
+
+setTimeout(async function(){
+
+closeProjectModal();
+
+await loadProjects();
+
+},800);
+
+}catch(error){
+
+console.error(error);
+
+showProjectMessage(
+"❌ حدث خطأ أثناء حفظ المشروع:\n" +
+error.message
+);
+
+}
+
 }
 
 
@@ -1391,15 +1866,17 @@ window.scrollTo(0,0);
 }
 
 
-/* رسائل مؤقتة للأزرار غير المرتبطة بقاعدة البيانات */
+/* العودة */
 
-function showInfo(title){
+function backToDashboard(){
 
-alert(
-"قسم " +
-title +
-" سيُفعّل في المرحلة التالية بعد ربط قاعدة البيانات."
-);
+hideAllPages();
+
+document.getElementById(
+"ownerDashboard"
+).style.display="block";
+
+window.scrollTo(0,0);
 
 }
 
@@ -1414,21 +1891,6 @@ return String(text)
 .replace(/>/g,"&gt;")
 .replace(/"/g,"&quot;")
 .replace(/'/g,"&#039;");
-
-}
-
-
-/* العودة */
-
-function backToDashboard(){
-
-hideAllPages();
-
-document.getElementById(
-"ownerDashboard"
-).style.display="block";
-
-window.scrollTo(0,0);
 
 }
 
