@@ -5,10 +5,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>KAPO ONE | حساب المالك</title>
+<title>KAPO ONE</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+    box-sizing:border-box;
+}
 
 body{
     margin:0;
@@ -27,7 +29,7 @@ header{
 
 header h1{
     margin:0;
-    font-size:28px;
+    font-size:30px;
 }
 
 header p{
@@ -47,11 +49,6 @@ header p{
     border-radius:18px;
     padding:22px;
     margin-bottom:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,.2);
-}
-
-h2,h3{
-    margin-top:0;
 }
 
 input,
@@ -107,34 +104,17 @@ button:hover{
     border-radius:10px;
     margin-top:10px;
     background:#172033;
+    line-height:1.7;
 }
 
-.dashboard-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-}
-
-.stat{
-    background:#111c2f;
-    border:1px solid #263449;
-    padding:20px;
-    border-radius:16px;
-    text-align:center;
-}
-
-.stat-number{
-    font-size:30px;
-    font-weight:bold;
-    margin-top:10px;
-}
-
-.nav-buttons{
+.auth-tabs{
     display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
     gap:8px;
-    margin-bottom:20px;
+    margin-bottom:15px;
+}
+
+.auth-tabs button{
+    flex:1;
 }
 
 .project-card{
@@ -225,36 +205,23 @@ button:hover{
     white-space:pre-wrap;
 }
 
-.comment-form{
-    margin-top:15px;
-}
-
-.user-item{
-    background:#111827;
-    border:1px solid #263449;
-    border-radius:12px;
-    padding:14px;
-    margin-bottom:10px;
-}
-
-.modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.75);
+.user-top{
     display:flex;
+    justify-content:space-between;
     align-items:center;
-    justify-content:center;
-    padding:20px;
-    z-index:1000;
+    gap:10px;
+    flex-wrap:wrap;
 }
 
-.modal-box{
-    width:100%;
-    max-width:600px;
-    background:#0f172a;
-    border:1px solid #334155;
-    border-radius:18px;
-    padding:22px;
+.welcome{
+    font-size:18px;
+    color:#cbd5e1;
+}
+
+.empty{
+    text-align:center;
+    color:#94a3b8;
+    padding:30px;
 }
 
 footer{
@@ -263,15 +230,14 @@ footer{
     color:#64748b;
 }
 
-@media(max-width:800px){
-    .dashboard-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-}
+@media(max-width:600px){
 
-@media(max-width:500px){
-    .dashboard-grid{
-        grid-template-columns:1fr 1fr;
+    .auth-tabs{
+        flex-direction:column;
+    }
+
+    .user-top{
+        align-items:stretch;
     }
 
     button{
@@ -286,244 +252,150 @@ footer{
 
 <header>
     <h1>🚀 KAPO ONE</h1>
-    <p>لوحة تحكم المالك</p>
+    <p>منصة عالمية للأعمال والأفكار والتصاميم</p>
 </header>
 
 
-<!-- تسجيل الدخول -->
+<!-- =========================
+     دخول وتسجيل المستخدم
+========================= -->
 
-<div id="ownerLogin" class="container">
-
-    <div class="card">
-
-        <h2>🔐 دخول المالك</h2>
-
-        <input
-            id="loginEmail"
-            type="email"
-            placeholder="البريد الإلكتروني"
-        >
-
-        <input
-            id="loginPassword"
-            type="password"
-            placeholder="كلمة المرور"
-        >
-
-        <button onclick="loginOwner()">دخول</button>
-
-        <button
-            class="btn-secondary"
-            onclick="resetPassword()"
-        >
-            استعادة كلمة المرور
-        </button>
-
-        <div id="loginMessage"></div>
-
-    </div>
-
-</div>
-
-
-<!-- لوحة التحكم -->
-
-<div id="ownerDashboard" class="container hidden">
+<div id="userAuth" class="container">
 
     <div class="card">
 
-        <h2>👑 مرحباً بك في لوحة المالك</h2>
+        <h2>👤 حساب المستخدم</h2>
 
-        <div class="nav-buttons">
+        <div class="auth-tabs">
 
-            <button onclick="showDashboard()">
-                🏠 الرئيسية
-            </button>
-
-            <button onclick="showUsers()">
-                👥 المستخدمون
-            </button>
-
-            <button onclick="showProjects()">
-                🏗️ المشاريع
-            </button>
-
-            <button onclick="showComments()">
-                💬 التعليقات
-            </button>
-
-            <button onclick="showSecurity()">
-                🔐 الأمان
+            <button onclick="showLoginForm()">
+                🔐 تسجيل الدخول
             </button>
 
             <button
-                class="btn-danger"
-                onclick="logout()"
+                class="btn-secondary"
+                onclick="showRegisterForm()"
             >
-                تسجيل الخروج
+                📝 إنشاء حساب
             </button>
 
         </div>
 
-    </div>
 
+        <!-- تسجيل الدخول -->
 
-    <div id="dashboardPage">
+        <div id="loginForm">
 
-        <div class="dashboard-grid">
+            <input
+                id="userLoginEmail"
+                type="email"
+                placeholder="البريد الإلكتروني"
+            >
 
-            <div class="stat">
-                👥
-                <div>المستخدمون</div>
-                <div id="usersCount" class="stat-number">0</div>
-            </div>
+            <input
+                id="userLoginPassword"
+                type="password"
+                placeholder="كلمة المرور"
+            >
 
-            <div class="stat">
-                🏗️
-                <div>المشاريع</div>
-                <div id="projectsCount" class="stat-number">0</div>
-            </div>
+            <button onclick="loginUser()">
+                دخول
+            </button>
 
-            <div class="stat">
-                💬
-                <div>التعليقات</div>
-                <div id="commentsCount" class="stat-number">0</div>
-            </div>
-
-            <div class="stat">
-                ❤️
-                <div>الإعجابات</div>
-                <div id="likesCount" class="stat-number">0</div>
-            </div>
+            <button
+                class="btn-secondary"
+                onclick="resetUserPassword()"
+            >
+                استعادة كلمة المرور
+            </button>
 
         </div>
 
-    </div>
 
+        <!-- إنشاء الحساب -->
 
-    <!-- المستخدمون -->
+        <div
+            id="registerForm"
+            class="hidden"
+        >
 
-    <div id="usersPage" class="hidden">
+            <input
+                id="registerName"
+                type="text"
+                placeholder="الاسم"
+            >
 
-        <div class="card">
+            <input
+                id="registerEmail"
+                type="email"
+                placeholder="البريد الإلكتروني"
+            >
 
-            <h2>👥 إدارة المستخدمين</h2>
-
-            <div id="usersList"></div>
-
-        </div>
-
-    </div>
-
-
-    <!-- المشاريع -->
-
-    <div id="projectsPage" class="hidden">
-
-        <div class="card">
-
-            <h2>🏗️ إدارة المشاريع</h2>
+            <input
+                id="registerPassword"
+                type="password"
+                placeholder="كلمة المرور"
+            >
 
             <button
                 class="btn-success"
-                onclick="openAddProject()"
+                onclick="registerUser()"
             >
-                ➕ إضافة مشروع
+                إنشاء الحساب
             </button>
 
         </div>
 
-        <div id="projectsList"></div>
 
-    </div>
-
-
-    <!-- التعليقات -->
-
-    <div id="commentsPage" class="hidden">
-
-        <div class="card">
-
-            <h2>💬 إدارة التعليقات</h2>
-
-            <div id="commentsList"></div>
-
-        </div>
-
-    </div>
-
-
-    <!-- الأمان -->
-
-    <div id="securityPage" class="hidden">
-
-        <div class="card">
-
-            <h2>🔐 الأمان</h2>
-
-            <p>
-                حساب المالك محمي بواسطة Supabase Authentication.
-            </p>
-
-            <button
-                class="btn-danger"
-                onclick="logout()"
-            >
-                تسجيل الخروج
-            </button>
-
-        </div>
+        <div id="authMessage"></div>
 
     </div>
 
 </div>
 
 
-<!-- نافذة المشروع -->
+<!-- =========================
+     واجهة المستخدم
+========================= -->
 
 <div
-    id="projectModal"
-    class="modal hidden"
+    id="userApp"
+    class="container hidden"
 >
 
-    <div class="modal-box">
+    <div class="card">
 
-        <h2 id="modalTitle">
-            إضافة مشروع
-        </h2>
+        <div class="user-top">
 
-        <input
-            id="projectTitle"
-            placeholder="اسم المشروع"
-        >
+            <div class="welcome">
+                👋 مرحبًا
+                <strong id="userName"></strong>
+            </div>
 
-        <textarea
-            id="projectDescription"
-            placeholder="وصف المشروع"
-        ></textarea>
+            <button
+                class="btn-danger"
+                onclick="logoutUser()"
+            >
+                🚪 تسجيل الخروج
+            </button>
 
-        <input
-            id="projectImage"
-            placeholder="رابط صورة المشروع"
-        >
-
-        <button
-            class="btn-success"
-            onclick="saveProject()"
-        >
-            حفظ
-        </button>
-
-        <button
-            class="btn-secondary"
-            onclick="closeProjectModal()"
-        >
-            إلغاء
-        </button>
-
-        <div id="projectMessage"></div>
+        </div>
 
     </div>
+
+
+    <div class="card">
+
+        <h2>🏗️ المشاريع</h2>
+
+        <p style="color:#94a3b8">
+            استكشف الأعمال والتصاميم، وأضف إعجابك أو تعليقك.
+        </p>
+
+    </div>
+
+
+    <div id="userProjectsList"></div>
 
 </div>
 
@@ -549,6 +421,7 @@ const OWNER_ID =
 const SITE_URL =
 "https://caapu11-debug.github.io/kapo-one/";
 
+
 const db =
 supabase.createClient(
     SUPABASE_URL,
@@ -556,64 +429,319 @@ supabase.createClient(
 );
 
 
-let editingProjectId = null;
+/* =========================
+   تبديل النماذج
+========================= */
+
+function showLoginForm(){
+
+    document
+    .getElementById("loginForm")
+    .classList.remove("hidden");
+
+    document
+    .getElementById("registerForm")
+    .classList.add("hidden");
+
+    document
+    .getElementById("authMessage")
+    .innerHTML = "";
+
+}
+
+
+function showRegisterForm(){
+
+    document
+    .getElementById("loginForm")
+    .classList.add("hidden");
+
+    document
+    .getElementById("registerForm")
+    .classList.remove("hidden");
+
+    document
+    .getElementById("authMessage")
+    .innerHTML = "";
+
+}
+
+
+/* =========================
+   إنشاء مستخدم
+========================= */
+
+async function registerUser(){
+
+    const name =
+        document
+        .getElementById("registerName")
+        .value
+        .trim();
+
+    const email =
+        document
+        .getElementById("registerEmail")
+        .value
+        .trim();
+
+    const password =
+        document
+        .getElementById("registerPassword")
+        .value;
+
+    const message =
+        document
+        .getElementById("authMessage");
+
+
+    if(!name || !email || !password){
+
+        message.innerHTML =
+        `<div class="message">
+            ❌ املأ جميع الخانات.
+        </div>`;
+
+        return;
+    }
+
+
+    if(password.length < 6){
+
+        message.innerHTML =
+        `<div class="message">
+            ❌ كلمة المرور يجب أن تكون 6 أحرف على الأقل.
+        </div>`;
+
+        return;
+    }
+
+
+    message.innerHTML =
+    `<div class="message">
+        جاري إنشاء الحساب...
+    </div>`;
+
+
+    const {data,error} =
+        await db.auth.signUp({
+
+            email:email,
+
+            password:password,
+
+            options:{
+                data:{
+                    name:name
+                }
+            }
+
+        });
+
+
+    if(error){
+
+        message.innerHTML =
+        `<div class="message">
+            ❌ ${escapeHtml(error.message)}
+        </div>`;
+
+        return;
+    }
+
+
+    /*
+      إذا تم إنشاء المستخدم وتسجيل دخوله مباشرة
+      ننشئ ملفه في profiles.
+    */
+
+    if(data.user){
+
+        await createProfile(
+            data.user,
+            name
+        );
+
+    }
+
+
+    /*
+      قد تكون خاصية تأكيد البريد مفعلة في Supabase.
+    */
+
+    if(!data.session){
+
+        message.innerHTML =
+        `<div class="message">
+            ✅ تم إنشاء الحساب.
+            <br>
+            تحقق من بريدك الإلكتروني لتفعيل الحساب،
+            ثم سجّل الدخول.
+        </div>`;
+
+        return;
+    }
+
+
+    message.innerHTML =
+    `<div class="message">
+        ✅ تم إنشاء الحساب بنجاح.
+    </div>`;
+
+
+    await loadUserApp(
+        data.user
+    );
+
+}
+
+
+/* =========================
+   إنشاء Profile
+========================= */
+
+async function createProfile(
+    user,
+    name
+){
+
+    if(!user) return;
+
+
+    const {error} =
+        await db
+        .from("profiles")
+        .upsert({
+
+            id:user.id,
+
+            name:name ||
+                 user.user_metadata?.name ||
+                 "مستخدم",
+
+            email:user.email
+
+        });
+
+
+    if(error){
+
+        console.log(
+            "Profile error:",
+            error.message
+        );
+
+    }
+
+}
 
 
 /* =========================
    تسجيل الدخول
 ========================= */
 
-async function loginOwner(){
+async function loginUser(){
 
     const email =
-        document.getElementById("loginEmail").value.trim();
+        document
+        .getElementById("userLoginEmail")
+        .value
+        .trim();
 
     const password =
-        document.getElementById("loginPassword").value;
+        document
+        .getElementById("userLoginPassword")
+        .value;
 
     const message =
-        document.getElementById("loginMessage");
+        document
+        .getElementById("authMessage");
 
-    message.innerHTML = "جاري تسجيل الدخول...";
 
-    const {data,error} =
-        await db.auth.signInWithPassword({
-            email,
-            password
-        });
-
-    if(error){
-
-        message.innerHTML =
-        `<div class="message">❌ ${escapeHtml(error.message)}</div>`;
-
-        return;
-    }
-
-    if(!data.user || data.user.id !== OWNER_ID){
-
-        await db.auth.signOut();
+    if(!email || !password){
 
         message.innerHTML =
         `<div class="message">
-            ❌ هذا الحساب ليس حساب المالك.
+            ❌ اكتب البريد وكلمة المرور.
         </div>`;
 
         return;
     }
 
-    showOwnerDashboard();
+
+    message.innerHTML =
+    `<div class="message">
+        جاري تسجيل الدخول...
+    </div>`;
+
+
+    const {data,error} =
+        await db.auth.signInWithPassword({
+
+            email:email,
+
+            password:password
+
+        });
+
+
+    if(error){
+
+        message.innerHTML =
+        `<div class="message">
+            ❌ ${escapeHtml(error.message)}
+        </div>`;
+
+        return;
+    }
+
+
+    if(
+        data.user &&
+        data.user.id === OWNER_ID
+    ){
+
+        message.innerHTML =
+        `<div class="message">
+            👑 هذا حساب المالك.
+            <br>
+            استخدم لوحة المالك.
+        </div>`;
+
+        return;
+    }
+
+
+    await createProfile(
+        data.user,
+        data.user.user_metadata?.name ||
+        "مستخدم"
+    );
+
+
+    await loadUserApp(
+        data.user
+    );
 
 }
 
 
-async function resetPassword(){
+/* =========================
+   استعادة كلمة المرور
+========================= */
+
+async function resetUserPassword(){
 
     const email =
-        document.getElementById("loginEmail").value.trim();
+        document
+        .getElementById("userLoginEmail")
+        .value
+        .trim();
 
     const message =
-        document.getElementById("loginMessage");
+        document
+        .getElementById("authMessage");
+
 
     if(!email){
 
@@ -625,13 +753,15 @@ async function resetPassword(){
         return;
     }
 
+
     const {error} =
         await db.auth.resetPasswordForEmail(
             email,
             {
-                redirectTo: SITE_URL
+                redirectTo:SITE_URL
             }
         );
+
 
     if(error){
 
@@ -643,272 +773,112 @@ async function resetPassword(){
         return;
     }
 
+
     message.innerHTML =
     `<div class="message">
         ✅ تم إرسال رابط الاستعادة إلى بريدك الإلكتروني.
     </div>`;
+
 }
 
 
 /* =========================
-   الجلسة
+   تشغيل التطبيق
 ========================= */
 
-async function checkSession(){
+async function loadUserApp(user){
 
-    const {data} =
-        await db.auth.getSession();
+    if(!user) return;
 
-    if(
-        data.session &&
-        data.session.user &&
-        data.session.user.id === OWNER_ID
-    ){
 
-        showOwnerDashboard();
+    if(user.id === OWNER_ID){
 
-    }else{
+        return;
+    }
 
-        document
-        .getElementById("ownerLogin")
-        .classList.remove("hidden");
 
-        document
-        .getElementById("ownerDashboard")
-        .classList.add("hidden");
+    document
+    .getElementById("userAuth")
+    .classList.add("hidden");
+
+
+    document
+    .getElementById("userApp")
+    .classList.remove("hidden");
+
+
+    let name =
+        user.user_metadata?.name;
+
+
+    if(!name){
+
+        const {data} =
+            await db
+            .from("profiles")
+            .select("name")
+            .eq(
+                "id",
+                user.id
+            )
+            .maybeSingle();
+
+        name =
+            data?.name || "مستخدم";
 
     }
 
-}
-
-
-db.auth.onAuthStateChange(
-    function(event,session){
-
-        if(
-            session &&
-            session.user &&
-            session.user.id === OWNER_ID
-        ){
-
-            showOwnerDashboard();
-
-        }
-
-    }
-);
-
-
-/* =========================
-   فتح لوحة المالك
-========================= */
-
-function showOwnerDashboard(){
 
     document
-    .getElementById("ownerLogin")
-    .classList.add("hidden");
-
-    document
-    .getElementById("ownerDashboard")
-    .classList.remove("hidden");
-
-    showDashboard();
-
-    loadUsers();
-    loadProjects();
-    loadComments();
-    loadLikesTotal();
-
-}
+    .getElementById("userName")
+    .textContent =
+        name;
 
 
-function hideAllPages(){
-
-    document
-    .getElementById("dashboardPage")
-    .classList.add("hidden");
-
-    document
-    .getElementById("usersPage")
-    .classList.add("hidden");
-
-    document
-    .getElementById("projectsPage")
-    .classList.add("hidden");
-
-    document
-    .getElementById("commentsPage")
-    .classList.add("hidden");
-
-    document
-    .getElementById("securityPage")
-    .classList.add("hidden");
-
-}
-
-
-function showDashboard(){
-
-    hideAllPages();
-
-    document
-    .getElementById("dashboardPage")
-    .classList.remove("hidden");
-
-}
-
-
-function showUsers(){
-
-    hideAllPages();
-
-    document
-    .getElementById("usersPage")
-    .classList.remove("hidden");
-
-    loadUsers();
-
-}
-
-
-function showProjects(){
-
-    hideAllPages();
-
-    document
-    .getElementById("projectsPage")
-    .classList.remove("hidden");
-
-    loadProjects();
-
-}
-
-
-function showComments(){
-
-    hideAllPages();
-
-    document
-    .getElementById("commentsPage")
-    .classList.remove("hidden");
-
-    loadComments();
-
-}
-
-
-function showSecurity(){
-
-    hideAllPages();
-
-    document
-    .getElementById("securityPage")
-    .classList.remove("hidden");
+    await loadUserProjects();
 
 }
 
 
 /* =========================
-   تسجيل الخروج
+   تسجيل خروج المستخدم
 ========================= */
 
-async function logout(){
+async function logoutUser(){
 
     await db.auth.signOut();
 
     document
-    .getElementById("ownerDashboard")
+    .getElementById("userApp")
     .classList.add("hidden");
 
     document
-    .getElementById("ownerLogin")
+    .getElementById("userAuth")
     .classList.remove("hidden");
 
+    showLoginForm();
+
 }
 
 
 /* =========================
-   المستخدمون
+   تحميل المشاريع
 ========================= */
 
-async function loadUsers(){
+async function loadUserProjects(){
 
     const list =
-        document.getElementById("usersList");
-
-    list.innerHTML =
-        "جاري تحميل المستخدمين...";
-
-    const {data,error} =
-        await db
-        .from("profiles")
-        .select("id,name,email,created_at")
-        .order(
-            "created_at",
-            {ascending:false}
+        document
+        .getElementById(
+            "userProjectsList"
         );
 
-    if(error){
-
-        list.innerHTML =
-        `<div class="message">
-            ❌ ${escapeHtml(error.message)}
-        </div>`;
-
-        return;
-    }
-
-    document
-    .getElementById("usersCount")
-    .textContent =
-        data.length;
-
-    if(!data.length){
-
-        list.innerHTML =
-        `<div class="message">
-            لا يوجد مستخدمون.
-        </div>`;
-
-        return;
-    }
 
     list.innerHTML =
-        data.map(user => `
+    `<div class="card">
+        جاري تحميل المشاريع...
+    </div>`;
 
-        <div class="user-item">
-
-            <strong>
-                👤 ${escapeHtml(user.name || "بدون اسم")}
-            </strong>
-
-            <div>
-                📧 ${escapeHtml(user.email || "")}
-            </div>
-
-            <div class="project-date">
-                ${formatDate(user.created_at)}
-            </div>
-
-        </div>
-
-    `).join("");
-
-}
-
-
-/* =========================
-   المشاريع
-========================= */
-
-async function loadProjects(){
-
-    const list =
-        document.getElementById("projectsList");
-
-    list.innerHTML =
-        `<div class="card">جاري تحميل المشاريع...</div>`;
 
     const {data:projects,error} =
         await db
@@ -916,8 +886,11 @@ async function loadProjects(){
         .select("*")
         .order(
             "created_at",
-            {ascending:false}
+            {
+                ascending:false
+            }
         );
+
 
     if(error){
 
@@ -929,30 +902,28 @@ async function loadProjects(){
         return;
     }
 
-    document
-    .getElementById("projectsCount")
-    .textContent =
-        projects.length;
-
 
     const {data:likesData} =
         await db
         .from("likes")
-        .select("id,project_id,user_id");
+        .select(
+            "id,project_id,user_id"
+        );
 
 
     const {data:sessionData} =
         await db.auth.getSession();
 
+
     const currentUser =
         sessionData.session?.user;
 
 
-    if(!projects.length){
+    if(!projects || !projects.length){
 
         list.innerHTML =
-        `<div class="card">
-            لا توجد مشاريع حتى الآن.
+        `<div class="card empty">
+            لا توجد مشاريع منشورة حاليًا.
         </div>`;
 
         return;
@@ -960,7 +931,7 @@ async function loadProjects(){
 
 
     list.innerHTML =
-        projects.map(project => {
+    projects.map(project => {
 
         const projectLikes =
             (likesData || [])
@@ -969,8 +940,10 @@ async function loadProjects(){
                 like.project_id === project.id
             );
 
+
         const likeCount =
             projectLikes.length;
+
 
         const isLiked =
             currentUser &&
@@ -1002,21 +975,36 @@ async function loadProjects(){
 
 
             <div class="project-description">
-                ${escapeHtml(project.description || "")}
+                ${escapeHtml(
+                    project.description || ""
+                )}
             </div>
 
 
             <div class="project-date">
-                ${formatDate(project.created_at)}
+                ${formatDate(
+                    project.created_at
+                )}
             </div>
 
 
             <div class="like-box">
 
                 <button
-                    class="like-btn ${isLiked ? "liked" : ""}"
-                    onclick="toggleLike('${project.id}')"
+                    class="like-btn ${
+                        isLiked
+                        ?
+                        "liked"
+                        :
+                        ""
+                    }"
+                    onclick="
+                        toggleUserLike(
+                            '${project.id}'
+                        )
+                    "
                 >
+
                     ${
                         isLiked
                         ?
@@ -1024,10 +1012,14 @@ async function loadProjects(){
                         :
                         "🤍 إعجاب"
                     }
+
                 </button>
 
+
                 <div class="like-count">
+
                     ❤️ ${likeCount} إعجاب
+
                 </div>
 
             </div>
@@ -1039,43 +1031,29 @@ async function loadProjects(){
                     💬 التعليقات
                 </h3>
 
-                <div id="projectComments-${project.id}">
+
+                <div
+                    id="userProjectComments-${project.id}"
+                >
                     جاري تحميل التعليقات...
                 </div>
 
 
-                <div class="comment-form">
+                <textarea
+                    id="userCommentInput-${project.id}"
+                    placeholder="اكتب تعليقك..."
+                ></textarea>
 
-                    <textarea
-                        id="commentInput-${project.id}"
-                        placeholder="اكتب تعليقك هنا..."
-                    ></textarea>
-
-                    <button
-                        class="btn-success"
-                        onclick="addComment('${project.id}')"
-                    >
-                        💬 إضافة تعليق
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <div style="margin-top:15px">
 
                 <button
-                    onclick="openEditProject('${project.id}')"
+                    class="btn-success"
+                    onclick="
+                        addUserComment(
+                            '${project.id}'
+                        )
+                    "
                 >
-                    ✏️ تعديل
-                </button>
-
-                <button
-                    class="btn-danger"
-                    onclick="deleteProject('${project.id}')"
-                >
-                    🗑️ حذف
+                    💬 إضافة تعليق
                 </button>
 
             </div>
@@ -1087,306 +1065,30 @@ async function loadProjects(){
     }).join("");
 
 
-    for(const project of projects){
-
-        loadProjectComments(project.id);
-
-    }
-
-}
-
-
-/* =========================
-   إضافة مشروع
-========================= */
-
-function openAddProject(){
-
-    editingProjectId = null;
-
-    document
-    .getElementById("modalTitle")
-    .textContent =
-        "إضافة مشروع";
-
-    document
-    .getElementById("projectTitle")
-    .value = "";
-
-    document
-    .getElementById("projectDescription")
-    .value = "";
-
-    document
-    .getElementById("projectImage")
-    .value = "";
-
-    document
-    .getElementById("projectMessage")
-    .innerHTML = "";
-
-    document
-    .getElementById("projectModal")
-    .classList.remove("hidden");
-
-}
-
-
-function closeProjectModal(){
-
-    document
-    .getElementById("projectModal")
-    .classList.add("hidden");
-
-}
-
-
-async function saveProject(){
-
-    const title =
-        document
-        .getElementById("projectTitle")
-        .value
-        .trim();
-
-    const description =
-        document
-        .getElementById("projectDescription")
-        .value
-        .trim();
-
-    const image_url =
-        document
-        .getElementById("projectImage")
-        .value
-        .trim();
-
-    const message =
-        document
-        .getElementById("projectMessage");
-
-
-    if(!title){
-
-        message.innerHTML =
-        `<div class="message">
-            اكتب اسم المشروع.
-        </div>`;
-
-        return;
-    }
-
-
-    const {data:sessionData} =
-        await db.auth.getSession();
-
-    const user =
-        sessionData.session?.user;
-
-
-    if(!user){
-
-        message.innerHTML =
-        `<div class="message">
-            ❌ يجب تسجيل الدخول.
-        </div>`;
-
-        return;
-    }
-
-
-    let result;
-
-
-    if(editingProjectId){
-
-        result =
-            await db
-            .from("projects")
-            .update({
-                title,
-                description,
-                image_url
-            })
-            .eq(
-                "id",
-                editingProjectId
-            )
-            .eq(
-                "user_id",
-                user.id
-            );
-
-    }else{
-
-        result =
-            await db
-            .from("projects")
-            .insert({
-                user_id:user.id,
-                title,
-                description,
-                image_url
-            });
-
-    }
-
-
-    if(result.error){
-
-        message.innerHTML =
-        `<div class="message">
-            ❌ ${escapeHtml(result.error.message)}
-        </div>`;
-
-        return;
-    }
-
-
-    message.innerHTML =
-    `<div class="message">
-        ✅ تم الحفظ بنجاح.
-    </div>`;
-
-
-    await loadProjects();
-
-    setTimeout(
-        closeProjectModal,
-        500
-    );
-
-}
-
-
-/* =========================
-   تعديل مشروع
-========================= */
-
-async function openEditProject(id){
-
-    const {data,error} =
-        await db
-        .from("projects")
-        .select("*")
-        .eq("id",id)
-        .single();
-
-
-    if(error){
-
-        alert(error.message);
-
-        return;
-    }
-
-
-    editingProjectId = id;
-
-
-    document
-    .getElementById("modalTitle")
-    .textContent =
-        "تعديل المشروع";
-
-
-    document
-    .getElementById("projectTitle")
-    .value =
-        data.title || "";
-
-
-    document
-    .getElementById("projectDescription")
-    .value =
-        data.description || "";
-
-
-    document
-    .getElementById("projectImage")
-    .value =
-        data.image_url || "";
-
-
-    document
-    .getElementById("projectMessage")
-    .innerHTML = "";
-
-
-    document
-    .getElementById("projectModal")
-    .classList.remove("hidden");
-
-}
-
-
-/* =========================
-   حذف مشروع
-========================= */
-
-async function deleteProject(id){
-
-    if(
-        !confirm(
-            "هل أنت متأكد من حذف هذا المشروع؟"
-        )
+    for(
+        const project of projects
     ){
 
-        return;
-    }
-
-
-    const {data:sessionData} =
-        await db.auth.getSession();
-
-    const user =
-        sessionData.session?.user;
-
-
-    if(!user){
-
-        alert("يجب تسجيل الدخول.");
-
-        return;
-    }
-
-
-    const {error} =
-        await db
-        .from("projects")
-        .delete()
-        .eq("id",id)
-        .eq("user_id",user.id);
-
-
-    if(error){
-
-        alert(
-            "خطأ: " +
-            error.message
+        await loadUserProjectComments(
+            project.id
         );
 
-        return;
     }
-
-
-    await loadProjects();
-
-    await loadLikesTotal();
-
-    await loadComments();
 
 }
 
 
 /* =========================
-   الإعجابات
+   إعجاب المستخدم
 ========================= */
 
-async function toggleLike(projectId){
+async function toggleUserLike(
+    projectId
+){
 
     const {data:sessionData} =
         await db.auth.getSession();
+
 
     const user =
         sessionData.session?.user;
@@ -1397,6 +1099,12 @@ async function toggleLike(projectId){
         alert(
             "يجب تسجيل الدخول أولاً."
         );
+
+        return;
+    }
+
+
+    if(user.id === OWNER_ID){
 
         return;
     }
@@ -1456,8 +1164,11 @@ async function toggleLike(projectId){
             await db
             .from("likes")
             .insert({
+
                 project_id:projectId,
+
                 user_id:user.id
+
             });
 
 
@@ -1474,53 +1185,23 @@ async function toggleLike(projectId){
     }
 
 
-    await loadProjects();
-
-    await loadLikesTotal();
+    await loadUserProjects();
 
 }
 
 
 /* =========================
-   مجموع الإعجابات
+   تعليقات المشروع
 ========================= */
 
-async function loadLikesTotal(){
-
-    const {count,error} =
-        await db
-        .from("likes")
-        .select(
-            "*",
-            {
-                count:"exact",
-                head:true
-            }
-        );
-
-
-    if(!error){
-
-        document
-        .getElementById("likesCount")
-        .textContent =
-            count || 0;
-
-    }
-
-}
-
-
-/* =========================
-   التعليقات داخل المشاريع
-========================= */
-
-async function loadProjectComments(projectId){
+async function loadUserProjectComments(
+    projectId
+){
 
     const box =
         document
         .getElementById(
-            `projectComments-${projectId}`
+            `userProjectComments-${projectId}`
         );
 
 
@@ -1543,7 +1224,9 @@ async function loadProjectComments(projectId){
         )
         .order(
             "created_at",
-            {ascending:true}
+            {
+                ascending:true
+            }
         );
 
 
@@ -1572,20 +1255,20 @@ async function loadProjectComments(projectId){
     const {data:sessionData} =
         await db.auth.getSession();
 
+
     const currentUser =
         sessionData.session?.user;
 
 
     box.innerHTML =
-        data.map(comment => {
+    data.map(comment => {
 
-        const isOwner =
+        const canDelete =
             currentUser &&
-            currentUser.id === OWNER_ID;
-
-        const isCommentOwner =
-            currentUser &&
-            currentUser.id === comment.user_id;
+            (
+                currentUser.id === comment.user_id ||
+                currentUser.id === OWNER_ID
+            );
 
 
         return `
@@ -1593,6 +1276,7 @@ async function loadProjectComments(projectId){
         <div class="comment-item">
 
             <div class="comment-user">
+
                 👤 ${
                     escapeHtml(
                         comment.profiles?.name ||
@@ -1600,24 +1284,40 @@ async function loadProjectComments(projectId){
                         "مستخدم"
                     )
                 }
+
             </div>
+
 
             <div class="comment-content">
-                ${escapeHtml(comment.content)}
+
+                ${escapeHtml(
+                    comment.content
+                )}
+
             </div>
+
 
             <div class="comment-date">
-                ${formatDate(comment.created_at)}
+
+                ${formatDate(
+                    comment.created_at
+                )}
+
             </div>
 
+
             ${
-                isOwner || isCommentOwner
+                canDelete
                 ?
                 `<button
                     class="btn-danger"
-                    onclick="deleteComment('${comment.id}')"
+                    onclick="
+                        deleteUserComment(
+                            '${comment.id}'
+                        )
+                    "
                 >
-                    🗑️ حذف التعليق
+                    🗑️ حذف
                 </button>`
                 :
                 ""
@@ -1636,19 +1336,18 @@ async function loadProjectComments(projectId){
    إضافة تعليق
 ========================= */
 
-async function addComment(projectId){
+async function addUserComment(
+    projectId
+){
 
     const input =
         document
         .getElementById(
-            `commentInput-${projectId}`
+            `userCommentInput-${projectId}`
         );
 
 
-    if(!input){
-
-        return;
-    }
+    if(!input) return;
 
 
     const content =
@@ -1668,6 +1367,7 @@ async function addComment(projectId){
     const {data:sessionData} =
         await db.auth.getSession();
 
+
     const user =
         sessionData.session?.user;
 
@@ -1686,9 +1386,13 @@ async function addComment(projectId){
         await db
         .from("comments")
         .insert({
+
             project_id:projectId,
+
             user_id:user.id,
+
             content:content
+
         });
 
 
@@ -1706,120 +1410,9 @@ async function addComment(projectId){
     input.value = "";
 
 
-    await loadProjectComments(projectId);
-
-    await loadComments();
-
-}
-
-
-/* =========================
-   إدارة التعليقات
-========================= */
-
-async function loadComments(){
-
-    const list =
-        document.getElementById(
-            "commentsList"
-        );
-
-
-    if(!list) return;
-
-
-    list.innerHTML =
-        "جاري تحميل التعليقات...";
-
-
-    const {data,error} =
-        await db
-        .from("comments")
-        .select(`
-            id,
-            content,
-            created_at,
-            project_id,
-            user_id,
-            profiles(name,email),
-            projects(title)
-        `)
-        .order(
-            "created_at",
-            {ascending:false}
-        );
-
-
-    if(error){
-
-        list.innerHTML =
-        `<div class="message">
-            ❌ ${escapeHtml(error.message)}
-        </div>`;
-
-        return;
-    }
-
-
-    document
-    .getElementById("commentsCount")
-    .textContent =
-        data.length;
-
-
-    if(!data.length){
-
-        list.innerHTML =
-        `<div class="message">
-            لا توجد تعليقات حتى الآن.
-        </div>`;
-
-        return;
-    }
-
-
-    list.innerHTML =
-        data.map(comment => `
-
-        <div class="comment-item">
-
-            <div class="comment-user">
-                👤 ${
-                    escapeHtml(
-                        comment.profiles?.name ||
-                        comment.profiles?.email ||
-                        "مستخدم"
-                    )
-                }
-            </div>
-
-            <div>
-                🏗️ ${
-                    escapeHtml(
-                        comment.projects?.title ||
-                        "مشروع"
-                    )
-                }
-            </div>
-
-            <div class="comment-content">
-                ${escapeHtml(comment.content)}
-            </div>
-
-            <div class="comment-date">
-                ${formatDate(comment.created_at)}
-            </div>
-
-            <button
-                class="btn-danger"
-                onclick="deleteComment('${comment.id}')"
-            >
-                🗑️ حذف
-            </button>
-
-        </div>
-
-    `).join("");
+    await loadUserProjectComments(
+        projectId
+    );
 
 }
 
@@ -1828,7 +1421,9 @@ async function loadComments(){
    حذف تعليق
 ========================= */
 
-async function deleteComment(id){
+async function deleteUserComment(
+    id
+){
 
     if(
         !confirm(
@@ -1843,15 +1438,12 @@ async function deleteComment(id){
     const {data:sessionData} =
         await db.auth.getSession();
 
+
     const user =
         sessionData.session?.user;
 
 
     if(!user){
-
-        alert(
-            "يجب تسجيل الدخول."
-        );
 
         return;
     }
@@ -1878,9 +1470,7 @@ async function deleteComment(id){
     }
 
 
-    await loadComments();
-
-    await loadProjects();
+    await loadUserProjects();
 
 }
 
@@ -1911,7 +1501,10 @@ function formatDate(date){
 
 function escapeHtml(value){
 
-    if(value === null || value === undefined){
+    if(
+        value === null ||
+        value === undefined
+    ){
 
         return "";
 
@@ -1928,10 +1521,76 @@ function escapeHtml(value){
 
 
 /* =========================
-   بدء التشغيل
+   فحص الجلسة عند فتح الموقع
 ========================= */
 
-checkSession();
+async function checkUserSession(){
+
+    const {data} =
+        await db.auth.getSession();
+
+
+    const user =
+        data.session?.user;
+
+
+    if(!user){
+
+        document
+        .getElementById("userAuth")
+        .classList.remove("hidden");
+
+        document
+        .getElementById("userApp")
+        .classList.add("hidden");
+
+        return;
+    }
+
+
+    if(user.id === OWNER_ID){
+
+        return;
+    }
+
+
+    await createProfile(
+        user,
+        user.user_metadata?.name ||
+        "مستخدم"
+    );
+
+
+    await loadUserApp(
+        user
+    );
+
+}
+
+
+checkUserSession();
+
+
+db.auth.onAuthStateChange(
+    async function(
+        event,
+        session
+    ){
+
+        if(
+            session &&
+            session.user &&
+            session.user.id !== OWNER_ID
+        ){
+
+            await loadUserApp(
+                session.user
+            );
+
+        }
+
+    }
+);
 
 </script>
 
