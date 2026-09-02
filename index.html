@@ -11,716 +11,272 @@
 *{box-sizing:border-box}
 
 body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#070d19;
-color:white;
-min-height:100vh;
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#070d19;
+    color:white;
+    min-height:100vh;
 }
 
 header{
-background:#0f172a;
-padding:16px 20px;
-border-bottom:1px solid #263244;
-display:flex;
-justify-content:space-between;
-align-items:center;
+    background:#0f172a;
+    padding:20px;
+    text-align:center;
+    border-bottom:1px solid #1e293b;
 }
 
-.logo{
-font-size:28px;
-font-weight:bold;
+header h1{
+    margin:0;
+    font-size:28px;
 }
 
-.logo span{
-color:#38bdf8;
+header p{
+    color:#94a3b8;
+    margin:8px 0 0;
 }
 
-.home-btn,
-.back-btn{
-background:#1e293b;
-color:white;
-border:1px solid #334155;
-padding:10px 16px;
-border-radius:10px;
-cursor:pointer;
-}
-
-.owner-page{
-min-height:calc(100vh - 75px);
-display:flex;
-align-items:center;
-justify-content:center;
-padding:30px 20px;
-}
-
-.owner-box{
-width:100%;
-max-width:460px;
-background:#111827;
-border:1px solid #263244;
-border-radius:22px;
-padding:30px;
-box-shadow:0 20px 60px rgba(0,0,0,.35);
-}
-
-.crown{
-text-align:center;
-font-size:55px;
-}
-
-.title{
-text-align:center;
-font-size:30px;
-font-weight:bold;
-}
-
-.title span{
-color:#38bdf8;
-}
-
-.subtitle{
-text-align:center;
-color:#94a3b8;
-line-height:1.8;
-margin-bottom:25px;
-}
-
-.security{
-background:#0b1526;
-border:1px solid #263244;
-padding:14px;
-border-radius:12px;
-margin-bottom:20px;
-color:#cbd5e1;
-font-size:13px;
-line-height:1.7;
-}
-
-.form-group{
-margin-bottom:17px;
-}
-
-label{
-display:block;
-margin-bottom:8px;
-color:#cbd5e1;
-font-size:14px;
-}
-
-.input,
-.textarea{
-width:100%;
-padding:15px;
-background:#07101f;
-border:1px solid #334155;
-border-radius:11px;
-color:white;
-font-size:16px;
-outline:none;
-}
-
-.textarea{
-min-height:120px;
-resize:vertical;
-font-family:Arial,sans-serif;
-}
-
-.input:focus,
-.textarea:focus{
-border-color:#38bdf8;
-}
-
-.password-box{
-position:relative;
-}
-
-.password-box .input{
-padding-left:50px;
-}
-
-.eye{
-position:absolute;
-left:10px;
-top:50%;
-transform:translateY(-50%);
-background:none;
-border:0;
-color:#94a3b8;
-font-size:20px;
-cursor:pointer;
-}
-
-.login-btn,
-.save-btn{
-width:100%;
-padding:15px;
-border:0;
-border-radius:11px;
-background:#38bdf8;
-color:#082f49;
-font-size:17px;
-font-weight:bold;
-margin-top:5px;
-cursor:pointer;
-}
-
-.reset-btn{
-width:100%;
-padding:12px;
-border:1px solid #334155;
-border-radius:11px;
-background:#1e293b;
-color:#7dd3fc;
-font-size:14px;
-margin-top:12px;
-cursor:pointer;
-}
-
-.message{
-display:none;
-padding:13px;
-margin-bottom:15px;
-border-radius:10px;
-background:#0b1526;
-color:#38bdf8;
-text-align:center;
-font-size:14px;
-line-height:1.7;
-word-break:break-word;
-white-space:pre-wrap;
-}
-
-.owner-dashboard,
-.users-page,
-.projects-page,
-.comments-page,
-.security-page{
-display:none;
-max-width:1100px;
-margin:auto;
-padding:25px 20px 70px;
-}
-
-.dashboard-top{
-background:#111827;
-border:1px solid #263244;
-border-radius:20px;
-padding:25px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:15px;
-}
-
-.owner-info{
-display:flex;
-align-items:center;
-gap:15px;
-}
-
-.owner-avatar{
-width:70px;
-height:70px;
-border-radius:50%;
-background:#1e293b;
-border:2px solid #38bdf8;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:32px;
-}
-
-.owner-name{
-font-size:24px;
-font-weight:bold;
-}
-
-.owner-role{
-color:#38bdf8;
-margin-top:6px;
-font-size:14px;
-}
-
-.logout{
-background:#7f1d1d;
-color:white;
-border:0;
-padding:12px 18px;
-border-radius:10px;
-cursor:pointer;
-}
-
-.dashboard-title{
-font-size:28px;
-margin:30px 0 18px;
-}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:15px;
+.container{
+    width:92%;
+    max-width:1100px;
+    margin:25px auto;
 }
 
 .card{
-background:#111827;
-border:1px solid #263244;
-border-radius:16px;
-padding:22px;
+    background:#0f172a;
+    border:1px solid #1e293b;
+    border-radius:18px;
+    padding:22px;
+    margin-bottom:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
 }
 
-.card-icon{
-font-size:30px;
+h2,h3{
+    margin-top:0;
 }
 
-.card-number{
-font-size:30px;
-font-weight:bold;
-margin-top:10px;
+input,
+textarea{
+    width:100%;
+    padding:14px;
+    margin:8px 0;
+    border:1px solid #334155;
+    border-radius:10px;
+    background:#020617;
+    color:white;
+    font-size:16px;
 }
 
-.card-name{
-color:#94a3b8;
-margin-top:5px;
+textarea{
+    min-height:100px;
+    resize:vertical;
 }
 
-.management{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:15px;
-margin-top:20px;
+button{
+    border:0;
+    border-radius:10px;
+    padding:12px 18px;
+    margin:5px;
+    font-size:15px;
+    cursor:pointer;
+    background:#2563eb;
+    color:white;
 }
 
-.management button{
-background:#111827;
-color:white;
-border:1px solid #334155;
-border-radius:15px;
-padding:22px;
-text-align:right;
-font-size:16px;
-cursor:pointer;
+button:hover{
+    opacity:.9;
 }
 
-.management button:active{
-transform:scale(.99);
+.btn-danger{
+    background:#dc2626;
 }
 
-.management strong{
-display:block;
-font-size:19px;
-margin-bottom:8px;
+.btn-secondary{
+    background:#475569;
 }
 
-.management span{
-color:#94a3b8;
-font-size:13px;
+.btn-success{
+    background:#16a34a;
 }
 
-.badge{
-display:inline-block;
-background:#0c4a6e;
-color:#7dd3fc;
-padding:6px 10px;
-border-radius:20px;
-font-size:12px;
-margin-top:15px;
+.hidden{
+    display:none !important;
 }
 
-.page-head{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:15px;
-margin-bottom:20px;
+.message{
+    padding:12px;
+    border-radius:10px;
+    margin-top:10px;
+    background:#172033;
 }
 
-.page-head h2{
-margin:0;
-font-size:28px;
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
 }
 
-.content-box,
-.users-box{
-background:#111827;
-border:1px solid #263244;
-border-radius:18px;
-padding:25px;
+.stat{
+    background:#111c2f;
+    border:1px solid #263449;
+    padding:20px;
+    border-radius:16px;
+    text-align:center;
 }
 
-.loading{
-text-align:center;
-padding:30px;
-color:#94a3b8;
+.stat-number{
+    font-size:30px;
+    font-weight:bold;
+    margin-top:10px;
 }
 
-.empty{
-text-align:center;
-padding:40px 20px;
-color:#94a3b8;
-line-height:2;
+.nav-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:8px;
+    margin-bottom:20px;
 }
-
-.action-box{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:15px;
-margin-top:20px;
-}
-
-.action-button{
-background:#1e293b;
-color:white;
-border:1px solid #334155;
-border-radius:12px;
-padding:15px;
-cursor:pointer;
-font-size:15px;
-}
-
-.action-button:hover{
-border-color:#38bdf8;
-}
-
-.info-card{
-background:#0b1526;
-border:1px solid #263244;
-border-radius:14px;
-padding:18px;
-margin-bottom:15px;
-line-height:1.8;
-}
-
-/* المستخدمون */
-
-.user-row{
-display:grid;
-grid-template-columns:70px 1fr 1fr 150px;
-gap:15px;
-align-items:center;
-padding:15px 5px;
-border-bottom:1px solid #263244;
-}
-
-.user-row:last-child{
-border-bottom:0;
-}
-
-.user-avatar-small{
-width:45px;
-height:45px;
-border-radius:50%;
-background:#1e293b;
-border:1px solid #38bdf8;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:20px;
-}
-
-.user-name{
-font-weight:bold;
-}
-
-.user-email{
-color:#94a3b8;
-font-size:14px;
-direction:ltr;
-text-align:right;
-}
-
-.user-date{
-color:#94a3b8;
-font-size:13px;
-}
-
-.user-status{
-display:inline-block;
-background:#14532d;
-color:#86efac;
-padding:6px 10px;
-border-radius:20px;
-font-size:12px;
-text-align:center;
-}
-
-/* المشاريع */
 
 .project-card{
-background:#0b1526;
-border:1px solid #263244;
-border-radius:15px;
-padding:20px;
-margin-bottom:15px;
+    background:#111827;
+    border:1px solid #263449;
+    border-radius:18px;
+    padding:18px;
+    margin-bottom:18px;
+}
+
+.project-card img{
+    width:100%;
+    max-height:350px;
+    object-fit:cover;
+    border-radius:14px;
+    margin-bottom:15px;
 }
 
 .project-title{
-font-size:20px;
-font-weight:bold;
-margin-bottom:10px;
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:8px;
 }
 
 .project-description{
-color:#cbd5e1;
-line-height:1.8;
-margin-bottom:10px;
+    color:#cbd5e1;
+    line-height:1.8;
+    white-space:pre-wrap;
 }
 
 .project-date{
-color:#64748b;
-font-size:13px;
-margin-bottom:15px;
+    color:#64748b;
+    font-size:13px;
+    margin-top:10px;
 }
-
-.project-image{
-width:100%;
-max-height:300px;
-object-fit:cover;
-border-radius:12px;
-margin-bottom:15px;
-}
-
-.project-actions{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
-margin-top:15px;
-}
-
-.edit-btn{
-width:100%;
-padding:12px;
-border:1px solid #0369a1;
-border-radius:10px;
-background:#0c4a6e;
-color:#7dd3fc;
-font-size:15px;
-cursor:pointer;
-}
-
-.delete-btn{
-width:100%;
-padding:12px;
-border:1px solid #991b1b;
-border-radius:10px;
-background:#7f1d1d;
-color:#fecaca;
-font-size:15px;
-cursor:pointer;
-}
-
-/* الإعجاب */
 
 .like-box{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:10px;
-margin-top:15px;
-padding-top:15px;
-border-top:1px solid #263244;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:15px;
+    padding-top:15px;
+    border-top:1px solid #263449;
 }
 
 .like-btn{
-flex:1;
-padding:12px 15px;
-border-radius:10px;
-border:1px solid #334155;
-background:#1e293b;
-color:#e2e8f0;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-}
-
-.like-btn:hover{
-border-color:#f43f5e;
+    background:#334155;
 }
 
 .like-btn.liked{
-background:#4c0519;
-border-color:#e11d48;
-color:#fb7185;
+    background:#be123c;
 }
 
 .like-count{
-color:#94a3b8;
-font-size:14px;
-min-width:90px;
-text-align:center;
+    color:#cbd5e1;
 }
 
-.form-actions{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
-margin-top:15px;
+.comments-section{
+    margin-top:18px;
+    padding-top:18px;
+    border-top:1px solid #263449;
 }
 
-.cancel-btn{
-width:100%;
-padding:14px;
-border:1px solid #334155;
-border-radius:11px;
-background:#1e293b;
-color:white;
-font-size:15px;
-cursor:pointer;
-}
-
-.modal{
-display:none;
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.75);
-z-index:1000;
-padding:20px;
-overflow-y:auto;
-}
-
-.modal-box{
-max-width:520px;
-margin:50px auto;
-background:#111827;
-border:1px solid #334155;
-border-radius:20px;
-padding:25px;
-}
-
-.modal-title{
-font-size:24px;
-font-weight:bold;
-margin-bottom:20px;
-}
-
-/* التعليقات */
-
-.comment-card{
-background:#0b1526;
-border:1px solid #263244;
-border-radius:15px;
-padding:18px;
-margin-bottom:15px;
-}
-
-.comment-top{
-display:flex;
-justify-content:space-between;
-align-items:flex-start;
-gap:15px;
-margin-bottom:12px;
+.comment-item{
+    background:#0b1220;
+    border:1px solid #263449;
+    border-radius:12px;
+    padding:14px;
+    margin-top:10px;
 }
 
 .comment-user{
-font-weight:bold;
-font-size:17px;
-}
-
-.comment-email{
-color:#64748b;
-font-size:12px;
-margin-top:5px;
-direction:ltr;
-text-align:right;
-}
-
-.comment-project{
-color:#38bdf8;
-font-size:14px;
-margin-bottom:10px;
-}
-
-.comment-text{
-color:#cbd5e1;
-line-height:1.9;
-background:#07101f;
-border-radius:10px;
-padding:12px;
-margin-bottom:12px;
+    font-weight:bold;
+    color:#60a5fa;
 }
 
 .comment-date{
-color:#64748b;
-font-size:12px;
+    color:#64748b;
+    font-size:12px;
+    margin-top:5px;
 }
 
-.comment-delete{
-background:#7f1d1d;
-border:1px solid #991b1b;
-color:#fecaca;
-border-radius:9px;
-padding:9px 13px;
-cursor:pointer;
-font-size:13px;
+.comment-content{
+    margin-top:10px;
+    color:#e2e8f0;
+    line-height:1.7;
+    white-space:pre-wrap;
+}
+
+.comment-form{
+    margin-top:15px;
+}
+
+.user-item{
+    background:#111827;
+    border:1px solid #263449;
+    border-radius:12px;
+    padding:14px;
+    margin-bottom:10px;
+}
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:1000;
+}
+
+.modal-box{
+    width:100%;
+    max-width:600px;
+    background:#0f172a;
+    border:1px solid #334155;
+    border-radius:18px;
+    padding:22px;
 }
 
 footer{
-text-align:center;
-padding:30px;
-background:#050a12;
-color:#64748b;
+    text-align:center;
+    padding:25px;
+    color:#64748b;
 }
 
 @media(max-width:800px){
-
-.cards{
-grid-template-columns:repeat(2,1fr);
-}
-
-.dashboard-top{
-flex-direction:column;
-align-items:stretch;
-}
-
-.logout{
-width:100%;
-}
-
-.user-row{
-grid-template-columns:55px 1fr;
-}
-
-.user-date,
-.user-status{
-grid-column:2;
-}
-
+    .dashboard-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 }
 
 @media(max-width:500px){
+    .dashboard-grid{
+        grid-template-columns:1fr 1fr;
+    }
 
-.owner-box{
-padding:22px;
-}
-
-.cards{
-grid-template-columns:1fr;
-}
-
-.management,
-.action-box,
-.form-actions,
-.project-actions{
-grid-template-columns:1fr;
-}
-
-.page-head{
-flex-direction:column;
-align-items:stretch;
-}
-
-.page-head h2{
-font-size:23px;
-}
-
-.comment-top{
-flex-direction:column;
-}
-
-.comment-delete{
-width:100%;
-}
-
+    button{
+        width:auto;
+    }
 }
 </style>
 
@@ -729,446 +285,251 @@ width:100%;
 <body>
 
 <header>
-
-<div class="logo">
-KAPO <span>ONE</span>
-</div>
-
-<button class="home-btn" onclick="showOwnerLogin()">
-🔐 حساب المالك
-</button>
-
+    <h1>🚀 KAPO ONE</h1>
+    <p>لوحة تحكم المالك</p>
 </header>
 
 
 <!-- تسجيل الدخول -->
 
-<section id="ownerLogin" class="owner-page">
+<div id="ownerLogin" class="container">
 
-<div class="owner-box">
+    <div class="card">
 
-<div class="crown">👑</div>
+        <h2>🔐 دخول المالك</h2>
 
-<div class="title">
-مالك <span>KAPO ONE</span>
-</div>
+        <input
+            id="loginEmail"
+            type="email"
+            placeholder="البريد الإلكتروني"
+        >
 
-<div class="subtitle">
-الدخول إلى الحساب الرئيسي
-لإدارة منصة KAPO ONE
-</div>
+        <input
+            id="loginPassword"
+            type="password"
+            placeholder="كلمة المرور"
+        >
 
-<div class="security">
-🛡️ <strong>منطقة خاصة بالمالك</strong><br>
-هذا الحساب مخصص لإدارة المنصة.
-الدخول محمي بواسطة Supabase.
-</div>
+        <button onclick="loginOwner()">دخول</button>
 
-<div id="message" class="message"></div>
+        <button
+            class="btn-secondary"
+            onclick="resetPassword()"
+        >
+            استعادة كلمة المرور
+        </button>
 
-<div class="form-group">
+        <div id="loginMessage"></div>
 
-<label>اسم المالك</label>
-
-<input
-id="ownerName"
-class="input"
-type="text"
-placeholder="كابو">
+    </div>
 
 </div>
 
-<div class="form-group">
 
-<label>البريد الإلكتروني للمالك</label>
+<!-- لوحة التحكم -->
 
-<input
-id="ownerEmail"
-class="input"
-type="email"
-placeholder="البريد الإلكتروني">
+<div id="ownerDashboard" class="container hidden">
 
-</div>
+    <div class="card">
 
-<div class="form-group">
+        <h2>👑 مرحباً بك في لوحة المالك</h2>
 
-<label>كلمة مرور المالك</label>
+        <div class="nav-buttons">
 
-<div class="password-box">
+            <button onclick="showDashboard()">
+                🏠 الرئيسية
+            </button>
 
-<input
-id="ownerPassword"
-class="input"
-type="password"
-placeholder="كلمة المرور">
+            <button onclick="showUsers()">
+                👥 المستخدمون
+            </button>
 
-<button
-type="button"
-class="eye"
-onclick="togglePassword()">
-👁
-</button>
+            <button onclick="showProjects()">
+                🏗️ المشاريع
+            </button>
 
-</div>
+            <button onclick="showComments()">
+                💬 التعليقات
+            </button>
 
-</div>
+            <button onclick="showSecurity()">
+                🔐 الأمان
+            </button>
 
-<button
-type="button"
-class="login-btn"
-onclick="ownerLogin()">
+            <button
+                class="btn-danger"
+                onclick="logout()"
+            >
+                تسجيل الخروج
+            </button>
 
-👑 دخول المالك
+        </div>
 
-</button>
-
-<button
-type="button"
-class="reset-btn"
-onclick="resetPassword()">
-
-🔑 نسيت كلمة المرور؟
-
-</button>
-
-</div>
-
-</section>
+    </div>
 
 
-<!-- لوحة المالك -->
+    <div id="dashboardPage">
 
-<section id="ownerDashboard" class="owner-dashboard">
+        <div class="dashboard-grid">
 
-<div class="dashboard-top">
+            <div class="stat">
+                👥
+                <div>المستخدمون</div>
+                <div id="usersCount" class="stat-number">0</div>
+            </div>
 
-<div class="owner-info">
+            <div class="stat">
+                🏗️
+                <div>المشاريع</div>
+                <div id="projectsCount" class="stat-number">0</div>
+            </div>
 
-<div class="owner-avatar">
-👑
-</div>
+            <div class="stat">
+                💬
+                <div>التعليقات</div>
+                <div id="commentsCount" class="stat-number">0</div>
+            </div>
 
-<div>
+            <div class="stat">
+                ❤️
+                <div>الإعجابات</div>
+                <div id="likesCount" class="stat-number">0</div>
+            </div>
 
-<div id="dashboardOwnerName" class="owner-name">
-كابو
-</div>
+        </div>
 
-<div class="owner-role">
-👑 المالك الرئيسي للمنصة
-</div>
+    </div>
 
-</div>
 
-</div>
+    <!-- المستخدمون -->
 
-<button
-class="logout"
-onclick="ownerLogout()">
+    <div id="usersPage" class="hidden">
 
-🚪 تسجيل الخروج
+        <div class="card">
 
-</button>
+            <h2>👥 إدارة المستخدمين</h2>
 
-</div>
+            <div id="usersList"></div>
 
-<span class="badge">
-حساب مالك المنصة
-</span>
+        </div>
 
-<h2 class="dashboard-title">
-🎛️ لوحة تحكم KAPO ONE
-</h2>
+    </div>
 
-<div class="cards">
 
-<div class="card">
-<div class="card-icon">👥</div>
-<div id="usersCount" class="card-number">0</div>
-<div class="card-name">المستخدمون</div>
-</div>
+    <!-- المشاريع -->
 
-<div class="card">
-<div class="card-icon">🏗️</div>
-<div id="projectsCount" class="card-number">0</div>
-<div class="card-name">المشاريع</div>
-</div>
+    <div id="projectsPage" class="hidden">
 
-<div class="card">
-<div class="card-icon">💬</div>
-<div id="commentsCount" class="card-number">0</div>
-<div class="card-name">التعليقات</div>
-</div>
+        <div class="card">
 
-<div class="card">
-<div class="card-icon">❤️</div>
-<div id="likesCount" class="card-number">0</div>
-<div class="card-name">الإعجابات</div>
-</div>
+            <h2>🏗️ إدارة المشاريع</h2>
 
-</div>
+            <button
+                class="btn-success"
+                onclick="openAddProject()"
+            >
+                ➕ إضافة مشروع
+            </button>
 
-<h2 class="dashboard-title">
-⚙️ إدارة المنصة
-</h2>
+        </div>
 
-<div class="management">
+        <div id="projectsList"></div>
 
-<button onclick="showUsers()">
-<strong>👥 إدارة المستخدمين</strong>
-<span>عرض المستخدمين المسجلين في المنصة.</span>
-</button>
+    </div>
 
-<button onclick="showProjects()">
-<strong>🏗️ إدارة المشاريع</strong>
-<span>مراجعة المشاريع المنشورة وإدارتها.</span>
-</button>
 
-<button onclick="showComments()">
-<strong>💬 إدارة التعليقات</strong>
-<span>مراجعة التعليقات وحذف المحتوى المخالف.</span>
-</button>
+    <!-- التعليقات -->
 
-<button onclick="showSecurity()">
-<strong>🛡️ إعدادات الأمان</strong>
-<span>إعدادات الحماية والصلاحيات.</span>
-</button>
+    <div id="commentsPage" class="hidden">
+
+        <div class="card">
+
+            <h2>💬 إدارة التعليقات</h2>
+
+            <div id="commentsList"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- الأمان -->
+
+    <div id="securityPage" class="hidden">
+
+        <div class="card">
+
+            <h2>🔐 الأمان</h2>
+
+            <p>
+                حساب المالك محمي بواسطة Supabase Authentication.
+            </p>
+
+            <button
+                class="btn-danger"
+                onclick="logout()"
+            >
+                تسجيل الخروج
+            </button>
+
+        </div>
+
+    </div>
 
 </div>
 
-</section>
 
-
-<!-- المستخدمون -->
-
-<section id="usersPage" class="users-page">
-
-<div class="page-head">
-
-<h2>
-👥 إدارة المستخدمين
-</h2>
-
-<button
-class="back-btn"
-onclick="backToDashboard()">
-
-⬅️ العودة للوحة التحكم
-
-</button>
-
-</div>
-
-<div class="users-box">
-
-<div id="usersList" class="loading">
-جاري تحميل المستخدمين...
-</div>
-
-</div>
-
-</section>
-
-
-<!-- إدارة المشاريع -->
-
-<section id="projectsPage" class="projects-page">
-
-<div class="page-head">
-
-<h2>
-🏗️ إدارة المشاريع
-</h2>
-
-<button
-class="back-btn"
-onclick="backToDashboard()">
-
-⬅️ العودة للوحة التحكم
-
-</button>
-
-</div>
-
-<div class="content-box">
-
-<div id="projectsList">
-
-<div class="loading">
-جاري تحميل المشاريع...
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- إدارة التعليقات -->
-
-<section id="commentsPage" class="comments-page">
-
-<div class="page-head">
-
-<h2>
-💬 إدارة التعليقات
-</h2>
-
-<button
-class="back-btn"
-onclick="backToDashboard()">
-
-⬅️ العودة للوحة التحكم
-
-</button>
-
-</div>
-
-<div class="content-box">
-
-<div id="commentsList">
-
-<div class="loading">
-جاري تحميل التعليقات...
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- الأمان -->
-
-<section id="securityPage" class="security-page">
-
-<div class="page-head">
-
-<h2>
-🛡️ إعدادات الأمان
-</h2>
-
-<button
-class="back-btn"
-onclick="backToDashboard()">
-
-⬅️ العودة للوحة التحكم
-
-</button>
-
-</div>
-
-<div class="content-box">
-
-<div class="info-card">
-<strong>🔐 حماية حساب المالك</strong><br>
-الحساب محمي بواسطة Supabase Authentication.
-</div>
-
-<div class="info-card">
-<strong>👑 صلاحيات المالك</strong><br>
-الوصول إلى لوحة المالك مرتبط بمعرّف حساب المالك.
-</div>
-
-<div class="info-card">
-<strong>🚪 تسجيل الخروج</strong><br>
-يمكنك تسجيل الخروج من حساب المالك في أي وقت.
-</div>
-
-</div>
-
-</section>
-
-
-<!-- نافذة إضافة / تعديل مشروع -->
-
-<div id="projectModal" class="modal">
-
-<div class="modal-box">
-
-<div id="projectModalTitle" class="modal-title">
-➕ إضافة مشروع جديد
-</div>
-
-<div id="projectMessage" class="message"></div>
-
-<div class="form-group">
-
-<label>
-اسم المشروع
-</label>
-
-<input
-id="projectTitle"
-class="input"
-type="text"
-placeholder="مثال: برج KAPO ONE">
-
-</div>
-
-<div class="form-group">
-
-<label>
-وصف المشروع
-</label>
-
-<textarea
-id="projectDescription"
-class="textarea"
-placeholder="اكتب وصف المشروع هنا..."></textarea>
-
-</div>
-
-<div class="form-group">
-
-<label>
-رابط صورة المشروع
-</label>
-
-<input
-id="projectImage"
-class="input"
-type="url"
-placeholder="https://...">
-
-</div>
-
-<div class="form-actions">
-
-<button
-id="projectSaveButton"
-class="save-btn"
-onclick="saveProject()">
-
-💾 حفظ المشروع
-
-</button>
-
-<button
-class="cancel-btn"
-onclick="closeProjectModal()">
-
-إلغاء
-
-</button>
-
-</div>
-
-</div>
+<!-- نافذة المشروع -->
+
+<div
+    id="projectModal"
+    class="modal hidden"
+>
+
+    <div class="modal-box">
+
+        <h2 id="modalTitle">
+            إضافة مشروع
+        </h2>
+
+        <input
+            id="projectTitle"
+            placeholder="اسم المشروع"
+        >
+
+        <textarea
+            id="projectDescription"
+            placeholder="وصف المشروع"
+        ></textarea>
+
+        <input
+            id="projectImage"
+            placeholder="رابط صورة المشروع"
+        >
+
+        <button
+            class="btn-success"
+            onclick="saveProject()"
+        >
+            حفظ
+        </button>
+
+        <button
+            class="btn-secondary"
+            onclick="closeProjectModal()"
+        >
+            إلغاء
+        </button>
+
+        <div id="projectMessage"></div>
+
+    </div>
 
 </div>
 
 
 <footer>
-
-KAPO ONE © 2026
-
-<br><br>
-
-لوحة إدارة مالك المنصة
-
+    KAPO ONE © 2026
 </footer>
 
 
@@ -1179,308 +540,113 @@ KAPO ONE © 2026
 const SUPABASE_URL =
 "https://ehmeircigoqfhftaotba.supabase.co";
 
-const SUPABASE_PUBLISHABLE_KEY =
+const SUPABASE_KEY =
 "sb_publishable_54N-aEBjhTQK1wUzpWl0fg_MQRq5D-T";
-
-const db =
-supabase.createClient(
-SUPABASE_URL,
-SUPABASE_PUBLISHABLE_KEY
-);
-
-const SITE_URL =
-"https://caapu11-debug.github.io/kapo-one/";
 
 const OWNER_ID =
 "dfe5695d-c77a-4ccb-a1eb-901d28169be2";
 
+const SITE_URL =
+"https://caapu11-debug.github.io/kapo-one/";
+
+const db =
+supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+
 let editingProjectId = null;
-
-
-/* =========================
-   الصفحات
-========================= */
-
-function hideAllPages(){
-
-document.getElementById("ownerLogin").style.display="none";
-document.getElementById("ownerDashboard").style.display="none";
-document.getElementById("usersPage").style.display="none";
-document.getElementById("projectsPage").style.display="none";
-document.getElementById("commentsPage").style.display="none";
-document.getElementById("securityPage").style.display="none";
-
-}
-
-
-function showOwnerLogin(){
-
-hideAllPages();
-
-document.getElementById("ownerLogin").style.display="flex";
-
-window.scrollTo(0,0);
-
-}
-
-
-function togglePassword(){
-
-const input =
-document.getElementById("ownerPassword");
-
-input.type =
-input.type === "password"
-? "text"
-: "password";
-
-}
-
-
-/* =========================
-   الرسائل
-========================= */
-
-function showMessage(text){
-
-const message =
-document.getElementById("message");
-
-message.innerText=text;
-
-message.style.display="block";
-
-}
-
-
-function showProjectMessage(text){
-
-const message =
-document.getElementById("projectMessage");
-
-message.innerText=text;
-
-message.style.display="block";
-
-}
 
 
 /* =========================
    تسجيل الدخول
 ========================= */
 
-async function ownerLogin(){
+async function loginOwner(){
 
-const email =
-document.getElementById("ownerEmail")
-.value
-.trim();
+    const email =
+        document.getElementById("loginEmail").value.trim();
 
-const password =
-document.getElementById("ownerPassword")
-.value;
+    const password =
+        document.getElementById("loginPassword").value;
 
-if(email==="" || password===""){
+    const message =
+        document.getElementById("loginMessage");
 
-showMessage(
-"يرجى إدخال البريد الإلكتروني وكلمة المرور."
-);
+    message.innerHTML = "جاري تسجيل الدخول...";
 
-return;
+    const {data,error} =
+        await db.auth.signInWithPassword({
+            email,
+            password
+        });
 
-}
+    if(error){
 
-showMessage(
-"جاري تسجيل الدخول..."
-);
+        message.innerHTML =
+        `<div class="message">❌ ${escapeHtml(error.message)}</div>`;
 
-try{
+        return;
+    }
 
-const { data, error } =
-await db.auth.signInWithPassword({
+    if(!data.user || data.user.id !== OWNER_ID){
 
-email:email,
+        await db.auth.signOut();
 
-password:password
+        message.innerHTML =
+        `<div class="message">
+            ❌ هذا الحساب ليس حساب المالك.
+        </div>`;
 
-});
+        return;
+    }
 
-if(error){
-
-console.error(
-"SUPABASE LOGIN ERROR:",
-error
-);
-
-showMessage(
-"❌ سبب الخطأ:\n" +
-error.message
-);
-
-return;
+    showOwnerDashboard();
 
 }
 
-if(!data || !data.user){
-
-showMessage(
-"❌ لم يتم العثور على حساب المستخدم."
-);
-
-return;
-
-}
-
-const user =
-data.user;
-
-if(user.id !== OWNER_ID){
-
-await db.auth.signOut();
-
-showMessage(
-"❌ هذا الحساب ليس حساب مالك KAPO ONE."
-);
-
-return;
-
-}
-
-const ownerName =
-user.user_metadata?.name ||
-document.getElementById("ownerName")
-.value
-.trim() ||
-"كابو";
-
-document.getElementById(
-"dashboardOwnerName"
-).innerText=ownerName;
-
-hideAllPages();
-
-document.getElementById(
-"ownerDashboard"
-).style.display="block";
-
-await loadUsers();
-await loadProjects();
-await loadComments();
-await loadLikesTotal();
-
-window.scrollTo(0,0);
-
-}catch(error){
-
-console.error(
-"LOGIN ERROR:",
-error
-);
-
-showMessage(
-"❌ حدث خطأ أثناء الاتصال بـ Supabase:\n" +
-error.message
-);
-
-}
-
-}
-
-
-/* =========================
-   استعادة كلمة المرور
-========================= */
 
 async function resetPassword(){
 
-const email =
-document.getElementById("ownerEmail")
-.value
-.trim();
+    const email =
+        document.getElementById("loginEmail").value.trim();
 
-if(email===""){
+    const message =
+        document.getElementById("loginMessage");
 
-showMessage(
-"اكتب بريد المالك أولًا ثم اضغط نسيت كلمة المرور."
-);
+    if(!email){
 
-return;
+        message.innerHTML =
+        `<div class="message">
+            اكتب البريد الإلكتروني أولاً.
+        </div>`;
 
-}
+        return;
+    }
 
-showMessage(
-"جاري إرسال رابط استعادة كلمة المرور..."
-);
+    const {error} =
+        await db.auth.resetPasswordForEmail(
+            email,
+            {
+                redirectTo: SITE_URL
+            }
+        );
 
-try{
+    if(error){
 
-const { error } =
-await db.auth.resetPasswordForEmail(
-email,
-{
-redirectTo:SITE_URL
-}
-);
+        message.innerHTML =
+        `<div class="message">
+            ❌ ${escapeHtml(error.message)}
+        </div>`;
 
-if(error){
+        return;
+    }
 
-showMessage(
-"خطأ الاستعادة: " +
-error.message
-);
-
-console.error(error);
-
-return;
-
-}
-
-showMessage(
-"تم إرسال رابط استعادة كلمة المرور إلى بريدك الإلكتروني."
-);
-
-}catch(error){
-
-showMessage(
-"خطأ الاتصال: " +
-error.message
-);
-
-}
-
-}
-
-
-/* =========================
-   تسجيل الخروج
-========================= */
-
-async function ownerLogout(){
-
-const { error } =
-await db.auth.signOut();
-
-if(error){
-
-showMessage(
-"خطأ تسجيل الخروج: " +
-error.message
-);
-
-return;
-
-}
-
-document.getElementById(
-"ownerPassword"
-).value="";
-
-showOwnerLogin();
-
-showMessage(
-"تم تسجيل الخروج من حساب المالك."
-);
-
+    message.innerHTML =
+    `<div class="message">
+        ✅ تم إرسال رابط الاستعادة إلى بريدك الإلكتروني.
+    </div>`;
 }
 
 
@@ -1490,56 +656,174 @@ showMessage(
 
 async function checkSession(){
 
-const { data, error } =
-await db.auth.getSession();
+    const {data} =
+        await db.auth.getSession();
 
-if(error){
+    if(
+        data.session &&
+        data.session.user &&
+        data.session.user.id === OWNER_ID
+    ){
 
-console.error(
-"SESSION ERROR:",
-error
+        showOwnerDashboard();
+
+    }else{
+
+        document
+        .getElementById("ownerLogin")
+        .classList.remove("hidden");
+
+        document
+        .getElementById("ownerDashboard")
+        .classList.add("hidden");
+
+    }
+
+}
+
+
+db.auth.onAuthStateChange(
+    function(event,session){
+
+        if(
+            session &&
+            session.user &&
+            session.user.id === OWNER_ID
+        ){
+
+            showOwnerDashboard();
+
+        }
+
+    }
 );
 
-return;
+
+/* =========================
+   فتح لوحة المالك
+========================= */
+
+function showOwnerDashboard(){
+
+    document
+    .getElementById("ownerLogin")
+    .classList.add("hidden");
+
+    document
+    .getElementById("ownerDashboard")
+    .classList.remove("hidden");
+
+    showDashboard();
+
+    loadUsers();
+    loadProjects();
+    loadComments();
+    loadLikesTotal();
 
 }
 
-const session =
-data.session;
 
-if(session){
+function hideAllPages(){
 
-const user =
-session.user;
+    document
+    .getElementById("dashboardPage")
+    .classList.add("hidden");
 
-if(user.id !== OWNER_ID){
+    document
+    .getElementById("usersPage")
+    .classList.add("hidden");
 
-await db.auth.signOut();
+    document
+    .getElementById("projectsPage")
+    .classList.add("hidden");
 
-return;
+    document
+    .getElementById("commentsPage")
+    .classList.add("hidden");
+
+    document
+    .getElementById("securityPage")
+    .classList.add("hidden");
+
+}
+
+
+function showDashboard(){
+
+    hideAllPages();
+
+    document
+    .getElementById("dashboardPage")
+    .classList.remove("hidden");
 
 }
 
-const ownerName =
-user.user_metadata?.name ||
-"كابو";
 
-document.getElementById(
-"dashboardOwnerName"
-).innerText=ownerName;
+function showUsers(){
 
-hideAllPages();
+    hideAllPages();
 
-document.getElementById(
-"ownerDashboard"
-).style.display="block";
+    document
+    .getElementById("usersPage")
+    .classList.remove("hidden");
 
-await loadUsers();
-await loadProjects();
-await loadComments();
-await loadLikesTotal();
+    loadUsers();
 
 }
+
+
+function showProjects(){
+
+    hideAllPages();
+
+    document
+    .getElementById("projectsPage")
+    .classList.remove("hidden");
+
+    loadProjects();
+
+}
+
+
+function showComments(){
+
+    hideAllPages();
+
+    document
+    .getElementById("commentsPage")
+    .classList.remove("hidden");
+
+    loadComments();
+
+}
+
+
+function showSecurity(){
+
+    hideAllPages();
+
+    document
+    .getElementById("securityPage")
+    .classList.remove("hidden");
+
+}
+
+
+/* =========================
+   تسجيل الخروج
+========================= */
+
+async function logout(){
+
+    await db.auth.signOut();
+
+    document
+    .getElementById("ownerDashboard")
+    .classList.add("hidden");
+
+    document
+    .getElementById("ownerLogin")
+    .classList.remove("hidden");
 
 }
 
@@ -1548,138 +832,68 @@ await loadLikesTotal();
    المستخدمون
 ========================= */
 
-async function showUsers(){
-
-hideAllPages();
-
-document.getElementById(
-"usersPage"
-).style.display="block";
-
-window.scrollTo(0,0);
-
-await loadUsers();
-
-}
-
-
 async function loadUsers(){
 
-const usersList =
-document.getElementById("usersList");
+    const list =
+        document.getElementById("usersList");
 
-if(!usersList){
-return;
-}
+    list.innerHTML =
+        "جاري تحميل المستخدمين...";
 
-usersList.innerHTML =
-'<div class="loading">جاري تحميل المستخدمين...</div>';
+    const {data,error} =
+        await db
+        .from("profiles")
+        .select("id,name,email,created_at")
+        .order(
+            "created_at",
+            {ascending:false}
+        );
 
-try{
+    if(error){
 
-const { data, error } =
-await db
-.from("profiles")
-.select("id,name,email,created_at")
-.order("created_at",{ascending:false});
+        list.innerHTML =
+        `<div class="message">
+            ❌ ${escapeHtml(error.message)}
+        </div>`;
 
-if(error){
+        return;
+    }
 
-console.error(
-"PROFILES ERROR:",
-error
-);
+    document
+    .getElementById("usersCount")
+    .textContent =
+        data.length;
 
-usersList.innerHTML =
-'<div class="empty">❌ تعذر تحميل المستخدمين:<br>' +
-escapeHtml(error.message) +
-'</div>';
+    if(!data.length){
 
-return;
+        list.innerHTML =
+        `<div class="message">
+            لا يوجد مستخدمون.
+        </div>`;
 
-}
+        return;
+    }
 
-if(!data || data.length===0){
+    list.innerHTML =
+        data.map(user => `
 
-usersList.innerHTML =
-'<div class="empty">لا يوجد مستخدمون حاليًا.</div>';
+        <div class="user-item">
 
-document.getElementById(
-"usersCount"
-).innerText="0";
+            <strong>
+                👤 ${escapeHtml(user.name || "بدون اسم")}
+            </strong>
 
-return;
+            <div>
+                📧 ${escapeHtml(user.email || "")}
+            </div>
 
-}
+            <div class="project-date">
+                ${formatDate(user.created_at)}
+            </div>
 
-document.getElementById(
-"usersCount"
-).innerText=data.length;
+        </div>
 
-let html="";
-
-data.forEach(function(user){
-
-const name =
-user.name ||
-"مستخدم KAPO";
-
-const email =
-user.email ||
-"بدون بريد";
-
-const date =
-user.created_at
-? new Date(user.created_at)
-.toLocaleDateString("ar-SA")
-: "-";
-
-html += `
-
-<div class="user-row">
-
-<div class="user-avatar-small">
-👤
-</div>
-
-<div>
-<div class="user-name">
-${escapeHtml(name)}
-</div>
-</div>
-
-<div>
-<div class="user-email">
-${escapeHtml(email)}
-</div>
-</div>
-
-<div>
-<div class="user-date">
-${date}
-</div>
-
-<span class="user-status">
-نشط
-</span>
-</div>
-
-</div>
-
-`;
-
-});
-
-usersList.innerHTML=html;
-
-}catch(error){
-
-console.error(error);
-
-usersList.innerHTML =
-'<div class="empty">❌ حدث خطأ أثناء تحميل البيانات.</div>';
-
-}
+    `).join("");
 
 }
 
@@ -1688,987 +902,924 @@ usersList.innerHTML =
    المشاريع
 ========================= */
 
-function showProjects(){
-
-hideAllPages();
-
-document.getElementById(
-"projectsPage"
-).style.display="block";
-
-window.scrollTo(0,0);
-
-loadProjects();
-
-}
-
-
 async function loadProjects(){
 
-const list =
-document.getElementById("projectsList");
+    const list =
+        document.getElementById("projectsList");
 
-if(!list){
-return;
-}
+    list.innerHTML =
+        `<div class="card">جاري تحميل المشاريع...</div>`;
 
-list.innerHTML =
-'<div class="loading">جاري تحميل المشاريع...</div>';
+    const {data:projects,error} =
+        await db
+        .from("projects")
+        .select("*")
+        .order(
+            "created_at",
+            {ascending:false}
+        );
 
-try{
+    if(error){
 
-const { data, error } =
-await db
-.from("projects")
-.select("*")
-.order("created_at",{ascending:false});
+        list.innerHTML =
+        `<div class="card message">
+            ❌ ${escapeHtml(error.message)}
+        </div>`;
 
-if(error){
+        return;
+    }
 
-console.error(
-"PROJECTS ERROR:",
-error
-);
+    document
+    .getElementById("projectsCount")
+    .textContent =
+        projects.length;
 
-list.innerHTML =
-'<div class="empty">❌ تعذر تحميل المشاريع:<br>' +
-escapeHtml(error.message) +
-'</div>';
 
-return;
+    const {data:likesData} =
+        await db
+        .from("likes")
+        .select("id,project_id,user_id");
 
-}
 
-document.getElementById(
-"projectsCount"
-).innerText =
-data ? data.length : 0;
+    const {data:sessionData} =
+        await db.auth.getSession();
 
-if(!data || data.length===0){
+    const currentUser =
+        sessionData.session?.user;
 
-list.innerHTML = `
 
-<div class="empty">
+    if(!projects.length){
 
-🏗️ لا توجد مشاريع حاليًا.
+        list.innerHTML =
+        `<div class="card">
+            لا توجد مشاريع حتى الآن.
+        </div>`;
 
-<br>
+        return;
+    }
 
-اضغط على الزر أدناه لإضافة أول مشروع.
 
-<br><br>
+    list.innerHTML =
+        projects.map(project => {
 
-<button
-class="action-button"
-onclick="openProjectModal()">
+        const projectLikes =
+            (likesData || [])
+            .filter(
+                like =>
+                like.project_id === project.id
+            );
 
-➕ إضافة مشروع
+        const likeCount =
+            projectLikes.length;
 
-</button>
+        const isLiked =
+            currentUser &&
+            projectLikes.some(
+                like =>
+                like.user_id === currentUser.id
+            );
 
-</div>
 
-`;
+        return `
 
-return;
+        <div class="project-card">
 
-}
+            ${
+                project.image_url
+                ?
+                `<img
+                    src="${escapeHtml(project.image_url)}"
+                    alt="${escapeHtml(project.title)}"
+                >`
+                :
+                ""
+            }
 
 
-/* جلب الإعجابات */
+            <div class="project-title">
+                ${escapeHtml(project.title)}
+            </div>
 
-const { data:likesData, error:likesError } =
-await db
-.from("likes")
-.select("id,project_id,user_id");
 
-if(likesError){
+            <div class="project-description">
+                ${escapeHtml(project.description || "")}
+            </div>
 
-console.error(
-"LIKES ERROR:",
-likesError
-);
 
-}
+            <div class="project-date">
+                ${formatDate(project.created_at)}
+            </div>
 
-const likes =
-likesData || [];
 
-const currentSession =
-(await db.auth.getSession()).data.session;
+            <div class="like-box">
 
-const currentUserId =
-currentSession?.user?.id || null;
+                <button
+                    class="like-btn ${isLiked ? "liked" : ""}"
+                    onclick="toggleLike('${project.id}')"
+                >
+                    ${
+                        isLiked
+                        ?
+                        "❤️ تم الإعجاب"
+                        :
+                        "🤍 إعجاب"
+                    }
+                </button>
 
-let html="";
+                <div class="like-count">
+                    ❤️ ${likeCount} إعجاب
+                </div>
 
-data.forEach(function(project){
+            </div>
 
-const title =
-project.title ||
-"مشروع بدون اسم";
 
-const description =
-project.description ||
-"لا يوجد وصف للمشروع.";
+            <div class="comments-section">
 
-const date =
-project.created_at
-? new Date(project.created_at)
-.toLocaleDateString("ar-SA")
-: "-";
+                <h3>
+                    💬 التعليقات
+                </h3>
 
-const image =
-project.image_url
-? `<img class="project-image" src="${escapeHtml(project.image_url)}" alt="صورة المشروع" onerror="this.style.display='none'">`
-: "";
+                <div id="projectComments-${project.id}">
+                    جاري تحميل التعليقات...
+                </div>
 
-const projectLikes =
-likes.filter(function(like){
 
-return like.project_id === project.id;
+                <div class="comment-form">
 
-});
+                    <textarea
+                        id="commentInput-${project.id}"
+                        placeholder="اكتب تعليقك هنا..."
+                    ></textarea>
 
-const likeCount =
-projectLikes.length;
+                    <button
+                        class="btn-success"
+                        onclick="addComment('${project.id}')"
+                    >
+                        💬 إضافة تعليق
+                    </button>
 
-const isLiked =
-currentUserId &&
-projectLikes.some(function(like){
+                </div>
 
-return like.user_id === currentUserId;
+            </div>
 
-});
 
-html += `
+            <div style="margin-top:15px">
 
-<div class="project-card">
+                <button
+                    onclick="openEditProject('${project.id}')"
+                >
+                    ✏️ تعديل
+                </button>
 
-${image}
+                <button
+                    class="btn-danger"
+                    onclick="deleteProject('${project.id}')"
+                >
+                    🗑️ حذف
+                </button>
 
-<div class="project-title">
-🏗️ ${escapeHtml(title)}
-</div>
+            </div>
 
-<div class="project-description">
-${escapeHtml(description)}
-</div>
+        </div>
 
-<div class="project-date">
-تاريخ الإضافة: ${date}
-</div>
+        `;
 
-<div class="like-box">
+    }).join("");
 
-<button
-class="like-btn ${isLiked ? "liked" : ""}"
-onclick="toggleLike('${project.id}')">
 
-${isLiked ? "❤️ تم الإعجاب" : "🤍 إعجاب"}
+    for(const project of projects){
 
-</button>
+        loadProjectComments(project.id);
 
-<div class="like-count">
-❤️ ${likeCount} إعجاب
-</div>
-
-</div>
-
-<div class="project-actions">
-
-<button
-class="edit-btn"
-onclick="editProject('${project.id}')">
-
-✏️ تعديل المشروع
-
-</button>
-
-<button
-class="delete-btn"
-onclick="deleteProject('${project.id}')">
-
-🗑️ حذف المشروع
-
-</button>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-html += `
-
-<div style="margin-top:20px;text-align:center">
-
-<button
-class="action-button"
-onclick="openProjectModal()">
-
-➕ إضافة مشروع جديد
-
-</button>
-
-</div>
-
-`;
-
-list.innerHTML=html;
-
-}catch(error){
-
-console.error(error);
-
-list.innerHTML =
-'<div class="empty">❌ حدث خطأ أثناء تحميل المشاريع.</div>';
-
-}
+    }
 
 }
 
 
 /* =========================
-   إجمالي الإعجابات
+   إضافة مشروع
 ========================= */
 
-async function loadLikesTotal(){
+function openAddProject(){
 
-const countElement =
-document.getElementById("likesCount");
+    editingProjectId = null;
 
-if(!countElement){
-return;
-}
+    document
+    .getElementById("modalTitle")
+    .textContent =
+        "إضافة مشروع";
 
-try{
+    document
+    .getElementById("projectTitle")
+    .value = "";
 
-const { count, error } =
-await db
-.from("likes")
-.select("*",{count:"exact",head:true});
+    document
+    .getElementById("projectDescription")
+    .value = "";
 
-if(error){
+    document
+    .getElementById("projectImage")
+    .value = "";
 
-console.error(
-"LIKES TOTAL ERROR:",
-error
-);
+    document
+    .getElementById("projectMessage")
+    .innerHTML = "";
 
-countElement.innerText="0";
-
-return;
-
-}
-
-countElement.innerText =
-count || 0;
-
-}catch(error){
-
-console.error(error);
-
-countElement.innerText="0";
+    document
+    .getElementById("projectModal")
+    .classList.remove("hidden");
 
 }
 
-}
-
-
-/* =========================
-   إعجاب / إزالة إعجاب
-========================= */
-
-async function toggleLike(projectId){
-
-try{
-
-const { data:sessionData, error:sessionError } =
-await db.auth.getSession();
-
-if(sessionError){
-
-alert(
-"❌ تعذر التحقق من تسجيل الدخول."
-);
-
-return;
-
-}
-
-const session =
-sessionData.session;
-
-if(!session || !session.user){
-
-alert(
-"🔐 يجب تسجيل الدخول أولًا حتى تتمكن من الإعجاب بالمشروع."
-);
-
-return;
-
-}
-
-const userId =
-session.user.id;
-
-
-/* هل يوجد إعجاب سابق؟ */
-
-const { data:existingLike, error:checkError } =
-await db
-.from("likes")
-.select("id")
-.eq("project_id",projectId)
-.eq("user_id",userId)
-.maybeSingle();
-
-if(checkError){
-
-console.error(
-"CHECK LIKE ERROR:",
-checkError
-);
-
-alert(
-"❌ تعذر التحقق من الإعجاب:\n" +
-checkError.message
-);
-
-return;
-
-}
-
-
-/* إزالة الإعجاب */
-
-if(existingLike){
-
-const { error } =
-await db
-.from("likes")
-.delete()
-.eq("id",existingLike.id)
-.eq("user_id",userId);
-
-if(error){
-
-console.error(
-"REMOVE LIKE ERROR:",
-error
-);
-
-alert(
-"❌ تعذر إزالة الإعجاب:\n" +
-error.message
-);
-
-return;
-
-}
-
-}else{
-
-/* إضافة الإعجاب */
-
-const { error } =
-await db
-.from("likes")
-.insert({
-
-project_id:projectId,
-
-user_id:userId
-
-});
-
-if(error){
-
-console.error(
-"ADD LIKE ERROR:",
-error
-);
-
-alert(
-"❌ تعذر إضافة الإعجاب:\n" +
-error.message
-);
-
-return;
-
-}
-
-}
-
-await loadProjects();
-await loadLikesTotal();
-
-}catch(error){
-
-console.error(error);
-
-alert(
-"❌ حدث خطأ أثناء تنفيذ الإعجاب."
-);
-
-}
-
-}
-
-
-/* =========================
-   فتح نموذج إضافة
-========================= */
-
-function openProjectModal(){
-
-editingProjectId = null;
-
-document.getElementById(
-"projectModalTitle"
-).innerText =
-"➕ إضافة مشروع جديد";
-
-document.getElementById(
-"projectSaveButton"
-).innerText =
-"💾 حفظ المشروع";
-
-document.getElementById(
-"projectTitle"
-).value="";
-
-document.getElementById(
-"projectDescription"
-).value="";
-
-document.getElementById(
-"projectImage"
-).value="";
-
-document.getElementById(
-"projectMessage"
-).style.display="none";
-
-document.getElementById(
-"projectModal"
-).style.display="block";
-
-}
-
-
-/* =========================
-   تعديل المشروع
-========================= */
-
-async function editProject(id){
-
-editingProjectId = id;
-
-document.getElementById(
-"projectModalTitle"
-).innerText =
-"✏️ تعديل المشروع";
-
-document.getElementById(
-"projectSaveButton"
-).innerText =
-"💾 حفظ التعديلات";
-
-document.getElementById(
-"projectMessage"
-).style.display="none";
-
-document.getElementById(
-"projectModal"
-).style.display="block";
-
-try{
-
-const { data, error } =
-await db
-.from("projects")
-.select("*")
-.eq("id",id)
-.single();
-
-if(error){
-
-console.error(
-"GET PROJECT ERROR:",
-error
-);
-
-showProjectMessage(
-"❌ تعذر تحميل المشروع:\n" +
-error.message
-);
-
-return;
-
-}
-
-document.getElementById(
-"projectTitle"
-).value =
-data.title || "";
-
-document.getElementById(
-"projectDescription"
-).value =
-data.description || "";
-
-document.getElementById(
-"projectImage"
-).value =
-data.image_url || "";
-
-}catch(error){
-
-console.error(error);
-
-showProjectMessage(
-"❌ حدث خطأ أثناء تحميل المشروع."
-);
-
-}
-
-}
-
-
-/* =========================
-   إغلاق النموذج
-========================= */
 
 function closeProjectModal(){
 
-document.getElementById(
-"projectModal"
-).style.display="none";
-
-editingProjectId = null;
+    document
+    .getElementById("projectModal")
+    .classList.add("hidden");
 
 }
 
-
-/* =========================
-   حفظ المشروع
-========================= */
 
 async function saveProject(){
 
-const title =
-document.getElementById(
-"projectTitle"
-).value.trim();
+    const title =
+        document
+        .getElementById("projectTitle")
+        .value
+        .trim();
 
-const description =
-document.getElementById(
-"projectDescription"
-).value.trim();
+    const description =
+        document
+        .getElementById("projectDescription")
+        .value
+        .trim();
 
-const image =
-document.getElementById(
-"projectImage"
-).value.trim();
+    const image_url =
+        document
+        .getElementById("projectImage")
+        .value
+        .trim();
 
-if(title===""){
+    const message =
+        document
+        .getElementById("projectMessage");
 
-showProjectMessage(
-"يرجى كتابة اسم المشروع."
-);
 
-return;
+    if(!title){
 
-}
+        message.innerHTML =
+        `<div class="message">
+            اكتب اسم المشروع.
+        </div>`;
 
-showProjectMessage(
-editingProjectId
-? "جاري حفظ التعديلات..."
-: "جاري حفظ المشروع..."
-);
+        return;
+    }
 
-try{
 
-const { data:sessionData } =
-await db.auth.getSession();
+    const {data:sessionData} =
+        await db.auth.getSession();
 
-const session =
-sessionData.session;
+    const user =
+        sessionData.session?.user;
 
-if(!session || !session.user){
 
-showProjectMessage(
-"❌ انتهت جلسة الدخول. سجّل الدخول مرة أخرى."
-);
+    if(!user){
 
-return;
+        message.innerHTML =
+        `<div class="message">
+            ❌ يجب تسجيل الدخول.
+        </div>`;
 
-}
+        return;
+    }
 
-if(session.user.id !== OWNER_ID){
 
-showProjectMessage(
-"❌ غير مصرح لك بإدارة المشاريع."
-);
+    let result;
 
-return;
 
-}
+    if(editingProjectId){
 
-let error;
+        result =
+            await db
+            .from("projects")
+            .update({
+                title,
+                description,
+                image_url
+            })
+            .eq(
+                "id",
+                editingProjectId
+            )
+            .eq(
+                "user_id",
+                user.id
+            );
 
-if(editingProjectId){
+    }else{
 
-const result =
-await db
-.from("projects")
-.update({
+        result =
+            await db
+            .from("projects")
+            .insert({
+                user_id:user.id,
+                title,
+                description,
+                image_url
+            });
 
-title:title,
+    }
 
-description:description || null,
 
-image_url:image || null
+    if(result.error){
 
-})
-.eq("id",editingProjectId)
-.eq("user_id",session.user.id);
+        message.innerHTML =
+        `<div class="message">
+            ❌ ${escapeHtml(result.error.message)}
+        </div>`;
 
-error=result.error;
+        return;
+    }
 
-}else{
 
-const result =
-await db
-.from("projects")
-.insert({
+    message.innerHTML =
+    `<div class="message">
+        ✅ تم الحفظ بنجاح.
+    </div>`;
 
-user_id:session.user.id,
 
-title:title,
+    await loadProjects();
 
-description:description || null,
-
-image_url:image || null
-
-})
-.select()
-.single();
-
-error=result.error;
-
-}
-
-if(error){
-
-console.error(
-"SAVE PROJECT ERROR:",
-error
-);
-
-showProjectMessage(
-"❌ تعذر حفظ البيانات:\n" +
-error.message
-);
-
-return;
-
-}
-
-showProjectMessage(
-editingProjectId
-? "✅ تم تعديل المشروع بنجاح."
-: "✅ تم حفظ المشروع بنجاح."
-);
-
-setTimeout(async function(){
-
-closeProjectModal();
-
-await loadProjects();
-
-},800);
-
-}catch(error){
-
-console.error(error);
-
-showProjectMessage(
-"❌ حدث خطأ أثناء حفظ البيانات:\n" +
-error.message
-);
-
-}
+    setTimeout(
+        closeProjectModal,
+        500
+    );
 
 }
 
 
 /* =========================
-   حذف المشروع
+   تعديل مشروع
+========================= */
+
+async function openEditProject(id){
+
+    const {data,error} =
+        await db
+        .from("projects")
+        .select("*")
+        .eq("id",id)
+        .single();
+
+
+    if(error){
+
+        alert(error.message);
+
+        return;
+    }
+
+
+    editingProjectId = id;
+
+
+    document
+    .getElementById("modalTitle")
+    .textContent =
+        "تعديل المشروع";
+
+
+    document
+    .getElementById("projectTitle")
+    .value =
+        data.title || "";
+
+
+    document
+    .getElementById("projectDescription")
+    .value =
+        data.description || "";
+
+
+    document
+    .getElementById("projectImage")
+    .value =
+        data.image_url || "";
+
+
+    document
+    .getElementById("projectMessage")
+    .innerHTML = "";
+
+
+    document
+    .getElementById("projectModal")
+    .classList.remove("hidden");
+
+}
+
+
+/* =========================
+   حذف مشروع
 ========================= */
 
 async function deleteProject(id){
 
-const confirmed =
-confirm(
-"⚠️ هل أنت متأكد من حذف هذا المشروع؟\n\nلا يمكن التراجع عن عملية الحذف."
-);
+    if(
+        !confirm(
+            "هل أنت متأكد من حذف هذا المشروع؟"
+        )
+    ){
 
-if(!confirmed){
-return;
-}
+        return;
+    }
 
-try{
 
-const { data:sessionData } =
-await db.auth.getSession();
+    const {data:sessionData} =
+        await db.auth.getSession();
 
-const session =
-sessionData.session;
+    const user =
+        sessionData.session?.user;
 
-if(!session || !session.user){
 
-alert(
-"❌ انتهت جلسة الدخول. سجّل الدخول مرة أخرى."
-);
+    if(!user){
 
-return;
+        alert("يجب تسجيل الدخول.");
 
-}
+        return;
+    }
 
-if(session.user.id !== OWNER_ID){
 
-alert(
-"❌ غير مصرح لك بحذف المشاريع."
-);
+    const {error} =
+        await db
+        .from("projects")
+        .delete()
+        .eq("id",id)
+        .eq("user_id",user.id);
 
-return;
 
-}
+    if(error){
 
-const { error } =
-await db
-.from("projects")
-.delete()
-.eq("id",id)
-.eq("user_id",session.user.id);
+        alert(
+            "خطأ: " +
+            error.message
+        );
 
-if(error){
+        return;
+    }
 
-console.error(
-"DELETE PROJECT ERROR:",
-error
-);
 
-alert(
-"❌ تعذر حذف المشروع:\n" +
-error.message
-);
+    await loadProjects();
 
-return;
+    await loadLikesTotal();
 
-}
-
-alert(
-"✅ تم حذف المشروع بنجاح."
-);
-
-await loadProjects();
-await loadLikesTotal();
-
-}catch(error){
-
-console.error(error);
-
-alert(
-"❌ حدث خطأ أثناء حذف المشروع."
-);
-
-}
+    await loadComments();
 
 }
 
 
 /* =========================
-   التعليقات
+   الإعجابات
 ========================= */
 
-function showComments(){
+async function toggleLike(projectId){
 
-hideAllPages();
+    const {data:sessionData} =
+        await db.auth.getSession();
 
-document.getElementById(
-"commentsPage"
-).style.display="block";
+    const user =
+        sessionData.session?.user;
 
-window.scrollTo(0,0);
 
-loadComments();
+    if(!user){
+
+        alert(
+            "يجب تسجيل الدخول أولاً."
+        );
+
+        return;
+    }
+
+
+    const {data:existing,error:checkError} =
+        await db
+        .from("likes")
+        .select("id")
+        .eq(
+            "project_id",
+            projectId
+        )
+        .eq(
+            "user_id",
+            user.id
+        )
+        .maybeSingle();
+
+
+    if(checkError){
+
+        alert(
+            "خطأ: " +
+            checkError.message
+        );
+
+        return;
+    }
+
+
+    if(existing){
+
+        const {error} =
+            await db
+            .from("likes")
+            .delete()
+            .eq(
+                "id",
+                existing.id
+            );
+
+
+        if(error){
+
+            alert(
+                "خطأ: " +
+                error.message
+            );
+
+            return;
+        }
+
+    }else{
+
+        const {error} =
+            await db
+            .from("likes")
+            .insert({
+                project_id:projectId,
+                user_id:user.id
+            });
+
+
+        if(error){
+
+            alert(
+                "خطأ: " +
+                error.message
+            );
+
+            return;
+        }
+
+    }
+
+
+    await loadProjects();
+
+    await loadLikesTotal();
 
 }
 
+
+/* =========================
+   مجموع الإعجابات
+========================= */
+
+async function loadLikesTotal(){
+
+    const {count,error} =
+        await db
+        .from("likes")
+        .select(
+            "*",
+            {
+                count:"exact",
+                head:true
+            }
+        );
+
+
+    if(!error){
+
+        document
+        .getElementById("likesCount")
+        .textContent =
+            count || 0;
+
+    }
+
+}
+
+
+/* =========================
+   التعليقات داخل المشاريع
+========================= */
+
+async function loadProjectComments(projectId){
+
+    const box =
+        document
+        .getElementById(
+            `projectComments-${projectId}`
+        );
+
+
+    if(!box) return;
+
+
+    const {data,error} =
+        await db
+        .from("comments")
+        .select(`
+            id,
+            content,
+            created_at,
+            user_id,
+            profiles(name,email)
+        `)
+        .eq(
+            "project_id",
+            projectId
+        )
+        .order(
+            "created_at",
+            {ascending:true}
+        );
+
+
+    if(error){
+
+        box.innerHTML =
+        `<div class="message">
+            ❌ ${escapeHtml(error.message)}
+        </div>`;
+
+        return;
+    }
+
+
+    if(!data || !data.length){
+
+        box.innerHTML =
+        `<div style="color:#64748b">
+            لا توجد تعليقات حتى الآن.
+        </div>`;
+
+        return;
+    }
+
+
+    const {data:sessionData} =
+        await db.auth.getSession();
+
+    const currentUser =
+        sessionData.session?.user;
+
+
+    box.innerHTML =
+        data.map(comment => {
+
+        const isOwner =
+            currentUser &&
+            currentUser.id === OWNER_ID;
+
+        const isCommentOwner =
+            currentUser &&
+            currentUser.id === comment.user_id;
+
+
+        return `
+
+        <div class="comment-item">
+
+            <div class="comment-user">
+                👤 ${
+                    escapeHtml(
+                        comment.profiles?.name ||
+                        comment.profiles?.email ||
+                        "مستخدم"
+                    )
+                }
+            </div>
+
+            <div class="comment-content">
+                ${escapeHtml(comment.content)}
+            </div>
+
+            <div class="comment-date">
+                ${formatDate(comment.created_at)}
+            </div>
+
+            ${
+                isOwner || isCommentOwner
+                ?
+                `<button
+                    class="btn-danger"
+                    onclick="deleteComment('${comment.id}')"
+                >
+                    🗑️ حذف التعليق
+                </button>`
+                :
+                ""
+            }
+
+        </div>
+
+        `;
+
+    }).join("");
+
+}
+
+
+/* =========================
+   إضافة تعليق
+========================= */
+
+async function addComment(projectId){
+
+    const input =
+        document
+        .getElementById(
+            `commentInput-${projectId}`
+        );
+
+
+    if(!input){
+
+        return;
+    }
+
+
+    const content =
+        input.value.trim();
+
+
+    if(!content){
+
+        alert(
+            "اكتب التعليق أولاً."
+        );
+
+        return;
+    }
+
+
+    const {data:sessionData} =
+        await db.auth.getSession();
+
+    const user =
+        sessionData.session?.user;
+
+
+    if(!user){
+
+        alert(
+            "يجب تسجيل الدخول أولاً."
+        );
+
+        return;
+    }
+
+
+    const {error} =
+        await db
+        .from("comments")
+        .insert({
+            project_id:projectId,
+            user_id:user.id,
+            content:content
+        });
+
+
+    if(error){
+
+        alert(
+            "خطأ في إضافة التعليق: " +
+            error.message
+        );
+
+        return;
+    }
+
+
+    input.value = "";
+
+
+    await loadProjectComments(projectId);
+
+    await loadComments();
+
+}
+
+
+/* =========================
+   إدارة التعليقات
+========================= */
 
 async function loadComments(){
 
-const list =
-document.getElementById("commentsList");
+    const list =
+        document.getElementById(
+            "commentsList"
+        );
 
-if(!list){
-return;
-}
 
-list.innerHTML =
-'<div class="loading">جاري تحميل التعليقات...</div>';
+    if(!list) return;
 
-try{
 
-const { data, error } =
-await db
-.from("comments")
-.select(`
-id,
-content,
-created_at,
-project_id,
-user_id,
-profiles(name,email),
-projects(title)
-`)
-.order("created_at",{ascending:false});
+    list.innerHTML =
+        "جاري تحميل التعليقات...";
 
-if(error){
 
-console.error(
-"COMMENTS ERROR:",
-error
-);
+    const {data,error} =
+        await db
+        .from("comments")
+        .select(`
+            id,
+            content,
+            created_at,
+            project_id,
+            user_id,
+            profiles(name,email),
+            projects(title)
+        `)
+        .order(
+            "created_at",
+            {ascending:false}
+        );
 
-list.innerHTML =
-'<div class="empty">❌ تعذر تحميل التعليقات:<br>' +
-escapeHtml(error.message) +
-'</div>';
 
-return;
+    if(error){
 
-}
+        list.innerHTML =
+        `<div class="message">
+            ❌ ${escapeHtml(error.message)}
+        </div>`;
 
-document.getElementById(
-"commentsCount"
-).innerText =
-data ? data.length : 0;
+        return;
+    }
 
-if(!data || data.length===0){
 
-list.innerHTML = `
+    document
+    .getElementById("commentsCount")
+    .textContent =
+        data.length;
 
-<div class="empty">
 
-💬 لا توجد تعليقات حاليًا.
+    if(!data.length){
 
-<br>
+        list.innerHTML =
+        `<div class="message">
+            لا توجد تعليقات حتى الآن.
+        </div>`;
 
-ستظهر التعليقات هنا عندما يبدأ المستخدمون بالتفاعل مع المشاريع.
+        return;
+    }
 
-</div>
 
-`;
+    list.innerHTML =
+        data.map(comment => `
 
-return;
+        <div class="comment-item">
 
-}
+            <div class="comment-user">
+                👤 ${
+                    escapeHtml(
+                        comment.profiles?.name ||
+                        comment.profiles?.email ||
+                        "مستخدم"
+                    )
+                }
+            </div>
 
-let html="";
+            <div>
+                🏗️ ${
+                    escapeHtml(
+                        comment.projects?.title ||
+                        "مشروع"
+                    )
+                }
+            </div>
 
-data.forEach(function(comment){
+            <div class="comment-content">
+                ${escapeHtml(comment.content)}
+            </div>
 
-const profile =
-comment.profiles || {};
+            <div class="comment-date">
+                ${formatDate(comment.created_at)}
+            </div>
 
-const project =
-comment.projects || {};
+            <button
+                class="btn-danger"
+                onclick="deleteComment('${comment.id}')"
+            >
+                🗑️ حذف
+            </button>
 
-const name =
-profile.name ||
-"مستخدم KAPO";
+        </div>
 
-const email =
-profile.email ||
-"بدون بريد";
-
-const projectTitle =
-project.title ||
-"مشروع غير معروف";
-
-const content =
-comment.content ||
-"تعليق فارغ";
-
-const date =
-comment.created_at
-? new Date(comment.created_at)
-.toLocaleString("ar-SA")
-: "-";
-
-html += `
-
-<div class="comment-card">
-
-<div class="comment-top">
-
-<div>
-
-<div class="comment-user">
-👤 ${escapeHtml(name)}
-</div>
-
-<div class="comment-email">
-${escapeHtml(email)}
-</div>
-
-</div>
-
-<button
-class="comment-delete"
-onclick="deleteComment('${comment.id}')">
-
-🗑️ حذف
-
-</button>
-
-</div>
-
-<div class="comment-project">
-🏗️ المشروع: ${escapeHtml(projectTitle)}
-</div>
-
-<div class="comment-text">
-${escapeHtml(content)}
-</div>
-
-<div class="comment-date">
-📅 ${escapeHtml(date)}
-</div>
-
-</div>
-
-`;
-
-});
-
-list.innerHTML=html;
-
-}catch(error){
-
-console.error(error);
-
-list.innerHTML =
-'<div class="empty">❌ حدث خطأ أثناء تحميل التعليقات.</div>';
-
-}
+    `).join("");
 
 }
 
@@ -2679,191 +1830,110 @@ list.innerHTML =
 
 async function deleteComment(id){
 
-const confirmed =
-confirm(
-"⚠️ هل أنت متأكد من حذف هذا التعليق؟\n\nلا يمكن التراجع عن عملية الحذف."
-);
+    if(
+        !confirm(
+            "هل تريد حذف هذا التعليق؟"
+        )
+    ){
 
-if(!confirmed){
-return;
-}
+        return;
+    }
 
-try{
 
-const { data:sessionData } =
-await db.auth.getSession();
+    const {data:sessionData} =
+        await db.auth.getSession();
 
-const session =
-sessionData.session;
+    const user =
+        sessionData.session?.user;
 
-if(!session || !session.user){
 
-alert(
-"❌ انتهت جلسة الدخول. سجّل الدخول مرة أخرى."
-);
+    if(!user){
 
-return;
+        alert(
+            "يجب تسجيل الدخول."
+        );
 
-}
+        return;
+    }
 
-if(session.user.id !== OWNER_ID){
 
-alert(
-"❌ غير مصرح لك بإدارة التعليقات."
-);
+    const {error} =
+        await db
+        .from("comments")
+        .delete()
+        .eq(
+            "id",
+            id
+        );
 
-return;
 
-}
+    if(error){
 
-const { error } =
-await db
-.from("comments")
-.delete()
-.eq("id",id);
+        alert(
+            "خطأ: " +
+            error.message
+        );
 
-if(error){
+        return;
+    }
 
-console.error(
-"DELETE COMMENT ERROR:",
-error
-);
 
-alert(
-"❌ تعذر حذف التعليق:\n" +
-error.message
-);
+    await loadComments();
 
-return;
-
-}
-
-alert(
-"✅ تم حذف التعليق بنجاح."
-);
-
-await loadComments();
-
-}catch(error){
-
-console.error(error);
-
-alert(
-"❌ حدث خطأ أثناء حذف التعليق."
-);
-
-}
+    await loadProjects();
 
 }
 
 
 /* =========================
-   الأمان
+   أدوات
 ========================= */
 
-function showSecurity(){
+function formatDate(date){
 
-hideAllPages();
+    if(!date) return "";
 
-document.getElementById(
-"securityPage"
-).style.display="block";
+    try{
 
-window.scrollTo(0,0);
+        return new Date(date)
+        .toLocaleString(
+            "ar-SA"
+        );
+
+    }catch(e){
+
+        return date;
+
+    }
+
+}
+
+
+function escapeHtml(value){
+
+    if(value === null || value === undefined){
+
+        return "";
+
+    }
+
+    return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 
 }
 
 
 /* =========================
-   العودة
+   بدء التشغيل
 ========================= */
-
-function backToDashboard(){
-
-hideAllPages();
-
-document.getElementById(
-"ownerDashboard"
-).style.display="block";
-
-window.scrollTo(0,0);
-
-}
-
-
-/* =========================
-   حماية النصوص
-========================= */
-
-function escapeHtml(text){
-
-return String(text)
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
-
-}
-
-
-/* =========================
-   مراقبة الجلسة
-========================= */
-
-db.auth.onAuthStateChange(
-
-(event, session) => {
-
-if(session){
-
-const user =
-session.user;
-
-if(user.id !== OWNER_ID){
-
-db.auth.signOut();
-
-return;
-
-}
-
-const ownerName =
-user.user_metadata?.name ||
-"كابو";
-
-document.getElementById(
-"dashboardOwnerName"
-).innerText=ownerName;
-
-hideAllPages();
-
-document.getElementById(
-"ownerDashboard"
-).style.display="block";
-
-loadUsers();
-loadProjects();
-loadComments();
-loadLikesTotal();
-
-}else{
-
-hideAllPages();
-
-document.getElementById(
-"ownerLogin"
-).style.display="flex";
-
-}
-
-});
-
 
 checkSession();
 
 </script>
 
 </body>
-
 </html>
