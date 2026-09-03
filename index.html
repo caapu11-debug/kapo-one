@@ -1071,9 +1071,6 @@ transform:translateX(-50%) translateY(0);
 
 <!-- AUTH -->
 
-<!--
-تم تثبيت شاشة الدخول لتظهر مباشرة حتى قبل تشغيل JavaScript.
--->
 <div id="authPage"
 class="auth-page"
 style="display:flex !important;">
@@ -1144,7 +1141,6 @@ onclick="enterGuest()">
 
 </div>
 
-
 <!-- REGISTER -->
 
 <div id="registerBox" class="hidden">
@@ -1198,7 +1194,6 @@ onclick="showLogin()">
 
 </div>
 
-
 <!-- RESET -->
 
 <div id="resetBox" class="hidden">
@@ -1230,7 +1225,6 @@ onclick="showLogin()">
 
 </div>
 
-
 <div
 id="authMessage"
 class="auth-message hidden">
@@ -1243,10 +1237,6 @@ class="auth-message hidden">
 
 <!-- APP -->
 
-<!--
-المنصة مخفية في البداية.
-يتم إظهارها بعد تسجيل الدخول أو الدخول كزائر.
--->
 <div
 id="appPage"
 class="hidden"
@@ -1641,8 +1631,6 @@ class="design-search-info">
 
 <div class="designs-grid">
 
-<!-- DESIGN 1 -->
-
 <div
 class="design-card"
 data-design-title="برج المستقبل"
@@ -1686,8 +1674,6 @@ onclick="showDesignMessage('برج المستقبل')">
 
 </div>
 
-
-<!-- DESIGN 2 -->
 
 <div
 class="design-card"
@@ -1733,8 +1719,6 @@ onclick="showDesignMessage('التصميم الذري')">
 </div>
 
 
-<!-- DESIGN 3 -->
-
 <div
 class="design-card"
 data-design-title="السيف والنخلة"
@@ -1778,8 +1762,6 @@ onclick="showDesignMessage('السيف والنخلة')">
 
 </div>
 
-
-<!-- DESIGN 4 -->
 
 <div
 class="design-card"
@@ -2243,6 +2225,12 @@ error
 let currentUser=null;
 let isGuest=false;
 
+/*
+هذا المتغير يمنع Supabase من إدخال
+الجلسة القديمة تلقائيًا عند فتح الموقع.
+*/
+let authStartupFinished=false;
+
 let allProjects=[];
 let currentProjectFilter="all";
 
@@ -2252,7 +2240,7 @@ const designLikes={};
 const designComments={};
 
 let localIdeas=[];
-let localQuestions=[];
+let localQuestions;
 
 
 /* HELPERS */
@@ -2333,14 +2321,6 @@ toast.classList.remove("show");
 PAGE CONTROL
 ========================= */
 
-/*
-هذا الجزء هو الإصلاح الرئيسي.
-
-نستخدم style.setProperty مع !important
-حتى لا يستطيع class hidden منع إظهار
-شاشة الدخول أو المنصة.
-*/
-
 function showAuthPage(){
 
 const auth=
@@ -2417,11 +2397,6 @@ app.style.setProperty(
 );
 
 }
-
-/*
-نضمن أن الصفحة الرئيسية تظهر
-عند الدخول إلى المنصة.
-*/
 
 kapoSection(
 "home",
@@ -2568,7 +2543,6 @@ isGuest=true;
 currentUser=null;
 
 showAppPage();
-
 
 const headerUserName=
 document.getElementById(
@@ -2809,7 +2783,6 @@ name
 
 }
 
-
 showLogin();
 
 showAuthMessage(
@@ -2896,6 +2869,13 @@ return;
 isGuest=false;
 
 currentUser=data.user;
+
+/*
+بعد الضغط على دخول بنفسك،
+نسمح لمراقب Supabase بمعالجة SIGNED_IN.
+*/
+
+authStartupFinished=true;
 
 await loadUserApp();
 
@@ -3193,6 +3173,11 @@ console.error(error);
 
 currentUser=null;
 isGuest=false;
+
+/*
+بعد تسجيل الخروج نرجع مباشرة لشاشة الدخول.
+*/
+authStartupFinished=true;
 
 showAuthPage();
 
@@ -5378,14 +5363,23 @@ renderQuestions();
 }
 
 
-/* CURRENT USER */
-
-async function checkCurrentUser(){
+/* =========================
+CURRENT USER / STARTUP AUTH
+========================= */
 
 /*
-نبدأ دائمًا بشاشة الدخول.
-إذا لم توجد جلسة ستبقى شاشة الدخول.
+المهم هنا:
+
+عند فتح الموقع لا نستخدم الجلسة القديمة
+للدخول تلقائيًا.
+
+نبقى على شاشة تسجيل الدخول.
+
+بعد انتهاء فحص البداية فقط،
+نسمح بتسجيل الدخول الحقيقي.
 */
+
+async function checkCurrentUser(){
 
 showAuthPage();
 
@@ -5396,6 +5390,8 @@ showAuthMessage(
 "تعذر تشغيل نظام الحسابات. أعد تحميل الصفحة."
 );
 
+authStartupFinished=true;
+
 return;
 
 }
@@ -5403,7 +5399,13 @@ return;
 
 try{
 
-const {data,error}=
+/*
+نفحص الجلسة فقط للتأكد من أن Supabase يعمل.
+
+لا نستخدم data.session للدخول إلى المنصة.
+*/
+
+const {error}=
 await supabaseClient
 .auth
 .getSession();
@@ -5411,29 +5413,13 @@ await supabaseClient
 
 if(error){
 
-console.error(error);
-
-showAuthPage();
-
-return;
+console.error(
+"Session check error:",
+error
+);
 
 }
 
-
-if(
-data &&
-data.session &&
-data.session.user
-){
-
-currentUser=
-data.session.user;
-
-isGuest=false;
-
-await loadUserApp();
-
-}else{
 
 currentUser=null;
 
@@ -5441,11 +5427,13 @@ isGuest=false;
 
 showAuthPage();
 
-}
 
 }catch(error){
 
-console.error(error);
+console.error(
+"Current user error:",
+error
+);
 
 currentUser=null;
 
@@ -5453,12 +5441,22 @@ isGuest=false;
 
 showAuthPage();
 
-}
+}finally{
+
+/*
+الآن انتهت مرحلة بداية الصفحة.
+*/
+
+authStartupFinished=true;
 
 }
 
+}
 
-/* AUTH STATE */
+
+/* =========================
+AUTH STATE
+========================= */
 
 function setupAuthListener(){
 
@@ -5470,6 +5468,10 @@ async function(
 event,
 session
 ){
+
+/*
+تسجيل الخروج
+*/
 
 if(
 event==="SIGNED_OUT"
@@ -5486,11 +5488,25 @@ return;
 }
 
 
+/*
+Supabase قد يرسل SIGNED_IN عند بداية الصفحة
+بسبب جلسة قديمة.
+
+نتجاهله أثناء بداية التشغيل.
+*/
+
 if(
 event==="SIGNED_IN" &&
 session &&
 session.user
 ){
+
+if(!authStartupFinished){
+
+return;
+
+}
+
 
 currentUser=
 session.user;
@@ -5507,14 +5523,16 @@ await loadUserApp();
 }
 
 
-/* START */
+/* =========================
+START
+========================= */
 
 document.addEventListener(
 "DOMContentLoaded",
 function(){
 
 /*
-نبدأ بشاشة الدخول بشكل واضح.
+شاشة الدخول تظهر أولًا.
 */
 
 showAuthPage();
@@ -5531,7 +5549,9 @@ checkCurrentUser();
 );
 
 
-/* ESC */
+/* =========================
+ESC
+========================= */
 
 document.addEventListener(
 "keydown",
