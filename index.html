@@ -1,21 +1,10 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
-<head>
+<!DOCTYPE html><html lang="ar" dir="rtl"><head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>KAPO ONE</title><style>
 
-<title>KAPO ONE</title>
+*{box-sizing:border-box}
 
-<style>
-
-*{
-box-sizing:border-box;
-}
-
-html{
-scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
 margin:0;
@@ -29,22 +18,14 @@ color:#fff;
 min-height:100vh;
 }
 
-/* ================= HEADER ================= */
-
 header{
 position:relative;
 overflow:hidden;
 padding:52px 20px 42px;
 text-align:center;
-background:
-linear-gradient(180deg,
-rgba(15,23,42,.98),
-rgba(3,7,18,.94)
-);
+background:linear-gradient(180deg,rgba(15,23,42,.98),rgba(3,7,18,.94));
 border-bottom:1px solid rgba(96,165,250,.22);
-box-shadow:
-0 20px 70px rgba(0,0,0,.45),
-inset 0 -1px 0 rgba(255,255,255,.03);
+box-shadow:0 20px 70px rgba(0,0,0,.45),inset 0 -1px 0 rgba(255,255,255,.03);
 }
 
 header:before{
@@ -67,14 +48,7 @@ width:100%;
 height:1px;
 bottom:0;
 left:0;
-background:linear-gradient(
-90deg,
-transparent,
-#3b82f6,
-#a855f7,
-#06b6d4,
-transparent
-);
+background:linear-gradient(90deg,transparent,#3b82f6,#a855f7,#06b6d4,transparent);
 opacity:.7;
 }
 
@@ -84,19 +58,11 @@ margin:0;
 font-size:46px;
 font-weight:900;
 letter-spacing:3px;
-background:linear-gradient(
-90deg,
-#60a5fa,
-#c084fc,
-#38bdf8,
-#fff,
-#60a5fa
-);
+background:linear-gradient(90deg,#60a5fa,#c084fc,#38bdf8,#fff,#60a5fa);
 background-size:300%;
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 animation:kapoGradient 6s linear infinite;
-text-shadow:0 0 35px rgba(59,130,246,.2);
 }
 
 header p{
@@ -112,15 +78,8 @@ width:110px;
 height:4px;
 border-radius:20px;
 margin:22px auto 0;
-background:linear-gradient(
-90deg,
-#2563eb,
-#a855f7,
-#06b6d4
-);
-box-shadow:
-0 0 15px rgba(59,130,246,.6),
-0 0 30px rgba(168,85,247,.25);
+background:linear-gradient(90deg,#2563eb,#a855f7,#06b6d4);
+box-shadow:0 0 15px rgba(59,130,246,.6),0 0 30px rgba(168,85,247,.25);
 }
 
 @keyframes kapoGradient{
@@ -128,32 +87,21 @@ box-shadow:
 100%{background-position:300%}
 }
 
-/* ================= CONTAINER ================= */
-
 .container{
 width:92%;
 max-width:1100px;
 margin:30px auto;
 }
 
-/* ================= CARDS ================= */
-
 .card{
 position:relative;
 overflow:hidden;
-background:
-linear-gradient(
-145deg,
-rgba(15,23,42,.94),
-rgba(7,13,25,.94)
-);
+background:linear-gradient(145deg,rgba(15,23,42,.94),rgba(7,13,25,.94));
 border:1px solid rgba(148,163,184,.14);
 border-radius:25px;
 padding:26px;
 margin-bottom:22px;
-box-shadow:
-0 20px 60px rgba(0,0,0,.30),
-inset 0 1px 0 rgba(255,255,255,.045);
+box-shadow:0 20px 60px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,255,255,.045);
 backdrop-filter:blur(14px);
 }
 
@@ -164,24 +112,11 @@ top:0;
 right:10%;
 width:35%;
 height:1px;
-background:linear-gradient(
-90deg,
-transparent,
-rgba(96,165,250,.5),
-transparent
-);
+background:linear-gradient(90deg,transparent,rgba(96,165,250,.5),transparent);
 }
 
-.card h2{
-margin-top:0;
-font-size:26px;
-}
-
-.card p{
-line-height:1.8;
-}
-
-/* ================= HERO ================= */
+.card h2{margin-top:0;font-size:26px}
+.card p{line-height:1.8}
 
 .hero-main{
 position:relative;
@@ -189,25 +124,11 @@ overflow:hidden;
 text-align:center;
 padding:58px 25px;
 background:
-radial-gradient(
-circle at 50% 0%,
-rgba(59,130,246,.22),
-transparent 55%
-),
-radial-gradient(
-circle at 50% 100%,
-rgba(124,58,237,.10),
-transparent 50%
-),
-linear-gradient(
-145deg,
-rgba(15,23,42,.98),
-rgba(5,10,22,.98)
-);
+radial-gradient(circle at 50% 0%,rgba(59,130,246,.22),transparent 55%),
+radial-gradient(circle at 50% 100%,rgba(124,58,237,.10),transparent 50%),
+linear-gradient(145deg,rgba(15,23,42,.98),rgba(5,10,22,.98));
 border-color:rgba(96,165,250,.20);
-box-shadow:
-0 25px 80px rgba(0,0,0,.38),
-0 0 50px rgba(37,99,235,.06);
+box-shadow:0 25px 80px rgba(0,0,0,.38),0 0 50px rgba(37,99,235,.06);
 }
 
 .hero-main:before{
@@ -219,8 +140,7 @@ border:1px solid rgba(96,165,250,.12);
 border-radius:50%;
 top:-110px;
 right:-70px;
-box-shadow:
-0 0 60px rgba(59,130,246,.08);
+box-shadow:0 0 60px rgba(59,130,246,.08);
 }
 
 .hero-main:after{
@@ -237,8 +157,7 @@ left:-100px;
 .hero-icon{
 font-size:64px;
 margin-bottom:12px;
-filter:
-drop-shadow(0 0 18px rgba(59,130,246,.45));
+filter:drop-shadow(0 0 18px rgba(59,130,246,.45));
 animation:floatIcon 3s ease-in-out infinite;
 }
 
@@ -251,13 +170,7 @@ animation:floatIcon 3s ease-in-out infinite;
 font-size:39px;
 font-weight:900;
 margin:10px 0;
-background:linear-gradient(
-90deg,
-#fff,
-#93c5fd,
-#c4b5fd,
-#fff
-);
+background:linear-gradient(90deg,#fff,#93c5fd,#c4b5fd,#fff);
 background-size:200%;
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
@@ -272,57 +185,31 @@ font-size:17px;
 line-height:1.9;
 }
 
-.hero-actions{
-margin-top:28px;
-}
+.hero-actions{margin-top:28px}
 
-/* ================= INPUTS ================= */
-
-input,
-textarea{
+input,textarea{
 width:100%;
 padding:16px 17px;
 margin:8px 0;
 border:1px solid #26364e;
 border-radius:15px;
-background:
-linear-gradient(
-145deg,
-rgba(2,6,23,.96),
-rgba(8,15,29,.96)
-);
+background:linear-gradient(145deg,rgba(2,6,23,.96),rgba(8,15,29,.96));
 color:white;
 font-size:16px;
 outline:none;
 transition:.25s;
-box-shadow:
-inset 0 1px 0 rgba(255,255,255,.025);
+box-shadow:inset 0 1px 0 rgba(255,255,255,.025);
 }
 
-input:hover,
-textarea:hover{
-border-color:rgba(96,165,250,.3);
-}
+input:hover,textarea:hover{border-color:rgba(96,165,250,.3)}
 
-input:focus,
-textarea:focus{
+input:focus,textarea:focus{
 border-color:#3b82f6;
-box-shadow:
-0 0 0 3px rgba(59,130,246,.12),
-0 0 25px rgba(37,99,235,.08);
+box-shadow:0 0 0 3px rgba(59,130,246,.12),0 0 25px rgba(37,99,235,.08);
 }
 
-input::placeholder,
-textarea::placeholder{
-color:#64748b;
-}
-
-textarea{
-min-height:110px;
-resize:vertical;
-}
-
-/* ================= BUTTONS ================= */
+input::placeholder,textarea::placeholder{color:#64748b}
+textarea{min-height:110px;resize:vertical}
 
 button{
 position:relative;
@@ -334,12 +221,9 @@ margin:5px;
 font-size:15px;
 font-weight:bold;
 cursor:pointer;
-background:
-linear-gradient(135deg,#2563eb,#3b82f6);
+background:linear-gradient(135deg,#2563eb,#3b82f6);
 color:white;
-box-shadow:
-0 8px 25px rgba(37,99,235,.20),
-inset 0 1px 0 rgba(255,255,255,.15);
+box-shadow:0 8px 25px rgba(37,99,235,.20),inset 0 1px 0 rgba(255,255,255,.15);
 transition:.25s;
 }
 
@@ -350,73 +234,37 @@ top:0;
 left:-100%;
 width:70%;
 height:100%;
-background:linear-gradient(
-90deg,
-transparent,
-rgba(255,255,255,.13),
-transparent
-);
+background:linear-gradient(90deg,transparent,rgba(255,255,255,.13),transparent);
 transform:skewX(-20deg);
 transition:.5s;
 }
 
-button:hover:before{
-left:130%;
-}
+button:hover:before{left:130%}
 
 button:hover{
 transform:translateY(-3px);
 opacity:.98;
-box-shadow:
-0 14px 35px rgba(37,99,235,.30),
-inset 0 1px 0 rgba(255,255,255,.18);
+box-shadow:0 14px 35px rgba(37,99,235,.30),inset 0 1px 0 rgba(255,255,255,.18);
 }
 
-button:active{
-transform:translateY(0);
-}
+button:active{transform:translateY(0)}
 
-.btn-danger{
-background:linear-gradient(135deg,#b91c1c,#ef4444);
-}
+.btn-danger{background:linear-gradient(135deg,#b91c1c,#ef4444)}
+.btn-secondary{background:linear-gradient(135deg,#334155,#475569)}
+.btn-success{background:linear-gradient(135deg,#15803d,#22c55e)}
+.btn-info{background:linear-gradient(135deg,#0369a1,#0ea5e9)}
+.btn-purple{background:linear-gradient(135deg,#6d28d9,#a855f7)}
 
-.btn-secondary{
-background:linear-gradient(135deg,#334155,#475569);
-}
-
-.btn-success{
-background:linear-gradient(135deg,#15803d,#22c55e);
-}
-
-.btn-info{
-background:linear-gradient(135deg,#0369a1,#0ea5e9);
-}
-
-.btn-purple{
-background:linear-gradient(135deg,#6d28d9,#a855f7);
-}
-
-.hidden{
-display:none!important;
-}
-
-/* ================= MESSAGE ================= */
+.hidden{display:none!important}
 
 .message{
 padding:15px 17px;
 border-radius:14px;
 margin-top:12px;
-background:
-linear-gradient(
-145deg,
-rgba(23,32,51,.95),
-rgba(10,17,31,.95)
-);
+background:linear-gradient(145deg,rgba(23,32,51,.95),rgba(10,17,31,.95));
 border:1px solid #263449;
 line-height:1.8;
 }
-
-/* ================= AUTH ================= */
 
 .auth-tabs{
 display:flex;
@@ -424,12 +272,7 @@ gap:10px;
 margin-bottom:18px;
 }
 
-.auth-tabs button{
-flex:1;
-margin:0;
-}
-
-/* ================= NAVIGATION ================= */
+.auth-tabs button{flex:1;margin:0}
 
 .kapo-nav{
 display:flex;
@@ -439,67 +282,35 @@ padding:5px;
 scrollbar-width:none;
 }
 
-.kapo-nav::-webkit-scrollbar{
-display:none;
-}
+.kapo-nav::-webkit-scrollbar{display:none}
 
 .kapo-nav button{
 white-space:nowrap;
 margin:0;
 padding:12px 17px;
-background:
-linear-gradient(
-135deg,
-#172554,
-#1e3a8a
-);
+background:linear-gradient(135deg,#172554,#1e3a8a);
 border:1px solid rgba(96,165,250,.16);
 }
 
-.kapo-nav button:hover{
-transform:translateY(-2px);
-}
+.kapo-nav button:hover{transform:translateY(-2px)}
 
 .kapo-nav button.active{
-background:
-linear-gradient(
-135deg,
-#2563eb,
-#7c3aed
-);
-box-shadow:
-0 10px 30px rgba(79,70,229,.30),
-0 0 20px rgba(59,130,246,.10);
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+box-shadow:0 10px 30px rgba(79,70,229,.30),0 0 20px rgba(59,130,246,.10);
 }
 
-/* ================= PROJECT SEARCH ================= */
-
-.project-search{
-margin-bottom:20px;
-}
-
-.project-search input{
-margin:0;
-}
-
-/* ================= PROJECTS ================= */
+.project-search{margin-bottom:20px}
+.project-search input{margin:0}
 
 .project-card{
 position:relative;
-background:
-linear-gradient(
-145deg,
-rgba(17,24,39,.98),
-rgba(7,13,25,.98)
-);
+background:linear-gradient(145deg,rgba(17,24,39,.98),rgba(7,13,25,.98));
 border:1px solid rgba(96,165,250,.14);
 border-radius:23px;
 padding:20px;
 margin-bottom:22px;
 overflow:hidden;
-box-shadow:
-0 20px 55px rgba(0,0,0,.28),
-inset 0 1px 0 rgba(255,255,255,.035);
+box-shadow:0 20px 55px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.035);
 transition:.28s;
 }
 
@@ -510,20 +321,13 @@ top:0;
 right:8%;
 width:45%;
 height:1px;
-background:linear-gradient(
-90deg,
-transparent,
-rgba(96,165,250,.45),
-transparent
-);
+background:linear-gradient(90deg,transparent,rgba(96,165,250,.45),transparent);
 }
 
 .project-card:hover{
 transform:translateY(-5px);
 border-color:rgba(96,165,250,.35);
-box-shadow:
-0 25px 65px rgba(0,0,0,.35),
-0 0 30px rgba(37,99,235,.06);
+box-shadow:0 25px 65px rgba(0,0,0,.35),0 0 30px rgba(37,99,235,.06);
 }
 
 .project-image-wrap{
@@ -542,24 +346,12 @@ box-shadow:0 10px 35px rgba(0,0,0,.35);
 transition:.4s;
 }
 
-.project-card:hover img{
-transform:scale(1.015);
-}
+.project-card:hover img{transform:scale(1.015)}
 
 .project-no-image{
 height:220px;
 border-radius:18px;
-background:
-radial-gradient(
-circle at 50% 40%,
-rgba(59,130,246,.18),
-transparent 50%
-),
-linear-gradient(
-135deg,
-#111827,
-#1e293b
-);
+background:radial-gradient(circle at 50% 40%,rgba(59,130,246,.18),transparent 50%),linear-gradient(135deg,#111827,#1e293b);
 display:flex;
 align-items:center;
 justify-content:center;
@@ -606,8 +398,6 @@ flex-wrap:wrap;
 margin-top:15px;
 }
 
-/* ================= DETAILS ================= */
-
 .project-details{
 display:none;
 margin-top:18px;
@@ -627,8 +417,6 @@ margin-bottom:10px;
 color:#93c5fd;
 }
 
-/* ================= LIKES ================= */
-
 .like-box{
 display:flex;
 align-items:center;
@@ -639,21 +427,14 @@ padding-top:17px;
 border-top:1px solid #263449;
 }
 
-.like-btn{
-background:#334155;
-}
+.like-btn{background:#334155}
 
 .like-btn.liked{
-background:
-linear-gradient(135deg,#be123c,#e11d48);
+background:linear-gradient(135deg,#be123c,#e11d48);
 box-shadow:0 8px 25px rgba(225,29,72,.20);
 }
 
-.like-count{
-color:#cbd5e1;
-}
-
-/* ================= COMMENTS ================= */
+.like-count{color:#cbd5e1}
 
 .comments-section{
 margin-top:20px;
@@ -661,17 +442,10 @@ padding-top:20px;
 border-top:1px solid #263449;
 }
 
-.comments-section h3{
-margin-top:0;
-}
+.comments-section h3{margin-top:0}
 
 .comment-item{
-background:
-linear-gradient(
-145deg,
-rgba(11,18,32,.95),
-rgba(6,11,22,.95)
-);
+background:linear-gradient(145deg,rgba(11,18,32,.95),rgba(6,11,22,.95));
 border:1px solid #263449;
 border-radius:15px;
 padding:15px;
@@ -696,8 +470,6 @@ line-height:1.8;
 white-space:pre-wrap;
 }
 
-/* ================= USER ================= */
-
 .user-top{
 display:flex;
 justify-content:space-between;
@@ -711,15 +483,9 @@ font-size:19px;
 color:#cbd5e1;
 }
 
-.welcome strong{
-color:#60a5fa;
-}
+.welcome strong{color:#60a5fa}
 
-/* ================= SECTIONS ================= */
-
-.section-box{
-display:none;
-}
+.section-box{display:none}
 
 .section-box.active{
 display:block;
@@ -727,17 +493,9 @@ animation:sectionShow .3s ease;
 }
 
 @keyframes sectionShow{
-from{
-opacity:0;
-transform:translateY(10px);
+from{opacity:0;transform:translateY(10px)}
+to{opacity:1;transform:translateY(0)}
 }
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-/* ================= FEATURE GRID ================= */
 
 .feature-grid{
 display:grid;
@@ -748,12 +506,7 @@ gap:15px;
 .feature-card{
 position:relative;
 overflow:hidden;
-background:
-linear-gradient(
-145deg,
-rgba(17,24,39,.96),
-rgba(8,15,29,.96)
-);
+background:linear-gradient(145deg,rgba(17,24,39,.96),rgba(8,15,29,.96));
 border:1px solid rgba(96,165,250,.15);
 border-radius:19px;
 padding:22px;
@@ -780,9 +533,7 @@ left:-30px;
 .feature-card:hover{
 transform:translateY(-5px);
 border-color:rgba(96,165,250,.38);
-box-shadow:
-0 18px 40px rgba(0,0,0,.25),
-0 0 25px rgba(59,130,246,.05);
+box-shadow:0 18px 40px rgba(0,0,0,.25),0 0 25px rgba(59,130,246,.05);
 }
 
 .feature-icon{
@@ -802,8 +553,6 @@ margin-top:8px;
 line-height:1.6;
 }
 
-/* ================= STATS ================= */
-
 .stats-grid{
 display:grid;
 grid-template-columns:repeat(3,1fr);
@@ -815,12 +564,7 @@ margin-top:22px;
 text-align:center;
 padding:19px;
 border-radius:18px;
-background:
-linear-gradient(
-145deg,
-rgba(2,6,23,.75),
-rgba(15,23,42,.55)
-);
+background:linear-gradient(145deg,rgba(2,6,23,.75),rgba(15,23,42,.55));
 border:1px solid rgba(96,165,250,.13);
 transition:.25s;
 }
@@ -830,9 +574,7 @@ transform:translateY(-3px);
 border-color:rgba(96,165,250,.30);
 }
 
-.stat-icon{
-font-size:27px;
-}
+.stat-icon{font-size:27px}
 
 .stat-number{
 font-size:26px;
@@ -847,15 +589,11 @@ color:#64748b;
 margin-top:5px;
 }
 
-/* ================= EMPTY ================= */
-
 .empty{
 text-align:center;
 color:#94a3b8;
 padding:45px 20px;
 }
-
-/* ================= FOOTER ================= */
 
 footer{
 text-align:center;
@@ -866,22 +604,11 @@ margin-top:35px;
 background:rgba(2,6,23,.35);
 }
 
-/* ================= MOBILE ================= */
-
 @media(max-width:600px){
 
-header{
-padding:35px 15px 30px;
-}
-
-header h1{
-font-size:31px;
-letter-spacing:2px;
-}
-
-header p{
-font-size:14px;
-}
+header{padding:35px 15px 30px}
+header h1{font-size:31px;letter-spacing:2px}
+header p{font-size:14px}
 
 .container{
 width:94%;
@@ -893,624 +620,130 @@ padding:19px;
 border-radius:19px;
 }
 
-.hero-main{
-padding:42px 18px;
-}
-
-.hero-icon{
-font-size:52px;
-}
-
-.hero-title{
-font-size:28px;
-}
-
-.hero-text{
-font-size:15px;
-}
+.hero-main{padding:42px 18px}
+.hero-icon{font-size:52px}
+.hero-title{font-size:28px}
+.hero-text{font-size:15px}
 
 .project-card{
 padding:15px;
 border-radius:19px;
 }
 
-.project-title{
-font-size:21px;
-}
+.project-title{font-size:21px}
+.project-card img{height:250px}
+.project-no-image{height:180px}
 
-.project-card img{
-height:250px;
-}
+.auth-tabs{flex-direction:column}
 
-.project-no-image{
-height:180px;
-}
+.user-top{align-items:stretch}
 
-.auth-tabs{
-flex-direction:column;
-}
+button{padding:12px 16px}
 
-.user-top{
-align-items:stretch;
-}
+.feature-grid{grid-template-columns:1fr}
+.stats-grid{grid-template-columns:1fr}
 
-button{
-padding:12px 16px;
-}
-
-.feature-grid{
-grid-template-columns:1fr;
-}
-
-.stats-grid{
-grid-template-columns:1fr;
-}
-
-.project-actions button{
-flex:1;
-}
+.project-actions button{flex:1}
 
 }
 
-</style>
-
-</head>
-
-<body>
-
-<header>
-
-<h1>🚀 KAPO ONE</h1>
-
-<p>
-منصة عالمية للأعمال والأفكار والتصاميم
-</p>
-
-<div class="header-line"></div>
-
-</header>
-
-
-<!-- ================= تسجيل الدخول ================= -->
-
-<div id="userAuth" class="container">
-
-<div class="card">
-
-<h2>👤 حساب المستخدم</h2>
-
-<div class="auth-tabs">
-
-<button onclick="showLoginForm()">
+</style></head><body><header><h1>🚀 KAPO ONE</h1><p>منصة عالمية للأعمال والأفكار والتصاميم</p><div class="header-line"></div></header><!-- تسجيل الدخول --><div id="userAuth" class="container"><div class="card"><h2>👤 حساب المستخدم</h2><div class="auth-tabs"><button onclick="showLoginForm()">
 🔐 تسجيل الدخول
-</button>
-
-<button
-class="btn-secondary"
-onclick="showRegisterForm()">
+</button><button class="btn-secondary" onclick="showRegisterForm()">
 📝 إنشاء حساب
-</button>
-
-</div>
-
-<div id="loginForm">
-
-<input
-id="userLoginEmail"
-type="email"
-placeholder="البريد الإلكتروني">
-
-<input
-id="userLoginPassword"
-type="password"
-placeholder="كلمة المرور">
-
-<button onclick="loginUser()">
+</button></div><div id="loginForm"><input id="userLoginEmail" type="email" placeholder="البريد الإلكتروني"><input id="userLoginPassword" type="password" placeholder="كلمة المرور"><button onclick="loginUser()">
 دخول
-</button>
-
-<button
-class="btn-secondary"
-onclick="resetUserPassword()">
+</button><button class="btn-secondary" onclick="resetUserPassword()">
 استعادة كلمة المرور
-</button>
-
-</div>
-
-<div id="registerForm" class="hidden">
-
-<input
-id="registerName"
-type="text"
-placeholder="الاسم">
-
-<input
-id="registerEmail"
-type="email"
-placeholder="البريد الإلكتروني">
-
-<input
-id="registerPassword"
-type="password"
-placeholder="كلمة المرور">
-
-<button
-class="btn-success"
-onclick="registerUser()">
+</button></div><div id="registerForm" class="hidden"><input id="registerName" type="text" placeholder="الاسم"><input id="registerEmail" type="email" placeholder="البريد الإلكتروني"><input id="registerPassword" type="password" placeholder="كلمة المرور"><button class="btn-success" onclick="registerUser()">
 إنشاء الحساب
-</button>
-
-</div>
-
-<div id="authMessage"></div>
-
-</div>
-
-</div>
-
-
-<!-- ================= واجهة المستخدم ================= -->
-
-<div
-id="userApp"
-class="container hidden">
-
-
-<!-- حساب المستخدم -->
-
-<div class="card">
-
-<div class="user-top">
-
-<div class="welcome">
-
+</button></div><div id="authMessage"></div></div></div><!-- واجهة المستخدم --><div id="userApp" class="container hidden"><div class="card"><div class="user-top"><div class="welcome">
 👋 مرحبًا
-
 <strong id="userName"></strong>
-
-</div>
-
-<button
-class="btn-danger"
-onclick="logoutUser()">
-
+</div><button class="btn-danger" onclick="logoutUser()">
 🚪 تسجيل الخروج
-
-</button>
-
-</div>
-
-</div>
-
-
-<!-- شريط الأقسام -->
-
-<div class="card">
-
-<div class="kapo-nav">
-
-<button
-id="navHome"
-onclick="kapoSection('home')">
+</button></div></div><!-- شريط الأقسام --><div class="card"><div class="kapo-nav"><button id="navHome" onclick="kapoSection('home')">
 🏠 الرئيسية
-</button>
-
-<button
-id="navProjects"
-onclick="kapoSection('projects')">
+</button><button id="navProjects" onclick="kapoSection('projects')">
 🏗️ المشاريع
-</button>
-
-<button
-id="navDesigns"
-onclick="kapoSection('designs')">
+</button><button id="navDesigns" onclick="kapoSection('designs')">
 🎨 التصاميم
-</button>
-
-<button
-id="navIdeas"
-onclick="kapoSection('ideas')">
+</button><button id="navIdeas" onclick="kapoSection('ideas')">
 💡 الأفكار
-</button>
-
-<button
-id="navChannels"
-onclick="kapoSection('channels')">
+</button><button id="navChannels" onclick="kapoSection('channels')">
 📺 القنوات
-</button>
-
-<button
-id="navAnswers"
-onclick="kapoSection('answers')">
+</button><button id="navAnswers" onclick="kapoSection('answers')">
 ❓ الإجابات
-</button>
-
-<button
-id="navProfile"
-onclick="kapoSection('profile')">
+</button><button id="navProfile" onclick="kapoSection('profile')">
 👤 المستخدم
-</button>
-
-</div>
-
-</div>
-
-
-<!-- ================= الرئيسية ================= -->
-
-<div
-id="sectionHome"
-class="section-box active">
-
-<div class="card hero-main">
-
-<div class="hero-icon">
-🚀
-</div>
-
-<div class="hero-title">
+</button></div></div><!-- الرئيسية --><div id="sectionHome" class="section-box active"><div class="card hero-main"><div class="hero-icon">🚀</div><div class="hero-title">
 مرحبًا بك في KAPO ONE
-</div>
-
-<div class="hero-text">
+</div><div class="hero-text">
 منصة عالمية تجمع الأعمال والمشاريع والتصاميم
 والأفكار والمحتوى في مكان واحد.
 <br>
 اكتشف، شارك، تفاعل، وابنِ أفكارك مع مجتمع KAPO ONE.
-</div>
-
-<div class="hero-actions">
-
-<button
-onclick="kapoSection('projects')">
+</div><div class="hero-actions"><button onclick="kapoSection('projects')">
 🏗️ استكشف المشاريع
-</button>
-
-<button
-class="btn-purple"
-onclick="kapoSection('designs')">
+</button><button class="btn-purple" onclick="kapoSection('designs')">
 🎨 استكشف التصاميم
-</button>
-
-</div>
-
-</div>
-
-
-<div class="card">
-
-<h2>
-🌍 عالم KAPO ONE
-</h2>
-
-<div class="feature-grid">
-
-<div
-class="feature-card"
-onclick="kapoSection('projects')"
-style="cursor:pointer">
-
-<div class="feature-icon">
-🏗️
-</div>
-
-<div class="feature-title">
-المشاريع
-</div>
-
-<div class="feature-text">
-استكشف المشاريع والأعمال المنشورة.
-</div>
-
-</div>
-
-
-<div
-class="feature-card"
-onclick="kapoSection('designs')"
-style="cursor:pointer">
-
-<div class="feature-icon">
-🎨
-</div>
-
-<div class="feature-title">
-التصاميم
-</div>
-
-<div class="feature-text">
-مساحة للتصاميم والأعمال الإبداعية.
-</div>
-
-</div>
-
-
-<div
-class="feature-card"
-onclick="kapoSection('ideas')"
-style="cursor:pointer">
-
-<div class="feature-icon">
-💡
-</div>
-
-<div class="feature-title">
-الأفكار
-</div>
-
-<div class="feature-text">
-شارك أفكارك وطوّرها مع المجتمع.
-</div>
-
-</div>
-
-
-<div
-class="feature-card"
-onclick="kapoSection('channels')"
-style="cursor:pointer">
-
-<div class="feature-icon">
-📺
-</div>
-
-<div class="feature-title">
-القنوات
-</div>
-
-<div class="feature-text">
-قنوات متخصصة للمحتوى والمجتمعات.
-</div>
-
-</div>
-
-</div>
-
-
-<div class="stats-grid">
-
-<div class="stat-card">
+</button></div></div><div class="card"><h2>🌍 عالم KAPO ONE</h2><div class="feature-grid"><div class="feature-card" onclick="kapoSection('projects')" style="cursor:pointer">
+<div class="feature-icon">🏗️</div>
+<div class="feature-title">المشاريع</div>
+<div class="feature-text">استكشف المشاريع والأعمال المنشورة.</div>
+</div><div class="feature-card" onclick="kapoSection('designs')" style="cursor:pointer">
+<div class="feature-icon">🎨</div>
+<div class="feature-title">التصاميم</div>
+<div class="feature-text">مساحة للتصاميم والأعمال الإبداعية.</div>
+</div><div class="feature-card" onclick="kapoSection('ideas')" style="cursor:pointer">
+<div class="feature-icon">💡</div>
+<div class="feature-title">الأفكار</div>
+<div class="feature-text">شارك أفكارك وطوّرها مع المجتمع.</div>
+</div><div class="feature-card" onclick="kapoSection('channels')" style="cursor:pointer">
+<div class="feature-icon">📺</div>
+<div class="feature-title">القنوات</div>
+<div class="feature-text">قنوات متخصصة للمحتوى والمجتمعات.</div>
+</div></div><div class="stats-grid"><div class="stat-card">
 <div class="stat-icon">🏗️</div>
 <div class="stat-number">KAPO</div>
 <div class="stat-label">المشاريع</div>
-</div>
-
-<div class="stat-card">
+</div><div class="stat-card">
 <div class="stat-icon">🎨</div>
 <div class="stat-number">ONE</div>
 <div class="stat-label">التصاميم</div>
-</div>
-
-<div class="stat-card">
+</div><div class="stat-card">
 <div class="stat-icon">🌍</div>
 <div class="stat-number">∞</div>
 <div class="stat-label">الأفكار</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- ================= المشاريع ================= -->
-
-<div
-id="sectionProjects"
-class="section-box">
-
-<div class="card">
-
-<h2>🏗️ المشاريع</h2>
-
-<p style="color:#94a3b8">
+</div></div></div></div><!-- المشاريع --><div id="sectionProjects" class="section-box"><div class="card"><h2>🏗️ المشاريع</h2><p style="color:#94a3b8">
 استكشف الأعمال والمشاريع المنشورة في KAPO ONE.
-</p>
-
-<div class="project-search">
-
-<input
-id="projectSearch"
-type="search"
+</p><div class="project-search"><input id="projectSearch" type="search"
 placeholder="🔎 ابحث عن مشروع..."
 oninput="filterProjects()">
 
-</div>
-
-</div>
-
-<div id="userProjectsList"></div>
-
-</div>
-
-
-<!-- ================= التصاميم ================= -->
-
-<div
-id="sectionDesigns"
-class="section-box">
-
-<div class="card">
-
-<h2>🎨 التصاميم</h2>
-
-<p style="color:#94a3b8">
+</div></div><div id="userProjectsList"></div></div><!-- التصاميم --><div id="sectionDesigns" class="section-box"><div class="card"><h2>🎨 التصاميم</h2><p style="color:#94a3b8">
 مساحة مخصصة لعرض التصاميم والأعمال الإبداعية.
-</p>
-
-<div class="feature-card">
-
-<div class="feature-icon">
-🎨
-</div>
-
-<div class="feature-title">
-التصاميم
-</div>
-
-<div class="feature-text">
+</p><div class="feature-card"><div class="feature-icon">🎨</div><div class="feature-title">التصاميم</div><div class="feature-text">
 سيتم بناء معرض التصاميم هنا في الخطوة القادمة.
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- ================= الأفكار ================= -->
-
-<div
-id="sectionIdeas"
-class="section-box">
-
-<div class="card">
-
-<h2>💡 الأفكار</h2>
-
-<p style="color:#94a3b8">
+</div></div></div></div><!-- الأفكار --><div id="sectionIdeas" class="section-box"><div class="card"><h2>💡 الأفكار</h2><p style="color:#94a3b8">
 مكان لعرض الأفكار والمقترحات والمشاريع المستقبلية.
-</p>
-
-<div class="feature-card">
-
-<div class="feature-icon">
-💡
-</div>
-
-<div class="feature-title">
-الأفكار
-</div>
-
-<div class="feature-text">
+</p><div class="feature-card"><div class="feature-icon">💡</div><div class="feature-title">الأفكار</div><div class="feature-text">
 سيتم تطوير قسم الأفكار لاحقًا.
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- ================= القنوات ================= -->
-
-<div
-id="sectionChannels"
-class="section-box">
-
-<div class="card">
-
-<h2>📺 القنوات</h2>
-
-<p style="color:#94a3b8">
+</div></div></div></div><!-- القنوات --><div id="sectionChannels" class="section-box"><div class="card"><h2>📺 القنوات</h2><p style="color:#94a3b8">
 قنوات متخصصة يمكن أن تجمع المحتوى والمجتمعات المختلفة.
-</p>
-
-<div class="feature-card">
-
-<div class="feature-icon">
-📺
-</div>
-
-<div class="feature-title">
-القنوات
-</div>
-
-<div class="feature-text">
+</p><div class="feature-card"><div class="feature-icon">📺</div><div class="feature-title">القنوات</div><div class="feature-text">
 سيتم بناء نظام القنوات في الخطوة القادمة.
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- ================= الإجابات ================= -->
-
-<div
-id="sectionAnswers"
-class="section-box">
-
-<div class="card">
-
-<h2>❓ الإجابات</h2>
-
-<p style="color:#94a3b8">
+</div></div></div></div><!-- الإجابات --><div id="sectionAnswers" class="section-box"><div class="card"><h2>❓ الإجابات</h2><p style="color:#94a3b8">
 مساحة للأسئلة والإجابات وتبادل المعرفة.
-</p>
-
-<div class="feature-card">
-
-<div class="feature-icon">
-❓
-</div>
-
-<div class="feature-title">
-الإجابات
-</div>
-
-<div class="feature-text">
+</p><div class="feature-card"><div class="feature-icon">❓</div><div class="feature-title">الإجابات</div><div class="feature-text">
 سيتم بناء نظام الأسئلة والإجابات لاحقًا.
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- ================= المستخدم ================= -->
-
-<div
-id="sectionProfile"
-class="section-box">
-
-<div class="card">
-
-<h2>👤 حسابي</h2>
-
-<p style="color:#94a3b8">
+</div></div></div></div><!-- المستخدم --><div id="sectionProfile" class="section-box"><div class="card"><h2>👤 حسابي</h2><p style="color:#94a3b8">
 مرحبًا بك في حسابك داخل KAPO ONE.
-</p>
-
-<div class="feature-card">
-
-<div class="feature-icon">
-👤
-</div>
-
-<div class="feature-title">
-المستخدم
-</div>
-
-<div class="feature-text">
+</p><div class="feature-card"><div class="feature-icon">👤</div><div class="feature-title">المستخدم</div><div class="feature-text">
 سيتم تطوير الملف الشخصي والاشتراكات لاحقًا.
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-</div>
-
-
-<footer>
+</div></div></div></div></div><footer>
 KAPO ONE © 2026
-</footer>
-
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script>
+</footer><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script>
 
 const SUPABASE_URL =
 "https://ehmeircigoqfhftaotba.supabase.co";
@@ -1537,27 +770,17 @@ let allProjects=[];
 
 function showLoginForm(){
 
-document.getElementById("loginForm")
-.classList.remove("hidden");
-
-document.getElementById("registerForm")
-.classList.add("hidden");
-
-document.getElementById("authMessage")
-.innerHTML="";
+document.getElementById("loginForm").classList.remove("hidden");
+document.getElementById("registerForm").classList.add("hidden");
+document.getElementById("authMessage").innerHTML="";
 
 }
 
 function showRegisterForm(){
 
-document.getElementById("loginForm")
-.classList.add("hidden");
-
-document.getElementById("registerForm")
-.classList.remove("hidden");
-
-document.getElementById("authMessage")
-.innerHTML="";
+document.getElementById("loginForm").classList.add("hidden");
+document.getElementById("registerForm").classList.remove("hidden");
+document.getElementById("authMessage").innerHTML="";
 
 }
 
@@ -1566,25 +789,14 @@ document.getElementById("authMessage")
 
 async function registerUser(){
 
-const name=
-document.getElementById("registerName")
-.value.trim();
-
-const email=
-document.getElementById("registerEmail")
-.value.trim();
-
-const password=
-document.getElementById("registerPassword")
-.value;
-
-const message=
-document.getElementById("authMessage");
+const name=document.getElementById("registerName").value.trim();
+const email=document.getElementById("registerEmail").value.trim();
+const password=document.getElementById("registerPassword").value;
+const message=document.getElementById("authMessage");
 
 if(!name||!email||!password){
 
-message.innerHTML=
-`<div class="message">
+message.innerHTML=`<div class="message">
 ❌ املأ جميع الخانات.
 </div>`;
 
@@ -1593,26 +805,22 @@ return;
 
 if(password.length<6){
 
-message.innerHTML=
-`<div class="message">
+message.innerHTML=`<div class="message">
 ❌ كلمة المرور يجب أن تكون 6 أحرف على الأقل.
 </div>`;
 
 return;
 }
 
-message.innerHTML=
-`<div class="message">
+message.innerHTML=`<div class="message">
 جاري إنشاء الحساب...
 </div>`;
 
 try{
 
-const {data,error}=
-await db.auth.signUp({
+const {data,error}=await db.auth.signUp({
 
 email:email,
-
 password:password,
 
 options:{
@@ -1625,8 +833,7 @@ name:name
 
 if(error){
 
-message.innerHTML=
-`<div class="message">
+message.innerHTML=`<div class="message">
 ❌ ${escapeHtml(error.message)}
 </div>`;
 
@@ -1635,17 +842,13 @@ return;
 
 if(data.user){
 
-await createProfile(
-data.user,
-name
-);
+await createProfile(data.user,name);
 
 }
 
 if(!data.session){
 
-message.innerHTML=
-`<div class="message">
+message.innerHTML=`<div class="message">
 ✅ تم إنشاء الحساب.
 <br>
 تحقق من بريدك الإلكتروني لتفعيل الحساب،
@@ -1655,8 +858,7 @@ message.innerHTML=
 return;
 }
 
-message.innerHTML=
-`<div class="message">
+message.innerHTML=`<div class="message">
 ✅ تم إنشاء الحساب بنجاح.
 </div>`;
 
@@ -1664,8 +866,7 @@ await loadUserApp(data.user);
 
 }catch(error){
 
-message.innerHTML=
-`<div class="message">
+message.innerHTML=`<div class="message">
 ❌ حدث خطأ:
 ${escapeHtml(error.message)}
 </div>`;
@@ -1681,8 +882,7 @@ async function createProfile(user,name){
 
 if(!user)return;
 
-const {error}=
-await db
+const {error}=await db
 .from("profiles")
 .upsert({
 
@@ -1713,49 +913,41 @@ error.message
 
 async function loginUser(){
 
-const email=
-document
+const email=document
 .getElementById("userLoginEmail")
 .value.trim();
 
-const password=
-document
+const password=document
 .getElementById("userLoginPassword")
 .value;
 
-const message=
-document.getElementById("authMessage");
+const message=document.getElementById("authMessage");
 
 if(!email||!password){
 
-message.innerHTML=
-`<div class="message">
+message.innerHTML=`<div class="message">
 ❌ اكتب البريد وكلمة المرور.
 </div>`;
 
 return;
 }
 
-message.innerHTML=
-`<div class="message">
+message.innerHTML=`<div class="message">
 جاري تسجيل الدخول...
 </div>`;
 
 try{
 
-const {data,error}=
-await db.auth.signInWithPassword({
+const {data,error}=await db.auth.signInWithPassword({
 
 email:email,
-
 password:password
 
 });
 
 if(error){
 
-message.innerHTML=
-`<div class="message">
+message.innerHTML=`<div class="message">
 ❌ ${escapeHtml(error.message)}
 </div>`;
 
@@ -1764,8 +956,7 @@ return;
 
 if(data.user&&data.user.id===OWNER_ID){
 
-message.innerHTML=
-`<div class="message">
+message.innerHTML=`<div class="message">
 👑 هذا حساب المالك.
 <br>
 استخدم لوحة المالك.
@@ -1784,8 +975,7 @@ await loadUserApp(data.user);
 
 }catch(error){
 
-message.innerHTML=
-`<div class="message">
+message.innerHTML=`<div class="message">
 ❌ حدث خطأ:
 ${escapeHtml(error.message)}
 </div>`;
@@ -1799,18 +989,15 @@ ${escapeHtml(error.message)}
 
 async function resetUserPassword(){
 
-const email=
-document
+const email=document
 .getElementById("userLoginEmail")
 .value.trim();
 
-const message=
-document.getElementById("authMessage");
+const message=document.getElementById("authMessage");
 
 if(!email){
 
-message.innerHTML=
-`<div class="message">
+message.innerHTML=`<div class="message">
 ❌ اكتب البريد الإلكتروني أولاً.
 </div>`;
 
@@ -1819,8 +1006,7 @@ return;
 
 try{
 
-const {error}=
-await db.auth.resetPasswordForEmail(
+const {error}=await db.auth.resetPasswordForEmail(
 email,
 {
 redirectTo:SITE_URL
@@ -1829,23 +1015,20 @@ redirectTo:SITE_URL
 
 if(error){
 
-message.innerHTML=
-`<div class="message">
+message.innerHTML=`<div class="message">
 ❌ ${escapeHtml(error.message)}
 </div>`;
 
 return;
 }
 
-message.innerHTML=
-`<div class="message">
+message.innerHTML=`<div class="message">
 ✅ تم إرسال رابط الاستعادة إلى بريدك الإلكتروني.
 </div>`;
 
 }catch(error){
 
-message.innerHTML=
-`<div class="message">
+message.innerHTML=`<div class="message">
 ❌ ${escapeHtml(error.message)}
 </div>`;
 
@@ -1865,35 +1048,24 @@ if(user.id===OWNER_ID){
 return;
 }
 
-document
-.getElementById("userAuth")
-.classList.add("hidden");
+document.getElementById("userAuth").classList.add("hidden");
+document.getElementById("userApp").classList.remove("hidden");
 
-document
-.getElementById("userApp")
-.classList.remove("hidden");
-
-let name=
-user.user_metadata?.name;
+let name=user.user_metadata?.name;
 
 if(!name){
 
-const {data}=
-await db
+const {data}=await db
 .from("profiles")
 .select("name")
 .eq("id",user.id)
 .maybeSingle();
 
-name=
-data?.name||
-"مستخدم";
+name=data?.name||"مستخدم";
 
 }
 
-document
-.getElementById("userName")
-.textContent=name;
+document.getElementById("userName").textContent=name;
 
 kapoSection("home");
 
@@ -1918,41 +1090,30 @@ const sections=[
 
 sections.forEach(function(name){
 
-const box=
-document.getElementById(
-"section"+name
-);
+const box=document.getElementById("section"+name);
 
 if(box){
-
 box.classList.remove("active");
-
 }
 
 });
 
-const target=
-document.getElementById(
+const target=document.getElementById(
 "section"+
 section.charAt(0).toUpperCase()+
 section.slice(1)
 );
 
 if(target){
-
 target.classList.add("active");
-
 }
 
-const navButtons=
-document.querySelectorAll(
+const navButtons=document.querySelectorAll(
 ".kapo-nav button"
 );
 
 navButtons.forEach(function(btn){
-
 btn.classList.remove("active");
-
 });
 
 const navMap={
@@ -1965,23 +1126,19 @@ answers:"navAnswers",
 profile:"navProfile"
 };
 
-const activeButton=
-document.getElementById(
+const activeButton=document.getElementById(
 navMap[section]
 );
 
 if(activeButton){
-
 activeButton.classList.add("active");
-
 }
 
 if(section==="projects"){
 
 setTimeout(function(){
 
-const projectList=
-document.getElementById(
+const projectList=document.getElementById(
 "userProjectsList"
 );
 
@@ -2007,13 +1164,9 @@ async function logoutUser(){
 
 await db.auth.signOut();
 
-document
-.getElementById("userApp")
-.classList.add("hidden");
+document.getElementById("userApp").classList.add("hidden");
 
-document
-.getElementById("userAuth")
-.classList.remove("hidden");
+document.getElementById("userAuth").classList.remove("hidden");
 
 showLoginForm();
 
@@ -2024,20 +1177,17 @@ showLoginForm();
 
 async function loadUserProjects(){
 
-const list=
-document.getElementById(
+const list=document.getElementById(
 "userProjectsList"
 );
 
-list.innerHTML=
-`<div class="card">
+list.innerHTML=`<div class="card">
 جاري تحميل المشاريع...
 </div>`;
 
 try{
 
-const {data:projects,error}=
-await db
+const {data:projects,error}=await db
 .from("projects")
 .select("*")
 .order(
@@ -2047,8 +1197,7 @@ await db
 
 if(error){
 
-list.innerHTML=
-`<div class="card message">
+list.innerHTML=`<div class="card message">
 ❌ ${escapeHtml(error.message)}
 </div>`;
 
@@ -2057,23 +1206,17 @@ return;
 
 allProjects=projects||[];
 
-const {data:likesData}=
-await db
+const {data:likesData}=await db
 .from("likes")
-.select(
-"id,project_id,user_id"
-);
+.select("id,project_id,user_id");
 
-const {data:sessionData}=
-await db.auth.getSession();
+const {data:sessionData}=await db.auth.getSession();
 
-const currentUser=
-sessionData.session?.user;
+const currentUser=sessionData.session?.user;
 
 if(!projects||!projects.length){
 
-list.innerHTML=
-`<div class="card empty">
+list.innerHTML=`<div class="card empty">
 لا توجد مشاريع منشورة حاليًا.
 </div>`;
 
@@ -2088,8 +1231,7 @@ currentUser
 
 }catch(error){
 
-list.innerHTML=
-`<div class="card message">
+list.innerHTML=`<div class="card message">
 ❌ حدث خطأ:
 ${escapeHtml(error.message)}
 </div>`;
@@ -2103,34 +1245,29 @@ ${escapeHtml(error.message)}
 
 function renderProjects(projects,likesData,currentUser){
 
-const list=
-document.getElementById(
+const list=document.getElementById(
 "userProjectsList"
 );
 
 if(!projects||!projects.length){
 
-list.innerHTML=
-`<div class="card empty">
+list.innerHTML=`<div class="card empty">
 لا توجد مشاريع مطابقة للبحث.
 </div>`;
 
 return;
 }
 
-list.innerHTML=
-projects.map(function(project){
+list.innerHTML=projects.map(function(project){
 
-const projectLikes=
-(likesData||[])
+const projectLikes=(likesData||[])
 .filter(
 like=>
 String(like.project_id)===
 String(project.id)
 );
 
-const likeCount=
-projectLikes.length;
+const likeCount=projectLikes.length;
 
 const isLiked=
 currentUser&&
@@ -2187,7 +1324,7 @@ project.description||"لا يوجد وصف للمشروع."
 
 <button
 class="btn-info"
-onclick="toggleProjectDetails('${project.id}')">
+onclick="toggleProjectDetails('${escapeJs(project.id)}')">
 
 📄 عرض التفاصيل
 
@@ -2196,7 +1333,7 @@ onclick="toggleProjectDetails('${project.id}')">
 </div>
 
 <div
-id="projectDetails-${project.id}"
+id="projectDetails-${escapeHtml(project.id)}"
 class="project-details">
 
 <div class="details-title">
@@ -2216,7 +1353,7 @@ project.description||
 
 <button
 class="like-btn ${isLiked?"liked":""}"
-onclick="toggleUserLike('${project.id}')">
+onclick="toggleUserLike('${escapeJs(project.id)}')">
 
 ${
 isLiked
@@ -2241,65 +1378,50 @@ isLiked
 </h3>
 
 <div
-id="userProjectComments-${project.id}">
+id="userProjectComments-${escapeHtml(project.id)}">
 جاري تحميل التعليقات...
 </div>
 
 <textarea
-id="userCommentInput-${project.id}"
+id="userCommentInput-${escapeHtml(project.id)}"
 placeholder="اكتب تعليقك...">
-</textarea>
-
-<button
+</textarea><button
 class="btn-success"
-onclick="addUserComment('${project.id}')">
+onclick="addUserComment('${escapeJs(project.id)}')">
 
 💬 إضافة تعليق
 
-</button>
-
-</div>
-
-</div>
-
-`;
+</button></div></div>`;
 
 }).join("");
 
 for(const project of projects){
 
-loadUserProjectComments(
-project.id
-);
+loadUserProjectComments(project.id);
 
 }
 
 }
-
 
 /* ================= البحث ================= */
 
 function filterProjects(){
 
-const input=
-document.getElementById(
+const input=document.getElementById(
 "projectSearch"
 );
 
 if(!input)return;
 
-const query=
-input.value.trim().toLowerCase();
+const query=input.value.trim().toLowerCase();
 
-const cards=
-document.querySelectorAll(
+const cards=document.querySelectorAll(
 ".project-card"
 );
 
 cards.forEach(function(card){
 
-const title=
-card.getAttribute(
+const title=card.getAttribute(
 "data-project-title"
 )||"";
 
@@ -2317,14 +1439,12 @@ card.style.display="none";
 
 }
 
-
 /* ================= تفاصيل المشروع ================= */
 
 function toggleProjectDetails(projectId){
 
-const box=
-document.getElementById(
-`projectDetails-${projectId}`
+const box=document.getElementById(
+"projectDetails-${projectId}"
 );
 
 if(!box)return;
@@ -2333,22 +1453,17 @@ box.classList.toggle("open");
 
 }
 
-
 /* ================= الإعجاب ================= */
 
 async function toggleUserLike(projectId){
 
-const {data:sessionData}=
-await db.auth.getSession();
+const {data:sessionData}=await db.auth.getSession();
 
-const user=
-sessionData.session?.user;
+const user=sessionData.session?.user;
 
 if(!user){
 
-alert(
-"يجب تسجيل الدخول أولاً."
-);
+alert("يجب تسجيل الدخول أولاً.");
 
 return;
 }
@@ -2361,8 +1476,7 @@ return;
 const {
 data:existing,
 error:checkError
-}=
-await db
+}=await db
 .from("likes")
 .select("id")
 .eq("project_id",projectId)
@@ -2381,8 +1495,7 @@ return;
 
 if(existing){
 
-const {error}=
-await db
+const {error}=await db
 .from("likes")
 .delete()
 .eq("id",existing.id);
@@ -2399,13 +1512,11 @@ return;
 
 }else{
 
-const {error}=
-await db
+const {error}=await db
 .from("likes")
 .insert({
 
 project_id:projectId,
-
 user_id:user.id
 
 });
@@ -2426,20 +1537,17 @@ await loadUserProjects();
 
 }
 
-
 /* ================= تحميل التعليقات ================= */
 
 async function loadUserProjectComments(projectId){
 
-const box=
-document.getElementById(
-`userProjectComments-${projectId}`
+const box=document.getElementById(
+"userProjectComments-${projectId}"
 );
 
 if(!box)return;
 
-const {data,error}=
-await db
+const {data,error}=await db
 .from("comments")
 .select(
 "id,content,created_at,user_id,profiles(name,email)"
@@ -2455,32 +1563,25 @@ projectId
 
 if(error){
 
-box.innerHTML=
-`<div class="message">
+box.innerHTML=`<div class="message">
 ❌ ${escapeHtml(error.message)}
-</div>`;
 
-return;
+</div>`;return;
 }
 
 if(!data||!data.length){
 
-box.innerHTML=
-`<div style="color:#64748b">
+box.innerHTML=`<div style="color:#64748b">
 لا توجد تعليقات حتى الآن.
-</div>`;
 
-return;
+</div>`;return;
 }
 
-const {data:sessionData}=
-await db.auth.getSession();
+const {data:sessionData}=await db.auth.getSession();
 
-const currentUser=
-sessionData.session?.user;
+const currentUser=sessionData.session?.user;
 
-box.innerHTML=
-data.map(function(comment){
+box.innerHTML=data.map(function(comment){
 
 const canDelete=
 currentUser&&
@@ -2491,11 +1592,7 @@ currentUser.id===OWNER_ID
 
 return `
 
-<div class="comment-item">
-
-<div class="comment-user">
-
-👤 ${
+<div class="comment-item"><div class="comment-user">👤 ${
 escapeHtml(
 comment.profiles?.name||
 comment.profiles?.email||
@@ -2503,30 +1600,16 @@ comment.profiles?.email||
 )
 }
 
-</div>
+</div><div class="comment-content">${escapeHtml(comment.content)}
 
-<div class="comment-content">
+</div><div class="comment-date">${formatDate(comment.created_at)}
 
-${escapeHtml(
-comment.content
-)}
-
-</div>
-
-<div class="comment-date">
-
-${formatDate(
-comment.created_at
-)}
-
-</div>
-
-${
+</div>${
 canDelete
 ?
 `<button
 class="btn-danger"
-onclick="deleteUserComment('${comment.id}')">
+onclick="deleteUserComment('${escapeJs(comment.id)}')">
 
 🗑️ حذف
 
@@ -2534,62 +1617,48 @@ onclick="deleteUserComment('${comment.id}')">
 :""
 }
 
-</div>
-
-`;
+</div>`;
 
 }).join("");
 
 }
 
-
 /* ================= إضافة تعليق ================= */
 
 async function addUserComment(projectId){
 
-const input=
-document.getElementById(
-`userCommentInput-${projectId}`
+const input=document.getElementById(
+"userCommentInput-${projectId}"
 );
 
 if(!input)return;
 
-const content=
-input.value.trim();
+const content=input.value.trim();
 
 if(!content){
 
-alert(
-"اكتب التعليق أولاً."
-);
+alert("اكتب التعليق أولاً.");
 
 return;
 }
 
-const {data:sessionData}=
-await db.auth.getSession();
+const {data:sessionData}=await db.auth.getSession();
 
-const user=
-sessionData.session?.user;
+const user=sessionData.session?.user;
 
 if(!user){
 
-alert(
-"يجب تسجيل الدخول أولاً."
-);
+alert("يجب تسجيل الدخول أولاً.");
 
 return;
 }
 
-const {error}=
-await db
+const {error}=await db
 .from("comments")
 .insert({
 
 project_id:projectId,
-
 user_id:user.id,
-
 content:content
 
 });
@@ -2606,12 +1675,9 @@ return;
 
 input.value="";
 
-await loadUserProjectComments(
-projectId
-);
+await loadUserProjectComments(projectId);
 
 }
-
 
 /* ================= حذف التعليق ================= */
 
@@ -2626,16 +1692,51 @@ if(
 return;
 }
 
-const {data:sessionData}=
-await db.auth.getSession();
+const {data:sessionData}=await db.auth.getSession();
 
-const user=
-sessionData.session?.user;
+const user=sessionData.session?.user;
 
-if(!user)return;
+if(!user){
 
-const {error}=
-await db
+alert("يجب تسجيل الدخول أولاً.");
+
+return;
+}
+
+const {data:comment,error:commentError}=await db
+.from("comments")
+.select("id,user_id,project_id")
+.eq("id",id)
+.maybeSingle();
+
+if(commentError){
+
+alert(
+"خطأ: "+
+commentError.message
+);
+
+return;
+}
+
+if(!comment){
+
+alert("التعليق غير موجود.");
+
+return;
+}
+
+if(
+comment.user_id!==user.id&&
+user.id!==OWNER_ID
+){
+
+alert("ليس لديك صلاحية حذف هذا التعليق.");
+
+return;
+}
+
+const {error}=await db
 .from("comments")
 .delete()
 .eq("id",id);
@@ -2644,3 +1745,176 @@ if(error){
 
 alert(
 "خطأ: "+
+error.message
+);
+
+return;
+}
+
+await loadUserProjectComments(
+comment.project_id
+);
+
+}
+
+/* ================= أدوات مساعدة ================= */
+
+function escapeHtml(value){
+
+return String(value ?? "")
+.replace(/&/g,"&")
+.replace(/</g,"<")
+.replace(/>/g,">")
+.replace(/"/g,""")
+.replace(/'/g,"'");
+
+}
+
+function escapeJs(value){
+
+return String(value ?? "")
+.replace(/\/g,"\\")
+.replace(/'/g,"\'")
+.replace(/"/g,""")
+.replace(/\r/g,"\r")
+.replace(/\n/g,"\n");
+
+}
+
+function formatDate(date){
+
+if(!date)return "";
+
+try{
+
+return new Date(date).toLocaleString(
+"ar-SA",
+{
+year:"numeric",
+month:"long",
+day:"numeric",
+hour:"2-digit",
+minute:"2-digit"
+}
+);
+
+}catch(error){
+
+return date;
+
+}
+
+}
+
+/* ================= تشغيل المنصة ================= */
+
+async function checkUserSession(){
+
+try{
+
+const {data,error}=await db.auth.getSession();
+
+if(error){
+
+console.log(
+"Session error:",
+error.message
+);
+
+return;
+}
+
+const user=data.session?.user;
+
+if(user){
+
+if(user.id===OWNER_ID){
+
+document
+.getElementById("userAuth")
+.classList.remove("hidden");
+
+document
+.getElementById("userApp")
+.classList.add("hidden");
+
+return;
+}
+
+await loadUserApp(user);
+
+}else{
+
+document
+.getElementById("userAuth")
+.classList.remove("hidden");
+
+document
+.getElementById("userApp")
+.classList.add("hidden");
+
+}
+
+}catch(error){
+
+console.log(
+"Check session error:",
+error.message
+);
+
+}
+
+}
+
+/* ================= مراقبة حالة تسجيل الدخول ================= */
+
+db.auth.onAuthStateChange(
+async function(event,session){
+
+if(session?.user){
+
+if(session.user.id===OWNER_ID){
+
+document
+.getElementById("userAuth")
+.classList.remove("hidden");
+
+document
+.getElementById("userApp")
+.classList.add("hidden");
+
+return;
+}
+
+await loadUserApp(session.user);
+
+}else{
+
+document
+.getElementById("userAuth")
+.classList.remove("hidden");
+
+document
+.getElementById("userApp")
+.classList.add("hidden");
+
+}
+
+}
+);
+
+/* ================= بدء KAPO ONE ================= */
+
+document.addEventListener(
+"DOMContentLoaded",
+function(){
+
+showLoginForm();
+
+checkUserSession();
+
+}
+);
+
+</script></body>
+</html>
