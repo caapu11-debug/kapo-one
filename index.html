@@ -154,8 +154,26 @@ background:radial-gradient(circle,#1e3a8a,#0f172a 65%)
 .project-title{font-size:19px;font-weight:900;margin-bottom:8px}
 .project-description{color:#94a3b8;line-height:1.7;min-height:50px}
 .project-meta{color:#64748b;font-size:12px;margin-top:12px}
-.project-actions{display:flex;gap:8px;margin-top:14px}
-.icon-btn{border:1px solid #334155;background:#020617;color:#cbd5e1;padding:8px 11px;border-radius:10px}
+
+.project-actions{
+display:flex;gap:8px;margin-top:14px;flex-wrap:wrap
+}
+
+.icon-btn{
+border:1px solid #334155;background:#020617;color:#cbd5e1;
+padding:8px 11px;border-radius:10px
+}
+
+.project-like-btn.liked{
+background:rgba(37,99,235,.18);
+border-color:rgba(59,130,246,.45);
+color:#60a5fa
+}
+
+.project-comments-btn{
+flex:1
+}
+
 .empty-state{
 padding:40px 20px;text-align:center;background:#0f172a;
 border:1px dashed #334155;border-radius:18px;color:#94a3b8
@@ -260,7 +278,9 @@ color:#fff;border-radius:11px;font-size:22px
 .modal-content ul{line-height:2}
 .modal-actions{display:flex;justify-content:flex-start;gap:10px;padding:0 20px 20px}
 
-.channel-post-box{background:#020617;border:1px solid #1e293b;border-radius:18px;padding:16px;margin-bottom:20px}
+.channel-post-box{
+background:#020617;border:1px solid #1e293b;border-radius:18px;padding:16px;margin-bottom:20px
+}
 .channel-post-box textarea{
 width:100%;min-height:105px;resize:vertical;background:#0f172a;border:1px solid #334155;
 border-radius:13px;padding:13px;color:#fff;outline:none;line-height:1.7
@@ -285,6 +305,119 @@ color:#fca5a5;padding:7px 10px;border-radius:9px;font-size:12px
 }
 .channel-loading{padding:25px;text-align:center;color:#94a3b8;background:#020617;border-radius:15px}
 
+/* comments */
+.comments-list{
+display:grid;
+gap:10px;
+margin-top:15px
+}
+
+.comment-item{
+background:#020617;
+border:1px solid #1e293b;
+border-radius:14px;
+padding:13px
+}
+
+.comment-head{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+margin-bottom:7px
+}
+
+.comment-author{
+display:flex;
+align-items:center;
+gap:8px;
+font-weight:800
+}
+
+.comment-avatar{
+width:31px;
+height:31px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+font-size:12px;
+font-weight:900
+}
+
+.comment-date{
+font-size:10px;
+color:#64748b
+}
+
+.comment-text{
+color:#cbd5e1;
+line-height:1.7;
+white-space:pre-wrap;
+word-break:break-word
+}
+
+.comment-footer{
+margin-top:9px
+}
+
+.delete-comment-btn{
+border:1px solid rgba(239,68,68,.25);
+background:rgba(239,68,68,.08);
+color:#fca5a5;
+padding:6px 9px;
+border-radius:8px;
+font-size:11px
+}
+
+.comment-input-box{
+margin-top:18px;
+padding:15px;
+background:#020617;
+border:1px solid #1e293b;
+border-radius:16px
+}
+
+.comment-input-box textarea{
+width:100%;
+min-height:90px;
+resize:vertical;
+background:#0f172a;
+border:1px solid #334155;
+border-radius:12px;
+padding:12px;
+color:#fff;
+outline:none;
+line-height:1.7
+}
+
+.comment-input-box textarea:focus{
+border-color:#3b82f6
+}
+
+.comment-input-actions{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+margin-top:9px
+}
+
+.comment-empty{
+padding:20px;
+text-align:center;
+color:#64748b;
+background:#020617;
+border-radius:13px;
+border:1px dashed #334155
+}
+
+.project-comment-count{
+color:#94a3b8;
+font-size:12px
+}
+
 #toast{
 position:fixed;bottom:25px;right:25px;z-index:1000;background:#0f172a;border:1px solid #334155;
 color:#fff;padding:13px 17px;border-radius:13px;box-shadow:0 15px 40px rgba(0,0,0,.35);
@@ -304,6 +437,8 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 .idea-row{flex-direction:column}.toolbar{align-items:stretch}
 .channel-post-actions{flex-direction:column;align-items:stretch}
 .channel-post-actions .primary-btn{width:100%}
+.comment-input-actions{flex-direction:column;align-items:stretch}
+.comment-input-actions .primary-btn{width:100%}
 }
 </style>
 </head>
@@ -538,7 +673,10 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 
 <div id="addProjectModal" class="modal" onclick="closeAddProjectModal()">
 <div class="modal-box" onclick="event.stopPropagation()">
-<div class="modal-header"><h2>إضافة مشروع</h2><button type="button" class="close-btn" onclick="closeAddProjectModal()">×</button></div>
+<div class="modal-header">
+<h2>إضافة مشروع</h2>
+<button type="button" class="close-btn" onclick="closeAddProjectModal()">×</button>
+</div>
 <div class="modal-content">
 <div class="auth-form">
 <input id="projectTitle" type="text" placeholder="اسم المشروع">
@@ -554,19 +692,46 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 </div>
 </div>
 
+<div id="commentsModal" class="modal" onclick="closeCommentsModal()">
+<div class="modal-box" onclick="event.stopPropagation()">
+<div class="modal-header">
+<h2 id="commentsModalTitle">💬 التعليقات</h2>
+<button type="button" class="close-btn" onclick="closeCommentsModal()">×</button>
+</div>
+
+<div id="commentsModalContent" class="modal-content">
+<div class="comment-empty">جاري تحميل التعليقات...</div>
+</div>
+
+<div class="modal-actions">
+<button type="button" class="secondary-btn" onclick="closeCommentsModal()">إغلاق</button>
+</div>
+</div>
+</div>
+
 <div id="designModal" class="modal" onclick="closeDesignModal()">
 <div class="modal-box" onclick="event.stopPropagation()">
-<div class="modal-header"><h2 id="designModalTitle">التصميم</h2><button type="button" class="close-btn" onclick="closeDesignModal()">×</button></div>
+<div class="modal-header">
+<h2 id="designModalTitle">التصميم</h2>
+<button type="button" class="close-btn" onclick="closeDesignModal()">×</button>
+</div>
 <div id="designModalContent" class="modal-content"></div>
-<div class="modal-actions"><button type="button" class="primary-btn" onclick="closeDesignModal()">إغلاق</button></div>
+<div class="modal-actions">
+<button type="button" class="primary-btn" onclick="closeDesignModal()">إغلاق</button>
+</div>
 </div>
 </div>
 
 <div id="channelModal" class="modal" onclick="closeChannel()">
 <div class="modal-box" onclick="event.stopPropagation()">
-<div class="modal-header"><h2 id="channelModalTitle">القناة</h2><button type="button" class="close-btn" onclick="closeChannel()">×</button></div>
+<div class="modal-header">
+<h2 id="channelModalTitle">القناة</h2>
+<button type="button" class="close-btn" onclick="closeChannel()">×</button>
+</div>
 <div id="channelModalContent" class="modal-content"></div>
-<div class="modal-actions"><button type="button" class="secondary-btn" onclick="closeChannel()">العودة للقنوات</button></div>
+<div class="modal-actions">
+<button type="button" class="secondary-btn" onclick="closeChannel()">العودة للقنوات</button>
+</div>
 </div>
 </div>
 
@@ -596,6 +761,7 @@ let projectsData=[];
 let currentProjectFilter="all";
 let currentDesignIndex=0;
 let currentChannelType=null;
+let currentCommentsProjectId=null;
 
 const designs=[
 {title:"برج المستقبل",icon:"🏙️",description:"تصور معماري لبرج حديث يجمع بين التقنية والاستدامة والهوية المستقبلية.",type:"تصميم معماري",details:"برج مستقبلي يمكن تطويره ليضم مكاتب وشققاً فاخرة ومساحات تجارية ومرافق ذكية."},
@@ -661,6 +827,7 @@ return;
 }
 
 const button=document.querySelector("#loginForm .primary-btn");
+
 if(button){
 button.disabled=true;
 button.textContent="جاري تسجيل الدخول...";
@@ -770,7 +937,10 @@ return;
 }
 
 try{
-const {error}=await supabaseClient.auth.resetPasswordForEmail(email,{redirectTo:SITE_URL});
+const {error}=await supabaseClient.auth.resetPasswordForEmail(
+email,
+{redirectTo:SITE_URL}
+);
 
 if(error){
 showAuthMessage(error.message);
@@ -778,6 +948,7 @@ return;
 }
 
 showAuthMessage("تم إرسال رابط استعادة كلمة المرور إلى بريدك الإلكتروني.");
+
 }catch(error){
 console.error(error);
 showAuthMessage(error?.message||"حدث خطأ أثناء إرسال الرابط.");
@@ -817,6 +988,7 @@ await loadUserApp();
 }else{
 showAuthPage();
 }
+
 }catch(error){
 console.error("Session exception:",error);
 showAuthPage();
@@ -827,42 +999,59 @@ function setupAuthListener(){
 if(!initSupabase())return;
 
 supabaseClient.auth.onAuthStateChange((event,session)=>{
+
 if(event==="SIGNED_IN"&&session){
 currentUser=session.user;
 }
+
 if(event==="SIGNED_OUT"){
 currentUser=null;
 currentProfile=null;
 showAuthPage();
 }
+
 });
 }
 
 async function loadUserApp(){
+
 if(currentUser){
+
 try{
 await loadProfile();
 }catch(error){
 console.error("loadProfile error:",error);
 }
+
 }
 
 showApp();
 updateUserUI();
 
-try{loadProjects()}catch(e){console.error(e)}
+try{
+await loadProjects();
+}catch(e){
+console.error(e);
+}
+
 loadLocalCommunity();
 showSection("home");
 }
 
 async function loadProfile(){
+
 if(!currentUser){
 currentProfile={name:"زائر",email:""};
 return;
 }
 
 try{
-const {data,error}=await supabaseClient.from("profiles").select("*").eq("id",currentUser.id).maybeSingle();
+
+const {data,error}=await supabaseClient
+.from("profiles")
+.select("*")
+.eq("id",currentUser.id)
+.maybeSingle();
 
 if(error)console.error(error);
 
@@ -875,12 +1064,16 @@ name:currentUser.user_metadata?.name||currentUser.email?.split("@")[0]||"مست�
 email:currentUser.email||""
 };
 }
+
 }catch(error){
+
 console.error(error);
+
 currentProfile={
 name:currentUser.user_metadata?.name||currentUser.email?.split("@")[0]||"مستخدم",
 email:currentUser.email||""
 };
+
 }
 }
 
@@ -896,6 +1089,7 @@ showLoginForm();
 }
 
 function updateUserUI(){
+
 const name=currentProfile?.name||"زائر";
 const email=currentProfile?.email||"";
 const first=name.trim().charAt(0).toUpperCase()||"K";
@@ -910,13 +1104,19 @@ document.getElementById("profileAvatar").textContent=first;
 }
 
 function showSection(id){
+
 document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+
 const section=document.getElementById(id);
+
 if(section)section.classList.add("active");
 
 document.querySelectorAll(".nav-btn").forEach(button=>{
 button.classList.remove("active");
-if(button.dataset.section===id)button.classList.add("active");
+
+if(button.dataset.section===id){
+button.classList.add("active");
+}
 });
 
 if(id==="projects")loadProjects();
@@ -926,8 +1126,14 @@ if(id==="answers")loadQuestions();
 window.scrollTo({top:0,behavior:"smooth"});
 }
 
+/* =========================
+   PROJECTS
+========================= */
+
 async function loadProjects(){
+
 const grid=document.getElementById("projectsGrid");
+
 if(!grid)return;
 
 if(!initSupabase()){
@@ -938,7 +1144,11 @@ return;
 grid.innerHTML=`<div class="empty-state">جاري تحميل المشاريع...</div>`;
 
 try{
-const {data,error}=await supabaseClient.from("projects").select("*").order("created_at",{ascending:false});
+
+const {data,error}=await supabaseClient
+.from("projects")
+.select("*")
+.order("created_at",{ascending:false});
 
 if(error){
 console.error(error);
@@ -948,29 +1158,143 @@ return;
 }
 
 projectsData=data||[];
-renderProjects();
+
+await loadProjectSocialData();
+
 }catch(error){
+
 console.error(error);
+
 projectsData=[];
+
 renderProjects();
+
+}
+}
+
+/*
+  تحميل عدد الإعجابات والتعليقات وحالة إعجاب المستخدم
+*/
+async function loadProjectSocialData(){
+
+if(!projectsData.length){
+renderProjects();
+return;
+}
+
+if(!initSupabase()){
+renderProjects();
+return;
+}
+
+try{
+
+const projectIds=projectsData
+.map(project=>project.id)
+.filter(Boolean);
+
+if(!projectIds.length){
+renderProjects();
+return;
+}
+
+/* الإعجابات */
+
+const likesResult=await supabaseClient
+.from("likes")
+.select("id,project_id,user_id")
+.in("project_id",projectIds);
+
+if(likesResult.error){
+console.error("Likes load error:",likesResult.error);
+}
+
+const likes=likesResult.data||[];
+
+/* التعليقات */
+
+const commentsResult=await supabaseClient
+.from("comments")
+.select("id,project_id,user_id,content,created_at")
+.in("project_id",projectIds);
+
+if(commentsResult.error){
+console.error("Comments load error:",commentsResult.error);
+}
+
+const comments=commentsResult.data||[];
+
+projectsData=projectsData.map(project=>{
+
+const projectLikes=likes.filter(
+like=>like.project_id===project.id
+);
+
+const projectComments=comments.filter(
+comment=>comment.project_id===project.id
+);
+
+const userLiked=!!(
+currentUser &&
+projectLikes.some(
+like=>like.user_id===currentUser.id
+)
+);
+
+return{
+...project,
+_likeCount:projectLikes.length,
+_commentCount:projectComments.length,
+_userLiked:userLiked
+};
+
+});
+
+renderProjects();
+
+}catch(error){
+
+console.error("Social data error:",error);
+
+projectsData=projectsData.map(project=>({
+...project,
+_likeCount:project._likeCount||0,
+_commentCount:project._commentCount||0,
+_userLiked:project._userLiked||false
+}));
+
+renderProjects();
+
 }
 }
 
 function renderProjects(){
+
 const grid=document.getElementById("projectsGrid");
+
 if(!grid)return;
 
-const search=(document.getElementById("projectSearch")?.value||"").toLowerCase().trim();
+const search=(document.getElementById("projectSearch")?.value||"")
+.toLowerCase()
+.trim();
+
 let list=[...projectsData];
 
-if(currentProjectFilter==="images")list=list.filter(p=>p.image_url);
-if(currentProjectFilter==="noimages")list=list.filter(p=>!p.image_url);
+if(currentProjectFilter==="images"){
+list=list.filter(p=>p.image_url);
+}
+
+if(currentProjectFilter==="noimages"){
+list=list.filter(p=>!p.image_url);
+}
 
 if(search){
+
 list=list.filter(p=>
 (p.title||"").toLowerCase().includes(search)||
 (p.description||"").toLowerCase().includes(search)
 );
+
 }
 
 const total=projectsData.length;
@@ -981,52 +1305,116 @@ document.getElementById("projectsImagesCount").textContent=images;
 document.getElementById("projectsNoImagesCount").textContent=total-images;
 
 if(!list.length){
-grid.innerHTML=`<div class="empty-state">لا توجد مشاريع مطابقة للبحث.</div>`;
+
+grid.innerHTML=`
+<div class="empty-state">
+لا توجد مشاريع مطابقة للبحث.
+</div>`;
+
 return;
 }
 
 grid.innerHTML=list.map(project=>{
+
 const title=escapeHtml(project.title||"مشروع بدون اسم");
 const description=escapeHtml(project.description||"لا يوجد وصف.");
 const id=escapeAttribute(project.id||"");
 
+const likeCount=Number(project._likeCount||0);
+const commentCount=Number(project._commentCount||0);
+const liked=project._userLiked===true;
+
 const image=project.image_url
-?`<img class="project-image" src="${escapeAttribute(project.image_url)}" alt="${title}" onerror="this.style.display='none'">`
-:`<div class="project-placeholder">🏗️</div>`;
+?`
+<img
+class="project-image"
+src="${escapeAttribute(project.image_url)}"
+alt="${title}"
+onerror="this.style.display='none'"
+>
+`
+:
+`
+<div class="project-placeholder">🏗️</div>
+`;
 
 return `
 <div class="project-card">
+
 ${image}
+
 <div class="project-content">
+
 <div class="project-title">${title}</div>
-<div class="project-description">${description}</div>
-<div class="project-meta">KAPO ONE</div>
+
+<div class="project-description">
+${description}
+</div>
+
+<div class="project-meta">
+KAPO ONE
+</div>
+
 <div class="project-actions">
-<button type="button" class="icon-btn" onclick="likeProject('${id}')">♡ إعجاب</button>
-<button type="button" class="icon-btn" onclick="commentProject('${id}')">💬 تعليق</button>
+
+<button
+type="button"
+class="icon-btn project-like-btn ${liked?"liked":""}"
+onclick="likeProject('${id}',this)"
+>
+${liked?"♥":"♡"} إعجاب <span class="like-count">${likeCount}</span>
+</button>
+
+<button
+type="button"
+class="icon-btn project-comments-btn"
+onclick="commentProject('${id}')"
+>
+💬 التعليقات <span class="comment-count">${commentCount}</span>
+</button>
+
 </div>
+
 </div>
-</div>`;
+
+</div>
+`;
+
 }).join("");
 }
 
 function setProjectFilter(filter,button){
+
 currentProjectFilter=filter;
-document.querySelectorAll(".filter-btn").forEach(btn=>btn.classList.remove("active"));
-if(button)button.classList.add("active");
+
+document.querySelectorAll(".filter-btn")
+.forEach(btn=>btn.classList.remove("active"));
+
+if(button){
+button.classList.add("active");
+}
+
 renderProjects();
 }
 
 function openAddProjectModal(){
-document.getElementById("addProjectModal").classList.add("active");
-document.getElementById("addProjectMessage").classList.add("hidden");
+
+document.getElementById("addProjectModal")
+.classList.add("active");
+
+document.getElementById("addProjectMessage")
+.classList.add("hidden");
 }
 
 function closeAddProjectModal(){
-document.getElementById("addProjectModal").classList.remove("active");
+
+document.getElementById("addProjectModal")
+.classList.remove("active");
+
 }
 
 async function saveNewProject(){
+
 if(!currentUser){
 showAddProjectMessage("يجب تسجيل الدخول لإضافة مشروع.");
 return;
@@ -1047,8 +1435,14 @@ return;
 }
 
 try{
-const {error}=await supabaseClient.from("projects").insert({
-title,description:description||"",image_url:image||null,user_id:currentUser.id
+
+const {error}=await supabaseClient
+.from("projects")
+.insert({
+title,
+description:description||"",
+image_url:image||null,
+user_id:currentUser.id
 });
 
 if(error){
@@ -1058,118 +1452,606 @@ return;
 }
 
 closeAddProjectModal();
+
 document.getElementById("projectTitle").value="";
 document.getElementById("projectDescription").value="";
 document.getElementById("projectImage").value="";
+
 await loadProjects();
+
 showToast("تم حفظ المشروع بنجاح.");
+
 }catch(error){
+
 console.error(error);
 showAddProjectMessage("حدث خطأ أثناء حفظ المشروع.");
+
 }
 }
 
 function showAddProjectMessage(message){
+
 const box=document.getElementById("addProjectMessage");
+
 box.textContent=message;
 box.classList.remove("hidden");
+
 }
 
-async function likeProject(projectId){
+/* =========================
+   PROJECT LIKE
+========================= */
+
+async function likeProject(projectId,button){
+
 if(!currentUser){
+
 showToast("سجل الدخول أولاً لإضافة إعجاب.");
 return;
+
 }
+
 if(!initSupabase())return;
 
+const project=projectsData.find(
+p=>String(p.id)===String(projectId)
+);
+
+if(!project)return;
+
 try{
-const {error}=await supabaseClient.from("likes").insert({
-project_id:projectId,user_id:currentUser.id
+
+/* إذا كان معجبًا بالفعل -> إلغاء الإعجاب */
+
+if(project._userLiked){
+
+const {error}=await supabaseClient
+.from("likes")
+.delete()
+.eq("project_id",projectId)
+.eq("user_id",currentUser.id);
+
+if(error){
+
+console.error(error);
+showToast("تعذر إلغاء الإعجاب.");
+return;
+
+}
+
+project._userLiked=false;
+project._likeCount=Math.max(
+0,
+Number(project._likeCount||0)-1
+);
+
+if(button){
+
+button.classList.remove("liked");
+button.innerHTML=
+`♡ إعجاب <span class="like-count">${project._likeCount}</span>`;
+
+}
+
+showToast("تم إلغاء الإعجاب.");
+
+return;
+}
+
+/* إضافة إعجاب */
+
+const {error}=await supabaseClient
+.from("likes")
+.insert({
+project_id:projectId,
+user_id:currentUser.id
 });
 
 if(error){
+
 if(error.code==="23505"){
+
+project._userLiked=true;
+
 showToast("سبق وأعجبت بهذا المشروع.");
+
 return;
+
 }
+
 console.error(error);
 showToast("تعذر إضافة الإعجاب.");
 return;
+
 }
-showToast("تم تسجيل الإعجاب.");
+
+project._userLiked=true;
+project._likeCount=Number(project._likeCount||0)+1;
+
+if(button){
+
+button.classList.add("liked");
+
+button.innerHTML=
+`♥ إعجاب <span class="like-count">${project._likeCount}</span>`;
+
+}
+
+showToast("تم تسجيل الإعجاب ❤️");
+
 }catch(error){
+
 console.error(error);
-showToast("حدث خطأ.");
+showToast("حدث خطأ أثناء الإعجاب.");
+
 }
 }
+
+/* =========================
+   COMMENTS
+========================= */
 
 async function commentProject(projectId){
+
 if(!currentUser){
+
 showToast("سجل الدخول أولاً لإضافة تعليق.");
 return;
+
 }
+
 if(!initSupabase())return;
 
-const content=prompt("اكتب تعليقك:");
-if(!content)return;
+currentCommentsProjectId=projectId;
+
+const project=projectsData.find(
+p=>String(p.id)===String(projectId)
+);
+
+const title=project?.title||"المشروع";
+
+document.getElementById("commentsModalTitle").textContent=
+"💬 تعليقات: "+title;
+
+document.getElementById("commentsModalContent").innerHTML=`
+<div class="comment-empty">
+جاري تحميل التعليقات...
+</div>
+`;
+
+document.getElementById("commentsModal")
+.classList.add("active");
+
+await loadProjectComments(projectId);
+}
+
+async function loadProjectComments(projectId){
+
+const box=document.getElementById("commentsModalContent");
+
+if(!box)return;
+
+if(!initSupabase()){
+
+box.innerHTML=`
+<div class="comment-empty">
+تعذر الاتصال بقاعدة البيانات.
+</div>
+`;
+
+return;
+
+}
 
 try{
-const {error}=await supabaseClient.from("comments").insert({
-project_id:projectId,user_id:currentUser.id,content:content.trim()
+
+const {data,error}=await supabaseClient
+.from("comments")
+.select("id,project_id,user_id,content,created_at")
+.eq("project_id",projectId)
+.order("created_at",{ascending:true});
+
+if(error){
+
+console.error(error);
+
+box.innerHTML=`
+<div class="comment-empty">
+تعذر تحميل التعليقات.
+</div>
+`;
+
+return;
+
+}
+
+const comments=data||[];
+
+let profiles={};
+
+const userIds=[
+...new Set(
+comments
+.map(comment=>comment.user_id)
+.filter(Boolean)
+)
+];
+
+if(userIds.length){
+
+const profileResult=await supabaseClient
+.from("profiles")
+.select("id,name")
+.in("id",userIds);
+
+if(!profileResult.error&&profileResult.data){
+
+profileResult.data.forEach(profile=>{
+profiles[profile.id]=profile.name;
+});
+
+}
+
+}
+
+let commentsHtml="";
+
+if(!comments.length){
+
+commentsHtml=`
+<div class="comment-empty">
+لا توجد تعليقات حتى الآن.<br>
+كن أول من يعلق على هذا المشروع 💬
+</div>
+`;
+
+}else{
+
+commentsHtml=`
+<div class="comments-list">
+
+${comments.map(comment=>{
+
+const isOwner=
+currentUser &&
+comment.user_id===currentUser.id;
+
+const author=
+profiles[comment.user_id]||
+(isOwner?currentProfile?.name:"مستخدم");
+
+const first=
+(author||"م")
+.trim()
+.charAt(0)
+.toUpperCase();
+
+const date=
+comment.created_at
+?new Date(comment.created_at)
+.toLocaleString("ar-SA")
+:"";
+
+return `
+<div class="comment-item">
+
+<div class="comment-head">
+
+<div class="comment-author">
+
+<div class="comment-avatar">
+${escapeHtml(first)}
+</div>
+
+<span>
+${escapeHtml(author||"مستخدم")}
+</span>
+
+</div>
+
+<span class="comment-date">
+${escapeHtml(date)}
+</span>
+
+</div>
+
+<div class="comment-text">
+${escapeHtml(comment.content)}
+</div>
+
+${isOwner?`
+<div class="comment-footer">
+<button
+type="button"
+class="delete-comment-btn"
+onclick="deleteProjectComment('${escapeAttribute(comment.id)}','${escapeAttribute(projectId)}')"
+>
+حذف التعليق
+</button>
+</div>
+`:""}
+
+</div>
+`;
+
+}).join("")}
+
+</div>
+`;
+
+}
+
+const inputHtml=currentUser
+?`
+<div class="comment-input-box">
+
+<textarea
+id="projectCommentInput"
+maxlength="2000"
+placeholder="اكتب تعليقك على المشروع..."
+></textarea>
+
+<div class="comment-input-actions">
+
+<span style="font-size:12px;color:#64748b">
+شارك رأيك مع مجتمع KAPO ONE
+</span>
+
+<button
+type="button"
+class="primary-btn"
+onclick="addProjectComment('${escapeAttribute(projectId)}')"
+>
+نشر التعليق
+</button>
+
+</div>
+
+</div>
+`
+:
+`
+<div class="comment-empty" style="margin-top:15px">
+سجل الدخول حتى تتمكن من إضافة تعليق.
+</div>
+`;
+
+box.innerHTML=
+commentsHtml+
+inputHtml;
+
+}catch(error){
+
+console.error(error);
+
+box.innerHTML=`
+<div class="comment-empty">
+حدث خطأ أثناء تحميل التعليقات.
+</div>
+`;
+
+}
+}
+
+async function addProjectComment(projectId){
+
+if(!currentUser){
+
+showToast("سجل الدخول أولاً لإضافة تعليق.");
+return;
+
+}
+
+if(!initSupabase())return;
+
+const input=document.getElementById("projectCommentInput");
+
+if(!input)return;
+
+const content=input.value.trim();
+
+if(!content){
+
+showToast("اكتب التعليق أولاً.");
+return;
+
+}
+
+if(content.length>2000){
+
+showToast("التعليق طويل جداً.");
+return;
+
+}
+
+try{
+
+const {error}=await supabaseClient
+.from("comments")
+.insert({
+project_id:projectId,
+user_id:currentUser.id,
+content:content
 });
 
 if(error){
+
 console.error(error);
-showToast("تعذر إضافة التعليق.");
+
+showToast(error.message||"تعذر إضافة التعليق.");
 return;
+
 }
-showToast("تم إضافة التعليق.");
+
+const project=projectsData.find(
+p=>String(p.id)===String(projectId)
+);
+
+if(project){
+project._commentCount=
+Number(project._commentCount||0)+1;
+}
+
+input.value="";
+
+await loadProjectComments(projectId);
+
+renderProjects();
+
+showToast("تم إضافة التعليق 💬");
+
 }catch(error){
+
 console.error(error);
-showToast("حدث خطأ.");
+showToast("حدث خطأ أثناء إضافة التعليق.");
+
 }
 }
+
+async function deleteProjectComment(commentId,projectId){
+
+if(!currentUser){
+
+showToast("سجل الدخول أولاً.");
+return;
+
+}
+
+if(!initSupabase())return;
+
+if(!confirm("هل تريد حذف هذا التعليق؟"))return;
+
+try{
+
+const {error}=await supabaseClient
+.from("comments")
+.delete()
+.eq("id",commentId)
+.eq("user_id",currentUser.id);
+
+if(error){
+
+console.error(error);
+
+showToast("تعذر حذف التعليق.");
+return;
+
+}
+
+const project=projectsData.find(
+p=>String(p.id)===String(projectId)
+);
+
+if(project){
+
+project._commentCount=Math.max(
+0,
+Number(project._commentCount||0)-1
+);
+
+}
+
+await loadProjectComments(projectId);
+
+renderProjects();
+
+showToast("تم حذف التعليق.");
+
+}catch(error){
+
+console.error(error);
+showToast("حدث خطأ أثناء حذف التعليق.");
+
+}
+}
+
+function closeCommentsModal(){
+
+document.getElementById("commentsModal")
+.classList.remove("active");
+
+currentCommentsProjectId=null;
+
+}
+
+/* =========================
+   DESIGNS
+========================= */
 
 function openDesignModal(index){
+
 currentDesignIndex=index;
+
 const design=designs[index];
+
 if(!design)return;
 
-document.getElementById("designModalTitle").textContent=design.icon+" "+design.title;
-document.getElementById("designModalContent").innerHTML=`
+document.getElementById("designModalTitle")
+.textContent=design.icon+" "+design.title;
+
+document.getElementById("designModalContent")
+.innerHTML=`
+
 <p>${escapeHtml(design.description)}</p>
+
 <h3>نوع التصميم</h3>
+
 <p>${escapeHtml(design.type)}</p>
+
 <h3>التفاصيل</h3>
-<p>${escapeHtml(design.details)}</p>`;
-document.getElementById("designModal").classList.add("active");
+
+<p>${escapeHtml(design.details)}</p>
+
+`;
+
+document.getElementById("designModal")
+.classList.add("active");
+
 }
 
 function closeDesignModal(){
-document.getElementById("designModal").classList.remove("active");
+
+document.getElementById("designModal")
+.classList.remove("active");
+
 }
 
 function likeDesign(index,button){
+
 if(!designs[index])return;
 
 if(button.dataset.liked==="true"){
+
 button.dataset.liked="false";
 button.textContent="♡ إعجاب";
+
 showToast("تم إلغاء الإعجاب.");
+
 }else{
+
 button.dataset.liked="true";
 button.textContent="♥ أعجبني";
+
 showToast("تم تسجيل الإعجاب.");
-}
+
 }
 
+}
+
+/* =========================
+   IDEAS
+========================= */
+
 function generateIdea(){
+
 const input=document.getElementById("ideaInput");
 const text=input.value.trim();
 
 if(!text){
+
 showToast("اكتب فكرة أولاً.");
 return;
+
 }
 
 let result={
@@ -1183,166 +2065,339 @@ features:"هوية معمارية مميزة، استدامة، حلول ذكي�
 const lower=text.toLowerCase();
 
 if(text.includes("برج")||lower.includes("tower")){
+
 result={
-title:"برج مستقبلي",type:"برج معماري",
+title:"برج مستقبلي",
+type:"برج معماري",
 concept:"برج حديث بواجهة مميزة وتكوين رأسي واضح يجمع بين الجمال والكفاءة.",
 uses:"مكاتب، شقق فاخرة، فندق، مطاعم ومساحات تجارية.",
 features:"واجهات ذكية، أنظمة استدامة، إطلالات بانورامية ومرافق متطورة."
 };
+
 }
 
 if(text.includes("ذرة")||lower.includes("atom")){
+
 result={
-title:"برج الذرة",type:"فكرة هندسية",
+title:"برج الذرة",
+type:"فكرة هندسية",
 concept:"برج مستوحى من تركيب الذرة، حيث يمثل المركز النواة وتحيط به عناصر معمارية دائرية.",
 uses:"مركز أعمال، فندق، مكاتب ومرافق سياحية.",
 features:"تكوين بصري فريد، حركة دائرية، إضاءة ليلية وهوية معمارية مميزة."
 };
+
 }
 
 if(text.includes("مدينة")||lower.includes("city")){
+
 result={
-title:"مدينة المستقبل",type:"مدينة ذكية",
+title:"مدينة المستقبل",
+type:"مدينة ذكية",
 concept:"مدينة مترابطة رقمياً تعتمد على الطاقة النظيفة والنقل الذكي والمساحات الخضراء.",
 uses:"سكن، أعمال، ترفيه، خدمات ومرافق عامة.",
 features:"ذكاء اصطناعي، نقل ذكي، طاقة نظيفة، بنية رقمية ومساحات خضراء."
 };
+
 }
 
 document.getElementById("ideaResult").innerHTML=`
+
 <h3>${escapeHtml(result.title)}</h3>
-<p><strong>النوع:</strong> ${escapeHtml(result.type)}</p>
-<p><strong>الفكرة:</strong> ${escapeHtml(result.concept)}</p>
-<p><strong>الاستخدامات:</strong> ${escapeHtml(result.uses)}</p>
-<p><strong>المميزات:</strong> ${escapeHtml(result.features)}</p>`;
 
-document.getElementById("ideaResult").classList.remove("hidden");
+<p>
+<strong>النوع:</strong>
+${escapeHtml(result.type)}
+</p>
 
-const ideas=JSON.parse(localStorage.getItem("kapoIdeas")||"[]");
+<p>
+<strong>الفكرة:</strong>
+${escapeHtml(result.concept)}
+</p>
+
+<p>
+<strong>الاستخدامات:</strong>
+${escapeHtml(result.uses)}
+</p>
+
+<p>
+<strong>المميزات:</strong>
+${escapeHtml(result.features)}
+</p>
+
+`;
+
+document.getElementById("ideaResult")
+.classList.remove("hidden");
+
+const ideas=
+JSON.parse(localStorage.getItem("kapoIdeas")||"[]");
 
 ideas.unshift({
-title:result.title,type:result.type,concept:result.concept,text,
+title:result.title,
+type:result.type,
+concept:result.concept,
+text,
 date:new Date().toLocaleString("ar-SA")
 });
 
-localStorage.setItem("kapoIdeas",JSON.stringify(ideas.slice(0,50)));
+localStorage.setItem(
+"kapoIdeas",
+JSON.stringify(ideas.slice(0,50))
+);
+
 loadLocalIdeas();
+
 }
 
 function loadLocalIdeas(){
+
 const list=document.getElementById("ideasList");
+
 if(!list)return;
 
-const ideas=JSON.parse(localStorage.getItem("kapoIdeas")||"[]");
+const ideas=
+JSON.parse(localStorage.getItem("kapoIdeas")||"[]");
 
 if(!ideas.length){
-list.innerHTML=`<div class="empty-state">لا توجد أفكار محفوظة حتى الآن.</div>`;
+
+list.innerHTML=`
+<div class="empty-state">
+لا توجد أفكار محفوظة حتى الآن.
+</div>
+`;
+
 return;
+
 }
 
 list.innerHTML=ideas.slice(0,20).map(idea=>`
+
 <div class="idea-card">
+
 <h4>💡 ${escapeHtml(idea.title)}</h4>
-<p><strong>الفكرة الأصلية:</strong> ${escapeHtml(idea.text||"")}</p>
-<p><strong>النوع:</strong> ${escapeHtml(idea.type||"")}</p>
-<p>${escapeHtml(idea.concept||"")}</p>
-<span style="color:#64748b;font-size:12px">${escapeHtml(idea.date||"")}</span>
-</div>`).join("");
+
+<p>
+<strong>الفكرة الأصلية:</strong>
+${escapeHtml(idea.text||"")}
+</p>
+
+<p>
+<strong>النوع:</strong>
+${escapeHtml(idea.type||"")}
+</p>
+
+<p>
+${escapeHtml(idea.concept||"")}
+</p>
+
+<span style="color:#64748b;font-size:12px">
+${escapeHtml(idea.date||"")}
+</span>
+
+</div>
+
+`).join("");
+
 }
 
+/* =========================
+   QUESTIONS
+========================= */
+
 function addQuestion(){
+
 const input=document.getElementById("questionInput");
 const question=input.value.trim();
 
 if(!question){
+
 showToast("اكتب السؤال أولاً.");
 return;
+
 }
 
-const questions=JSON.parse(localStorage.getItem("kapoQuestions")||"[]");
+const questions=
+JSON.parse(localStorage.getItem("kapoQuestions")||"[]");
 
 questions.unshift({
-question,date:new Date().toLocaleString("ar-SA")
+question,
+date:new Date().toLocaleString("ar-SA")
 });
 
-localStorage.setItem("kapoQuestions",JSON.stringify(questions.slice(0,50)));
+localStorage.setItem(
+"kapoQuestions",
+JSON.stringify(questions.slice(0,50))
+);
+
 input.value="";
+
 loadQuestions();
+
 showToast("تم نشر السؤال.");
+
 }
 
 function loadQuestions(){
+
 const list=document.getElementById("questionsList");
+
 if(!list)return;
 
-const questions=JSON.parse(localStorage.getItem("kapoQuestions")||"[]");
+const questions=
+JSON.parse(localStorage.getItem("kapoQuestions")||"[]");
 
 if(!questions.length){
-list.innerHTML=`<div class="empty-state">لا توجد أسئلة حتى الآن.</div>`;
+
+list.innerHTML=`
+<div class="empty-state">
+لا توجد أسئلة حتى الآن.
+</div>
+`;
+
 return;
+
 }
 
 list.innerHTML=questions.map(item=>`
+
 <div class="question-item">
-<strong>❓ ${escapeHtml(item.question)}</strong>
-<span>${escapeHtml(item.date||"")}</span>
-</div>`).join("");
+
+<strong>
+❓ ${escapeHtml(item.question)}
+</strong>
+
+<span>
+${escapeHtml(item.date||"")}
+</span>
+
+</div>
+
+`).join("");
+
 }
 
 function loadLocalCommunity(){
+
 loadQuestions();
 loadLocalIdeas();
+
 }
 
+/* =========================
+   CHANNELS
+========================= */
+
 function openChannel(type){
+
 const channel=channelData[type];
 
 if(!channel){
+
 showToast("القناة غير موجودة.");
 return;
+
 }
 
 currentChannelType=type;
 
-document.getElementById("channelModalTitle").textContent=channel.title;
+document.getElementById("channelModalTitle")
+.textContent=channel.title;
 
-document.getElementById("channelModalContent").innerHTML=`
-<p>${escapeHtml(channel.description)}</p>
+document.getElementById("channelModalContent")
+.innerHTML=`
+
+<p>
+${escapeHtml(channel.description)}
+</p>
 
 <div class="channel-post-box">
+
 ${
 currentUser
-?`
-<textarea id="channelPostInput" placeholder="اكتب منشورك في القناة..." maxlength="3000"></textarea>
+?
+`
+
+<textarea
+id="channelPostInput"
+placeholder="اكتب منشورك في القناة..."
+maxlength="3000"
+></textarea>
+
 <div class="channel-post-actions">
-<span class="channel-post-hint">شارك فكرة أو رأياً مع مجتمع KAPO ONE</span>
-<button type="button" class="primary-btn" onclick="createChannelPost()">نشر المنشور</button>
-</div>`
-:`<div class="empty-state">سجل الدخول حتى تتمكن من نشر منشور داخل القناة.</div>`
+
+<span class="channel-post-hint">
+شارك فكرة أو رأياً مع مجتمع KAPO ONE
+</span>
+
+<button
+type="button"
+class="primary-btn"
+onclick="createChannelPost()"
+>
+نشر المنشور
+</button>
+
+</div>
+
+`
+:
+`
+
+<div class="empty-state">
+سجل الدخول حتى تتمكن من نشر منشور داخل القناة.
+</div>
+
+`
+
 }
+
 </div>
 
 <h3>منشورات القناة</h3>
-<div id="channelPosts" class="channel-posts">
-<div class="channel-loading">جاري تحميل المنشورات...</div>
-</div>`;
 
-document.getElementById("channelModal").classList.add("active");
+<div id="channelPosts" class="channel-posts">
+
+<div class="channel-loading">
+جاري تحميل المنشورات...
+</div>
+
+</div>
+
+`;
+
+document.getElementById("channelModal")
+.classList.add("active");
+
 loadChannelPosts(type);
+
 }
 
 async function loadChannelPosts(type){
+
 const postsBox=document.getElementById("channelPosts");
+
 if(!postsBox)return;
 
 if(!initSupabase()){
-postsBox.innerHTML=`<div class="empty-state">تعذر الاتصال بالمنصة.</div>`;
+
+postsBox.innerHTML=`
+<div class="empty-state">
+تعذر الاتصال بالمنصة.
+</div>
+`;
+
 return;
+
 }
 
-postsBox.innerHTML=`<div class="channel-loading">جاري تحميل المنشورات...</div>`;
+postsBox.innerHTML=`
+<div class="channel-loading">
+جاري تحميل المنشورات...
+</div>
+`;
 
 try{
+
 const {data,error}=await supabaseClient
 .from("channel_posts")
 .select("*")
@@ -1350,112 +2405,233 @@ const {data,error}=await supabaseClient
 .order("created_at",{ascending:false});
 
 if(error){
+
 console.error(error);
-postsBox.innerHTML=`<div class="empty-state">تعذر تحميل المنشورات.</div>`;
+
+postsBox.innerHTML=`
+<div class="empty-state">
+تعذر تحميل المنشورات.
+</div>
+`;
+
 return;
+
 }
 
 const posts=data||[];
 
 if(!posts.length){
-postsBox.innerHTML=`<div class="empty-state">لا توجد منشورات حتى الآن.<br>كن أول من ينشر في هذه القناة 🚀</div>`;
+
+postsBox.innerHTML=`
+<div class="empty-state">
+لا توجد منشورات حتى الآن.<br>
+كن أول من ينشر في هذه القناة 🚀
+</div>
+`;
+
 return;
+
 }
 
-const userIds=[...new Set(posts.map(p=>p.user_id).filter(Boolean))];
+const userIds=[
+...new Set(
+posts.map(p=>p.user_id).filter(Boolean)
+)
+];
+
 let profiles={};
 
 if(userIds.length){
-const profileResult=await supabaseClient.from("profiles").select("id,name").in("id",userIds);
+
+const profileResult=await supabaseClient
+.from("profiles")
+.select("id,name")
+.in("id",userIds);
+
 if(!profileResult.error&&profileResult.data){
-profileResult.data.forEach(profile=>profiles[profile.id]=profile.name);
+
+profileResult.data.forEach(profile=>{
+profiles[profile.id]=profile.name;
+});
+
 }
+
 }
 
 postsBox.innerHTML=posts.map(post=>{
-const isOwner=currentUser&&post.user_id===currentUser.id;
-const author=profiles[post.user_id]||(isOwner?currentProfile?.name:"مستخدم");
-const first=(author||"م").trim().charAt(0).toUpperCase();
-const date=post.created_at?new Date(post.created_at).toLocaleString("ar-SA"):"";
+
+const isOwner=
+currentUser &&
+post.user_id===currentUser.id;
+
+const author=
+profiles[post.user_id]||
+(isOwner?currentProfile?.name:"مستخدم");
+
+const first=
+(author||"م")
+.trim()
+.charAt(0)
+.toUpperCase();
+
+const date=
+post.created_at
+?new Date(post.created_at)
+.toLocaleString("ar-SA")
+:"";
 
 return `
+
 <div class="channel-post">
+
 <div class="channel-post-head">
+
 <div class="channel-author">
-<div class="channel-avatar">${escapeHtml(first)}</div>
-<span>${escapeHtml(author||"مستخدم")}</span>
-</div>
-<span class="channel-date">${escapeHtml(date)}</span>
+
+<div class="channel-avatar">
+${escapeHtml(first)}
 </div>
 
-<div class="channel-post-text">${escapeHtml(post.content)}</div>
+<span>
+${escapeHtml(author||"مستخدم")}
+</span>
 
-${isOwner?`
+</div>
+
+<span class="channel-date">
+${escapeHtml(date)}
+</span>
+
+</div>
+
+<div class="channel-post-text">
+${escapeHtml(post.content)}
+</div>
+
+${
+isOwner
+?
+`
+
 <div class="channel-post-footer">
-<button type="button" class="delete-post-btn" onclick="deleteChannelPost('${escapeAttribute(post.id)}')">حذف المنشور</button>
-</div>`:""}
-</div>`;
+
+<button
+type="button"
+class="delete-post-btn"
+onclick="deleteChannelPost('${escapeAttribute(post.id)}')"
+>
+حذف المنشور
+</button>
+
+</div>
+
+`
+:
+""
+}
+
+</div>
+
+`;
+
 }).join("");
 
 }catch(error){
+
 console.error(error);
-postsBox.innerHTML=`<div class="empty-state">حدث خطأ أثناء تحميل المنشورات.</div>`;
+
+postsBox.innerHTML=`
+<div class="empty-state">
+حدث خطأ أثناء تحميل المنشورات.
+</div>
+`;
+
 }
 }
 
 async function createChannelPost(){
+
 if(!currentUser){
+
 showToast("سجل الدخول أولاً لنشر منشور.");
 return;
+
 }
 
 if(!currentChannelType){
+
 showToast("اختر قناة أولاً.");
 return;
+
 }
 
 if(!initSupabase())return;
 
 const input=document.getElementById("channelPostInput");
+
 if(!input)return;
 
 const content=input.value.trim();
 
 if(!content){
+
 showToast("اكتب محتوى المنشور أولاً.");
 return;
+
 }
 
 if(content.length>3000){
+
 showToast("المنشور طويل جداً.");
 return;
+
 }
 
 try{
-const {error}=await supabaseClient.from("channel_posts").insert({
-channel:currentChannelType,content,user_id:currentUser.id
+
+const {error}=await supabaseClient
+.from("channel_posts")
+.insert({
+channel:currentChannelType,
+content,
+user_id:currentUser.id
 });
 
 if(error){
+
 console.error(error);
-showToast(error.message||"تعذر نشر المنشور.");
+
+showToast(
+error.message||
+"تعذر نشر المنشور."
+);
+
 return;
+
 }
 
 input.value="";
+
 showToast("تم نشر المنشور بنجاح.");
+
 await loadChannelPosts(currentChannelType);
 
 }catch(error){
+
 console.error(error);
+
 showToast("حدث خطأ أثناء نشر المنشور.");
+
 }
 }
 
 async function deleteChannelPost(postId){
+
 if(!currentUser){
+
 showToast("سجل الدخول أولاً.");
 return;
+
 }
 
 if(!initSupabase())return;
@@ -1463,65 +2639,108 @@ if(!initSupabase())return;
 if(!confirm("هل تريد حذف هذا المنشور؟"))return;
 
 try{
-const {error}=await supabaseClient.from("channel_posts")
-.delete().eq("id",postId).eq("user_id",currentUser.id);
+
+const {error}=await supabaseClient
+.from("channel_posts")
+.delete()
+.eq("id",postId)
+.eq("user_id",currentUser.id);
 
 if(error){
+
 console.error(error);
+
 showToast("تعذر حذف المنشور.");
 return;
+
 }
 
 showToast("تم حذف المنشور.");
 
-if(currentChannelType)await loadChannelPosts(currentChannelType);
+if(currentChannelType){
+
+await loadChannelPosts(currentChannelType);
+
+}
 
 }catch(error){
+
 console.error(error);
+
 showToast("حدث خطأ أثناء الحذف.");
+
 }
 }
 
 function closeChannel(){
-document.getElementById("channelModal").classList.remove("active");
+
+document.getElementById("channelModal")
+.classList.remove("active");
+
 currentChannelType=null;
+
 }
 
+/* =========================
+   LOGOUT
+========================= */
+
 async function logoutUser(){
+
 if(initSupabase()){
+
 try{
+
 await supabaseClient.auth.signOut();
+
 }catch(error){
+
 console.error(error);
+
 }
+
 }
 
 currentUser=null;
 currentProfile=null;
+
 showAuthPage();
+
 showToast("تم تسجيل الخروج.");
+
 }
 
+/* =========================
+   HELPERS
+========================= */
+
 function escapeHtml(value){
+
 return String(value??"")
 .replace(/&/g,"&amp;")
 .replace(/</g,"&lt;")
 .replace(/>/g,"&gt;")
 .replace(/"/g,"&quot;")
 .replace(/'/g,"&#039;");
+
 }
 
 function escapeAttribute(value){
+
 return escapeHtml(value);
+
 }
 
 let toastTimer=null;
 
 function showToast(message){
+
 const toast=document.getElementById("toast");
+
 if(!toast)return;
 
 toast.textContent=message;
+
 toast.classList.add("show");
 
 clearTimeout(toastTimer);
@@ -1529,37 +2748,64 @@ clearTimeout(toastTimer);
 toastTimer=setTimeout(()=>{
 toast.classList.remove("show");
 },3000);
+
 }
 
+/* =========================
+   KEYBOARD
+========================= */
+
 document.addEventListener("keydown",function(event){
+
 if(event.key==="Escape"){
+
 closeAddProjectModal();
+closeCommentsModal();
 closeDesignModal();
 closeChannel();
+
 }
+
 });
+
+/* =========================
+   START
+========================= */
 
 document.addEventListener("DOMContentLoaded",async function(){
 
 showAuthPage();
 
 if(!initSupabase()){
+
 showAuthMessage("جاري تحميل خدمة الدخول...");
 
 setTimeout(async()=>{
+
 if(initSupabase()){
+
 clearAuthMessage();
+
 setupAuthListener();
+
 await checkCurrentUser();
+
 }else{
-showAuthMessage("تعذر تحميل خدمة الدخول. تأكد من الإنترنت ثم أعد تحميل الصفحة.");
+
+showAuthMessage(
+"تعذر تحميل خدمة الدخول. تأكد من الإنترنت ثم أعد تحميل الصفحة."
+);
+
 }
+
 },1000);
 
 return;
+
 }
 
 setupAuthListener();
+
 await checkCurrentUser();
 
 });
