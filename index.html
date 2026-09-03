@@ -1,1063 +1,345 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>KAPO ONE</title>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-
 *{box-sizing:border-box}
-
 html{scroll-behavior:smooth}
-
 body{
-margin:0;
-font-family:Arial,sans-serif;
-background:
-radial-gradient(circle at 50% -15%,rgba(37,99,235,.22),transparent 35%),
-linear-gradient(180deg,#020617,#07111f 45%,#020617);
-color:#f8fafc;
-min-height:100vh;
+margin:0;font-family:Arial,sans-serif;
+background:radial-gradient(circle at 50% -15%,rgba(37,99,235,.22),transparent 35%),linear-gradient(180deg,#020617,#07111f 45%,#020617);
+color:#f8fafc;min-height:100vh
 }
-
 button,input,textarea{font-family:inherit}
 button{cursor:pointer}
 .hidden{display:none!important}
 
-.auth-page{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:20px;
-}
-
+.auth-page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
 .auth-box{
-width:100%;
-max-width:430px;
-background:rgba(15,23,42,.94);
-border:1px solid rgba(148,163,184,.18);
-border-radius:24px;
-padding:30px;
-box-shadow:0 25px 80px rgba(0,0,0,.45);
+width:100%;max-width:430px;background:rgba(15,23,42,.94);
+border:1px solid rgba(148,163,184,.18);border-radius:24px;padding:30px;
+box-shadow:0 25px 80px rgba(0,0,0,.45)
 }
-
 .auth-logo{
-width:78px;
-height:78px;
-margin:0 auto 18px;
-border-radius:22px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:32px;
-font-weight:900;
+width:78px;height:78px;margin:0 auto 18px;border-radius:22px;
+display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:900;
 background:linear-gradient(135deg,#2563eb,#7c3aed);
-box-shadow:0 15px 35px rgba(37,99,235,.35);
+box-shadow:0 15px 35px rgba(37,99,235,.35)
 }
-
-.auth-title{
-text-align:center;
-font-size:30px;
-font-weight:900;
-margin:0 0 8px;
+.auth-title{text-align:center;font-size:30px;font-weight:900;margin:0 0 8px}
+.auth-subtitle{text-align:center;color:#94a3b8;margin:0 0 25px}
+.auth-form{display:flex;flex-direction:column;gap:13px}
+.auth-form input,.auth-form textarea{
+width:100%;padding:14px 15px;border-radius:14px;border:1px solid #334155;
+background:#020617;color:#fff;outline:none
 }
-
-.auth-subtitle{
-text-align:center;
-color:#94a3b8;
-margin:0 0 25px;
+.auth-form textarea{resize:vertical;min-height:110px}
+.auth-form input:focus,.auth-form textarea:focus{
+border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,.12)
 }
-
-.auth-form{
-display:flex;
-flex-direction:column;
-gap:13px;
-}
-
-.auth-form input,
-.auth-form textarea{
-width:100%;
-padding:14px 15px;
-border-radius:14px;
-border:1px solid #334155;
-background:#020617;
-color:#fff;
-outline:none;
-}
-
-.auth-form textarea{
-resize:vertical;
-min-height:110px;
-}
-
-.auth-form input:focus,
-.auth-form textarea:focus{
-border-color:#3b82f6;
-box-shadow:0 0 0 3px rgba(59,130,246,.12);
-}
-
-.auth-links{
-display:flex;
-justify-content:space-between;
-gap:10px;
-margin-top:15px;
-}
-
-.auth-link{
-border:0;
-background:none;
-color:#60a5fa;
-font-size:14px;
-}
-
+.auth-links{display:flex;justify-content:space-between;gap:10px;margin-top:15px}
+.auth-link{border:0;background:none;color:#60a5fa;font-size:14px}
 .auth-message{
-margin-top:15px;
-padding:12px;
-border-radius:12px;
-background:rgba(239,68,68,.12);
-border:1px solid rgba(239,68,68,.25);
-color:#fca5a5;
-text-align:center;
-font-size:14px;
+margin-top:15px;padding:12px;border-radius:12px;
+background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.25);
+color:#fca5a5;text-align:center;font-size:14px
 }
-
 .primary-btn{
-border:0;
-border-radius:13px;
-padding:12px 18px;
-background:linear-gradient(135deg,#2563eb,#4f46e5);
-color:#fff;
-font-weight:800;
-box-shadow:0 8px 20px rgba(37,99,235,.2);
-transition:.2s;
+border:0;border-radius:13px;padding:12px 18px;
+background:linear-gradient(135deg,#2563eb,#4f46e5);color:#fff;font-weight:800;
+box-shadow:0 8px 20px rgba(37,99,235,.2);transition:.2s
 }
-
-.primary-btn:hover{
-transform:translateY(-1px);
-filter:brightness(1.08);
-}
-
+.primary-btn:hover{transform:translateY(-1px);filter:brightness(1.08)}
 .secondary-btn{
-border:1px solid #334155;
-border-radius:13px;
-padding:12px 18px;
-background:#0f172a;
-color:#fff;
-font-weight:700;
+border:1px solid #334155;border-radius:13px;padding:12px 18px;
+background:#0f172a;color:#fff;font-weight:700
 }
 
 .header{
-position:sticky;
-top:0;
-z-index:100;
-background:rgba(2,6,23,.88);
-backdrop-filter:blur(18px);
-border-bottom:1px solid rgba(148,163,184,.12);
+position:sticky;top:0;z-index:100;background:rgba(2,6,23,.88);
+backdrop-filter:blur(18px);border-bottom:1px solid rgba(148,163,184,.12)
 }
-
 .header-inner{
-max-width:1250px;
-margin:auto;
-padding:12px 18px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:15px;
+max-width:1250px;margin:auto;padding:12px 18px;display:flex;
+align-items:center;justify-content:space-between;gap:15px
 }
-
-.brand{
-display:flex;
-align-items:center;
-gap:10px;
-font-weight:900;
-font-size:20px;
-}
-
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:20px}
 .brand-logo{
-width:43px;
-height:43px;
-border-radius:13px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:linear-gradient(135deg,#2563eb,#7c3aed);
-box-shadow:0 8px 22px rgba(37,99,235,.3);
+width:43px;height:43px;border-radius:13px;display:flex;align-items:center;
+justify-content:center;background:linear-gradient(135deg,#2563eb,#7c3aed);
+box-shadow:0 8px 22px rgba(37,99,235,.3)
 }
-
-.user-mini{
-display:flex;
-align-items:center;
-gap:9px;
-color:#cbd5e1;
-font-size:14px;
-}
-
+.user-mini{display:flex;align-items:center;gap:9px;color:#cbd5e1;font-size:14px}
 .user-avatar{
-width:38px;
-height:38px;
-border-radius:50%;
-background:linear-gradient(135deg,#2563eb,#7c3aed);
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:900;
+width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#7c3aed);
+display:flex;align-items:center;justify-content:center;font-weight:900
 }
-
 .nav{
-max-width:1250px;
-margin:auto;
-padding:8px 18px 12px;
-display:flex;
-gap:8px;
-overflow-x:auto;
-scrollbar-width:none;
+max-width:1250px;margin:auto;padding:8px 18px 12px;display:flex;
+gap:8px;overflow-x:auto;scrollbar-width:none
 }
-
 .nav::-webkit-scrollbar{display:none}
-
 .nav-btn{
-white-space:nowrap;
-border:1px solid transparent;
-background:transparent;
-color:#94a3b8;
-padding:9px 13px;
-border-radius:12px;
-font-weight:700;
-transition:.2s;
+white-space:nowrap;border:1px solid transparent;background:transparent;color:#94a3b8;
+padding:9px 13px;border-radius:12px;font-weight:700;transition:.2s
 }
+.nav-btn:hover{background:#0f172a;color:#fff}
+.nav-btn.active{background:rgba(37,99,235,.18);border-color:rgba(59,130,246,.3);color:#fff}
 
-.nav-btn:hover{
-background:#0f172a;
-color:#fff;
-}
-
-.nav-btn.active{
-background:rgba(37,99,235,.18);
-border-color:rgba(59,130,246,.3);
-color:#fff;
-}
-
-.container{
-max-width:1250px;
-margin:auto;
-padding:25px 18px 60px;
-}
-
-.section{
-display:none;
-animation:fadeIn .3s ease;
-}
-
+.container{max-width:1250px;margin:auto;padding:25px 18px 60px}
+.section{display:none;animation:fadeIn .3s ease}
 .section.active{display:block}
-
-@keyframes fadeIn{
-from{opacity:0;transform:translateY(5px)}
-to{opacity:1;transform:translateY(0)}
-}
-
-.section-title{
-font-size:28px;
-margin:0 0 8px;
-font-weight:900;
-}
-
-.section-subtitle{
-color:#94a3b8;
-margin:0 0 24px;
-line-height:1.8;
-}
+@keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.section-title{font-size:28px;margin:0 0 8px;font-weight:900}
+.section-subtitle{color:#94a3b8;margin:0 0 24px;line-height:1.8}
 
 .hero{
-position:relative;
-overflow:hidden;
-border:1px solid rgba(148,163,184,.14);
-background:
-radial-gradient(circle at 80% 20%,rgba(59,130,246,.2),transparent 30%),
-rgba(15,23,42,.72);
-border-radius:28px;
-padding:42px 30px;
-margin-bottom:25px;
-box-shadow:0 20px 60px rgba(0,0,0,.25);
+position:relative;overflow:hidden;border:1px solid rgba(148,163,184,.14);
+background:radial-gradient(circle at 80% 20%,rgba(59,130,246,.2),transparent 30%),rgba(15,23,42,.72);
+border-radius:28px;padding:42px 30px;margin-bottom:25px;
+box-shadow:0 20px 60px rgba(0,0,0,.25)
 }
+.hero h1{font-size:42px;margin:0 0 12px;font-weight:900}
+.hero p{max-width:700px;color:#cbd5e1;line-height:1.9;font-size:17px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
 
-.hero h1{
-font-size:42px;
-margin:0 0 12px;
-font-weight:900;
-}
-
-.hero p{
-max-width:700px;
-color:#cbd5e1;
-line-height:1.9;
-font-size:17px;
-}
-
-.hero-actions{
-display:flex;
-flex-wrap:wrap;
-gap:10px;
-margin-top:22px;
-}
-
-.feature-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:15px;
-}
-
+.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
 .feature-card{
-background:rgba(15,23,42,.75);
-border:1px solid rgba(148,163,184,.13);
-border-radius:20px;
-padding:20px;
-transition:.2s;
+background:rgba(15,23,42,.75);border:1px solid rgba(148,163,184,.13);
+border-radius:20px;padding:20px;transition:.2s
 }
-
-.feature-card:hover{
-transform:translateY(-3px);
-border-color:rgba(59,130,246,.35);
-}
-
-.feature-icon{
-font-size:28px;
-margin-bottom:12px;
-}
-
+.feature-card:hover{transform:translateY(-3px);border-color:rgba(59,130,246,.35)}
+.feature-icon{font-size:28px;margin-bottom:12px}
 .feature-card h3{margin:0 0 8px}
-
-.feature-card p{
-margin:0;
-color:#94a3b8;
-line-height:1.7;
-font-size:14px;
-}
+.feature-card p{margin:0;color:#94a3b8;line-height:1.7;font-size:14px}
 
 .toolbar{
-display:flex;
-flex-wrap:wrap;
-align-items:center;
-justify-content:space-between;
-gap:12px;
-margin-bottom:18px;
+display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+gap:12px;margin-bottom:18px
 }
-
-.search-box{
-flex:1;
-min-width:220px;
-}
-
+.search-box{flex:1;min-width:220px}
 .search-box input{
-width:100%;
-padding:13px 15px;
-border-radius:14px;
-border:1px solid #334155;
-background:#0f172a;
-color:#fff;
-outline:none;
+width:100%;padding:13px 15px;border-radius:14px;border:1px solid #334155;
+background:#0f172a;color:#fff;outline:none
 }
-
 .search-box input:focus{border-color:#3b82f6}
-
-.filters{
-display:flex;
-gap:7px;
-flex-wrap:wrap;
-}
-
+.filters{display:flex;gap:7px;flex-wrap:wrap}
 .filter-btn{
-border:1px solid #334155;
-background:#0f172a;
-color:#cbd5e1;
-padding:9px 13px;
-border-radius:11px;
+border:1px solid #334155;background:#0f172a;color:#cbd5e1;padding:9px 13px;border-radius:11px
 }
+.filter-btn.active{background:#2563eb;border-color:#2563eb;color:#fff}
 
-.filter-btn.active{
-background:#2563eb;
-border-color:#2563eb;
-color:#fff;
-}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.stat-card{background:#0f172a;border:1px solid rgba(148,163,184,.13);border-radius:18px;padding:18px}
+.stat-number{font-size:28px;font-weight:900;margin-bottom:5px}
+.stat-label{color:#94a3b8;font-size:13px}
 
-.stats{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:12px;
-margin-bottom:20px;
-}
-
-.stat-card{
-background:#0f172a;
-border:1px solid rgba(148,163,184,.13);
-border-radius:18px;
-padding:18px;
-}
-
-.stat-number{
-font-size:28px;
-font-weight:900;
-margin-bottom:5px;
-}
-
-.stat-label{
-color:#94a3b8;
-font-size:13px;
-}
-
-.project-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:16px;
-}
-
+.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .project-card{
-background:#0f172a;
-border:1px solid rgba(148,163,184,.13);
-border-radius:20px;
-overflow:hidden;
-transition:.2s;
+background:#0f172a;border:1px solid rgba(148,163,184,.13);
+border-radius:20px;overflow:hidden;transition:.2s
 }
-
-.project-card:hover{
-transform:translateY(-3px);
-border-color:rgba(59,130,246,.35);
-}
-
-.project-image{
-width:100%;
-height:190px;
-object-fit:cover;
-display:block;
-}
-
+.project-card:hover{transform:translateY(-3px);border-color:rgba(59,130,246,.35)}
+.project-image{width:100%;height:190px;object-fit:cover;display:block}
 .project-placeholder{
-height:190px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:48px;
-background:radial-gradient(circle,#1e3a8a,#0f172a 65%);
+height:190px;display:flex;align-items:center;justify-content:center;font-size:48px;
+background:radial-gradient(circle,#1e3a8a,#0f172a 65%)
 }
-
 .project-content{padding:18px}
-
-.project-title{
-font-size:19px;
-font-weight:900;
-margin-bottom:8px;
-}
-
-.project-description{
-color:#94a3b8;
-line-height:1.7;
-min-height:50px;
-}
-
-.project-meta{
-color:#64748b;
-font-size:12px;
-margin-top:12px;
-}
-
-.project-actions{
-display:flex;
-gap:8px;
-margin-top:14px;
-}
-
-.icon-btn{
-border:1px solid #334155;
-background:#020617;
-color:#cbd5e1;
-padding:8px 11px;
-border-radius:10px;
-}
-
+.project-title{font-size:19px;font-weight:900;margin-bottom:8px}
+.project-description{color:#94a3b8;line-height:1.7;min-height:50px}
+.project-meta{color:#64748b;font-size:12px;margin-top:12px}
+.project-actions{display:flex;gap:8px;margin-top:14px}
+.icon-btn{border:1px solid #334155;background:#020617;color:#cbd5e1;padding:8px 11px;border-radius:10px}
 .empty-state{
-padding:40px 20px;
-text-align:center;
-background:#0f172a;
-border:1px dashed #334155;
-border-radius:18px;
-color:#94a3b8;
+padding:40px 20px;text-align:center;background:#0f172a;
+border:1px dashed #334155;border-radius:18px;color:#94a3b8
 }
 
-.design-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:18px;
-}
-
+.design-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .design-card{
 background:linear-gradient(145deg,rgba(30,41,59,.9),rgba(15,23,42,.95));
-border:1px solid rgba(148,163,184,.14);
-border-radius:22px;
-padding:22px;
-cursor:pointer;
-transition:.2s;
+border:1px solid rgba(148,163,184,.14);border-radius:22px;padding:22px;
+cursor:pointer;transition:.2s
 }
-
 .design-card:hover{
-transform:translateY(-4px);
-border-color:rgba(59,130,246,.4);
-box-shadow:0 18px 45px rgba(0,0,0,.25);
+transform:translateY(-4px);border-color:rgba(59,130,246,.4);
+box-shadow:0 18px 45px rgba(0,0,0,.25)
 }
-
-.design-icon{
-font-size:44px;
-margin-bottom:14px;
-}
-
-.design-card h3{
-font-size:21px;
-margin:0 0 9px;
-}
-
-.design-card p{
-color:#94a3b8;
-line-height:1.8;
-margin:0;
-}
-
+.design-icon{font-size:44px;margin-bottom:14px}
+.design-card h3{font-size:21px;margin:0 0 9px}
+.design-card p{color:#94a3b8;line-height:1.8;margin:0}
 .design-footer{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:10px;
-margin-top:18px;
+display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:18px
 }
-
-.like-btn{
-border:1px solid #334155;
-background:#020617;
-color:#cbd5e1;
-border-radius:11px;
-padding:9px 13px;
-}
+.like-btn{border:1px solid #334155;background:#020617;color:#cbd5e1;border-radius:11px;padding:9px 13px}
 
 .idea-box{
-background:#0f172a;
-border:1px solid rgba(148,163,184,.14);
-border-radius:22px;
-padding:22px;
-margin-bottom:20px;
+background:#0f172a;border:1px solid rgba(148,163,184,.14);
+border-radius:22px;padding:22px;margin-bottom:20px
 }
-
-.idea-row{
-display:flex;
-gap:10px;
-}
-
+.idea-row{display:flex;gap:10px}
 .idea-row input{
-flex:1;
-padding:14px;
-background:#020617;
-border:1px solid #334155;
-border-radius:13px;
-color:#fff;
-outline:none;
+flex:1;padding:14px;background:#020617;border:1px solid #334155;
+border-radius:13px;color:#fff;outline:none
 }
-
 .idea-result{
-margin-top:18px;
-padding:18px;
-border-radius:16px;
-background:rgba(37,99,235,.08);
-border:1px solid rgba(59,130,246,.2);
-line-height:1.9;
+margin-top:18px;padding:18px;border-radius:16px;
+background:rgba(37,99,235,.08);border:1px solid rgba(59,130,246,.2);line-height:1.9
 }
-
-.idea-list{
-display:grid;
-gap:12px;
-}
-
-.idea-card{
-background:#0f172a;
-border:1px solid rgba(148,163,184,.12);
-border-radius:16px;
-padding:16px;
-}
-
+.idea-list{display:grid;gap:12px}
+.idea-card{background:#0f172a;border:1px solid rgba(148,163,184,.12);border-radius:16px;padding:16px}
 .idea-card h4{margin:0 0 8px}
+.idea-card p{margin:0;color:#94a3b8;line-height:1.7}
 
-.idea-card p{
-margin:0;
-color:#94a3b8;
-line-height:1.7;
-}
-
-.community-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:16px;
-}
-
+.community-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .community-card{
 background:linear-gradient(145deg,rgba(15,23,42,.95),rgba(8,15,30,.95));
-border:1px solid rgba(148,163,184,.14);
-border-radius:22px;
-padding:22px;
-transition:.2s;
+border:1px solid rgba(148,163,184,.14);border-radius:22px;padding:22px;transition:.2s
 }
-
-.community-card.channel-card{
-cursor:pointer;
-position:relative;
-overflow:hidden;
-}
-
+.community-card.channel-card{cursor:pointer;position:relative;overflow:hidden}
 .community-card.channel-card::before{
-content:"";
-position:absolute;
-width:120px;
-height:120px;
-border-radius:50%;
-background:rgba(37,99,235,.12);
-top:-55px;
-left:-40px;
-filter:blur(2px);
+content:"";position:absolute;width:120px;height:120px;border-radius:50%;
+background:rgba(37,99,235,.12);top:-55px;left:-40px;filter:blur(2px)
 }
-
 .community-card.channel-card:hover{
-transform:translateY(-4px);
-border-color:rgba(59,130,246,.45);
-box-shadow:0 18px 45px rgba(0,0,0,.25);
+transform:translateY(-4px);border-color:rgba(59,130,246,.45);
+box-shadow:0 18px 45px rgba(0,0,0,.25)
 }
+.community-card h3{margin:0 0 10px;font-size:21px;position:relative}
+.community-card p{margin:0;color:#94a3b8;line-height:1.8;position:relative}
+.channel-enter{margin-top:18px;width:100%;position:relative}
 
-.community-card h3{
-margin:0 0 10px;
-font-size:21px;
-position:relative;
-}
+.question-list{display:grid;gap:12px}
+.question-item{background:#0f172a;border:1px solid rgba(148,163,184,.13);border-radius:17px;padding:17px}
+.question-item strong{display:block;margin-bottom:7px}
+.question-item span{color:#94a3b8;font-size:13px}
 
-.community-card p{
-margin:0;
-color:#94a3b8;
-line-height:1.8;
-position:relative;
-}
-
-.channel-enter{
-margin-top:18px;
-width:100%;
-position:relative;
-}
-
-.question-list{
-display:grid;
-gap:12px;
-}
-
-.question-item{
-background:#0f172a;
-border:1px solid rgba(148,163,184,.13);
-border-radius:17px;
-padding:17px;
-}
-
-.question-item strong{
-display:block;
-margin-bottom:7px;
-}
-
-.question-item span{
-color:#94a3b8;
-font-size:13px;
-}
-
-.profile-card{
-background:#0f172a;
-border:1px solid rgba(148,163,184,.14);
-border-radius:24px;
-padding:25px;
-}
-
-.profile-head{
-display:flex;
-align-items:center;
-gap:16px;
-margin-bottom:25px;
-}
-
+.profile-card{background:#0f172a;border:1px solid rgba(148,163,184,.14);border-radius:24px;padding:25px}
+.profile-head{display:flex;align-items:center;gap:16px;margin-bottom:25px}
 .profile-avatar{
-width:75px;
-height:75px;
-border-radius:22px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:28px;
-font-weight:900;
-background:linear-gradient(135deg,#2563eb,#7c3aed);
+width:75px;height:75px;border-radius:22px;display:flex;align-items:center;
+justify-content:center;font-size:28px;font-weight:900;background:linear-gradient(135deg,#2563eb,#7c3aed)
 }
-
-.profile-name{
-font-size:25px;
-font-weight:900;
-}
-
-.profile-email{
-color:#94a3b8;
-margin-top:5px;
-}
-
-.profile-info{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px;
-}
-
-.info-box{
-padding:16px;
-border-radius:15px;
-background:#020617;
-border:1px solid #1e293b;
-}
-
-.info-label{
-font-size:12px;
-color:#64748b;
-margin-bottom:6px;
-}
-
-.info-value{
-font-weight:700;
-word-break:break-word;
-}
-
+.profile-name{font-size:25px;font-weight:900}
+.profile-email{color:#94a3b8;margin-top:5px}
+.profile-info{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.info-box{padding:16px;border-radius:15px;background:#020617;border:1px solid #1e293b}
+.info-label{font-size:12px;color:#64748b;margin-bottom:6px}
+.info-value{font-weight:700;word-break:break-word}
 .logout-btn{
-margin-top:20px;
-border:1px solid rgba(239,68,68,.3);
-background:rgba(239,68,68,.08);
-color:#fca5a5;
-padding:12px 18px;
-border-radius:13px;
-font-weight:800;
+margin-top:20px;border:1px solid rgba(239,68,68,.3);
+background:rgba(239,68,68,.08);color:#fca5a5;padding:12px 18px;border-radius:13px;font-weight:800
 }
 
 .modal{
-position:fixed;
-inset:0;
-z-index:500;
-display:none;
-align-items:center;
-justify-content:center;
-padding:20px;
-background:rgba(0,0,0,.72);
-backdrop-filter:blur(8px);
+position:fixed;inset:0;z-index:500;display:none;align-items:center;justify-content:center;
+padding:20px;background:rgba(0,0,0,.72);backdrop-filter:blur(8px)
 }
-
 .modal.active{display:flex}
-
 .modal-box{
-width:100%;
-max-width:650px;
-max-height:90vh;
-overflow:auto;
-background:#0f172a;
-border:1px solid rgba(148,163,184,.18);
-border-radius:24px;
-box-shadow:0 30px 100px rgba(0,0,0,.55);
+width:100%;max-width:650px;max-height:90vh;overflow:auto;background:#0f172a;
+border:1px solid rgba(148,163,184,.18);border-radius:24px;box-shadow:0 30px 100px rgba(0,0,0,.55)
 }
-
 .modal-header{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:15px;
-padding:20px;
-border-bottom:1px solid #1e293b;
+display:flex;align-items:center;justify-content:space-between;gap:15px;
+padding:20px;border-bottom:1px solid #1e293b
 }
-
-.modal-header h2{
-margin:0;
-font-size:22px;
-}
-
+.modal-header h2{margin:0;font-size:22px}
 .close-btn{
-width:38px;
-height:38px;
-border:1px solid #334155;
-background:#020617;
-color:#fff;
-border-radius:11px;
-font-size:22px;
+width:38px;height:38px;border:1px solid #334155;background:#020617;
+color:#fff;border-radius:11px;font-size:22px
 }
-
-.modal-content{
-padding:20px;
-line-height:1.9;
-color:#cbd5e1;
-}
-
+.modal-content{padding:20px;line-height:1.9;color:#cbd5e1}
 .modal-content h3{color:#fff}
-
 .modal-content ul{line-height:2}
+.modal-actions{display:flex;justify-content:flex-start;gap:10px;padding:0 20px 20px}
 
-.modal-actions{
-display:flex;
-justify-content:flex-start;
-gap:10px;
-padding:0 20px 20px;
-}
-
-.channel-post-box{
-background:#020617;
-border:1px solid #1e293b;
-border-radius:18px;
-padding:16px;
-margin-bottom:20px;
-}
-
+.channel-post-box{background:#020617;border:1px solid #1e293b;border-radius:18px;padding:16px;margin-bottom:20px}
 .channel-post-box textarea{
-width:100%;
-min-height:105px;
-resize:vertical;
-background:#0f172a;
-border:1px solid #334155;
-border-radius:13px;
-padding:13px;
-color:#fff;
-outline:none;
-line-height:1.7;
+width:100%;min-height:105px;resize:vertical;background:#0f172a;border:1px solid #334155;
+border-radius:13px;padding:13px;color:#fff;outline:none;line-height:1.7
 }
-
-.channel-post-box textarea:focus{
-border-color:#3b82f6;
-}
-
-.channel-post-actions{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px;
-margin-top:10px;
-}
-
-.channel-post-hint{
-font-size:12px;
-color:#64748b;
-}
-
-.channel-posts{
-display:grid;
-gap:12px;
-}
-
-.channel-post{
-background:#020617;
-border:1px solid #1e293b;
-border-radius:17px;
-padding:16px;
-}
-
-.channel-post-head{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:10px;
-margin-bottom:10px;
-}
-
-.channel-author{
-display:flex;
-align-items:center;
-gap:9px;
-font-weight:800;
-}
-
+.channel-post-box textarea:focus{border-color:#3b82f6}
+.channel-post-actions{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px}
+.channel-post-hint{font-size:12px;color:#64748b}
+.channel-posts{display:grid;gap:12px}
+.channel-post{background:#020617;border:1px solid #1e293b;border-radius:17px;padding:16px}
+.channel-post-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.channel-author{display:flex;align-items:center;gap:9px;font-weight:800}
 .channel-avatar{
-width:34px;
-height:34px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-background:linear-gradient(135deg,#2563eb,#7c3aed);
-font-size:14px;
-font-weight:900;
+width:34px;height:34px;border-radius:50%;display:flex;align-items:center;
+justify-content:center;background:linear-gradient(135deg,#2563eb,#7c3aed);font-size:14px;font-weight:900
 }
-
-.channel-date{
-font-size:11px;
-color:#64748b;
-}
-
-.channel-post-text{
-color:#cbd5e1;
-line-height:1.8;
-white-space:pre-wrap;
-word-break:break-word;
-}
-
-.channel-post-footer{
-display:flex;
-justify-content:flex-start;
-margin-top:12px;
-}
-
+.channel-date{font-size:11px;color:#64748b}
+.channel-post-text{color:#cbd5e1;line-height:1.8;white-space:pre-wrap;word-break:break-word}
+.channel-post-footer{display:flex;justify-content:flex-start;margin-top:12px}
 .delete-post-btn{
-border:1px solid rgba(239,68,68,.25);
-background:rgba(239,68,68,.08);
-color:#fca5a5;
-padding:7px 10px;
-border-radius:9px;
-font-size:12px;
+border:1px solid rgba(239,68,68,.25);background:rgba(239,68,68,.08);
+color:#fca5a5;padding:7px 10px;border-radius:9px;font-size:12px
 }
-
-.channel-loading{
-padding:25px;
-text-align:center;
-color:#94a3b8;
-background:#020617;
-border-radius:15px;
-}
+.channel-loading{padding:25px;text-align:center;color:#94a3b8;background:#020617;border-radius:15px}
 
 #toast{
-position:fixed;
-bottom:25px;
-right:25px;
-z-index:1000;
-background:#0f172a;
-border:1px solid #334155;
-color:#fff;
-padding:13px 17px;
-border-radius:13px;
-box-shadow:0 15px 40px rgba(0,0,0,.35);
-opacity:0;
-transform:translateY(15px);
-pointer-events:none;
-transition:.25s;
+position:fixed;bottom:25px;right:25px;z-index:1000;background:#0f172a;border:1px solid #334155;
+color:#fff;padding:13px 17px;border-radius:13px;box-shadow:0 15px 40px rgba(0,0,0,.35);
+opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 }
-
-#toast.show{
-opacity:1;
-transform:translateY(0);
-}
+#toast.show{opacity:1;transform:translateY(0)}
 
 @media(max-width:900px){
-
 .feature-grid{grid-template-columns:repeat(2,1fr)}
 .project-grid{grid-template-columns:repeat(2,1fr)}
-
 }
-
 @media(max-width:650px){
-
-.header-inner{padding:10px 12px}
-.user-mini{display:none}
-
-.container{padding:20px 12px 50px}
-
-.hero{padding:30px 20px}
-
-.hero h1{font-size:32px}
-
-.feature-grid,
-.project-grid,
-.design-grid,
-.community-grid{
-grid-template-columns:1fr;
+.header-inner{padding:10px 12px}.user-mini{display:none}
+.container{padding:20px 12px 50px}.hero{padding:30px 20px}.hero h1{font-size:32px}
+.feature-grid,.project-grid,.design-grid,.community-grid{grid-template-columns:1fr}
+.stats{grid-template-columns:1fr}.profile-info{grid-template-columns:1fr}
+.idea-row{flex-direction:column}.toolbar{align-items:stretch}
+.channel-post-actions{flex-direction:column;align-items:stretch}
+.channel-post-actions .primary-btn{width:100%}
 }
-
-.stats{grid-template-columns:1fr}
-.profile-info{grid-template-columns:1fr}
-.idea-row{flex-direction:column}
-.toolbar{align-items:stretch}
-
-.channel-post-actions{
-flex-direction:column;
-align-items:stretch;
-}
-
-.channel-post-actions .primary-btn{
-width:100%;
-}
-
-}
-
 </style>
 </head>
 
 <body>
 
 <div id="authPage" class="auth-page">
-
 <div class="auth-box">
 
 <div class="auth-logo">K</div>
-
 <h1 class="auth-title">KAPO ONE</h1>
-
-<p class="auth-subtitle">
-منصة الأفكار والتصميم والهندسة
-</p>
+<p class="auth-subtitle">منصة الأفكار والتصميم والهندسة</p>
 
 <div id="loginForm" class="auth-form">
-
 <input id="loginEmail" type="email" placeholder="البريد الإلكتروني" autocomplete="email">
-
 <input id="loginPassword" type="password" placeholder="كلمة المرور" autocomplete="current-password">
-
-<button class="primary-btn" onclick="loginUser()">
-تسجيل الدخول
-</button>
-
-<button class="secondary-btn" onclick="enterGuest()">
-الدخول كزائر
-</button>
-
+<button type="button" class="primary-btn" onclick="loginUser()">تسجيل الدخول</button>
+<button type="button" class="secondary-btn" onclick="enterGuest()">الدخول كزائر</button>
 <div class="auth-links">
-
-<button class="auth-link" onclick="showRegisterForm()">
-إنشاء حساب
-</button>
-
-<button class="auth-link" onclick="showResetForm()">
-نسيت كلمة المرور؟
-</button>
-
+<button type="button" class="auth-link" onclick="showRegisterForm()">إنشاء حساب</button>
+<button type="button" class="auth-link" onclick="showResetForm()">نسيت كلمة المرور؟</button>
 </div>
-
 </div>
 
 <div id="registerForm" class="auth-form hidden">
-
 <input id="registerName" type="text" placeholder="الاسم">
-
 <input id="registerEmail" type="email" placeholder="البريد الإلكتروني" autocomplete="email">
-
 <input id="registerPassword" type="password" placeholder="كلمة المرور" autocomplete="new-password">
-
-<button class="primary-btn" onclick="registerUser()">
-إنشاء الحساب
-</button>
-
-<button class="auth-link" onclick="showLoginForm()">
-العودة لتسجيل الدخول
-</button>
-
+<button type="button" class="primary-btn" onclick="registerUser()">إنشاء الحساب</button>
+<button type="button" class="auth-link" onclick="showLoginForm()">العودة لتسجيل الدخول</button>
 </div>
 
 <div id="resetForm" class="auth-form hidden">
-
 <input id="resetEmail" type="email" placeholder="البريد الإلكتروني">
-
-<button class="primary-btn" onclick="resetUserPassword()">
-إرسال رابط الاستعادة
-</button>
-
-<button class="auth-link" onclick="showLoginForm()">
-العودة لتسجيل الدخول
-</button>
-
+<button type="button" class="primary-btn" onclick="resetUserPassword()">إرسال رابط الاستعادة</button>
+<button type="button" class="auth-link" onclick="showLoginForm()">العودة لتسجيل الدخول</button>
 </div>
 
 <div id="authMessage" class="auth-message hidden"></div>
@@ -1068,1918 +350,999 @@ width:100%;
 <div id="app" class="hidden">
 
 <header class="header">
-
 <div class="header-inner">
-
 <div class="brand">
-
 <div class="brand-logo">K</div>
-
 <span>KAPO ONE</span>
-
 </div>
-
 <div class="user-mini">
-
 <div id="miniUserAvatar" class="user-avatar">K</div>
-
 <span id="miniUserName">زائر</span>
-
 </div>
-
 </div>
 
 <nav class="nav">
-
-<button class="nav-btn active" data-section="home" onclick="showSection('home')">
-الرئيسية
-</button>
-
-<button class="nav-btn" data-section="projects" onclick="showSection('projects')">
-المشاريع
-</button>
-
-<button class="nav-btn" data-section="designs" onclick="showSection('designs')">
-التصميم والهندسة
-</button>
-
-<button class="nav-btn" data-section="ideas" onclick="showSection('ideas')">
-مولد الأفكار
-</button>
-
-<button class="nav-btn" data-section="channels" onclick="showSection('channels')">
-القنوات
-</button>
-
-<button class="nav-btn" data-section="answers" onclick="showSection('answers')">
-الإجابات
-</button>
-
-<button class="nav-btn" data-section="profile" onclick="showSection('profile')">
-حسابي
-</button>
-
+<button type="button" class="nav-btn active" data-section="home" onclick="showSection('home')">الرئيسية</button>
+<button type="button" class="nav-btn" data-section="projects" onclick="showSection('projects')">المشاريع</button>
+<button type="button" class="nav-btn" data-section="designs" onclick="showSection('designs')">التصميم والهندسة</button>
+<button type="button" class="nav-btn" data-section="ideas" onclick="showSection('ideas')">مولد الأفكار</button>
+<button type="button" class="nav-btn" data-section="channels" onclick="showSection('channels')">القنوات</button>
+<button type="button" class="nav-btn" data-section="answers" onclick="showSection('answers')">الإجابات</button>
+<button type="button" class="nav-btn" data-section="profile" onclick="showSection('profile')">حسابي</button>
 </nav>
-
 </header>
 
 <main class="container">
 
 <section id="home" class="section active">
-
 <div class="hero">
-
 <h1>مرحباً بك في KAPO ONE</h1>
-
-<p>
-منصة متكاملة لاستكشاف المشاريع المعمارية،
-تطوير الأفكار، التصميم والهندسة، ومشاركة
-المعرفة بين المستخدمين.
-</p>
-
+<p>منصة متكاملة لاستكشاف المشاريع المعمارية، تطوير الأفكار، التصميم والهندسة، ومشاركة المعرفة بين المستخدمين.</p>
 <div class="hero-actions">
-
-<button class="primary-btn" onclick="showSection('projects')">
-استكشاف المشاريع
-</button>
-
-<button class="secondary-btn" onclick="showSection('ideas')">
-توليد فكرة جديدة
-</button>
-
+<button type="button" class="primary-btn" onclick="showSection('projects')">استكشاف المشاريع</button>
+<button type="button" class="secondary-btn" onclick="showSection('ideas')">توليد فكرة جديدة</button>
 </div>
-
 </div>
 
 <div class="feature-grid">
-
-<div class="feature-card">
-<div class="feature-icon">🏗️</div>
-<h3>المشاريع</h3>
-<p>أنشئ مشاريعك المعمارية والهندسية واحفظها داخل المنصة.</p>
+<div class="feature-card"><div class="feature-icon">🏗️</div><h3>المشاريع</h3><p>أنشئ مشاريعك المعمارية والهندسية واحفظها داخل المنصة.</p></div>
+<div class="feature-card"><div class="feature-icon">📐</div><h3>التصميم والهندسة</h3><p>استكشف مجموعة من الأفكار والتصاميم المعمارية المستقبلية.</p></div>
+<div class="feature-card"><div class="feature-icon">💡</div><h3>مولد الأفكار</h3><p>حوّل فكرتك الأولية إلى تصور مشروع واضح.</p></div>
+<div class="feature-card"><div class="feature-icon">🌐</div><h3>المجتمع</h3><p>شارك الأفكار والأسئلة وتواصل مع مجتمع KAPO ONE.</p></div>
 </div>
-
-<div class="feature-card">
-<div class="feature-icon">📐</div>
-<h3>التصميم والهندسة</h3>
-<p>استكشف مجموعة من الأفكار والتصاميم المعمارية المستقبلية.</p>
-</div>
-
-<div class="feature-card">
-<div class="feature-icon">💡</div>
-<h3>مولد الأفكار</h3>
-<p>حوّل فكرتك الأولية إلى تصور مشروع واضح.</p>
-</div>
-
-<div class="feature-card">
-<div class="feature-icon">🌐</div>
-<h3>المجتمع</h3>
-<p>شارك الأفكار والأسئلة وتواصل مع مجتمع KAPO ONE.</p>
-</div>
-
-</div>
-
 </section>
 
 <section id="projects" class="section">
-
 <h2 class="section-title">المشاريع</h2>
-
-<p class="section-subtitle">
-استكشف المشاريع وأضف مشروعك الخاص إلى المنصة.
-</p>
+<p class="section-subtitle">استكشف المشاريع وأضف مشروعك الخاص إلى المنصة.</p>
 
 <div class="toolbar">
-
 <div class="search-box">
-
-<input
-id="projectSearch"
-type="search"
-placeholder="ابحث عن مشروع..."
-oninput="renderProjects()"
->
-
+<input id="projectSearch" type="search" placeholder="ابحث عن مشروع..." oninput="renderProjects()">
 </div>
-
-<button class="primary-btn" onclick="openAddProjectModal()">
-+ إضافة مشروع
-</button>
-
+<button type="button" class="primary-btn" onclick="openAddProjectModal()">+ إضافة مشروع</button>
 </div>
 
 <div class="filters">
-
-<button class="filter-btn active" onclick="setProjectFilter('all',this)">
-الكل
-</button>
-
-<button class="filter-btn" onclick="setProjectFilter('images',this)">
-بصور
-</button>
-
-<button class="filter-btn" onclick="setProjectFilter('noimages',this)">
-بدون صور
-</button>
-
+<button type="button" class="filter-btn active" onclick="setProjectFilter('all',this)">الكل</button>
+<button type="button" class="filter-btn" onclick="setProjectFilter('images',this)">بصور</button>
+<button type="button" class="filter-btn" onclick="setProjectFilter('noimages',this)">بدون صور</button>
 </div>
 
 <div class="stats" style="margin-top:18px">
-
-<div class="stat-card">
-<div id="projectsCount" class="stat-number">0</div>
-<div class="stat-label">إجمالي المشاريع</div>
-</div>
-
-<div class="stat-card">
-<div id="projectsImagesCount" class="stat-number">0</div>
-<div class="stat-label">مشاريع بصور</div>
-</div>
-
-<div class="stat-card">
-<div id="projectsNoImagesCount" class="stat-number">0</div>
-<div class="stat-label">مشاريع بدون صور</div>
-</div>
-
+<div class="stat-card"><div id="projectsCount" class="stat-number">0</div><div class="stat-label">إجمالي المشاريع</div></div>
+<div class="stat-card"><div id="projectsImagesCount" class="stat-number">0</div><div class="stat-label">مشاريع بصور</div></div>
+<div class="stat-card"><div id="projectsNoImagesCount" class="stat-number">0</div><div class="stat-label">مشاريع بدون صور</div></div>
 </div>
 
 <div id="projectsGrid" class="project-grid">
-
-<div class="empty-state">
-جاري تحميل المشاريع...
+<div class="empty-state">جاري تحميل المشاريع...</div>
 </div>
-
-</div>
-
 </section>
 
 <section id="designs" class="section">
-
-<h2 class="section-title">
-التصميم والهندسة
-</h2>
-
-<p class="section-subtitle">
-مجموعة من التصورات المعمارية والهندسية التي يمكن تطويرها إلى مشاريع متكاملة.
-</p>
+<h2 class="section-title">التصميم والهندسة</h2>
+<p class="section-subtitle">مجموعة من التصورات المعمارية والهندسية التي يمكن تطويرها إلى مشاريع متكاملة.</p>
 
 <div class="design-grid">
 
 <div class="design-card" ondblclick="openDesignModal(0)">
-
-<div class="design-icon">🏙️</div>
-
-<h3>برج المستقبل</h3>
-
-<p>
-تصور معماري لبرج حديث يجمع بين التقنية والاستدامة والهوية المستقبلية.
-</p>
-
-<div class="design-footer">
-
-<span>تصميم معماري</span>
-
-<button class="like-btn" onclick="event.stopPropagation();likeDesign(0,this)">
-♡ إعجاب
-</button>
-
-</div>
-
+<div class="design-icon">🏙️</div><h3>برج المستقبل</h3>
+<p>تصور معماري لبرج حديث يجمع بين التقنية والاستدامة والهوية المستقبلية.</p>
+<div class="design-footer"><span>تصميم معماري</span><button type="button" class="like-btn" onclick="event.stopPropagation();likeDesign(0,this)">♡ إعجاب</button></div>
 </div>
 
 <div class="design-card" ondblclick="openDesignModal(1)">
-
-<div class="design-icon">⚛️</div>
-
-<h3>التصميم الذري</h3>
-
-<p>
-فكرة برج مستوحى من شكل الذرة، بتكوين هندسي مميز وحركة بصرية مستقبلية.
-</p>
-
-<div class="design-footer">
-
-<span>فكرة هندسية</span>
-
-<button class="like-btn" onclick="event.stopPropagation();likeDesign(1,this)">
-♡ إعجاب
-</button>
-
-</div>
-
+<div class="design-icon">⚛️</div><h3>التصميم الذري</h3>
+<p>فكرة برج مستوحى من شكل الذرة، بتكوين هندسي مميز وحركة بصرية مستقبلية.</p>
+<div class="design-footer"><span>فكرة هندسية</span><button type="button" class="like-btn" onclick="event.stopPropagation();likeDesign(1,this)">♡ إعجاب</button></div>
 </div>
 
 <div class="design-card" ondblclick="openDesignModal(2)">
-
-<div class="design-icon">⚔️</div>
-
-<h3>السيف والنخلة</h3>
-
-<p>
-تصميم معماري مستوحى من رموز الهوية السعودية بطريقة حديثة وفخمة.
-</p>
-
-<div class="design-footer">
-
-<span>تصميم رمزي</span>
-
-<button class="like-btn" onclick="event.stopPropagation();likeDesign(2,this)">
-♡ إعجاب
-</button>
-
-</div>
-
+<div class="design-icon">⚔️</div><h3>السيف والنخلة</h3>
+<p>تصميم معماري مستوحى من رموز الهوية السعودية بطريقة حديثة وفخمة.</p>
+<div class="design-footer"><span>تصميم رمزي</span><button type="button" class="like-btn" onclick="event.stopPropagation();likeDesign(2,this)">♡ إعجاب</button></div>
 </div>
 
 <div class="design-card" ondblclick="openDesignModal(3)">
-
-<div class="design-icon">🌆</div>
-
-<h3>مدينة المستقبل</h3>
-
-<p>
-تصور لمدينة ذكية تعتمد على التقنية والاستدامة والحركة الحديثة.
-</p>
-
-<div class="design-footer">
-
-<span>مدينة ذكية</span>
-
-<button class="like-btn" onclick="event.stopPropagation();likeDesign(3,this)">
-♡ إعجاب
-</button>
-
+<div class="design-icon">🌆</div><h3>مدينة المستقبل</h3>
+<p>تصور لمدينة ذكية تعتمد على التقنية والاستدامة والحركة الحديثة.</p>
+<div class="design-footer"><span>مدينة ذكية</span><button type="button" class="like-btn" onclick="event.stopPropagation();likeDesign(3,this)">♡ إعجاب</button></div>
 </div>
 
 </div>
-
-</div>
-
 </section>
 
 <section id="ideas" class="section">
-
-<h2 class="section-title">
-مولد الأفكار
-</h2>
-
-<p class="section-subtitle">
-اكتب فكرتك وسيساعدك KAPO ONE في تحويلها إلى تصور أولي لمشروع.
-</p>
+<h2 class="section-title">مولد الأفكار</h2>
+<p class="section-subtitle">اكتب فكرتك وسيساعدك KAPO ONE في تحويلها إلى تصور أولي لمشروع.</p>
 
 <div class="idea-box">
-
 <div class="idea-row">
-
-<input
-id="ideaInput"
-type="text"
-placeholder="مثال: برج على شكل ذرة"
->
-
-<button class="primary-btn" onclick="generateIdea()">
-توليد الفكرة
-</button>
-
+<input id="ideaInput" type="text" placeholder="مثال: برج على شكل ذرة">
+<button type="button" class="primary-btn" onclick="generateIdea()">توليد الفكرة</button>
 </div>
-
 <div id="ideaResult" class="idea-result hidden"></div>
-
 </div>
 
 <h3>الأفكار السابقة</h3>
-
 <div id="ideasList" class="idea-list"></div>
-
 </section>
 
 <section id="channels" class="section">
-
-<h2 class="section-title">
-القنوات
-</h2>
-
-<p class="section-subtitle">
-مساحات تفاعلية لمشاركة المنشورات والأفكار والنقاشات داخل KAPO ONE.
-</p>
+<h2 class="section-title">القنوات</h2>
+<p class="section-subtitle">مساحات تفاعلية لمشاركة المنشورات والأفكار والنقاشات داخل KAPO ONE.</p>
 
 <div class="community-grid">
 
 <div class="community-card channel-card" onclick="openChannel('projects')">
-
-<h3>🏗️ قناة المشاريع</h3>
-
-<p>
-ناقش المشاريع والتصاميم والأفكار المعمارية والهندسية.
-</p>
-
-<button class="primary-btn channel-enter"
-onclick="event.stopPropagation();openChannel('projects')">
-دخول القناة
-</button>
-
+<h3>🏗️ قناة المشاريع</h3><p>ناقش المشاريع والتصاميم والأفكار المعمارية والهندسية.</p>
+<button type="button" class="primary-btn channel-enter" onclick="event.stopPropagation();openChannel('projects')">دخول القناة</button>
 </div>
 
 <div class="community-card channel-card" onclick="openChannel('ideas')">
-
-<h3>💡 قناة الأفكار</h3>
-
-<p>
-شارك أفكارك الجديدة واطلع على رؤى وأفكار المستخدمين.
-</p>
-
-<button class="primary-btn channel-enter"
-onclick="event.stopPropagation();openChannel('ideas')">
-دخول القناة
-</button>
-
+<h3>💡 قناة الأفكار</h3><p>شارك أفكارك الجديدة واطلع على رؤى وأفكار المستخدمين.</p>
+<button type="button" class="primary-btn channel-enter" onclick="event.stopPropagation();openChannel('ideas')">دخول القناة</button>
 </div>
 
 <div class="community-card channel-card" onclick="openChannel('engineering')">
-
-<h3>📐 قناة الهندسة</h3>
-
-<p>
-نقاشات حول التصميم والهندسة والحلول المعمارية.
-</p>
-
-<button class="primary-btn channel-enter"
-onclick="event.stopPropagation();openChannel('engineering')">
-دخول القناة
-</button>
-
+<h3>📐 قناة الهندسة</h3><p>نقاشات حول التصميم والهندسة والحلول المعمارية.</p>
+<button type="button" class="primary-btn channel-enter" onclick="event.stopPropagation();openChannel('engineering')">دخول القناة</button>
 </div>
 
 <div class="community-card channel-card" onclick="openChannel('kapo')">
-
-<h3>🌐 قناة KAPO ONE</h3>
-
-<p>
-مساحة عامة للتواصل والتفاعل مع محتوى المنصة.
-</p>
-
-<button class="primary-btn channel-enter"
-onclick="event.stopPropagation();openChannel('kapo')">
-دخول القناة
-</button>
-
+<h3>🌐 قناة KAPO ONE</h3><p>مساحة عامة للتواصل والتفاعل مع محتوى المنصة.</p>
+<button type="button" class="primary-btn channel-enter" onclick="event.stopPropagation();openChannel('kapo')">دخول القناة</button>
 </div>
 
 </div>
-
 </section>
 
 <section id="answers" class="section">
-
 <h2 class="section-title">الإجابات</h2>
-
-<p class="section-subtitle">
-اطرح سؤالاً واحتفظ بأسئلتك داخل مجتمع KAPO ONE.
-</p>
+<p class="section-subtitle">اطرح سؤالاً واحتفظ بأسئلتك داخل مجتمع KAPO ONE.</p>
 
 <div class="idea-box">
-
 <div class="idea-row">
-
-<input
-id="questionInput"
-type="text"
-placeholder="اكتب سؤالك هنا..."
->
-
-<button class="primary-btn" onclick="addQuestion()">
-نشر السؤال
-</button>
-
+<input id="questionInput" type="text" placeholder="اكتب سؤالك هنا...">
+<button type="button" class="primary-btn" onclick="addQuestion()">نشر السؤال</button>
 </div>
-
 </div>
-
 <div id="questionsList" class="question-list"></div>
-
 </section>
 
 <section id="profile" class="section">
-
 <h2 class="section-title">حسابي</h2>
-
-<p class="section-subtitle">
-معلومات حسابك في منصة KAPO ONE.
-</p>
+<p class="section-subtitle">معلومات حسابك في منصة KAPO ONE.</p>
 
 <div class="profile-card">
-
 <div class="profile-head">
-
 <div id="profileAvatar" class="profile-avatar">K</div>
-
 <div>
-
 <div id="profileName" class="profile-name">زائر</div>
-
 <div id="profileEmail" class="profile-email">-</div>
-
 </div>
-
 </div>
 
 <div class="profile-info">
-
-<div class="info-box">
-
-<div class="info-label">الاسم</div>
-
-<div id="profileNameInfo" class="info-value">
-زائر
+<div class="info-box"><div class="info-label">الاسم</div><div id="profileNameInfo" class="info-value">زائر</div></div>
+<div class="info-box"><div class="info-label">البريد الإلكتروني</div><div id="profileEmailInfo" class="info-value">-</div></div>
 </div>
 
+<button type="button" class="logout-btn" onclick="logoutUser()">تسجيل الخروج</button>
 </div>
-
-<div class="info-box">
-
-<div class="info-label">البريد الإلكتروني</div>
-
-<div id="profileEmailInfo" class="info-value">
--
-</div>
-
-</div>
-
-</div>
-
-<button class="logout-btn" onclick="logoutUser()">
-تسجيل الخروج
-</button>
-
-</div>
-
 </section>
 
 </main>
-
 </div>
 
 <div id="addProjectModal" class="modal" onclick="closeAddProjectModal()">
-
 <div class="modal-box" onclick="event.stopPropagation()">
-
-<div class="modal-header">
-
-<h2>إضافة مشروع</h2>
-
-<button class="close-btn" onclick="closeAddProjectModal()">
-×
-</button>
-
-</div>
-
+<div class="modal-header"><h2>إضافة مشروع</h2><button type="button" class="close-btn" onclick="closeAddProjectModal()">×</button></div>
 <div class="modal-content">
-
 <div class="auth-form">
-
 <input id="projectTitle" type="text" placeholder="اسم المشروع">
-
 <textarea id="projectDescription" rows="5" placeholder="وصف المشروع"></textarea>
-
 <input id="projectImage" type="url" placeholder="رابط صورة المشروع - اختياري">
-
 </div>
-
 <div id="addProjectMessage" class="auth-message hidden"></div>
-
 </div>
-
 <div class="modal-actions">
-
-<button class="primary-btn" onclick="saveNewProject()">
-حفظ المشروع
-</button>
-
-<button class="secondary-btn" onclick="closeAddProjectModal()">
-إلغاء
-</button>
-
+<button type="button" class="primary-btn" onclick="saveNewProject()">حفظ المشروع</button>
+<button type="button" class="secondary-btn" onclick="closeAddProjectModal()">إلغاء</button>
 </div>
-
 </div>
-
 </div>
 
 <div id="designModal" class="modal" onclick="closeDesignModal()">
-
 <div class="modal-box" onclick="event.stopPropagation()">
-
-<div class="modal-header">
-
-<h2 id="designModalTitle">التصميم</h2>
-
-<button class="close-btn" onclick="closeDesignModal()">
-×
-</button>
-
-</div>
-
+<div class="modal-header"><h2 id="designModalTitle">التصميم</h2><button type="button" class="close-btn" onclick="closeDesignModal()">×</button></div>
 <div id="designModalContent" class="modal-content"></div>
-
-<div class="modal-actions">
-
-<button class="primary-btn" onclick="closeDesignModal()">
-إغلاق
-</button>
-
+<div class="modal-actions"><button type="button" class="primary-btn" onclick="closeDesignModal()">إغلاق</button></div>
 </div>
-
-</div>
-
 </div>
 
 <div id="channelModal" class="modal" onclick="closeChannel()">
-
 <div class="modal-box" onclick="event.stopPropagation()">
-
-<div class="modal-header">
-
-<h2 id="channelModalTitle">
-القناة
-</h2>
-
-<button class="close-btn" onclick="closeChannel()">
-×
-</button>
-
-</div>
-
+<div class="modal-header"><h2 id="channelModalTitle">القناة</h2><button type="button" class="close-btn" onclick="closeChannel()">×</button></div>
 <div id="channelModalContent" class="modal-content"></div>
-
-<div class="modal-actions">
-
-<button class="secondary-btn" onclick="closeChannel()">
-العودة للقنوات
-</button>
-
+<div class="modal-actions"><button type="button" class="secondary-btn" onclick="closeChannel()">العودة للقنوات</button></div>
 </div>
-
-</div>
-
 </div>
 
 <div id="toast"></div>
 
 <script>
+const SUPABASE_URL="https://ehmeircigoqfhftaotba.supabase.co";
+const SUPABASE_KEY="sb_publishable_54N-aEBjhTQK1wUzpWl0fg_MQRq5D-T";
+const OWNER_ID="dfe5695d-c77a-4ccb-a1eb-901d28169be2";
+const SITE_URL="https://caapu11-debug.github.io/kapo-one/";
 
-const SUPABASE_URL =
-"https://ehmeircigoqfhftaotba.supabase.co";
+let supabaseClient=null;
 
-const SUPABASE_KEY =
-"sb_publishable_54N-aEBjhTQK1wUzpWl0fg_MQRq5D-T";
-
-const OWNER_ID =
-"dfe5695d-c77a-4ccb-a1eb-901d28169be2";
-
-const SITE_URL =
-"https://caapu11-debug.github.io/kapo-one/";
-
-const supabaseClient =
-window.supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY
-);
-
-let currentUser = null;
-let currentProfile = null;
-let projectsData = [];
-let currentProjectFilter = "all";
-let currentDesignIndex = 0;
-let currentChannelType = null;
-
-const designs = [
-
-{
-title:"برج المستقبل",
-icon:"🏙️",
-description:"تصور معماري لبرج حديث يجمع بين التقنية والاستدامة والهوية المستقبلية.",
-type:"تصميم معماري",
-details:"برج مستقبلي يمكن تطويره ليضم مكاتب وشققاً فاخرة ومساحات تجارية ومرافق ذكية."
-},
-
-{
-title:"التصميم الذري",
-icon:"⚛️",
-description:"فكرة برج مستوحى من شكل الذرة، بتكوين هندسي مميز وحركة بصرية مستقبلية.",
-type:"فكرة هندسية",
-details:"يعتمد التصميم على مركز رئيسي تحيط به كتل أو مسارات دائرية تعطي البرج هوية بصرية فريدة."
-},
-
-{
-title:"السيف والنخلة",
-icon:"⚔️",
-description:"تصميم معماري مستوحى من رموز الهوية السعودية بطريقة حديثة وفخمة.",
-type:"تصميم رمزي",
-details:"يمكن تطوير الفكرة لتكون معلماً معمارياً أو برجاً متعدد الاستخدامات يعكس الهوية المحلية."
-},
-
-{
-title:"مدينة المستقبل",
-icon:"🌆",
-description:"تصور لمدينة ذكية تعتمد على التقنية والاستدامة والحركة الحديثة.",
-type:"مدينة ذكية",
-details:"مدينة تعتمد على النقل الذكي والطاقة النظيفة والمساحات الخضراء والبنية التحتية الرقمية."
+function initSupabase(){
+if(window.supabase && typeof window.supabase.createClient==="function"){
+if(!supabaseClient){
+supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+}
+return true;
+}
+return false;
 }
 
+let currentUser=null;
+let currentProfile=null;
+let projectsData=[];
+let currentProjectFilter="all";
+let currentDesignIndex=0;
+let currentChannelType=null;
+
+const designs=[
+{title:"برج المستقبل",icon:"🏙️",description:"تصور معماري لبرج حديث يجمع بين التقنية والاستدامة والهوية المستقبلية.",type:"تصميم معماري",details:"برج مستقبلي يمكن تطويره ليضم مكاتب وشققاً فاخرة ومساحات تجارية ومرافق ذكية."},
+{title:"التصميم الذري",icon:"⚛️",description:"فكرة برج مستوحى من شكل الذرة، بتكوين هندسي مميز وحركة بصرية مستقبلية.",type:"فكرة هندسية",details:"يعتمد التصميم على مركز رئيسي تحيط به كتل أو مسارات دائرية تعطي البرج هوية بصرية فريدة."},
+{title:"السيف والنخلة",icon:"⚔️",description:"تصميم معماري مستوحى من رموز الهوية السعودية بطريقة حديثة وفخمة.",type:"تصميم رمزي",details:"يمكن تطوير الفكرة لتكون معلماً معمارياً أو برجاً متعدد الاستخدامات يعكس الهوية المحلية."},
+{title:"مدينة المستقبل",icon:"🌆",description:"تصور لمدينة ذكية تعتمد على التقنية والاستدامة والحركة الحديثة.",type:"مدينة ذكية",details:"مدينة تعتمد على النقل الذكي والطاقة النظيفة والمساحات الخضراء والبنية التحتية الرقمية."}
 ];
 
-const channelData = {
-
-projects:{
-title:"🏗️ قناة المشاريع",
-description:"ناقش المشاريع والتصاميم والأفكار المعمارية والهندسية."
-},
-
-ideas:{
-title:"💡 قناة الأفكار",
-description:"شارك أفكارك الجديدة واطلع على رؤى وأفكار المستخدمين."
-},
-
-engineering:{
-title:"📐 قناة الهندسة",
-description:"نقاشات حول التصميم والهندسة والحلول المعمارية."
-},
-
-kapo:{
-title:"🌐 قناة KAPO ONE",
-description:"مساحة عامة للتواصل والتفاعل مع محتوى المنصة."
-}
-
+const channelData={
+projects:{title:"🏗️ قناة المشاريع",description:"ناقش المشاريع والتصاميم والأفكار المعمارية والهندسية."},
+ideas:{title:"💡 قناة الأفكار",description:"شارك أفكارك الجديدة واطلع على رؤى وأفكار المستخدمين."},
+engineering:{title:"📐 قناة الهندسة",description:"نقاشات حول التصميم والهندسة والحلول المعمارية."},
+kapo:{title:"🌐 قناة KAPO ONE",description:"مساحة عامة للتواصل والتفاعل مع محتوى المنصة."}
 };
 
 function showLoginForm(){
-
 document.getElementById("loginForm").classList.remove("hidden");
 document.getElementById("registerForm").classList.add("hidden");
 document.getElementById("resetForm").classList.add("hidden");
-
 clearAuthMessage();
-
 }
 
 function showRegisterForm(){
-
 document.getElementById("loginForm").classList.add("hidden");
 document.getElementById("registerForm").classList.remove("hidden");
 document.getElementById("resetForm").classList.add("hidden");
-
 clearAuthMessage();
-
 }
 
 function showResetForm(){
-
 document.getElementById("loginForm").classList.add("hidden");
 document.getElementById("registerForm").classList.add("hidden");
 document.getElementById("resetForm").classList.remove("hidden");
-
 clearAuthMessage();
-
 }
 
 function showAuthMessage(message){
-
 const box=document.getElementById("authMessage");
-
 box.textContent=message;
 box.classList.remove("hidden");
-
 }
 
 function clearAuthMessage(){
-
 const box=document.getElementById("authMessage");
-
 box.classList.add("hidden");
 box.textContent="";
-
 }
 
 async function loginUser(){
+clearAuthMessage();
+
+if(!initSupabase()){
+showAuthMessage("تعذر تحميل خدمة الدخول. تأكد من اتصال الإنترنت ثم أعد تحميل الصفحة.");
+return;
+}
 
 const email=document.getElementById("loginEmail").value.trim();
 const password=document.getElementById("loginPassword").value;
 
-if(!email || !password){
-
+if(!email||!password){
 showAuthMessage("أدخل البريد الإلكتروني وكلمة المرور.");
 return;
+}
 
+const button=document.querySelector("#loginForm .primary-btn");
+if(button){
+button.disabled=true;
+button.textContent="جاري تسجيل الدخول...";
 }
 
 try{
+const result=await supabaseClient.auth.signInWithPassword({email,password});
 
-const {data,error}=await supabaseClient.auth.signInWithPassword({
-email,
-password
-});
-
-if(error){
-
-showAuthMessage(error.message);
+if(result.error){
+console.error("Login error:",result.error);
+showAuthMessage(result.error.message||"البريد الإلكتروني أو كلمة المرور غير صحيحة.");
 return;
-
 }
 
-currentUser=data.user;
+if(!result.data||!result.data.user){
+showAuthMessage("لم يتم تسجيل الدخول. حاول مرة أخرى.");
+return;
+}
+
+currentUser=result.data.user;
 
 await loadUserApp();
 
 showToast("تم تسجيل الدخول بنجاح.");
 
 }catch(error){
-
-console.error(error);
-showAuthMessage("حدث خطأ أثناء تسجيل الدخول.");
-
+console.error("Login exception:",error);
+showAuthMessage(error?.message||"حدث خطأ أثناء تسجيل الدخول.");
+}finally{
+if(button){
+button.disabled=false;
+button.textContent="تسجيل الدخول";
 }
-
+}
 }
 
 async function registerUser(){
+if(!initSupabase()){
+showAuthMessage("تعذر تحميل خدمة التسجيل. أعد تحميل الصفحة.");
+return;
+}
 
 const name=document.getElementById("registerName").value.trim();
 const email=document.getElementById("registerEmail").value.trim();
 const password=document.getElementById("registerPassword").value;
 
-if(!name || !email || !password){
-
+if(!name||!email||!password){
 showAuthMessage("أكمل جميع البيانات.");
 return;
-
 }
 
 if(password.length<6){
-
 showAuthMessage("كلمة المرور يجب أن تكون 6 أحرف على الأقل.");
 return;
-
 }
 
 try{
-
 const {data,error}=await supabaseClient.auth.signUp({
-
-email,
-password,
-
-options:{
-data:{
-name:name
-}
-}
-
+email,password,options:{data:{name:name}}
 });
 
 if(error){
-
 showAuthMessage(error.message);
 return;
-
 }
 
 if(data.user){
-
 currentUser=data.user;
+await createProfile(data.user,name);
 
-await createProfile(
-data.user,
-name
-);
-
+if(data.session){
 await loadUserApp();
-
 showToast("تم إنشاء الحساب بنجاح.");
-
+}else{
+showAuthMessage("تم إنشاء الحساب. تحقق من بريدك الإلكتروني لتفعيل الحساب.");
 }
-
+}
 }catch(error){
-
 console.error(error);
-showAuthMessage("حدث خطأ أثناء إنشاء الحساب.");
-
+showAuthMessage(error?.message||"حدث خطأ أثناء إنشاء الحساب.");
 }
-
 }
 
 async function createProfile(user,name){
+if(!user||!initSupabase())return;
 
-if(!user)return;
-
-const {error}=await supabaseClient
-.from("profiles")
-.upsert({
-
+const {error}=await supabaseClient.from("profiles").upsert({
 id:user.id,
-name:name || user.user_metadata?.name || "مستخدم",
-email:user.email || ""
-
+name:name||user.user_metadata?.name||"مستخدم",
+email:user.email||""
 });
 
-if(error){
-
-console.error("Profile error:",error);
-
-}
-
+if(error)console.error("Profile error:",error);
 }
 
 async function resetUserPassword(){
+if(!initSupabase()){
+showAuthMessage("تعذر تحميل خدمة الاستعادة. أعد تحميل الصفحة.");
+return;
+}
 
 const email=document.getElementById("resetEmail").value.trim();
 
 if(!email){
-
 showAuthMessage("أدخل البريد الإلكتروني.");
 return;
-
 }
 
 try{
-
-const {error}=await supabaseClient.auth.resetPasswordForEmail(
-email,
-{
-redirectTo:SITE_URL
-}
-);
+const {error}=await supabaseClient.auth.resetPasswordForEmail(email,{redirectTo:SITE_URL});
 
 if(error){
-
 showAuthMessage(error.message);
 return;
-
 }
 
-showAuthMessage(
-"تم إرسال رابط استعادة كلمة المرور إلى بريدك الإلكتروني."
-);
-
+showAuthMessage("تم إرسال رابط استعادة كلمة المرور إلى بريدك الإلكتروني.");
 }catch(error){
-
 console.error(error);
-showAuthMessage("حدث خطأ أثناء إرسال الرابط.");
-
+showAuthMessage(error?.message||"حدث خطأ أثناء إرسال الرابط.");
 }
-
 }
 
 function enterGuest(){
-
 currentUser=null;
-
-currentProfile={
-name:"زائر",
-email:""
-};
-
+currentProfile={name:"زائر",email:""};
 showApp();
 updateUserUI();
 loadProjects();
 loadLocalCommunity();
 showSection("home");
-
 showToast("تم الدخول كزائر.");
-
 }
 
 async function checkCurrentUser(){
+if(!initSupabase()){
+console.warn("Supabase library is not available yet.");
+showAuthPage();
+return;
+}
 
 try{
-
 const {data,error}=await supabaseClient.auth.getSession();
 
 if(error){
-
-console.error(error);
+console.error("Session error:",error);
 showAuthPage();
 return;
-
 }
 
 if(data.session){
-
 currentUser=data.session.user;
 await loadUserApp();
-
 }else{
-
 showAuthPage();
-
 }
-
 }catch(error){
-
-console.error(error);
+console.error("Session exception:",error);
 showAuthPage();
-
+}
 }
 
-}
+function setupAuthListener(){
+if(!initSupabase())return;
 
-supabaseClient.auth.onAuthStateChange(
-async(event,session)=>{
-
-if(event==="SIGNED_IN" && session){
-
+supabaseClient.auth.onAuthStateChange((event,session)=>{
+if(event==="SIGNED_IN"&&session){
 currentUser=session.user;
-
 }
-
 if(event==="SIGNED_OUT"){
-
 currentUser=null;
 currentProfile=null;
 showAuthPage();
-
 }
-
+});
 }
-);
 
 async function loadUserApp(){
-
 if(currentUser){
-
+try{
 await loadProfile();
-
+}catch(error){
+console.error("loadProfile error:",error);
+}
 }
 
 showApp();
 updateUserUI();
-loadProjects();
+
+try{loadProjects()}catch(e){console.error(e)}
 loadLocalCommunity();
 showSection("home");
-
 }
 
 async function loadProfile(){
-
 if(!currentUser){
-
-currentProfile={
-name:"زائر",
-email:""
-};
-
+currentProfile={name:"زائر",email:""};
 return;
-
 }
 
 try{
-
-const {data,error}=await supabaseClient
-.from("profiles")
-.select("*")
-.eq("id",currentUser.id)
-.maybeSingle();
+const {data,error}=await supabaseClient.from("profiles").select("*").eq("id",currentUser.id).maybeSingle();
 
 if(error)console.error(error);
 
 if(data){
-
 currentProfile=data;
-
 }else{
-
 currentProfile={
-
 id:currentUser.id,
-
-name:
-currentUser.user_metadata?.name ||
-currentUser.email?.split("@")[0] ||
-"مستخدم",
-
-email:
-currentUser.email || ""
-
+name:currentUser.user_metadata?.name||currentUser.email?.split("@")[0]||"مستخدم",
+email:currentUser.email||""
 };
-
 }
-
 }catch(error){
-
 console.error(error);
-
 currentProfile={
-
-name:
-currentUser.user_metadata?.name ||
-"مستخدم",
-
-email:
-currentUser.email || ""
-
+name:currentUser.user_metadata?.name||currentUser.email?.split("@")[0]||"مستخدم",
+email:currentUser.email||""
 };
-
 }
-
 }
 
 function showApp(){
-
 document.getElementById("authPage").classList.add("hidden");
 document.getElementById("app").classList.remove("hidden");
-
 }
 
 function showAuthPage(){
-
 document.getElementById("app").classList.add("hidden");
 document.getElementById("authPage").classList.remove("hidden");
-
 showLoginForm();
-
 }
 
 function updateUserUI(){
-
-const name=currentProfile?.name || "زائر";
-const email=currentProfile?.email || "";
-
-const first=name.trim().charAt(0).toUpperCase() || "K";
+const name=currentProfile?.name||"زائر";
+const email=currentProfile?.email||"";
+const first=name.trim().charAt(0).toUpperCase()||"K";
 
 document.getElementById("miniUserName").textContent=name;
 document.getElementById("miniUserAvatar").textContent=first;
-
 document.getElementById("profileName").textContent=name;
-document.getElementById("profileEmail").textContent=email || "الدخول كزائر";
-
+document.getElementById("profileEmail").textContent=email||"الدخول كزائر";
 document.getElementById("profileNameInfo").textContent=name;
-document.getElementById("profileEmailInfo").textContent=email || "-";
+document.getElementById("profileEmailInfo").textContent=email||"-";
 document.getElementById("profileAvatar").textContent=first;
-
 }
 
 function showSection(id){
-
-document.querySelectorAll(".section").forEach(section=>{
-section.classList.remove("active");
-});
-
+document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
 const section=document.getElementById(id);
-
-if(section){
-section.classList.add("active");
-}
+if(section)section.classList.add("active");
 
 document.querySelectorAll(".nav-btn").forEach(button=>{
-
 button.classList.remove("active");
-
-if(button.dataset.section===id){
-button.classList.add("active");
-}
-
+if(button.dataset.section===id)button.classList.add("active");
 });
 
-if(id==="projects"){
-loadProjects();
-}
+if(id==="projects")loadProjects();
+if(id==="ideas")loadLocalIdeas();
+if(id==="answers")loadQuestions();
 
-if(id==="ideas"){
-loadLocalIdeas();
-}
-
-if(id==="answers"){
-loadQuestions();
-}
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
+window.scrollTo({top:0,behavior:"smooth"});
 }
 
 async function loadProjects(){
-
 const grid=document.getElementById("projectsGrid");
-
 if(!grid)return;
 
-grid.innerHTML=`
-<div class="empty-state">
-جاري تحميل المشاريع...
-</div>
-`;
+if(!initSupabase()){
+grid.innerHTML=`<div class="empty-state">تعذر الاتصال بخدمة المشاريع.</div>`;
+return;
+}
+
+grid.innerHTML=`<div class="empty-state">جاري تحميل المشاريع...</div>`;
 
 try{
-
-const {data,error}=await supabaseClient
-.from("projects")
-.select("*")
-.order("created_at",{ascending:false});
+const {data,error}=await supabaseClient.from("projects").select("*").order("created_at",{ascending:false});
 
 if(error){
-
 console.error(error);
 projectsData=[];
 renderProjects();
 return;
-
 }
 
-projectsData=data || [];
+projectsData=data||[];
 renderProjects();
-
 }catch(error){
-
 console.error(error);
 projectsData=[];
 renderProjects();
-
 }
-
 }
 
 function renderProjects(){
-
 const grid=document.getElementById("projectsGrid");
-
 if(!grid)return;
 
-const searchInput=document.getElementById("projectSearch");
-
-const search=(searchInput?.value || "")
-.toLowerCase()
-.trim();
-
+const search=(document.getElementById("projectSearch")?.value||"").toLowerCase().trim();
 let list=[...projectsData];
 
-if(currentProjectFilter==="images"){
-
-list=list.filter(project=>project.image_url);
-
-}
-
-if(currentProjectFilter==="noimages"){
-
-list=list.filter(project=>!project.image_url);
-
-}
+if(currentProjectFilter==="images")list=list.filter(p=>p.image_url);
+if(currentProjectFilter==="noimages")list=list.filter(p=>!p.image_url);
 
 if(search){
-
-list=list.filter(project=>
-
-(project.title || "").toLowerCase().includes(search)
-
-||
-
-(project.description || "").toLowerCase().includes(search)
-
+list=list.filter(p=>
+(p.title||"").toLowerCase().includes(search)||
+(p.description||"").toLowerCase().includes(search)
 );
-
 }
 
 const total=projectsData.length;
-
-const images=projectsData.filter(project=>project.image_url).length;
-
-const noImages=total-images;
+const images=projectsData.filter(p=>p.image_url).length;
 
 document.getElementById("projectsCount").textContent=total;
 document.getElementById("projectsImagesCount").textContent=images;
-document.getElementById("projectsNoImagesCount").textContent=noImages;
+document.getElementById("projectsNoImagesCount").textContent=total-images;
 
 if(!list.length){
-
-grid.innerHTML=`
-<div class="empty-state">
-لا توجد مشاريع مطابقة للبحث.
-</div>
-`;
-
+grid.innerHTML=`<div class="empty-state">لا توجد مشاريع مطابقة للبحث.</div>`;
 return;
-
 }
 
 grid.innerHTML=list.map(project=>{
-
-const title=escapeHtml(
-project.title || "مشروع بدون اسم"
-);
-
-const description=escapeHtml(
-project.description || "لا يوجد وصف."
-);
-
-const id=escapeAttribute(project.id || "");
+const title=escapeHtml(project.title||"مشروع بدون اسم");
+const description=escapeHtml(project.description||"لا يوجد وصف.");
+const id=escapeAttribute(project.id||"");
 
 const image=project.image_url
-?
-`
-<img
-class="project-image"
-src="${escapeAttribute(project.image_url)}"
-alt="${title}"
-onerror="this.style.display='none'"
->
-`
-:
-`
-<div class="project-placeholder">
-🏗️
-</div>
-`;
+?`<img class="project-image" src="${escapeAttribute(project.image_url)}" alt="${title}" onerror="this.style.display='none'">`
+:`<div class="project-placeholder">🏗️</div>`;
 
 return `
 <div class="project-card">
-
 ${image}
-
 <div class="project-content">
-
-<div class="project-title">
-${title}
-</div>
-
-<div class="project-description">
-${description}
-</div>
-
-<div class="project-meta">
-KAPO ONE
-</div>
-
+<div class="project-title">${title}</div>
+<div class="project-description">${description}</div>
+<div class="project-meta">KAPO ONE</div>
 <div class="project-actions">
-
-<button class="icon-btn"
-onclick="likeProject('${id}')">
-♡ إعجاب
-</button>
-
-<button class="icon-btn"
-onclick="commentProject('${id}')">
-💬 تعليق
-</button>
-
+<button type="button" class="icon-btn" onclick="likeProject('${id}')">♡ إعجاب</button>
+<button type="button" class="icon-btn" onclick="commentProject('${id}')">💬 تعليق</button>
 </div>
-
 </div>
-
-</div>
-`;
-
+</div>`;
 }).join("");
-
 }
 
 function setProjectFilter(filter,button){
-
 currentProjectFilter=filter;
-
-document.querySelectorAll(".filter-btn").forEach(btn=>{
-btn.classList.remove("active");
-});
-
-if(button){
-button.classList.add("active");
-}
-
+document.querySelectorAll(".filter-btn").forEach(btn=>btn.classList.remove("active"));
+if(button)button.classList.add("active");
 renderProjects();
-
 }
 
 function openAddProjectModal(){
-
 document.getElementById("addProjectModal").classList.add("active");
-
 document.getElementById("addProjectMessage").classList.add("hidden");
-
 }
 
 function closeAddProjectModal(){
-
 document.getElementById("addProjectModal").classList.remove("active");
-
 }
 
 async function saveNewProject(){
-
 if(!currentUser){
-
-showAddProjectMessage(
-"يجب تسجيل الدخول لإضافة مشروع."
-);
-
+showAddProjectMessage("يجب تسجيل الدخول لإضافة مشروع.");
 return;
+}
 
+if(!initSupabase()){
+showAddProjectMessage("تعذر الاتصال بقاعدة البيانات.");
+return;
 }
 
 const title=document.getElementById("projectTitle").value.trim();
-
 const description=document.getElementById("projectDescription").value.trim();
-
 const image=document.getElementById("projectImage").value.trim();
 
 if(!title){
-
 showAddProjectMessage("اكتب اسم المشروع.");
 return;
-
 }
 
 try{
-
-const {error}=await supabaseClient
-.from("projects")
-.insert({
-
-title:title,
-description:description || "",
-image_url:image || null,
-user_id:currentUser.id
-
+const {error}=await supabaseClient.from("projects").insert({
+title,description:description||"",image_url:image||null,user_id:currentUser.id
 });
 
 if(error){
-
 console.error(error);
 showAddProjectMessage(error.message);
 return;
-
 }
 
 closeAddProjectModal();
-
 document.getElementById("projectTitle").value="";
 document.getElementById("projectDescription").value="";
 document.getElementById("projectImage").value="";
-
 await loadProjects();
-
 showToast("تم حفظ المشروع بنجاح.");
-
 }catch(error){
-
 console.error(error);
 showAddProjectMessage("حدث خطأ أثناء حفظ المشروع.");
-
 }
-
 }
 
 function showAddProjectMessage(message){
-
 const box=document.getElementById("addProjectMessage");
-
 box.textContent=message;
 box.classList.remove("hidden");
-
 }
 
 async function likeProject(projectId){
-
 if(!currentUser){
-
 showToast("سجل الدخول أولاً لإضافة إعجاب.");
 return;
-
 }
+if(!initSupabase())return;
 
 try{
-
-const {error}=await supabaseClient
-.from("likes")
-.insert({
-
-project_id:projectId,
-user_id:currentUser.id
-
+const {error}=await supabaseClient.from("likes").insert({
+project_id:projectId,user_id:currentUser.id
 });
 
 if(error){
-
 if(error.code==="23505"){
-
 showToast("سبق وأعجبت بهذا المشروع.");
 return;
-
 }
-
 console.error(error);
 showToast("تعذر إضافة الإعجاب.");
 return;
-
 }
-
 showToast("تم تسجيل الإعجاب.");
-
 }catch(error){
-
 console.error(error);
 showToast("حدث خطأ.");
-
 }
-
 }
 
 async function commentProject(projectId){
-
 if(!currentUser){
-
 showToast("سجل الدخول أولاً لإضافة تعليق.");
 return;
-
 }
+if(!initSupabase())return;
 
 const content=prompt("اكتب تعليقك:");
-
 if(!content)return;
 
 try{
-
-const {error}=await supabaseClient
-.from("comments")
-.insert({
-
-project_id:projectId,
-user_id:currentUser.id,
-content:content.trim()
-
+const {error}=await supabaseClient.from("comments").insert({
+project_id:projectId,user_id:currentUser.id,content:content.trim()
 });
 
 if(error){
-
 console.error(error);
 showToast("تعذر إضافة التعليق.");
 return;
-
 }
-
 showToast("تم إضافة التعليق.");
-
 }catch(error){
-
 console.error(error);
 showToast("حدث خطأ.");
-
 }
-
 }
 
 function openDesignModal(index){
-
 currentDesignIndex=index;
-
 const design=designs[index];
-
 if(!design)return;
 
-document.getElementById("designModalTitle").textContent=
-design.icon+" "+design.title;
-
-document.getElementById("designModalContent").innerHTML=
-
-`
+document.getElementById("designModalTitle").textContent=design.icon+" "+design.title;
+document.getElementById("designModalContent").innerHTML=`
 <p>${escapeHtml(design.description)}</p>
-
 <h3>نوع التصميم</h3>
-
 <p>${escapeHtml(design.type)}</p>
-
 <h3>التفاصيل</h3>
-
-<p>${escapeHtml(design.details)}</p>
-`;
-
+<p>${escapeHtml(design.details)}</p>`;
 document.getElementById("designModal").classList.add("active");
-
 }
 
 function closeDesignModal(){
-
 document.getElementById("designModal").classList.remove("active");
-
 }
 
 function likeDesign(index,button){
-
 if(!designs[index])return;
 
 if(button.dataset.liked==="true"){
-
 button.dataset.liked="false";
 button.textContent="♡ إعجاب";
-
 showToast("تم إلغاء الإعجاب.");
-
 }else{
-
 button.dataset.liked="true";
 button.textContent="♥ أعجبني";
-
 showToast("تم تسجيل الإعجاب.");
-
 }
-
 }
 
 function generateIdea(){
-
 const input=document.getElementById("ideaInput");
-
 const text=input.value.trim();
 
 if(!text){
-
 showToast("اكتب فكرة أولاً.");
 return;
-
 }
 
 let result={
-
 title:"مشروع معماري مبتكر",
 type:"تصميم معماري",
 concept:"تطوير الفكرة إلى مشروع حديث يجمع بين الوظيفة والجمال والتقنية.",
 uses:"مكاتب، مساحات تجارية، سكن أو مرافق عامة.",
 features:"هوية معمارية مميزة، استدامة، حلول ذكية ومساحات مرنة."
-
 };
 
 const lower=text.toLowerCase();
 
-if(text.includes("برج") || lower.includes("tower")){
-
+if(text.includes("برج")||lower.includes("tower")){
 result={
-
-title:"برج مستقبلي",
-type:"برج معماري",
+title:"برج مستقبلي",type:"برج معماري",
 concept:"برج حديث بواجهة مميزة وتكوين رأسي واضح يجمع بين الجمال والكفاءة.",
 uses:"مكاتب، شقق فاخرة، فندق، مطاعم ومساحات تجارية.",
 features:"واجهات ذكية، أنظمة استدامة، إطلالات بانورامية ومرافق متطورة."
-
 };
-
 }
 
-if(text.includes("ذرة") || lower.includes("atom")){
-
+if(text.includes("ذرة")||lower.includes("atom")){
 result={
-
-title:"برج الذرة",
-type:"فكرة هندسية",
+title:"برج الذرة",type:"فكرة هندسية",
 concept:"برج مستوحى من تركيب الذرة، حيث يمثل المركز النواة وتحيط به عناصر معمارية دائرية.",
 uses:"مركز أعمال، فندق، مكاتب ومرافق سياحية.",
 features:"تكوين بصري فريد، حركة دائرية، إضاءة ليلية وهوية معمارية مميزة."
-
 };
-
 }
 
-if(text.includes("مدينة") || lower.includes("city")){
-
+if(text.includes("مدينة")||lower.includes("city")){
 result={
-
-title:"مدينة المستقبل",
-type:"مدينة ذكية",
+title:"مدينة المستقبل",type:"مدينة ذكية",
 concept:"مدينة مترابطة رقمياً تعتمد على الطاقة النظيفة والنقل الذكي والمساحات الخضراء.",
 uses:"سكن، أعمال، ترفيه، خدمات ومرافق عامة.",
 features:"ذكاء اصطناعي، نقل ذكي، طاقة نظيفة، بنية رقمية ومساحات خضراء."
-
 };
-
 }
 
-const resultBox=document.getElementById("ideaResult");
-
-resultBox.innerHTML=
-
-`
+document.getElementById("ideaResult").innerHTML=`
 <h3>${escapeHtml(result.title)}</h3>
+<p><strong>النوع:</strong> ${escapeHtml(result.type)}</p>
+<p><strong>الفكرة:</strong> ${escapeHtml(result.concept)}</p>
+<p><strong>الاستخدامات:</strong> ${escapeHtml(result.uses)}</p>
+<p><strong>المميزات:</strong> ${escapeHtml(result.features)}</p>`;
 
-<p>
-<strong>النوع:</strong>
-${escapeHtml(result.type)}
-</p>
+document.getElementById("ideaResult").classList.remove("hidden");
 
-<p>
-<strong>الفكرة:</strong>
-${escapeHtml(result.concept)}
-</p>
-
-<p>
-<strong>الاستخدامات:</strong>
-${escapeHtml(result.uses)}
-</p>
-
-<p>
-<strong>المميزات:</strong>
-${escapeHtml(result.features)}
-</p>
-`;
-
-resultBox.classList.remove("hidden");
-
-const ideas=JSON.parse(
-localStorage.getItem("kapoIdeas") || "[]"
-);
+const ideas=JSON.parse(localStorage.getItem("kapoIdeas")||"[]");
 
 ideas.unshift({
-
-title:result.title,
-type:result.type,
-concept:result.concept,
-text:text,
+title:result.title,type:result.type,concept:result.concept,text,
 date:new Date().toLocaleString("ar-SA")
-
 });
 
-localStorage.setItem(
-"kapoIdeas",
-JSON.stringify(ideas.slice(0,50))
-);
-
+localStorage.setItem("kapoIdeas",JSON.stringify(ideas.slice(0,50)));
 loadLocalIdeas();
-
 }
 
 function loadLocalIdeas(){
-
 const list=document.getElementById("ideasList");
-
 if(!list)return;
 
-const ideas=JSON.parse(
-localStorage.getItem("kapoIdeas") || "[]"
-);
+const ideas=JSON.parse(localStorage.getItem("kapoIdeas")||"[]");
 
 if(!ideas.length){
-
-list.innerHTML=`
-<div class="empty-state">
-لا توجد أفكار محفوظة حتى الآن.
-</div>
-`;
-
+list.innerHTML=`<div class="empty-state">لا توجد أفكار محفوظة حتى الآن.</div>`;
 return;
-
 }
 
 list.innerHTML=ideas.slice(0,20).map(idea=>`
-
 <div class="idea-card">
-
-<h4>
-💡 ${escapeHtml(idea.title)}
-</h4>
-
-<p>
-<strong>الفكرة الأصلية:</strong>
-${escapeHtml(idea.text || "")}
-</p>
-
-<p>
-<strong>النوع:</strong>
-${escapeHtml(idea.type || "")}
-</p>
-
-<p>
-${escapeHtml(idea.concept || "")}
-</p>
-
-<span style="color:#64748b;font-size:12px">
-${escapeHtml(idea.date || "")}
-</span>
-
-</div>
-
-`).join("");
-
+<h4>💡 ${escapeHtml(idea.title)}</h4>
+<p><strong>الفكرة الأصلية:</strong> ${escapeHtml(idea.text||"")}</p>
+<p><strong>النوع:</strong> ${escapeHtml(idea.type||"")}</p>
+<p>${escapeHtml(idea.concept||"")}</p>
+<span style="color:#64748b;font-size:12px">${escapeHtml(idea.date||"")}</span>
+</div>`).join("");
 }
 
 function addQuestion(){
-
 const input=document.getElementById("questionInput");
-
 const question=input.value.trim();
 
 if(!question){
-
 showToast("اكتب السؤال أولاً.");
 return;
-
 }
 
-const questions=JSON.parse(
-localStorage.getItem("kapoQuestions") || "[]"
-);
+const questions=JSON.parse(localStorage.getItem("kapoQuestions")||"[]");
 
 questions.unshift({
-
-question:question,
-date:new Date().toLocaleString("ar-SA")
-
+question,date:new Date().toLocaleString("ar-SA")
 });
 
-localStorage.setItem(
-"kapoQuestions",
-JSON.stringify(questions.slice(0,50))
-);
-
+localStorage.setItem("kapoQuestions",JSON.stringify(questions.slice(0,50)));
 input.value="";
-
 loadQuestions();
-
 showToast("تم نشر السؤال.");
-
 }
 
 function loadQuestions(){
-
 const list=document.getElementById("questionsList");
-
 if(!list)return;
 
-const questions=JSON.parse(
-localStorage.getItem("kapoQuestions") || "[]"
-);
+const questions=JSON.parse(localStorage.getItem("kapoQuestions")||"[]");
 
 if(!questions.length){
-
-list.innerHTML=`
-<div class="empty-state">
-لا توجد أسئلة حتى الآن.
-</div>
-`;
-
+list.innerHTML=`<div class="empty-state">لا توجد أسئلة حتى الآن.</div>`;
 return;
-
 }
 
 list.innerHTML=questions.map(item=>`
-
 <div class="question-item">
-
-<strong>
-❓ ${escapeHtml(item.question)}
-</strong>
-
-<span>
-${escapeHtml(item.date || "")}
-</span>
-
-</div>
-
-`).join("");
-
+<strong>❓ ${escapeHtml(item.question)}</strong>
+<span>${escapeHtml(item.date||"")}</span>
+</div>`).join("");
 }
 
 function loadLocalCommunity(){
-
 loadQuestions();
 loadLocalIdeas();
-
 }
 
-
-/* ==========================================
-   القنوات التفاعلية
-========================================== */
-
 function openChannel(type){
-
 const channel=channelData[type];
 
 if(!channel){
-
 showToast("القناة غير موجودة.");
 return;
-
 }
 
 currentChannelType=type;
 
-document.getElementById("channelModalTitle").textContent=
-channel.title;
+document.getElementById("channelModalTitle").textContent=channel.title;
 
-document.getElementById("channelModalContent").innerHTML=
-
-`
-<p>
-${escapeHtml(channel.description)}
-</p>
+document.getElementById("channelModalContent").innerHTML=`
+<p>${escapeHtml(channel.description)}</p>
 
 <div class="channel-post-box">
-
 ${
 currentUser
-?
-`
-<textarea
-id="channelPostInput"
-placeholder="اكتب منشورك في القناة..."
-maxlength="3000"
-></textarea>
-
+?`
+<textarea id="channelPostInput" placeholder="اكتب منشورك في القناة..." maxlength="3000"></textarea>
 <div class="channel-post-actions">
-
-<span class="channel-post-hint">
-شارك فكرة أو رأياً مع مجتمع KAPO ONE
-</span>
-
-<button
-class="primary-btn"
-onclick="createChannelPost()"
->
-نشر المنشور
-</button>
-
-</div>
-`
-:
-`
-<div class="empty-state">
-سجل الدخول حتى تتمكن من نشر منشور داخل القناة.
-</div>
-`
+<span class="channel-post-hint">شارك فكرة أو رأياً مع مجتمع KAPO ONE</span>
+<button type="button" class="primary-btn" onclick="createChannelPost()">نشر المنشور</button>
+</div>`
+:`<div class="empty-state">سجل الدخول حتى تتمكن من نشر منشور داخل القناة.</div>`
 }
-
 </div>
 
-<h3>
-منشورات القناة
-</h3>
-
-<div
-id="channelPosts"
-class="channel-posts"
->
-<div class="channel-loading">
-جاري تحميل المنشورات...
-</div>
-</div>
-`;
+<h3>منشورات القناة</h3>
+<div id="channelPosts" class="channel-posts">
+<div class="channel-loading">جاري تحميل المنشورات...</div>
+</div>`;
 
 document.getElementById("channelModal").classList.add("active");
-
 loadChannelPosts(type);
-
 }
 
 async function loadChannelPosts(type){
-
 const postsBox=document.getElementById("channelPosts");
-
 if(!postsBox)return;
 
-postsBox.innerHTML=`
-<div class="channel-loading">
-جاري تحميل المنشورات...
-</div>
-`;
+if(!initSupabase()){
+postsBox.innerHTML=`<div class="empty-state">تعذر الاتصال بالمنصة.</div>`;
+return;
+}
+
+postsBox.innerHTML=`<div class="channel-loading">جاري تحميل المنشورات...</div>`;
 
 try{
-
 const {data,error}=await supabaseClient
 .from("channel_posts")
 .select("*")
@@ -2987,375 +1350,219 @@ const {data,error}=await supabaseClient
 .order("created_at",{ascending:false});
 
 if(error){
-
 console.error(error);
-
-postsBox.innerHTML=`
-<div class="empty-state">
-تعذر تحميل المنشورات.
-</div>
-`;
-
+postsBox.innerHTML=`<div class="empty-state">تعذر تحميل المنشورات.</div>`;
 return;
-
 }
 
-const posts=data || [];
+const posts=data||[];
 
 if(!posts.length){
-
-postsBox.innerHTML=`
-<div class="empty-state">
-لا توجد منشورات حتى الآن.<br>
-كن أول من ينشر في هذه القناة 🚀
-</div>
-`;
-
+postsBox.innerHTML=`<div class="empty-state">لا توجد منشورات حتى الآن.<br>كن أول من ينشر في هذه القناة 🚀</div>`;
 return;
-
 }
 
-const userIds=[
-...new Set(
-posts
-.map(post=>post.user_id)
-.filter(Boolean)
-)
-];
-
+const userIds=[...new Set(posts.map(p=>p.user_id).filter(Boolean))];
 let profiles={};
 
 if(userIds.length){
-
-const profileResult=await supabaseClient
-.from("profiles")
-.select("id,name")
-.in("id",userIds);
-
-if(!profileResult.error && profileResult.data){
-
-profileResult.data.forEach(profile=>{
-
-profiles[profile.id]=profile.name;
-
-});
-
+const profileResult=await supabaseClient.from("profiles").select("id,name").in("id",userIds);
+if(!profileResult.error&&profileResult.data){
+profileResult.data.forEach(profile=>profiles[profile.id]=profile.name);
 }
-
 }
 
 postsBox.innerHTML=posts.map(post=>{
-
-const isOwner=
-currentUser &&
-post.user_id===currentUser.id;
-
-const author=
-profiles[post.user_id] ||
-(isOwner ? currentProfile?.name : "مستخدم");
-
-const first=
-(author || "م").trim().charAt(0).toUpperCase();
-
-const date=post.created_at
-?
-new Date(post.created_at).toLocaleString("ar-SA")
-:
-"";
+const isOwner=currentUser&&post.user_id===currentUser.id;
+const author=profiles[post.user_id]||(isOwner?currentProfile?.name:"مستخدم");
+const first=(author||"م").trim().charAt(0).toUpperCase();
+const date=post.created_at?new Date(post.created_at).toLocaleString("ar-SA"):"";
 
 return `
-
 <div class="channel-post">
-
 <div class="channel-post-head">
-
 <div class="channel-author">
-
-<div class="channel-avatar">
-${escapeHtml(first)}
+<div class="channel-avatar">${escapeHtml(first)}</div>
+<span>${escapeHtml(author||"مستخدم")}</span>
+</div>
+<span class="channel-date">${escapeHtml(date)}</span>
 </div>
 
-<span>
-${escapeHtml(author || "مستخدم")}
-</span>
+<div class="channel-post-text">${escapeHtml(post.content)}</div>
 
-</div>
-
-<span class="channel-date">
-${escapeHtml(date)}
-</span>
-
-</div>
-
-<div class="channel-post-text">
-${escapeHtml(post.content)}
-</div>
-
-${
-isOwner
-?
-`
+${isOwner?`
 <div class="channel-post-footer">
-
-<button
-class="delete-post-btn"
-onclick="deleteChannelPost('${escapeAttribute(post.id)}')"
->
-حذف المنشور
-</button>
-
-</div>
-`
-:
-""
-}
-
-</div>
-
-`;
-
+<button type="button" class="delete-post-btn" onclick="deleteChannelPost('${escapeAttribute(post.id)}')">حذف المنشور</button>
+</div>`:""}
+</div>`;
 }).join("");
 
+}catch(error){
+console.error(error);
+postsBox.innerHTML=`<div class="empty-state">حدث خطأ أثناء تحميل المنشورات.</div>`;
+}
 }
 
 async function createChannelPost(){
-
 if(!currentUser){
-
 showToast("سجل الدخول أولاً لنشر منشور.");
 return;
-
 }
 
 if(!currentChannelType){
-
 showToast("اختر قناة أولاً.");
 return;
-
 }
 
-const input=document.getElementById("channelPostInput");
+if(!initSupabase())return;
 
+const input=document.getElementById("channelPostInput");
 if(!input)return;
 
 const content=input.value.trim();
 
 if(!content){
-
 showToast("اكتب محتوى المنشور أولاً.");
 return;
-
 }
 
 if(content.length>3000){
-
 showToast("المنشور طويل جداً.");
 return;
-
 }
 
 try{
-
-const {error}=await supabaseClient
-.from("channel_posts")
-.insert({
-
-channel:currentChannelType,
-content:content,
-user_id:currentUser.id
-
+const {error}=await supabaseClient.from("channel_posts").insert({
+channel:currentChannelType,content,user_id:currentUser.id
 });
 
 if(error){
-
 console.error(error);
-
-showToast("تعذر نشر المنشور.");
-
+showToast(error.message||"تعذر نشر المنشور.");
 return;
-
 }
 
 input.value="";
-
 showToast("تم نشر المنشور بنجاح.");
-
 await loadChannelPosts(currentChannelType);
 
 }catch(error){
-
 console.error(error);
-
 showToast("حدث خطأ أثناء نشر المنشور.");
-
 }
-
 }
 
 async function deleteChannelPost(postId){
-
 if(!currentUser){
-
 showToast("سجل الدخول أولاً.");
 return;
-
 }
 
-const confirmed=confirm(
-"هل تريد حذف هذا المنشور؟"
-);
+if(!initSupabase())return;
 
-if(!confirmed)return;
+if(!confirm("هل تريد حذف هذا المنشور؟"))return;
 
 try{
-
-const {error}=await supabaseClient
-.from("channel_posts")
-.delete()
-.eq("id",postId)
-.eq("user_id",currentUser.id);
+const {error}=await supabaseClient.from("channel_posts")
+.delete().eq("id",postId).eq("user_id",currentUser.id);
 
 if(error){
-
 console.error(error);
-
 showToast("تعذر حذف المنشور.");
 return;
-
 }
 
 showToast("تم حذف المنشور.");
 
-if(currentChannelType){
-
-await loadChannelPosts(currentChannelType);
-
-}
+if(currentChannelType)await loadChannelPosts(currentChannelType);
 
 }catch(error){
-
 console.error(error);
-
 showToast("حدث خطأ أثناء الحذف.");
-
 }
-
 }
 
 function closeChannel(){
-
-document.getElementById("channelModal")
-.classList.remove("active");
-
+document.getElementById("channelModal").classList.remove("active");
 currentChannelType=null;
-
 }
 
 async function logoutUser(){
-
+if(initSupabase()){
 try{
-
 await supabaseClient.auth.signOut();
-
 }catch(error){
-
 console.error(error);
-
+}
 }
 
 currentUser=null;
 currentProfile=null;
-
 showAuthPage();
-
 showToast("تم تسجيل الخروج.");
-
 }
 
 function escapeHtml(value){
-
-return String(value ?? "")
+return String(value??"")
 .replace(/&/g,"&amp;")
 .replace(/</g,"&lt;")
 .replace(/>/g,"&gt;")
 .replace(/"/g,"&quot;")
 .replace(/'/g,"&#039;");
-
 }
 
 function escapeAttribute(value){
-
 return escapeHtml(value);
-
 }
 
 let toastTimer=null;
 
 function showToast(message){
-
 const toast=document.getElementById("toast");
+if(!toast)return;
 
 toast.textContent=message;
-
 toast.classList.add("show");
 
 clearTimeout(toastTimer);
 
 toastTimer=setTimeout(()=>{
-
 toast.classList.remove("show");
-
 },3000);
-
 }
-
-document.getElementById("addProjectModal")
-.addEventListener("click",function(event){
-
-if(event.target===this){
-closeAddProjectModal();
-}
-
-});
-
-document.getElementById("designModal")
-.addEventListener("click",function(event){
-
-if(event.target===this){
-closeDesignModal();
-}
-
-});
-
-document.getElementById("channelModal")
-.addEventListener("click",function(event){
-
-if(event.target===this){
-closeChannel();
-}
-
-});
 
 document.addEventListener("keydown",function(event){
-
 if(event.key==="Escape"){
-
 closeAddProjectModal();
 closeDesignModal();
 closeChannel();
-
 }
-
 });
 
-document.addEventListener("DOMContentLoaded",function(){
+document.addEventListener("DOMContentLoaded",async function(){
 
 showAuthPage();
 
-checkCurrentUser();
+if(!initSupabase()){
+showAuthMessage("جاري تحميل خدمة الدخول...");
+
+setTimeout(async()=>{
+if(initSupabase()){
+clearAuthMessage();
+setupAuthListener();
+await checkCurrentUser();
+}else{
+showAuthMessage("تعذر تحميل خدمة الدخول. تأكد من الإنترنت ثم أعد تحميل الصفحة.");
+}
+},1000);
+
+return;
+}
+
+setupAuthListener();
+await checkCurrentUser();
 
 });
-
 </script>
 
 </body>
