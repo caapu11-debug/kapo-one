@@ -11,13 +11,9 @@
 
 <style>
 
-*{
-box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
-html{
-scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
 margin:0;
@@ -29,19 +25,9 @@ color:#fff;
 min-height:100vh;
 }
 
-button,input,textarea{
-font-family:inherit;
-}
-
-button{
-cursor:pointer;
-}
-
-.hidden{
-display:none !important;
-}
-
-/* AUTH */
+button,input,textarea{font-family:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
 
 .auth-page{
 min-height:100vh;
@@ -83,9 +69,7 @@ text-align:center;
 margin:10px 0 25px;
 }
 
-.form-group{
-margin-bottom:16px;
-}
+.form-group{margin-bottom:16px}
 
 .form-group label{
 display:block;
@@ -172,9 +156,7 @@ font-size:14px;
 
 /* APP */
 
-#appPage{
-min-height:100vh;
-}
+#appPage{min-height:100vh}
 
 header{
 position:sticky;
@@ -332,9 +314,7 @@ font-size:30px;
 margin-bottom:10px;
 }
 
-.feature-card h3{
-margin:7px 0;
-}
+.feature-card h3{margin:7px 0}
 
 .feature-card p{
 color:#94a3b8;
@@ -451,8 +431,7 @@ padding:17px;
 .project-image{
 height:170px;
 border-radius:14px;
-background:
-linear-gradient(135deg,#172554,#312e81);
+background:linear-gradient(135deg,#172554,#312e81);
 display:flex;
 align-items:center;
 justify-content:center;
@@ -461,9 +440,7 @@ margin-bottom:15px;
 overflow:hidden;
 }
 
-.project-card h3{
-margin:0 0 8px;
-}
+.project-card h3{margin:0 0 8px}
 
 .project-card p{
 color:#94a3b8;
@@ -651,9 +628,7 @@ transition:.3s ease;
 transform:scale(1.10);
 }
 
-.design-content{
-padding:17px;
-}
+.design-content{padding:17px}
 
 .design-name{
 font-size:19px;
@@ -698,7 +673,7 @@ background:linear-gradient(135deg,#2563eb,#7c3aed);
 color:#fff;
 }
 
-/* IDEAS / CHANNELS / ANSWERS */
+/* COMMUNITY */
 
 .community-grid{
 display:grid;
@@ -718,9 +693,7 @@ font-size:40px;
 margin-bottom:12px;
 }
 
-.community-card h3{
-margin:5px 0 10px;
-}
+.community-card h3{margin:5px 0 10px}
 
 .community-card p{
 color:#94a3b8;
@@ -779,9 +752,7 @@ border-radius:16px;
 padding:17px;
 }
 
-.feed-item h3{
-margin:0 0 8px;
-}
+.feed-item h3{margin:0 0 8px}
 
 .feed-item p{
 color:#cbd5e1;
@@ -809,9 +780,7 @@ background:rgba(0,0,0,.72);
 backdrop-filter:blur(9px);
 }
 
-.design-modal.show{
-display:flex;
-}
+.design-modal.show{display:flex}
 
 .design-modal-box{
 width:100%;
@@ -854,9 +823,7 @@ font-size:120px;
 filter:drop-shadow(0 20px 30px rgba(0,0,0,.4));
 }
 
-.design-modal-content{
-padding:25px;
-}
+.design-modal-content{padding:25px}
 
 .design-modal-content h2{
 font-size:30px;
@@ -952,9 +919,7 @@ padding:12px 0;
 border-bottom:1px solid #1e293b;
 }
 
-.profile-row:last-child{
-border-bottom:none;
-}
+.profile-row:last-child{border-bottom:none}
 
 .profile-label{
 font-size:12px;
@@ -967,8 +932,6 @@ color:#e2e8f0;
 word-break:break-word;
 }
 
-/* FOOTER */
-
 footer{
 text-align:center;
 padding:25px 15px;
@@ -977,19 +940,14 @@ font-size:12px;
 border-top:1px solid rgba(148,163,184,.08);
 }
 
-/* RESPONSIVE */
-
 @media(max-width:1000px){
 
-.features-grid{
+.features-grid,
+.designs-grid{
 grid-template-columns:repeat(2,1fr);
 }
 
 .projects-grid{
-grid-template-columns:repeat(2,1fr);
-}
-
-.designs-grid{
 grid-template-columns:repeat(2,1fr);
 }
 
@@ -1001,9 +959,7 @@ grid-template-columns:repeat(2,1fr);
 
 @media(max-width:700px){
 
-.header-inner{
-flex-direction:column;
-}
+.header-inner{flex-direction:column}
 
 .nav{
 width:100%;
@@ -1012,21 +968,13 @@ justify-content:flex-start;
 padding-bottom:3px;
 }
 
-.nav button{
-white-space:nowrap;
-}
+.nav button{white-space:nowrap}
 
-.user-mini{
-display:none;
-}
+.user-mini{display:none}
 
-main{
-padding:15px 12px 90px;
-}
+main{padding:15px 12px 90px}
 
-.hero{
-padding:35px 10px 25px;
-}
+.hero{padding:35px 10px 25px}
 
 .features-grid,
 .projects-grid,
@@ -1036,34 +984,22 @@ padding:35px 10px 25px;
 grid-template-columns:1fr;
 }
 
-.designs-tools{
-flex-direction:column;
-}
+.designs-tools{flex-direction:column}
 
-.designs-tools button{
-height:45px;
-}
+.designs-tools button{height:45px}
 
-.design-modal{
-padding:10px;
-}
+.design-modal{padding:10px}
 
 .design-modal-box{
 max-height:94vh;
 border-radius:20px;
 }
 
-.design-modal-visual{
-min-height:230px;
-}
+.design-modal-visual{min-height:230px}
 
-.design-modal-emoji{
-font-size:90px;
-}
+.design-modal-emoji{font-size:90px}
 
-.design-modal-content h2{
-font-size:25px;
-}
+.design-modal-content h2{font-size:25px}
 
 .comment-form,
 .design-comment-input{
@@ -1076,8 +1012,6 @@ height:43px;
 }
 
 }
-
-/* TOAST */
 
 .kapo-toast{
 position:fixed;
@@ -1112,9 +1046,7 @@ transform:translateX(-50%) translateY(0);
 
 <div class="auth-box">
 
-<div class="auth-logo">
-KAPO ONE
-</div>
+<div class="auth-logo">KAPO ONE</div>
 
 <div class="auth-subtitle">
 منصة كابو للأفكار والمشاريع والتصاميم
@@ -1134,9 +1066,7 @@ KAPO ONE
 <input id="loginPassword" type="password" placeholder="••••••••">
 </div>
 
-<button class="primary-btn" onclick="loginUser()">
-دخول
-</button>
+<button class="primary-btn" onclick="loginUser()">دخول</button>
 
 <button class="guest-btn" onclick="enterGuest()">
 👤 الدخول كزائر
@@ -1144,13 +1074,9 @@ KAPO ONE
 
 <div class="auth-links">
 
-<button onclick="showRegister()">
-إنشاء حساب
-</button>
+<button onclick="showRegister()">إنشاء حساب</button>
 
-<button onclick="showReset()">
-نسيت كلمة المرور؟
-</button>
+<button onclick="showReset()">نسيت كلمة المرور؟</button>
 
 </div>
 
@@ -1218,37 +1144,42 @@ KAPO ONE
 
 <div class="header-inner">
 
-<div class="logo">
-KAPO ONE
-</div>
+<div class="logo">KAPO ONE</div>
 
 <nav class="nav">
 
-<button id="navHome" class="active" onclick="kapoSection('home',this)">
+<button id="navHome" class="active"
+onclick="kapoSection('home',this)">
 الرئيسية
 </button>
 
-<button id="navProjects" onclick="kapoSection('projects',this)">
+<button id="navProjects"
+onclick="kapoSection('projects',this)">
 المشاريع
 </button>
 
-<button id="navDesigns" onclick="kapoSection('designs',this)">
+<button id="navDesigns"
+onclick="kapoSection('designs',this)">
 التصاميم
 </button>
 
-<button id="navIdeas" onclick="kapoSection('ideas',this)">
+<button id="navIdeas"
+onclick="kapoSection('ideas',this)">
 الأفكار
 </button>
 
-<button id="navChannels" onclick="kapoSection('channels',this)">
+<button id="navChannels"
+onclick="kapoSection('channels',this)">
 القنوات
 </button>
 
-<button id="navAnswers" onclick="kapoSection('answers',this)">
+<button id="navAnswers"
+onclick="kapoSection('answers',this)">
 الإجابات
 </button>
 
-<button id="navProfile" onclick="kapoSection('profile',this)">
+<button id="navProfile"
+onclick="kapoSection('profile',this)">
 حسابي
 </button>
 
@@ -1258,9 +1189,7 @@ KAPO ONE
 
 <span class="user-dot"></span>
 
-<span id="headerUserName">
-مستخدم
-</span>
+<span id="headerUserName">مستخدم</span>
 
 <span id="guestBadge" class="guest-badge hidden">
 زائر
@@ -1299,7 +1228,8 @@ KAPO ONE
 استكشف المشاريع
 </button>
 
-<button class="outline" onclick="kapoSection('designs',document.getElementById('navDesigns'))">
+<button class="outline"
+onclick="kapoSection('designs',document.getElementById('navDesigns'))">
 شاهد التصاميم
 </button>
 
@@ -1361,9 +1291,7 @@ KAPO ONE
 
 <section id="sectionProjects" class="section-box hidden">
 
-<div class="section-title">
-🏗️ المشاريع
-</div>
+<div class="section-title">🏗️ المشاريع</div>
 
 <div class="section-description">
 استعرض المشاريع الموجودة داخل منصة KAPO ONE وتفاعل معها.
@@ -1399,7 +1327,8 @@ oninput="searchProjects()"
 
 <div class="project-filter">
 
-<button class="active" onclick="setProjectFilter('all',this)">
+<button class="active"
+onclick="setProjectFilter('all',this)">
 الكل
 </button>
 
@@ -1425,15 +1354,11 @@ oninput="searchProjects()"
 
 <div class="designs-head">
 
-<div class="designs-icon">
-🎨
-</div>
+<div class="designs-icon">🎨</div>
 
 <div>
 
-<div class="designs-title">
-التصاميم
-</div>
+<div class="designs-title">التصاميم</div>
 
 <div class="designs-text">
 مساحة مخصصة لاستعراض التصاميم المعمارية والأفكار البصرية.
@@ -1452,9 +1377,7 @@ placeholder="🔎 ابحث عن تصميم..."
 oninput="filterDesigns()"
 >
 
-<button onclick="resetDesignSearch()">
-إعادة
-</button>
+<button onclick="resetDesignSearch()">إعادة</button>
 
 </div>
 
@@ -1464,13 +1387,11 @@ oninput="filterDesigns()"
 
 <div class="designs-grid">
 
-<div
-class="design-card"
+<div class="design-card"
 data-design-title="برج المستقبل"
 data-design-description="تصور معماري لبرج مستقبلي يجمع بين الواجهات الزجاجية والخطوط الهندسية الحديثة."
 data-design-emoji="🏙️"
-data-design-tag="أبراج"
->
+data-design-tag="أبراج">
 
 <div class="design-image">
 <div class="design-placeholder">🏙️</div>
@@ -1488,10 +1409,8 @@ data-design-tag="أبراج"
 
 <div class="design-actions">
 
-<button
-class="primary"
-onclick="showDesignMessage('برج المستقبل')"
->
+<button class="primary"
+onclick="showDesignMessage('برج المستقبل')">
 استكشف
 </button>
 
@@ -1501,13 +1420,11 @@ onclick="showDesignMessage('برج المستقبل')"
 </div>
 
 
-<div
-class="design-card"
+<div class="design-card"
 data-design-title="التصميم الذري"
 data-design-description="فكرة معمارية مستوحاة من شكل الذرة، بتكوين هندسي مميز ومساحات مترابطة."
 data-design-emoji="⚛️"
-data-design-tag="تصميم مستقبلي"
->
+data-design-tag="تصميم مستقبلي">
 
 <div class="design-image">
 <div class="design-placeholder">⚛️</div>
@@ -1525,10 +1442,8 @@ data-design-tag="تصميم مستقبلي"
 
 <div class="design-actions">
 
-<button
-class="primary"
-onclick="showDesignMessage('التصميم الذري')"
->
+<button class="primary"
+onclick="showDesignMessage('التصميم الذري')">
 استكشف
 </button>
 
@@ -1538,13 +1453,11 @@ onclick="showDesignMessage('التصميم الذري')"
 </div>
 
 
-<div
-class="design-card"
+<div class="design-card"
 data-design-title="السيف والنخلة"
 data-design-description="تصميم رمزي يجمع بين السيف والنخلة في تكوين معماري يعكس الهوية والطموح."
 data-design-emoji="⚔️🌴"
-data-design-tag="هوية معمارية"
->
+data-design-tag="هوية معمارية">
 
 <div class="design-image">
 <div class="design-placeholder">⚔️🌴</div>
@@ -1562,10 +1475,8 @@ data-design-tag="هوية معمارية"
 
 <div class="design-actions">
 
-<button
-class="primary"
-onclick="showDesignMessage('السيف والنخلة')"
->
+<button class="primary"
+onclick="showDesignMessage('السيف والنخلة')">
 استكشف
 </button>
 
@@ -1575,13 +1486,11 @@ onclick="showDesignMessage('السيف والنخلة')"
 </div>
 
 
-<div
-class="design-card"
+<div class="design-card"
 data-design-title="مدينة المستقبل"
 data-design-description="تصور لمدينة مستقبلية ذكية تجمع بين الأبراج والمرافق والمساحات الحديثة."
 data-design-emoji="🌆"
-data-design-tag="مدن ذكية"
->
+data-design-tag="مدن ذكية">
 
 <div class="design-image">
 <div class="design-placeholder">🌆</div>
@@ -1599,10 +1508,8 @@ data-design-tag="مدن ذكية"
 
 <div class="design-actions">
 
-<button
-class="primary"
-onclick="showDesignMessage('مدينة المستقبل')"
->
+<button class="primary"
+onclick="showDesignMessage('مدينة المستقبل')">
 استكشف
 </button>
 
@@ -1619,9 +1526,7 @@ onclick="showDesignMessage('مدينة المستقبل')"
 
 <section id="sectionIdeas" class="section-box hidden">
 
-<div class="section-title">
-💡 الأفكار
-</div>
+<div class="section-title">💡 الأفكار</div>
 
 <div class="section-description">
 شارك فكرة جديدة مع مجتمع KAPO ONE.
@@ -1637,9 +1542,7 @@ rows="4"
 placeholder="اكتب فكرتك هنا..."
 ></textarea>
 
-<button onclick="addIdea()">
-➕ نشر الفكرة
-</button>
+<button onclick="addIdea()">➕ نشر الفكرة</button>
 
 </div>
 
@@ -1652,9 +1555,7 @@ placeholder="اكتب فكرتك هنا..."
 
 <section id="sectionChannels" class="section-box hidden">
 
-<div class="section-title">
-📺 القنوات
-</div>
+<div class="section-title">📺 القنوات</div>
 
 <div class="section-description">
 قنوات KAPO ONE للمحتوى والنقاش والمشاريع.
@@ -1666,21 +1567,27 @@ placeholder="اكتب فكرتك هنا..."
 <div class="community-icon">🏗️</div>
 <h3>قناة المشاريع</h3>
 <p>متابعة المشاريع الجديدة والأفكار الهندسية والمعمارية.</p>
-<button onclick="showToast('قناة المشاريع جاهزة للتطوير 🚀')">دخول القناة</button>
+<button onclick="showToast('قناة المشاريع جاهزة للتطوير 🚀')">
+دخول القناة
+</button>
 </div>
 
 <div class="community-card">
 <div class="community-icon">🎨</div>
 <h3>قناة التصاميم</h3>
 <p>استعراض التصاميم والمقترحات البصرية الجديدة.</p>
-<button onclick="kapoSection('designs',document.getElementById('navDesigns'))">مشاهدة</button>
+<button onclick="kapoSection('designs',document.getElementById('navDesigns'))">
+مشاهدة
+</button>
 </div>
 
 <div class="community-card">
 <div class="community-icon">💡</div>
 <h3>قناة الأفكار</h3>
 <p>شارك أفكارك وتابع الأفكار الجديدة داخل المنصة.</p>
-<button onclick="kapoSection('ideas',document.getElementById('navIdeas'))">فتح القناة</button>
+<button onclick="kapoSection('ideas',document.getElementById('navIdeas'))">
+فتح القناة
+</button>
 </div>
 
 </div>
@@ -1692,9 +1599,7 @@ placeholder="اكتب فكرتك هنا..."
 
 <section id="sectionAnswers" class="section-box hidden">
 
-<div class="section-title">
-💬 الإجابات
-</div>
+<div class="section-title">💬 الإجابات</div>
 
 <div class="section-description">
 اطرح سؤالك ودع مجتمع KAPO ONE يشاركك المعرفة والأفكار.
@@ -1710,9 +1615,7 @@ rows="4"
 placeholder="اكتب سؤالك هنا..."
 ></textarea>
 
-<button onclick="addQuestion()">
-❓ طرح السؤال
-</button>
+<button onclick="addQuestion()">❓ طرح السؤال</button>
 
 </div>
 
@@ -1727,49 +1630,33 @@ placeholder="اكتب سؤالك هنا..."
 
 <div class="profile-card">
 
-<div class="profile-avatar" id="profileAvatar">
-👤
-</div>
+<div class="profile-avatar" id="profileAvatar">👤</div>
 
-<h2 id="profileName">
-المستخدم
-</h2>
+<h2 id="profileName">المستخدم</h2>
 
-<p id="profileEmail" style="color:#94a3b8;">
--
-</p>
+<p id="profileEmail" style="color:#94a3b8;">-</p>
 
 <div class="profile-info">
 
 <div class="profile-row">
 
-<div class="profile-label">
-الاسم
-</div>
+<div class="profile-label">الاسم</div>
 
-<div id="profileNameValue" class="profile-value">
--
-</div>
+<div id="profileNameValue" class="profile-value">-</div>
 
 </div>
 
 <div class="profile-row">
 
-<div class="profile-label">
-البريد الإلكتروني
-</div>
+<div class="profile-label">البريد الإلكتروني</div>
 
-<div id="profileEmailValue" class="profile-value">
--
-</div>
+<div id="profileEmailValue" class="profile-value">-</div>
 
 </div>
 
 <div class="profile-row">
 
-<div class="profile-label">
-نوع الدخول
-</div>
+<div class="profile-label">نوع الدخول</div>
 
 <div id="profileTypeValue" class="profile-value">
 مستخدم
@@ -1782,8 +1669,7 @@ placeholder="اكتب سؤالك هنا..."
 <button
 class="secondary-btn"
 onclick="logoutUser()"
-style="margin-top:18px;"
->
+style="margin-top:18px;">
 تسجيل الخروج
 </button>
 
@@ -1802,27 +1688,22 @@ KAPO ONE © 2026 — منصة المشاريع والتصاميم والأفكا
 
 <!-- DESIGN MODAL -->
 
-<div
-id="designModal"
+<div id="designModal"
 class="design-modal"
-onclick="handleDesignModalClick(event)"
->
+onclick="handleDesignModalClick(event)">
 
 <div class="design-modal-box">
 
 <button
 class="design-modal-close"
-onclick="closeDesignModal()"
->
+onclick="closeDesignModal()">
 ×
 </button>
 
 <div class="design-modal-visual">
 
-<div
-id="designModalEmoji"
-class="design-modal-emoji"
->
+<div id="designModalEmoji"
+class="design-modal-emoji">
 🎨
 </div>
 
@@ -1830,27 +1711,20 @@ class="design-modal-emoji"
 
 <div class="design-modal-content">
 
-<h2 id="designModalTitle">
-التصميم
-</h2>
+<h2 id="designModalTitle">التصميم</h2>
 
 <p id="designModalDescription">
 تفاصيل التصميم
 </p>
 
-<span
-id="designModalTag"
-class="design-tag"
->
+<span id="designModalTag" class="design-tag">
 تصميم
 </span>
 
 <div class="design-modal-actions">
 
-<button
-class="like-btn"
-onclick="likeCurrentDesign()"
->
+<button class="like-btn"
+onclick="likeCurrentDesign()">
 ❤️ إعجاب <span id="designLikeCount">0</span>
 </button>
 
@@ -1899,7 +1773,7 @@ placeholder="اكتب تعليقك..."
 <script>
 
 /* =========================
-   SUPABASE
+SUPABASE
 ========================= */
 
 const SUPABASE_URL =
@@ -1914,11 +1788,31 @@ const OWNER_ID =
 const SITE_URL =
 "https://caapu11-debug.github.io/kapo-one/";
 
-const supabaseClient =
+let supabaseClient = null;
+
+try{
+
+if(
+window.supabase &&
+typeof window.supabase.createClient === "function"
+){
+
+supabaseClient =
 window.supabase.createClient(
 SUPABASE_URL,
 SUPABASE_KEY
 );
+
+}
+
+}catch(error){
+
+console.error(
+"Supabase error:",
+error
+);
+
+}
 
 
 /* GLOBAL */
@@ -1961,7 +1855,7 @@ return String(value ?? "")
 
 function formatDate(date){
 
-if(!date) return "";
+if(!date)return "";
 
 try{
 
@@ -1984,19 +1878,16 @@ return "";
 
 function showToast(message){
 
-const toast =
-document.getElementById("kapoToast");
+const toast=document.getElementById("kapoToast");
 
-if(!toast) return;
+if(!toast)return;
 
-toast.textContent = message;
-
+toast.textContent=message;
 toast.classList.add("show");
 
 clearTimeout(window.kapoToastTimer);
 
-window.kapoToastTimer =
-setTimeout(function(){
+window.kapoToastTimer=setTimeout(function(){
 
 toast.classList.remove("show");
 
@@ -2009,13 +1900,23 @@ toast.classList.remove("show");
 
 function showAuthMessage(message){
 
-const box =
-document.getElementById("authMessage");
+const box=document.getElementById("authMessage");
 
-if(!box) return;
+if(!box)return;
 
-box.textContent = message;
+box.textContent=message;
 box.classList.remove("hidden");
+
+}
+
+function clearAuthMessage(){
+
+const box=document.getElementById("authMessage");
+
+if(box){
+box.textContent="";
+box.classList.add("hidden");
+}
 
 }
 
@@ -2048,34 +1949,21 @@ document.getElementById("resetBox").classList.remove("hidden");
 
 function enterGuest(){
 
-isGuest = true;
-currentUser = null;
+isGuest=true;
+currentUser=null;
 
 document.getElementById("authPage").classList.add("hidden");
 document.getElementById("appPage").classList.remove("hidden");
 
-document.getElementById("headerUserName").textContent =
-"زائر";
-
+document.getElementById("headerUserName").textContent="زائر";
 document.getElementById("guestBadge").classList.remove("hidden");
 
-document.getElementById("profileName").textContent =
-"زائر KAPO ONE";
-
-document.getElementById("profileNameValue").textContent =
-"زائر";
-
-document.getElementById("profileEmail").textContent =
-"الدخول كزائر";
-
-document.getElementById("profileEmailValue").textContent =
-"-";
-
-document.getElementById("profileTypeValue").textContent =
-"زائر";
-
-document.getElementById("profileAvatar").textContent =
-"ز";
+document.getElementById("profileName").textContent="زائر KAPO ONE";
+document.getElementById("profileNameValue").textContent="زائر";
+document.getElementById("profileEmail").textContent="الدخول كزائر";
+document.getElementById("profileEmailValue").textContent="-";
+document.getElementById("profileTypeValue").textContent="زائر";
+document.getElementById("profileAvatar").textContent="ز";
 
 loadProjects();
 loadLocalCommunity();
@@ -2089,10 +1977,11 @@ showToast("مرحبًا بك كزائر في KAPO ONE 👋");
 
 async function createProfile(user,name){
 
+if(!supabaseClient)return;
+
 try{
 
-const {error} =
-await supabaseClient
+const result=await supabaseClient
 .from("profiles")
 .upsert(
 {
@@ -2105,12 +1994,14 @@ onConflict:"id"
 }
 );
 
-if(error){
-console.error(error);
+if(result.error){
+console.error(result.error);
 }
 
 }catch(error){
+
 console.error(error);
+
 }
 
 }
@@ -2120,14 +2011,19 @@ console.error(error);
 
 async function registerUser(){
 
-const name =
-document.getElementById("registerName").value.trim();
+if(!supabaseClient){
 
-const email =
-document.getElementById("registerEmail").value.trim();
+showAuthMessage(
+"تعذر تشغيل نظام الحسابات. أعد تحميل الصفحة."
+);
 
-const password =
-document.getElementById("registerPassword").value;
+return;
+
+}
+
+const name=document.getElementById("registerName").value.trim();
+const email=document.getElementById("registerEmail").value.trim();
+const password=document.getElementById("registerPassword").value;
 
 if(!name || !email || !password){
 
@@ -2136,7 +2032,7 @@ return;
 
 }
 
-if(password.length < 6){
+if(password.length<6){
 
 showAuthMessage(
 "كلمة المرور يجب أن تكون 6 أحرف على الأقل."
@@ -2150,13 +2046,10 @@ showAuthMessage("جاري إنشاء الحساب...");
 
 try{
 
-const {data,error} =
-await supabaseClient.auth.signUp(
-{
+const {data,error}=await supabaseClient.auth.signUp({
 email:email,
 password:password
-}
-);
+});
 
 if(error){
 
@@ -2165,17 +2058,17 @@ return;
 
 }
 
-if(data.user){
+if(data && data.user){
 
 await createProfile(data.user,name);
 
 }
 
+showLogin();
+
 showAuthMessage(
 "تم إنشاء الحساب بنجاح. يمكنك تسجيل الدخول الآن."
 );
-
-showLogin();
 
 }catch(error){
 
@@ -2194,11 +2087,18 @@ showAuthMessage(
 
 async function loginUser(){
 
-const email =
-document.getElementById("loginEmail").value.trim();
+if(!supabaseClient){
 
-const password =
-document.getElementById("loginPassword").value;
+showAuthMessage(
+"تعذر تشغيل نظام تسجيل الدخول. أعد تحميل الصفحة."
+);
+
+return;
+
+}
+
+const email=document.getElementById("loginEmail").value.trim();
+const password=document.getElementById("loginPassword").value;
 
 if(!email || !password){
 
@@ -2214,27 +2114,23 @@ showAuthMessage("جاري تسجيل الدخول...");
 
 try{
 
-const {data,error} =
-await supabaseClient.auth.signInWithPassword(
-{
+const {data,error}=await supabaseClient.auth.signInWithPassword({
 email:email,
 password:password
-}
-);
+});
 
 if(error){
 
 showAuthMessage(
-"فشل تسجيل الدخول: " +
-error.message
+"فشل تسجيل الدخول: "+error.message
 );
 
 return;
 
 }
 
-isGuest = false;
-currentUser = data.user;
+isGuest=false;
+currentUser=data.user;
 
 await loadUserApp();
 
@@ -2255,8 +2151,17 @@ showAuthMessage(
 
 async function resetUserPassword(){
 
-const email =
-document.getElementById("resetEmail").value.trim();
+if(!supabaseClient){
+
+showAuthMessage(
+"تعذر تشغيل نظام الاستعادة."
+);
+
+return;
+
+}
+
+const email=document.getElementById("resetEmail").value.trim();
 
 if(!email){
 
@@ -2274,8 +2179,7 @@ showAuthMessage(
 
 try{
 
-const {error} =
-await supabaseClient.auth.resetPasswordForEmail(
+const {error}=await supabaseClient.auth.resetPasswordForEmail(
 email,
 {
 redirectTo:SITE_URL
@@ -2310,28 +2214,29 @@ showAuthMessage(
 
 async function loadUserApp(){
 
+if(!currentUser)return;
+
 document.getElementById("authPage").classList.add("hidden");
 document.getElementById("appPage").classList.remove("hidden");
 
-isGuest = false;
+isGuest=false;
 
 document.getElementById("guestBadge").classList.add("hidden");
 
-let name =
-currentUser?.email ||
-"مستخدم";
+let name=currentUser.email || "مستخدم";
+
+if(supabaseClient){
 
 try{
 
-const {data} =
-await supabaseClient
+const {data,error}=await supabaseClient
 .from("profiles")
 .select("name,email")
 .eq("id",currentUser.id)
 .maybeSingle();
 
-if(data && data.name){
-name = data.name;
+if(!error && data && data.name){
+name=data.name;
 }
 
 }catch(error){
@@ -2340,40 +2245,33 @@ console.error(error);
 
 }
 
-document.getElementById("headerUserName").textContent = name;
-document.getElementById("profileName").textContent = name;
-document.getElementById("profileNameValue").textContent = name;
+}
 
-document.getElementById("profileEmail").textContent =
-currentUser?.email || "-";
+document.getElementById("headerUserName").textContent=name;
+document.getElementById("profileName").textContent=name;
+document.getElementById("profileNameValue").textContent=name;
 
-document.getElementById("profileEmailValue").textContent =
-currentUser?.email || "-";
+document.getElementById("profileEmail").textContent=
+currentUser.email || "-";
 
-document.getElementById("profileTypeValue").textContent =
-currentUser.id === OWNER_ID ?
+document.getElementById("profileEmailValue").textContent=
+currentUser.email || "-";
+
+document.getElementById("profileTypeValue").textContent=
+currentUser.id===OWNER_ID ?
 "مالك المنصة" :
 "مستخدم";
 
-const avatar =
-document.getElementById("profileAvatar");
+document.getElementById("profileAvatar").textContent=
+name ? name.charAt(0).toUpperCase() : "م";
 
-avatar.textContent =
-name ?
-name.charAt(0).toUpperCase() :
-"م";
+if(currentUser.id===OWNER_ID){
 
-if(currentUser.id === OWNER_ID){
-
-showToast(
-"مرحبًا بك يا مالك KAPO ONE 👑"
-);
+showToast("مرحبًا بك يا مالك KAPO ONE 👑");
 
 }else{
 
-showToast(
-"مرحبًا بك في KAPO ONE"
-);
+showToast("مرحبًا بك في KAPO ONE");
 
 }
 
@@ -2387,11 +2285,16 @@ loadLocalCommunity();
 
 async function logoutUser(){
 
-if(!isGuest){
-
 try{
 
+if(
+supabaseClient &&
+!isGuest
+){
+
 await supabaseClient.auth.signOut();
+
+}
 
 }catch(error){
 
@@ -2399,10 +2302,8 @@ console.error(error);
 
 }
 
-}
-
-currentUser = null;
-isGuest = false;
+currentUser=null;
+isGuest=false;
 
 document.getElementById("appPage").classList.add("hidden");
 document.getElementById("authPage").classList.remove("hidden");
@@ -2410,6 +2311,9 @@ document.getElementById("authPage").classList.remove("hidden");
 document.getElementById("guestBadge").classList.add("hidden");
 
 showLogin();
+clearAuthMessage();
+
+showToast("تم تسجيل الخروج.");
 
 }
 
@@ -2418,7 +2322,7 @@ showLogin();
 
 function kapoSection(section,button){
 
-const sections = [
+const sections=[
 "Home",
 "Projects",
 "Designs",
@@ -2430,8 +2334,7 @@ const sections = [
 
 sections.forEach(function(name){
 
-const el =
-document.getElementById("section" + name);
+const el=document.getElementById("section"+name);
 
 if(el){
 el.classList.add("hidden");
@@ -2439,11 +2342,11 @@ el.classList.add("hidden");
 
 });
 
-const target =
-document.getElementById(
-"section" +
-section.charAt(0).toUpperCase() +
-section.slice(1)
+const firstLetter=
+section.charAt(0).toUpperCase();
+
+const target=document.getElementById(
+"section"+firstLetter+section.slice(1)
 );
 
 if(target){
@@ -2452,24 +2355,31 @@ target.classList.remove("hidden");
 
 document.querySelectorAll(".nav button")
 .forEach(function(btn){
+
 btn.classList.remove("active");
+
 });
 
 if(button){
 button.classList.add("active");
 }
 
-if(section === "projects"){
+if(section==="projects"){
 loadProjects();
 }
 
-if(section === "ideas"){
+if(section==="ideas"){
 renderIdeas();
 }
 
-if(section === "answers"){
+if(section==="answers"){
 renderQuestions();
 }
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
 }
 
@@ -2478,22 +2388,31 @@ renderQuestions();
 
 async function loadProjects(){
 
-const grid =
-document.getElementById("projectsGrid");
+const grid=document.getElementById("projectsGrid");
 
-if(!grid) return;
+if(!grid)return;
 
-grid.innerHTML =
-`
+grid.innerHTML=`
 <div class="project-card">
 <p>جاري تحميل المشاريع...</p>
 </div>
 `;
 
+if(!supabaseClient){
+
+grid.innerHTML=`
+<div class="project-card">
+<p>نظام قاعدة البيانات غير متاح حاليًا.</p>
+</div>
+`;
+
+return;
+
+}
+
 try{
 
-const {data,error} =
-await supabaseClient
+const {data,error}=await supabaseClient
 .from("projects")
 .select("*")
 .order("created_at",{ascending:false});
@@ -2502,21 +2421,20 @@ if(error){
 
 console.error(error);
 
-grid.innerHTML =
-`
+grid.innerHTML=`
 <div class="project-card">
 <p>تعذر تحميل المشاريع من قاعدة البيانات.</p>
 </div>
 `;
 
-allProjects = [];
+allProjects=[];
 updateProjectStats();
 
 return;
 
 }
 
-allProjects = data || [];
+allProjects=data || [];
 
 renderProjects();
 updateProjectStats();
@@ -2525,8 +2443,7 @@ updateProjectStats();
 
 console.error(error);
 
-grid.innerHTML =
-`
+grid.innerHTML=`
 <div class="project-card">
 <p>حدث خطأ أثناء تحميل المشاريع.</p>
 </div>
@@ -2539,10 +2456,9 @@ grid.innerHTML =
 
 function updateProjectStats(){
 
-const count = allProjects.length;
+const count=allProjects.length;
 
-const withImages =
-allProjects.filter(function(project){
+const withImages=allProjects.filter(function(project){
 
 return !!(
 project.image_url ||
@@ -2552,24 +2468,21 @@ project.imageUrl
 
 }).length;
 
-const withoutImages =
-count - withImages;
+const withoutImages=count-withImages;
 
-const elements = {
-
+const elements={
 projectCount:count,
 projectWithImages:withImages,
 projectWithoutImages:withoutImages,
 homeProjectCount:count
-
 };
 
 Object.keys(elements).forEach(function(id){
 
-const el = document.getElementById(id);
+const el=document.getElementById(id);
 
 if(el){
-el.textContent = elements[id];
+el.textContent=elements[id];
 }
 
 });
@@ -2579,12 +2492,14 @@ el.textContent = elements[id];
 
 function setProjectFilter(filter,button){
 
-currentProjectFilter = filter;
+currentProjectFilter=filter;
 
 document
 .querySelectorAll(".project-filter button")
 .forEach(function(btn){
+
 btn.classList.remove("active");
+
 });
 
 if(button){
@@ -2603,66 +2518,55 @@ renderProjects();
 
 function renderProjects(){
 
-const grid =
-document.getElementById("projectsGrid");
+const grid=document.getElementById("projectsGrid");
 
-if(!grid) return;
+if(!grid)return;
 
-const searchInput =
-document.getElementById("projectSearch");
+const searchInput=document.getElementById("projectSearch");
 
-const query =
-searchInput ?
+const query=searchInput ?
 searchInput.value.trim().toLowerCase() :
 "";
 
-let projects =
-allProjects.filter(function(project){
+const projects=allProjects.filter(function(project){
 
-const text =
-(
-(project.title || "") +
-" " +
-(project.name || "") +
-" " +
+const text=(
+(project.title || "")+
+" "+
+(project.name || "")+
+" "+
 (project.description || "")
 ).toLowerCase();
 
-const hasImage =
-!!(
+const hasImage=!!(
 project.image_url ||
 project.image ||
 project.imageUrl
 );
 
-const matchesSearch =
-!query ||
-text.includes(query);
+const matchesSearch=
+!query || text.includes(query);
 
-let matchesFilter = true;
+let matchesFilter=true;
 
-if(currentProjectFilter === "images"){
-matchesFilter = hasImage;
+if(currentProjectFilter==="images"){
+matchesFilter=hasImage;
 }
 
-if(currentProjectFilter === "noimages"){
-matchesFilter = !hasImage;
+if(currentProjectFilter==="noimages"){
+matchesFilter=!hasImage;
 }
 
 return matchesSearch && matchesFilter;
 
 });
 
+if(projects.length===0){
 
-if(projects.length === 0){
-
-grid.innerHTML =
-`
+grid.innerHTML=`
 <div class="project-card">
 
-<div class="project-image">
-📁
-</div>
+<div class="project-image">📁</div>
 
 <h3>لا توجد مشاريع</h3>
 
@@ -2677,27 +2581,25 @@ return;
 
 }
 
+grid.innerHTML=projects.map(function(project){
 
-grid.innerHTML =
-projects.map(function(project){
+const id=project.id;
 
-const id = project.id;
-
-const title =
+const title=
 project.title ||
 project.name ||
 "مشروع بدون اسم";
 
-const description =
+const description=
 project.description ||
 "لا يوجد وصف للمشروع حاليًا.";
 
-const image =
+const image=
 project.image_url ||
 project.image ||
 project.imageUrl;
 
-return `
+return`
 
 <div class="project-card">
 
@@ -2714,13 +2616,9 @@ style="width:100%;height:100%;object-fit:cover;border-radius:14px;">`
 
 </div>
 
-<h3>
-${escapeHtml(title)}
-</h3>
+<h3>${escapeHtml(title)}</h3>
 
-<p>
-${escapeHtml(description)}
-</p>
+<p>${escapeHtml(description)}</p>
 
 <div class="project-actions">
 
@@ -2739,15 +2637,11 @@ id="projectDetails-${escapeHtml(id)}"
 class="project-details hidden"
 >
 
-<div>
-${escapeHtml(description)}
-</div>
+<div>${escapeHtml(description)}</div>
 
 <div class="comments-box">
 
-<strong>
-💬 التعليقات
-</strong>
+<strong>💬 التعليقات</strong>
 
 <div id="comments-${escapeHtml(id)}">
 جاري التحميل...
@@ -2776,9 +2670,10 @@ placeholder="اكتب تعليقك..."
 
 }).join("");
 
-
 projects.forEach(function(project){
+
 loadLikeData(project.id);
+
 });
 
 }
@@ -2786,17 +2681,18 @@ loadLikeData(project.id);
 
 async function toggleProjectDetails(id){
 
-const box =
-document.getElementById(
-"projectDetails-" + id
+const box=document.getElementById(
+"projectDetails-"+id
 );
 
-if(!box) return;
+if(!box)return;
 
 box.classList.toggle("hidden");
 
 if(!box.classList.contains("hidden")){
+
 await loadProjectComments(id);
+
 }
 
 }
@@ -2806,10 +2702,11 @@ await loadProjectComments(id);
 
 async function loadLikeData(projectId){
 
+if(!supabaseClient)return;
+
 try{
 
-const {count,error} =
-await supabaseClient
+const {count,error}=await supabaseClient
 .from("likes")
 .select("*",{count:"exact",head:true})
 .eq("project_id",projectId);
@@ -2821,23 +2718,19 @@ return;
 
 }
 
-const buttons =
-document.querySelectorAll(
-`.project-actions button`
+const buttons=document.querySelectorAll(
+".project-actions button"
 );
 
 buttons.forEach(function(button){
 
-if(
-button.getAttribute("onclick") &&
-button.getAttribute("onclick")
-.includes(
-`toggleLike('${projectId}')`
-)
-){
+const onclick=button.getAttribute("onclick") || "";
 
-button.textContent =
-"❤️ " + (count || 0);
+if(onclick.includes(
+"toggleLike('"+projectId+"'"
+)){
+
+button.textContent="❤️ "+(count || 0);
 
 }
 
@@ -2864,9 +2757,11 @@ return;
 
 }
 
+if(!supabaseClient)return;
+
 try{
 
-const {data:existing,error:findError} =
+const {data:existing,error:findError}=
 await supabaseClient
 .from("likes")
 .select("id")
@@ -2889,31 +2784,23 @@ showToast("تم إلغاء الإعجاب.");
 
 }else{
 
-const {error} =
-await supabaseClient
+const {error}=await supabaseClient
 .from("likes")
-.insert(
-{
+.insert({
 project_id:projectId,
 user_id:currentUser.id
-}
-);
+});
 
 if(error){
 
 console.error(error);
 
-showToast(
-"تعذر إضافة الإعجاب."
-);
-
+showToast("تعذر إضافة الإعجاب.");
 return;
 
 }
 
-showToast(
-"❤️ تم تسجيل إعجابك."
-);
+showToast("❤️ تم تسجيل إعجابك.");
 
 }
 
@@ -2932,17 +2819,15 @@ console.error(error);
 
 async function loadProjectComments(projectId){
 
-const box =
-document.getElementById(
-"comments-" + projectId
+const box=document.getElementById(
+"comments-"+projectId
 );
 
-if(!box) return;
+if(!box || !supabaseClient)return;
 
 try{
 
-const {data,error} =
-await supabaseClient
+const {data,error}=await supabaseClient
 .from("comments")
 .select("*")
 .eq("project_id",projectId)
@@ -2952,17 +2837,15 @@ if(error){
 
 console.error(error);
 
-box.innerHTML =
-"تعذر تحميل التعليقات.";
+box.innerHTML="تعذر تحميل التعليقات.";
 
 return;
 
 }
 
-if(!data || data.length === 0){
+if(!data || data.length===0){
 
-box.innerHTML =
-`
+box.innerHTML=`
 <p style="color:#64748b;font-size:13px;">
 لا توجد تعليقات بعد.
 </p>
@@ -2972,19 +2855,18 @@ return;
 
 }
 
-box.innerHTML =
-data.map(function(comment){
+box.innerHTML=data.map(function(comment){
 
-const text =
+const text=
 comment.content ||
 comment.comment ||
 "";
 
-const canDelete =
+const canDelete=
 currentUser &&
-comment.user_id === currentUser.id;
+comment.user_id===currentUser.id;
 
-return `
+return`
 
 <div class="comment-item">
 
@@ -2992,9 +2874,7 @@ return `
 ${escapeHtml(formatDate(comment.created_at))}
 </div>
 
-<div>
-${escapeHtml(text)}
-</div>
+<div>${escapeHtml(text)}</div>
 
 ${
 canDelete
@@ -3002,8 +2882,7 @@ canDelete
 `
 <button
 class="comment-delete"
-onclick="deleteComment('${escapeJs(comment.id)}','${escapeJs(projectId)}')"
->
+onclick="deleteComment('${escapeJs(comment.id)}','${escapeJs(projectId)}')">
 حذف
 </button>
 `
@@ -3021,8 +2900,7 @@ onclick="deleteComment('${escapeJs(comment.id)}','${escapeJs(projectId)}')"
 
 console.error(error);
 
-box.innerHTML =
-"حدث خطأ.";
+box.innerHTML="حدث خطأ.";
 
 }
 
@@ -3041,15 +2919,15 @@ return;
 
 }
 
-const input =
-document.getElementById(
-"commentInput-" + projectId
+if(!supabaseClient)return;
+
+const input=document.getElementById(
+"commentInput-"+projectId
 );
 
-if(!input) return;
+if(!input)return;
 
-const content =
-input.value.trim();
+const content=input.value.trim();
 
 if(!content){
 
@@ -3060,34 +2938,26 @@ return;
 
 try{
 
-const {error} =
-await supabaseClient
+const {error}=await supabaseClient
 .from("comments")
-.insert(
-{
+.insert({
 project_id:projectId,
 user_id:currentUser.id,
 content:content
-}
-);
+});
 
 if(error){
 
 console.error(error);
 
-showToast(
-"تعذر إضافة التعليق."
-);
-
+showToast("تعذر إضافة التعليق.");
 return;
 
 }
 
-input.value = "";
+input.value="";
 
-showToast(
-"💬 تم إضافة التعليق."
-);
+showToast("💬 تم إضافة التعليق.");
 
 await loadProjectComments(projectId);
 
@@ -3102,12 +2972,11 @@ console.error(error);
 
 async function deleteComment(commentId,projectId){
 
-if(!currentUser) return;
+if(!currentUser || !supabaseClient)return;
 
 try{
 
-const {error} =
-await supabaseClient
+const {error}=await supabaseClient
 .from("comments")
 .delete()
 .eq("id",commentId)
@@ -3117,10 +2986,7 @@ if(error){
 
 console.error(error);
 
-showToast(
-"تعذر حذف التعليق."
-);
-
+showToast("تعذر حذف التعليق.");
 return;
 
 }
@@ -3142,52 +3008,41 @@ console.error(error);
 
 function filterDesigns(){
 
-const input =
-document.getElementById("designSearch");
+const input=document.getElementById("designSearch");
+const info=document.getElementById("designSearchInfo");
 
-const info =
-document.getElementById("designSearchInfo");
+if(!input)return;
 
-if(!input) return;
+const query=input.value.trim().toLowerCase();
 
-const query =
-input.value.trim().toLowerCase();
+const cards=document.querySelectorAll(".design-card");
 
-const cards =
-document.querySelectorAll(".design-card");
-
-let visible = 0;
+let visible=0;
 
 cards.forEach(function(card){
 
-const title =
-(
+const title=(
 card.getAttribute("data-design-title") || ""
 ).toLowerCase();
 
-const description =
-(
+const description=(
 card.innerText || ""
 ).toLowerCase();
 
-const match =
+const match=
 !query ||
 title.includes(query) ||
 description.includes(query);
 
-card.style.display =
-match ? "block" : "none";
+card.style.display=match ? "block" : "none";
 
-if(match){
-visible++;
-}
+if(match)visible++;
 
 });
 
 if(info){
 
-info.textContent =
-query
+info.textContent=query
 ?
 `🔎 تم العثور على ${visible} تصميم مطابق`
 :
@@ -3200,12 +3055,9 @@ query
 
 function resetDesignSearch(){
 
-const input =
-document.getElementById("designSearch");
+const input=document.getElementById("designSearch");
 
-if(input){
-input.value = "";
-}
+if(input)input.value="";
 
 filterDesigns();
 
@@ -3216,103 +3068,99 @@ filterDesigns();
 
 function showDesignMessage(name){
 
-const cards =
-document.querySelectorAll(".design-card");
+const cards=document.querySelectorAll(".design-card");
 
-let selected = null;
+let selected=null;
 
 cards.forEach(function(card){
 
 if(
-card.getAttribute("data-design-title") === name
+card.getAttribute("data-design-title")===name
 ){
-selected = card;
+
+selected=card;
+
 }
 
 });
 
 if(!selected){
 
-showToast(
-"لم يتم العثور على التصميم."
-);
-
+showToast("لم يتم العثور على التصميم.");
 return;
 
 }
 
-const description =
+const description=
 selected.getAttribute("data-design-description") ||
 "لا يوجد وصف.";
 
-const emoji =
+const emoji=
 selected.getAttribute("data-design-emoji") ||
 "🎨";
 
-const tag =
+const tag=
 selected.getAttribute("data-design-tag") ||
 "تصميم";
 
-currentDesign = {
+currentDesign={
 name:name,
 description:description,
 emoji:emoji,
 tag:tag
 };
 
-if(designLikes[name] === undefined){
-designLikes[name] = 0;
+if(designLikes[name]===undefined){
+designLikes[name]=0;
 }
 
 if(!designComments[name]){
-designComments[name] = [];
+designComments[name]=[];
 }
 
-document.getElementById("designModalTitle").textContent = name;
+document.getElementById("designModalTitle").textContent=name;
 
-document.getElementById("designModalDescription").textContent =
+document.getElementById("designModalDescription").textContent=
 description;
 
-document.getElementById("designModalEmoji").textContent =
+document.getElementById("designModalEmoji").textContent=
 emoji;
 
-document.getElementById("designModalTag").textContent =
+document.getElementById("designModalTag").textContent=
 tag;
 
-document.getElementById("designLikeCount").textContent =
+document.getElementById("designLikeCount").textContent=
 designLikes[name];
 
 renderDesignComments();
 
 document.getElementById("designModal").classList.add("show");
 
-document.body.style.overflow = "hidden";
+document.body.style.overflow="hidden";
 
 }
 
 
 function closeDesignModal(){
 
-const modal =
-document.getElementById("designModal");
+const modal=document.getElementById("designModal");
 
 if(modal){
 modal.classList.remove("show");
 }
 
-document.body.style.overflow = "";
+document.body.style.overflow="";
 
-currentDesign = null;
+currentDesign=null;
 
 }
 
 
 function handleDesignModalClick(event){
 
-const modal =
-document.getElementById("designModal");
+const modal=document.getElementById("designModal");
 
-if(event.target === modal){
+if(event.target===modal){
 closeDesignModal();
 }
 
@@ -3323,9 +3171,7 @@ closeDesignModal();
 
 function likeCurrentDesign(){
 
-if(!currentDesign){
-return;
-}
+if(!currentDesign)return;
 
 if(!currentUser){
 
@@ -3337,16 +3183,15 @@ return;
 
 }
 
-const name =
-currentDesign.name;
+const name=currentDesign.name;
 
-if(designLikes[name] === undefined){
-designLikes[name] = 0;
+if(designLikes[name]===undefined){
+designLikes[name]=0;
 }
 
 designLikes[name]++;
 
-document.getElementById("designLikeCount").textContent =
+document.getElementById("designLikeCount").textContent=
 designLikes[name];
 
 showToast(
@@ -3360,18 +3205,18 @@ showToast(
 
 function renderDesignComments(){
 
-const box =
-document.getElementById("designCommentsList");
+const box=document.getElementById(
+"designCommentsList"
+);
 
-if(!box || !currentDesign) return;
+if(!box || !currentDesign)return;
 
-const list =
+const list=
 designComments[currentDesign.name] || [];
 
-if(list.length === 0){
+if(list.length===0){
 
-box.innerHTML =
-`
+box.innerHTML=`
 <p style="color:#64748b;">
 لا توجد تعليقات بعد.
 </p>
@@ -3381,10 +3226,9 @@ return;
 
 }
 
-box.innerHTML =
-list.map(function(comment,index){
+box.innerHTML=list.map(function(comment,index){
 
-return `
+return`
 
 <div class="comment-item">
 
@@ -3392,14 +3236,11 @@ return `
 أنت • الآن
 </div>
 
-<div>
-${escapeHtml(comment)}
-</div>
+<div>${escapeHtml(comment)}</div>
 
 <button
 class="comment-delete"
-onclick="deleteDesignComment(${index})"
->
+onclick="deleteDesignComment(${index})">
 حذف
 </button>
 
@@ -3414,9 +3255,7 @@ onclick="deleteDesignComment(${index})"
 
 function addDesignComment(){
 
-if(!currentDesign){
-return;
-}
+if(!currentDesign)return;
 
 if(!currentUser){
 
@@ -3428,61 +3267,49 @@ return;
 
 }
 
-const input =
-document.getElementById(
+const input=document.getElementById(
 "designCommentInput"
 );
 
-if(!input) return;
+if(!input)return;
 
-const text =
-input.value.trim();
+const text=input.value.trim();
 
 if(!text){
 
-showToast(
-"اكتب تعليقك أولًا."
-);
-
+showToast("اكتب تعليقك أولًا.");
 return;
 
 }
 
 if(!designComments[currentDesign.name]){
-designComments[currentDesign.name] = [];
+designComments[currentDesign.name]=[];
 }
 
 designComments[currentDesign.name].push(text);
 
-input.value = "";
+input.value="";
 
 renderDesignComments();
 
-showToast(
-"💬 تم إضافة تعليقك."
-);
+showToast("💬 تم إضافة تعليقك.");
 
 }
 
 
 function deleteDesignComment(index){
 
-if(!currentDesign){
-return;
-}
+if(!currentDesign)return;
 
-const list =
-designComments[currentDesign.name];
+const list=designComments[currentDesign.name];
 
-if(!list) return;
+if(!list)return;
 
 list.splice(index,1);
 
 renderDesignComments();
 
-showToast(
-"تم حذف التعليق."
-);
+showToast("تم حذف التعليق.");
 
 }
 
@@ -3491,11 +3318,9 @@ showToast(
 
 async function shareCurrentDesign(){
 
-if(!currentDesign){
-return;
-}
+if(!currentDesign)return;
 
-const text =
+const text=
 `🎨 ${currentDesign.name}
 
 ${currentDesign.description}
@@ -3506,23 +3331,27 @@ try{
 
 if(navigator.share){
 
-await navigator.share(
-{
+await navigator.share({
 title:currentDesign.name,
 text:text,
 url:SITE_URL
-}
-);
+});
 
 }else{
 
+if(navigator.clipboard){
+
 await navigator.clipboard.writeText(
-text + "\n" + SITE_URL
+text+"\n"+SITE_URL
 );
 
-showToast(
-"📋 تم نسخ معلومات التصميم."
-);
+showToast("📋 تم نسخ معلومات التصميم.");
+
+}else{
+
+showToast("المشاركة غير مدعومة في هذا المتصفح.");
+
+}
 
 }
 
@@ -3539,11 +3368,9 @@ console.log(error);
 
 function addIdea(){
 
-const title =
-document.getElementById("ideaTitle").value.trim();
+const title=document.getElementById("ideaTitle").value.trim();
 
-const content =
-document.getElementById("ideaContent").value.trim();
+const content=document.getElementById("ideaContent").value.trim();
 
 if(!title || !content){
 
@@ -3555,7 +3382,7 @@ return;
 
 }
 
-const idea = {
+const idea={
 title:title,
 content:content,
 author:currentUser ?
@@ -3571,29 +3398,25 @@ localStorage.setItem(
 JSON.stringify(localIdeas)
 );
 
-document.getElementById("ideaTitle").value = "";
-document.getElementById("ideaContent").value = "";
+document.getElementById("ideaTitle").value="";
+document.getElementById("ideaContent").value="";
 
 renderIdeas();
 
-showToast(
-"💡 تم نشر الفكرة."
-);
+showToast("💡 تم نشر الفكرة.");
 
 }
 
 
 function renderIdeas(){
 
-const list =
-document.getElementById("ideasList");
+const list=document.getElementById("ideasList");
 
-if(!list) return;
+if(!list)return;
 
-if(localIdeas.length === 0){
+if(localIdeas.length===0){
 
-list.innerHTML =
-`
+list.innerHTML=`
 <div class="feed-item">
 
 <h3>لا توجد أفكار بعد</h3>
@@ -3605,29 +3428,27 @@ list.innerHTML =
 </div>
 `;
 
-document.getElementById("homeIdeaCount").textContent = "0";
+const count=document.getElementById("homeIdeaCount");
+
+if(count)count.textContent="0";
 
 return;
 
 }
 
-document.getElementById("homeIdeaCount").textContent =
-localIdeas.length;
+const count=document.getElementById("homeIdeaCount");
 
-list.innerHTML =
-localIdeas.map(function(idea){
+if(count)count.textContent=localIdeas.length;
 
-return `
+list.innerHTML=localIdeas.map(function(idea){
+
+return`
 
 <div class="feed-item">
 
-<h3>
-💡 ${escapeHtml(idea.title)}
-</h3>
+<h3>💡 ${escapeHtml(idea.title)}</h3>
 
-<p>
-${escapeHtml(idea.content)}
-</p>
+<p>${escapeHtml(idea.content)}</p>
 
 <div class="feed-meta">
 بواسطة ${escapeHtml(idea.author)}
@@ -3647,11 +3468,9 @@ ${escapeHtml(idea.content)}
 
 function addQuestion(){
 
-const title =
-document.getElementById("questionTitle").value.trim();
+const title=document.getElementById("questionTitle").value.trim();
 
-const content =
-document.getElementById("questionContent").value.trim();
+const content=document.getElementById("questionContent").value.trim();
 
 if(!title || !content){
 
@@ -3663,7 +3482,7 @@ return;
 
 }
 
-const question = {
+const question={
 title:title,
 content:content,
 author:currentUser ?
@@ -3680,29 +3499,25 @@ localStorage.setItem(
 JSON.stringify(localQuestions)
 );
 
-document.getElementById("questionTitle").value = "";
-document.getElementById("questionContent").value = "";
+document.getElementById("questionTitle").value="";
+document.getElementById("questionContent").value="";
 
 renderQuestions();
 
-showToast(
-"❓ تم نشر السؤال."
-);
+showToast("❓ تم نشر السؤال.");
 
 }
 
 
 function renderQuestions(){
 
-const list =
-document.getElementById("questionsList");
+const list=document.getElementById("questionsList");
 
-if(!list) return;
+if(!list)return;
 
-if(localQuestions.length === 0){
+if(localQuestions.length===0){
 
-list.innerHTML =
-`
+list.innerHTML=`
 <div class="feed-item">
 
 <h3>لا توجد أسئلة بعد</h3>
@@ -3718,23 +3533,17 @@ return;
 
 }
 
-list.innerHTML =
-localQuestions.map(function(question,index){
+list.innerHTML=localQuestions.map(function(question,index){
 
-const answers =
-question.answers || [];
+const answers=question.answers || [];
 
-return `
+return`
 
 <div class="feed-item">
 
-<h3>
-❓ ${escapeHtml(question.title)}
-</h3>
+<h3>❓ ${escapeHtml(question.title)}</h3>
 
-<p>
-${escapeHtml(question.content)}
-</p>
+<p>${escapeHtml(question.content)}</p>
 
 <div class="feed-meta">
 بواسطة ${escapeHtml(question.author)}
@@ -3752,7 +3561,7 @@ answers.length
 ?
 answers.map(function(answer){
 
-return `
+return`
 <div style="padding:10px 0;border-bottom:1px solid #1e293b;color:#cbd5e1;">
 ${escapeHtml(answer)}
 </div>
@@ -3760,7 +3569,9 @@ ${escapeHtml(answer)}
 
 }).join("")
 :
-`<p style="color:#64748b;font-size:13px;">لا توجد إجابات بعد.</p>`
+`<p style="color:#64748b;font-size:13px;">
+لا توجد إجابات بعد.
+</p>`
 }
 
 <div style="display:flex;gap:8px;margin-top:10px;">
@@ -3773,8 +3584,7 @@ style="flex:1;padding:10px;border-radius:10px;border:1px solid #263449;backgroun
 
 <button
 onclick="addAnswer(${index})"
-style="border:none;border-radius:10px;background:#2563eb;color:#fff;padding:0 14px;"
->
+style="border:none;border-radius:10px;background:#2563eb;color:#fff;padding:0 14px;">
 إجابة
 </button>
 
@@ -3803,33 +3613,26 @@ return;
 
 }
 
-const input =
-document.getElementById(
-"answer-" + index
+const input=document.getElementById(
+"answer-"+index
 );
 
-if(!input) return;
+if(!input)return;
 
-const text =
-input.value.trim();
+const text=input.value.trim();
 
 if(!text){
 
-showToast(
-"اكتب الإجابة أولًا."
-);
-
+showToast("اكتب الإجابة أولًا.");
 return;
 
 }
 
 if(!localQuestions[index].answers){
-localQuestions[index].answers = [];
+localQuestions[index].answers=[];
 }
 
-localQuestions[index].answers.push(
-text
-);
+localQuestions[index].answers.push(text);
 
 localStorage.setItem(
 "kapo_local_questions",
@@ -3838,9 +3641,7 @@ JSON.stringify(localQuestions)
 
 renderQuestions();
 
-showToast(
-"💬 تمت إضافة الإجابة."
-);
+showToast("💬 تمت إضافة الإجابة.");
 
 }
 
@@ -3851,18 +3652,18 @@ function loadLocalCommunity(){
 
 try{
 
-const savedIdeas =
+const savedIdeas=
 localStorage.getItem("kapo_local_ideas");
 
-const savedQuestions =
+const savedQuestions=
 localStorage.getItem("kapo_local_questions");
 
-localIdeas =
+localIdeas=
 savedIdeas ?
 JSON.parse(savedIdeas) :
 [];
 
-localQuestions =
+localQuestions=
 savedQuestions ?
 JSON.parse(savedQuestions) :
 [];
@@ -3871,8 +3672,8 @@ JSON.parse(savedQuestions) :
 
 console.error(error);
 
-localIdeas = [];
-localQuestions = [];
+localIdeas=[];
+localQuestions=[];
 
 }
 
@@ -3886,10 +3687,32 @@ renderQuestions();
 
 async function checkCurrentUser(){
 
+if(!supabaseClient){
+
+document.getElementById("authPage").classList.remove("hidden");
+document.getElementById("appPage").classList.add("hidden");
+
+showLogin();
+
+return;
+
+}
+
 try{
 
-const {data} =
-await supabaseClient.auth.getSession();
+const {data,error}=await supabaseClient.auth.getSession();
+
+if(error){
+
+console.error(error);
+
+document.getElementById("authPage").classList.remove("hidden");
+document.getElementById("appPage").classList.add("hidden");
+showLogin();
+
+return;
+
+}
 
 if(
 data &&
@@ -3897,23 +3720,34 @@ data.session &&
 data.session.user
 ){
 
-currentUser =
-data.session.user;
-
-isGuest = false;
+currentUser=data.session.user;
+isGuest=false;
 
 await loadUserApp();
 
 }else{
 
-document.getElementById("authPage").classList.remove("hidden");
+currentUser=null;
+isGuest=false;
+
 document.getElementById("appPage").classList.add("hidden");
+document.getElementById("authPage").classList.remove("hidden");
+
+showLogin();
 
 }
 
 }catch(error){
 
 console.error(error);
+
+currentUser=null;
+isGuest=false;
+
+document.getElementById("appPage").classList.add("hidden");
+document.getElementById("authPage").classList.remove("hidden");
+
+showLogin();
 
 }
 
@@ -3922,34 +3756,42 @@ console.error(error);
 
 /* AUTH STATE */
 
+if(supabaseClient){
+
 supabaseClient.auth.onAuthStateChange(
 async function(event,session){
 
-if(session && session.user){
+if(event==="SIGNED_OUT"){
 
-currentUser = session.user;
-isGuest = false;
+currentUser=null;
+isGuest=false;
 
-if(event === "SIGNED_IN"){
+document.getElementById("appPage").classList.add("hidden");
+document.getElementById("authPage").classList.remove("hidden");
+
+showLogin();
+
+return;
+
+}
+
+if(
+event==="SIGNED_IN" &&
+session &&
+session.user
+){
+
+currentUser=session.user;
+isGuest=false;
 
 await loadUserApp();
 
 }
 
 }
-
-if(event === "SIGNED_OUT"){
-
-currentUser = null;
-isGuest = false;
-
-document.getElementById("appPage").classList.add("hidden");
-document.getElementById("authPage").classList.remove("hidden");
-
-}
-
-}
 );
+
+}
 
 
 /* START */
@@ -3958,11 +3800,16 @@ document.addEventListener(
 "DOMContentLoaded",
 function(){
 
-checkCurrentUser();
+/*
+ننتظر تحميل الصفحة بالكامل
+ثم نشغل النظام.
+*/
+
+loadLocalCommunity();
 
 filterDesigns();
 
-loadLocalCommunity();
+checkCurrentUser();
 
 }
 );
@@ -3974,10 +3821,8 @@ document.addEventListener(
 "keydown",
 function(event){
 
-if(event.key === "Escape"){
-
+if(event.key==="Escape"){
 closeDesignModal();
-
 }
 
 }
