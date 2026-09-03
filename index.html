@@ -8,9 +8,14 @@
 <title>KAPO ONE</title>
 
 <style>
-*{box-sizing:border-box}
 
-html{scroll-behavior:smooth}
+*{
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
 
 body{
 margin:0;
@@ -24,14 +29,22 @@ color:#fff;
 min-height:100vh;
 }
 
+/* ================= HEADER ================= */
+
 header{
 position:relative;
 overflow:hidden;
 padding:52px 20px 42px;
 text-align:center;
-background:linear-gradient(180deg,rgba(15,23,42,.98),rgba(3,7,18,.94));
+background:linear-gradient(
+180deg,
+rgba(15,23,42,.98),
+rgba(3,7,18,.94)
+);
 border-bottom:1px solid rgba(96,165,250,.22);
-box-shadow:0 20px 70px rgba(0,0,0,.45),inset 0 -1px 0 rgba(255,255,255,.03);
+box-shadow:
+0 20px 70px rgba(0,0,0,.45),
+inset 0 -1px 0 rgba(255,255,255,.03);
 }
 
 header:before{
@@ -54,7 +67,15 @@ width:100%;
 height:1px;
 bottom:0;
 left:0;
-background:linear-gradient(90deg,transparent,#3b82f6,#a855f7,#06b6d4,transparent);
+background:
+linear-gradient(
+90deg,
+transparent,
+#3b82f6,
+#a855f7,
+#06b6d4,
+transparent
+);
 opacity:.7;
 }
 
@@ -64,7 +85,15 @@ margin:0;
 font-size:46px;
 font-weight:900;
 letter-spacing:3px;
-background:linear-gradient(90deg,#60a5fa,#c084fc,#38bdf8,#fff,#60a5fa);
+background:
+linear-gradient(
+90deg,
+#60a5fa,
+#c084fc,
+#38bdf8,
+#fff,
+#60a5fa
+);
 background-size:300%;
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
@@ -84,14 +113,31 @@ width:110px;
 height:4px;
 border-radius:20px;
 margin:22px auto 0;
-background:linear-gradient(90deg,#2563eb,#a855f7,#06b6d4);
-box-shadow:0 0 15px rgba(59,130,246,.6),0 0 30px rgba(168,85,247,.25);
+background:
+linear-gradient(
+90deg,
+#2563eb,
+#a855f7,
+#06b6d4
+);
+box-shadow:
+0 0 15px rgba(59,130,246,.6),
+0 0 30px rgba(168,85,247,.25);
 }
 
 @keyframes kapoGradient{
-0%{background-position:0%}
-100%{background-position:300%}
+
+0%{
+background-position:0%;
 }
+
+100%{
+background-position:300%;
+}
+
+}
+
+/* ================= GENERAL ================= */
 
 .container{
 width:92%;
@@ -102,12 +148,19 @@ margin:30px auto;
 .card{
 position:relative;
 overflow:hidden;
-background:linear-gradient(145deg,rgba(15,23,42,.94),rgba(7,13,25,.94));
+background:
+linear-gradient(
+145deg,
+rgba(15,23,42,.94),
+rgba(7,13,25,.94)
+);
 border:1px solid rgba(148,163,184,.14);
 border-radius:25px;
 padding:26px;
 margin-bottom:22px;
-box-shadow:0 20px 60px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,255,255,.045);
+box-shadow:
+0 20px 60px rgba(0,0,0,.30),
+inset 0 1px 0 rgba(255,255,255,.045);
 backdrop-filter:blur(14px);
 }
 
@@ -118,7 +171,13 @@ top:0;
 right:10%;
 width:35%;
 height:1px;
-background:linear-gradient(90deg,transparent,rgba(96,165,250,.5),transparent);
+background:
+linear-gradient(
+90deg,
+transparent,
+rgba(96,165,250,.5),
+transparent
+);
 }
 
 .card h2{
@@ -130,17 +189,33 @@ font-size:26px;
 line-height:1.8;
 }
 
+/* ================= HERO ================= */
+
 .hero-main{
 position:relative;
 overflow:hidden;
 text-align:center;
 padding:58px 25px;
 background:
-radial-gradient(circle at 50% 0%,rgba(59,130,246,.22),transparent 55%),
-radial-gradient(circle at 50% 100%,rgba(124,58,237,.10),transparent 50%),
-linear-gradient(145deg,rgba(15,23,42,.98),rgba(5,10,22,.98));
+radial-gradient(
+circle at 50% 0%,
+rgba(59,130,246,.22),
+transparent 55%
+),
+radial-gradient(
+circle at 50% 100%,
+rgba(124,58,237,.10),
+transparent 50%
+),
+linear-gradient(
+145deg,
+rgba(15,23,42,.98),
+rgba(5,10,22,.98)
+);
 border-color:rgba(96,165,250,.20);
-box-shadow:0 25px 80px rgba(0,0,0,.38),0 0 50px rgba(37,99,235,.06);
+box-shadow:
+0 25px 80px rgba(0,0,0,.38),
+0 0 50px rgba(37,99,235,.06);
 }
 
 .hero-main:before{
@@ -168,20 +243,37 @@ left:-100px;
 .hero-icon{
 font-size:64px;
 margin-bottom:12px;
-filter:drop-shadow(0 0 18px rgba(59,130,246,.45));
+filter:
+drop-shadow(
+0 0 18px rgba(59,130,246,.45)
+);
 animation:floatIcon 3s ease-in-out infinite;
 }
 
 @keyframes floatIcon{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-7px)}
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-7px);
+}
+
 }
 
 .hero-title{
 font-size:39px;
 font-weight:900;
 margin:10px 0;
-background:linear-gradient(90deg,#fff,#93c5fd,#c4b5fd,#fff);
+background:
+linear-gradient(
+90deg,
+#fff,
+#93c5fd,
+#c4b5fd,
+#fff
+);
 background-size:200%;
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
@@ -200,25 +292,36 @@ line-height:1.9;
 margin-top:28px;
 }
 
-input,textarea{
+/* ================= INPUTS ================= */
+
+input,
+textarea{
 width:100%;
 padding:16px 17px;
 margin:8px 0;
 border:1px solid #26364e;
 border-radius:15px;
-background:linear-gradient(145deg,rgba(2,6,23,.96),rgba(8,15,29,.96));
+background:
+linear-gradient(
+145deg,
+rgba(2,6,23,.96),
+rgba(8,15,29,.96)
+);
 color:white;
 font-size:16px;
 outline:none;
 transition:.25s;
 }
 
-input:focus,textarea:focus{
+input:focus,
+textarea:focus{
 border-color:#3b82f6;
-box-shadow:0 0 0 3px rgba(59,130,246,.12);
+box-shadow:
+0 0 0 3px rgba(59,130,246,.12);
 }
 
-input::placeholder,textarea::placeholder{
+input::placeholder,
+textarea::placeholder{
 color:#64748b;
 }
 
@@ -226,6 +329,8 @@ textarea{
 min-height:110px;
 resize:vertical;
 }
+
+/* ================= BUTTONS ================= */
 
 button{
 position:relative;
@@ -237,9 +342,15 @@ margin:5px;
 font-size:15px;
 font-weight:bold;
 cursor:pointer;
-background:linear-gradient(135deg,#2563eb,#3b82f6);
+background:
+linear-gradient(
+135deg,
+#2563eb,
+#3b82f6
+);
 color:white;
-box-shadow:0 8px 25px rgba(37,99,235,.20);
+box-shadow:
+0 8px 25px rgba(37,99,235,.20);
 transition:.25s;
 }
 
@@ -252,37 +363,71 @@ transform:translateY(0);
 }
 
 .btn-danger{
-background:linear-gradient(135deg,#b91c1c,#ef4444);
+background:
+linear-gradient(
+135deg,
+#b91c1c,
+#ef4444
+);
 }
 
 .btn-secondary{
-background:linear-gradient(135deg,#334155,#475569);
+background:
+linear-gradient(
+135deg,
+#334155,
+#475569
+);
 }
 
 .btn-success{
-background:linear-gradient(135deg,#15803d,#22c55e);
+background:
+linear-gradient(
+135deg,
+#15803d,
+#22c55e
+);
 }
 
 .btn-info{
-background:linear-gradient(135deg,#0369a1,#0ea5e9);
+background:
+linear-gradient(
+135deg,
+#0369a1,
+#0ea5e9
+);
 }
 
 .btn-purple{
-background:linear-gradient(135deg,#6d28d9,#a855f7);
+background:
+linear-gradient(
+135deg,
+#6d28d9,
+#a855f7
+);
 }
 
 .hidden{
 display:none!important;
 }
 
+/* ================= MESSAGE ================= */
+
 .message{
 padding:15px 17px;
 border-radius:14px;
 margin-top:12px;
-background:linear-gradient(145deg,rgba(23,32,51,.95),rgba(10,17,31,.95));
+background:
+linear-gradient(
+145deg,
+rgba(23,32,51,.95),
+rgba(10,17,31,.95)
+);
 border:1px solid #263449;
 line-height:1.8;
 }
+
+/* ================= AUTH ================= */
 
 .auth-tabs{
 display:flex;
@@ -294,6 +439,8 @@ margin-bottom:18px;
 flex:1;
 margin:0;
 }
+
+/* ================= NAV ================= */
 
 .kapo-nav{
 display:flex;
@@ -311,36 +458,221 @@ display:none;
 white-space:nowrap;
 margin:0;
 padding:12px 17px;
-background:linear-gradient(135deg,#172554,#1e3a8a);
+background:
+linear-gradient(
+135deg,
+#172554,
+#1e3a8a
+);
 }
 
 .kapo-nav button.active{
-background:linear-gradient(135deg,#2563eb,#7c3aed);
+background:
+linear-gradient(
+135deg,
+#2563eb,
+#7c3aed
+);
 }
 
-.project-search{
-margin-bottom:20px;
+/* =====================================================
+   PROJECTS
+===================================================== */
+
+.project-head{
+text-align:center;
+padding:15px 0 25px;
 }
 
-.project-search input{
+.project-head-icon{
+font-size:55px;
+filter:
+drop-shadow(
+0 0 18px rgba(59,130,246,.35)
+);
+margin-bottom:10px;
+}
+
+.project-head-title{
+font-size:34px;
+font-weight:900;
+background:
+linear-gradient(
+90deg,
+#60a5fa,
+#c084fc,
+#38bdf8
+);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.project-head-text{
+max-width:700px;
+margin:12px auto 0;
+color:#94a3b8;
+line-height:1.8;
+}
+
+/* ================= PROJECT STATS ================= */
+
+.project-stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:13px;
+margin-top:25px;
+}
+
+.project-stat{
+position:relative;
+overflow:hidden;
+text-align:center;
+padding:18px 10px;
+border-radius:18px;
+background:
+linear-gradient(
+145deg,
+rgba(15,23,42,.92),
+rgba(7,13,25,.92)
+);
+border:1px solid rgba(96,165,250,.14);
+}
+
+.project-stat:before{
+content:"";
+position:absolute;
+width:80px;
+height:80px;
+border-radius:50%;
+background:rgba(59,130,246,.10);
+filter:blur(25px);
+top:-35px;
+right:-25px;
+}
+
+.project-stat-icon{
+font-size:25px;
+position:relative;
+}
+
+.project-stat-number{
+font-size:25px;
+font-weight:900;
+margin-top:7px;
+color:#93c5fd;
+position:relative;
+}
+
+.project-stat-label{
+font-size:12px;
+color:#64748b;
+margin-top:4px;
+position:relative;
+}
+
+/* ================= SEARCH ================= */
+
+.project-search-box{
+position:relative;
+margin-top:22px;
+}
+
+.project-search-box input{
+padding-right:48px;
 margin:0;
 }
 
+.project-search-icon{
+position:absolute;
+right:17px;
+top:50%;
+transform:translateY(-50%);
+font-size:21px;
+color:#60a5fa;
+z-index:2;
+pointer-events:none;
+}
+
+/* ================= PROJECT FILTER ================= */
+
+.project-filters{
+display:flex;
+gap:8px;
+overflow-x:auto;
+padding:5px 0 3px;
+margin-top:14px;
+scrollbar-width:none;
+}
+
+.project-filters::-webkit-scrollbar{
+display:none;
+}
+
+.project-filter{
+white-space:nowrap;
+background:
+linear-gradient(
+135deg,
+#111827,
+#1e293b
+);
+border:1px solid #263449;
+box-shadow:none;
+}
+
+.project-filter.active{
+background:
+linear-gradient(
+135deg,
+#2563eb,
+#7c3aed
+);
+border-color:transparent;
+}
+
+/* ================= PROJECT CARD ================= */
+
 .project-card{
 position:relative;
-background:linear-gradient(145deg,rgba(17,24,39,.98),rgba(7,13,25,.98));
+background:
+linear-gradient(
+145deg,
+rgba(17,24,39,.98),
+rgba(7,13,25,.98)
+);
 border:1px solid rgba(96,165,250,.14);
 border-radius:23px;
 padding:20px;
 margin-bottom:22px;
 overflow:hidden;
-box-shadow:0 20px 55px rgba(0,0,0,.28);
+box-shadow:
+0 20px 55px rgba(0,0,0,.28);
 transition:.28s;
+}
+
+.project-card:before{
+content:"";
+position:absolute;
+top:0;
+left:10%;
+right:10%;
+height:1px;
+background:
+linear-gradient(
+90deg,
+transparent,
+rgba(96,165,250,.5),
+rgba(168,85,247,.4),
+transparent
+);
 }
 
 .project-card:hover{
 transform:translateY(-5px);
 border-color:rgba(96,165,250,.35);
+box-shadow:
+0 28px 65px rgba(0,0,0,.36),
+0 0 30px rgba(37,99,235,.06);
 }
 
 .project-image-wrap{
@@ -348,6 +680,7 @@ position:relative;
 overflow:hidden;
 border-radius:18px;
 margin-bottom:17px;
+background:#0f172a;
 }
 
 .project-card img{
@@ -355,12 +688,27 @@ width:100%;
 height:380px;
 object-fit:cover;
 display:block;
+transition:.5s;
+}
+
+.project-card:hover img{
+transform:scale(1.03);
 }
 
 .project-no-image{
 height:220px;
 border-radius:18px;
-background:radial-gradient(circle at 50% 40%,rgba(59,130,246,.18),transparent 50%),linear-gradient(135deg,#111827,#1e293b);
+background:
+radial-gradient(
+circle at 50% 40%,
+rgba(59,130,246,.18),
+transparent 50%
+),
+linear-gradient(
+135deg,
+#111827,
+#1e293b
+);
 display:flex;
 align-items:center;
 justify-content:center;
@@ -377,6 +725,7 @@ border:1px solid rgba(255,255,255,.14);
 padding:8px 13px;
 border-radius:11px;
 font-size:13px;
+backdrop-filter:blur(8px);
 }
 
 .project-title{
@@ -405,16 +754,46 @@ flex-wrap:wrap;
 margin-top:15px;
 }
 
+.project-actions button{
+flex:0 0 auto;
+}
+
+/* ================= DETAILS ================= */
+
 .project-details{
 display:none;
 margin-top:18px;
 padding-top:18px;
 border-top:1px solid #263449;
+animation:detailsOpen .3s ease;
 }
 
 .project-details.open{
 display:block;
 }
+
+@keyframes detailsOpen{
+
+from{
+opacity:0;
+transform:translateY(-5px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+.details-title{
+font-size:20px;
+font-weight:bold;
+color:#93c5fd;
+margin-bottom:12px;
+}
+
+/* ================= LIKE ================= */
 
 .like-box{
 display:flex;
@@ -431,12 +810,19 @@ background:#334155;
 }
 
 .like-btn.liked{
-background:linear-gradient(135deg,#be123c,#e11d48);
+background:
+linear-gradient(
+135deg,
+#be123c,
+#e11d48
+);
 }
 
 .like-count{
 color:#cbd5e1;
 }
+
+/* ================= COMMENTS ================= */
 
 .comments-section{
 margin-top:20px;
@@ -445,7 +831,12 @@ border-top:1px solid #263449;
 }
 
 .comment-item{
-background:linear-gradient(145deg,rgba(11,18,32,.95),rgba(6,11,22,.95));
+background:
+linear-gradient(
+145deg,
+rgba(11,18,32,.95),
+rgba(6,11,22,.95)
+);
 border:1px solid #263449;
 border-radius:15px;
 padding:15px;
@@ -470,6 +861,8 @@ line-height:1.8;
 white-space:pre-wrap;
 }
 
+/* ================= USER ================= */
+
 .user-top{
 display:flex;
 justify-content:space-between;
@@ -487,6 +880,8 @@ color:#cbd5e1;
 color:#60a5fa;
 }
 
+/* ================= SECTIONS ================= */
+
 .section-box{
 display:none;
 }
@@ -494,6 +889,8 @@ display:none;
 .section-box.active{
 display:block;
 }
+
+/* ================= FEATURES ================= */
 
 .feature-grid{
 display:grid;
@@ -504,7 +901,12 @@ gap:15px;
 .feature-card{
 position:relative;
 overflow:hidden;
-background:linear-gradient(145deg,rgba(17,24,39,.96),rgba(8,15,29,.96));
+background:
+linear-gradient(
+145deg,
+rgba(17,24,39,.96),
+rgba(8,15,29,.96)
+);
 border:1px solid rgba(96,165,250,.15);
 border-radius:19px;
 padding:22px;
@@ -537,6 +939,8 @@ margin-top:8px;
 line-height:1.6;
 }
 
+/* ================= GENERAL STATS ================= */
+
 .stats-grid{
 display:grid;
 grid-template-columns:repeat(3,1fr);
@@ -548,7 +952,12 @@ margin-top:22px;
 text-align:center;
 padding:19px;
 border-radius:18px;
-background:linear-gradient(145deg,rgba(2,6,23,.75),rgba(15,23,42,.55));
+background:
+linear-gradient(
+145deg,
+rgba(2,6,23,.75),
+rgba(15,23,42,.55)
+);
 border:1px solid rgba(96,165,250,.13);
 }
 
@@ -569,11 +978,16 @@ color:#64748b;
 margin-top:5px;
 }
 
+/* ================= EMPTY ================= */
+
 .empty{
 text-align:center;
 color:#94a3b8;
 padding:45px 20px;
+line-height:1.9;
 }
+
+/* ================= FOOTER ================= */
 
 footer{
 text-align:center;
@@ -582,6 +996,8 @@ color:#64748b;
 border-top:1px solid rgba(148,163,184,.08);
 margin-top:35px;
 }
+
+/* ================= MOBILE ================= */
 
 @media(max-width:600px){
 
@@ -651,24 +1067,63 @@ grid-template-columns:1fr;
 grid-template-columns:1fr;
 }
 
+.project-stats{
+grid-template-columns:1fr;
+}
+
 .project-actions button{
 flex:1;
 }
 
+.project-head-title{
+font-size:27px;
 }
+
+}
+
+/* ================= SMALL SCREENS ================= */
+
+@media(max-width:380px){
+
+header h1{
+font-size:27px;
+}
+
+.project-title{
+font-size:19px;
+}
+
+.project-actions{
+flex-direction:column;
+}
+
+.project-actions button{
+width:100%;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
+
 <h1>🚀 KAPO ONE</h1>
-<p>منصة عالمية للأعمال والأفكار والتصاميم</p>
+
+<p>
+منصة عالمية للأعمال والأفكار والتصاميم
+</p>
+
 <div class="header-line"></div>
+
 </header>
 
 
-<!-- ================= حساب المستخدم ================= -->
+<!-- =====================================================
+     حساب المستخدم
+===================================================== -->
 
 <div id="userAuth" class="container">
 
@@ -682,7 +1137,9 @@ flex:1;
 🔐 تسجيل الدخول
 </button>
 
-<button class="btn-secondary" onclick="showRegisterForm()">
+<button
+class="btn-secondary"
+onclick="showRegisterForm()">
 📝 إنشاء حساب
 </button>
 
@@ -690,15 +1147,23 @@ flex:1;
 
 <div id="loginForm">
 
-<input id="userLoginEmail" type="email" placeholder="البريد الإلكتروني">
+<input
+id="userLoginEmail"
+type="email"
+placeholder="البريد الإلكتروني">
 
-<input id="userLoginPassword" type="password" placeholder="كلمة المرور">
+<input
+id="userLoginPassword"
+type="password"
+placeholder="كلمة المرور">
 
 <button onclick="loginUser()">
 دخول
 </button>
 
-<button class="btn-secondary" onclick="resetUserPassword()">
+<button
+class="btn-secondary"
+onclick="resetUserPassword()">
 استعادة كلمة المرور
 </button>
 
@@ -706,13 +1171,24 @@ flex:1;
 
 <div id="registerForm" class="hidden">
 
-<input id="registerName" type="text" placeholder="الاسم">
+<input
+id="registerName"
+type="text"
+placeholder="الاسم">
 
-<input id="registerEmail" type="email" placeholder="البريد الإلكتروني">
+<input
+id="registerEmail"
+type="email"
+placeholder="البريد الإلكتروني">
 
-<input id="registerPassword" type="password" placeholder="كلمة المرور">
+<input
+id="registerPassword"
+type="password"
+placeholder="كلمة المرور">
 
-<button class="btn-success" onclick="registerUser()">
+<button
+class="btn-success"
+onclick="registerUser()">
 إنشاء الحساب
 </button>
 
@@ -721,10 +1197,13 @@ flex:1;
 <div id="authMessage"></div>
 
 </div>
+
 </div>
 
 
-<!-- ================= واجهة المستخدم ================= -->
+<!-- =====================================================
+     واجهة المستخدم
+===================================================== -->
 
 <div id="userApp" class="container hidden">
 
@@ -733,62 +1212,107 @@ flex:1;
 <div class="user-top">
 
 <div class="welcome">
-👋 مرحبًا <strong id="userName"></strong>
+
+👋 مرحبًا
+<strong id="userName"></strong>
+
 </div>
 
-<button class="btn-danger" onclick="logoutUser()">
+<button
+class="btn-danger"
+onclick="logoutUser()">
+
 🚪 تسجيل الخروج
+
 </button>
 
 </div>
+
 </div>
 
 
-<!-- ================= التنقل ================= -->
+<!-- =====================================================
+     التنقل
+===================================================== -->
 
 <div class="card">
 
 <div class="kapo-nav">
 
-<button id="navHome" onclick="kapoSection('home')">
+<button
+id="navHome"
+onclick="kapoSection('home')">
+
 🏠 الرئيسية
+
 </button>
 
-<button id="navProjects" onclick="kapoSection('projects')">
+<button
+id="navProjects"
+onclick="kapoSection('projects')">
+
 🏗️ المشاريع
+
 </button>
 
-<button id="navDesigns" onclick="kapoSection('designs')">
+<button
+id="navDesigns"
+onclick="kapoSection('designs')">
+
 🎨 التصاميم
+
 </button>
 
-<button id="navIdeas" onclick="kapoSection('ideas')">
+<button
+id="navIdeas"
+onclick="kapoSection('ideas')">
+
 💡 الأفكار
+
 </button>
 
-<button id="navChannels" onclick="kapoSection('channels')">
+<button
+id="navChannels"
+onclick="kapoSection('channels')">
+
 📺 القنوات
+
 </button>
 
-<button id="navAnswers" onclick="kapoSection('answers')">
+<button
+id="navAnswers"
+onclick="kapoSection('answers')">
+
 ❓ الإجابات
+
 </button>
 
-<button id="navProfile" onclick="kapoSection('profile')">
+<button
+id="navProfile"
+onclick="kapoSection('profile')">
+
 👤 المستخدم
+
 </button>
 
 </div>
+
 </div>
 
 
-<!-- ================= الرئيسية ================= -->
+<!-- =====================================================
+     الرئيسية
+===================================================== -->
 
-<div id="sectionHome" class="section-box active">
+<div
+id="sectionHome"
+class="section-box active">
 
 <div class="card hero-main">
 
-<div class="hero-icon">🚀</div>
+<div class="hero-icon">
+🚀
+</div>
 
 <div class="hero-title">
 مرحبًا بك في KAPO ONE
@@ -801,18 +1325,26 @@ flex:1;
 
 <br>
 
-اكتشف، شارك، تفاعل، وابنِ أفكارك مع مجتمع KAPO ONE.
+اكتشف، شارك، تفاعل، وابنِ أفكارك
+مع مجتمع KAPO ONE.
 
 </div>
 
 <div class="hero-actions">
 
-<button onclick="kapoSection('projects')">
+<button
+onclick="kapoSection('projects')">
+
 🏗️ استكشف المشاريع
+
 </button>
 
-<button class="btn-purple" onclick="kapoSection('designs')">
+<button
+class="btn-purple"
+onclick="kapoSection('designs')">
+
 🎨 استكشف التصاميم
+
 </button>
 
 </div>
@@ -826,12 +1358,18 @@ flex:1;
 
 <div class="feature-grid">
 
-<div class="feature-card"
+<div
+class="feature-card"
 onclick="kapoSection('projects')"
 style="cursor:pointer">
 
-<div class="feature-icon">🏗️</div>
-<div class="feature-title">المشاريع</div>
+<div class="feature-icon">
+🏗️
+</div>
+
+<div class="feature-title">
+المشاريع
+</div>
 
 <div class="feature-text">
 استكشف المشاريع والأعمال المنشورة.
@@ -840,12 +1378,18 @@ style="cursor:pointer">
 </div>
 
 
-<div class="feature-card"
+<div
+class="feature-card"
 onclick="kapoSection('designs')"
 style="cursor:pointer">
 
-<div class="feature-icon">🎨</div>
-<div class="feature-title">التصاميم</div>
+<div class="feature-icon">
+🎨
+</div>
+
+<div class="feature-title">
+التصاميم
+</div>
 
 <div class="feature-text">
 مساحة للتصاميم والأعمال الإبداعية.
@@ -854,12 +1398,18 @@ style="cursor:pointer">
 </div>
 
 
-<div class="feature-card"
+<div
+class="feature-card"
 onclick="kapoSection('ideas')"
 style="cursor:pointer">
 
-<div class="feature-icon">💡</div>
-<div class="feature-title">الأفكار</div>
+<div class="feature-icon">
+💡
+</div>
+
+<div class="feature-title">
+الأفكار
+</div>
 
 <div class="feature-text">
 شارك أفكارك وطوّرها مع المجتمع.
@@ -868,12 +1418,18 @@ style="cursor:pointer">
 </div>
 
 
-<div class="feature-card"
+<div
+class="feature-card"
 onclick="kapoSection('channels')"
 style="cursor:pointer">
 
-<div class="feature-icon">📺</div>
-<div class="feature-title">القنوات</div>
+<div class="feature-icon">
+📺
+</div>
+
+<div class="feature-title">
+القنوات
+</div>
 
 <div class="feature-text">
 قنوات متخصصة للمحتوى والمجتمعات.
@@ -887,216 +1443,431 @@ style="cursor:pointer">
 <div class="stats-grid">
 
 <div class="stat-card">
-<div class="stat-icon">🏗️</div>
-<div class="stat-number">KAPO</div>
-<div class="stat-label">المشاريع</div>
+
+<div class="stat-icon">
+🏗️
+</div>
+
+<div class="stat-number">
+KAPO
+</div>
+
+<div class="stat-label">
+المشاريع
+</div>
+
 </div>
 
 <div class="stat-card">
-<div class="stat-icon">🎨</div>
-<div class="stat-number">ONE</div>
-<div class="stat-label">التصاميم</div>
+
+<div class="stat-icon">
+🎨
+</div>
+
+<div class="stat-number">
+ONE
+</div>
+
+<div class="stat-label">
+التصاميم
+</div>
+
 </div>
 
 <div class="stat-card">
-<div class="stat-icon">🌍</div>
-<div class="stat-number">∞</div>
-<div class="stat-label">الأفكار</div>
+
+<div class="stat-icon">
+🌍
+</div>
+
+<div class="stat-number">
+∞
+</div>
+
+<div class="stat-label">
+الأفكار
 </div>
 
 </div>
 
 </div>
+
+</div>
+
 </div>
 
 
-<!-- ================= المشاريع ================= -->
+<!-- =====================================================
+     المشاريع
+===================================================== -->
 
-<div id="sectionProjects" class="section-box">
+<div
+id="sectionProjects"
+class="section-box">
 
 <div class="card">
 
-<h2>🏗️ المشاريع</h2>
+<div class="project-head">
 
-<p style="color:#94a3b8">
-استكشف الأعمال والمشاريع المنشورة في KAPO ONE.
-</p>
+<div class="project-head-icon">
+🏗️
+</div>
 
-<div class="project-search">
+<div class="project-head-title">
+مشاريع KAPO ONE
+</div>
+
+<div class="project-head-text">
+
+اكتشف المشاريع والأعمال المنشورة،
+وتصفح التفاصيل وتفاعل مع أصحاب المشاريع
+من خلال الإعجاب والتعليقات.
+
+</div>
+
+</div>
+
+
+<div class="project-stats">
+
+<div class="project-stat">
+
+<div class="project-stat-icon">
+🏗️
+</div>
+
+<div
+id="projectTotal"
+class="project-stat-number">
+0
+</div>
+
+<div class="project-stat-label">
+إجمالي المشاريع
+</div>
+
+</div>
+
+
+<div class="project-stat">
+
+<div class="project-stat-icon">
+❤️
+</div>
+
+<div
+id="projectLikes"
+class="project-stat-number">
+0
+</div>
+
+<div class="project-stat-label">
+الإعجابات
+</div>
+
+</div>
+
+
+<div class="project-stat">
+
+<div class="project-stat-icon">
+💬
+</div>
+
+<div
+id="projectComments"
+class="project-stat-number">
+0
+</div>
+
+<div class="project-stat-label">
+التعليقات
+</div>
+
+</div>
+
+</div>
+
+
+<div class="project-search-box">
+
+<div class="project-search-icon">
+🔎
+</div>
 
 <input
 id="projectSearch"
 type="search"
-placeholder="🔎 ابحث عن مشروع..."
+placeholder="ابحث عن اسم المشروع..."
 oninput="filterProjects()">
 
 </div>
 
+
+<div class="project-filters">
+
+<button
+class="project-filter active"
+id="filterAll"
+onclick="setProjectFilter('all')">
+
+🌍 الكل
+
+</button>
+
+<button
+class="project-filter"
+id="filterWithImages"
+onclick="setProjectFilter('images')">
+
+🖼️ مشاريع مصورة
+
+</button>
+
+<button
+class="project-filter"
+id="filterNoImages"
+onclick="setProjectFilter('noimages')">
+
+🏗️ مشاريع أخرى
+
+</button>
+
 </div>
+
+</div>
+
 
 <div id="userProjectsList"></div>
 
 </div>
 
 
-<!-- ================= التصاميم ================= -->
+<!-- =====================================================
+     التصاميم
+===================================================== -->
 
-<div id="sectionDesigns" class="section-box">
+<div
+id="sectionDesigns"
+class="section-box">
 
 <div class="card">
 
 <h2>🎨 التصاميم</h2>
 
 <p style="color:#94a3b8">
-مساحة مخصصة لعرض التصاميم والأعمال الإبداعية.
+
+مساحة مخصصة لعرض التصاميم
+والأعمال الإبداعية.
+
 </p>
 
 <div class="feature-card">
 
-<div class="feature-icon">🎨</div>
+<div class="feature-icon">
+🎨
+</div>
 
 <div class="feature-title">
 التصاميم
 </div>
 
 <div class="feature-text">
-سيتم بناء معرض التصاميم هنا في الخطوة القادمة.
-</div>
+
+سيتم بناء معرض التصاميم هنا
+في الخطوة القادمة.
 
 </div>
 
 </div>
+
+</div>
+
 </div>
 
 
-<!-- ================= الأفكار ================= -->
+<!-- =====================================================
+     الأفكار
+===================================================== -->
 
-<div id="sectionIdeas" class="section-box">
+<div
+id="sectionIdeas"
+class="section-box">
 
 <div class="card">
 
 <h2>💡 الأفكار</h2>
 
 <p style="color:#94a3b8">
-مكان لعرض الأفكار والمقترحات والمشاريع المستقبلية.
+
+مكان لعرض الأفكار والمقترحات
+والمشاريع المستقبلية.
+
 </p>
 
 <div class="feature-card">
 
-<div class="feature-icon">💡</div>
+<div class="feature-icon">
+💡
+</div>
 
 <div class="feature-title">
 الأفكار
 </div>
 
 <div class="feature-text">
+
 سيتم تطوير قسم الأفكار لاحقًا.
-</div>
 
 </div>
 
 </div>
+
+</div>
+
 </div>
 
 
-<!-- ================= القنوات ================= -->
+<!-- =====================================================
+     القنوات
+===================================================== -->
 
-<div id="sectionChannels" class="section-box">
+<div
+id="sectionChannels"
+class="section-box">
 
 <div class="card">
 
 <h2>📺 القنوات</h2>
 
 <p style="color:#94a3b8">
-قنوات متخصصة يمكن أن تجمع المحتوى والمجتمعات المختلفة.
+
+قنوات متخصصة يمكن أن تجمع المحتوى
+والمجتمعات المختلفة.
+
 </p>
 
 <div class="feature-card">
 
-<div class="feature-icon">📺</div>
+<div class="feature-icon">
+📺
+</div>
 
 <div class="feature-title">
 القنوات
 </div>
 
 <div class="feature-text">
-سيتم بناء نظام القنوات في الخطوة القادمة.
-</div>
+
+سيتم بناء نظام القنوات
+في الخطوة القادمة.
 
 </div>
 
 </div>
+
+</div>
+
 </div>
 
 
-<!-- ================= الإجابات ================= -->
+<!-- =====================================================
+     الإجابات
+===================================================== -->
 
-<div id="sectionAnswers" class="section-box">
+<div
+id="sectionAnswers"
+class="section-box">
 
 <div class="card">
 
 <h2>❓ الإجابات</h2>
 
 <p style="color:#94a3b8">
-مساحة للأسئلة والإجابات وتبادل المعرفة.
+
+مساحة للأسئلة والإجابات
+وتبادل المعرفة.
+
 </p>
 
 <div class="feature-card">
 
-<div class="feature-icon">❓</div>
+<div class="feature-icon">
+❓
+</div>
 
 <div class="feature-title">
 الإجابات
 </div>
 
 <div class="feature-text">
-سيتم بناء نظام الأسئلة والإجابات لاحقًا.
-</div>
+
+سيتم بناء نظام الأسئلة
+والإجابات لاحقًا.
 
 </div>
 
 </div>
+
+</div>
+
 </div>
 
 
-<!-- ================= المستخدم ================= -->
+<!-- =====================================================
+     المستخدم
+===================================================== -->
 
-<div id="sectionProfile" class="section-box">
+<div
+id="sectionProfile"
+class="section-box">
 
 <div class="card">
 
 <h2>👤 حسابي</h2>
 
 <p style="color:#94a3b8">
+
 مرحبًا بك في حسابك داخل KAPO ONE.
+
 </p>
 
 <div class="feature-card">
 
-<div class="feature-icon">👤</div>
+<div class="feature-icon">
+👤
+</div>
 
 <div class="feature-title">
 المستخدم
 </div>
 
 <div class="feature-text">
-سيتم تطوير الملف الشخصي والاشتراكات لاحقًا.
-</div>
+
+سيتم تطوير الملف الشخصي
+والاشتراكات لاحقًا.
 
 </div>
 
 </div>
+
+</div>
+
 </div>
 
 </div>
 
 
 <footer>
+
 KAPO ONE © 2026
+
 </footer>
 
 
-<!-- ================= SUPABASE ================= -->
+<!-- =====================================================
+     SUPABASE
+===================================================== -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -1114,15 +1885,20 @@ const OWNER_ID =
 const SITE_URL =
 "https://caapu11-debug.github.io/kapo-one/";
 
-const db = supabase.createClient(
+const db =
+supabase.createClient(
 SUPABASE_URL,
 SUPABASE_KEY
 );
 
 let allProjects = [];
 
+let currentProjectFilter = "all";
 
-/* ================= أدوات الحماية ================= */
+
+/* =====================================================
+   الحماية
+===================================================== */
 
 function escapeHtml(value){
 
@@ -1146,6 +1922,10 @@ return String(value ?? "")
 
 }
 
+
+/* =====================================================
+   التاريخ
+===================================================== */
 
 function formatDate(date){
 
@@ -1173,7 +1953,9 @@ return String(date);
 }
 
 
-/* ================= رسائل ================= */
+/* =====================================================
+   الرسائل
+===================================================== */
 
 function showAuthMessage(text){
 
@@ -1187,7 +1969,9 @@ ${text}
 }
 
 
-/* ================= النماذج ================= */
+/* =====================================================
+   النماذج
+===================================================== */
 
 function showLoginForm(){
 
@@ -1215,22 +1999,29 @@ document.getElementById("authMessage").innerHTML="";
 }
 
 
-/* ================= إنشاء الحساب ================= */
+/* =====================================================
+   إنشاء الحساب
+===================================================== */
 
 async function registerUser(){
 
 const name =
-document.getElementById("registerName").value.trim();
+document.getElementById("registerName")
+.value.trim();
 
 const email =
-document.getElementById("registerEmail").value.trim();
+document.getElementById("registerEmail")
+.value.trim();
 
 const password =
-document.getElementById("registerPassword").value;
+document.getElementById("registerPassword")
+.value;
 
 if(!name || !email || !password){
 
-showAuthMessage("❌ املأ جميع الخانات.");
+showAuthMessage(
+"❌ املأ جميع الخانات."
+);
 
 return;
 
@@ -1246,14 +2037,20 @@ return;
 
 }
 
-showAuthMessage("⏳ جاري إنشاء الحساب...");
+showAuthMessage(
+"⏳ جاري إنشاء الحساب..."
+);
 
 try{
 
-const {data,error} =
+const {
+data,
+error
+} =
 await db.auth.signUp({
 
 email:email,
+
 password:password,
 
 options:{
@@ -1267,7 +2064,8 @@ name:name
 if(error){
 
 showAuthMessage(
-"❌ " + escapeHtml(error.message)
+"❌ " +
+escapeHtml(error.message)
 );
 
 return;
@@ -1286,7 +2084,8 @@ name
 if(!data.session){
 
 showAuthMessage(
-"✅ تم إنشاء الحساب.<br><br>تحقق من بريدك الإلكتروني لتفعيل الحساب، ثم سجّل الدخول."
+"✅ تم إنشاء الحساب.<br><br>" +
+"تحقق من بريدك الإلكتروني لتفعيل الحساب، ثم سجّل الدخول."
 );
 
 return;
@@ -1297,7 +2096,9 @@ showAuthMessage(
 "✅ تم إنشاء الحساب بنجاح."
 );
 
-await loadUserApp(data.user);
+await loadUserApp(
+data.user
+);
 
 }catch(error){
 
@@ -1311,13 +2112,20 @@ escapeHtml(error.message)
 }
 
 
-/* ================= الملف الشخصي ================= */
+/* =====================================================
+   الملف الشخصي
+===================================================== */
 
-async function createProfile(user,name){
+async function createProfile(
+user,
+name
+){
 
 if(!user) return;
 
-const {error} =
+const {
+error
+} =
 await db
 .from("profiles")
 .upsert({
@@ -1345,16 +2153,22 @@ error.message
 }
 
 
-/* ================= تسجيل الدخول ================= */
+/* =====================================================
+   تسجيل الدخول
+===================================================== */
 
 async function loginUser(){
 
 const email =
-document.getElementById("userLoginEmail")
+document.getElementById(
+"userLoginEmail"
+)
 .value.trim();
 
 const password =
-document.getElementById("userLoginPassword")
+document.getElementById(
+"userLoginPassword"
+)
 .value;
 
 if(!email || !password){
@@ -1373,10 +2187,14 @@ showAuthMessage(
 
 try{
 
-const {data,error} =
+const {
+data,
+error
+} =
 await db.auth.signInWithPassword({
 
 email:email,
+
 password:password
 
 });
@@ -1384,7 +2202,8 @@ password:password
 if(error){
 
 showAuthMessage(
-"❌ " + escapeHtml(error.message)
+"❌ " +
+escapeHtml(error.message)
 );
 
 return;
@@ -1397,7 +2216,8 @@ data.user.id === OWNER_ID
 ){
 
 showAuthMessage(
-"👑 هذا حساب المالك.<br><br>استخدم لوحة المالك."
+"👑 هذا حساب المالك.<br><br>" +
+"استخدم لوحة المالك."
 );
 
 return;
@@ -1426,12 +2246,16 @@ escapeHtml(error.message)
 }
 
 
-/* ================= استعادة كلمة المرور ================= */
+/* =====================================================
+   استعادة كلمة المرور
+===================================================== */
 
 async function resetUserPassword(){
 
 const email =
-document.getElementById("userLoginEmail")
+document.getElementById(
+"userLoginEmail"
+)
 .value.trim();
 
 if(!email){
@@ -1450,7 +2274,9 @@ showAuthMessage(
 
 try{
 
-const {error} =
+const {
+error
+} =
 await db.auth.resetPasswordForEmail(
 email,
 {
@@ -1461,7 +2287,8 @@ redirectTo:SITE_URL
 if(error){
 
 showAuthMessage(
-"❌ " + escapeHtml(error.message)
+"❌ " +
+escapeHtml(error.message)
 );
 
 return;
@@ -1484,7 +2311,9 @@ escapeHtml(error.message)
 }
 
 
-/* ================= تحميل المستخدم ================= */
+/* =====================================================
+   تحميل المستخدم
+===================================================== */
 
 async function loadUserApp(user){
 
@@ -1514,7 +2343,9 @@ user.user_metadata?.name ||
 
 try{
 
-const {data} =
+const {
+data
+} =
 await db
 .from("profiles")
 .select("name")
@@ -1533,8 +2364,9 @@ console.log(error);
 
 }
 
-document.getElementById("userName").textContent =
-name;
+document.getElementById(
+"userName"
+).textContent=name;
 
 await loadProjects();
 
@@ -1543,7 +2375,9 @@ kapoSection("home");
 }
 
 
-/* ================= تسجيل الخروج ================= */
+/* =====================================================
+   تسجيل الخروج
+===================================================== */
 
 async function logoutUser(){
 
@@ -1557,10 +2391,14 @@ console.log(error);
 
 }
 
-document.getElementById("userApp")
+document.getElementById(
+"userApp"
+)
 .classList.add("hidden");
 
-document.getElementById("userAuth")
+document.getElementById(
+"userAuth"
+)
 .classList.remove("hidden");
 
 showLoginForm();
@@ -1568,11 +2406,14 @@ showLoginForm();
 }
 
 
-/* ================= التنقل ================= */
+/* =====================================================
+   التنقل
+===================================================== */
 
 function kapoSection(section){
 
 const sections = [
+
 "home",
 "projects",
 "designs",
@@ -1580,6 +2421,7 @@ const sections = [
 "channels",
 "answers",
 "profile"
+
 ];
 
 sections.forEach(function(item){
@@ -1627,31 +2469,47 @@ loadProjects();
 }
 
 
-/* ================= تحميل المشاريع ================= */
+/* =====================================================
+   تحميل المشاريع
+===================================================== */
 
 async function loadProjects(){
 
 const list =
-document.getElementById("userProjectsList");
+document.getElementById(
+"userProjectsList"
+);
 
 if(!list) return;
 
 list.innerHTML =
 `
 <div class="card">
+
 <div class="empty">
+
 ⏳ جاري تحميل المشاريع...
+
 </div>
+
 </div>
 `;
 
 try{
 
-const {data,error} =
+const {
+data,
+error
+} =
 await db
 .from("projects")
 .select("*")
-.order("created_at",{ascending:false});
+.order(
+"created_at",
+{
+ascending:false
+}
+);
 
 if(error){
 
@@ -1660,10 +2518,15 @@ console.error(error);
 list.innerHTML =
 `
 <div class="card">
+
 <div class="empty">
+
 ❌ تعذر تحميل المشاريع.<br>
+
 ${escapeHtml(error.message)}
+
 </div>
+
 </div>
 `;
 
@@ -1673,7 +2536,11 @@ return;
 
 allProjects=data || [];
 
-renderProjects(allProjects);
+updateProjectStats();
+
+renderProjects(
+allProjects
+);
 
 }catch(error){
 
@@ -1682,9 +2549,13 @@ console.error(error);
 list.innerHTML =
 `
 <div class="card">
+
 <div class="empty">
+
 ❌ حدث خطأ أثناء تحميل المشاريع.
+
 </div>
+
 </div>
 `;
 
@@ -1693,23 +2564,161 @@ list.innerHTML =
 }
 
 
-/* ================= عرض المشاريع ================= */
+/* =====================================================
+   إحصائيات المشاريع
+===================================================== */
 
-function renderProjects(projects){
+function updateProjectStats(){
+
+const total =
+document.getElementById(
+"projectTotal"
+);
+
+if(total){
+
+total.textContent =
+allProjects.length;
+
+}
+
+const likes =
+document.getElementById(
+"projectLikes"
+);
+
+if(likes){
+
+likes.textContent="—";
+
+}
+
+const comments =
+document.getElementById(
+"projectComments"
+);
+
+if(comments){
+
+comments.textContent="—";
+
+}
+
+}
+
+
+/* =====================================================
+   فلترة المشاريع
+===================================================== */
+
+function setProjectFilter(
+filter
+){
+
+currentProjectFilter=filter;
+
+document
+.querySelectorAll(".project-filter")
+.forEach(function(button){
+
+button.classList.remove("active");
+
+});
+
+if(filter === "all"){
+
+document
+.getElementById("filterAll")
+?.classList.add("active");
+
+}
+
+if(filter === "images"){
+
+document
+.getElementById("filterWithImages")
+?.classList.add("active");
+
+}
+
+if(filter === "noimages"){
+
+document
+.getElementById("filterNoImages")
+?.classList.add("active");
+
+}
+
+filterProjects();
+
+}
+
+
+/* =====================================================
+   عرض المشاريع
+===================================================== */
+
+function renderProjects(
+projects
+){
 
 const list =
-document.getElementById("userProjectsList");
+document.getElementById(
+"userProjectsList"
+);
 
 if(!list) return;
 
-if(!projects.length){
+let filtered=projects;
+
+if(
+currentProjectFilter === "images"
+){
+
+filtered =
+projects.filter(function(project){
+
+return Boolean(
+project.image_url ||
+project.image
+);
+
+});
+
+}
+
+if(
+currentProjectFilter === "noimages"
+){
+
+filtered =
+projects.filter(function(project){
+
+return !(
+project.image_url ||
+project.image
+);
+
+});
+
+}
+
+if(!filtered.length){
 
 list.innerHTML =
 `
 <div class="card">
+
 <div class="empty">
-🏗️ لا توجد مشاريع منشورة حاليًا.
+
+🏗️ لا توجد مشاريع مطابقة للبحث.
+
+<br>
+
+جرّب كلمة أخرى أو غيّر الفلتر.
+
 </div>
+
 </div>
 `;
 
@@ -1718,13 +2727,18 @@ return;
 }
 
 list.innerHTML =
-projects.map(function(project){
+filtered.map(function(project){
 
 const id =
-escapeHtml(project.id || "");
+escapeHtml(
+project.id || ""
+);
 
 const title =
-escapeHtml(project.title || "مشروع بدون عنوان");
+escapeHtml(
+project.title ||
+"مشروع بدون عنوان"
+);
 
 const description =
 escapeHtml(
@@ -1751,12 +2765,16 @@ return `
 <div
 class="project-card"
 data-project-title="${title.toLowerCase()}"
+data-project-image="${
+image ? "yes" : "no"
+}"
 >
 
 ${
 image
 ?
 `
+
 <div class="project-image-wrap">
 
 <img
@@ -1771,12 +2789,15 @@ KAPO PROJECT
 </div>
 
 </div>
+
 `
 :
 `
+
 <div class="project-no-image">
 🏗️
 </div>
+
 `
 }
 
@@ -1792,9 +2813,11 @@ ${
 date
 ?
 `
+
 <div class="project-date">
 📅 ${escapeHtml(date)}
 </div>
+
 `
 :
 ""
@@ -1823,7 +2846,7 @@ class="project-details"
 >
 
 <div class="details-title">
-تفاصيل المشروع
+📋 تفاصيل المشروع
 </div>
 
 <div>
@@ -1837,28 +2860,38 @@ id="likeBtn-${id}"
 class="like-btn"
 onclick="toggleLike('${escapeJs(project.id || "")}')"
 >
+
 ❤️ إعجاب
+
 </button>
 
 <span
 id="likeCount-${id}"
 class="like-count"
 >
+
 0 إعجاب
+
 </span>
 
 </div>
 
 <div class="comments-section">
 
-<h3>💬 التعليقات</h3>
+<h3>
+💬 التعليقات
+</h3>
 
 <div
 id="comments-${id}"
 >
+
 <div class="empty">
+
 اضغط على زر التعليقات لعرضها.
+
 </div>
+
 </div>
 
 <textarea
@@ -1870,7 +2903,9 @@ placeholder="اكتب تعليقك هنا..."
 class="btn-success"
 onclick="addComment('${escapeJs(project.id || "")}')"
 >
+
 ➕ إضافة تعليق
+
 </button>
 
 </div>
@@ -1883,37 +2918,78 @@ onclick="addComment('${escapeJs(project.id || "")}')"
 
 }).join("");
 
-projects.forEach(function(project){
+filtered.forEach(function(project){
 
-loadLikeData(project.id);
+loadLikeData(
+project.id
+);
 
 });
 
 }
 
 
-/* ================= البحث ================= */
+/* =====================================================
+   البحث
+===================================================== */
 
 function filterProjects(){
 
 const input =
-document.getElementById("projectSearch");
+document.getElementById(
+"projectSearch"
+);
 
 if(!input) return;
 
 const query =
-input.value.trim().toLowerCase();
+input.value
+.trim()
+.toLowerCase();
 
 const cards =
-document.querySelectorAll(".project-card");
+document.querySelectorAll(
+".project-card"
+);
 
 cards.forEach(function(card){
 
 const title =
-card.getAttribute("data-project-title") || "";
+(
+card.getAttribute(
+"data-project-title"
+) || ""
+).toLowerCase();
+
+const hasImage =
+card.getAttribute(
+"data-project-image"
+) === "yes";
+
+const matchesSearch =
+title.includes(query);
+
+let matchesFilter=true;
+
+if(
+currentProjectFilter === "images"
+){
+
+matchesFilter=hasImage;
+
+}
+
+if(
+currentProjectFilter === "noimages"
+){
+
+matchesFilter=!hasImage;
+
+}
 
 card.style.display =
-title.includes(query)
+matchesSearch &&
+matchesFilter
 ?
 "block"
 :
@@ -1924,9 +3000,13 @@ title.includes(query)
 }
 
 
-/* ================= تفاصيل المشروع ================= */
+/* =====================================================
+   تفاصيل المشروع
+===================================================== */
 
-function toggleProjectDetails(projectId){
+function toggleProjectDetails(
+projectId
+){
 
 const box =
 document.getElementById(
@@ -1935,20 +3015,30 @@ document.getElementById(
 
 if(!box) return;
 
-box.classList.toggle("open");
+box.classList.toggle(
+"open"
+);
 
-if(box.classList.contains("open")){
+if(
+box.classList.contains("open")
+){
 
-loadLikeData(projectId);
+loadLikeData(
+projectId
+);
 
 }
 
 }
 
 
-/* ================= الإعجابات ================= */
+/* =====================================================
+   الإعجابات
+===================================================== */
 
-async function loadLikeData(projectId){
+async function loadLikeData(
+projectId
+){
 
 if(!projectId) return;
 
@@ -1964,13 +3054,28 @@ document.getElementById(
 
 try{
 
-const {count,error} =
+const {
+count,
+error
+} =
 await db
 .from("likes")
-.select("*",{count:"exact",head:true})
-.eq("project_id",projectId);
+.select(
+"*",
+{
+count:"exact",
+head:true
+}
+)
+.eq(
+"project_id",
+projectId
+);
 
-if(!error && countElement){
+if(
+!error &&
+countElement
+){
 
 countElement.textContent =
 `${count || 0} إعجاب`;
@@ -1978,23 +3083,35 @@ countElement.textContent =
 }
 
 const {
-data:{user}
+data:{
+user
+}
 } =
 await db.auth.getUser();
 
 if(user && button){
 
-const {data} =
+const {
+data
+} =
 await db
 .from("likes")
 .select("id")
-.eq("project_id",projectId)
-.eq("user_id",user.id)
+.eq(
+"project_id",
+projectId
+)
+.eq(
+"user_id",
+user.id
+)
 .maybeSingle();
 
 if(data){
 
-button.classList.add("liked");
+button.classList.add(
+"liked"
+);
 
 button.textContent =
 "❤️ تم الإعجاب";
@@ -2015,18 +3132,26 @@ error.message
 }
 
 
-/* ================= إضافة / إزالة إعجاب ================= */
+/* =====================================================
+   إعجاب / إزالة إعجاب
+===================================================== */
 
-async function toggleLike(projectId){
+async function toggleLike(
+projectId
+){
 
 const {
-data:{user}
+data:{
+user
+}
 } =
 await db.auth.getUser();
 
 if(!user){
 
-alert("يجب تسجيل الدخول أولًا.");
+alert(
+"يجب تسجيل الدخول أولًا."
+);
 
 return;
 
@@ -2039,32 +3164,48 @@ document.getElementById(
 
 try{
 
-const {data:existing} =
+const {
+data:existing
+} =
 await db
 .from("likes")
 .select("id")
-.eq("project_id",projectId)
-.eq("user_id",user.id)
+.eq(
+"project_id",
+projectId
+)
+.eq(
+"user_id",
+user.id
+)
 .maybeSingle();
 
 if(existing){
 
-const {error} =
+const {
+error
+} =
 await db
 .from("likes")
 .delete()
-.eq("id",existing.id);
+.eq(
+"id",
+existing.id
+);
 
 if(error) throw error;
 
 }else{
 
-const {error} =
+const {
+error
+} =
 await db
 .from("likes")
 .insert({
 
 project_id:projectId,
+
 user_id:user.id
 
 });
@@ -2073,7 +3214,9 @@ if(error) throw error;
 
 }
 
-await loadLikeData(projectId);
+await loadLikeData(
+projectId
+);
 
 }catch(error){
 
@@ -2087,9 +3230,13 @@ error.message
 }
 
 
-/* ================= تحميل التعليقات ================= */
+/* =====================================================
+   التعليقات
+===================================================== */
 
-async function loadProjectComments(projectId){
+async function loadProjectComments(
+projectId
+){
 
 const container =
 document.getElementById(
@@ -2103,7 +3250,9 @@ document.getElementById(
 
 if(details){
 
-details.classList.add("open");
+details.classList.add(
+"open"
+);
 
 }
 
@@ -2112,25 +3261,40 @@ if(!container) return;
 container.innerHTML =
 `
 <div class="empty">
+
 ⏳ جاري تحميل التعليقات...
+
 </div>
 `;
 
 try{
 
-const {data,error} =
+const {
+data,
+error
+} =
 await db
 .from("comments")
 .select("*")
-.eq("project_id",projectId)
-.order("created_at",{ascending:true});
+.eq(
+"project_id",
+projectId
+)
+.order(
+"created_at",
+{
+ascending:true
+}
+);
 
 if(error){
 
 container.innerHTML =
 `
 <div class="empty">
+
 ❌ تعذر تحميل التعليقات.
+
 </div>
 `;
 
@@ -2140,12 +3304,17 @@ return;
 
 }
 
-if(!data || !data.length){
+if(
+!data ||
+!data.length
+){
 
 container.innerHTML =
 `
 <div class="empty">
+
 💬 لا توجد تعليقات حتى الآن.
+
 </div>
 `;
 
@@ -2154,7 +3323,9 @@ return;
 }
 
 const currentUser =
-(await db.auth.getUser()).data.user;
+(
+await db.auth.getUser()
+).data.user;
 
 container.innerHTML =
 data.map(function(comment){
@@ -2174,38 +3345,51 @@ comment.comment ||
 );
 
 const date =
-formatDate(comment.created_at);
+formatDate(
+comment.created_at
+);
 
 const canDelete =
 currentUser &&
-comment.user_id === currentUser.id;
+comment.user_id ===
+currentUser.id;
 
 return `
 
 <div class="comment-item">
 
 <div class="comment-user">
+
 👤 ${name}
+
 </div>
 
 <div class="comment-content">
+
 ${content}
+
 </div>
 
 <div class="comment-date">
+
 ${escapeHtml(date)}
+
 </div>
 
 ${
 canDelete
 ?
 `
+
 <button
 class="btn-danger"
 onclick="deleteComment('${escapeJs(comment.id)}','${escapeJs(projectId)}')"
 >
+
 🗑️ حذف
+
 </button>
+
 `
 :
 ""
@@ -2224,7 +3408,9 @@ console.log(error);
 container.innerHTML =
 `
 <div class="empty">
+
 ❌ حدث خطأ أثناء تحميل التعليقات.
+
 </div>
 `;
 
@@ -2233,9 +3419,13 @@ container.innerHTML =
 }
 
 
-/* ================= إضافة تعليق ================= */
+/* =====================================================
+   إضافة تعليق
+===================================================== */
 
-async function addComment(projectId){
+async function addComment(
+projectId
+){
 
 const input =
 document.getElementById(
@@ -2249,20 +3439,26 @@ input.value.trim();
 
 if(!content){
 
-alert("اكتب تعليقًا أولًا.");
+alert(
+"اكتب تعليقًا أولًا."
+);
 
 return;
 
 }
 
 const {
-data:{user}
+data:{
+user
+}
 } =
 await db.auth.getUser();
 
 if(!user){
 
-alert("يجب تسجيل الدخول أولًا.");
+alert(
+"يجب تسجيل الدخول أولًا."
+);
 
 return;
 
@@ -2270,19 +3466,26 @@ return;
 
 const name =
 user.user_metadata?.name ||
-document.getElementById("userName")?.textContent ||
+document.getElementById(
+"userName"
+)?.textContent ||
 "مستخدم";
 
 try{
 
-const {error} =
+const {
+error
+} =
 await db
 .from("comments")
 .insert({
 
 project_id:projectId,
+
 user_id:user.id,
+
 user_name:name,
+
 content:content
 
 });
@@ -2291,7 +3494,9 @@ if(error) throw error;
 
 input.value="";
 
-await loadProjectComments(projectId);
+await loadProjectComments(
+projectId
+);
 
 }catch(error){
 
@@ -2305,18 +3510,29 @@ error.message
 }
 
 
-/* ================= حذف تعليق ================= */
+/* =====================================================
+   حذف تعليق
+===================================================== */
 
-async function deleteComment(commentId,projectId){
+async function deleteComment(
+commentId,
+projectId
+){
 
-if(!confirm("هل تريد حذف هذا التعليق؟")){
+if(
+!confirm(
+"هل تريد حذف هذا التعليق؟"
+)
+){
 
 return;
 
 }
 
 const {
-data:{user}
+data:{
+user
+}
 } =
 await db.auth.getUser();
 
@@ -2324,16 +3540,26 @@ if(!user) return;
 
 try{
 
-const {error} =
+const {
+error
+} =
 await db
 .from("comments")
 .delete()
-.eq("id",commentId)
-.eq("user_id",user.id);
+.eq(
+"id",
+commentId
+)
+.eq(
+"user_id",
+user.id
+);
 
 if(error) throw error;
 
-await loadProjectComments(projectId);
+await loadProjectComments(
+projectId
+);
 
 }catch(error){
 
@@ -2347,30 +3573,46 @@ error.message
 }
 
 
-/* ================= تشغيل تلقائي ================= */
+/* =====================================================
+   فحص المستخدم الحالي
+===================================================== */
 
 async function checkCurrentUser(){
 
 try{
 
 const {
-data:{user}
+data:{
+user
+}
 } =
 await db.auth.getUser();
 
 if(user){
 
-if(user.id === OWNER_ID){
+if(
+user.id === OWNER_ID
+){
 
-document.getElementById("userAuth")
-.classList.remove("hidden");
+document.getElementById(
+"userAuth"
+)
+.classList.remove(
+"hidden"
+);
 
-document.getElementById("userApp")
-.classList.add("hidden");
+document.getElementById(
+"userApp"
+)
+.classList.add(
+"hidden"
+);
 
 }else{
 
-await loadUserApp(user);
+await loadUserApp(
+user
+);
 
 }
 
@@ -2388,10 +3630,15 @@ error.message
 }
 
 
-/* مراقبة حالة الدخول */
+/* =====================================================
+   مراقبة الدخول
+===================================================== */
 
 db.auth.onAuthStateChange(
-function(event,session){
+function(
+event,
+session
+){
 
 if(
 session &&
@@ -2399,24 +3646,39 @@ session.user &&
 session.user.id !== OWNER_ID
 ){
 
-loadUserApp(session.user);
+loadUserApp(
+session.user
+);
 
 }
 
-if(event === "SIGNED_OUT"){
+if(
+event === "SIGNED_OUT"
+){
 
-document.getElementById("userApp")
-.classList.add("hidden");
+document.getElementById(
+"userApp"
+)
+.classList.add(
+"hidden"
+);
 
-document.getElementById("userAuth")
-.classList.remove("hidden");
+document.getElementById(
+"userAuth"
+)
+.classList.remove(
+"hidden"
+);
 
 }
 
-});
+}
+);
 
 
-/* تشغيل المنصة */
+/* =====================================================
+   تشغيل المنصة
+===================================================== */
 
 document.addEventListener(
 "DOMContentLoaded",
