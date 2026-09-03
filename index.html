@@ -2,6 +2,7 @@
 <html lang="ar" dir="rtl">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -23,14 +24,15 @@ body{
 margin:0;
 font-family:Arial,sans-serif;
 background:
-radial-gradient(circle at 50% -15%,rgba(37,99,235,.22),transparent 35%),
-linear-gradient(180deg,#020617,#07111f 45%,#020617);
+radial-gradient(circle at 50% -15%,rgba(37,99,235,.20),transparent 35%),
+linear-gradient(180deg,#050914,#0b1220 45%,#070c16);
 color:#fff;
 min-height:100vh;
 }
 
 button,
-input{
+input,
+textarea{
 font-family:inherit;
 }
 
@@ -39,40 +41,12 @@ cursor:pointer;
 }
 
 .hidden{
-display:none!important;
+display:none !important;
 }
 
-/* HEADER */
-
-header{
-position:sticky;
-top:0;
-z-index:100;
-padding:18px 20px;
-text-align:center;
-background:rgba(2,6,23,.88);
-backdrop-filter:blur(18px);
-border-bottom:1px solid rgba(148,163,184,.12);
-box-shadow:0 10px 35px rgba(0,0,0,.25);
-}
-
-.logo{
-font-size:30px;
-font-weight:900;
-letter-spacing:2px;
-}
-
-.logo span{
-color:#60a5fa;
-}
-
-.tagline{
-margin-top:7px;
-color:#94a3b8;
-font-size:14px;
-}
-
-/* AUTH */
+/* =========================
+   AUTH
+========================= */
 
 .auth-page{
 min-height:100vh;
@@ -84,87 +58,99 @@ padding:25px;
 
 .auth-box{
 width:100%;
-max-width:480px;
-background:rgba(15,23,42,.88);
-border:1px solid rgba(96,165,250,.18);
-border-radius:26px;
+max-width:430px;
+background:rgba(15,23,42,.92);
+border:1px solid rgba(148,163,184,.15);
+border-radius:25px;
 padding:30px;
 box-shadow:0 25px 80px rgba(0,0,0,.45);
+backdrop-filter:blur(15px);
 }
 
 .auth-logo{
 text-align:center;
-font-size:38px;
-font-weight:900;
+font-size:40px;
+font-weight:bold;
 margin-bottom:8px;
+background:linear-gradient(90deg,#60a5fa,#a78bfa);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 .auth-subtitle{
 text-align:center;
 color:#94a3b8;
-margin-bottom:25px;
+margin-bottom:28px;
 }
 
-.auth-box input{
+.auth-box h2{
+text-align:center;
+margin:10px 0 25px;
+}
+
+.form-group{
+margin-bottom:16px;
+}
+
+.form-group label{
+display:block;
+margin-bottom:7px;
+color:#cbd5e1;
+font-size:14px;
+}
+
+.form-group input{
 width:100%;
-padding:15px;
-margin:8px 0;
+padding:14px;
 border-radius:13px;
-border:1px solid #334155;
-background:#020617;
+border:1px solid #263449;
+background:#0b1220;
 color:#fff;
 outline:none;
-font-size:16px;
 }
 
-.auth-box input:focus{
+.form-group input:focus{
 border-color:#3b82f6;
 box-shadow:0 0 0 3px rgba(59,130,246,.12);
 }
 
-.primary-btn,
-.secondary-btn,
-.danger-btn{
-border:0;
-padding:13px 20px;
+.primary-btn{
+width:100%;
+border:none;
 border-radius:13px;
+padding:14px;
 font-size:16px;
 font-weight:bold;
-transition:.2s;
-}
-
-.primary-btn{
+color:white;
 background:linear-gradient(135deg,#2563eb,#7c3aed);
-color:#fff;
+box-shadow:0 10px 25px rgba(37,99,235,.22);
 }
 
 .secondary-btn{
-background:#1e293b;
-color:#fff;
-border:1px solid #334155;
+width:100%;
+border:1px solid #263449;
+border-radius:13px;
+padding:13px;
+font-size:15px;
+font-weight:bold;
+color:#cbd5e1;
+background:#111827;
+margin-top:10px;
 }
 
-.danger-btn{
-background:#7f1d1d;
-color:#fff;
-}
-
-.primary-btn:hover,
-.secondary-btn:hover,
-.danger-btn:hover{
-transform:translateY(-2px);
-}
-
-.auth-actions{
+.auth-links{
 display:flex;
-gap:10px;
+justify-content:center;
+gap:15px;
 flex-wrap:wrap;
-margin-top:12px;
+margin-top:18px;
 }
 
-.auth-actions button{
-flex:1;
-min-width:130px;
+.auth-links button{
+border:none;
+background:none;
+color:#60a5fa;
+font-size:14px;
 }
 
 .auth-message{
@@ -177,129 +163,146 @@ text-align:center;
 font-size:14px;
 }
 
-.auth-switch{
-text-align:center;
-margin-top:20px;
-color:#94a3b8;
+/* =========================
+   APP
+========================= */
+
+#appPage{
+min-height:100vh;
 }
 
-.auth-switch button{
-background:none;
-border:0;
-color:#60a5fa;
-font-weight:bold;
+header{
+position:sticky;
+top:0;
+z-index:1000;
+background:rgba(5,9,20,.90);
+border-bottom:1px solid rgba(148,163,184,.12);
+backdrop-filter:blur(18px);
 }
 
-/* APP */
-
-#app{
-display:none;
-}
-
-.container{
-width:min(1200px,94%);
+.header-inner{
+max-width:1250px;
 margin:auto;
-padding:25px 0 100px;
+padding:15px 20px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
 }
 
-/* NAV */
+.logo{
+font-size:27px;
+font-weight:900;
+background:linear-gradient(90deg,#60a5fa,#a78bfa);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+white-space:nowrap;
+}
 
 .nav{
 display:flex;
-gap:8px;
-overflow-x:auto;
-padding:10px 0 18px;
-scrollbar-width:none;
-}
-
-.nav::-webkit-scrollbar{
-display:none;
+gap:7px;
+flex-wrap:wrap;
+justify-content:center;
 }
 
 .nav button{
-white-space:nowrap;
-background:#0f172a;
-color:#cbd5e1;
-border:1px solid #1e293b;
-padding:11px 15px;
-border-radius:13px;
+border:none;
+background:transparent;
+color:#94a3b8;
+padding:9px 11px;
+border-radius:10px;
+font-size:14px;
 }
 
 .nav button:hover,
 .nav button.active{
-background:linear-gradient(135deg,#1d4ed8,#6d28d9);
+background:#172033;
 color:#fff;
-border-color:transparent;
 }
 
-/* HERO */
+.user-mini{
+display:flex;
+align-items:center;
+gap:8px;
+color:#94a3b8;
+font-size:13px;
+}
+
+.user-dot{
+width:9px;
+height:9px;
+background:#22c55e;
+border-radius:50%;
+box-shadow:0 0 10px #22c55e;
+}
+
+main{
+max-width:1250px;
+margin:auto;
+padding:25px 18px 100px;
+}
+
+/* =========================
+   HOME
+========================= */
 
 .hero{
-position:relative;
-overflow:hidden;
+padding:55px 20px 40px;
 text-align:center;
-padding:55px 25px;
-border-radius:30px;
-background:
-radial-gradient(circle at 50% 0%,rgba(59,130,246,.28),transparent 50%),
-linear-gradient(145deg,rgba(15,23,42,.95),rgba(15,23,42,.65));
-border:1px solid rgba(96,165,250,.15);
-box-shadow:0 25px 70px rgba(0,0,0,.3);
+}
+
+.hero-badge{
+display:inline-block;
+padding:8px 15px;
+border:1px solid rgba(96,165,250,.25);
+background:rgba(37,99,235,.10);
+color:#93c5fd;
+border-radius:999px;
+font-size:13px;
+margin-bottom:15px;
 }
 
 .hero h1{
-font-size:clamp(32px,7vw,60px);
-margin:0 0 15px;
+font-size:clamp(34px,6vw,65px);
+margin:10px 0;
 }
 
 .hero h1 span{
-color:#60a5fa;
+background:linear-gradient(90deg,#60a5fa,#a78bfa,#22d3ee);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 .hero p{
-color:#cbd5e1;
-font-size:18px;
-line-height:1.8;
 max-width:700px;
-margin:0 auto 25px;
+margin:15px auto;
+line-height:1.9;
+color:#94a3b8;
+font-size:17px;
 }
 
-.hero-buttons{
+.hero-actions{
 display:flex;
 justify-content:center;
 gap:12px;
 flex-wrap:wrap;
-}
-
-/* SECTION */
-
-.section-box{
 margin-top:25px;
 }
 
-.card{
-background:rgba(15,23,42,.76);
-border:1px solid rgba(148,163,184,.12);
-border-radius:22px;
-padding:22px;
-box-shadow:0 15px 45px rgba(0,0,0,.18);
+.hero-actions button{
+border:none;
+border-radius:13px;
+padding:13px 22px;
+font-weight:bold;
+color:white;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
 }
 
-.card h2{
-margin-top:0;
+.hero-actions .outline{
+background:#111827;
+border:1px solid #263449;
 }
-
-.section-title{
-font-size:27px;
-margin:0 0 8px;
-}
-
-.section-description{
-color:#94a3b8;
-margin-top:0;
-}
-
-/* FEATURES */
 
 .features-grid{
 display:grid;
@@ -309,481 +312,782 @@ margin-top:20px;
 }
 
 .feature-card{
-background:linear-gradient(145deg,#0f172a,#111c31);
-border:1px solid #1e293b;
-border-radius:20px;
+background:rgba(15,23,42,.75);
+border:1px solid rgba(148,163,184,.12);
+border-radius:18px;
 padding:22px;
-transition:.25s;
+text-align:center;
 }
 
-.feature-card:hover{
-transform:translateY(-5px);
-border-color:#3b82f6;
-box-shadow:0 15px 40px rgba(37,99,235,.12);
+.feature-card .icon{
+font-size:30px;
+margin-bottom:10px;
 }
 
-.feature-icon{
-font-size:35px;
-margin-bottom:12px;
+.feature-card h3{
+margin:7px 0;
 }
 
-.feature-title{
-font-size:20px;
-font-weight:bold;
-margin-bottom:8px;
-}
-
-.feature-text{
+.feature-card p{
 color:#94a3b8;
+font-size:13px;
 line-height:1.7;
 }
-
-/* STATS */
 
 .stats{
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:12px;
-margin-top:20px;
+gap:15px;
+margin:25px 0;
 }
 
-.stat{
-background:#0b1220;
+.stat-card{
+background:#0f172a;
 border:1px solid #1e293b;
 border-radius:17px;
-padding:18px;
+padding:20px;
 text-align:center;
 }
 
 .stat-number{
 font-size:28px;
-font-weight:900;
+font-weight:bold;
 color:#60a5fa;
 }
 
 .stat-label{
 color:#94a3b8;
-margin-top:5px;
+margin-top:6px;
+font-size:13px;
 }
 
-/* PROJECTS */
+/* =========================
+   SECTIONS
+========================= */
+
+.section-box{
+background:rgba(15,23,42,.70);
+border:1px solid rgba(148,163,184,.12);
+border-radius:22px;
+padding:22px;
+margin-bottom:20px;
+box-shadow:0 15px 50px rgba(0,0,0,.16);
+}
+
+.section-title{
+display:flex;
+align-items:center;
+gap:10px;
+font-size:25px;
+font-weight:bold;
+margin-bottom:8px;
+}
+
+.section-description{
+color:#94a3b8;
+line-height:1.8;
+margin-bottom:20px;
+}
+
+/* =========================
+   PROJECTS
+========================= */
 
 .project-tools{
 display:flex;
 gap:10px;
 flex-wrap:wrap;
-margin:18px 0;
+margin-bottom:20px;
 }
 
-.search-input{
+.project-tools input{
 flex:1;
 min-width:220px;
-padding:14px;
-background:#020617;
-border:1px solid #334155;
-border-radius:13px;
-color:#fff;
+padding:13px;
+border-radius:12px;
+border:1px solid #263449;
+background:#0b1220;
+color:white;
 outline:none;
 }
 
-.filter-btn{
-padding:12px 17px;
-border-radius:12px;
-border:1px solid #334155;
-background:#0f172a;
+.project-filter{
+display:flex;
+gap:7px;
+flex-wrap:wrap;
+}
+
+.project-filter button{
+padding:10px 14px;
+border-radius:10px;
+border:1px solid #263449;
+background:#111827;
 color:#cbd5e1;
 }
 
-.filter-btn.active{
+.project-filter button.active{
 background:#2563eb;
-color:#fff;
 border-color:#2563eb;
+color:#fff;
 }
 
 .projects-grid{
 display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:18px;
+grid-template-columns:repeat(3,1fr);
+gap:16px;
 }
 
 .project-card{
-overflow:hidden;
 background:#0b1220;
 border:1px solid #1e293b;
-border-radius:22px;
+border-radius:18px;
+padding:17px;
 }
 
 .project-image{
-height:220px;
+height:170px;
+border-radius:14px;
 background:
-linear-gradient(135deg,#172554,#312e81,#0f172a);
+linear-gradient(135deg,#172554,#312e81);
 display:flex;
 align-items:center;
 justify-content:center;
 font-size:65px;
+margin-bottom:15px;
 }
 
-.project-content{
-padding:20px;
+.project-card h3{
+margin:0 0 8px;
 }
 
-.project-title{
-font-size:22px;
-font-weight:bold;
-margin-bottom:8px;
-}
-
-.project-description{
+.project-card p{
 color:#94a3b8;
 line-height:1.7;
+font-size:14px;
 }
 
 .project-actions{
 display:flex;
 gap:8px;
 flex-wrap:wrap;
-margin-top:15px;
+margin-top:12px;
+}
+
+.project-actions button{
+border:none;
+border-radius:10px;
+padding:9px 12px;
+background:#172033;
+color:#cbd5e1;
+}
+
+.project-actions button:hover{
+background:#2563eb;
+color:#fff;
 }
 
 .project-details{
-display:none;
-padding:18px;
-border-top:1px solid #1e293b;
-background:#070d19;
-}
-
-.project-details.open{
-display:block;
-}
-
-.like-btn{
-background:#172033;
-border:1px solid #334155;
-color:#fff;
-padding:10px 14px;
-border-radius:12px;
-}
-
-.like-btn.liked{
-background:#7f1d1d;
-border-color:#ef4444;
-}
-
-.comment-box{
-margin-top:18px;
-}
-
-.comment-box textarea{
-width:100%;
-min-height:90px;
-resize:vertical;
+margin-top:12px;
 padding:13px;
-background:#020617;
-border:1px solid #334155;
 border-radius:12px;
-color:#fff;
-outline:none;
-}
-
-.comment{
-padding:12px;
-margin-top:10px;
-background:#0f172a;
-border:1px solid #1e293b;
-border-radius:12px;
-}
-
-.comment-name{
-font-weight:bold;
-color:#60a5fa;
-}
-
-.comment-date{
-font-size:11px;
-color:#64748b;
-margin-top:4px;
-}
-
-.comment-text{
-margin-top:8px;
+background:#111827;
 color:#cbd5e1;
-line-height:1.6;
+line-height:1.8;
 }
 
-/* DESIGNS */
+.comments-box{
+margin-top:15px;
+padding-top:15px;
+border-top:1px solid #1e293b;
+}
+
+.comment-form{
+display:flex;
+gap:8px;
+margin-top:10px;
+}
+
+.comment-form input{
+flex:1;
+padding:11px;
+border-radius:10px;
+border:1px solid #263449;
+background:#0b1220;
+color:#fff;
+}
+
+.comment-form button{
+border:none;
+background:#2563eb;
+color:white;
+border-radius:10px;
+padding:0 15px;
+}
+
+.comment-item{
+padding:10px 0;
+border-bottom:1px solid #1e293b;
+font-size:13px;
+}
+
+.comment-meta{
+color:#64748b;
+font-size:11px;
+margin-bottom:5px;
+}
+
+.comment-delete{
+border:none;
+background:none;
+color:#f87171;
+font-size:11px;
+margin-top:5px;
+}
+
+/* =========================
+   DESIGNS
+========================= */
 
 .designs-head{
 display:flex;
 align-items:center;
 gap:15px;
-margin-bottom:20px;
+margin-bottom:8px;
 }
 
 .designs-icon{
-width:65px;
-height:65px;
-border-radius:20px;
+width:50px;
+height:50px;
+border-radius:15px;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:32px;
+font-size:27px;
 background:linear-gradient(135deg,#2563eb,#7c3aed);
-box-shadow:0 12px 30px rgba(37,99,235,.22);
+box-shadow:0 10px 30px rgba(37,99,235,.20);
 }
 
 .designs-title{
-font-size:28px;
-font-weight:900;
+font-size:27px;
+font-weight:bold;
 }
 
 .designs-text{
 color:#94a3b8;
-margin-top:6px;
-line-height:1.7;
+margin-top:5px;
 }
 
 .designs-tools{
 display:flex;
 gap:10px;
-margin:20px 0;
-flex-wrap:wrap;
+margin:22px 0 10px;
 }
 
-.designs-tools .search-input{
-min-width:240px;
+.designs-tools input{
+flex:1;
+padding:14px;
+border-radius:13px;
+border:1px solid #263449;
+background:#0b1220;
+color:#fff;
+outline:none;
+}
+
+.designs-tools button{
+border:none;
+border-radius:13px;
+padding:0 17px;
+background:#172033;
+color:#cbd5e1;
 }
 
 .design-search-info{
 color:#64748b;
-font-size:14px;
-margin-bottom:15px;
+font-size:13px;
+margin-bottom:17px;
 }
 
 .designs-grid{
 display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:18px;
+grid-template-columns:repeat(4,1fr);
+gap:16px;
 }
 
 .design-card{
-overflow:hidden;
-background:linear-gradient(145deg,#0b1220,#111827);
+background:linear-gradient(180deg,#101a2d,#0b1220);
 border:1px solid #1e293b;
-border-radius:22px;
-transition:.25s;
+border-radius:19px;
+overflow:hidden;
+transition:.25s ease;
 }
 
 .design-card:hover{
-transform:translateY(-6px);
-border-color:#6366f1;
-box-shadow:0 20px 50px rgba(79,70,229,.14);
+transform:translateY(-5px);
+border-color:#334155;
+box-shadow:0 18px 45px rgba(0,0,0,.25);
 }
 
 .design-image{
-height:230px;
-position:relative;
+height:205px;
+background:
+radial-gradient(circle at 50% 25%,rgba(96,165,250,.25),transparent 45%),
+linear-gradient(135deg,#111c36,#1e1b4b);
+display:flex;
+align-items:center;
+justify-content:center;
 overflow:hidden;
 }
 
 .design-placeholder{
-width:100%;
-height:100%;
-display:flex;
-align-items:center;
-justify-content:center;
 font-size:75px;
-background:
-radial-gradient(circle at 30% 20%,rgba(96,165,250,.3),transparent 35%),
-linear-gradient(135deg,#111827,#172554,#312e81);
+filter:drop-shadow(0 10px 20px rgba(0,0,0,.35));
+transition:.3s ease;
+}
+
+.design-card:hover .design-placeholder{
+transform:scale(1.10);
 }
 
 .design-content{
-padding:20px;
+padding:17px;
 }
 
 .design-name{
-font-size:23px;
-font-weight:900;
-margin-bottom:9px;
+font-size:19px;
+font-weight:bold;
+margin-bottom:8px;
 }
 
 .design-description{
-color:#94a3b8;
+font-size:13px;
 line-height:1.8;
+color:#94a3b8;
+min-height:47px;
 }
 
 .design-tag{
 display:inline-block;
-margin-top:12px;
-padding:7px 11px;
-border-radius:20px;
-font-size:12px;
-background:rgba(59,130,246,.12);
-color:#60a5fa;
-border:1px solid rgba(96,165,250,.15);
+margin-top:10px;
+padding:5px 9px;
+border-radius:999px;
+background:#172033;
+color:#93c5fd;
+font-size:11px;
 }
 
 .design-actions{
 display:flex;
 gap:8px;
-margin-top:17px;
+margin-top:15px;
 }
 
-/* PROFILE */
-
-.profile-box{
-text-align:center;
-padding:35px 20px;
+.design-actions button{
+flex:1;
+border:none;
+border-radius:10px;
+padding:10px;
+background:#172033;
+color:#cbd5e1;
 }
 
-.avatar{
-width:85px;
-height:85px;
+.design-actions button.primary{
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+color:#fff;
+}
+
+/* =========================
+   DESIGN MODAL
+========================= */
+
+.design-modal{
+position:fixed;
+inset:0;
+z-index:5000;
+display:none;
+align-items:center;
+justify-content:center;
+padding:20px;
+background:rgba(0,0,0,.72);
+backdrop-filter:blur(9px);
+}
+
+.design-modal.show{
+display:flex;
+}
+
+.design-modal-box{
+width:100%;
+max-width:850px;
+max-height:90vh;
+overflow:auto;
+background:#0b1220;
+border:1px solid #263449;
+border-radius:25px;
+box-shadow:0 30px 100px rgba(0,0,0,.60);
+position:relative;
+animation:designModalIn .22s ease;
+}
+
+@keyframes designModalIn{
+from{
+opacity:0;
+transform:translateY(15px) scale(.97);
+}
+to{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+}
+
+.design-modal-close{
+position:absolute;
+top:15px;
+left:15px;
+z-index:2;
+width:40px;
+height:40px;
+border:none;
 border-radius:50%;
+background:rgba(0,0,0,.45);
+color:#fff;
+font-size:22px;
+}
+
+.design-modal-visual{
+min-height:300px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:
+radial-gradient(circle at 50% 30%,rgba(96,165,250,.25),transparent 42%),
+linear-gradient(135deg,#111c36,#312e81);
+}
+
+.design-modal-emoji{
+font-size:120px;
+filter:drop-shadow(0 20px 30px rgba(0,0,0,.4));
+}
+
+.design-modal-content{
+padding:25px;
+}
+
+.design-modal-content h2{
+font-size:30px;
+margin:0 0 10px;
+}
+
+.design-modal-content p{
+color:#94a3b8;
+line-height:1.9;
+}
+
+.design-modal-actions{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-top:20px;
+}
+
+.design-modal-actions button{
+border:none;
+border-radius:12px;
+padding:12px 18px;
+background:#172033;
+color:#cbd5e1;
+}
+
+.design-modal-actions button.like-btn{
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+color:#fff;
+}
+
+.design-modal-comments{
+margin-top:22px;
+padding-top:18px;
+border-top:1px solid #1e293b;
+}
+
+.design-comment-input{
+display:flex;
+gap:8px;
+margin-top:12px;
+}
+
+.design-comment-input input{
+flex:1;
+padding:12px;
+border-radius:11px;
+border:1px solid #263449;
+background:#070d19;
+color:#fff;
+}
+
+.design-comment-input button{
+border:none;
+border-radius:11px;
+background:#2563eb;
+color:#fff;
+padding:0 18px;
+}
+
+/* =========================
+   PLACEHOLDER SECTIONS
+========================= */
+
+.placeholder{
+padding:50px 20px;
+text-align:center;
+}
+
+.placeholder-icon{
+font-size:60px;
+margin-bottom:15px;
+}
+
+.placeholder h2{
+margin-bottom:8px;
+}
+
+.placeholder p{
+color:#94a3b8;
+line-height:1.8;
+}
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile-card{
+max-width:650px;
 margin:auto;
+text-align:center;
+}
+
+.profile-avatar{
+width:90px;
+height:90px;
+margin:0 auto 15px;
+border-radius:50%;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
 display:flex;
 align-items:center;
 justify-content:center;
 font-size:38px;
-background:linear-gradient(135deg,#2563eb,#7c3aed);
+font-weight:bold;
 }
 
-/* FOOTER */
+.profile-info{
+background:#0b1220;
+border:1px solid #1e293b;
+border-radius:16px;
+padding:18px;
+text-align:right;
+margin-top:20px;
+}
+
+.profile-row{
+padding:12px 0;
+border-bottom:1px solid #1e293b;
+}
+
+.profile-row:last-child{
+border-bottom:none;
+}
+
+.profile-label{
+font-size:12px;
+color:#64748b;
+margin-bottom:5px;
+}
+
+.profile-value{
+color:#e2e8f0;
+word-break:break-word;
+}
+
+/* =========================
+   FOOTER
+========================= */
 
 footer{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-z-index:90;
-background:rgba(2,6,23,.94);
-backdrop-filter:blur(15px);
-border-top:1px solid rgba(148,163,184,.12);
-padding:12px;
 text-align:center;
+padding:25px 15px;
 color:#64748b;
 font-size:12px;
+border-top:1px solid rgba(148,163,184,.08);
 }
 
-/* EMPTY */
+/* =========================
+   RESPONSIVE
+========================= */
 
-.empty{
-padding:35px;
-text-align:center;
-color:#64748b;
-}
-
-/* MOBILE */
-
-@media(max-width:800px){
+@media(max-width:1000px){
 
 .features-grid{
 grid-template-columns:repeat(2,1fr);
 }
 
-.projects-grid,
+.projects-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
 .designs-grid{
-grid-template-columns:1fr;
+grid-template-columns:repeat(2,1fr);
 }
 
 }
 
-@media(max-width:550px){
+@media(max-width:700px){
 
-.container{
-width:92%;
+.header-inner{
+flex-direction:column;
 }
 
-.auth-box{
-padding:22px;
+.nav{
+width:100%;
+overflow-x:auto;
+justify-content:flex-start;
+padding-bottom:3px;
 }
 
-.features-grid{
-grid-template-columns:1fr;
+.nav button{
+white-space:nowrap;
 }
 
+.user-mini{
+display:none;
+}
+
+main{
+padding:15px 12px 90px;
+}
+
+.hero{
+padding:35px 10px 25px;
+}
+
+.features-grid,
+.projects-grid,
+.designs-grid,
 .stats{
 grid-template-columns:1fr;
 }
 
-.hero{
-padding:40px 18px;
+.designs-tools{
+flex-direction:column;
 }
 
-.designs-head{
-align-items:flex-start;
+.designs-tools button{
+height:45px;
 }
 
-.designs-icon{
-width:55px;
-height:55px;
-font-size:27px;
+.design-modal{
+padding:10px;
 }
 
-.designs-title{
-font-size:23px;
+.design-modal-box{
+max-height:94vh;
+border-radius:20px;
 }
 
-.project-image,
-.design-image{
-height:190px;
+.design-modal-visual{
+min-height:230px;
+}
+
+.design-modal-emoji{
+font-size:90px;
+}
+
+.design-modal-content h2{
+font-size:25px;
+}
+
+.comment-form,
+.design-comment-input{
+flex-direction:column;
+}
+
+.comment-form button,
+.design-comment-input button{
+height:43px;
 }
 
 }
+
+/* =========================
+   TOAST
+========================= */
+
+.kapo-toast{
+position:fixed;
+bottom:25px;
+left:50%;
+transform:translateX(-50%) translateY(20px);
+background:#111827;
+border:1px solid #334155;
+color:#fff;
+padding:12px 18px;
+border-radius:13px;
+z-index:9999;
+opacity:0;
+pointer-events:none;
+transition:.25s ease;
+box-shadow:0 15px 40px rgba(0,0,0,.35);
+}
+
+.kapo-toast.show{
+opacity:1;
+transform:translateX(-50%) translateY(0);
+}
+
 </style>
+
 </head>
 
 <body>
 
-<!-- AUTH -->
+<!-- =========================
+     AUTH PAGE
+========================= -->
 
-<section id="authPage" class="auth-page">
+<div id="authPage" class="auth-page">
 
 <div class="auth-box">
 
 <div class="auth-logo">
-🚀 <span>KAPO ONE</span>
+KAPO ONE
 </div>
 
 <div class="auth-subtitle">
-منصة عالمية للأعمال والأفكار والتصاميم
+منصة كابو للأفكار والمشاريع والتصاميم
 </div>
 
-<div id="loginForm">
+<div id="loginBox">
 
-<input
-id="loginEmail"
-type="email"
-placeholder="البريد الإلكتروني"
->
+<h2>تسجيل الدخول</h2>
 
-<input
-id="loginPassword"
-type="password"
-placeholder="كلمة المرور"
->
+<div class="form-group">
+<label>البريد الإلكتروني</label>
+<input id="loginEmail" type="email" placeholder="example@email.com">
+</div>
 
-<div class="auth-actions">
+<div class="form-group">
+<label>كلمة المرور</label>
+<input id="loginPassword" type="password" placeholder="••••••••">
+</div>
 
-<button
-class="primary-btn"
-onclick="loginUser()">
-تسجيل الدخول
+<button class="primary-btn" onclick="loginUser()">
+دخول
 </button>
 
-<button
-class="secondary-btn"
-onclick="showRegister()">
+<div class="auth-links">
+
+<button onclick="showRegister()">
 إنشاء حساب
 </button>
 
-</div>
-
-<div style="text-align:center;margin-top:12px">
-
-<button
-class="auth-switch"
-onclick="showReset()">
+<button onclick="showReset()">
 نسيت كلمة المرور؟
 </button>
 
@@ -792,173 +1096,154 @@ onclick="showReset()">
 </div>
 
 
-<div id="registerForm" class="hidden">
+<div id="registerBox" class="hidden">
 
-<input
-id="registerName"
-type="text"
-placeholder="الاسم"
->
+<h2>إنشاء حساب</h2>
 
-<input
-id="registerEmail"
-type="email"
-placeholder="البريد الإلكتروني"
->
+<div class="form-group">
+<label>الاسم</label>
+<input id="registerName" type="text" placeholder="اسمك">
+</div>
 
-<input
-id="registerPassword"
-type="password"
-placeholder="كلمة المرور"
->
+<div class="form-group">
+<label>البريد الإلكتروني</label>
+<input id="registerEmail" type="email" placeholder="example@email.com">
+</div>
 
-<div class="auth-actions">
+<div class="form-group">
+<label>كلمة المرور</label>
+<input id="registerPassword" type="password" placeholder="••••••••">
+</div>
 
-<button
-class="primary-btn"
-onclick="registerUser()">
+<button class="primary-btn" onclick="registerUser()">
 إنشاء الحساب
 </button>
 
-<button
-class="secondary-btn"
-onclick="showLogin()">
-رجوع
+<button class="secondary-btn" onclick="showLogin()">
+العودة لتسجيل الدخول
 </button>
 
 </div>
 
+
+<div id="resetBox" class="hidden">
+
+<h2>استعادة كلمة المرور</h2>
+
+<div class="form-group">
+<label>البريد الإلكتروني</label>
+<input id="resetEmail" type="email" placeholder="example@email.com">
 </div>
 
-
-<div id="resetForm" class="hidden">
-
-<input
-id="resetEmail"
-type="email"
-placeholder="البريد الإلكتروني"
->
-
-<div class="auth-actions">
-
-<button
-class="primary-btn"
-onclick="resetUserPassword()">
+<button class="primary-btn" onclick="resetUserPassword()">
 إرسال رابط الاستعادة
 </button>
 
-<button
-class="secondary-btn"
-onclick="showLogin()">
-رجوع
+<button class="secondary-btn" onclick="showLogin()">
+العودة
 </button>
 
 </div>
 
-</div>
+<div id="authMessage" class="auth-message hidden"></div>
 
-<div
-id="authMessage"
-class="auth-message hidden">
 </div>
 
 </div>
 
-</section>
 
+<!-- =========================
+     APP
+========================= -->
 
-<!-- APP -->
-
-<div id="app">
+<div id="appPage" class="hidden">
 
 <header>
 
+<div class="header-inner">
+
 <div class="logo">
-🚀 <span>KAPO ONE</span>
+KAPO ONE
 </div>
 
-<div class="tagline">
-منصة عالمية للأعمال والأفكار والتصاميم
+<nav class="nav">
+
+<button id="navHome" class="active" onclick="kapoSection('home',this)">
+الرئيسية
+</button>
+
+<button id="navProjects" onclick="kapoSection('projects',this)">
+المشاريع
+</button>
+
+<button id="navDesigns" onclick="kapoSection('designs',this)">
+التصاميم
+</button>
+
+<button id="navIdeas" onclick="kapoSection('ideas',this)">
+الأفكار
+</button>
+
+<button id="navChannels" onclick="kapoSection('channels',this)">
+القنوات
+</button>
+
+<button id="navAnswers" onclick="kapoSection('answers',this)">
+الإجابات
+</button>
+
+<button id="navProfile" onclick="kapoSection('profile',this)">
+حسابي
+</button>
+
+</nav>
+
+<div class="user-mini">
+
+<span class="user-dot"></span>
+
+<span id="headerUserName">
+مستخدم
+</span>
+
+</div>
+
 </div>
 
 </header>
 
 
-<div class="container">
+<main>
 
-<!-- NAV -->
+<!-- =========================
+     HOME
+========================= -->
 
-<nav class="nav">
-
-<button
-class="active"
-onclick="kapoSection('home',this)">
-🏠 الرئيسية
-</button>
-
-<button
-onclick="kapoSection('projects',this)">
-🚀 المشاريع
-</button>
-
-<button
-onclick="kapoSection('designs',this)">
-🎨 التصاميم
-</button>
-
-<button
-onclick="kapoSection('ideas',this)">
-💡 الأفكار
-</button>
-
-<button
-onclick="kapoSection('channels',this)">
-📺 القنوات
-</button>
-
-<button
-onclick="kapoSection('answers',this)">
-💬 الإجابات
-</button>
-
-<button
-onclick="kapoSection('profile',this)">
-👤 الملف الشخصي
-</button>
-
-</nav>
-
-
-<!-- HOME -->
-
-<section
-id="sectionHome"
-class="section-box">
+<section id="sectionHome">
 
 <div class="hero">
 
+<div class="hero-badge">
+🚀 منصة KAPO ONE
+</div>
+
 <h1>
-مرحبًا بك في
-<span>KAPO ONE</span>
+مرحبًا بك في <span>KAPO ONE</span>
 </h1>
 
 <p>
-منصة تجمع المشاريع والتصاميم والأفكار
-والقنوات والمجتمع في مكان واحد.
+منصة تجمع المشاريع والتصاميم والأفكار والقنوات والإجابات
+في مكان واحد، لبناء مجتمع إبداعي متكامل.
 </p>
 
-<div class="hero-buttons">
+<div class="hero-actions">
 
-<button
-class="primary-btn"
-onclick="kapoSection('projects')">
-🚀 استكشف المشاريع
+<button onclick="kapoSection('projects',document.getElementById('navProjects'))">
+استكشف المشاريع
 </button>
 
-<button
-class="secondary-btn"
-onclick="kapoSection('designs')">
-🎨 شاهد التصاميم
+<button class="outline" onclick="kapoSection('designs',document.getElementById('navDesigns'))">
+شاهد التصاميم
 </button>
 
 </div>
@@ -970,64 +1255,52 @@ onclick="kapoSection('designs')">
 
 <div class="feature-card">
 
-<div class="feature-icon">🚀</div>
+<div class="icon">🏗️</div>
 
-<div class="feature-title">
-المشاريع
-</div>
+<h3>المشاريع</h3>
 
-<div class="feature-text">
-استعرض المشاريع والأعمال
-والأفكار المستقبلية.
-</div>
+<p>
+استعرض المشاريع وتابع التفاصيل والتفاعل والتعليقات.
+</p>
 
 </div>
 
 
 <div class="feature-card">
 
-<div class="feature-icon">🎨</div>
+<div class="icon">🎨</div>
 
-<div class="feature-title">
-التصاميم
-</div>
+<h3>التصاميم</h3>
 
-<div class="feature-text">
-معرض خاص للتصاميم
-والأعمال الإبداعية.
-</div>
+<p>
+مساحة خاصة للتصاميم والأفكار المعمارية المميزة.
+</p>
 
 </div>
 
 
 <div class="feature-card">
 
-<div class="feature-icon">💡</div>
+<div class="icon">💡</div>
 
-<div class="feature-title">
-الأفكار
-</div>
+<h3>الأفكار</h3>
 
-<div class="feature-text">
-شارك الأفكار الجديدة
-وطورها مع المجتمع.
-</div>
+<p>
+شارك الأفكار الجديدة واطلع على المقترحات الإبداعية.
+</p>
 
 </div>
 
 
 <div class="feature-card">
 
-<div class="feature-icon">📺</div>
+<div class="icon">💬</div>
 
-<div class="feature-title">
-القنوات
-</div>
+<h3>القنوات</h3>
 
-<div class="feature-text">
-مساحات متنوعة للمحتوى
-والمشاركة والتفاعل.
-</div>
+<p>
+تواصل وشارك المحتوى والنقاشات داخل المنصة.
+</p>
 
 </div>
 
@@ -1036,40 +1309,38 @@ onclick="kapoSection('designs')">
 
 <div class="stats">
 
-<div class="stat">
+<div class="stat-card">
 
-<div
-id="homeProjectsCount"
-class="stat-number">
+<div id="homeProjectCount" class="stat-number">
 0
 </div>
 
 <div class="stat-label">
-مشروع
+المشاريع
 </div>
 
 </div>
 
-<div class="stat">
+<div class="stat-card">
 
 <div class="stat-number">
-🎨
+4
 </div>
 
 <div class="stat-label">
-تصاميم
+التصاميم الحالية
 </div>
 
 </div>
 
-<div class="stat">
+<div class="stat-card">
 
 <div class="stat-number">
-🌍
+∞
 </div>
 
 <div class="stat-label">
-مجتمع KAPO
+الأفكار القادمة
 </div>
 
 </div>
@@ -1079,30 +1350,25 @@ class="stat-number">
 </section>
 
 
-<!-- PROJECTS -->
+<!-- =========================
+     PROJECTS
+========================= -->
 
-<section
-id="sectionProjects"
-class="section-box hidden">
+<section id="sectionProjects" class="section-box hidden">
 
-<div class="card">
+<div class="section-title">
+🏗️ المشاريع
+</div>
 
-<h2 class="section-title">
-🚀 المشاريع
-</h2>
-
-<p class="section-description">
-استعرض المشاريع الموجودة على منصة KAPO ONE.
-</p>
-
+<div class="section-description">
+استعرض المشاريع الموجودة داخل منصة KAPO ONE وتفاعل معها.
+</div>
 
 <div class="stats">
 
-<div class="stat">
+<div class="stat-card">
 
-<div
-id="projectsCount"
-class="stat-number">
+<div id="projectCount" class="stat-number">
 0
 </div>
 
@@ -1112,11 +1378,9 @@ class="stat-number">
 
 </div>
 
-<div class="stat">
+<div class="stat-card">
 
-<div
-id="projectsWithImages"
-class="stat-number">
+<div id="projectWithImages" class="stat-number">
 0
 </div>
 
@@ -1126,11 +1390,9 @@ class="stat-number">
 
 </div>
 
-<div class="stat">
+<div class="stat-card">
 
-<div
-id="projectsWithoutImages"
-class="stat-number">
+<div id="projectWithoutImages" class="stat-number">
 0
 </div>
 
@@ -1147,55 +1409,42 @@ class="stat-number">
 
 <input
 id="projectSearch"
-class="search-input"
 type="text"
 placeholder="🔎 ابحث عن مشروع..."
 oninput="searchProjects()"
 >
 
-<button
-class="filter-btn active"
-onclick="setProjectFilter('all',this)">
+<div class="project-filter">
+
+<button class="active" onclick="setProjectFilter('all',this)">
 الكل
 </button>
 
-<button
-class="filter-btn"
-onclick="setProjectFilter('images',this)">
-بالصور
+<button onclick="setProjectFilter('images',this)">
+بصور
 </button>
 
-<button
-class="filter-btn"
-onclick="setProjectFilter('noimages',this)">
+<button onclick="setProjectFilter('noimages',this)">
 بدون صور
 </button>
 
 </div>
 
-
-<div
-id="projectsGrid"
-class="projects-grid">
-
-<div class="empty">
-جاري تحميل المشاريع...
 </div>
 
-</div>
+
+<div id="projectsGrid" class="projects-grid">
 
 </div>
 
 </section>
 
 
-<!-- DESIGNS -->
+<!-- =========================
+     DESIGNS
+========================= -->
 
-<section
-id="sectionDesigns"
-class="section-box hidden">
-
-<div class="card">
+<section id="sectionDesigns" class="section-box hidden">
 
 <div class="designs-head">
 
@@ -1210,8 +1459,7 @@ class="section-box hidden">
 </div>
 
 <div class="designs-text">
-مساحة إبداعية لعرض التصاميم
-والأعمال المعمارية والمشاريع المستقبلية.
+مساحة مخصصة لاستعراض التصاميم المعمارية والأفكار البصرية.
 </div>
 
 </div>
@@ -1223,24 +1471,19 @@ class="section-box hidden">
 
 <input
 id="designSearch"
-class="search-input"
 type="text"
 placeholder="🔎 ابحث عن تصميم..."
 oninput="filterDesigns()"
 >
 
-<button
-class="secondary-btn"
-onclick="resetDesignSearch()">
-كل التصاميم
+<button onclick="resetDesignSearch()">
+إعادة
 </button>
 
 </div>
 
 
-<div
-id="designSearchInfo"
-class="design-search-info">
+<div id="designSearchInfo" class="design-search-info">
 عرض جميع التصاميم
 </div>
 
@@ -1248,11 +1491,15 @@ class="design-search-info">
 <div class="designs-grid">
 
 
-<!-- DESIGN 1 -->
+<!-- التصميم 1 -->
 
 <div
 class="design-card"
-data-design-title="برج المستقبل">
+data-design-title="برج المستقبل"
+data-design-description="تصور معماري لبرج مستقبلي يجمع بين الواجهات الزجاجية والخطوط الهندسية الحديثة."
+data-design-emoji="🏙️"
+data-design-tag="أبراج"
+>
 
 <div class="design-image">
 
@@ -1269,20 +1516,20 @@ data-design-title="برج المستقبل">
 </div>
 
 <div class="design-description">
-تصور معماري لبرج حديث يجمع
-بين التقنية والهوية المستقبلية.
+تصور معماري لبرج مستقبلي يجمع بين الواجهات الزجاجية والخطوط الهندسية الحديثة.
 </div>
 
 <span class="design-tag">
-عمارة مستقبلية
+أبراج
 </span>
 
 <div class="design-actions">
 
 <button
-class="primary-btn"
-onclick="showDesignMessage('برج المستقبل')">
-👁️ استكشف
+class="primary"
+onclick="showDesignMessage('برج المستقبل')"
+>
+استكشف
 </button>
 
 </div>
@@ -1292,11 +1539,15 @@ onclick="showDesignMessage('برج المستقبل')">
 </div>
 
 
-<!-- DESIGN 2 -->
+<!-- التصميم 2 -->
 
 <div
 class="design-card"
-data-design-title="التصميم الذري">
+data-design-title="التصميم الذري"
+data-design-description="فكرة معمارية مستوحاة من شكل الذرة، بتكوين هندسي مميز ومساحات مترابطة."
+data-design-emoji="⚛️"
+data-design-tag="تصميم مستقبلي"
+>
 
 <div class="design-image">
 
@@ -1313,20 +1564,20 @@ data-design-title="التصميم الذري">
 </div>
 
 <div class="design-description">
-فكرة برج مستوحاة من شكل الذرة
-بطابع هندسي مستقبلي ومميز.
+فكرة معمارية مستوحاة من شكل الذرة، بتكوين هندسي مميز ومساحات مترابطة.
 </div>
 
 <span class="design-tag">
-تصميم معماري
+تصميم مستقبلي
 </span>
 
 <div class="design-actions">
 
 <button
-class="primary-btn"
-onclick="showDesignMessage('التصميم الذري')">
-👁️ استكشف
+class="primary"
+onclick="showDesignMessage('التصميم الذري')"
+>
+استكشف
 </button>
 
 </div>
@@ -1336,11 +1587,15 @@ onclick="showDesignMessage('التصميم الذري')">
 </div>
 
 
-<!-- DESIGN 3 -->
+<!-- التصميم 3 -->
 
 <div
 class="design-card"
-data-design-title="السيف والنخلة">
+data-design-title="السيف والنخلة"
+data-design-description="تصميم رمزي يجمع بين السيف والنخلة في تكوين معماري يعكس الهوية والطموح."
+data-design-emoji="⚔️🌴"
+data-design-tag="هوية معمارية"
+>
 
 <div class="design-image">
 
@@ -1357,8 +1612,7 @@ data-design-title="السيف والنخلة">
 </div>
 
 <div class="design-description">
-تصميم مستوحى من رموز الهوية
-السعودية بأسلوب معماري معاصر.
+تصميم رمزي يجمع بين السيف والنخلة في تكوين معماري يعكس الهوية والطموح.
 </div>
 
 <span class="design-tag">
@@ -1368,9 +1622,10 @@ data-design-title="السيف والنخلة">
 <div class="design-actions">
 
 <button
-class="primary-btn"
-onclick="showDesignMessage('السيف والنخلة')">
-👁️ استكشف
+class="primary"
+onclick="showDesignMessage('السيف والنخلة')"
+>
+استكشف
 </button>
 
 </div>
@@ -1380,11 +1635,15 @@ onclick="showDesignMessage('السيف والنخلة')">
 </div>
 
 
-<!-- DESIGN 4 -->
+<!-- التصميم 4 -->
 
 <div
 class="design-card"
-data-design-title="مدينة المستقبل">
+data-design-title="مدينة المستقبل"
+data-design-description="تصور لمدينة مستقبلية ذكية تجمع بين الأبراج والمرافق والمساحات الحديثة."
+data-design-emoji="🌆"
+data-design-tag="مدن ذكية"
+>
 
 <div class="design-image">
 
@@ -1401,20 +1660,20 @@ data-design-title="مدينة المستقبل">
 </div>
 
 <div class="design-description">
-رؤية لمدينة ذكية تعتمد على
-التقنية والاستدامة والتصميم الحديث.
+تصور لمدينة مستقبلية ذكية تجمع بين الأبراج والمرافق والمساحات الحديثة.
 </div>
 
 <span class="design-tag">
-مدينة ذكية
+مدن ذكية
 </span>
 
 <div class="design-actions">
 
 <button
-class="primary-btn"
-onclick="showDesignMessage('مدينة المستقبل')">
-👁️ استكشف
+class="primary"
+onclick="showDesignMessage('مدينة المستقبل')"
+>
+استكشف
 </button>
 
 </div>
@@ -1423,153 +1682,141 @@ onclick="showDesignMessage('مدينة المستقبل')">
 
 </div>
 
-</div>
 
 </div>
 
 </section>
 
 
-<!-- IDEAS -->
+<!-- =========================
+     IDEAS
+========================= -->
 
-<section
-id="sectionIdeas"
-class="section-box hidden">
+<section id="sectionIdeas" class="section-box hidden">
 
-<div class="card">
+<div class="placeholder">
 
-<h2 class="section-title">
-💡 الأفكار
-</h2>
-
-<p class="section-description">
-مساحة مخصصة للأفكار والمقترحات المستقبلية.
-</p>
-
-<div class="feature-card">
-
-<div class="feature-icon">
+<div class="placeholder-icon">
 💡
 </div>
 
-<div class="feature-title">
-الأفكار المستقبلية
-</div>
+<h2>
+الأفكار
+</h2>
 
-<div class="feature-text">
-سيتم تطوير نظام الأفكار والمشاركة
-والتفاعل في المرحلة القادمة.
-</div>
-
-</div>
+<p>
+قسم الأفكار جاهز للتطوير وإضافة الأفكار والمقترحات والمشاركة بين المستخدمين.
+</p>
 
 </div>
 
 </section>
 
 
-<!-- CHANNELS -->
+<!-- =========================
+     CHANNELS
+========================= -->
 
-<section
-id="sectionChannels"
-class="section-box hidden">
+<section id="sectionChannels" class="section-box hidden">
 
-<div class="card">
+<div class="placeholder">
 
-<h2 class="section-title">
-📺 القنوات
-</h2>
-
-<p class="section-description">
-مساحات مخصصة للمحتوى والقنوات داخل KAPO ONE.
-</p>
-
-<div class="feature-card">
-
-<div class="feature-icon">
+<div class="placeholder-icon">
 📺
 </div>
 
-<div class="feature-title">
-قنوات KAPO
-</div>
+<h2>
+القنوات
+</h2>
 
-<div class="feature-text">
-سيتم بناء نظام القنوات والمحتوى
-في المرحلة القادمة.
-</div>
-
-</div>
+<p>
+سيتم إضافة قنوات KAPO ONE ومحتواها وتفاعل المستخدمين في المرحلة القادمة.
+</p>
 
 </div>
 
 </section>
 
 
-<!-- ANSWERS -->
+<!-- =========================
+     ANSWERS
+========================= -->
 
-<section
-id="sectionAnswers"
-class="section-box hidden">
+<section id="sectionAnswers" class="section-box hidden">
 
-<div class="card">
+<div class="placeholder">
 
-<h2 class="section-title">
-💬 الإجابات
-</h2>
-
-<p class="section-description">
-قسم الأسئلة والإجابات والتفاعل بين المستخدمين.
-</p>
-
-<div class="feature-card">
-
-<div class="feature-icon">
+<div class="placeholder-icon">
 💬
 </div>
 
-<div class="feature-title">
-الأسئلة والإجابات
-</div>
+<h2>
+الإجابات
+</h2>
 
-<div class="feature-text">
-سيتم تطوير نظام الأسئلة والإجابات
-والتعليقات لاحقًا.
-</div>
-
-</div>
+<p>
+قسم الأسئلة والإجابات موجود وسيتم تطويره لإتاحة طرح الأسئلة والرد عليها.
+</p>
 
 </div>
 
 </section>
 
 
-<!-- PROFILE -->
+<!-- =========================
+     PROFILE
+========================= -->
 
-<section
-id="sectionProfile"
-class="section-box hidden">
+<section id="sectionProfile" class="section-box hidden">
 
-<div class="card profile-box">
+<div class="profile-card">
 
-<div class="avatar">
+<div class="profile-avatar" id="profileAvatar">
 👤
 </div>
 
-<h2
-id="profileName">
-مستخدم KAPO
+<h2 id="profileName">
+المستخدم
 </h2>
 
-<p
-id="profileEmail"
-style="color:#94a3b8">
+<p id="profileEmail" style="color:#94a3b8;">
 -
 </p>
 
+<div class="profile-info">
+
+<div class="profile-row">
+
+<div class="profile-label">
+الاسم
+</div>
+
+<div id="profileNameValue" class="profile-value">
+-
+</div>
+
+</div>
+
+
+<div class="profile-row">
+
+<div class="profile-label">
+البريد الإلكتروني
+</div>
+
+<div id="profileEmailValue" class="profile-value">
+-
+</div>
+
+</div>
+
+</div>
+
 <button
-class="danger-btn"
-onclick="logoutUser()">
+class="secondary-btn"
+onclick="logoutUser()"
+style="margin-top:18px;"
+>
 تسجيل الخروج
 </button>
 
@@ -1577,14 +1824,122 @@ onclick="logoutUser()">
 
 </section>
 
-</div>
+</main>
 
 
 <footer>
-KAPO ONE © 2026 — منصة للأعمال والأفكار والتصاميم
+KAPO ONE © 2026 — منصة المشاريع والتصاميم والأفكار
 </footer>
 
 </div>
+
+
+<!-- =========================
+     DESIGN MODAL
+========================= -->
+
+<div
+id="designModal"
+class="design-modal"
+onclick="handleDesignModalClick(event)"
+>
+
+<div class="design-modal-box">
+
+<button
+class="design-modal-close"
+onclick="closeDesignModal()"
+aria-label="إغلاق"
+>
+×
+</button>
+
+
+<div class="design-modal-visual">
+
+<div
+id="designModalEmoji"
+class="design-modal-emoji"
+>
+🎨
+</div>
+
+</div>
+
+
+<div class="design-modal-content">
+
+<h2 id="designModalTitle">
+التصميم
+</h2>
+
+<p id="designModalDescription">
+تفاصيل التصميم
+</p>
+
+<span
+id="designModalTag"
+class="design-tag"
+>
+تصميم
+</span>
+
+
+<div class="design-modal-actions">
+
+<button
+class="like-btn"
+onclick="likeCurrentDesign()"
+>
+❤️ إعجاب <span id="designLikeCount">0</span>
+</button>
+
+<button onclick="shareCurrentDesign()">
+📤 مشاركة
+</button>
+
+</div>
+
+
+<div class="design-modal-comments">
+
+<h3>
+💬 التعليقات
+</h3>
+
+<div id="designCommentsList">
+
+<p style="color:#64748b;">
+لا توجد تعليقات بعد.
+</p>
+
+</div>
+
+
+<div class="design-comment-input">
+
+<input
+id="designCommentInput"
+type="text"
+placeholder="اكتب تعليقك..."
+>
+
+<button onclick="addDesignComment()">
+إرسال
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div id="kapoToast" class="kapo-toast"></div>
 
 
 <script>
@@ -1605,22 +1960,26 @@ const OWNER_ID =
 const SITE_URL =
 "https://caapu11-debug.github.io/kapo-one/";
 
-const db =
-supabase.createClient(
+const supabaseClient =
+window.supabase.createClient(
 SUPABASE_URL,
 SUPABASE_KEY
 );
 
 
 /* =========================
-   VARIABLES
+   GLOBAL
 ========================= */
 
+let currentUser = null;
 let allProjects = [];
-
 let currentProjectFilter = "all";
 
-let currentUser = null;
+let currentDesign = null;
+
+const designLikes = {};
+
+const designComments = {};
 
 
 /* =========================
@@ -1629,12 +1988,7 @@ let currentUser = null;
 
 function escapeHtml(value){
 
-if(value === null ||
-value === undefined){
-return "";
-}
-
-return String(value)
+return String(value ?? "")
 .replace(/&/g,"&amp;")
 .replace(/</g,"&lt;")
 .replace(/>/g,"&gt;")
@@ -1646,11 +2000,9 @@ return String(value)
 
 function escapeJs(value){
 
-return String(value || "")
+return String(value ?? "")
 .replace(/\\/g,"\\\\")
-.replace(/'/g,"\\'")
-.replace(/\n/g,"\\n")
-.replace(/\r/g,"");
+.replace(/'/g,"\\'");
 
 }
 
@@ -1661,8 +2013,7 @@ if(!date) return "";
 
 try{
 
-return new Date(date)
-.toLocaleDateString(
+return new Date(date).toLocaleDateString(
 "ar-SA",
 {
 year:"numeric",
@@ -1680,88 +2031,91 @@ return "";
 }
 
 
-/* =========================
-   AUTH MESSAGES
-========================= */
+function showToast(message){
 
-function showAuthMessage(
-message,
-isError=false
-){
+const toast =
+document.getElementById("kapoToast");
 
-const box =
-document.getElementById(
-"authMessage"
-);
+if(!toast) return;
 
-if(!box) return;
+toast.textContent = message;
 
-box.textContent =
-message;
+toast.classList.add("show");
 
-box.classList.remove(
-"hidden"
-);
+setTimeout(function(){
 
-box.style.color =
-isError ?
-"#fca5a5" :
-"#86efac";
+toast.classList.remove("show");
+
+},2500);
 
 }
 
 
 /* =========================
-   AUTH FORMS
+   AUTH UI
 ========================= */
+
+function showAuthMessage(message){
+
+const box =
+document.getElementById("authMessage");
+
+if(!box) return;
+
+box.textContent = message;
+
+box.classList.remove("hidden");
+
+}
+
 
 function showLogin(){
 
-document.getElementById(
-"loginForm"
-).classList.remove("hidden");
+document
+.getElementById("loginBox")
+.classList.remove("hidden");
 
-document.getElementById(
-"registerForm"
-).classList.add("hidden");
+document
+.getElementById("registerBox")
+.classList.add("hidden");
 
-document.getElementById(
-"resetForm"
-).classList.add("hidden");
+document
+.getElementById("resetBox")
+.classList.add("hidden");
 
 }
 
 
 function showRegister(){
 
-document.getElementById(
-"loginForm"
-).classList.add("hidden");
+document
+.getElementById("loginBox")
+.classList.add("hidden");
 
-document.getElementById(
-"registerForm"
-).classList.remove("hidden");
+document
+.getElementById("registerBox")
+.classList.remove("hidden");
 
-document.getElementById(
-"resetForm"
-).classList.add("hidden");
+document
+.getElementById("resetBox")
+.classList.add("hidden");
 
 }
 
 
 function showReset(){
 
-document.getElementById(
-"loginForm"
-).classList.add("hidden");
+document
+.getElementById("loginBox")
+.classList.add("hidden");
 
-document.getElementById(
-"registerForm"
-).classList.add("hidden");
+document
+.getElementById("registerBox")
+.classList.add("hidden");
 
-document.getElementById(
-"resetForm"
-).classList.remove("hidden");
+document
+.getElementById("resetBox")
+.classList.remove("hidden");
 
 }
 
@@ -1777,13 +2131,13 @@ name
 
 try{
 
-const { error } =
-await db
+const {error} =
+await supabaseClient
 .from("profiles")
 .upsert(
 {
 id:user.id,
-name:name || "مستخدم KAPO",
+name:name || "مستخدم",
 email:user.email
 },
 {
@@ -1793,16 +2147,13 @@ onConflict:"id"
 
 if(error){
 
-console.log(
-"Profile error:",
-error
-);
+console.error(error);
 
 }
 
 }catch(error){
 
-console.log(error);
+console.error(error);
 
 }
 
@@ -1816,27 +2167,26 @@ console.log(error);
 async function registerUser(){
 
 const name =
-document.getElementById(
-"registerName"
-).value.trim();
+document
+.getElementById("registerName")
+.value
+.trim();
 
 const email =
-document.getElementById(
-"registerEmail"
-).value.trim();
+document
+.getElementById("registerEmail")
+.value
+.trim();
 
 const password =
-document.getElementById(
-"registerPassword"
-).value;
+document
+.getElementById("registerPassword")
+.value;
 
-if(!name ||
-!email ||
-!password){
+if(!name || !email || !password){
 
 showAuthMessage(
-"يرجى تعبئة جميع البيانات.",
-true
+"يرجى تعبئة جميع البيانات."
 );
 
 return;
@@ -1846,8 +2196,7 @@ return;
 if(password.length < 6){
 
 showAuthMessage(
-"كلمة المرور يجب أن تكون 6 أحرف على الأقل.",
-true
+"كلمة المرور يجب أن تكون 6 أحرف على الأقل."
 );
 
 return;
@@ -1861,25 +2210,17 @@ showAuthMessage(
 try{
 
 const {data,error} =
-await db.auth.signUp({
-
+await supabaseClient.auth.signUp(
+{
 email:email,
-
-password:password,
-
-options:{
-data:{
-name:name
+password:password
 }
-}
-
-});
+);
 
 if(error){
 
 showAuthMessage(
-error.message,
-true
+error.message
 );
 
 return;
@@ -1895,29 +2236,18 @@ name
 
 }
 
-if(data.session){
-
 showAuthMessage(
-"تم إنشاء الحساب بنجاح."
+"تم إنشاء الحساب بنجاح. يمكنك تسجيل الدخول الآن."
 );
 
-await loadUserApp(
-data.user
-);
-
-}else{
-
-showAuthMessage(
-"تم إنشاء الحساب. تحقق من بريدك الإلكتروني لتفعيل الحساب."
-);
-
-}
+showLogin();
 
 }catch(error){
 
+console.error(error);
+
 showAuthMessage(
-error.message || "حدث خطأ.",
-true
+"حدث خطأ أثناء إنشاء الحساب."
 );
 
 }
@@ -1932,21 +2262,20 @@ true
 async function loginUser(){
 
 const email =
-document.getElementById(
-"loginEmail"
-).value.trim();
+document
+.getElementById("loginEmail")
+.value
+.trim();
 
 const password =
-document.getElementById(
-"loginPassword"
-).value;
+document
+.getElementById("loginPassword")
+.value;
 
-if(!email ||
-!password){
+if(!email || !password){
 
 showAuthMessage(
-"أدخل البريد الإلكتروني وكلمة المرور.",
-true
+"أدخل البريد الإلكتروني وكلمة المرور."
 );
 
 return;
@@ -1960,40 +2289,34 @@ showAuthMessage(
 try{
 
 const {data,error} =
-await db.auth.signInWithPassword({
-
+await supabaseClient.auth.signInWithPassword(
+{
 email:email,
-
 password:password
-
-});
+}
+);
 
 if(error){
 
 showAuthMessage(
 "فشل تسجيل الدخول: " +
-error.message,
-true
+error.message
 );
 
 return;
 
 }
 
-if(data.user){
+currentUser = data.user;
 
-await loadUserApp(
-data.user
-);
-
-}
+await loadUserApp();
 
 }catch(error){
 
+console.error(error);
+
 showAuthMessage(
-error.message ||
-"حدث خطأ أثناء تسجيل الدخول.",
-true
+"حدث خطأ أثناء تسجيل الدخول."
 );
 
 }
@@ -2008,15 +2331,15 @@ true
 async function resetUserPassword(){
 
 const email =
-document.getElementById(
-"resetEmail"
-).value.trim();
+document
+.getElementById("resetEmail")
+.value
+.trim();
 
 if(!email){
 
 showAuthMessage(
-"أدخل بريدك الإلكتروني.",
-true
+"أدخل بريدك الإلكتروني."
 );
 
 return;
@@ -2030,19 +2353,17 @@ showAuthMessage(
 try{
 
 const {error} =
-await db.auth.resetPasswordForEmail(
+await supabaseClient.auth.resetPasswordForEmail(
 email,
 {
-redirectTo:
-SITE_URL
+redirectTo:SITE_URL
 }
 );
 
 if(error){
 
 showAuthMessage(
-error.message,
-true
+error.message
 );
 
 return;
@@ -2050,15 +2371,15 @@ return;
 }
 
 showAuthMessage(
-"تم إرسال رابط استعادة كلمة المرور إلى بريدك الإلكتروني."
+"تم إرسال رابط استعادة كلمة المرور إلى بريدك."
 );
 
 }catch(error){
 
+console.error(error);
+
 showAuthMessage(
-error.message ||
-"حدث خطأ.",
-true
+"حدث خطأ أثناء إرسال الرابط."
 );
 
 }
@@ -2067,74 +2388,94 @@ true
 
 
 /* =========================
-   LOAD APP
+   LOAD USER APP
 ========================= */
 
-async function loadUserApp(user){
+async function loadUserApp(){
 
-if(!user) return;
+document
+.getElementById("authPage")
+.classList.add("hidden");
 
-currentUser = user;
+document
+.getElementById("appPage")
+.classList.remove("hidden");
 
-if(user.id === OWNER_ID){
 
-showAuthMessage(
-"تم تسجيل الدخول بحساب المالك."
-);
+let name =
+currentUser?.email ||
+"مستخدم";
 
-}
-
-/* PROFILE */
-
-let profileName =
-user.user_metadata?.name ||
-"مستخدم KAPO";
 
 try{
 
 const {data} =
-await db
+await supabaseClient
 .from("profiles")
-.select("*")
-.eq("id",user.id)
+.select("name,email")
+.eq("id",currentUser.id)
 .maybeSingle();
 
-if(data){
+if(data && data.name){
 
-profileName =
-data.name ||
-profileName;
+name = data.name;
 
 }
 
-}catch(e){
+}catch(error){
 
-console.log(e);
+console.error(error);
 
 }
 
-document.getElementById(
-"profileName"
-).textContent =
-profileName;
 
-document.getElementById(
-"profileEmail"
-).textContent =
-user.email || "-";
+document
+.getElementById("headerUserName")
+.textContent = name;
+
+document
+.getElementById("profileName")
+.textContent = name;
+
+document
+.getElementById("profileNameValue")
+.textContent = name;
+
+document
+.getElementById("profileEmail")
+.textContent =
+currentUser?.email || "-";
+
+document
+.getElementById("profileEmailValue")
+.textContent =
+currentUser?.email || "-";
 
 
-/* SHOW APP */
+const avatar =
+document.getElementById("profileAvatar");
 
-document.getElementById(
-"authPage"
-).style.display =
-"none";
+if(name){
 
-document.getElementById(
-"app"
-).style.display =
-"block";
+avatar.textContent =
+name.charAt(0).toUpperCase();
+
+}
+
+
+if(currentUser.id === OWNER_ID){
+
+showToast(
+"مرحبًا بك يا مالك KAPO ONE 👑"
+);
+
+}else{
+
+showToast(
+"مرحبًا بك في KAPO ONE"
+);
+
+}
 
 
 await loadProjects();
@@ -2150,25 +2491,23 @@ async function logoutUser(){
 
 try{
 
-await db.auth.signOut();
+await supabaseClient.auth.signOut();
 
-}catch(e){
+}catch(error){
 
-console.log(e);
+console.error(error);
 
 }
 
 currentUser = null;
 
-document.getElementById(
-"app"
-).style.display =
-"none";
+document
+.getElementById("appPage")
+.classList.add("hidden");
 
-document.getElementById(
-"authPage"
-).style.display =
-"flex";
+document
+.getElementById("authPage")
+.classList.remove("hidden");
 
 showLogin();
 
@@ -2176,7 +2515,7 @@ showLogin();
 
 
 /* =========================
-   SECTIONS
+   NAVIGATION
 ========================= */
 
 function kapoSection(
@@ -2194,8 +2533,7 @@ const sections = [
 "Profile"
 ];
 
-sections.forEach(
-function(name){
+sections.forEach(function(name){
 
 const el =
 document.getElementById(
@@ -2204,14 +2542,12 @@ document.getElementById(
 
 if(el){
 
-el.classList.add(
-"hidden"
-);
+el.classList.add("hidden");
 
 }
 
-}
-);
+});
+
 
 const target =
 document.getElementById(
@@ -2222,36 +2558,32 @@ section.slice(1)
 
 if(target){
 
-target.classList.remove(
-"hidden"
-);
+target.classList.remove("hidden");
 
 }
+
 
 document
 .querySelectorAll(".nav button")
-.forEach(
-function(btn){
+.forEach(function(btn){
 
-btn.classList.remove(
-"active"
-);
+btn.classList.remove("active");
 
-}
-);
+});
+
 
 if(button){
 
-button.classList.add(
-"active"
-);
+button.classList.add("active");
 
 }
 
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+
+if(section === "projects"){
+
+loadProjects();
+
+}
 
 }
 
@@ -2270,57 +2602,51 @@ document.getElementById(
 if(!grid) return;
 
 grid.innerHTML =
-`<div class="empty">
-جاري تحميل المشاريع...
-</div>`;
+`
+<div class="project-card">
+<p>جاري تحميل المشاريع...</p>
+</div>
+`;
 
 try{
 
 const {data,error} =
-await db
+await supabaseClient
 .from("projects")
 .select("*")
-.order(
-"created_at",
-{
-ascending:false
-}
-);
+.order("created_at",{ascending:false});
 
 if(error){
 
-console.log(error);
+console.error(error);
 
 grid.innerHTML =
-`<div class="empty">
-تعذر تحميل المشاريع حاليًا.
-<br>
-<span style="font-size:12px">
-${escapeHtml(error.message)}
-</span>
-</div>`;
+`
+<div class="project-card">
+<p>تعذر تحميل المشاريع.</p>
+</div>
+`;
 
 return;
 
 }
 
-allProjects =
-data || [];
+allProjects = data || [];
+
+renderProjects();
 
 updateProjectStats();
 
-renderProjects(
-allProjects
-);
-
 }catch(error){
 
-console.log(error);
+console.error(error);
 
 grid.innerHTML =
-`<div class="empty">
-حدث خطأ أثناء تحميل المشاريع.
-</div>`;
+`
+<div class="project-card">
+<p>حدث خطأ أثناء تحميل المشاريع.</p>
+</div>
+`;
 
 }
 
@@ -2329,56 +2655,51 @@ grid.innerHTML =
 
 function updateProjectStats(){
 
-const total =
+const count =
 allProjects.length;
 
-const images =
-allProjects.filter(
-function(project){
+const withImages =
+allProjects.filter(function(project){
 
 return !!(
 project.image_url ||
 project.image ||
-project.cover
+project.imageUrl
 );
 
-}
-).length;
-
-const noImages =
-total - images;
-
-const count =
-document.getElementById(
-"projectsCount"
-);
-
-const withImages =
-document.getElementById(
-"projectsWithImages"
-);
+}).length;
 
 const withoutImages =
-document.getElementById(
-"projectsWithoutImages"
-);
+count - withImages;
 
-const homeCount =
-document.getElementById(
-"homeProjectsCount"
-);
 
-if(count)
-count.textContent = total;
+const elements = {
 
-if(withImages)
-withImages.textContent = images;
+projectCount:count,
 
-if(withoutImages)
-withoutImages.textContent = noImages;
+projectWithImages:withImages,
 
-if(homeCount)
-homeCount.textContent = total;
+projectWithoutImages:withoutImages,
+
+homeProjectCount:count
+
+};
+
+
+Object.keys(elements)
+.forEach(function(id){
+
+const el =
+document.getElementById(id);
+
+if(el){
+
+el.textContent =
+elements[id];
+
+}
+
+});
 
 }
 
@@ -2392,113 +2713,32 @@ currentProjectFilter =
 filter;
 
 document
-.querySelectorAll(".filter-btn")
-.forEach(
-function(btn){
+.querySelectorAll(".project-filter button")
+.forEach(function(btn){
 
-btn.classList.remove(
-"active"
-);
+btn.classList.remove("active");
 
-}
-);
+});
 
 if(button){
 
-button.classList.add(
-"active"
-);
+button.classList.add("active");
 
 }
 
-searchProjects();
+renderProjects();
 
 }
 
 
 function searchProjects(){
 
-const input =
-document.getElementById(
-"projectSearch"
-);
-
-const query =
-(input?.value || "")
-.trim()
-.toLowerCase();
-
-let projects =
-allProjects.slice();
-
-if(currentProjectFilter === "images"){
-
-projects =
-projects.filter(
-function(project){
-
-return !!(
-project.image_url ||
-project.image ||
-project.cover
-);
-
-}
-);
-
-}
-
-if(currentProjectFilter === "noimages"){
-
-projects =
-projects.filter(
-function(project){
-
-return !(
-project.image_url ||
-project.image ||
-project.cover
-);
-
-}
-);
-
-}
-
-if(query){
-
-projects =
-projects.filter(
-function(project){
-
-const text = (
-
-project.title ||
-project.name ||
-project.description ||
-""
-
-).toLowerCase();
-
-return text.includes(
-query
-);
-
-}
-);
-
-}
-
-renderProjects(
-projects
-);
+renderProjects();
 
 }
 
 
-function renderProjects(
-projects
-){
+function renderProjects(){
 
 const grid =
 document.getElementById(
@@ -2507,21 +2747,84 @@ document.getElementById(
 
 if(!grid) return;
 
-if(!projects ||
-!projects.length){
+const searchInput =
+document.getElementById(
+"projectSearch"
+);
+
+const query =
+searchInput
+?
+searchInput.value.trim().toLowerCase()
+:
+"";
+
+
+let projects =
+allProjects.filter(function(project){
+
+const text =
+(
+(project.title || "") +
+" " +
+(project.name || "") +
+" " +
+(project.description || "")
+)
+.toLowerCase();
+
+const hasImage =
+!!(
+project.image_url ||
+project.image ||
+project.imageUrl
+);
+
+const matchesSearch =
+!query ||
+text.includes(query);
+
+let matchesFilter = true;
+
+if(currentProjectFilter === "images"){
+
+matchesFilter = hasImage;
+
+}
+
+if(currentProjectFilter === "noimages"){
+
+matchesFilter = !hasImage;
+
+}
+
+return matchesSearch && matchesFilter;
+
+});
+
+
+if(projects.length === 0){
 
 grid.innerHTML =
-`<div class="empty">
-لا توجد مشاريع مطابقة.
-</div>`;
+`
+<div class="project-card">
+<div class="project-image">
+📁
+</div>
+<h3>لا توجد مشاريع</h3>
+<p>
+لم يتم العثور على مشاريع مطابقة حاليًا.
+</p>
+</div>
+`;
 
 return;
 
 }
 
+
 grid.innerHTML =
-projects.map(
-function(project){
+projects.map(function(project,index){
 
 const id =
 project.id;
@@ -2529,94 +2832,86 @@ project.id;
 const title =
 project.title ||
 project.name ||
-"مشروع بدون عنوان";
+"مشروع بدون اسم";
 
 const description =
 project.description ||
-"لا يوجد وصف للمشروع.";
+"لا يوجد وصف للمشروع حاليًا.";
 
 const image =
 project.image_url ||
 project.image ||
-project.cover ||
-"";
+project.imageUrl;
+
 
 return `
 
-<div
-class="project-card"
-id="project-${escapeHtml(id)}">
+<div class="project-card">
 
 <div class="project-image">
 
 ${
 image
-
 ?
-
-`<img
-src="${escapeHtml(image)}"
-style="width:100%;height:100%;object-fit:cover"
-alt="${escapeHtml(title)}">`
-
+`<img src="${escapeHtml(image)}"
+style="width:100%;height:100%;object-fit:cover;border-radius:14px;">`
 :
-
-"🚀"
-
+"🏗️"
 }
 
 </div>
 
-<div class="project-content">
-
-<div class="project-title">
+<h3>
 ${escapeHtml(title)}
-</div>
+</h3>
 
-<div class="project-description">
+<p>
 ${escapeHtml(description)}
-</div>
+</p>
 
 <div class="project-actions">
 
-<button
-class="primary-btn"
-onclick="toggleProjectDetails('${escapeJs(id)}')">
+<button onclick="toggleProjectDetails('${escapeJs(id)}')">
 👁️ التفاصيل
 </button>
 
-<button
-id="likeBtn-${escapeHtml(id)}"
-class="like-btn"
-onclick="toggleLike('${escapeJs(id)}')">
-❤️ <span id="likeCount-${escapeHtml(id)}">0</span>
+<button onclick="toggleLike('${escapeJs(id)}')">
+❤️ إعجاب
 </button>
 
 </div>
 
-</div>
-
-
 <div
 id="projectDetails-${escapeHtml(id)}"
-class="project-details">
+class="project-details hidden"
+>
 
-<div style="color:#94a3b8;line-height:1.8">
-
-${
-escapeHtml(
-project.details ||
-description
-)
-}
-
+<div>
+${escapeHtml(description)}
 </div>
 
-<div
-id="comments-${escapeHtml(id)}"
-class="comment-box">
+<div class="comments-box">
 
-جاري تحميل التعليقات...
+<strong>
+💬 التعليقات
+</strong>
+
+<div id="comments-${escapeHtml(id)}">
+جاري التحميل...
+</div>
+
+<div class="comment-form">
+
+<input
+id="commentInput-${escapeHtml(id)}"
+placeholder="اكتب تعليقك..."
+>
+
+<button onclick="addComment('${escapeJs(id)}')">
+إرسال
+</button>
+
+</div>
 
 </div>
 
@@ -2626,50 +2921,32 @@ class="comment-box">
 
 `;
 
-}
-).join("");
+}).join("");
 
-projects.forEach(
-function(project){
 
-loadLikeData(
-project.id
-);
+projects.forEach(function(project){
 
-}
-);
+loadLikeData(project.id);
+
+});
 
 }
 
 
-function toggleProjectDetails(
-projectId
-){
+async function toggleProjectDetails(id){
 
 const box =
 document.getElementById(
-`projectDetails-${projectId}`
+"projectDetails-" + id
 );
 
 if(!box) return;
 
-box.classList.toggle(
-"open"
-);
+box.classList.toggle("hidden");
 
-if(
-box.classList.contains(
-"open"
-)
-){
+if(!box.classList.contains("hidden")){
 
-loadLikeData(
-projectId
-);
-
-loadProjectComments(
-projectId
-);
+await loadProjectComments(id);
 
 }
 
@@ -2677,79 +2954,54 @@ projectId
 
 
 /* =========================
-   LIKES
+   PROJECT LIKES
 ========================= */
 
 async function loadLikeData(
 projectId
 ){
 
-const countEl =
-document.getElementById(
-`likeCount-${projectId}`
-);
-
-const btn =
-document.getElementById(
-`likeBtn-${projectId}`
-);
-
 try{
 
-const {count} =
-await db
+const {count,error} =
+await supabaseClient
 .from("likes")
-.select(
-"*",
-{
-count:"exact",
-head:true
+.select("*",{count:"exact",head:true})
+.eq("project_id",projectId);
+
+if(error){
+
+console.error(error);
+
+return;
+
 }
-)
-.eq(
-"project_id",
-projectId
+
+const buttons =
+document.querySelectorAll(
+`.project-actions button`
 );
 
-if(countEl){
+buttons.forEach(function(button){
 
-countEl.textContent =
-count || 0;
-
-}
-
-if(currentUser){
-
-const {data} =
-await db
-.from("likes")
-.select("id")
-.eq(
-"project_id",
-projectId
+if(
+button.getAttribute("onclick") &&
+button.getAttribute("onclick")
+.includes(
+`toggleLike('${projectId}')`
 )
-.eq(
-"user_id",
-currentUser.id
-)
-.maybeSingle();
+){
 
-if(data && btn){
-
-btn.classList.add(
-"liked"
-);
+button.textContent =
+"❤️ " + (count || 0);
 
 }
 
-}
+});
 
 }catch(error){
 
-console.log(
-"Like load:",
-error
-);
+console.error(error);
 
 }
 
@@ -2762,7 +3014,7 @@ projectId
 
 if(!currentUser){
 
-alert(
+showToast(
 "يجب تسجيل الدخول أولًا."
 );
 
@@ -2770,87 +3022,69 @@ return;
 
 }
 
-const btn =
-document.getElementById(
-`likeBtn-${projectId}`
-);
-
 try{
 
-const {data} =
-await db
+const {data:existing,error:findError} =
+await supabaseClient
 .from("likes")
 .select("id")
-.eq(
-"project_id",
-projectId
-)
-.eq(
-"user_id",
-currentUser.id
-)
+.eq("project_id",projectId)
+.eq("user_id",currentUser.id)
 .maybeSingle();
 
-if(data){
+if(findError){
 
-await db
-.from("likes")
-.delete()
-.eq(
-"id",
-data.id
-);
-
-if(btn){
-
-btn.classList.remove(
-"liked"
-);
+console.error(findError);
 
 }
+
+
+if(existing){
+
+await supabaseClient
+.from("likes")
+.delete()
+.eq("id",existing.id);
+
+showToast(
+"تم إلغاء الإعجاب."
+);
 
 }else{
 
 const {error} =
-await db
+await supabaseClient
 .from("likes")
-.insert({
-
+.insert(
+{
 project_id:projectId,
-
 user_id:currentUser.id
-
-});
+}
+);
 
 if(error){
 
-console.log(error);
+console.error(error);
 
-alert(
-"تعذر تسجيل الإعجاب."
+showToast(
+"تعذر إضافة الإعجاب."
 );
 
 return;
 
 }
 
-if(btn){
-
-btn.classList.add(
-"liked"
+showToast(
+"❤️ تم تسجيل إعجابك."
 );
 
 }
 
-}
-
-await loadLikeData(
-projectId
-);
+await loadLikeData(projectId);
 
 }catch(error){
 
-console.log(error);
+console.error(error);
 
 }
 
@@ -2858,7 +3092,7 @@ console.log(error);
 
 
 /* =========================
-   COMMENTS
+   PROJECT COMMENTS
 ========================= */
 
 async function loadProjectComments(
@@ -2867,146 +3101,97 @@ projectId
 
 const box =
 document.getElementById(
-`comments-${projectId}`
+"comments-" + projectId
 );
 
 if(!box) return;
 
-box.innerHTML =
-"جاري تحميل التعليقات...";
-
 try{
 
 const {data,error} =
-await db
+await supabaseClient
 .from("comments")
 .select("*")
-.eq(
-"project_id",
-projectId
-)
-.order(
-"created_at",
-{
-ascending:false
-}
-);
+.eq("project_id",projectId)
+.order("created_at",{ascending:true});
 
 if(error){
 
-console.log(error);
+console.error(error);
 
 box.innerHTML =
-`<div style="color:#94a3b8">
-التعليقات غير متاحة حاليًا.
-</div>`;
+"تعذر تحميل التعليقات.";
 
 return;
 
 }
 
-const comments =
-data || [];
+if(!data || data.length === 0){
 
-let html = `
+box.innerHTML =
+`
+<p style="color:#64748b;font-size:13px;">
+لا توجد تعليقات بعد.
+</p>
+`;
 
-<h3>
-💬 التعليقات
-</h3>
+return;
 
-<div>
+}
 
-${
-comments.length
 
-?
+box.innerHTML =
+data.map(function(comment){
 
-comments.map(
-function(comment){
+const text =
+comment.content ||
+comment.comment ||
+"";
 
-const name =
-comment.user_name ||
-comment.name ||
-"مستخدم KAPO";
+const canDelete =
+currentUser &&
+comment.user_id === currentUser.id;
+
 
 return `
 
-<div class="comment">
+<div class="comment-item">
 
-<div class="comment-name">
-${escapeHtml(name)}
+<div class="comment-meta">
+${escapeHtml(formatDate(comment.created_at))}
 </div>
 
-<div class="comment-date">
-${formatDate(comment.created_at)}
-</div>
-
-<div class="comment-text">
-${escapeHtml(comment.content || comment.comment || "")}
+<div>
+${escapeHtml(text)}
 </div>
 
 ${
-currentUser &&
-comment.user_id === currentUser.id
-
+canDelete
 ?
-
-`<button
-class="danger-btn"
-style="margin-top:10px;padding:7px 10px;font-size:12px"
-onclick="deleteComment('${escapeJs(comment.id)}','${escapeJs(projectId)}')">
-حذف
-</button>`
-
-:
-
-""
-
-}
-
-</div>
-
-`;
-
-}
-).join("")
-
-:
-
-`<div style="color:#64748b">
-لا توجد تعليقات حتى الآن.
-</div>`
-
-}
-
-</div>
-
-<div style="margin-top:18px">
-
-<textarea
-id="commentInput-${escapeHtml(projectId)}"
-placeholder="اكتب تعليقك..."></textarea>
-
+`
 <button
-class="primary-btn"
-style="margin-top:8px"
-onclick="addComment('${escapeJs(projectId)}')">
-إضافة تعليق
+class="comment-delete"
+onclick="deleteComment('${escapeJs(comment.id)}','${escapeJs(projectId)}')"
+>
+حذف
 </button>
+`
+:
+""
+}
 
 </div>
 
 `;
 
-box.innerHTML =
-html;
+}).join("");
 
 }catch(error){
 
-console.log(error);
+console.error(error);
 
 box.innerHTML =
-"حدث خطأ أثناء تحميل التعليقات.";
+"حدث خطأ.";
 
 }
 
@@ -3019,7 +3204,7 @@ projectId
 
 if(!currentUser){
 
-alert(
+showToast(
 "يجب تسجيل الدخول أولًا."
 );
 
@@ -3029,7 +3214,7 @@ return;
 
 const input =
 document.getElementById(
-`commentInput-${projectId}`
+"commentInput-" + projectId
 );
 
 if(!input) return;
@@ -3039,8 +3224,8 @@ input.value.trim();
 
 if(!content){
 
-alert(
-"اكتب التعليق أولًا."
+showToast(
+"اكتب تعليقًا أولًا."
 );
 
 return;
@@ -3049,51 +3234,23 @@ return;
 
 try{
 
-let userName =
-currentUser
-.user_metadata
-?.name ||
-"مستخدم KAPO";
-
-const result =
-await db
-.from("profiles")
-.select("name")
-.eq(
-"id",
-currentUser.id
-)
-.maybeSingle();
-
-if(result.data?.name){
-
-userName =
-result.data.name;
-
-}
-
 const {error} =
-await db
+await supabaseClient
 .from("comments")
-.insert({
-
+.insert(
+{
 project_id:projectId,
-
 user_id:currentUser.id,
-
-user_name:userName,
-
 content:content
-
-});
+}
+);
 
 if(error){
 
-console.log(error);
+console.error(error);
 
-alert(
-"تعذر إضافة التعليق: " +
-error.message
+showToast(
+"تعذر إضافة التعليق."
 );
 
 return;
@@ -3102,17 +3259,15 @@ return;
 
 input.value = "";
 
-await loadProjectComments(
-projectId
+showToast(
+"💬 تم إضافة التعليق."
 );
+
+await loadProjectComments(projectId);
 
 }catch(error){
 
-console.log(error);
-
-alert(
-"حدث خطأ أثناء إضافة التعليق."
-);
+console.error(error);
 
 }
 
@@ -3126,34 +3281,20 @@ projectId
 
 if(!currentUser) return;
 
-if(
-!confirm(
-"هل تريد حذف التعليق؟"
-)
-){
-
-return;
-
-}
-
 try{
 
 const {error} =
-await db
+await supabaseClient
 .from("comments")
 .delete()
-.eq(
-"id",
-commentId
-)
-.eq(
-"user_id",
-currentUser.id
-);
+.eq("id",commentId)
+.eq("user_id",currentUser.id);
 
 if(error){
 
-alert(
+console.error(error);
+
+showToast(
 "تعذر حذف التعليق."
 );
 
@@ -3161,13 +3302,15 @@ return;
 
 }
 
-await loadProjectComments(
-projectId
+showToast(
+"تم حذف التعليق."
 );
+
+await loadProjectComments(projectId);
 
 }catch(error){
 
-console.log(error);
+console.error(error);
 
 }
 
@@ -3175,7 +3318,7 @@ console.log(error);
 
 
 /* =========================
-   DESIGNS
+   DESIGNS SEARCH
 ========================= */
 
 function filterDesigns(){
@@ -3277,55 +3420,392 @@ filterDesigns();
 }
 
 
+/* =========================
+   DESIGN MODAL
+========================= */
+
 function showDesignMessage(
 name
 ){
 
-alert(
+const cards =
+document.querySelectorAll(
+".design-card"
+);
 
-"🎨 " +
-name +
-"\n\n" +
+let selected = null;
 
-"صفحة تفاصيل التصميم ستكون " +
-"الخطوة التالية، مع الصور " +
-"والتفاصيل والإعجاب والتعليقات."
+cards.forEach(function(card){
 
+if(
+card.getAttribute(
+"data-design-title"
+) === name
+){
+
+selected = card;
+
+}
+
+});
+
+if(!selected){
+
+showToast(
+"لم يتم العثور على التصميم."
+);
+
+return;
+
+}
+
+
+const description =
+selected.getAttribute(
+"data-design-description"
+) ||
+"لا يوجد وصف.";
+
+const emoji =
+selected.getAttribute(
+"data-design-emoji"
+) ||
+"🎨";
+
+const tag =
+selected.getAttribute(
+"data-design-tag"
+) ||
+"تصميم";
+
+
+currentDesign = {
+name:name,
+description:description,
+emoji:emoji,
+tag:tag
+};
+
+
+if(
+designLikes[name] === undefined
+){
+
+designLikes[name] = 0;
+
+}
+
+
+if(
+!designComments[name]
+){
+
+designComments[name] = [];
+
+}
+
+
+document
+.getElementById("designModalTitle")
+.textContent =
+name;
+
+document
+.getElementById("designModalDescription")
+.textContent =
+description;
+
+document
+.getElementById("designModalEmoji")
+.textContent =
+emoji;
+
+document
+.getElementById("designModalTag")
+.textContent =
+tag;
+
+document
+.getElementById("designLikeCount")
+.textContent =
+designLikes[name];
+
+
+renderDesignComments();
+
+
+document
+.getElementById("designModal")
+.classList.add("show");
+
+
+document
+.body
+.style.overflow =
+"hidden";
+
+}
+
+
+function closeDesignModal(){
+
+const modal =
+document.getElementById(
+"designModal"
+);
+
+if(modal){
+
+modal.classList.remove("show");
+
+}
+
+document
+.body
+.style.overflow = "";
+
+currentDesign = null;
+
+}
+
+
+function handleDesignModalClick(
+event
+){
+
+const modal =
+document.getElementById(
+"designModal"
+);
+
+if(event.target === modal){
+
+closeDesignModal();
+
+}
+
+}
+
+
+/* =========================
+   DESIGN LIKE
+========================= */
+
+function likeCurrentDesign(){
+
+if(!currentDesign){
+
+return;
+
+}
+
+const name =
+currentDesign.name;
+
+if(
+designLikes[name] === undefined
+){
+
+designLikes[name] = 0;
+
+}
+
+designLikes[name]++;
+
+document
+.getElementById("designLikeCount")
+.textContent =
+designLikes[name];
+
+showToast(
+"❤️ تم تسجيل إعجابك بالتصميم."
 );
 
 }
 
 
 /* =========================
-   CHECK USER
+   DESIGN COMMENTS
 ========================= */
 
-async function checkCurrentUser(){
+function renderDesignComments(){
+
+const box =
+document.getElementById(
+"designCommentsList"
+);
+
+if(!box || !currentDesign) return;
+
+const list =
+designComments[currentDesign.name] || [];
+
+
+if(list.length === 0){
+
+box.innerHTML =
+`
+<p style="color:#64748b;">
+لا توجد تعليقات بعد.
+</p>
+`;
+
+return;
+
+}
+
+
+box.innerHTML =
+list.map(function(comment,index){
+
+return `
+
+<div class="comment-item">
+
+<div class="comment-meta">
+أنت • الآن
+</div>
+
+<div>
+${escapeHtml(comment)}
+</div>
+
+<button
+class="comment-delete"
+onclick="deleteDesignComment(${index})"
+>
+حذف
+</button>
+
+</div>
+
+`;
+
+}).join("");
+
+}
+
+
+function addDesignComment(){
+
+if(!currentDesign){
+
+return;
+
+}
+
+const input =
+document.getElementById(
+"designCommentInput"
+);
+
+if(!input) return;
+
+const text =
+input.value.trim();
+
+if(!text){
+
+showToast(
+"اكتب تعليقك أولًا."
+);
+
+return;
+
+}
+
+
+if(
+!designComments[currentDesign.name]
+){
+
+designComments[currentDesign.name] = [];
+
+}
+
+
+designComments[currentDesign.name]
+.push(text);
+
+input.value = "";
+
+renderDesignComments();
+
+showToast(
+"💬 تم إضافة تعليقك."
+);
+
+}
+
+
+function deleteDesignComment(
+index
+){
+
+if(!currentDesign){
+
+return;
+
+}
+
+const list =
+designComments[currentDesign.name];
+
+if(!list) return;
+
+list.splice(index,1);
+
+renderDesignComments();
+
+showToast(
+"تم حذف التعليق."
+);
+
+}
+
+
+/* =========================
+   DESIGN SHARE
+========================= */
+
+async function shareCurrentDesign(){
+
+if(!currentDesign){
+
+return;
+
+}
+
+const text =
+`🎨 ${currentDesign.name}
+
+${currentDesign.description}
+
+KAPO ONE`;
 
 try{
 
-const {
-data
-} =
-await db.auth.getUser();
+if(
+navigator.share
+){
 
-if(data?.user){
-
-await loadUserApp(
-data.user
+await navigator.share(
+{
+title:currentDesign.name,
+text:text,
+url:SITE_URL
+}
 );
 
 }else{
 
-document.getElementById(
-"authPage"
-).style.display =
-"flex";
+await navigator.clipboard.writeText(
+text + "\n" + SITE_URL
+);
 
-document.getElementById(
-"app"
-).style.display =
-"none";
+showToast(
+"📋 تم نسخ معلومات التصميم."
+);
 
 }
 
@@ -3339,11 +3819,54 @@ console.log(error);
 
 
 /* =========================
+   CURRENT USER
+========================= */
+
+async function checkCurrentUser(){
+
+try{
+
+const {data} =
+await supabaseClient.auth.getSession();
+
+if(
+data &&
+data.session &&
+data.session.user
+){
+
+currentUser =
+data.session.user;
+
+await loadUserApp();
+
+}else{
+
+document
+.getElementById("authPage")
+.classList.remove("hidden");
+
+document
+.getElementById("appPage")
+.classList.add("hidden");
+
+}
+
+}catch(error){
+
+console.error(error);
+
+}
+
+}
+
+
+/* =========================
    AUTH STATE
 ========================= */
 
-db.auth.onAuthStateChange(
-function(
+supabaseClient.auth.onAuthStateChange(
+async function(
 event,
 session
 ){
@@ -3353,16 +3876,32 @@ session &&
 session.user
 ){
 
-setTimeout(
-function(){
+currentUser =
+session.user;
 
-loadUserApp(
-session.user
-);
+if(
+event === "SIGNED_IN"
+){
 
-},
-0
-);
+await loadUserApp();
+
+}
+
+}
+
+if(
+event === "SIGNED_OUT"
+){
+
+currentUser = null;
+
+document
+.getElementById("appPage")
+.classList.add("hidden");
+
+document
+.getElementById("authPage")
+.classList.remove("hidden");
 
 }
 
@@ -3379,10 +3918,32 @@ function(){
 
 checkCurrentUser();
 
+filterDesigns();
+
+});
+
+
+/* =========================
+   ESC CLOSE MODAL
+========================= */
+
+document.addEventListener(
+"keydown",
+function(event){
+
+if(
+event.key === "Escape"
+){
+
+closeDesignModal();
+
 }
-);
+
+});
+
 
 </script>
 
 </body>
+
 </html>
