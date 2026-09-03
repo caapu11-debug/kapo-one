@@ -11,24 +11,38 @@
 
 <style>
 
-*{box-sizing:border-box}
+*{
+box-sizing:border-box;
+}
 
-html{scroll-behavior:smooth}
+html{
+scroll-behavior:smooth;
+}
 
 body{
 margin:0;
 font-family:Arial,sans-serif;
 background:
 radial-gradient(circle at 50% -15%,rgba(37,99,235,.20),transparent 35%),
+radial-gradient(circle at 10% 35%,rgba(124,58,237,.08),transparent 28%),
 linear-gradient(180deg,#050914,#0b1220 45%,#070c16);
 color:#fff;
 min-height:100vh;
 }
 
-button,input,textarea{font-family:inherit}
-button{cursor:pointer}
+button,
+input,
+textarea{
+font-family:inherit;
+}
 
-.hidden{display:none!important}
+button{
+cursor:pointer;
+}
+
+.hidden{
+display:none!important;
+}
 
 /* AUTH */
 
@@ -72,7 +86,9 @@ text-align:center;
 margin:10px 0 25px;
 }
 
-.form-group{margin-bottom:16px}
+.form-group{
+margin-bottom:16px;
+}
 
 .form-group label{
 display:block;
@@ -319,7 +335,9 @@ font-size:30px;
 margin-bottom:10px;
 }
 
-.feature-card h3{margin:7px 0}
+.feature-card h3{
+margin:7px 0;
+}
 
 .feature-card p{
 color:#94a3b8;
@@ -445,7 +463,9 @@ margin-bottom:15px;
 overflow:hidden;
 }
 
-.project-card h3{margin:0 0 8px}
+.project-card h3{
+margin:0 0 8px;
+}
 
 .project-card p{
 color:#94a3b8;
@@ -531,35 +551,93 @@ font-size:11px;
 margin-top:5px;
 }
 
-/* DESIGNS */
+/* =====================================================
+   DESIGNS — KAPO ONE PROFESSIONAL GALLERY
+===================================================== */
+
+.designs-section-top{
+position:relative;
+overflow:hidden;
+padding:25px;
+border-radius:22px;
+margin-bottom:22px;
+background:
+radial-gradient(circle at 85% 20%,rgba(37,99,235,.18),transparent 30%),
+radial-gradient(circle at 10% 90%,rgba(124,58,237,.16),transparent 32%),
+linear-gradient(135deg,#0b1220,#111a2e);
+border:1px solid rgba(96,165,250,.13);
+}
+
+.designs-section-top::before{
+content:"";
+position:absolute;
+width:260px;
+height:260px;
+border:1px solid rgba(96,165,250,.08);
+border-radius:50%;
+left:-110px;
+top:-110px;
+}
 
 .designs-head{
+position:relative;
 display:flex;
 align-items:center;
 gap:15px;
 margin-bottom:8px;
+z-index:1;
 }
 
 .designs-icon{
-width:50px;
-height:50px;
-border-radius:15px;
+width:55px;
+height:55px;
+border-radius:16px;
 display:flex;
 align-items:center;
 justify-content:center;
 font-size:27px;
 background:linear-gradient(135deg,#2563eb,#7c3aed);
-box-shadow:0 10px 30px rgba(37,99,235,.20);
+box-shadow:0 10px 30px rgba(37,99,235,.25);
+flex-shrink:0;
 }
 
 .designs-title{
-font-size:27px;
+font-size:29px;
 font-weight:bold;
 }
 
 .designs-text{
 color:#94a3b8;
 margin-top:5px;
+line-height:1.7;
+}
+
+.designs-overview{
+position:relative;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+margin-top:20px;
+z-index:1;
+}
+
+.design-overview-card{
+padding:15px;
+border-radius:15px;
+background:rgba(15,23,42,.65);
+border:1px solid rgba(148,163,184,.10);
+}
+
+.design-overview-number{
+font-size:22px;
+font-weight:bold;
+color:#93c5fd;
+}
+
+.design-overview-label{
+font-size:12px;
+color:#64748b;
+margin-top:4px;
 }
 
 .designs-tools{
@@ -578,62 +656,424 @@ color:#fff;
 outline:none;
 }
 
+.designs-tools input:focus{
+border-color:#3b82f6;
+box-shadow:0 0 0 3px rgba(59,130,246,.10);
+}
+
 .designs-tools button{
-border:none;
+border:1px solid #263449;
 border-radius:13px;
 padding:0 17px;
 background:#172033;
 color:#cbd5e1;
 }
 
+.designs-tools button:hover{
+background:#2563eb;
+color:#fff;
+}
+
 .design-search-info{
 color:#64748b;
 font-size:13px;
-margin-bottom:17px;
+margin-bottom:13px;
 }
+
+/* DESIGN FILTERS */
+
+.design-filter-bar{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+margin:0 0 20px;
+}
+
+.design-filter-btn{
+border:1px solid #263449;
+background:#111827;
+color:#94a3b8;
+border-radius:999px;
+padding:9px 14px;
+font-size:12px;
+transition:.2s ease;
+}
+
+.design-filter-btn:hover{
+border-color:#3b82f6;
+color:#fff;
+}
+
+.design-filter-btn.active{
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+border-color:transparent;
+color:#fff;
+}
+
+/* GRID */
 
 .designs-grid{
 display:grid;
 grid-template-columns:repeat(4,1fr);
-gap:16px;
+gap:17px;
 }
 
+/* CARD */
+
 .design-card{
+position:relative;
 background:linear-gradient(180deg,#101a2d,#0b1220);
 border:1px solid #1e293b;
-border-radius:19px;
+border-radius:20px;
 overflow:hidden;
-transition:.25s ease;
+transition:.28s ease;
 }
 
 .design-card:hover{
-transform:translateY(-5px);
-border-color:#334155;
-box-shadow:0 18px 45px rgba(0,0,0,.25);
+transform:translateY(-6px);
+border-color:#3b82f6;
+box-shadow:
+0 20px 50px rgba(0,0,0,.35),
+0 0 30px rgba(37,99,235,.08);
 }
 
+/* visual */
+
 .design-image{
-height:205px;
-background:
-radial-gradient(circle at 50% 25%,rgba(96,165,250,.25),transparent 45%),
-linear-gradient(135deg,#111c36,#1e1b4b);
+position:relative;
+height:220px;
+overflow:hidden;
 display:flex;
 align-items:center;
 justify-content:center;
-overflow:hidden;
+background:
+radial-gradient(circle at 50% 35%,rgba(96,165,250,.20),transparent 38%),
+linear-gradient(135deg,#0d1730,#17133a 55%,#0a1223);
 }
 
-.design-placeholder{
-font-size:75px;
-filter:drop-shadow(0 10px 20px rgba(0,0,0,.35));
-transition:.3s ease;
+.design-image::before{
+content:"";
+position:absolute;
+inset:0;
+background:
+linear-gradient(115deg,transparent 45%,rgba(255,255,255,.035) 50%,transparent 55%);
+pointer-events:none;
 }
 
-.design-card:hover .design-placeholder{
-transform:scale(1.10);
+.design-image::after{
+content:"";
+position:absolute;
+width:180px;
+height:180px;
+border:1px solid rgba(96,165,250,.08);
+border-radius:50%;
+box-shadow:
+0 0 0 35px rgba(96,165,250,.025),
+0 0 0 70px rgba(96,165,250,.018);
 }
 
-.design-content{padding:17px}
+.design-badge{
+position:absolute;
+top:12px;
+right:12px;
+z-index:3;
+padding:6px 9px;
+border-radius:999px;
+background:rgba(5,9,20,.65);
+border:1px solid rgba(148,163,184,.15);
+color:#bfdbfe;
+font-size:10px;
+backdrop-filter:blur(8px);
+}
+
+.design-number{
+position:absolute;
+left:12px;
+top:12px;
+z-index:3;
+width:30px;
+height:30px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+background:rgba(5,9,20,.60);
+border:1px solid rgba(148,163,184,.13);
+color:#94a3b8;
+font-size:11px;
+}
+
+/* ARCHITECTURAL VISUALS */
+
+.arch-visual{
+position:relative;
+z-index:2;
+width:155px;
+height:175px;
+display:flex;
+align-items:flex-end;
+justify-content:center;
+filter:drop-shadow(0 18px 22px rgba(0,0,0,.45));
+}
+
+.future-tower{
+width:82px;
+height:158px;
+position:relative;
+border-radius:40px 40px 12px 12px;
+background:
+repeating-linear-gradient(
+90deg,
+rgba(147,197,253,.12) 0 5px,
+rgba(15,23,42,.15) 5px 10px
+),
+linear-gradient(100deg,#172554,#60a5fa,#312e81);
+border:1px solid rgba(147,197,253,.35);
+transform:perspective(300px) rotateY(-8deg);
+}
+
+.future-tower::before{
+content:"";
+position:absolute;
+top:-22px;
+left:20px;
+width:40px;
+height:35px;
+border-radius:50% 50% 8px 8px;
+background:linear-gradient(135deg,#60a5fa,#7c3aed);
+border:1px solid rgba(191,219,254,.35);
+}
+
+.future-tower::after{
+content:"";
+position:absolute;
+left:14px;
+right:14px;
+top:24px;
+height:2px;
+background:#bfdbfe;
+box-shadow:
+0 28px #93c5fd,
+0 56px #60a5fa,
+0 84px #93c5fd,
+0 112px #60a5fa;
+opacity:.55;
+}
+
+.atomic-visual{
+position:relative;
+width:160px;
+height:160px;
+}
+
+.atomic-core{
+position:absolute;
+width:48px;
+height:48px;
+border-radius:50%;
+left:56px;
+top:56px;
+background:radial-gradient(circle at 35% 30%,#fff,#60a5fa 35%,#7c3aed 75%);
+box-shadow:0 0 35px rgba(96,165,250,.45);
+z-index:3;
+}
+
+.atomic-ring{
+position:absolute;
+width:150px;
+height:58px;
+left:5px;
+top:51px;
+border:2px solid rgba(147,197,253,.65);
+border-radius:50%;
+transform:rotate(25deg);
+}
+
+.atomic-ring.two{
+transform:rotate(-25deg);
+border-color:rgba(167,139,250,.65);
+}
+
+.atomic-ring.three{
+transform:rotate(90deg);
+border-color:rgba(34,211,238,.50);
+}
+
+.atomic-dot{
+position:absolute;
+width:12px;
+height:12px;
+border-radius:50%;
+background:#93c5fd;
+box-shadow:0 0 15px #60a5fa;
+}
+
+.atomic-dot.one{
+top:20px;
+right:25px;
+}
+
+.atomic-dot.two{
+bottom:18px;
+left:25px;
+}
+
+.atomic-dot.three{
+top:68px;
+left:0;
+}
+
+.sword-palm-visual{
+position:relative;
+width:155px;
+height:175px;
+}
+
+.sword{
+position:absolute;
+width:13px;
+height:145px;
+border-radius:8px 8px 2px 2px;
+background:linear-gradient(90deg,#64748b,#f8fafc,#94a3b8);
+bottom:12px;
+box-shadow:0 8px 18px rgba(0,0,0,.35);
+}
+
+.sword::before{
+content:"";
+position:absolute;
+top:-28px;
+left:-5px;
+width:23px;
+height:35px;
+clip-path:polygon(50% 0,100% 100%,0 100%);
+background:linear-gradient(90deg,#cbd5e1,#fff);
+}
+
+.sword::after{
+content:"";
+position:absolute;
+bottom:4px;
+left:-14px;
+width:41px;
+height:7px;
+border-radius:50%;
+background:#f59e0b;
+}
+
+.sword.left{
+left:52px;
+transform:rotate(-13deg);
+}
+
+.sword.right{
+left:90px;
+transform:rotate(13deg);
+}
+
+.palm{
+position:absolute;
+bottom:12px;
+left:50%;
+transform:translateX(-50%);
+width:10px;
+height:82px;
+border-radius:8px;
+background:linear-gradient(90deg,#92400e,#d97706);
+z-index:3;
+}
+
+.palm-leaf{
+position:absolute;
+width:70px;
+height:18px;
+border-radius:100% 0 100% 0;
+background:linear-gradient(135deg,#22c55e,#166534);
+transform-origin:right center;
+bottom:88px;
+left:78px;
+}
+
+.palm-leaf.l2{
+transform:rotate(30deg);
+}
+
+.palm-leaf.l3{
+transform:rotate(-30deg);
+left:12px;
+}
+
+.palm-leaf.l4{
+transform:rotate(60deg);
+left:72px;
+bottom:100px;
+}
+
+.palm-leaf.l5{
+transform:rotate(-60deg);
+left:18px;
+bottom:100px;
+}
+
+.city-visual{
+position:relative;
+width:175px;
+height:165px;
+display:flex;
+align-items:flex-end;
+justify-content:center;
+gap:5px;
+}
+
+.city-building{
+position:relative;
+width:32px;
+background:linear-gradient(90deg,#172554,#60a5fa,#312e81);
+border:1px solid rgba(147,197,253,.28);
+box-shadow:0 8px 15px rgba(0,0,0,.35);
+}
+
+.city-building::after{
+content:"";
+position:absolute;
+left:6px;
+right:6px;
+top:10px;
+height:calc(100% - 20px);
+background:repeating-linear-gradient(
+180deg,
+rgba(191,219,254,.55) 0 3px,
+transparent 3px 13px
+);
+opacity:.35;
+}
+
+.city-building.b1{
+height:80px;
+}
+
+.city-building.b2{
+height:120px;
+width:38px;
+}
+
+.city-building.b3{
+height:155px;
+width:45px;
+border-radius:23px 23px 3px 3px;
+}
+
+.city-building.b4{
+height:100px;
+}
+
+.city-building.b5{
+height:70px;
+}
+
+.design-content{
+padding:17px;
+}
 
 .design-name{
 font-size:19px;
@@ -671,11 +1111,32 @@ border-radius:10px;
 padding:10px;
 background:#172033;
 color:#cbd5e1;
+transition:.2s ease;
+}
+
+.design-actions button:hover{
+background:#263449;
+color:#fff;
 }
 
 .design-actions button.primary{
 background:linear-gradient(135deg,#2563eb,#7c3aed);
 color:#fff;
+}
+
+.design-actions button.primary:hover{
+transform:translateY(-1px);
+box-shadow:0 8px 20px rgba(37,99,235,.25);
+}
+
+.no-designs{
+grid-column:1/-1;
+padding:45px 20px;
+text-align:center;
+background:#0b1220;
+border:1px solid #1e293b;
+border-radius:18px;
+color:#94a3b8;
 }
 
 /* COMMUNITY */
@@ -698,7 +1159,9 @@ font-size:40px;
 margin-bottom:12px;
 }
 
-.community-card h3{margin:5px 0 10px}
+.community-card h3{
+margin:5px 0 10px;
+}
 
 .community-card p{
 color:#94a3b8;
@@ -757,7 +1220,9 @@ border-radius:16px;
 padding:17px;
 }
 
-.feed-item h3{margin:0 0 8px}
+.feed-item h3{
+margin:0 0 8px;
+}
 
 .feed-item p{
 color:#cbd5e1;
@@ -771,7 +1236,9 @@ color:#64748b;
 margin-top:10px;
 }
 
-/* MODAL */
+/* =====================================================
+   DESIGN MODAL — PROFESSIONAL
+===================================================== */
 
 .design-modal{
 position:fixed;
@@ -781,21 +1248,23 @@ display:none;
 align-items:center;
 justify-content:center;
 padding:20px;
-background:rgba(0,0,0,.72);
-backdrop-filter:blur(9px);
+background:rgba(0,0,0,.78);
+backdrop-filter:blur(12px);
 }
 
-.design-modal.show{display:flex}
+.design-modal.show{
+display:flex;
+}
 
 .design-modal-box{
 width:100%;
-max-width:850px;
+max-width:900px;
 max-height:90vh;
 overflow:auto;
 background:#0b1220;
 border:1px solid #263449;
 border-radius:25px;
-box-shadow:0 30px 100px rgba(0,0,0,.60);
+box-shadow:0 30px 100px rgba(0,0,0,.65);
 position:relative;
 }
 
@@ -803,32 +1272,55 @@ position:relative;
 position:absolute;
 top:15px;
 left:15px;
-z-index:2;
+z-index:5;
 width:40px;
 height:40px;
 border:none;
 border-radius:50%;
-background:rgba(0,0,0,.45);
+background:rgba(0,0,0,.55);
 color:#fff;
 font-size:22px;
 }
 
+.design-modal-close:hover{
+background:#ef4444;
+}
+
 .design-modal-visual{
-min-height:300px;
+position:relative;
+min-height:350px;
 display:flex;
 align-items:center;
 justify-content:center;
+overflow:hidden;
 background:
-radial-gradient(circle at 50% 30%,rgba(96,165,250,.25),transparent 42%),
-linear-gradient(135deg,#111c36,#312e81);
+radial-gradient(circle at 50% 30%,rgba(96,165,250,.22),transparent 42%),
+radial-gradient(circle at 80% 80%,rgba(124,58,237,.18),transparent 35%),
+linear-gradient(135deg,#0d1730,#312e81);
+}
+
+.design-modal-visual::before{
+content:"";
+position:absolute;
+width:420px;
+height:420px;
+border:1px solid rgba(147,197,253,.08);
+border-radius:50%;
+box-shadow:
+0 0 0 60px rgba(147,197,253,.025),
+0 0 0 120px rgba(147,197,253,.015);
 }
 
 .design-modal-emoji{
 font-size:120px;
+position:relative;
+z-index:2;
 filter:drop-shadow(0 20px 30px rgba(0,0,0,.4));
 }
 
-.design-modal-content{padding:25px}
+.design-modal-content{
+padding:25px;
+}
 
 .design-modal-content h2{
 font-size:30px;
@@ -855,6 +1347,11 @@ background:#172033;
 color:#cbd5e1;
 }
 
+.design-modal-actions button:hover{
+background:#263449;
+color:#fff;
+}
+
 .design-modal-actions button.like-btn{
 background:linear-gradient(135deg,#2563eb,#7c3aed);
 color:#fff;
@@ -879,6 +1376,7 @@ border-radius:11px;
 border:1px solid #263449;
 background:#070d19;
 color:#fff;
+outline:none;
 }
 
 .design-comment-input button{
@@ -1001,12 +1499,38 @@ padding:35px 10px 25px;
 grid-template-columns:1fr;
 }
 
+.designs-section-top{
+padding:19px;
+}
+
+.designs-head{
+align-items:flex-start;
+}
+
+.designs-title{
+font-size:24px;
+}
+
+.designs-overview{
+grid-template-columns:1fr;
+}
+
 .designs-tools{
 flex-direction:column;
 }
 
 .designs-tools button{
 height:45px;
+}
+
+.design-filter-bar{
+overflow-x:auto;
+flex-wrap:nowrap;
+padding-bottom:4px;
+}
+
+.design-filter-btn{
+white-space:nowrap;
 }
 
 .design-modal{
@@ -1041,6 +1565,8 @@ height:43px;
 }
 
 }
+
+/* TOAST */
 
 .kapo-toast{
 position:fixed;
@@ -1580,26 +2106,72 @@ class="projects-grid">
 </section>
 
 
-<!-- DESIGNS -->
+<!-- =====================================================
+     DESIGNS
+===================================================== -->
 
 <section
 id="sectionDesigns"
 class="section-box hidden">
 
+<div class="designs-section-top">
+
 <div class="designs-head">
 
 <div class="designs-icon">
-🎨
+✦
 </div>
 
 <div>
 
 <div class="designs-title">
-التصاميم
+استوديو التصاميم
 </div>
 
 <div class="designs-text">
-مساحة مخصصة لاستعراض التصاميم المعمارية والأفكار البصرية.
+اكتشف مجموعة KAPO ONE من التصاميم المعمارية والرؤى المستقبلية.
+</div>
+
+</div>
+
+</div>
+
+<div class="designs-overview">
+
+<div class="design-overview-card">
+
+<div class="design-overview-number">
+04
+</div>
+
+<div class="design-overview-label">
+تصاميم متاحة
+</div>
+
+</div>
+
+<div class="design-overview-card">
+
+<div class="design-overview-number">
+∞
+</div>
+
+<div class="design-overview-label">
+أفكار قابلة للتطوير
+</div>
+
+</div>
+
+<div class="design-overview-card">
+
+<div class="design-overview-number">
+KAPO
+</div>
+
+<div class="design-overview-label">
+رؤية معمارية
+</div>
+
 </div>
 
 </div>
@@ -1612,7 +2184,7 @@ class="section-box hidden">
 <input
 id="designSearch"
 type="text"
-placeholder="🔎 ابحث عن تصميم..."
+placeholder="🔎 ابحث عن تصميم أو فكرة..."
 oninput="filterDesigns()">
 
 <button onclick="resetDesignSearch()">
@@ -1629,7 +2201,45 @@ class="design-search-info">
 </div>
 
 
+<div class="design-filter-bar">
+
+<button
+class="design-filter-btn active"
+onclick="setDesignCategory('all',this)">
+الكل
+</button>
+
+<button
+class="design-filter-btn"
+onclick="setDesignCategory('أبراج',this)">
+أبراج
+</button>
+
+<button
+class="design-filter-btn"
+onclick="setDesignCategory('تصميم مستقبلي',this)">
+مستقبلي
+</button>
+
+<button
+class="design-filter-btn"
+onclick="setDesignCategory('هوية معمارية',this)">
+هوية
+</button>
+
+<button
+class="design-filter-btn"
+onclick="setDesignCategory('مدن ذكية',this)">
+مدن ذكية
+</button>
+
+</div>
+
+
 <div class="designs-grid">
+
+
+<!-- DESIGN 1 -->
 
 <div
 class="design-card"
@@ -1640,8 +2250,18 @@ data-design-tag="أبراج">
 
 <div class="design-image">
 
-<div class="design-placeholder">
-🏙️
+<div class="design-badge">
+ARCHITECTURE
+</div>
+
+<div class="design-number">
+01
+</div>
+
+<div class="arch-visual">
+
+<div class="future-tower"></div>
+
 </div>
 
 </div>
@@ -1675,6 +2295,8 @@ onclick="showDesignMessage('برج المستقبل')">
 </div>
 
 
+<!-- DESIGN 2 -->
+
 <div
 class="design-card"
 data-design-title="التصميم الذري"
@@ -1684,8 +2306,26 @@ data-design-tag="تصميم مستقبلي">
 
 <div class="design-image">
 
-<div class="design-placeholder">
-⚛️
+<div class="design-badge">
+FUTURE DESIGN
+</div>
+
+<div class="design-number">
+02
+</div>
+
+<div class="atomic-visual">
+
+<div class="atomic-ring"></div>
+<div class="atomic-ring two"></div>
+<div class="atomic-ring three"></div>
+
+<div class="atomic-core"></div>
+
+<div class="atomic-dot one"></div>
+<div class="atomic-dot two"></div>
+<div class="atomic-dot three"></div>
+
 </div>
 
 </div>
@@ -1719,6 +2359,8 @@ onclick="showDesignMessage('التصميم الذري')">
 </div>
 
 
+<!-- DESIGN 3 -->
+
 <div
 class="design-card"
 data-design-title="السيف والنخلة"
@@ -1728,8 +2370,26 @@ data-design-tag="هوية معمارية">
 
 <div class="design-image">
 
-<div class="design-placeholder">
-⚔️🌴
+<div class="design-badge">
+IDENTITY
+</div>
+
+<div class="design-number">
+03
+</div>
+
+<div class="sword-palm-visual">
+
+<div class="sword left"></div>
+<div class="sword right"></div>
+
+<div class="palm"></div>
+
+<div class="palm-leaf l2"></div>
+<div class="palm-leaf l3"></div>
+<div class="palm-leaf l4"></div>
+<div class="palm-leaf l5"></div>
+
 </div>
 
 </div>
@@ -1763,6 +2423,8 @@ onclick="showDesignMessage('السيف والنخلة')">
 </div>
 
 
+<!-- DESIGN 4 -->
+
 <div
 class="design-card"
 data-design-title="مدينة المستقبل"
@@ -1772,8 +2434,22 @@ data-design-tag="مدن ذكية">
 
 <div class="design-image">
 
-<div class="design-placeholder">
-🌆
+<div class="design-badge">
+SMART CITY
+</div>
+
+<div class="design-number">
+04
+</div>
+
+<div class="city-visual">
+
+<div class="city-building b1"></div>
+<div class="city-building b2"></div>
+<div class="city-building b3"></div>
+<div class="city-building b4"></div>
+<div class="city-building b5"></div>
+
 </div>
 
 </div>
@@ -1805,6 +2481,7 @@ onclick="showDesignMessage('مدينة المستقبل')">
 </div>
 
 </div>
+
 
 </div>
 
@@ -2225,10 +2902,6 @@ error
 let currentUser=null;
 let isGuest=false;
 
-/*
-هذا المتغير يمنع Supabase من إدخال
-الجلسة القديمة تلقائيًا عند فتح الموقع.
-*/
 let authStartupFinished=false;
 
 let allProjects=[];
@@ -2241,6 +2914,8 @@ const designComments={};
 
 let localIdeas=[];
 let localQuestions;
+
+let currentDesignCategory="all";
 
 
 /* HELPERS */
@@ -2870,11 +3545,6 @@ isGuest=false;
 
 currentUser=data.user;
 
-/*
-بعد الضغط على دخول بنفسك،
-نسمح لمراقب Supabase بمعالجة SIGNED_IN.
-*/
-
 authStartupFinished=true;
 
 await loadUserApp();
@@ -3173,10 +3843,6 @@ console.error(error);
 
 currentUser=null;
 isGuest=false;
-
-/*
-بعد تسجيل الخروج نرجع مباشرة لشاشة الدخول.
-*/
 authStartupFinished=true;
 
 showAuthPage();
@@ -3283,6 +3949,12 @@ button.classList.add(
 if(section==="projects"){
 
 loadProjects();
+
+}
+
+if(section==="designs"){
+
+filterDesigns();
 
 }
 
@@ -4256,7 +4928,46 @@ console.error(error);
 }
 
 
-/* DESIGN SEARCH */
+/* =====================================================
+   DESIGN SEARCH + CATEGORY
+===================================================== */
+
+function setDesignCategory(
+category,
+button
+){
+
+currentDesignCategory=
+category;
+
+
+document
+.querySelectorAll(
+".design-filter-btn"
+)
+.forEach(
+function(btn){
+
+btn.classList.remove(
+"active"
+);
+
+});
+
+
+if(button){
+
+button.classList.add(
+"active"
+);
+
+}
+
+
+filterDesigns();
+
+}
+
 
 function filterDesigns(){
 
@@ -4270,19 +4981,20 @@ document.getElementById(
 "designSearchInfo"
 );
 
-if(!input)return;
-
-
-const query=
-input.value
-.trim()
-.toLowerCase();
-
-
 const cards=
 document.querySelectorAll(
 ".design-card"
 );
+
+
+const query=
+input
+?
+input.value
+.trim()
+.toLowerCase()
+:
+"";
 
 
 let visible=0;
@@ -4301,14 +5013,41 @@ card.getAttribute(
 
 const description=
 (
-card.innerText || ""
+card.getAttribute(
+"data-design-description"
+) || ""
 ).toLowerCase();
 
 
-const match=
+const tag=
+(
+card.getAttribute(
+"data-design-tag"
+) || ""
+).toLowerCase();
+
+
+const matchesSearch=
 !query ||
 title.includes(query) ||
-description.includes(query);
+description.includes(query) ||
+tag.includes(query);
+
+
+const cardTag=
+card.getAttribute(
+"data-design-tag"
+) || "";
+
+
+const matchesCategory=
+currentDesignCategory==="all" ||
+cardTag===currentDesignCategory;
+
+
+const match=
+matchesSearch &&
+matchesCategory;
 
 
 card.style.display=
@@ -4319,8 +5058,11 @@ match
 "none";
 
 
-if(match)
+if(match){
+
 visible++;
+
+}
 
 }
 );
@@ -4328,12 +5070,24 @@ visible++;
 
 if(info){
 
+if(query){
+
 info.textContent=
-query
-?
-`🔎 تم العثور على ${visible} تصميم مطابق`
-:
+`🔎 تم العثور على ${visible} تصميم مطابق`;
+
+}else if(
+currentDesignCategory!=="all"
+){
+
+info.textContent=
+`عرض تصاميم: ${currentDesignCategory} — ${visible}`;
+
+}else{
+
+info.textContent=
 "عرض جميع التصاميم";
+
+}
 
 }
 
@@ -4347,15 +5101,42 @@ document.getElementById(
 "designSearch"
 );
 
-if(input)
+if(input){
+
 input.value="";
 
+}
+
+currentDesignCategory="all";
+
+
+document
+.querySelectorAll(
+".design-filter-btn"
+)
+.forEach(
+function(btn,index){
+
+btn.classList.toggle(
+"active",
+index===0
+);
+
+});
+
+
 filterDesigns();
+
+showToast(
+"تمت إعادة البحث."
+);
 
 }
 
 
-/* DESIGN MODAL */
+/* =====================================================
+   DESIGN MODAL
+===================================================== */
 
 function showDesignMessage(
 name
@@ -5367,18 +6148,6 @@ renderQuestions();
 CURRENT USER / STARTUP AUTH
 ========================= */
 
-/*
-المهم هنا:
-
-عند فتح الموقع لا نستخدم الجلسة القديمة
-للدخول تلقائيًا.
-
-نبقى على شاشة تسجيل الدخول.
-
-بعد انتهاء فحص البداية فقط،
-نسمح بتسجيل الدخول الحقيقي.
-*/
-
 async function checkCurrentUser(){
 
 showAuthPage();
@@ -5398,12 +6167,6 @@ return;
 
 
 try{
-
-/*
-نفحص الجلسة فقط للتأكد من أن Supabase يعمل.
-
-لا نستخدم data.session للدخول إلى المنصة.
-*/
 
 const {error}=
 await supabaseClient
@@ -5443,10 +6206,6 @@ showAuthPage();
 
 }finally{
 
-/*
-الآن انتهت مرحلة بداية الصفحة.
-*/
-
 authStartupFinished=true;
 
 }
@@ -5469,10 +6228,6 @@ event,
 session
 ){
 
-/*
-تسجيل الخروج
-*/
-
 if(
 event==="SIGNED_OUT"
 ){
@@ -5487,13 +6242,6 @@ return;
 
 }
 
-
-/*
-Supabase قد يرسل SIGNED_IN عند بداية الصفحة
-بسبب جلسة قديمة.
-
-نتجاهله أثناء بداية التشغيل.
-*/
 
 if(
 event==="SIGNED_IN" &&
@@ -5530,10 +6278,6 @@ START
 document.addEventListener(
 "DOMContentLoaded",
 function(){
-
-/*
-شاشة الدخول تظهر أولًا.
-*/
 
 showAuthPage();
 
