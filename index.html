@@ -77,7 +77,11 @@ box-shadow:0 8px 22px rgba(37,99,235,.3)
 .user-mini{display:flex;align-items:center;gap:9px;color:#cbd5e1;font-size:14px}
 .user-avatar{
 width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#7c3aed);
-display:flex;align-items:center;justify-content:center;font-weight:900
+display:flex;align-items:center;justify-content:center;font-weight:900;
+overflow:hidden
+}
+.user-avatar img{
+width:100%;height:100%;object-fit:cover;display:block
 }
 .nav{
 max-width:1250px;margin:auto;padding:8px 18px 12px;display:flex;
@@ -238,21 +242,189 @@ box-shadow:0 18px 45px rgba(0,0,0,.25)
 .question-item strong{display:block;margin-bottom:7px}
 .question-item span{color:#94a3b8;font-size:13px}
 
-.profile-card{background:#0f172a;border:1px solid rgba(148,163,184,.14);border-radius:24px;padding:25px}
-.profile-head{display:flex;align-items:center;gap:16px;margin-bottom:25px}
-.profile-avatar{
-width:75px;height:75px;border-radius:22px;display:flex;align-items:center;
-justify-content:center;font-size:28px;font-weight:900;background:linear-gradient(135deg,#2563eb,#7c3aed)
+/* =========================
+   PROFILE
+========================= */
+
+.profile-card{
+background:#0f172a;
+border:1px solid rgba(148,163,184,.14);
+border-radius:24px;
+padding:25px
 }
+
+.profile-head{
+display:flex;
+align-items:center;
+gap:16px;
+margin-bottom:22px
+}
+
+.profile-avatar{
+width:78px;
+height:78px;
+border-radius:22px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+font-weight:900;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+overflow:hidden;
+flex-shrink:0
+}
+
+.profile-avatar img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block
+}
+
 .profile-name{font-size:25px;font-weight:900}
-.profile-email{color:#94a3b8;margin-top:5px}
-.profile-info{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.info-box{padding:16px;border-radius:15px;background:#020617;border:1px solid #1e293b}
-.info-label{font-size:12px;color:#64748b;margin-bottom:6px}
-.info-value{font-weight:700;word-break:break-word}
+.profile-email{color:#94a3b8;margin-top:5px;word-break:break-word}
+
+.profile-head-actions{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+width:100%
+}
+
+.profile-edit-btn{
+border:1px solid rgba(59,130,246,.35);
+background:rgba(37,99,235,.12);
+color:#93c5fd;
+padding:10px 14px;
+border-radius:11px;
+font-weight:800
+}
+
+.profile-edit-btn:hover{
+background:rgba(37,99,235,.2)
+}
+
+.profile-stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+margin-bottom:20px
+}
+
+.profile-stat{
+background:#020617;
+border:1px solid #1e293b;
+border-radius:17px;
+padding:18px;
+text-align:center
+}
+
+.profile-stat-number{
+font-size:27px;
+font-weight:900;
+margin-bottom:5px
+}
+
+.profile-stat-label{
+font-size:12px;
+color:#94a3b8
+}
+
+.profile-info{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px
+}
+
+.info-box{
+padding:16px;
+border-radius:15px;
+background:#020617;
+border:1px solid #1e293b
+}
+
+.info-label{
+font-size:12px;
+color:#64748b;
+margin-bottom:6px
+}
+
+.info-value{
+font-weight:700;
+word-break:break-word
+}
+
 .logout-btn{
-margin-top:20px;border:1px solid rgba(239,68,68,.3);
-background:rgba(239,68,68,.08);color:#fca5a5;padding:12px 18px;border-radius:13px;font-weight:800
+margin-top:20px;
+border:1px solid rgba(239,68,68,.3);
+background:rgba(239,68,68,.08);
+color:#fca5a5;
+padding:12px 18px;
+border-radius:13px;
+font-weight:800
+}
+
+/* PROFILE EDIT MODAL */
+
+.profile-edit-box{
+display:flex;
+flex-direction:column;
+gap:14px
+}
+
+.profile-edit-box label{
+font-size:13px;
+color:#94a3b8;
+font-weight:700
+}
+
+.profile-edit-box input{
+width:100%;
+padding:14px 15px;
+border-radius:14px;
+border:1px solid #334155;
+background:#020617;
+color:#fff;
+outline:none
+}
+
+.profile-edit-box input:focus{
+border-color:#3b82f6;
+box-shadow:0 0 0 3px rgba(59,130,246,.12)
+}
+
+.profile-preview{
+display:flex;
+align-items:center;
+justify-content:center;
+margin-bottom:5px
+}
+
+.profile-preview-avatar{
+width:90px;
+height:90px;
+border-radius:25px;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:32px;
+font-weight:900;
+overflow:hidden;
+border:2px solid rgba(255,255,255,.08)
+}
+
+.profile-preview-avatar img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+
+.profile-edit-note{
+font-size:12px;
+color:#64748b;
+line-height:1.7
 }
 
 .modal{
@@ -480,11 +652,15 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 .feature-grid{grid-template-columns:repeat(2,1fr)}
 .project-grid{grid-template-columns:repeat(2,1fr)}
 }
+
 @media(max-width:650px){
 .header-inner{padding:10px 12px}.user-mini{display:none}
 .container{padding:20px 12px 50px}.hero{padding:30px 20px}.hero h1{font-size:32px}
 .feature-grid,.project-grid,.design-grid,.community-grid{grid-template-columns:1fr}
 .stats{grid-template-columns:1fr}.profile-info{grid-template-columns:1fr}
+.profile-stats{grid-template-columns:1fr}
+.profile-head-actions{align-items:flex-start}
+.profile-edit-btn{padding:9px 11px;font-size:12px}
 .idea-row{flex-direction:column}.toolbar{align-items:stretch}
 .channel-post-actions{flex-direction:column;align-items:stretch}
 .channel-post-actions .primary-btn{width:100%}
@@ -699,23 +875,74 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 
 <section id="profile" class="section">
 <h2 class="section-title">حسابي</h2>
-<p class="section-subtitle">معلومات حسابك في منصة KAPO ONE.</p>
+<p class="section-subtitle">معلومات حسابك وإحصاءات نشاطك في منصة KAPO ONE.</p>
 
 <div class="profile-card">
+
 <div class="profile-head">
+
 <div id="profileAvatar" class="profile-avatar">K</div>
+
+<div class="profile-head-actions">
+
 <div>
 <div id="profileName" class="profile-name">زائر</div>
 <div id="profileEmail" class="profile-email">-</div>
 </div>
+
+<button
+type="button"
+class="profile-edit-btn"
+onclick="openProfileModal()"
+>
+✏️ تعديل الملف
+</button>
+
+</div>
+
+</div>
+
+<div class="profile-stats">
+
+<div class="profile-stat">
+<div id="profileProjectsCount" class="profile-stat-number">0</div>
+<div class="profile-stat-label">مشاريعي</div>
+</div>
+
+<div class="profile-stat">
+<div id="profileLikesCount" class="profile-stat-number">0</div>
+<div class="profile-stat-label">إعجاباتي</div>
+</div>
+
+<div class="profile-stat">
+<div id="profileCommentsCount" class="profile-stat-number">0</div>
+<div class="profile-stat-label">تعليقاتي</div>
+</div>
+
 </div>
 
 <div class="profile-info">
-<div class="info-box"><div class="info-label">الاسم</div><div id="profileNameInfo" class="info-value">زائر</div></div>
-<div class="info-box"><div class="info-label">البريد الإلكتروني</div><div id="profileEmailInfo" class="info-value">-</div></div>
+
+<div class="info-box">
+<div class="info-label">الاسم</div>
+<div id="profileNameInfo" class="info-value">زائر</div>
 </div>
 
-<button type="button" class="logout-btn" onclick="logoutUser()">تسجيل الخروج</button>
+<div class="info-box">
+<div class="info-label">البريد الإلكتروني</div>
+<div id="profileEmailInfo" class="info-value">-</div>
+</div>
+
+</div>
+
+<button
+type="button"
+class="logout-btn"
+onclick="logoutUser()"
+>
+تسجيل الخروج
+</button>
+
 </div>
 </section>
 
@@ -740,6 +967,75 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 <button type="button" class="primary-btn" onclick="saveNewProject()">حفظ المشروع</button>
 <button type="button" class="secondary-btn" onclick="closeAddProjectModal()">إلغاء</button>
 </div>
+</div>
+</div>
+
+<!-- PROFILE MODAL -->
+
+<div id="profileModal" class="modal" onclick="closeProfileModal()">
+<div class="modal-box" onclick="event.stopPropagation()">
+
+<div class="modal-header">
+<h2>✏️ تعديل الملف الشخصي</h2>
+<button type="button" class="close-btn" onclick="closeProfileModal()">×</button>
+</div>
+
+<div class="modal-content">
+
+<div class="profile-preview">
+<div id="profilePreviewAvatar" class="profile-preview-avatar">K</div>
+</div>
+
+<div class="profile-edit-box">
+
+<label for="editProfileName">الاسم</label>
+
+<input
+id="editProfileName"
+type="text"
+maxlength="80"
+placeholder="اكتب اسمك"
+/>
+
+<label for="editProfileAvatar">رابط الصورة الشخصية</label>
+
+<input
+id="editProfileAvatar"
+type="url"
+placeholder="https://example.com/image.jpg"
+oninput="previewProfileAvatar()"
+/>
+
+<div class="profile-edit-note">
+يمكنك وضع رابط صورة مباشر من الإنترنت. الصورة اختيارية، وإذا تركتها فارغة سيظهر أول حرف من اسمك.
+</div>
+
+<div id="profileEditMessage" class="auth-message hidden"></div>
+
+</div>
+
+</div>
+
+<div class="modal-actions">
+
+<button
+type="button"
+class="primary-btn"
+onclick="saveProfileChanges()"
+>
+حفظ التعديلات
+</button>
+
+<button
+type="button"
+class="secondary-btn"
+onclick="closeProfileModal()"
+>
+إلغاء
+</button>
+
+</div>
+
 </div>
 </div>
 
@@ -814,6 +1110,12 @@ let currentDesignIndex=0;
 let currentChannelType=null;
 let currentCommentsProjectId=null;
 let currentChannelCommentsPostId=null;
+
+let currentProfileStats={
+projects:0,
+likes:0,
+comments:0
+};
 
 const designs=[
 {title:"برج المستقبل",icon:"🏙️",description:"تصور معماري لبرج حديث يجمع بين التقنية والاستدامة والهوية المستقبلية.",type:"تصميم معماري",details:"برج مستقبلي يمكن تطويره ليضم مكاتب وشققاً فاخرة ومساحات تجارية ومرافق ذكية."},
@@ -1010,8 +1312,10 @@ showAuthMessage(error?.message||"حدث خطأ أثناء إرسال الراب�
 function enterGuest(){
 currentUser=null;
 currentProfile={name:"زائر",email:""};
+currentProfileStats={projects:0,likes:0,comments:0};
 showApp();
 updateUserUI();
+updateProfileStats();
 loadProjects();
 loadLocalCommunity();
 showSection("home");
@@ -1059,6 +1363,7 @@ currentUser=session.user;
 if(event==="SIGNED_OUT"){
 currentUser=null;
 currentProfile=null;
+currentProfileStats={projects:0,likes:0,comments:0};
 showAuthPage();
 }
 
@@ -1085,6 +1390,8 @@ await loadProjects();
 }catch(e){
 console.error(e);
 }
+
+await loadProfileStats();
 
 loadLocalCommunity();
 showSection("home");
@@ -1129,30 +1436,441 @@ email:currentUser.email||""
 }
 }
 
-function showApp(){
-document.getElementById("authPage").classList.add("hidden");
-document.getElementById("app").classList.remove("hidden");
+/* =========================
+   PROFILE STATS
+========================= */
+
+async function loadProfileStats(){
+
+if(!currentUser||!initSupabase()){
+
+currentProfileStats={
+projects:0,
+likes:0,
+comments:0
+};
+
+updateProfileStats();
+
+return;
 }
 
-function showAuthPage(){
-document.getElementById("app").classList.add("hidden");
-document.getElementById("authPage").classList.remove("hidden");
-showLoginForm();
+try{
+
+const [
+projectsResult,
+projectLikesResult,
+projectCommentsResult,
+channelLikesResult,
+channelCommentsResult,
+commentLikesResult
+]=await Promise.all([
+
+supabaseClient
+.from("projects")
+.select("id",{count:"exact",head:true})
+.eq("user_id",currentUser.id),
+
+supabaseClient
+.from("likes")
+.select("id",{count:"exact",head:true})
+.eq("user_id",currentUser.id),
+
+supabaseClient
+.from("comments")
+.select("id",{count:"exact",head:true})
+.eq("user_id",currentUser.id),
+
+supabaseClient
+.from("channel_likes")
+.select("id",{count:"exact",head:true})
+.eq("user_id",currentUser.id),
+
+supabaseClient
+.from("channel_comments")
+.select("id",{count:"exact",head:true})
+.eq("user_id",currentUser.id),
+
+supabaseClient
+.from("comment_likes")
+.select("id",{count:"exact",head:true})
+.eq("user_id",currentUser.id)
+
+]);
+
+if(projectsResult.error){
+console.error("Profile projects stats:",projectsResult.error);
+}
+
+if(projectLikesResult.error){
+console.error("Profile project likes stats:",projectLikesResult.error);
+}
+
+if(projectCommentsResult.error){
+console.error("Profile project comments stats:",projectCommentsResult.error);
+}
+
+if(channelLikesResult.error){
+console.error("Profile channel likes stats:",channelLikesResult.error);
+}
+
+if(channelCommentsResult.error){
+console.error("Profile channel comments stats:",channelCommentsResult.error);
+}
+
+if(commentLikesResult.error){
+console.error("Profile comment likes stats:",commentLikesResult.error);
+}
+
+const projects=Number(projectsResult.count||0);
+
+const likes=
+Number(projectLikesResult.count||0)+
+Number(channelLikesResult.count||0)+
+Number(commentLikesResult.count||0);
+
+const comments=
+Number(projectCommentsResult.count||0)+
+Number(channelCommentsResult.count||0);
+
+currentProfileStats={
+projects,
+likes,
+comments
+};
+
+updateProfileStats();
+
+}catch(error){
+
+console.error("Profile stats error:",error);
+
+updateProfileStats();
+
+}
+}
+
+function updateProfileStats(){
+
+const projects=document.getElementById("profileProjectsCount");
+const likes=document.getElementById("profileLikesCount");
+const comments=document.getElementById("profileCommentsCount");
+
+if(projects){
+projects.textContent=Number(currentProfileStats.projects||0);
+}
+
+if(likes){
+likes.textContent=Number(currentProfileStats.likes||0);
+}
+
+if(comments){
+comments.textContent=Number(currentProfileStats.comments||0);
+}
+}
+
+/* =========================
+   PROFILE EDIT
+========================= */
+
+function openProfileModal(){
+
+if(!currentUser){
+
+showToast("سجل الدخول أولاً لتعديل الملف الشخصي.");
+return;
+
+}
+
+const name=
+currentProfile?.name||
+currentUser.user_metadata?.name||
+currentUser.email?.split("@")[0]||
+"مستخدم";
+
+const avatar=
+currentProfile?.avatar_url||
+currentUser.user_metadata?.avatar_url||
+"";
+
+document.getElementById("editProfileName").value=name;
+document.getElementById("editProfileAvatar").value=avatar;
+
+const message=document.getElementById("profileEditMessage");
+
+if(message){
+message.classList.add("hidden");
+message.textContent="";
+}
+
+previewProfileAvatar();
+
+document.getElementById("profileModal").classList.add("active");
+}
+
+function closeProfileModal(){
+
+document.getElementById("profileModal").classList.remove("active");
+
+}
+
+function showProfileEditMessage(message){
+
+const box=document.getElementById("profileEditMessage");
+
+box.textContent=message;
+box.classList.remove("hidden");
+
+}
+
+function previewProfileAvatar(){
+
+const preview=document.getElementById("profilePreviewAvatar");
+
+if(!preview)return;
+
+const url=
+document.getElementById("editProfileAvatar")?.value.trim()||"";
+
+const name=
+document.getElementById("editProfileName")?.value.trim()||
+currentProfile?.name||
+"مستخدم";
+
+const first=
+name.charAt(0).toUpperCase()||"K";
+
+preview.innerHTML="";
+
+if(url){
+
+const img=document.createElement("img");
+
+img.src=url;
+img.alt="صورة الحساب";
+
+img.onerror=function(){
+preview.innerHTML="";
+preview.textContent=first;
+};
+
+preview.appendChild(img);
+
+}else{
+
+preview.textContent=first;
+
+}
+}
+
+async function saveProfileChanges(){
+
+if(!currentUser){
+
+showProfileEditMessage("يجب تسجيل الدخول لتعديل الملف الشخصي.");
+return;
+
+}
+
+if(!initSupabase()){
+
+showProfileEditMessage("تعذر الاتصال بقاعدة البيانات.");
+return;
+
+}
+
+const name=
+document.getElementById("editProfileName")
+.value
+.trim();
+
+const avatarUrl=
+document.getElementById("editProfileAvatar")
+.value
+.trim();
+
+if(!name){
+
+showProfileEditMessage("اكتب الاسم أولاً.");
+return;
+
+}
+
+if(name.length>80){
+
+showProfileEditMessage("الاسم طويل جداً.");
+return;
+
+}
+
+const button=
+document.querySelector("#profileModal .primary-btn");
+
+if(button){
+
+button.disabled=true;
+button.textContent="جاري الحفظ...";
+}
+
+try{
+
+/*
+   حفظ الاسم داخل profiles
+*/
+
+const {error:profileError}=await supabaseClient
+.from("profiles")
+.update({
+name:name
+})
+.eq("id",currentUser.id);
+
+if(profileError){
+
+console.error("Profile update error:",profileError);
+
+showProfileEditMessage(
+profileError.message||
+"تعذر حفظ الاسم في الملف الشخصي."
+);
+
+return;
+}
+
+/*
+   حفظ الاسم والصورة داخل بيانات المستخدم في Auth
+   بدون الحاجة إلى إنشاء عمود جديد للصورة.
+*/
+
+const {data:userData,error:authError}=await supabaseClient.auth.updateUser({
+
+data:{
+name:name,
+avatar_url:avatarUrl||null
+}
+
+});
+
+if(authError){
+
+console.error("Auth profile update error:",authError);
+
+showProfileEditMessage(
+"تم تحديث الاسم، لكن تعذر حفظ الصورة."
+);
+
+await loadProfile();
+updateUserUI();
+
+return;
+
+}
+
+if(userData?.user){
+currentUser=userData.user;
+}
+
+/*
+   تحديث البيانات محلياً
+*/
+
+currentProfile={
+...(currentProfile||{}),
+name:name,
+email:currentUser.email||currentProfile?.email||"",
+avatar_url:avatarUrl||""
+};
+
+updateUserUI();
+
+closeProfileModal();
+
+showToast("تم تحديث الملف الشخصي بنجاح ✅");
+
+}catch(error){
+
+console.error("Save profile exception:",error);
+
+showProfileEditMessage(
+error?.message||
+"حدث خطأ أثناء حفظ الملف الشخصي."
+);
+
+}finally{
+
+if(button){
+
+button.disabled=false;
+button.textContent="حفظ التعديلات";
+
+}
+
+}
+}
+
+function updateAvatarElement(element,url,first){
+
+if(!element)return;
+
+element.innerHTML="";
+
+if(url){
+
+const img=document.createElement("img");
+
+img.src=url;
+img.alt="صورة الحساب";
+
+img.onerror=function(){
+
+element.innerHTML="";
+element.textContent=first;
+
+};
+
+element.appendChild(img);
+
+}else{
+
+element.textContent=first;
+
+}
 }
 
 function updateUserUI(){
 
 const name=currentProfile?.name||"زائر";
-const email=currentProfile?.email||"";
+const email=currentProfile?.email||currentUser?.email||"";
 const first=name.trim().charAt(0).toUpperCase()||"K";
 
+const avatarUrl=
+currentProfile?.avatar_url||
+currentUser?.user_metadata?.avatar_url||
+"";
+
+const miniAvatar=document.getElementById("miniUserAvatar");
+const profileAvatar=document.getElementById("profileAvatar");
+
 document.getElementById("miniUserName").textContent=name;
-document.getElementById("miniUserAvatar").textContent=first;
+
+updateAvatarElement(
+miniAvatar,
+avatarUrl,
+first
+);
+
 document.getElementById("profileName").textContent=name;
 document.getElementById("profileEmail").textContent=email||"الدخول كزائر";
 document.getElementById("profileNameInfo").textContent=name;
 document.getElementById("profileEmailInfo").textContent=email||"-";
-document.getElementById("profileAvatar").textContent=first;
+
+updateAvatarElement(
+profileAvatar,
+avatarUrl,
+first
+);
+
+updateProfileStats();
 }
 
 function showSection(id){
@@ -1174,6 +1892,15 @@ button.classList.add("active");
 if(id==="projects")loadProjects();
 if(id==="ideas")loadLocalIdeas();
 if(id==="answers")loadQuestions();
+
+if(id==="profile"&&currentUser){
+
+loadProfile().then(()=>{
+updateUserUI();
+loadProfileStats();
+});
+
+}
 
 window.scrollTo({top:0,behavior:"smooth"});
 }
@@ -1503,6 +2230,7 @@ document.getElementById("projectDescription").value="";
 document.getElementById("projectImage").value="";
 
 await loadProjects();
+await loadProfileStats();
 
 showToast("تم حفظ المشروع بنجاح.");
 
@@ -1576,6 +2304,8 @@ button.innerHTML=
 
 }
 
+await loadProfileStats();
+
 showToast("تم إلغاء الإعجاب.");
 
 return;
@@ -1617,6 +2347,8 @@ button.innerHTML=
 `♥ إعجاب <span class="like-count">${project._likeCount}</span>`;
 
 }
+
+await loadProfileStats();
 
 showToast("تم تسجيل الإعجاب ❤️");
 
@@ -1940,6 +2672,8 @@ await loadProjectComments(projectId);
 
 renderProjects();
 
+await loadProfileStats();
+
 showToast("تم إضافة التعليق 💬");
 
 }catch(error){
@@ -1997,6 +2731,8 @@ await loadProjectComments(projectId);
 
 renderProjects();
 
+await loadProfileStats();
+
 showToast("تم حذف التعليق.");
 
 }catch(error){
@@ -2052,6 +2788,8 @@ button.classList.remove("liked");
 button.innerHTML=`♡ إعجاب <span class="channel-like-count">${newCount}</span>`;
 }
 
+await loadProfileStats();
+
 showToast("تم إلغاء الإعجاب.");
 
 return;
@@ -2093,6 +2831,8 @@ button.dataset.liked="true";
 button.classList.add("liked");
 button.innerHTML=`♥ إعجاب <span class="channel-like-count">${newCount}</span>`;
 }
+
+await loadProfileStats();
 
 showToast("تم تسجيل الإعجاب ❤️");
 
@@ -2469,6 +3209,8 @@ if(currentChannelType){
 await loadChannelPosts(currentChannelType);
 }
 
+await loadProfileStats();
+
 showToast("تم إضافة التعليق 💬");
 
 }catch(error){
@@ -2522,6 +3264,8 @@ button.dataset.liked="false";
 button.classList.remove("liked");
 button.innerHTML=`♡ إعجاب <span class="comment-like-count">${newCount}</span>`;
 
+await loadProfileStats();
+
 showToast("تم إلغاء الإعجاب.");
 
 return;
@@ -2560,6 +3304,8 @@ const newCount=oldCount+1;
 button.dataset.liked="true";
 button.classList.add("liked");
 button.innerHTML=`♥ إعجاب <span class="comment-like-count">${newCount}</span>`;
+
+await loadProfileStats();
 
 showToast("تم تسجيل إعجابك ❤️");
 
@@ -2610,6 +3356,8 @@ await loadChannelPostComments(postId);
 if(currentChannelType){
 await loadChannelPosts(currentChannelType);
 }
+
+await loadProfileStats();
 
 showToast("تم حذف التعليق.");
 
@@ -3445,6 +4193,7 @@ console.error(error);
 
 currentUser=null;
 currentProfile=null;
+currentProfileStats={projects:0,likes:0,comments:0};
 
 showAuthPage();
 
@@ -3502,6 +4251,7 @@ document.addEventListener("keydown",function(event){
 if(event.key==="Escape"){
 
 closeAddProjectModal();
+closeProfileModal();
 closeCommentsModal();
 closeDesignModal();
 closeChannel();
