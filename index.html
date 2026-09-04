@@ -298,7 +298,39 @@ justify-content:center;background:linear-gradient(135deg,#2563eb,#7c3aed);font-s
 }
 .channel-date{font-size:11px;color:#64748b}
 .channel-post-text{color:#cbd5e1;line-height:1.8;white-space:pre-wrap;word-break:break-word}
-.channel-post-footer{display:flex;justify-content:flex-start;margin-top:12px}
+
+.channel-post-footer{
+display:flex;
+align-items:center;
+gap:8px;
+flex-wrap:wrap;
+margin-top:13px
+}
+
+.channel-social-btn{
+border:1px solid #334155;
+background:#0f172a;
+color:#cbd5e1;
+padding:8px 11px;
+border-radius:10px;
+font-size:13px
+}
+
+.channel-social-btn:hover{
+border-color:#475569;
+background:#172033
+}
+
+.channel-social-btn.liked{
+background:rgba(239,68,68,.12);
+border-color:rgba(239,68,68,.35);
+color:#fca5a5
+}
+
+.channel-comment-btn{
+flex:1
+}
+
 .delete-post-btn{
 border:1px solid rgba(239,68,68,.25);background:rgba(239,68,68,.08);
 color:#fca5a5;padding:7px 10px;border-radius:9px;font-size:12px
@@ -359,7 +391,26 @@ word-break:break-word
 }
 
 .comment-footer{
-margin-top:9px
+margin-top:9px;
+display:flex;
+align-items:center;
+gap:8px;
+flex-wrap:wrap
+}
+
+.comment-like-btn{
+border:1px solid #334155;
+background:#0f172a;
+color:#cbd5e1;
+padding:6px 9px;
+border-radius:8px;
+font-size:11px
+}
+
+.comment-like-btn.liked{
+background:rgba(239,68,68,.12);
+border-color:rgba(239,68,68,.35);
+color:#fca5a5
 }
 
 .delete-comment-btn{
@@ -762,6 +813,7 @@ let currentProjectFilter="all";
 let currentDesignIndex=0;
 let currentChannelType=null;
 let currentCommentsProjectId=null;
+let currentChannelCommentsPostId=null;
 
 const designs=[
 {title:"برج المستقبل",icon:"🏙️",description:"تصور معماري لبرج حديث يجمع بين التقنية والاستدامة والهوية المستقبلية.",type:"تصميم معماري",details:"برج مستقبلي يمكن تطويره ليضم مكاتب وشققاً فاخرة ومساحات تجارية ومرافق ذكية."},
@@ -1172,9 +1224,6 @@ renderProjects();
 }
 }
 
-/*
-  تحميل عدد الإعجابات والتعليقات وحالة إعجاب المستخدم
-*/
 async function loadProjectSocialData(){
 
 if(!projectsData.length){
@@ -1198,8 +1247,6 @@ renderProjects();
 return;
 }
 
-/* الإعجابات */
-
 const likesResult=await supabaseClient
 .from("likes")
 .select("id,project_id,user_id")
@@ -1210,8 +1257,6 @@ console.error("Likes load error:",likesResult.error);
 }
 
 const likes=likesResult.data||[];
-
-/* التعليقات */
 
 const commentsResult=await supabaseClient
 .from("comments")
@@ -1501,8 +1546,6 @@ if(!project)return;
 
 try{
 
-/* إذا كان معجبًا بالفعل -> إلغاء الإعجاب */
-
 if(project._userLiked){
 
 const {error}=await supabaseClient
@@ -1537,8 +1580,6 @@ showToast("تم إلغاء الإعجاب.");
 
 return;
 }
-
-/* إضافة إعجاب */
 
 const {error}=await supabaseClient
 .from("likes")
@@ -1588,7 +1629,7 @@ showToast("حدث خطأ أثناء الإعجاب.");
 }
 
 /* =========================
-   COMMENTS
+   PROJECT COMMENTS
 ========================= */
 
 async function commentProject(projectId){
@@ -1603,6 +1644,7 @@ return;
 if(!initSupabase())return;
 
 currentCommentsProjectId=projectId;
+currentChannelCommentsPostId=null;
 
 const project=projectsData.find(
 p=>String(p.id)===String(projectId)
@@ -1965,12 +2007,627 @@ showToast("حدث خطأ أثناء حذف التعليق.");
 }
 }
 
+/* =========================
+   CHANNEL POST LIKE
+========================= */
+
+async function likeChannelPost(postId,button){
+
+if(!currentUser){
+
+showToast("سجل الدخول أولاً لإضافة إعجاب.");
+return;
+
+}
+
+if(!initSupabase())return;
+
+const liked=button?.dataset.liked==="true";
+
+try{
+
+if(liked){
+
+const {error}=await supabaseClient
+.from("channel_likes")
+.delete()
+.eq("post_id",postId)
+.eq("user_id",currentUser.id);
+
+if(error){
+
+console.error("Channel unlike error:",error);
+showToast("تعذر إلغاء الإعجاب.");
+return;
+
+}
+
+const countElement=button.querySelector(".channel-like-count");
+const oldCount=Number(countElement?.textContent||0);
+const newCount=Math.max(0,oldCount-1);
+
+if(button){
+button.dataset.liked="false";
+button.classList.remove("liked");
+button.innerHTML=`♡ إعجاب <span class="channel-like-count">${newCount}</span>`;
+}
+
+showToast("تم إلغاء الإعجاب.");
+
+return;
+}
+
+const {error}=await supabaseClient
+.from("channel_likes")
+.insert({
+post_id:postId,
+user_id:currentUser.id
+});
+
+if(error){
+
+if(error.code==="23505"){
+
+if(button){
+button.dataset.liked="true";
+button.classList.add("liked");
+}
+
+showToast("سبق وأعجبت بهذا المنشور.");
+return;
+
+}
+
+console.error("Channel like error:",error);
+showToast("تعذر إضافة الإعجاب.");
+return;
+
+}
+
+const countElement=button.querySelector(".channel-like-count");
+const oldCount=Number(countElement?.textContent||0);
+const newCount=oldCount+1;
+
+if(button){
+button.dataset.liked="true";
+button.classList.add("liked");
+button.innerHTML=`♥ إعجاب <span class="channel-like-count">${newCount}</span>`;
+}
+
+showToast("تم تسجيل الإعجاب ❤️");
+
+}catch(error){
+
+console.error(error);
+showToast("حدث خطأ أثناء الإعجاب.");
+
+}
+}
+
+/* =========================
+   CHANNEL COMMENTS OPEN
+========================= */
+
+async function commentChannelPost(postId){
+
+if(!currentUser){
+
+showToast("سجل الدخول أولاً لإضافة تعليق.");
+return;
+
+}
+
+if(!initSupabase())return;
+
+currentChannelCommentsPostId=postId;
+currentCommentsProjectId=null;
+
+document.getElementById("commentsModalTitle").textContent=
+"💬 تعليقات المنشور";
+
+document.getElementById("commentsModalContent").innerHTML=`
+<div class="comment-empty">
+جاري تحميل التعليقات...
+</div>
+`;
+
+document.getElementById("commentsModal")
+.classList.add("active");
+
+await loadChannelPostComments(postId);
+}
+
+/* =========================
+   LOAD CHANNEL COMMENTS
+========================= */
+
+async function loadChannelPostComments(postId){
+
+const box=document.getElementById("commentsModalContent");
+
+if(!box)return;
+
+if(!initSupabase()){
+
+box.innerHTML=`
+<div class="comment-empty">
+تعذر الاتصال بقاعدة البيانات.
+</div>
+`;
+
+return;
+
+}
+
+try{
+
+const commentsResult=await supabaseClient
+.from("channel_comments")
+.select("id,post_id,user_id,content,created_at")
+.eq("post_id",postId)
+.order("created_at",{ascending:true});
+
+if(commentsResult.error){
+
+console.error("Channel comments load error:",commentsResult.error);
+
+box.innerHTML=`
+<div class="comment-empty">
+تعذر تحميل تعليقات المنشور.
+</div>
+`;
+
+return;
+
+}
+
+const comments=commentsResult.data||[];
+
+let commentLikes=[];
+
+if(comments.length){
+
+const commentIds=comments
+.map(comment=>comment.id)
+.filter(Boolean);
+
+if(commentIds.length){
+
+const likesResult=await supabaseClient
+.from("comment_likes")
+.select("id,comment_id,user_id")
+.in("comment_id",commentIds);
+
+if(likesResult.error){
+
+console.error("Comment likes load error:",likesResult.error);
+
+}else{
+
+commentLikes=likesResult.data||[];
+
+}
+
+}
+
+}
+
+let profiles={};
+
+const userIds=[
+...new Set(
+comments
+.map(comment=>comment.user_id)
+.filter(Boolean)
+)
+];
+
+if(userIds.length){
+
+const profileResult=await supabaseClient
+.from("profiles")
+.select("id,name")
+.in("id",userIds);
+
+if(!profileResult.error&&profileResult.data){
+
+profileResult.data.forEach(profile=>{
+profiles[profile.id]=profile.name;
+});
+
+}
+
+}
+
+let commentsHtml="";
+
+if(!comments.length){
+
+commentsHtml=`
+<div class="comment-empty">
+لا توجد تعليقات حتى الآن.<br>
+كن أول من يعلق على هذا المنشور 💬
+</div>
+`;
+
+}else{
+
+commentsHtml=`
+<div class="comments-list">
+
+${comments.map(comment=>{
+
+const isOwner=
+currentUser &&
+comment.user_id===currentUser.id;
+
+const author=
+profiles[comment.user_id]||
+(isOwner?currentProfile?.name:"مستخدم");
+
+const first=
+(author||"م")
+.trim()
+.charAt(0)
+.toUpperCase();
+
+const date=
+comment.created_at
+?new Date(comment.created_at)
+.toLocaleString("ar-SA")
+:"";
+
+const likesForComment=commentLikes.filter(
+like=>like.comment_id===comment.id
+);
+
+const likeCount=likesForComment.length;
+
+const userLiked=!!(
+currentUser &&
+likesForComment.some(
+like=>like.user_id===currentUser.id
+)
+);
+
+return `
+<div class="comment-item">
+
+<div class="comment-head">
+
+<div class="comment-author">
+
+<div class="comment-avatar">
+${escapeHtml(first)}
+</div>
+
+<span>
+${escapeHtml(author||"مستخدم")}
+</span>
+
+</div>
+
+<span class="comment-date">
+${escapeHtml(date)}
+</span>
+
+</div>
+
+<div class="comment-text">
+${escapeHtml(comment.content)}
+</div>
+
+<div class="comment-footer">
+
+<button
+type="button"
+class="comment-like-btn ${userLiked?"liked":""}"
+data-liked="${userLiked?"true":"false"}"
+onclick="likeChannelComment('${escapeAttribute(comment.id)}',this)"
+>
+${userLiked?"♥":"♡"} إعجاب
+<span class="comment-like-count">${likeCount}</span>
+</button>
+
+${isOwner?`
+<button
+type="button"
+class="delete-comment-btn"
+onclick="deleteChannelComment('${escapeAttribute(comment.id)}','${escapeAttribute(postId)}')"
+>
+حذف التعليق
+</button>
+`:""}
+
+</div>
+
+</div>
+`;
+
+}).join("")}
+
+</div>
+`;
+
+}
+
+const inputHtml=currentUser
+?`
+<div class="comment-input-box">
+
+<textarea
+id="channelCommentInput"
+maxlength="2000"
+placeholder="اكتب تعليقك على المنشور..."
+></textarea>
+
+<div class="comment-input-actions">
+
+<span style="font-size:12px;color:#64748b">
+شارك رأيك مع مجتمع KAPO ONE
+</span>
+
+<button
+type="button"
+class="primary-btn"
+onclick="addChannelPostComment('${escapeAttribute(postId)}')"
+>
+نشر التعليق
+</button>
+
+</div>
+
+</div>
+`
+:
+`
+<div class="comment-empty" style="margin-top:15px">
+سجل الدخول حتى تتمكن من إضافة تعليق.
+</div>
+`;
+
+box.innerHTML=
+commentsHtml+
+inputHtml;
+
+}catch(error){
+
+console.error("Channel comments exception:",error);
+
+box.innerHTML=`
+<div class="comment-empty">
+حدث خطأ أثناء تحميل التعليقات.
+</div>
+`;
+
+}
+}
+
+/* =========================
+   ADD CHANNEL COMMENT
+========================= */
+
+async function addChannelPostComment(postId){
+
+if(!currentUser){
+
+showToast("سجل الدخول أولاً لإضافة تعليق.");
+return;
+
+}
+
+if(!initSupabase())return;
+
+const input=document.getElementById("channelCommentInput");
+
+if(!input)return;
+
+const content=input.value.trim();
+
+if(!content){
+
+showToast("اكتب التعليق أولاً.");
+return;
+
+}
+
+if(content.length>2000){
+
+showToast("التعليق طويل جداً.");
+return;
+
+}
+
+try{
+
+const {error}=await supabaseClient
+.from("channel_comments")
+.insert({
+post_id:postId,
+user_id:currentUser.id,
+content:content
+});
+
+if(error){
+
+console.error("Add channel comment error:",error);
+
+showToast(
+error.message||
+"تعذر إضافة التعليق."
+);
+
+return;
+
+}
+
+input.value="";
+
+await loadChannelPostComments(postId);
+
+if(currentChannelType){
+await loadChannelPosts(currentChannelType);
+}
+
+showToast("تم إضافة التعليق 💬");
+
+}catch(error){
+
+console.error(error);
+showToast("حدث خطأ أثناء إضافة التعليق.");
+
+}
+}
+
+/* =========================
+   CHANNEL COMMENT LIKE
+========================= */
+
+async function likeChannelComment(commentId,button){
+
+if(!currentUser){
+
+showToast("سجل الدخول أولاً لإضافة إعجاب.");
+return;
+
+}
+
+if(!initSupabase())return;
+
+const liked=button?.dataset.liked==="true";
+
+try{
+
+if(liked){
+
+const {error}=await supabaseClient
+.from("comment_likes")
+.delete()
+.eq("comment_id",commentId)
+.eq("user_id",currentUser.id);
+
+if(error){
+
+console.error("Comment unlike error:",error);
+showToast("تعذر إلغاء الإعجاب.");
+return;
+
+}
+
+const countElement=button.querySelector(".comment-like-count");
+const oldCount=Number(countElement?.textContent||0);
+const newCount=Math.max(0,oldCount-1);
+
+button.dataset.liked="false";
+button.classList.remove("liked");
+button.innerHTML=`♡ إعجاب <span class="comment-like-count">${newCount}</span>`;
+
+showToast("تم إلغاء الإعجاب.");
+
+return;
+}
+
+const {error}=await supabaseClient
+.from("comment_likes")
+.insert({
+comment_id:commentId,
+user_id:currentUser.id
+});
+
+if(error){
+
+if(error.code==="23505"){
+
+button.dataset.liked="true";
+button.classList.add("liked");
+
+showToast("سبق وأعجبت بهذا التعليق.");
+
+return;
+
+}
+
+console.error("Comment like error:",error);
+showToast("تعذر إضافة الإعجاب.");
+return;
+
+}
+
+const countElement=button.querySelector(".comment-like-count");
+const oldCount=Number(countElement?.textContent||0);
+const newCount=oldCount+1;
+
+button.dataset.liked="true";
+button.classList.add("liked");
+button.innerHTML=`♥ إعجاب <span class="comment-like-count">${newCount}</span>`;
+
+showToast("تم تسجيل إعجابك ❤️");
+
+}catch(error){
+
+console.error(error);
+showToast("حدث خطأ أثناء الإعجاب.");
+
+}
+}
+
+/* =========================
+   DELETE CHANNEL COMMENT
+========================= */
+
+async function deleteChannelComment(commentId,postId){
+
+if(!currentUser){
+
+showToast("سجل الدخول أولاً.");
+return;
+
+}
+
+if(!initSupabase())return;
+
+if(!confirm("هل تريد حذف هذا التعليق؟"))return;
+
+try{
+
+const {error}=await supabaseClient
+.from("channel_comments")
+.delete()
+.eq("id",commentId)
+.eq("user_id",currentUser.id);
+
+if(error){
+
+console.error("Delete channel comment error:",error);
+
+showToast("تعذر حذف التعليق.");
+return;
+
+}
+
+await loadChannelPostComments(postId);
+
+if(currentChannelType){
+await loadChannelPosts(currentChannelType);
+}
+
+showToast("تم حذف التعليق.");
+
+}catch(error){
+
+console.error(error);
+showToast("حدث خطأ أثناء حذف التعليق.");
+
+}
+}
+
 function closeCommentsModal(){
 
 document.getElementById("commentsModal")
 .classList.remove("active");
 
 currentCommentsProjectId=null;
+currentChannelCommentsPostId=null;
 
 }
 
@@ -2433,6 +3090,56 @@ return;
 
 }
 
+/* تحميل إعجابات المنشورات */
+
+const postIds=posts
+.map(post=>post.id)
+.filter(Boolean);
+
+let channelLikes=[];
+
+if(postIds.length){
+
+const likesResult=await supabaseClient
+.from("channel_likes")
+.select("id,post_id,user_id")
+.in("post_id",postIds);
+
+if(likesResult.error){
+
+console.error("Channel likes load error:",likesResult.error);
+
+}else{
+
+channelLikes=likesResult.data||[];
+
+}
+
+}
+
+/* تحميل تعليقات المنشورات */
+
+let channelComments=[];
+
+if(postIds.length){
+
+const commentsResult=await supabaseClient
+.from("channel_comments")
+.select("id,post_id,user_id,content,created_at")
+.in("post_id",postIds);
+
+if(commentsResult.error){
+
+console.error("Channel comments count load error:",commentsResult.error);
+
+}else{
+
+channelComments=commentsResult.data||[];
+
+}
+
+}
+
 const userIds=[
 ...new Set(
 posts.map(p=>p.user_id).filter(Boolean)
@@ -2480,6 +3187,24 @@ post.created_at
 .toLocaleString("ar-SA")
 :"";
 
+const postLikes=channelLikes.filter(
+like=>like.post_id===post.id
+);
+
+const postComments=channelComments.filter(
+comment=>comment.post_id===post.id
+);
+
+const likeCount=postLikes.length;
+const commentCount=postComments.length;
+
+const userLiked=!!(
+currentUser &&
+postLikes.some(
+like=>like.user_id===currentUser.id
+)
+);
+
 return `
 
 <div class="channel-post">
@@ -2508,13 +3233,31 @@ ${escapeHtml(date)}
 ${escapeHtml(post.content)}
 </div>
 
+<div class="channel-post-footer">
+
+<button
+type="button"
+class="channel-social-btn ${userLiked?"liked":""}"
+data-liked="${userLiked?"true":"false"}"
+onclick="likeChannelPost('${escapeAttribute(post.id)}',this)"
+>
+${userLiked?"♥":"♡"} إعجاب
+<span class="channel-like-count">${likeCount}</span>
+</button>
+
+<button
+type="button"
+class="channel-social-btn channel-comment-btn"
+onclick="commentChannelPost('${escapeAttribute(post.id)}')"
+>
+💬 التعليقات
+<span class="channel-comment-count">${commentCount}</span>
+</button>
+
 ${
 isOwner
 ?
 `
-
-<div class="channel-post-footer">
-
 <button
 type="button"
 class="delete-post-btn"
@@ -2522,13 +3265,12 @@ onclick="deleteChannelPost('${escapeAttribute(post.id)}')"
 >
 حذف المنشور
 </button>
-
-</div>
-
 `
 :
 ""
 }
+
+</div>
 
 </div>
 
