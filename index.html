@@ -242,9 +242,7 @@ box-shadow:0 18px 45px rgba(0,0,0,.25)
 .question-item strong{display:block;margin-bottom:7px}
 .question-item span{color:#94a3b8;font-size:13px}
 
-/* =========================
-   PROFILE
-========================= */
+/* PROFILE */
 
 .profile-card{
 background:#0f172a;
@@ -364,8 +362,6 @@ padding:12px 18px;
 border-radius:13px;
 font-weight:800
 }
-
-/* PROFILE EDIT MODAL */
 
 .profile-edit-box{
 display:flex;
@@ -509,7 +505,6 @@ color:#fca5a5;padding:7px 10px;border-radius:9px;font-size:12px
 }
 .channel-loading{padding:25px;text-align:center;color:#94a3b8;background:#020617;border-radius:15px}
 
-/* comments */
 .comments-list{
 display:grid;
 gap:10px;
@@ -970,8 +965,6 @@ onclick="logoutUser()"
 </div>
 </div>
 
-<!-- PROFILE MODAL -->
-
 <div id="profileModal" class="modal" onclick="closeProfileModal()">
 <div class="modal-box" onclick="event.stopPropagation()">
 
@@ -1162,6 +1155,42 @@ function clearAuthMessage(){
 const box=document.getElementById("authMessage");
 box.classList.add("hidden");
 box.textContent="";
+}
+
+/* =========================
+   APP / AUTH DISPLAY
+========================= */
+
+function showApp(){
+
+const authPage=document.getElementById("authPage");
+const app=document.getElementById("app");
+
+if(authPage){
+authPage.style.display="none";
+}
+
+if(app){
+app.classList.remove("hidden");
+app.style.display="block";
+}
+
+}
+
+function showAuthPage(){
+
+const authPage=document.getElementById("authPage");
+const app=document.getElementById("app");
+
+if(authPage){
+authPage.style.display="flex";
+}
+
+if(app){
+app.classList.add("hidden");
+app.style.display="none";
+}
+
 }
 
 async function loginUser(){
@@ -1498,29 +1527,12 @@ supabaseClient
 
 ]);
 
-if(projectsResult.error){
-console.error("Profile projects stats:",projectsResult.error);
-}
-
-if(projectLikesResult.error){
-console.error("Profile project likes stats:",projectLikesResult.error);
-}
-
-if(projectCommentsResult.error){
-console.error("Profile project comments stats:",projectCommentsResult.error);
-}
-
-if(channelLikesResult.error){
-console.error("Profile channel likes stats:",channelLikesResult.error);
-}
-
-if(channelCommentsResult.error){
-console.error("Profile channel comments stats:",channelCommentsResult.error);
-}
-
-if(commentLikesResult.error){
-console.error("Profile comment likes stats:",commentLikesResult.error);
-}
+if(projectsResult.error)console.error("Profile projects stats:",projectsResult.error);
+if(projectLikesResult.error)console.error("Profile project likes stats:",projectLikesResult.error);
+if(projectCommentsResult.error)console.error("Profile project comments stats:",projectCommentsResult.error);
+if(channelLikesResult.error)console.error("Profile channel likes stats:",channelLikesResult.error);
+if(channelCommentsResult.error)console.error("Profile channel comments stats:",channelCommentsResult.error);
+if(commentLikesResult.error)console.error("Profile comment likes stats:",commentLikesResult.error);
 
 const projects=Number(projectsResult.count||0);
 
@@ -1556,17 +1568,9 @@ const projects=document.getElementById("profileProjectsCount");
 const likes=document.getElementById("profileLikesCount");
 const comments=document.getElementById("profileCommentsCount");
 
-if(projects){
-projects.textContent=Number(currentProfileStats.projects||0);
-}
-
-if(likes){
-likes.textContent=Number(currentProfileStats.likes||0);
-}
-
-if(comments){
-comments.textContent=Number(currentProfileStats.comments||0);
-}
+if(projects)projects.textContent=Number(currentProfileStats.projects||0);
+if(likes)likes.textContent=Number(currentProfileStats.likes||0);
+if(comments)comments.textContent=Number(currentProfileStats.comments||0);
 }
 
 /* =========================
@@ -1609,9 +1613,7 @@ document.getElementById("profileModal").classList.add("active");
 }
 
 function closeProfileModal(){
-
 document.getElementById("profileModal").classList.remove("active");
-
 }
 
 function showProfileEditMessage(message){
@@ -1714,10 +1716,6 @@ button.textContent="جاري الحفظ...";
 
 try{
 
-/*
-   حفظ الاسم داخل profiles
-*/
-
 const {error:profileError}=await supabaseClient
 .from("profiles")
 .update({
@@ -1736,11 +1734,6 @@ profileError.message||
 
 return;
 }
-
-/*
-   حفظ الاسم والصورة داخل بيانات المستخدم في Auth
-   بدون الحاجة إلى إنشاء عمود جديد للصورة.
-*/
 
 const {data:userData,error:authError}=await supabaseClient.auth.updateUser({
 
@@ -1769,10 +1762,6 @@ return;
 if(userData?.user){
 currentUser=userData.user;
 }
-
-/*
-   تحديث البيانات محلياً
-*/
 
 currentProfile={
 ...(currentProfile||{}),
@@ -1979,9 +1968,7 @@ const likesResult=await supabaseClient
 .select("id,project_id,user_id")
 .in("project_id",projectIds);
 
-if(likesResult.error){
-console.error("Likes load error:",likesResult.error);
-}
+if(likesResult.error)console.error("Likes load error:",likesResult.error);
 
 const likes=likesResult.data||[];
 
@@ -1990,9 +1977,7 @@ const commentsResult=await supabaseClient
 .select("id,project_id,user_id,content,created_at")
 .in("project_id",projectIds);
 
-if(commentsResult.error){
-console.error("Comments load error:",commentsResult.error);
-}
+if(commentsResult.error)console.error("Comments load error:",commentsResult.error);
 
 const comments=commentsResult.data||[];
 
@@ -3838,8 +3823,6 @@ return;
 
 }
 
-/* تحميل إعجابات المنشورات */
-
 const postIds=posts
 .map(post=>post.id)
 .filter(Boolean);
@@ -3864,8 +3847,6 @@ channelLikes=likesResult.data||[];
 }
 
 }
-
-/* تحميل تعليقات المنشورات */
 
 let channelComments=[];
 
