@@ -6,7 +6,6 @@
 <title>KAPO ONE - منصة مفتوحة</title>
 <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
-/* ===== الأنماط كاملة ===== */
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
@@ -178,7 +177,6 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 </head>
 <body>
 
-<!-- ===== صفحة تسجيل الدخول ===== -->
 <div id="authPage" class="auth-page">
 <div class="auth-box">
 <div class="auth-logo">K</div>
@@ -214,7 +212,6 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 </div>
 </div>
 
-<!-- ===== التطبيق ===== -->
 <div id="app" class="hidden">
 
 <header class="header">
@@ -279,7 +276,6 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 </main>
 </div>
 
-<!-- ===== مودال إضافة محتوى ===== -->
 <div id="addModal" class="modal" onclick="closeAddModal()">
 <div class="modal-box" onclick="event.stopPropagation()">
 <div class="modal-header"><h2>➕ إضافة محتوى جديد</h2><button type="button" class="close-btn" onclick="closeAddModal()">×</button></div>
@@ -331,9 +327,6 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 <div id="toast"></div>
 
 <script>
-// ============================================
-// CONFIG - استخدم نفس بيانات Supabase القديمة
-// ============================================
 const SUPABASE_URL = "https://ehmeircigoqfhftaotba.supabase.co";
 const SUPABASE_KEY = "sb_publishable_54N-aEBjhTQK1wUzpWl0fg_MQRq5D-T";
 
@@ -343,9 +336,6 @@ let currentProfile = null;
 let allContent = [];
 let filteredContent = [];
 
-// ============================================
-// SUPABASE
-// ============================================
 function initSupabase() {
   if (window.supabase && typeof window.supabase.createClient === "function") {
     if (!supabaseClient) {
@@ -358,9 +348,6 @@ function initSupabase() {
   return false;
 }
 
-// ============================================
-// AUTH UI
-// ============================================
 function showLoginForm() {
   document.getElementById("loginForm").classList.remove("hidden");
   document.getElementById("registerForm").classList.add("hidden");
@@ -401,9 +388,6 @@ function showAuthPage() {
   document.getElementById("app").style.display = "none";
 }
 
-// ============================================
-// AUTH
-// ============================================
 async function loginUser() {
   clearAuthMessage();
   if (!initSupabase()) { showAuthMessage("⏳ جاري تحميل الخدمة..."); return; }
@@ -519,9 +503,6 @@ async function logoutUser() {
   showToast("تم تسجيل الخروج.");
 }
 
-// ============================================
-// PROFILE
-// ============================================
 async function loadUserProfile() {
   if (!currentUser) { currentProfile = { name: "زائر", email: "" }; return; }
   try {
@@ -564,9 +545,6 @@ function updateUI() {
   });
 }
 
-// ============================================
-// NAVIGATION
-// ============================================
 function showSection(id) {
   document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
   const section = document.getElementById(id);
@@ -577,9 +555,6 @@ function showSection(id) {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-// ============================================
-// TOAST
-// ============================================
 let toastTimer = null;
 function showToast(message) {
   const toast = document.getElementById("toast");
@@ -590,9 +565,6 @@ function showToast(message) {
   toastTimer = setTimeout(() => toast.classList.remove("show"), 3000);
 }
 
-// ============================================
-// CONTENT - ADD (يستخدم جدول projects مؤقتاً)
-// ============================================
 function openAddModal() {
   if (!currentUser) { showToast("سجل الدخول أولاً."); return; }
   document.getElementById("addModal").classList.add("active");
@@ -620,18 +592,15 @@ async function saveContent() {
 
   if (!title) { showAddMessage("اكتب العنوان."); return; }
 
-  // نحول البيانات إلى صيغة مشروع (projects)
   const projectData = {
     user_id: currentUser.id,
     title: title,
     description: description || "",
     image_url: image || null,
-    // نضيف نوع المحتوى في حقل منفصل
     content_type: type,
     created_at: new Date().toISOString()
   };
 
-  // حقول العقار نضيفها كـ JSON في description مؤقتاً
   if (type === "property") {
     const extra = {
       country: document.getElementById("propCountry").value.trim(),
@@ -678,9 +647,6 @@ function clearAddForm() {
   document.getElementById("propWhatsapp").value = "";
 }
 
-// ============================================
-// CONTENT - LOAD (يقرأ من projects)
-// ============================================
 async function loadContent() {
   const grid = document.getElementById("contentGrid");
   if (!grid) return;
@@ -694,3 +660,64 @@ async function loadContent() {
   try {
     const { data, error } = await supabaseClient
       .from("projects")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    if (error) { 
+      console.error("Load error:", error);
+      grid.innerHTML = `<div class="empty-state">❌ خطأ في التحميل: ${error.message}</div>`; 
+      return; 
+    }
+    
+    allContent = data || [];
+    applyFilters();
+    
+  } catch (e) { 
+    console.error("Load exception:", e);
+    grid.innerHTML = `<div class="empty-state">❌ حدث خطأ: ${e.message}</div>`; 
+  }
+}
+
+function applyFilters() {
+  const search = document.getElementById("filterSearch").value.toLowerCase().trim();
+  const type = document.getElementById("filterType").value;
+
+  filteredContent = allContent.filter(item => {
+    if (type && item.content_type !== type) return false;
+    if (search) {
+      const title = (item.title || "").toLowerCase();
+      const desc = (item.description || "").toLowerCase();
+      if (!title.includes(search) && !desc.includes(search)) return false;
+    }
+    return true;
+  });
+
+  renderContent();
+}
+
+function resetFilters() {
+  document.getElementById("filterSearch").value = "";
+  document.getElementById("filterType").value = "";
+  applyFilters();
+}
+
+function renderContent() {
+  const grid = document.getElementById("contentGrid");
+  if (!grid) return;
+
+  if (!filteredContent.length) {
+    grid.innerHTML = `<div class="empty-state">📭 لا يوجد محتوى مطابق.</div>`;
+    return;
+  }
+
+  grid.innerHTML = filteredContent.map(item => {
+    const badgeClass = {
+      project: 'badge-project',
+      property: 'badge-property',
+      idea: 'badge-idea',
+      design: 'badge-design',
+      question: 'badge-question'
+    }[item.content_type] || 'badge-project';
+
+    const badgeLabel = {
+      project:
