@@ -95,6 +95,31 @@ padding:9px 13px;border-radius:12px;font-weight:700;transition:.2s
 .nav-btn:hover{background:#0f172a;color:#fff}
 .nav-btn.active{background:rgba(37,99,235,.18);border-color:rgba(59,130,246,.3);color:#fff}
 
+.notification-nav-btn{
+display:flex;
+align-items:center;
+gap:7px
+}
+
+.notification-badge{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+min-width:20px;
+height:20px;
+padding:0 6px;
+border-radius:999px;
+background:#ef4444;
+color:#fff;
+font-size:11px;
+font-weight:900;
+line-height:1
+}
+
+.notification-badge.hidden{
+display:none!important
+}
+
 .container{max-width:1250px;margin:auto;padding:25px 18px 60px}
 .section{display:none;animation:fadeIn .3s ease}
 .section.active{display:block}
@@ -423,6 +448,123 @@ color:#64748b;
 line-height:1.7
 }
 
+/* NOTIFICATIONS */
+
+.notifications-toolbar{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+flex-wrap:wrap;
+margin-bottom:18px
+}
+
+.notifications-actions{
+display:flex;
+gap:8px;
+flex-wrap:wrap
+}
+
+.notification-card{
+display:flex;
+align-items:flex-start;
+gap:13px;
+background:#0f172a;
+border:1px solid rgba(148,163,184,.13);
+border-radius:18px;
+padding:16px;
+margin-bottom:10px;
+transition:.2s
+}
+
+.notification-card:hover{
+border-color:rgba(59,130,246,.35);
+transform:translateY(-1px)
+}
+
+.notification-card.unread{
+background:rgba(37,99,235,.09);
+border-color:rgba(59,130,246,.28)
+}
+
+.notification-icon{
+width:43px;
+height:43px;
+border-radius:14px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#020617;
+font-size:20px;
+flex-shrink:0
+}
+
+.notification-body{
+flex:1;
+min-width:0
+}
+
+.notification-message{
+font-weight:700;
+line-height:1.7;
+color:#e2e8f0;
+word-break:break-word
+}
+
+.notification-date{
+font-size:11px;
+color:#64748b;
+margin-top:6px
+}
+
+.notification-card.unread .notification-date{
+color:#93c5fd
+}
+
+.notification-actions{
+display:flex;
+gap:7px;
+flex-wrap:wrap;
+margin-top:10px
+}
+
+.notification-small-btn{
+border:1px solid #334155;
+background:#020617;
+color:#cbd5e1;
+padding:7px 10px;
+border-radius:9px;
+font-size:11px
+}
+
+.notification-small-btn:hover{
+background:#172033
+}
+
+.notification-delete-btn{
+border-color:rgba(239,68,68,.25);
+background:rgba(239,68,68,.07);
+color:#fca5a5
+}
+
+.notification-empty{
+padding:45px 20px;
+text-align:center;
+background:#0f172a;
+border:1px dashed #334155;
+border-radius:18px;
+color:#94a3b8;
+line-height:1.9
+}
+
+.notification-loading{
+padding:35px 20px;
+text-align:center;
+background:#0f172a;
+border-radius:18px;
+color:#94a3b8
+}
+
 .modal{
 position:fixed;inset:0;z-index:500;display:none;align-items:center;justify-content:center;
 padding:20px;background:rgba(0,0,0,.72);backdrop-filter:blur(8px)
@@ -661,6 +803,10 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 .channel-post-actions .primary-btn{width:100%}
 .comment-input-actions{flex-direction:column;align-items:stretch}
 .comment-input-actions .primary-btn{width:100%}
+.notification-card{padding:13px}
+.notification-icon{width:39px;height:39px;font-size:18px}
+.notifications-actions{width:100%}
+.notifications-actions button{flex:1}
 }
 </style>
 </head>
@@ -725,6 +871,12 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 <button type="button" class="nav-btn" data-section="ideas" onclick="showSection('ideas')">مولد الأفكار</button>
 <button type="button" class="nav-btn" data-section="channels" onclick="showSection('channels')">القنوات</button>
 <button type="button" class="nav-btn" data-section="answers" onclick="showSection('answers')">الإجابات</button>
+
+<button type="button" class="nav-btn notification-nav-btn" data-section="notifications" onclick="showSection('notifications')">
+🔔 الإشعارات
+<span id="notificationBadge" class="notification-badge hidden">0</span>
+</button>
+
 <button type="button" class="nav-btn" data-section="profile" onclick="showSection('profile')">حسابي</button>
 </nav>
 </header>
@@ -866,6 +1018,35 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 </div>
 </div>
 <div id="questionsList" class="question-list"></div>
+</section>
+
+<section id="notifications" class="section">
+<h2 class="section-title">🔔 الإشعارات</h2>
+<p class="section-subtitle">تابع الإعجابات والتعليقات والتفاعل مع محتواك داخل KAPO ONE.</p>
+
+<div class="notifications-toolbar">
+
+<div>
+<strong id="notificationsCountText">0 إشعار</strong>
+</div>
+
+<div class="notifications-actions">
+<button type="button" class="secondary-btn" onclick="markAllNotificationsRead()">
+✅ تحديد الكل كمقروء
+</button>
+
+<button type="button" class="secondary-btn" onclick="deleteAllNotifications()">
+🗑️ حذف الكل
+</button>
+</div>
+
+</div>
+
+<div id="notificationsList">
+<div class="notification-loading">
+جاري تحميل الإشعارات...
+</div>
+</div>
 </section>
 
 <section id="profile" class="section">
@@ -1103,6 +1284,8 @@ let currentDesignIndex=0;
 let currentChannelType=null;
 let currentCommentsProjectId=null;
 let currentChannelCommentsPostId=null;
+
+let notificationsData=[];
 
 let currentProfileStats={
 projects:0,
@@ -1342,6 +1525,8 @@ function enterGuest(){
 currentUser=null;
 currentProfile={name:"زائر",email:""};
 currentProfileStats={projects:0,likes:0,comments:0};
+notificationsData=[];
+updateNotificationBadge();
 showApp();
 updateUserUI();
 updateProfileStats();
@@ -1392,7 +1577,9 @@ currentUser=session.user;
 if(event==="SIGNED_OUT"){
 currentUser=null;
 currentProfile=null;
+notificationsData=[];
 currentProfileStats={projects:0,likes:0,comments:0};
+updateNotificationBadge();
 showAuthPage();
 }
 
@@ -1421,6 +1608,7 @@ console.error(e);
 }
 
 await loadProfileStats();
+await loadNotifications();
 
 loadLocalCommunity();
 showSection("home");
@@ -1882,6 +2070,10 @@ if(id==="projects")loadProjects();
 if(id==="ideas")loadLocalIdeas();
 if(id==="answers")loadQuestions();
 
+if(id==="notifications"){
+loadNotifications();
+}
+
 if(id==="profile"&&currentUser){
 
 loadProfile().then(()=>{
@@ -1892,6 +2084,502 @@ loadProfileStats();
 }
 
 window.scrollTo({top:0,behavior:"smooth"});
+}
+
+/* =========================
+   NOTIFICATIONS
+========================= */
+
+function getCurrentActorName(){
+
+return(
+currentProfile?.name||
+currentUser?.user_metadata?.name||
+currentUser?.email?.split("@")[0]||
+"مستخدم"
+);
+
+async function createNotification({
+userId,
+actorId,
+type,
+message,
+projectId=null,
+postId=null,
+commentId=null
+}){
+
+if(!currentUser||!initSupabase())return;
+
+if(!userId||!actorId)return;
+
+if(String(userId)===String(actorId))return;
+
+try{
+
+const {error}=await supabaseClient
+.from("notifications")
+.insert({
+user_id:userId,
+actor_id:actorId,
+type:type,
+message:message,
+project_id:projectId,
+post_id:postId,
+comment_id:commentId,
+is_read:false
+});
+
+if(error){
+console.error("Create notification error:",error);
+return;
+}
+
+}catch(error){
+
+console.error("Create notification exception:",error);
+
+}
+
+}
+
+function getNotificationIcon(type){
+
+if(type==="project_like")return"❤️";
+if(type==="project_comment")return"💬";
+if(type==="channel_like")return"❤️";
+if(type==="channel_comment")return"💬";
+if(type==="comment_like")return"❤️";
+
+return"🔔";
+}
+
+async function loadNotifications(){
+
+const list=document.getElementById("notificationsList");
+
+if(!list)return;
+
+if(!currentUser||!initSupabase()){
+
+notificationsData=[];
+
+updateNotificationBadge();
+
+list.innerHTML=`
+<div class="notification-empty">
+🔐 سجل الدخول حتى تتمكن من مشاهدة إشعاراتك.
+</div>
+`;
+
+return;
+
+}
+
+list.innerHTML=`
+<div class="notification-loading">
+جاري تحميل الإشعارات...
+</div>
+`;
+
+try{
+
+const {data,error}=await supabaseClient
+.from("notifications")
+.select("*")
+.eq("user_id",currentUser.id)
+.order("created_at",{ascending:false})
+.limit(100);
+
+if(error){
+
+console.error("Load notifications error:",error);
+
+notificationsData=[];
+
+updateNotificationBadge();
+
+list.innerHTML=`
+<div class="notification-empty">
+تعذر تحميل الإشعارات.
+</div>
+`;
+
+return;
+
+}
+
+notificationsData=data||[];
+
+renderNotifications();
+
+}catch(error){
+
+console.error("Notifications exception:",error);
+
+notificationsData=[];
+
+updateNotificationBadge();
+
+list.innerHTML=`
+<div class="notification-empty">
+حدث خطأ أثناء تحميل الإشعارات.
+</div>
+`;
+
+}
+
+}
+
+function renderNotifications(){
+
+const list=document.getElementById("notificationsList");
+
+if(!list)return;
+
+const unreadCount=notificationsData.filter(
+notification=>!notification.is_read
+).length;
+
+const countText=document.getElementById("notificationsCountText");
+
+if(countText){
+countText.textContent=
+`${notificationsData.length} إشعار${notificationsData.length===1?"":"ات"}`
++
+(unreadCount?` • ${unreadCount} غير مقروء`:"");
+}
+
+updateNotificationBadge();
+
+if(!notificationsData.length){
+
+list.innerHTML=`
+<div class="notification-empty">
+<div style="font-size:40px;margin-bottom:10px">🔔</div>
+لا توجد إشعارات حتى الآن.<br>
+ستظهر هنا عندما يتفاعل المستخدمون مع محتواك.
+</div>
+`;
+
+return;
+
+}
+
+list.innerHTML=notificationsData.map(notification=>{
+
+const icon=getNotificationIcon(notification.type);
+
+const message=escapeHtml(notification.message||"إشعار جديد");
+
+const date=notification.created_at
+?new Date(notification.created_at).toLocaleString("ar-SA")
+:"";
+
+const id=escapeAttribute(notification.id||"");
+
+return`
+<div
+class="notification-card ${notification.is_read?"":"unread"}"
+onclick="markNotificationRead('${id}')"
+>
+
+<div class="notification-icon">
+${icon}
+</div>
+
+<div class="notification-body">
+
+<div class="notification-message">
+${message}
+</div>
+
+<div class="notification-date">
+${escapeHtml(date)}
+</div>
+
+<div class="notification-actions">
+
+${
+!notification.is_read
+?
+`
+<button
+type="button"
+class="notification-small-btn"
+onclick="event.stopPropagation();markNotificationRead('${id}')"
+>
+✅ تحديد كمقروء
+</button>
+`
+:
+`
+<span style="font-size:11px;color:#64748b">
+✓ مقروء
+</span>
+`
+}
+
+<button
+type="button"
+class="notification-small-btn notification-delete-btn"
+onclick="event.stopPropagation();deleteNotification('${id}')"
+>
+🗑️ حذف
+</button>
+
+</div>
+
+</div>
+
+</div>
+`;
+
+}).join("");
+
+}
+
+function updateNotificationBadge(){
+
+const badge=document.getElementById("notificationBadge");
+
+if(!badge)return;
+
+if(!currentUser){
+
+badge.textContent="0";
+badge.classList.add("hidden");
+return;
+
+}
+
+const unreadCount=notificationsData.filter(
+notification=>!notification.is_read
+).length;
+
+if(unreadCount>0){
+
+badge.textContent=
+unreadCount>99
+?"99+"
+:String(unreadCount);
+
+badge.classList.remove("hidden");
+
+}else{
+
+badge.textContent="0";
+badge.classList.add("hidden");
+
+}
+
+}
+
+async function markNotificationRead(notificationId){
+
+if(!currentUser||!initSupabase())return;
+
+const notification=notificationsData.find(
+item=>String(item.id)===String(notificationId)
+);
+
+if(!notification)return;
+
+if(notification.is_read)return;
+
+try{
+
+const {error}=await supabaseClient
+.from("notifications")
+.update({
+is_read:true
+})
+.eq("id",notificationId)
+.eq("user_id",currentUser.id);
+
+if(error){
+
+console.error("Mark notification read error:",error);
+return;
+
+}
+
+notification.is_read=true;
+
+renderNotifications();
+
+}catch(error){
+
+console.error("Mark notification read exception:",error);
+
+}
+
+}
+
+async function markAllNotificationsRead(){
+
+if(!currentUser){
+
+showToast("سجل الدخول أولاً.");
+
+return;
+
+}
+
+if(!initSupabase())return;
+
+const unread=notificationsData.filter(
+notification=>!notification.is_read
+);
+
+if(!unread.length){
+
+showToast("جميع الإشعارات مقروءة بالفعل.");
+
+return;
+
+}
+
+try{
+
+const {error}=await supabaseClient
+.from("notifications")
+.update({
+is_read:true
+})
+.eq("user_id",currentUser.id)
+.eq("is_read",false);
+
+if(error){
+
+console.error("Mark all notifications error:",error);
+
+showToast("تعذر تحديث الإشعارات.");
+
+return;
+
+}
+
+notificationsData.forEach(notification=>{
+notification.is_read=true;
+});
+
+renderNotifications();
+
+showToast("تم تحديد جميع الإشعارات كمقروءة ✅");
+
+}catch(error){
+
+console.error(error);
+
+showToast("حدث خطأ أثناء تحديث الإشعارات.");
+
+}
+
+}
+
+async function deleteNotification(notificationId){
+
+if(!currentUser){
+
+showToast("سجل الدخول أولاً.");
+
+return;
+
+}
+
+if(!initSupabase())return;
+
+try{
+
+const {error}=await supabaseClient
+.from("notifications")
+.delete()
+.eq("id",notificationId)
+.eq("user_id",currentUser.id);
+
+if(error){
+
+console.error("Delete notification error:",error);
+
+showToast("تعذر حذف الإشعار.");
+
+return;
+
+}
+
+notificationsData=
+notificationsData.filter(
+notification=>String(notification.id)!==String(notificationId)
+);
+
+renderNotifications();
+
+showToast("تم حذف الإشعار.");
+
+}catch(error){
+
+console.error(error);
+
+showToast("حدث خطأ أثناء حذف الإشعار.");
+
+}
+
+}
+
+async function deleteAllNotifications(){
+
+if(!currentUser){
+
+showToast("سجل الدخول أولاً.");
+
+return;
+
+}
+
+if(!initSupabase())return;
+
+if(!notificationsData.length){
+
+showToast("لا توجد إشعارات لحذفها.");
+
+return;
+
+}
+
+if(!confirm("هل تريد حذف جميع الإشعارات؟"))return;
+
+try{
+
+const {error}=await supabaseClient
+.from("notifications")
+.delete()
+.eq("user_id",currentUser.id);
+
+if(error){
+
+console.error("Delete all notifications error:",error);
+
+showToast("تعذر حذف الإشعارات.");
+
+return;
+
+}
+
+notificationsData=[];
+
+renderNotifications();
+
+showToast("تم حذف جميع الإشعارات.");
+
+}catch(error){
+
+console.error(error);
+
+showToast("حدث خطأ أثناء حذف الإشعارات.");
+
+}
+
 }
 
 /* =========================
@@ -2333,6 +3021,22 @@ button.innerHTML=
 
 }
 
+/* إنشاء إشعار لصاحب المشروع */
+
+if(project.user_id){
+
+const actorName=getCurrentActorName();
+
+createNotification({
+userId:project.user_id,
+actorId:currentUser.id,
+type:"project_like",
+message:`❤️ ${actorName} أعجب بمشروعك "${project.title||"مشروعك"}"`,
+projectId:project.id
+});
+
+}
+
 await loadProfileStats();
 
 showToast("تم تسجيل الإعجاب ❤️");
@@ -2647,8 +3351,26 @@ p=>String(p.id)===String(projectId)
 );
 
 if(project){
+
 project._commentCount=
 Number(project._commentCount||0)+1;
+
+/* إنشاء إشعار لصاحب المشروع */
+
+if(project.user_id){
+
+const actorName=getCurrentActorName();
+
+createNotification({
+userId:project.user_id,
+actorId:currentUser.id,
+type:"project_comment",
+message:`💬 ${actorName} علّق على مشروعك "${project.title||"مشروعك"}"`,
+projectId:project.id
+});
+
+}
+
 }
 
 input.value="";
@@ -2780,6 +3502,8 @@ showToast("تم إلغاء الإعجاب.");
 return;
 }
 
+/* إضافة الإعجاب */
+
 const {error}=await supabaseClient
 .from("channel_likes")
 .insert({
@@ -2815,6 +3539,36 @@ if(button){
 button.dataset.liked="true";
 button.classList.add("liked");
 button.innerHTML=`♥ إعجاب <span class="channel-like-count">${newCount}</span>`;
+}
+
+/* جلب صاحب المنشور وإنشاء الإشعار */
+
+try{
+
+const {data:post,error:postError}=await supabaseClient
+.from("channel_posts")
+.select("id,user_id,content")
+.eq("id",postId)
+.maybeSingle();
+
+if(!postError&&post?.user_id){
+
+const actorName=getCurrentActorName();
+
+createNotification({
+userId:post.user_id,
+actorId:currentUser.id,
+type:"channel_like",
+message:`❤️ ${actorName} أعجب بمنشورك في القناة`,
+postId:post.id
+});
+
+}
+
+}catch(notificationError){
+
+console.error("Channel like notification error:",notificationError);
+
 }
 
 await loadProfileStats();
@@ -3186,6 +3940,36 @@ return;
 
 }
 
+/* إنشاء إشعار لصاحب المنشور */
+
+try{
+
+const {data:post,error:postError}=await supabaseClient
+.from("channel_posts")
+.select("id,user_id")
+.eq("id",postId)
+.maybeSingle();
+
+if(!postError&&post?.user_id){
+
+const actorName=getCurrentActorName();
+
+createNotification({
+userId:post.user_id,
+actorId:currentUser.id,
+type:"channel_comment",
+message:`💬 ${actorName} علّق على منشورك في القناة`,
+postId:post.id
+});
+
+}
+
+}catch(notificationError){
+
+console.error("Channel comment notification error:",notificationError);
+
+}
+
 input.value="";
 
 await loadChannelPostComments(postId);
@@ -3256,6 +4040,8 @@ showToast("تم إلغاء الإعجاب.");
 return;
 }
 
+/* إضافة إعجاب */
+
 const {error}=await supabaseClient
 .from("comment_likes")
 .insert({
@@ -3289,6 +4075,36 @@ const newCount=oldCount+1;
 button.dataset.liked="true";
 button.classList.add("liked");
 button.innerHTML=`♥ إعجاب <span class="comment-like-count">${newCount}</span>`;
+
+/* جلب صاحب التعليق وإنشاء الإشعار */
+
+try{
+
+const {data:comment,error:commentError}=await supabaseClient
+.from("channel_comments")
+.select("id,user_id")
+.eq("id",commentId)
+.maybeSingle();
+
+if(!commentError&&comment?.user_id){
+
+const actorName=getCurrentActorName();
+
+createNotification({
+userId:comment.user_id,
+actorId:currentUser.id,
+type:"comment_like",
+message:`❤️ ${actorName} أعجب بتعليقك`,
+commentId:comment.id
+});
+
+}
+
+}catch(notificationError){
+
+console.error("Comment like notification error:",notificationError);
+
+}
 
 await loadProfileStats();
 
@@ -4174,7 +4990,10 @@ console.error(error);
 
 currentUser=null;
 currentProfile=null;
+notificationsData=[];
 currentProfileStats={projects:0,likes:0,comments:0};
+
+updateNotificationBadge();
 
 showAuthPage();
 
@@ -4248,6 +5067,8 @@ closeChannel();
 document.addEventListener("DOMContentLoaded",async function(){
 
 showAuthPage();
+
+updateNotificationBadge();
 
 if(!initSupabase()){
 
