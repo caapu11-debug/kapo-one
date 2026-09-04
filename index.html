@@ -3,11 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>KAPO ONE - العقارات العالمية</title>
-
+<title>KAPO ONE - منصة مفتوحة</title>
 <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <style>
+/* ===== الأساسيات ===== */
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
@@ -19,6 +18,7 @@ button,input,textarea,select{font-family:inherit}
 button{cursor:pointer}
 .hidden{display:none!important}
 
+/* ===== صفحة الدخول ===== */
 .auth-page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
 .auth-box{
 width:100%;max-width:430px;background:rgba(15,23,42,.94);
@@ -62,6 +62,7 @@ border:1px solid #334155;border-radius:13px;padding:12px 18px;
 background:#0f172a;color:#fff;font-weight:700
 }
 
+/* ===== الهيدر ===== */
 .header{
 position:sticky;top:0;z-index:100;background:rgba(2,6,23,.88);
 backdrop-filter:blur(18px);border-bottom:1px solid rgba(148,163,184,.12)
@@ -97,6 +98,7 @@ padding:9px 13px;border-radius:12px;font-weight:700;transition:.2s;cursor:pointe
 .nav-btn:hover{background:#0f172a;color:#fff}
 .nav-btn.active{background:rgba(37,99,235,.18);border-color:rgba(59,130,246,.3);color:#fff}
 
+/* ===== المحتوى ===== */
 .container{max-width:1250px;margin:auto;padding:25px 18px 60px}
 .section{display:none;animation:fadeIn .3s ease}
 .section.active{display:block}
@@ -104,74 +106,39 @@ padding:9px 13px;border-radius:12px;font-weight:700;transition:.2s;cursor:pointe
 .section-title{font-size:28px;margin:0 0 8px;font-weight:900}
 .section-subtitle{color:#94a3b8;margin:0 0 24px;line-height:1.8}
 
-/* ===== فلتر البحث المتقدم ===== */
-.search-filters-advanced{
-display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;
-background:rgba(15,23,42,.6);padding:15px;border-radius:18px;border:1px solid rgba(148,163,184,.13);
-margin-bottom:18px
-}
-.search-filters-advanced input,.search-filters-advanced select{
-padding:10px 12px;border-radius:11px;border:1px solid #334155;
-background:#020617;color:#fff;outline:none;width:100%
-}
-.search-filters-advanced input:focus,.search-filters-advanced select:focus{
-border-color:#3b82f6
-}
-.search-filters-advanced .filter-row{display:contents}
-
-/* ===== بطاقات العقار ===== */
-.property-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.property-card{
+/* ===== البطاقات ===== */
+.content-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.content-card{
 background:#0f172a;border:1px solid rgba(148,163,184,.13);
 border-radius:20px;overflow:hidden;transition:.2s;cursor:pointer
 }
-.property-card:hover{transform:translateY(-4px);border-color:rgba(59,130,246,.45)}
-.property-image{width:100%;height:200px;object-fit:cover;display:block}
-.property-placeholder{height:200px;display:flex;align-items:center;justify-content:center;font-size:48px;
+.content-card:hover{transform:translateY(-4px);border-color:rgba(59,130,246,.45)}
+.content-image{width:100%;height:180px;object-fit:cover;display:block}
+.content-placeholder{height:180px;display:flex;align-items:center;justify-content:center;font-size:48px;
 background:radial-gradient(circle,#1e3a8a,#0f172a 65%)}
-.property-info{padding:16px}
-.property-title{font-size:18px;font-weight:900;margin-bottom:6px}
-.property-location{color:#94a3b8;font-size:13px;margin-bottom:6px}
-.property-price{font-size:20px;font-weight:900;color:#60a5fa;margin-bottom:6px}
-.property-details{display:flex;gap:12px;flex-wrap:wrap;color:#94a3b8;font-size:13px;margin-bottom:8px}
-.property-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
-.property-tag{padding:4px 10px;border-radius:8px;font-size:11px;font-weight:700}
-.tag-sale{background:rgba(34,197,94,.18);color:#4ade80}
-.tag-rent{background:rgba(251,191,36,.18);color:#fbbf24}
-.tag-investment{background:rgba(59,130,246,.18);color:#60a5fa}
-.contact-whatsapp-btn{
-display:inline-flex;align-items:center;gap:6px;padding:8px 14px;
-background:#25D366;color:#fff;border-radius:10px;font-weight:700;border:0;font-size:13px;text-decoration:none
-}
-.contact-whatsapp-btn:hover{filter:brightness(1.08)}
+.content-info{padding:16px}
+.content-title{font-size:18px;font-weight:900;margin-bottom:6px}
+.content-meta{color:#94a3b8;font-size:12px;margin-bottom:6px}
+.content-badge{display:inline-block;padding:3px 10px;border-radius:6px;font-size:11px;font-weight:700}
+.badge-project{background:rgba(34,197,94,.18);color:#4ade80}
+.badge-property{background:rgba(59,130,246,.18);color:#60a5fa}
+.badge-idea{background:rgba(251,191,36,.18);color:#fbbf24}
+.badge-design{background:rgba(168,85,247,.18);color:#c084fc}
+.badge-question{background:rgba(239,68,68,.18);color:#fca5a5}
 
-/* ===== تصميم متجاوب ===== */
-@media(max-width:900px){
-.property-grid{grid-template-columns:repeat(2,1fr)}
+/* ===== الفلاتر ===== */
+.filters-bar{
+display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;
+background:rgba(15,23,42,.6);padding:15px;border-radius:18px;border:1px solid rgba(148,163,184,.13);
+margin-bottom:18px
 }
-@media(max-width:650px){
-.header-inner{padding:10px 12px}.user-mini{display:none}
-.container{padding:20px 12px 50px}
-.property-grid{grid-template-columns:1fr}
-.search-filters-advanced{grid-template-columns:1fr 1fr}
+.filters-bar input,.filters-bar select{
+padding:10px 12px;border-radius:11px;border:1px solid #334155;
+background:#020617;color:#fff;outline:none;width:100%
 }
+.filters-bar input:focus,.filters-bar select:focus{border-color:#3b82f6}
 
-/* ===== باقي الأنماط ===== */
-.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
-.feature-card{
-background:rgba(15,23,42,.75);border:1px solid rgba(148,163,184,.13);
-border-radius:20px;padding:20px;transition:.2s
-}
-.feature-card:hover{transform:translateY(-3px);border-color:rgba(59,130,246,.35)}
-.feature-icon{font-size:28px;margin-bottom:12px}
-.feature-card h3{margin:0 0 8px}
-.feature-card p{margin:0;color:#94a3b8;line-height:1.7;font-size:14px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
-.stat-card{background:#0f172a;border:1px solid rgba(148,163,184,.13);border-radius:18px;padding:18px}
-.stat-number{font-size:28px;font-weight:900;margin-bottom:5px}
-.stat-label{color:#94a3b8;font-size:13px}
-.empty-state{padding:40px 20px;text-align:center;background:#0f172a;
-border:1px dashed #334155;border-radius:18px;color:#94a3b8}
+/* ===== مودال ===== */
 .modal{
 position:fixed;inset:0;z-index:500;display:none;align-items:center;justify-content:center;
 padding:20px;background:rgba(0,0,0,.72);backdrop-filter:blur(8px)
@@ -202,14 +169,23 @@ background:#020617;color:#fff;outline:none
 .form-grid input:focus,.form-grid select:focus,.form-grid textarea:focus{
 border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,.12)
 }
+.empty-state{padding:40px 20px;text-align:center;background:#0f172a;
+border:1px dashed #334155;border-radius:18px;color:#94a3b8}
+
 #toast{
 position:fixed;bottom:25px;right:25px;z-index:1000;background:#0f172a;border:1px solid #334155;
 color:#fff;padding:13px 17px;border-radius:13px;box-shadow:0 15px 40px rgba(0,0,0,.35);
 opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 }
 #toast.show{opacity:1;transform:translateY(0)}
+
+/* ===== متجاوب ===== */
+@media(max-width:900px){.content-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:650px){
-.feature-grid{grid-template-columns:1fr 1fr}
+.header-inner{padding:10px 12px}.user-mini{display:none}
+.container{padding:20px 12px 50px}
+.content-grid{grid-template-columns:1fr}
+.filters-bar{grid-template-columns:1fr 1fr}
 .form-grid{grid-template-columns:1fr}
 .form-grid .full-width{grid-column:span 1}
 }
@@ -222,7 +198,7 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 <div class="auth-box">
 <div class="auth-logo">K</div>
 <h1 class="auth-title">KAPO ONE</h1>
-<p class="auth-subtitle">🌍 منصة العقارات العالمية</p>
+<p class="auth-subtitle">🌍 منصة مفتوحة للأفكار والمشاريع والعقارات</p>
 
 <div id="loginForm" class="auth-form">
 <input id="loginEmail" type="email" placeholder="البريد الإلكتروني">
@@ -238,15 +214,15 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 <div id="registerForm" class="auth-form hidden">
 <input id="registerName" type="text" placeholder="الاسم">
 <input id="registerEmail" type="email" placeholder="البريد الإلكتروني">
-<input id="registerPassword" type="password" placeholder="كلمة المرور (6 أحرف على الأقل)">
+<input id="registerPassword" type="password" placeholder="كلمة المرور (6 أحرف)">
 <button type="button" class="primary-btn" onclick="registerUser()">إنشاء الحساب</button>
-<button type="button" class="auth-link" onclick="showLoginForm()">العودة لتسجيل الدخول</button>
+<button type="button" class="auth-link" onclick="showLoginForm()">العودة</button>
 </div>
 
 <div id="resetForm" class="auth-form hidden">
 <input id="resetEmail" type="email" placeholder="البريد الإلكتروني">
 <button type="button" class="primary-btn" onclick="resetUserPassword()">إرسال رابط الاستعادة</button>
-<button type="button" class="auth-link" onclick="showLoginForm()">العودة لتسجيل الدخول</button>
+<button type="button" class="auth-link" onclick="showLoginForm()">العودة</button>
 </div>
 
 <div id="authMessage" class="auth-message hidden"></div>
@@ -266,150 +242,121 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 </div>
 <nav class="nav">
 <button type="button" class="nav-btn active" data-section="home" onclick="showSection('home')">الرئيسية</button>
-<button type="button" class="nav-btn" data-section="properties" onclick="showSection('properties')">🏢 العقارات</button>
-<button type="button" class="nav-btn" data-section="addproperty" onclick="openAddPropertyModal()">➕ إضافة عقار</button>
+<button type="button" class="nav-btn" data-section="content" onclick="showSection('content')">📋 المحتوى</button>
+<button type="button" class="nav-btn" data-section="addcontent" onclick="openAddModal()">➕ إضافة</button>
 <button type="button" class="nav-btn" data-section="profile" onclick="showSection('profile')">حسابي</button>
 </nav>
 </header>
 
 <main class="container">
 
-<!-- ===== الصفحة الرئيسية ===== -->
+<!-- ===== الرئيسية ===== -->
 <section id="home" class="section active">
 <div style="background:rgba(15,23,42,.72);border-radius:28px;padding:42px 30px;margin-bottom:25px;border:1px solid rgba(148,163,184,.14)">
-<h1 style="font-size:42px;margin:0 0 12px;font-weight:900">🌍 KAPO ONE العقارية</h1>
+<h1 style="font-size:42px;margin:0 0 12px;font-weight:900">🌍 مرحباً في KAPO ONE</h1>
 <p style="color:#cbd5e1;line-height:1.9;font-size:17px;max-width:700px">
-منصة عقارية عالمية تتيح لك بيع، إيجار، واستثمار العقارات في أي مكان في العالم.
+منصة مفتوحة تتيح لك مشاركة الأفكار، المشاريع، التصاميم، العقارات، والأسئلة.
 </p>
 <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:22px">
-<button type="button" class="primary-btn" onclick="showSection('properties')">🔍 استكشاف العقارات</button>
-<button type="button" class="secondary-btn" onclick="openAddPropertyModal()">➕ إضافة عقار</button>
+<button type="button" class="primary-btn" onclick="showSection('content')">📋 استكشاف المحتوى</button>
+<button type="button" class="secondary-btn" onclick="openAddModal()">➕ إضافة محتوى</button>
 </div>
-</div>
-
-<div class="feature-grid">
-<div class="feature-card"><div class="feature-icon">🏢</div><h3>عقارات للبيع</h3><p>آلاف العقارات في مختلف دول العالم.</p></div>
-<div class="feature-card"><div class="feature-icon">🔑</div><h3>عقارات للإيجار</h3><p>خيارات متنوعة للإيجار طويل وقصير المدى.</p></div>
-<div class="feature-card"><div class="feature-icon">📈</div><h3>فرص استثمارية</h3><p>استثمر في عقارات ذات عائد مرتفع.</p></div>
-<div class="feature-card"><div class="feature-icon">🌍</div><h3>عالمي</h3><p>عقارات في كل دول العالم بأسعار تنافسية.</p></div>
 </div>
 </section>
 
-<!-- ===== قائمة العقارات ===== -->
-<section id="properties" class="section">
-<h2 class="section-title">🏢 العقارات</h2>
-<p class="section-subtitle">استكشف العقارات من جميع أنحاء العالم.</p>
+<!-- ===== المحتوى ===== -->
+<section id="content" class="section">
+<h2 class="section-title">📋 المحتوى</h2>
+<p class="section-subtitle">جميع المحتويات من الأعضاء.</p>
 
-<!-- فلتر متقدم -->
-<div class="search-filters-advanced">
+<div class="filters-bar">
 <input id="filterSearch" type="text" placeholder="🔍 بحث..." oninput="applyFilters()">
-<select id="filterCountry" onchange="applyFilters()"><option value="">كل الدول</option></select>
-<select id="filterCity" onchange="applyFilters()"><option value="">كل المدن</option></select>
 <select id="filterType" onchange="applyFilters()">
 <option value="">جميع الأنواع</option>
-<option value="apartment">🏢 شقة</option>
-<option value="villa">🏡 فيلا</option>
-<option value="land">🏞️ أرض</option>
-<option value="commercial">🏬 تجاري</option>
-<option value="industrial">🏭 صناعي</option>
-<option value="agricultural">🌾 زراعي</option>
-<option value="tourist">🏖️ سياحي</option>
+<option value="project">🏗️ مشروع</option>
+<option value="property">🏢 عقار</option>
+<option value="idea">💡 فكرة</option>
+<option value="design">📐 تصميم</option>
+<option value="question">❓ سؤال</option>
 </select>
-<select id="filterTransaction" onchange="applyFilters()">
-<option value="">جميع الصفقات</option>
-<option value="sale">💰 للبيع</option>
-<option value="rent">🔑 للإيجار</option>
-<option value="investment">📈 استثمار</option>
-</select>
-<input id="filterMinPrice" type="number" placeholder="السعر من" oninput="applyFilters()">
-<input id="filterMaxPrice" type="number" placeholder="السعر إلى" oninput="applyFilters()">
 <button type="button" class="secondary-btn" onclick="resetFilters()">🔄 إعادة ضبط</button>
 </div>
 
-<div class="stats">
-<div class="stat-card"><div id="propertiesCount" class="stat-number">0</div><div class="stat-label">إجمالي العقارات</div></div>
-<div class="stat-card"><div id="propertiesSaleCount" class="stat-number">0</div><div class="stat-label">للبيع</div></div>
-<div class="stat-card"><div id="propertiesRentCount" class="stat-number">0</div><div class="stat-label">للإيجار</div></div>
-</div>
-
-<div id="propertiesGrid" class="property-grid">
-<div class="empty-state">جاري تحميل العقارات...</div>
+<div id="contentGrid" class="content-grid">
+<div class="empty-state">جاري تحميل المحتوى...</div>
 </div>
 </section>
 
 <!-- ===== حسابي ===== -->
 <section id="profile" class="section">
 <h2 class="section-title">حسابي</h2>
-<p class="section-subtitle">معلومات حسابك وإحصاءاتك في المنصة.</p>
-<div class="profile-card" style="background:#0f172a;border:1px solid rgba(148,163,184,.14);border-radius:24px;padding:25px">
+<p class="section-subtitle">معلومات حسابك.</p>
+<div style="background:#0f172a;border:1px solid rgba(148,163,184,.14);border-radius:24px;padding:25px">
 <div style="display:flex;align-items:center;gap:16px;margin-bottom:22px">
 <div id="profileAvatar" class="user-avatar" style="width:78px;height:78px;border-radius:22px;font-size:28px">K</div>
 <div><div id="profileName" style="font-size:25px;font-weight:900">زائر</div><div id="profileEmail" style="color:#94a3b8">-</div></div>
 </div>
-<button type="button" class="logout-btn" style="border:1px solid rgba(239,68,68,.3);background:rgba(239,68,68,.08);color:#fca5a5;padding:12px 18px;border-radius:13px;font-weight:800;cursor:pointer" onclick="logoutUser()">تسجيل الخروج</button>
+<button type="button" class="primary-btn" style="background:rgba(239,68,68,.08);color:#fca5a5;border:1px solid rgba(239,68,68,.3)" onclick="logoutUser()">تسجيل الخروج</button>
 </div>
 </section>
 
 </main>
 </div>
 
-<!-- ===== مودال إضافة عقار ===== -->
-<div id="addPropertyModal" class="modal" onclick="closeAddPropertyModal()">
+<!-- ===== مودال إضافة محتوى ===== -->
+<div id="addModal" class="modal" onclick="closeAddModal()">
 <div class="modal-box" onclick="event.stopPropagation()">
-<div class="modal-header"><h2>➕ إضافة عقار جديد</h2><button type="button" class="close-btn" onclick="closeAddPropertyModal()">×</button></div>
+<div class="modal-header"><h2>➕ إضافة محتوى جديد</h2><button type="button" class="close-btn" onclick="closeAddModal()">×</button></div>
 <div class="modal-content">
 <div class="form-grid">
-<div class="full-width"><label>عنوان العقار</label><input id="propTitle" placeholder="مثال: فيلا فاخرة في الرياض"></div>
-<div class="full-width"><label>الوصف</label><textarea id="propDescription" rows="3" placeholder="وصف العقار..."></textarea></div>
 
-<div><label>نوع العقار</label>
-<select id="propType">
-<option value="apartment">🏢 شقة</option><option value="villa">🏡 فيلا</option>
-<option value="land">🏞️ أرض</option><option value="commercial">🏬 تجاري</option>
-<option value="industrial">🏭 صناعي</option><option value="agricultural">🌾 زراعي</option>
-<option value="tourist">🏖️ سياحي</option>
-</select></div>
+<div class="full-width">
+<label>نوع المحتوى</label>
+<select id="contentType" onchange="toggleContentFields()">
+<option value="project">🏗️ مشروع</option>
+<option value="property">🏢 عقار</option>
+<option value="idea">💡 فكرة</option>
+<option value="design">📐 تصميم</option>
+<option value="question">❓ سؤال</option>
+</select>
+</div>
 
-<div><label>نوع الصفقة</label>
-<select id="propTransaction">
-<option value="sale">💰 للبيع</option><option value="rent">🔑 للإيجار</option>
-<option value="investment">📈 استثمار</option>
-</select></div>
+<div class="full-width"><label>العنوان</label><input id="contentTitle" placeholder="عنوان المحتوى"></div>
+<div class="full-width"><label>الوصف</label><textarea id="contentDescription" rows="4" placeholder="وصف المحتوى..."></textarea></div>
 
+<!-- حقل الصورة (يظهر للجميع) -->
+<div class="full-width"><label>رابط الصورة (اختياري)</label><input id="contentImage" placeholder="https://example.com/image.jpg"></div>
+
+<!-- حقول العقار -->
+<div id="propertyFields" class="hidden">
 <div><label>الدولة</label><input id="propCountry" placeholder="مثال: السعودية"></div>
 <div><label>المدينة</label><input id="propCity" placeholder="مثال: الرياض"></div>
-<div><label>الحي</label><input id="propNeighborhood" placeholder="مثال: العليا"></div>
-
 <div><label>السعر</label><input id="propPrice" type="number" placeholder="0"></div>
 <div><label>العملة</label>
 <select id="propCurrency">
 <option value="USD">🇺🇸 دولار</option><option value="SAR">🇸🇦 ريال</option>
 <option value="EUR">🇪🇺 يورو</option><option value="AED">🇦🇪 درهم</option>
-<option value="TRY">🇹🇷 ليرة</option><option value="GBP">🇬🇧 جنيه</option>
 </select></div>
-
 <div><label>المساحة (م²)</label><input id="propArea" type="number" placeholder="0"></div>
-<div><label>غرف النوم</label><input id="propBedrooms" type="number" placeholder="0"></div>
-<div><label>الحمامات</label><input id="propBathrooms" type="number" placeholder="0"></div>
+<div><label>واتساب</label><input id="propWhatsapp" placeholder="رقم التواصل"></div>
+</div>
 
-<div class="full-width"><label>رابط الصورة</label><input id="propImage" placeholder="https://example.com/image.jpg"></div>
-<div class="full-width"><label>رقم واتساب للتواصل</label><input id="propWhatsapp" placeholder="مثال: 966501234567"></div>
-<div id="addPropMessage" class="auth-message hidden"></div>
+<div id="addMessage" class="auth-message hidden"></div>
 </div>
 </div>
 <div class="modal-actions">
-<button type="button" class="primary-btn" onclick="saveProperty()">💾 حفظ العقار</button>
-<button type="button" class="secondary-btn" onclick="closeAddPropertyModal()">إلغاء</button>
+<button type="button" class="primary-btn" onclick="saveContent()">💾 حفظ</button>
+<button type="button" class="secondary-btn" onclick="closeAddModal()">إلغاء</button>
 </div>
 </div>
 </div>
 
-<!-- ===== مودال تفاصيل العقار ===== -->
-<div id="propertyDetailModal" class="modal" onclick="closePropertyDetail()">
+<!-- ===== مودال التفاصيل ===== -->
+<div id="detailModal" class="modal" onclick="closeDetailModal()">
 <div class="modal-box" onclick="event.stopPropagation()">
-<div class="modal-header"><h2 id="detailTitle">تفاصيل العقار</h2><button type="button" class="close-btn" onclick="closePropertyDetail()">×</button></div>
+<div class="modal-header"><h2 id="detailTitle">تفاصيل</h2><button type="button" class="close-btn" onclick="closeDetailModal()">×</button></div>
 <div id="detailContent" class="modal-content"></div>
-<div class="modal-actions"><button type="button" class="secondary-btn" onclick="closePropertyDetail()">إغلاق</button></div>
+<div class="modal-actions"><button type="button" class="secondary-btn" onclick="closeDetailModal()">إغلاق</button></div>
 </div>
 </div>
 
@@ -421,16 +368,15 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 // ============================================
 const SUPABASE_URL = "https://ehmeircigoqfhftaotba.supabase.co";
 const SUPABASE_KEY = "sb_publishable_54N-aEBjhTQK1wUzpWl0fg_MQRq5D-T";
-const OWNER_ID = "dfe5695d-c77a-4ccb-a1eb-901d28169be2";
 
 let supabaseClient = null;
 let currentUser = null;
 let currentProfile = null;
-let allProperties = [];
-let filteredProperties = [];
+let allContent = [];
+let filteredContent = [];
 
 // ============================================
-// SUPABASE INIT
+// SUPABASE
 // ============================================
 function initSupabase() {
   if (window.supabase && typeof window.supabase.createClient === "function") {
@@ -486,7 +432,7 @@ function showAuthPage() {
 }
 
 // ============================================
-// AUTH FUNCTIONS
+// AUTH
 // ============================================
 async function loginUser() {
   clearAuthMessage();
@@ -504,8 +450,8 @@ async function loginUser() {
     await loadUserProfile();
     showApp();
     updateUI();
-    loadProperties();
-    showToast("✅ تم تسجيل الدخول بنجاح.");
+    loadContent();
+    showToast("✅ تم تسجيل الدخول.");
   } catch (e) { showAuthMessage(e.message); }
   finally { if (btn) { btn.disabled = false; btn.textContent = "تسجيل الدخول"; } }
 }
@@ -530,10 +476,10 @@ async function registerUser() {
         await loadUserProfile();
         showApp();
         updateUI();
-        loadProperties();
+        loadContent();
         showToast("✅ تم إنشاء الحساب.");
       } else {
-        showAuthMessage("✅ تم إنشاء الحساب. تحقق من بريدك لتفعيله.");
+        showAuthMessage("✅ تم إنشاء الحساب. تحقق من بريدك.");
       }
     }
   } catch (e) { showAuthMessage(e.message); }
@@ -543,7 +489,7 @@ async function createProfile(user, name) {
   if (!user || !initSupabase()) return;
   await supabaseClient.from("profiles").upsert({
     id: user.id,
-    name: name || user.user_metadata?.name || "مستخدم",
+    name: name || "مستخدم",
     email: user.email || ""
   });
 }
@@ -551,13 +497,13 @@ async function createProfile(user, name) {
 async function resetUserPassword() {
   if (!initSupabase()) { showAuthMessage("تعذر تحميل الخدمة."); return; }
   const email = document.getElementById("resetEmail").value.trim();
-  if (!email) { showAuthMessage("أدخل البريد الإلكتروني."); return; }
+  if (!email) { showAuthMessage("أدخل البريد."); return; }
   try {
     const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
       redirectTo: window.location.origin + window.location.pathname
     });
     if (error) { showAuthMessage(error.message); return; }
-    showAuthMessage("✅ تم إرسال رابط الاستعادة إلى بريدك.");
+    showAuthMessage("✅ تم إرسال رابط الاستعادة.");
   } catch (e) { showAuthMessage(e.message); }
 }
 
@@ -566,7 +512,7 @@ function enterGuest() {
   currentProfile = { name: "زائر", email: "" };
   showApp();
   updateUI();
-  loadProperties();
+  loadContent();
   showToast("👋 مرحباً بك كزائر.");
   showSection("home");
 }
@@ -609,11 +555,7 @@ function updateUI() {
   document.getElementById("profileName").textContent = name;
   document.getElementById("profileEmail").textContent = email || "-";
 
-  const avatarEls = [
-    document.getElementById("miniUserAvatar"),
-    document.getElementById("profileAvatar")
-  ];
-  avatarEls.forEach(el => {
+  [document.getElementById("miniUserAvatar"), document.getElementById("profileAvatar")].forEach(el => {
     if (!el) return;
     el.innerHTML = "";
     if (avatar) {
@@ -631,4 +573,158 @@ function updateUI() {
 // NAVIGATION
 // ============================================
 function showSection(id) {
-  document.querySelectorAll(".section").
+  document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+  const section = document.getElementById(id);
+  if (section) section.classList.add("active");
+  document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+  document.querySelector(`.nav-btn[data-section="${id}"]`)?.classList.add("active");
+  if (id === "content") loadContent();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+// ============================================
+// CONTENT - ADD
+// ============================================
+function openAddModal() {
+  if (!currentUser) { showToast("سجل الدخول أولاً."); return; }
+  document.getElementById("addModal").classList.add("active");
+  document.getElementById("addMessage").classList.add("hidden");
+  toggleContentFields();
+}
+
+function closeAddModal() {
+  document.getElementById("addModal").classList.remove("active");
+}
+
+function toggleContentFields() {
+  const type = document.getElementById("contentType").value;
+  const propertyFields = document.getElementById("propertyFields");
+  propertyFields.classList.toggle("hidden", type !== "property");
+}
+
+async function saveContent() {
+  if (!currentUser) { showToast("سجل الدخول أولاً."); return; }
+  if (!initSupabase()) { showToast("تعذر الاتصال."); return; }
+
+  const type = document.getElementById("contentType").value;
+  const title = document.getElementById("contentTitle").value.trim();
+  const description = document.getElementById("contentDescription").value.trim();
+  const image = document.getElementById("contentImage").value.trim();
+
+  if (!title) { showAddMessage("اكتب العنوان."); return; }
+
+  const content = {
+    user_id: currentUser.id,
+    type: type,
+    title: title,
+    description: description || "",
+    image_url: image || null,
+    created_at: new Date().toISOString()
+  };
+
+  // حقول العقار
+  if (type === "property") {
+    content.country = document.getElementById("propCountry").value.trim();
+    content.city = document.getElementById("propCity").value.trim();
+    content.price = parseFloat(document.getElementById("propPrice").value) || 0;
+    content.currency = document.getElementById("propCurrency").value;
+    content.area = parseFloat(document.getElementById("propArea").value) || 0;
+    content.whatsapp = document.getElementById("propWhatsapp").value.trim();
+  }
+
+  try {
+    const { error } = await supabaseClient.from("content").insert(content);
+    if (error) { showAddMessage(error.message); return; }
+    closeAddModal();
+    clearAddForm();
+    loadContent();
+    showToast("✅ تم حفظ المحتوى.");
+  } catch (e) { showAddMessage(e.message); }
+}
+
+function showAddMessage(msg) {
+  const box = document.getElementById("addMessage");
+  box.textContent = msg;
+  box.classList.remove("hidden");
+}
+
+function clearAddForm() {
+  document.getElementById("contentTitle").value = "";
+  document.getElementById("contentDescription").value = "";
+  document.getElementById("contentImage").value = "";
+  document.getElementById("propCountry").value = "";
+  document.getElementById("propCity").value = "";
+  document.getElementById("propPrice").value = "";
+  document.getElementById("propArea").value = "";
+  document.getElementById("propWhatsapp").value = "";
+}
+
+// ============================================
+// CONTENT - LOAD
+// ============================================
+async function loadContent() {
+  const grid = document.getElementById("contentGrid");
+  if (!grid) return;
+  if (!initSupabase()) { grid.innerHTML = `<div class="empty-state">تعذر الاتصال.</div>`; return; }
+
+  grid.innerHTML = `<div class="empty-state">جاري التحميل...</div>`;
+
+  try {
+    const { data, error } = await supabaseClient
+      .from("content")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    if (error) { console.error(error); grid.innerHTML = `<div class="empty-state">خطأ في التحميل.</div>`; return; }
+    allContent = data || [];
+    applyFilters();
+  } catch (e) { console.error(e); grid.innerHTML = `<div class="empty-state">حدث خطأ.</div>`; }
+}
+
+function applyFilters() {
+  const search = document.getElementById("filterSearch").value.toLowerCase().trim();
+  const type = document.getElementById("filterType").value;
+
+  filteredContent = allContent.filter(item => {
+    if (type && item.type !== type) return false;
+    if (search) {
+      const title = (item.title || "").toLowerCase();
+      const desc = (item.description || "").toLowerCase();
+      if (!title.includes(search) && !desc.includes(search)) return false;
+    }
+    return true;
+  });
+
+  renderContent();
+}
+
+function resetFilters() {
+  document.getElementById("filterSearch").value = "";
+  document.getElementById("filterType").value = "";
+  applyFilters();
+}
+
+function renderContent() {
+  const grid = document.getElementById("contentGrid");
+  if (!grid) return;
+
+  if (!filteredContent.length) {
+    grid.innerHTML = `<div class="empty-state">لا يوجد محتوى مطابق.</div>`;
+    return;
+  }
+
+  grid.innerHTML = filteredContent.map(item => {
+    const badgeClass = {
+      project: 'badge-project',
+      property: 'badge-property',
+      idea: 'badge-idea',
+      design: 'badge-design',
+      question: 'badge-question'
+    }[item.type] || '';
+
+    const badgeLabel = {
+      project: '🏗️ مشروع',
+      property: '🏢 عقار',
+      idea: '💡 فكرة',
+      design: '📐 تصميم',
+      question:
