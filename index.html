@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>KAPO ONE</title>
+<title>KAPO ONE - العقارات العالمية</title>
 
 <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -15,7 +15,7 @@ margin:0;font-family:Arial,sans-serif;
 background:radial-gradient(circle at 50% -15%,rgba(37,99,235,.22),transparent 35%),linear-gradient(180deg,#020617,#07111f 45%,#020617);
 color:#f8fafc;min-height:100vh
 }
-button,input,textarea{font-family:inherit}
+button,input,textarea,select{font-family:inherit}
 button{cursor:pointer}
 .hidden{display:none!important}
 
@@ -34,16 +34,17 @@ box-shadow:0 15px 35px rgba(37,99,235,.35)
 .auth-title{text-align:center;font-size:30px;font-weight:900;margin:0 0 8px}
 .auth-subtitle{text-align:center;color:#94a3b8;margin:0 0 25px}
 .auth-form{display:flex;flex-direction:column;gap:13px}
-.auth-form input,.auth-form textarea{
+.auth-form input,.auth-form textarea,.auth-form select{
 width:100%;padding:14px 15px;border-radius:14px;border:1px solid #334155;
 background:#020617;color:#fff;outline:none
 }
+.auth-form select option{background:#020617;color:#fff}
 .auth-form textarea{resize:vertical;min-height:110px}
-.auth-form input:focus,.auth-form textarea:focus{
+.auth-form input:focus,.auth-form textarea:focus,.auth-form select:focus{
 border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,.12)
 }
 .auth-links{display:flex;justify-content:space-between;gap:10px;margin-top:15px}
-.auth-link{border:0;background:none;color:#60a5fa;font-size:14px}
+.auth-link{border:0;background:none;color:#60a5fa;font-size:14px;cursor:pointer}
 .auth-message{
 margin-top:15px;padding:12px;border-radius:12px;
 background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.25);
@@ -55,6 +56,7 @@ background:linear-gradient(135deg,#2563eb,#4f46e5);color:#fff;font-weight:800;
 box-shadow:0 8px 20px rgba(37,99,235,.2);transition:.2s
 }
 .primary-btn:hover{transform:translateY(-1px);filter:brightness(1.08)}
+.primary-btn:disabled{opacity:0.6;cursor:not-allowed}
 .secondary-btn{
 border:1px solid #334155;border-radius:13px;padding:12px 18px;
 background:#0f172a;color:#fff;font-weight:700
@@ -90,35 +92,10 @@ gap:8px;overflow-x:auto;scrollbar-width:none
 .nav::-webkit-scrollbar{display:none}
 .nav-btn{
 white-space:nowrap;border:1px solid transparent;background:transparent;color:#94a3b8;
-padding:9px 13px;border-radius:12px;font-weight:700;transition:.2s
+padding:9px 13px;border-radius:12px;font-weight:700;transition:.2s;cursor:pointer
 }
 .nav-btn:hover{background:#0f172a;color:#fff}
 .nav-btn.active{background:rgba(37,99,235,.18);border-color:rgba(59,130,246,.3);color:#fff}
-
-.notification-nav-btn{
-display:flex;
-align-items:center;
-gap:7px
-}
-
-.notification-badge{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-min-width:20px;
-height:20px;
-padding:0 6px;
-border-radius:999px;
-background:#ef4444;
-color:#fff;
-font-size:11px;
-font-weight:900;
-line-height:1
-}
-
-.notification-badge.hidden{
-display:none!important
-}
 
 .container{max-width:1250px;margin:auto;padding:25px 18px 60px}
 .section{display:none;animation:fadeIn .3s ease}
@@ -127,16 +104,59 @@ display:none!important
 .section-title{font-size:28px;margin:0 0 8px;font-weight:900}
 .section-subtitle{color:#94a3b8;margin:0 0 24px;line-height:1.8}
 
-.hero{
-position:relative;overflow:hidden;border:1px solid rgba(148,163,184,.14);
-background:radial-gradient(circle at 80% 20%,rgba(59,130,246,.2),transparent 30%),rgba(15,23,42,.72);
-border-radius:28px;padding:42px 30px;margin-bottom:25px;
-box-shadow:0 20px 60px rgba(0,0,0,.25)
+/* ===== فلتر البحث المتقدم ===== */
+.search-filters-advanced{
+display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;
+background:rgba(15,23,42,.6);padding:15px;border-radius:18px;border:1px solid rgba(148,163,184,.13);
+margin-bottom:18px
 }
-.hero h1{font-size:42px;margin:0 0 12px;font-weight:900}
-.hero p{max-width:700px;color:#cbd5e1;line-height:1.9;font-size:17px}
-.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.search-filters-advanced input,.search-filters-advanced select{
+padding:10px 12px;border-radius:11px;border:1px solid #334155;
+background:#020617;color:#fff;outline:none;width:100%
+}
+.search-filters-advanced input:focus,.search-filters-advanced select:focus{
+border-color:#3b82f6
+}
+.search-filters-advanced .filter-row{display:contents}
 
+/* ===== بطاقات العقار ===== */
+.property-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.property-card{
+background:#0f172a;border:1px solid rgba(148,163,184,.13);
+border-radius:20px;overflow:hidden;transition:.2s;cursor:pointer
+}
+.property-card:hover{transform:translateY(-4px);border-color:rgba(59,130,246,.45)}
+.property-image{width:100%;height:200px;object-fit:cover;display:block}
+.property-placeholder{height:200px;display:flex;align-items:center;justify-content:center;font-size:48px;
+background:radial-gradient(circle,#1e3a8a,#0f172a 65%)}
+.property-info{padding:16px}
+.property-title{font-size:18px;font-weight:900;margin-bottom:6px}
+.property-location{color:#94a3b8;font-size:13px;margin-bottom:6px}
+.property-price{font-size:20px;font-weight:900;color:#60a5fa;margin-bottom:6px}
+.property-details{display:flex;gap:12px;flex-wrap:wrap;color:#94a3b8;font-size:13px;margin-bottom:8px}
+.property-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.property-tag{padding:4px 10px;border-radius:8px;font-size:11px;font-weight:700}
+.tag-sale{background:rgba(34,197,94,.18);color:#4ade80}
+.tag-rent{background:rgba(251,191,36,.18);color:#fbbf24}
+.tag-investment{background:rgba(59,130,246,.18);color:#60a5fa}
+.contact-whatsapp-btn{
+display:inline-flex;align-items:center;gap:6px;padding:8px 14px;
+background:#25D366;color:#fff;border-radius:10px;font-weight:700;border:0;font-size:13px;text-decoration:none
+}
+.contact-whatsapp-btn:hover{filter:brightness(1.08)}
+
+/* ===== تصميم متجاوب ===== */
+@media(max-width:900px){
+.property-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:650px){
+.header-inner{padding:10px 12px}.user-mini{display:none}
+.container{padding:20px 12px 50px}
+.property-grid{grid-template-columns:1fr}
+.search-filters-advanced{grid-template-columns:1fr 1fr}
+}
+
+/* ===== باقي الأنماط ===== */
 .feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
 .feature-card{
 background:rgba(15,23,42,.75);border:1px solid rgba(148,163,184,.13);
@@ -146,432 +166,19 @@ border-radius:20px;padding:20px;transition:.2s
 .feature-icon{font-size:28px;margin-bottom:12px}
 .feature-card h3{margin:0 0 8px}
 .feature-card p{margin:0;color:#94a3b8;line-height:1.7;font-size:14px}
-
-.toolbar{
-display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
-gap:12px;margin-bottom:18px
-}
-.search-box{flex:1;min-width:220px}
-.search-box input{
-width:100%;padding:13px 15px;border-radius:14px;border:1px solid #334155;
-background:#0f172a;color:#fff;outline:none
-}
-.search-box input:focus{border-color:#3b82f6}
-.filters{display:flex;gap:7px;flex-wrap:wrap}
-.filter-btn{
-border:1px solid #334155;background:#0f172a;color:#cbd5e1;padding:9px 13px;border-radius:11px
-}
-.filter-btn.active{background:#2563eb;border-color:#2563eb;color:#fff}
-
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
 .stat-card{background:#0f172a;border:1px solid rgba(148,163,184,.13);border-radius:18px;padding:18px}
 .stat-number{font-size:28px;font-weight:900;margin-bottom:5px}
 .stat-label{color:#94a3b8;font-size:13px}
-
-.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.project-card{
-background:#0f172a;border:1px solid rgba(148,163,184,.13);
-border-radius:20px;overflow:hidden;transition:.2s
-}
-.project-card:hover{transform:translateY(-3px);border-color:rgba(59,130,246,.35)}
-.project-image{width:100%;height:190px;object-fit:cover;display:block}
-.project-placeholder{
-height:190px;display:flex;align-items:center;justify-content:center;font-size:48px;
-background:radial-gradient(circle,#1e3a8a,#0f172a 65%)
-}
-.project-content{padding:18px}
-.project-title{font-size:19px;font-weight:900;margin-bottom:8px}
-.project-description{color:#94a3b8;line-height:1.7;min-height:50px}
-.project-meta{color:#64748b;font-size:12px;margin-top:12px}
-
-.project-actions{
-display:flex;gap:8px;margin-top:14px;flex-wrap:wrap
-}
-
-.icon-btn{
-border:1px solid #334155;background:#020617;color:#cbd5e1;
-padding:8px 11px;border-radius:10px
-}
-
-.project-like-btn.liked{
-background:rgba(37,99,235,.18);
-border-color:rgba(59,130,246,.45);
-color:#60a5fa
-}
-
-.project-comments-btn{
-flex:1
-}
-
-.empty-state{
-padding:40px 20px;text-align:center;background:#0f172a;
-border:1px dashed #334155;border-radius:18px;color:#94a3b8
-}
-
-.design-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.design-card{
-background:linear-gradient(145deg,rgba(30,41,59,.9),rgba(15,23,42,.95));
-border:1px solid rgba(148,163,184,.14);border-radius:22px;padding:22px;
-cursor:pointer;transition:.2s
-}
-.design-card:hover{
-transform:translateY(-4px);border-color:rgba(59,130,246,.4);
-box-shadow:0 18px 45px rgba(0,0,0,.25)
-}
-.design-icon{font-size:44px;margin-bottom:14px}
-.design-card h3{font-size:21px;margin:0 0 9px}
-.design-card p{color:#94a3b8;line-height:1.8;margin:0}
-.design-footer{
-display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:18px
-}
-.like-btn{border:1px solid #334155;background:#020617;color:#cbd5e1;border-radius:11px;padding:9px 13px}
-
-.idea-box{
-background:#0f172a;border:1px solid rgba(148,163,184,.14);
-border-radius:22px;padding:22px;margin-bottom:20px
-}
-.idea-row{display:flex;gap:10px}
-.idea-row input{
-flex:1;padding:14px;background:#020617;border:1px solid #334155;
-border-radius:13px;color:#fff;outline:none
-}
-.idea-result{
-margin-top:18px;padding:18px;border-radius:16px;
-background:rgba(37,99,235,.08);border:1px solid rgba(59,130,246,.2);line-height:1.9
-}
-.idea-list{display:grid;gap:12px}
-.idea-card{background:#0f172a;border:1px solid rgba(148,163,184,.12);border-radius:16px;padding:16px}
-.idea-card h4{margin:0 0 8px}
-.idea-card p{margin:0;color:#94a3b8;line-height:1.7}
-
-.community-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.community-card{
-background:linear-gradient(145deg,rgba(15,23,42,.95),rgba(8,15,30,.95));
-border:1px solid rgba(148,163,184,.14);border-radius:22px;padding:22px;transition:.2s
-}
-.community-card.channel-card{cursor:pointer;position:relative;overflow:hidden}
-.community-card.channel-card::before{
-content:"";position:absolute;width:120px;height:120px;border-radius:50%;
-background:rgba(37,99,235,.12);top:-55px;left:-40px;filter:blur(2px)
-}
-.community-card.channel-card:hover{
-transform:translateY(-4px);border-color:rgba(59,130,246,.45);
-box-shadow:0 18px 45px rgba(0,0,0,.25)
-}
-.community-card h3{margin:0 0 10px;font-size:21px;position:relative}
-.community-card p{margin:0;color:#94a3b8;line-height:1.8;position:relative}
-.channel-enter{margin-top:18px;width:100%;position:relative}
-
-.question-list{display:grid;gap:12px}
-.question-item{background:#0f172a;border:1px solid rgba(148,163,184,.13);border-radius:17px;padding:17px}
-.question-item strong{display:block;margin-bottom:7px}
-.question-item span{color:#94a3b8;font-size:13px}
-
-/* PROFILE */
-
-.profile-card{
-background:#0f172a;
-border:1px solid rgba(148,163,184,.14);
-border-radius:24px;
-padding:25px
-}
-
-.profile-head{
-display:flex;
-align-items:center;
-gap:16px;
-margin-bottom:22px
-}
-
-.profile-avatar{
-width:78px;
-height:78px;
-border-radius:22px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:28px;
-font-weight:900;
-background:linear-gradient(135deg,#2563eb,#7c3aed);
-overflow:hidden;
-flex-shrink:0
-}
-
-.profile-avatar img{
-width:100%;
-height:100%;
-object-fit:cover;
-display:block
-}
-
-.profile-name{font-size:25px;font-weight:900}
-.profile-email{color:#94a3b8;margin-top:5px;word-break:break-word}
-
-.profile-head-actions{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:15px;
-width:100%
-}
-
-.profile-edit-btn{
-border:1px solid rgba(59,130,246,.35);
-background:rgba(37,99,235,.12);
-color:#93c5fd;
-padding:10px 14px;
-border-radius:11px;
-font-weight:800
-}
-
-.profile-edit-btn:hover{
-background:rgba(37,99,235,.2)
-}
-
-.profile-stats{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:12px;
-margin-bottom:20px
-}
-
-.profile-stat{
-background:#020617;
-border:1px solid #1e293b;
-border-radius:17px;
-padding:18px;
-text-align:center
-}
-
-.profile-stat-number{
-font-size:27px;
-font-weight:900;
-margin-bottom:5px
-}
-
-.profile-stat-label{
-font-size:12px;
-color:#94a3b8
-}
-
-.profile-info{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px
-}
-
-.info-box{
-padding:16px;
-border-radius:15px;
-background:#020617;
-border:1px solid #1e293b
-}
-
-.info-label{
-font-size:12px;
-color:#64748b;
-margin-bottom:6px
-}
-
-.info-value{
-font-weight:700;
-word-break:break-word
-}
-
-.logout-btn{
-margin-top:20px;
-border:1px solid rgba(239,68,68,.3);
-background:rgba(239,68,68,.08);
-color:#fca5a5;
-padding:12px 18px;
-border-radius:13px;
-font-weight:800
-}
-
-.profile-edit-box{
-display:flex;
-flex-direction:column;
-gap:14px
-}
-
-.profile-edit-box label{
-font-size:13px;
-color:#94a3b8;
-font-weight:700
-}
-
-.profile-edit-box input{
-width:100%;
-padding:14px 15px;
-border-radius:14px;
-border:1px solid #334155;
-background:#020617;
-color:#fff;
-outline:none
-}
-
-.profile-edit-box input:focus{
-border-color:#3b82f6;
-box-shadow:0 0 0 3px rgba(59,130,246,.12)
-}
-
-.profile-preview{
-display:flex;
-align-items:center;
-justify-content:center;
-margin-bottom:5px
-}
-
-.profile-preview-avatar{
-width:90px;
-height:90px;
-border-radius:25px;
-background:linear-gradient(135deg,#2563eb,#7c3aed);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:32px;
-font-weight:900;
-overflow:hidden;
-border:2px solid rgba(255,255,255,.08)
-}
-
-.profile-preview-avatar img{
-width:100%;
-height:100%;
-object-fit:cover
-}
-
-.profile-edit-note{
-font-size:12px;
-color:#64748b;
-line-height:1.7
-}
-
-/* NOTIFICATIONS */
-
-.notifications-toolbar{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:10px;
-flex-wrap:wrap;
-margin-bottom:18px
-}
-
-.notifications-actions{
-display:flex;
-gap:8px;
-flex-wrap:wrap
-}
-
-.notification-card{
-display:flex;
-align-items:flex-start;
-gap:13px;
-background:#0f172a;
-border:1px solid rgba(148,163,184,.13);
-border-radius:18px;
-padding:16px;
-margin-bottom:10px;
-transition:.2s
-}
-
-.notification-card:hover{
-border-color:rgba(59,130,246,.35);
-transform:translateY(-1px)
-}
-
-.notification-card.unread{
-background:rgba(37,99,235,.09);
-border-color:rgba(59,130,246,.28)
-}
-
-.notification-icon{
-width:43px;
-height:43px;
-border-radius:14px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:#020617;
-font-size:20px;
-flex-shrink:0
-}
-
-.notification-body{
-flex:1;
-min-width:0
-}
-
-.notification-message{
-font-weight:700;
-line-height:1.7;
-color:#e2e8f0;
-word-break:break-word
-}
-
-.notification-date{
-font-size:11px;
-color:#64748b;
-margin-top:6px
-}
-
-.notification-card.unread .notification-date{
-color:#93c5fd
-}
-
-.notification-actions{
-display:flex;
-gap:7px;
-flex-wrap:wrap;
-margin-top:10px
-}
-
-.notification-small-btn{
-border:1px solid #334155;
-background:#020617;
-color:#cbd5e1;
-padding:7px 10px;
-border-radius:9px;
-font-size:11px
-}
-
-.notification-small-btn:hover{
-background:#172033
-}
-
-.notification-delete-btn{
-border-color:rgba(239,68,68,.25);
-background:rgba(239,68,68,.07);
-color:#fca5a5
-}
-
-.notification-empty{
-padding:45px 20px;
-text-align:center;
-background:#0f172a;
-border:1px dashed #334155;
-border-radius:18px;
-color:#94a3b8;
-line-height:1.9
-}
-
-.notification-loading{
-padding:35px 20px;
-text-align:center;
-background:#0f172a;
-border-radius:18px;
-color:#94a3b8
-}
-
+.empty-state{padding:40px 20px;text-align:center;background:#0f172a;
+border:1px dashed #334155;border-radius:18px;color:#94a3b8}
 .modal{
 position:fixed;inset:0;z-index:500;display:none;align-items:center;justify-content:center;
 padding:20px;background:rgba(0,0,0,.72);backdrop-filter:blur(8px)
 }
 .modal.active{display:flex}
 .modal-box{
-width:100%;max-width:650px;max-height:90vh;overflow:auto;background:#0f172a;
+width:100%;max-width:700px;max-height:90vh;overflow:auto;background:#0f172a;
 border:1px solid rgba(148,163,184,.18);border-radius:24px;box-shadow:0 30px 100px rgba(0,0,0,.55)
 }
 .modal-header{
@@ -581,248 +188,45 @@ padding:20px;border-bottom:1px solid #1e293b
 .modal-header h2{margin:0;font-size:22px}
 .close-btn{
 width:38px;height:38px;border:1px solid #334155;background:#020617;
-color:#fff;border-radius:11px;font-size:22px
+color:#fff;border-radius:11px;font-size:22px;cursor:pointer
 }
 .modal-content{padding:20px;line-height:1.9;color:#cbd5e1}
-.modal-content h3{color:#fff}
-.modal-content ul{line-height:2}
 .modal-actions{display:flex;justify-content:flex-start;gap:10px;padding:0 20px 20px}
-
-.channel-post-box{
-background:#020617;border:1px solid #1e293b;border-radius:18px;padding:16px;margin-bottom:20px
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-grid .full-width{grid-column:span 2}
+.form-grid label{font-size:13px;color:#94a3b8;font-weight:700;display:block;margin-bottom:4px}
+.form-grid input,.form-grid select,.form-grid textarea{
+width:100%;padding:12px 14px;border-radius:12px;border:1px solid #334155;
+background:#020617;color:#fff;outline:none
 }
-.channel-post-box textarea{
-width:100%;min-height:105px;resize:vertical;background:#0f172a;border:1px solid #334155;
-border-radius:13px;padding:13px;color:#fff;outline:none;line-height:1.7
+.form-grid input:focus,.form-grid select:focus,.form-grid textarea:focus{
+border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,.12)
 }
-.channel-post-box textarea:focus{border-color:#3b82f6}
-.channel-post-actions{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px}
-.channel-post-hint{font-size:12px;color:#64748b}
-.channel-posts{display:grid;gap:12px}
-.channel-post{background:#020617;border:1px solid #1e293b;border-radius:17px;padding:16px}
-.channel-post-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
-.channel-author{display:flex;align-items:center;gap:9px;font-weight:800}
-.channel-avatar{
-width:34px;height:34px;border-radius:50%;display:flex;align-items:center;
-justify-content:center;background:linear-gradient(135deg,#2563eb,#7c3aed);font-size:14px;font-weight:900
-}
-.channel-date{font-size:11px;color:#64748b}
-.channel-post-text{color:#cbd5e1;line-height:1.8;white-space:pre-wrap;word-break:break-word}
-
-.channel-post-footer{
-display:flex;
-align-items:center;
-gap:8px;
-flex-wrap:wrap;
-margin-top:13px
-}
-
-.channel-social-btn{
-border:1px solid #334155;
-background:#0f172a;
-color:#cbd5e1;
-padding:8px 11px;
-border-radius:10px;
-font-size:13px
-}
-
-.channel-social-btn:hover{
-border-color:#475569;
-background:#172033
-}
-
-.channel-social-btn.liked{
-background:rgba(239,68,68,.12);
-border-color:rgba(239,68,68,.35);
-color:#fca5a5
-}
-
-.channel-comment-btn{
-flex:1
-}
-
-.delete-post-btn{
-border:1px solid rgba(239,68,68,.25);background:rgba(239,68,68,.08);
-color:#fca5a5;padding:7px 10px;border-radius:9px;font-size:12px
-}
-.channel-loading{padding:25px;text-align:center;color:#94a3b8;background:#020617;border-radius:15px}
-
-.comments-list{
-display:grid;
-gap:10px;
-margin-top:15px
-}
-
-.comment-item{
-background:#020617;
-border:1px solid #1e293b;
-border-radius:14px;
-padding:13px
-}
-
-.comment-head{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:10px;
-margin-bottom:7px
-}
-
-.comment-author{
-display:flex;
-align-items:center;
-gap:8px;
-font-weight:800
-}
-
-.comment-avatar{
-width:31px;
-height:31px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-background:linear-gradient(135deg,#2563eb,#7c3aed);
-font-size:12px;
-font-weight:900
-}
-
-.comment-date{
-font-size:10px;
-color:#64748b
-}
-
-.comment-text{
-color:#cbd5e1;
-line-height:1.7;
-white-space:pre-wrap;
-word-break:break-word
-}
-
-.comment-footer{
-margin-top:9px;
-display:flex;
-align-items:center;
-gap:8px;
-flex-wrap:wrap
-}
-
-.comment-like-btn{
-border:1px solid #334155;
-background:#0f172a;
-color:#cbd5e1;
-padding:6px 9px;
-border-radius:8px;
-font-size:11px
-}
-
-.comment-like-btn.liked{
-background:rgba(239,68,68,.12);
-border-color:rgba(239,68,68,.35);
-color:#fca5a5
-}
-
-.delete-comment-btn{
-border:1px solid rgba(239,68,68,.25);
-background:rgba(239,68,68,.08);
-color:#fca5a5;
-padding:6px 9px;
-border-radius:8px;
-font-size:11px
-}
-
-.comment-input-box{
-margin-top:18px;
-padding:15px;
-background:#020617;
-border:1px solid #1e293b;
-border-radius:16px
-}
-
-.comment-input-box textarea{
-width:100%;
-min-height:90px;
-resize:vertical;
-background:#0f172a;
-border:1px solid #334155;
-border-radius:12px;
-padding:12px;
-color:#fff;
-outline:none;
-line-height:1.7
-}
-
-.comment-input-box textarea:focus{
-border-color:#3b82f6
-}
-
-.comment-input-actions{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px;
-margin-top:9px
-}
-
-.comment-empty{
-padding:20px;
-text-align:center;
-color:#64748b;
-background:#020617;
-border-radius:13px;
-border:1px dashed #334155
-}
-
-.project-comment-count{
-color:#94a3b8;
-font-size:12px
-}
-
 #toast{
 position:fixed;bottom:25px;right:25px;z-index:1000;background:#0f172a;border:1px solid #334155;
 color:#fff;padding:13px 17px;border-radius:13px;box-shadow:0 15px 40px rgba(0,0,0,.35);
 opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 }
 #toast.show{opacity:1;transform:translateY(0)}
-
-@media(max-width:900px){
-.feature-grid{grid-template-columns:repeat(2,1fr)}
-.project-grid{grid-template-columns:repeat(2,1fr)}
-}
-
 @media(max-width:650px){
-.header-inner{padding:10px 12px}.user-mini{display:none}
-.container{padding:20px 12px 50px}.hero{padding:30px 20px}.hero h1{font-size:32px}
-.feature-grid,.project-grid,.design-grid,.community-grid{grid-template-columns:1fr}
-.stats{grid-template-columns:1fr}.profile-info{grid-template-columns:1fr}
-.profile-stats{grid-template-columns:1fr}
-.profile-head-actions{align-items:flex-start}
-.profile-edit-btn{padding:9px 11px;font-size:12px}
-.idea-row{flex-direction:column}.toolbar{align-items:stretch}
-.channel-post-actions{flex-direction:column;align-items:stretch}
-.channel-post-actions .primary-btn{width:100%}
-.comment-input-actions{flex-direction:column;align-items:stretch}
-.comment-input-actions .primary-btn{width:100%}
-.notification-card{padding:13px}
-.notification-icon{width:39px;height:39px;font-size:18px}
-.notifications-actions{width:100%}
-.notifications-actions button{flex:1}
+.feature-grid{grid-template-columns:1fr 1fr}
+.form-grid{grid-template-columns:1fr}
+.form-grid .full-width{grid-column:span 1}
 }
 </style>
 </head>
-
 <body>
 
+<!-- ===== صفحة تسجيل الدخول ===== -->
 <div id="authPage" class="auth-page">
 <div class="auth-box">
-
 <div class="auth-logo">K</div>
 <h1 class="auth-title">KAPO ONE</h1>
-<p class="auth-subtitle">منصة الأفكار والتصميم والهندسة</p>
+<p class="auth-subtitle">🌍 منصة العقارات العالمية</p>
 
 <div id="loginForm" class="auth-form">
-<input id="loginEmail" type="email" placeholder="البريد الإلكتروني" autocomplete="email">
-<input id="loginPassword" type="password" placeholder="كلمة المرور" autocomplete="current-password">
+<input id="loginEmail" type="email" placeholder="البريد الإلكتروني">
+<input id="loginPassword" type="password" placeholder="كلمة المرور">
 <button type="button" class="primary-btn" onclick="loginUser()">تسجيل الدخول</button>
 <button type="button" class="secondary-btn" onclick="enterGuest()">الدخول كزائر</button>
 <div class="auth-links">
@@ -833,8 +237,8 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 
 <div id="registerForm" class="auth-form hidden">
 <input id="registerName" type="text" placeholder="الاسم">
-<input id="registerEmail" type="email" placeholder="البريد الإلكتروني" autocomplete="email">
-<input id="registerPassword" type="password" placeholder="كلمة المرور" autocomplete="new-password">
+<input id="registerEmail" type="email" placeholder="البريد الإلكتروني">
+<input id="registerPassword" type="password" placeholder="كلمة المرور (6 أحرف على الأقل)">
 <button type="button" class="primary-btn" onclick="registerUser()">إنشاء الحساب</button>
 <button type="button" class="auth-link" onclick="showLoginForm()">العودة لتسجيل الدخول</button>
 </div>
@@ -846,4264 +250,385 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 </div>
 
 <div id="authMessage" class="auth-message hidden"></div>
-
 </div>
 </div>
 
+<!-- ===== التطبيق ===== -->
 <div id="app" class="hidden">
 
 <header class="header">
 <div class="header-inner">
-<div class="brand">
-<div class="brand-logo">K</div>
-<span>KAPO ONE</span>
-</div>
+<div class="brand"><div class="brand-logo">K</div><span>KAPO ONE</span></div>
 <div class="user-mini">
 <div id="miniUserAvatar" class="user-avatar">K</div>
 <span id="miniUserName">زائر</span>
 </div>
 </div>
-
 <nav class="nav">
 <button type="button" class="nav-btn active" data-section="home" onclick="showSection('home')">الرئيسية</button>
-<button type="button" class="nav-btn" data-section="projects" onclick="showSection('projects')">المشاريع</button>
-<button type="button" class="nav-btn" data-section="designs" onclick="showSection('designs')">التصميم والهندسة</button>
-<button type="button" class="nav-btn" data-section="ideas" onclick="showSection('ideas')">مولد الأفكار</button>
-<button type="button" class="nav-btn" data-section="channels" onclick="showSection('channels')">القنوات</button>
-<button type="button" class="nav-btn" data-section="answers" onclick="showSection('answers')">الإجابات</button>
-
-<button type="button" class="nav-btn notification-nav-btn" data-section="notifications" onclick="showSection('notifications')">
-🔔 الإشعارات
-<span id="notificationBadge" class="notification-badge hidden">0</span>
-</button>
-
+<button type="button" class="nav-btn" data-section="properties" onclick="showSection('properties')">🏢 العقارات</button>
+<button type="button" class="nav-btn" data-section="addproperty" onclick="openAddPropertyModal()">➕ إضافة عقار</button>
 <button type="button" class="nav-btn" data-section="profile" onclick="showSection('profile')">حسابي</button>
 </nav>
 </header>
 
 <main class="container">
 
+<!-- ===== الصفحة الرئيسية ===== -->
 <section id="home" class="section active">
-<div class="hero">
-<h1>مرحباً بك في KAPO ONE</h1>
-<p>منصة متكاملة لاستكشاف المشاريع المعمارية، تطوير الأفكار، التصميم والهندسة، ومشاركة المعرفة بين المستخدمين.</p>
-<div class="hero-actions">
-<button type="button" class="primary-btn" onclick="showSection('projects')">استكشاف المشاريع</button>
-<button type="button" class="secondary-btn" onclick="showSection('ideas')">توليد فكرة جديدة</button>
+<div style="background:rgba(15,23,42,.72);border-radius:28px;padding:42px 30px;margin-bottom:25px;border:1px solid rgba(148,163,184,.14)">
+<h1 style="font-size:42px;margin:0 0 12px;font-weight:900">🌍 KAPO ONE العقارية</h1>
+<p style="color:#cbd5e1;line-height:1.9;font-size:17px;max-width:700px">
+منصة عقارية عالمية تتيح لك بيع، إيجار، واستثمار العقارات في أي مكان في العالم.
+</p>
+<div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:22px">
+<button type="button" class="primary-btn" onclick="showSection('properties')">🔍 استكشاف العقارات</button>
+<button type="button" class="secondary-btn" onclick="openAddPropertyModal()">➕ إضافة عقار</button>
 </div>
 </div>
 
 <div class="feature-grid">
-<div class="feature-card"><div class="feature-icon">🏗️</div><h3>المشاريع</h3><p>أنشئ مشاريعك المعمارية والهندسية واحفظها داخل المنصة.</p></div>
-<div class="feature-card"><div class="feature-icon">📐</div><h3>التصميم والهندسة</h3><p>استكشف مجموعة من الأفكار والتصاميم المعمارية المستقبلية.</p></div>
-<div class="feature-card"><div class="feature-icon">💡</div><h3>مولد الأفكار</h3><p>حوّل فكرتك الأولية إلى تصور مشروع واضح.</p></div>
-<div class="feature-card"><div class="feature-icon">🌐</div><h3>المجتمع</h3><p>شارك الأفكار والأسئلة وتواصل مع مجتمع KAPO ONE.</p></div>
+<div class="feature-card"><div class="feature-icon">🏢</div><h3>عقارات للبيع</h3><p>آلاف العقارات في مختلف دول العالم.</p></div>
+<div class="feature-card"><div class="feature-icon">🔑</div><h3>عقارات للإيجار</h3><p>خيارات متنوعة للإيجار طويل وقصير المدى.</p></div>
+<div class="feature-card"><div class="feature-icon">📈</div><h3>فرص استثمارية</h3><p>استثمر في عقارات ذات عائد مرتفع.</p></div>
+<div class="feature-card"><div class="feature-icon">🌍</div><h3>عالمي</h3><p>عقارات في كل دول العالم بأسعار تنافسية.</p></div>
 </div>
 </section>
 
-<section id="projects" class="section">
-<h2 class="section-title">المشاريع</h2>
-<p class="section-subtitle">استكشف المشاريع وأضف مشروعك الخاص إلى المنصة.</p>
+<!-- ===== قائمة العقارات ===== -->
+<section id="properties" class="section">
+<h2 class="section-title">🏢 العقارات</h2>
+<p class="section-subtitle">استكشف العقارات من جميع أنحاء العالم.</p>
 
-<div class="toolbar">
-<div class="search-box">
-<input id="projectSearch" type="search" placeholder="ابحث عن مشروع..." oninput="renderProjects()">
-</div>
-<button type="button" class="primary-btn" onclick="openAddProjectModal()">+ إضافة مشروع</button>
-</div>
-
-<div class="filters">
-<button type="button" class="filter-btn active" onclick="setProjectFilter('all',this)">الكل</button>
-<button type="button" class="filter-btn" onclick="setProjectFilter('images',this)">بصور</button>
-<button type="button" class="filter-btn" onclick="setProjectFilter('noimages',this)">بدون صور</button>
-</div>
-
-<div class="stats" style="margin-top:18px">
-<div class="stat-card"><div id="projectsCount" class="stat-number">0</div><div class="stat-label">إجمالي المشاريع</div></div>
-<div class="stat-card"><div id="projectsImagesCount" class="stat-number">0</div><div class="stat-label">مشاريع بصور</div></div>
-<div class="stat-card"><div id="projectsNoImagesCount" class="stat-number">0</div><div class="stat-label">مشاريع بدون صور</div></div>
-</div>
-
-<div id="projectsGrid" class="project-grid">
-<div class="empty-state">جاري تحميل المشاريع...</div>
-</div>
-</section>
-
-<section id="designs" class="section">
-<h2 class="section-title">التصميم والهندسة</h2>
-<p class="section-subtitle">مجموعة من التصورات المعمارية والهندسية التي يمكن تطويرها إلى مشاريع متكاملة.</p>
-
-<div class="design-grid">
-
-<div class="design-card" ondblclick="openDesignModal(0)">
-<div class="design-icon">🏙️</div><h3>برج المستقبل</h3>
-<p>تصور معماري لبرج حديث يجمع بين التقنية والاستدامة والهوية المستقبلية.</p>
-<div class="design-footer"><span>تصميم معماري</span><button type="button" class="like-btn" onclick="event.stopPropagation();likeDesign(0,this)">♡ إعجاب</button></div>
+<!-- فلتر متقدم -->
+<div class="search-filters-advanced">
+<input id="filterSearch" type="text" placeholder="🔍 بحث..." oninput="applyFilters()">
+<select id="filterCountry" onchange="applyFilters()"><option value="">كل الدول</option></select>
+<select id="filterCity" onchange="applyFilters()"><option value="">كل المدن</option></select>
+<select id="filterType" onchange="applyFilters()">
+<option value="">جميع الأنواع</option>
+<option value="apartment">🏢 شقة</option>
+<option value="villa">🏡 فيلا</option>
+<option value="land">🏞️ أرض</option>
+<option value="commercial">🏬 تجاري</option>
+<option value="industrial">🏭 صناعي</option>
+<option value="agricultural">🌾 زراعي</option>
+<option value="tourist">🏖️ سياحي</option>
+</select>
+<select id="filterTransaction" onchange="applyFilters()">
+<option value="">جميع الصفقات</option>
+<option value="sale">💰 للبيع</option>
+<option value="rent">🔑 للإيجار</option>
+<option value="investment">📈 استثمار</option>
+</select>
+<input id="filterMinPrice" type="number" placeholder="السعر من" oninput="applyFilters()">
+<input id="filterMaxPrice" type="number" placeholder="السعر إلى" oninput="applyFilters()">
+<button type="button" class="secondary-btn" onclick="resetFilters()">🔄 إعادة ضبط</button>
 </div>
 
-<div class="design-card" ondblclick="openDesignModal(1)">
-<div class="design-icon">⚛️</div><h3>التصميم الذري</h3>
-<p>فكرة برج مستوحى من شكل الذرة، بتكوين هندسي مميز وحركة بصرية مستقبلية.</p>
-<div class="design-footer"><span>فكرة هندسية</span><button type="button" class="like-btn" onclick="event.stopPropagation();likeDesign(1,this)">♡ إعجاب</button></div>
+<div class="stats">
+<div class="stat-card"><div id="propertiesCount" class="stat-number">0</div><div class="stat-label">إجمالي العقارات</div></div>
+<div class="stat-card"><div id="propertiesSaleCount" class="stat-number">0</div><div class="stat-label">للبيع</div></div>
+<div class="stat-card"><div id="propertiesRentCount" class="stat-number">0</div><div class="stat-label">للإيجار</div></div>
 </div>
 
-<div class="design-card" ondblclick="openDesignModal(2)">
-<div class="design-icon">⚔️</div><h3>السيف والنخلة</h3>
-<p>تصميم معماري مستوحى من رموز الهوية السعودية بطريقة حديثة وفخمة.</p>
-<div class="design-footer"><span>تصميم رمزي</span><button type="button" class="like-btn" onclick="event.stopPropagation();likeDesign(2,this)">♡ إعجاب</button></div>
-</div>
-
-<div class="design-card" ondblclick="openDesignModal(3)">
-<div class="design-icon">🌆</div><h3>مدينة المستقبل</h3>
-<p>تصور لمدينة ذكية تعتمد على التقنية والاستدامة والحركة الحديثة.</p>
-<div class="design-footer"><span>مدينة ذكية</span><button type="button" class="like-btn" onclick="event.stopPropagation();likeDesign(3,this)">♡ إعجاب</button></div>
-</div>
-
+<div id="propertiesGrid" class="property-grid">
+<div class="empty-state">جاري تحميل العقارات...</div>
 </div>
 </section>
 
-<section id="ideas" class="section">
-<h2 class="section-title">مولد الأفكار</h2>
-<p class="section-subtitle">اكتب فكرتك وسيساعدك KAPO ONE في تحويلها إلى تصور أولي لمشروع.</p>
-
-<div class="idea-box">
-<div class="idea-row">
-<input id="ideaInput" type="text" placeholder="مثال: برج على شكل ذرة">
-<button type="button" class="primary-btn" onclick="generateIdea()">توليد الفكرة</button>
-</div>
-<div id="ideaResult" class="idea-result hidden"></div>
-</div>
-
-<h3>الأفكار السابقة</h3>
-<div id="ideasList" class="idea-list"></div>
-</section>
-
-<section id="channels" class="section">
-<h2 class="section-title">القنوات</h2>
-<p class="section-subtitle">مساحات تفاعلية لمشاركة المنشورات والأفكار والنقاشات داخل KAPO ONE.</p>
-
-<div class="community-grid">
-
-<div class="community-card channel-card" onclick="openChannel('projects')">
-<h3>🏗️ قناة المشاريع</h3><p>ناقش المشاريع والتصاميم والأفكار المعمارية والهندسية.</p>
-<button type="button" class="primary-btn channel-enter" onclick="event.stopPropagation();openChannel('projects')">دخول القناة</button>
-</div>
-
-<div class="community-card channel-card" onclick="openChannel('ideas')">
-<h3>💡 قناة الأفكار</h3><p>شارك أفكارك الجديدة واطلع على رؤى وأفكار المستخدمين.</p>
-<button type="button" class="primary-btn channel-enter" onclick="event.stopPropagation();openChannel('ideas')">دخول القناة</button>
-</div>
-
-<div class="community-card channel-card" onclick="openChannel('engineering')">
-<h3>📐 قناة الهندسة</h3><p>نقاشات حول التصميم والهندسة والحلول المعمارية.</p>
-<button type="button" class="primary-btn channel-enter" onclick="event.stopPropagation();openChannel('engineering')">دخول القناة</button>
-</div>
-
-<div class="community-card channel-card" onclick="openChannel('kapo')">
-<h3>🌐 قناة KAPO ONE</h3><p>مساحة عامة للتواصل والتفاعل مع محتوى المنصة.</p>
-<button type="button" class="primary-btn channel-enter" onclick="event.stopPropagation();openChannel('kapo')">دخول القناة</button>
-</div>
-
-</div>
-</section>
-
-<section id="answers" class="section">
-<h2 class="section-title">الإجابات</h2>
-<p class="section-subtitle">اطرح سؤالاً واحتفظ بأسئلتك داخل مجتمع KAPO ONE.</p>
-
-<div class="idea-box">
-<div class="idea-row">
-<input id="questionInput" type="text" placeholder="اكتب سؤالك هنا...">
-<button type="button" class="primary-btn" onclick="addQuestion()">نشر السؤال</button>
-</div>
-</div>
-<div id="questionsList" class="question-list"></div>
-</section>
-
-<section id="notifications" class="section">
-<h2 class="section-title">🔔 الإشعارات</h2>
-<p class="section-subtitle">تابع الإعجابات والتعليقات والتفاعل مع محتواك داخل KAPO ONE.</p>
-
-<div class="notifications-toolbar">
-
-<div>
-<strong id="notificationsCountText">0 إشعار</strong>
-</div>
-
-<div class="notifications-actions">
-<button type="button" class="secondary-btn" onclick="markAllNotificationsRead()">
-✅ تحديد الكل كمقروء
-</button>
-
-<button type="button" class="secondary-btn" onclick="deleteAllNotifications()">
-🗑️ حذف الكل
-</button>
-</div>
-
-</div>
-
-<div id="notificationsList">
-<div class="notification-loading">
-جاري تحميل الإشعارات...
-</div>
-</div>
-</section>
-
+<!-- ===== حسابي ===== -->
 <section id="profile" class="section">
 <h2 class="section-title">حسابي</h2>
-<p class="section-subtitle">معلومات حسابك وإحصاءات نشاطك في منصة KAPO ONE.</p>
-
-<div class="profile-card">
-
-<div class="profile-head">
-
-<div id="profileAvatar" class="profile-avatar">K</div>
-
-<div class="profile-head-actions">
-
-<div>
-<div id="profileName" class="profile-name">زائر</div>
-<div id="profileEmail" class="profile-email">-</div>
+<p class="section-subtitle">معلومات حسابك وإحصاءاتك في المنصة.</p>
+<div class="profile-card" style="background:#0f172a;border:1px solid rgba(148,163,184,.14);border-radius:24px;padding:25px">
+<div style="display:flex;align-items:center;gap:16px;margin-bottom:22px">
+<div id="profileAvatar" class="user-avatar" style="width:78px;height:78px;border-radius:22px;font-size:28px">K</div>
+<div><div id="profileName" style="font-size:25px;font-weight:900">زائر</div><div id="profileEmail" style="color:#94a3b8">-</div></div>
 </div>
-
-<button
-type="button"
-class="profile-edit-btn"
-onclick="openProfileModal()"
->
-✏️ تعديل الملف
-</button>
-
-</div>
-
-</div>
-
-<div class="profile-stats">
-
-<div class="profile-stat">
-<div id="profileProjectsCount" class="profile-stat-number">0</div>
-<div class="profile-stat-label">مشاريعي</div>
-</div>
-
-<div class="profile-stat">
-<div id="profileLikesCount" class="profile-stat-number">0</div>
-<div class="profile-stat-label">إعجاباتي</div>
-</div>
-
-<div class="profile-stat">
-<div id="profileCommentsCount" class="profile-stat-number">0</div>
-<div class="profile-stat-label">تعليقاتي</div>
-</div>
-
-</div>
-
-<div class="profile-info">
-
-<div class="info-box">
-<div class="info-label">الاسم</div>
-<div id="profileNameInfo" class="info-value">زائر</div>
-</div>
-
-<div class="info-box">
-<div class="info-label">البريد الإلكتروني</div>
-<div id="profileEmailInfo" class="info-value">-</div>
-</div>
-
-</div>
-
-<button
-type="button"
-class="logout-btn"
-onclick="logoutUser()"
->
-تسجيل الخروج
-</button>
-
+<button type="button" class="logout-btn" style="border:1px solid rgba(239,68,68,.3);background:rgba(239,68,68,.08);color:#fca5a5;padding:12px 18px;border-radius:13px;font-weight:800;cursor:pointer" onclick="logoutUser()">تسجيل الخروج</button>
 </div>
 </section>
 
 </main>
 </div>
 
-<div id="addProjectModal" class="modal" onclick="closeAddProjectModal()">
+<!-- ===== مودال إضافة عقار ===== -->
+<div id="addPropertyModal" class="modal" onclick="closeAddPropertyModal()">
 <div class="modal-box" onclick="event.stopPropagation()">
-<div class="modal-header">
-<h2>إضافة مشروع</h2>
-<button type="button" class="close-btn" onclick="closeAddProjectModal()">×</button>
-</div>
+<div class="modal-header"><h2>➕ إضافة عقار جديد</h2><button type="button" class="close-btn" onclick="closeAddPropertyModal()">×</button></div>
 <div class="modal-content">
-<div class="auth-form">
-<input id="projectTitle" type="text" placeholder="اسم المشروع">
-<textarea id="projectDescription" rows="5" placeholder="وصف المشروع"></textarea>
-<input id="projectImage" type="url" placeholder="رابط صورة المشروع - اختياري">
+<div class="form-grid">
+<div class="full-width"><label>عنوان العقار</label><input id="propTitle" placeholder="مثال: فيلا فاخرة في الرياض"></div>
+<div class="full-width"><label>الوصف</label><textarea id="propDescription" rows="3" placeholder="وصف العقار..."></textarea></div>
+
+<div><label>نوع العقار</label>
+<select id="propType">
+<option value="apartment">🏢 شقة</option><option value="villa">🏡 فيلا</option>
+<option value="land">🏞️ أرض</option><option value="commercial">🏬 تجاري</option>
+<option value="industrial">🏭 صناعي</option><option value="agricultural">🌾 زراعي</option>
+<option value="tourist">🏖️ سياحي</option>
+</select></div>
+
+<div><label>نوع الصفقة</label>
+<select id="propTransaction">
+<option value="sale">💰 للبيع</option><option value="rent">🔑 للإيجار</option>
+<option value="investment">📈 استثمار</option>
+</select></div>
+
+<div><label>الدولة</label><input id="propCountry" placeholder="مثال: السعودية"></div>
+<div><label>المدينة</label><input id="propCity" placeholder="مثال: الرياض"></div>
+<div><label>الحي</label><input id="propNeighborhood" placeholder="مثال: العليا"></div>
+
+<div><label>السعر</label><input id="propPrice" type="number" placeholder="0"></div>
+<div><label>العملة</label>
+<select id="propCurrency">
+<option value="USD">🇺🇸 دولار</option><option value="SAR">🇸🇦 ريال</option>
+<option value="EUR">🇪🇺 يورو</option><option value="AED">🇦🇪 درهم</option>
+<option value="TRY">🇹🇷 ليرة</option><option value="GBP">🇬🇧 جنيه</option>
+</select></div>
+
+<div><label>المساحة (م²)</label><input id="propArea" type="number" placeholder="0"></div>
+<div><label>غرف النوم</label><input id="propBedrooms" type="number" placeholder="0"></div>
+<div><label>الحمامات</label><input id="propBathrooms" type="number" placeholder="0"></div>
+
+<div class="full-width"><label>رابط الصورة</label><input id="propImage" placeholder="https://example.com/image.jpg"></div>
+<div class="full-width"><label>رقم واتساب للتواصل</label><input id="propWhatsapp" placeholder="مثال: 966501234567"></div>
+<div id="addPropMessage" class="auth-message hidden"></div>
 </div>
-<div id="addProjectMessage" class="auth-message hidden"></div>
 </div>
 <div class="modal-actions">
-<button type="button" class="primary-btn" onclick="saveNewProject()">حفظ المشروع</button>
-<button type="button" class="secondary-btn" onclick="closeAddProjectModal()">إلغاء</button>
+<button type="button" class="primary-btn" onclick="saveProperty()">💾 حفظ العقار</button>
+<button type="button" class="secondary-btn" onclick="closeAddPropertyModal()">إلغاء</button>
 </div>
 </div>
 </div>
 
-<div id="profileModal" class="modal" onclick="closeProfileModal()">
+<!-- ===== مودال تفاصيل العقار ===== -->
+<div id="propertyDetailModal" class="modal" onclick="closePropertyDetail()">
 <div class="modal-box" onclick="event.stopPropagation()">
-
-<div class="modal-header">
-<h2>✏️ تعديل الملف الشخصي</h2>
-<button type="button" class="close-btn" onclick="closeProfileModal()">×</button>
-</div>
-
-<div class="modal-content">
-
-<div class="profile-preview">
-<div id="profilePreviewAvatar" class="profile-preview-avatar">K</div>
-</div>
-
-<div class="profile-edit-box">
-
-<label for="editProfileName">الاسم</label>
-
-<input
-id="editProfileName"
-type="text"
-maxlength="80"
-placeholder="اكتب اسمك"
-/>
-
-<label for="editProfileAvatar">رابط الصورة الشخصية</label>
-
-<input
-id="editProfileAvatar"
-type="url"
-placeholder="https://example.com/image.jpg"
-oninput="previewProfileAvatar()"
-/>
-
-<div class="profile-edit-note">
-يمكنك وضع رابط صورة مباشر من الإنترنت. الصورة اختيارية، وإذا تركتها فارغة سيظهر أول حرف من اسمك.
-</div>
-
-<div id="profileEditMessage" class="auth-message hidden"></div>
-
-</div>
-
-</div>
-
-<div class="modal-actions">
-
-<button
-type="button"
-class="primary-btn"
-onclick="saveProfileChanges()"
->
-حفظ التعديلات
-</button>
-
-<button
-type="button"
-class="secondary-btn"
-onclick="closeProfileModal()"
->
-إلغاء
-</button>
-
-</div>
-
-</div>
-</div>
-
-<div id="commentsModal" class="modal" onclick="closeCommentsModal()">
-<div class="modal-box" onclick="event.stopPropagation()">
-<div class="modal-header">
-<h2 id="commentsModalTitle">💬 التعليقات</h2>
-<button type="button" class="close-btn" onclick="closeCommentsModal()">×</button>
-</div>
-
-<div id="commentsModalContent" class="modal-content">
-<div class="comment-empty">جاري تحميل التعليقات...</div>
-</div>
-
-<div class="modal-actions">
-<button type="button" class="secondary-btn" onclick="closeCommentsModal()">إغلاق</button>
-</div>
-</div>
-</div>
-
-<div id="designModal" class="modal" onclick="closeDesignModal()">
-<div class="modal-box" onclick="event.stopPropagation()">
-<div class="modal-header">
-<h2 id="designModalTitle">التصميم</h2>
-<button type="button" class="close-btn" onclick="closeDesignModal()">×</button>
-</div>
-<div id="designModalContent" class="modal-content"></div>
-<div class="modal-actions">
-<button type="button" class="primary-btn" onclick="closeDesignModal()">إغلاق</button>
-</div>
-</div>
-</div>
-
-<div id="channelModal" class="modal" onclick="closeChannel()">
-<div class="modal-box" onclick="event.stopPropagation()">
-<div class="modal-header">
-<h2 id="channelModalTitle">القناة</h2>
-<button type="button" class="close-btn" onclick="closeChannel()">×</button>
-</div>
-<div id="channelModalContent" class="modal-content"></div>
-<div class="modal-actions">
-<button type="button" class="secondary-btn" onclick="closeChannel()">العودة للقنوات</button>
-</div>
+<div class="modal-header"><h2 id="detailTitle">تفاصيل العقار</h2><button type="button" class="close-btn" onclick="closePropertyDetail()">×</button></div>
+<div id="detailContent" class="modal-content"></div>
+<div class="modal-actions"><button type="button" class="secondary-btn" onclick="closePropertyDetail()">إغلاق</button></div>
 </div>
 </div>
 
 <div id="toast"></div>
 
 <script>
-const SUPABASE_URL="https://ehmeircigoqfhftaotba.supabase.co";
-const SUPABASE_KEY="sb_publishable_54N-aEBjhTQK1wUzpWl0fg_MQRq5D-T";
-const OWNER_ID="dfe5695d-c77a-4ccb-a1eb-901d28169be2";
-const SITE_URL="https://caapu11-debug.github.io/kapo-one/";
-
-let supabaseClient=null;
-
-function initSupabase(){
-if(window.supabase && typeof window.supabase.createClient==="function"){
-if(!supabaseClient){
-supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
-}
-return true;
-}
-return false;
-}
-
-let currentUser=null;
-let currentProfile=null;
-let projectsData=[];
-let currentProjectFilter="all";
-let currentDesignIndex=0;
-let currentChannelType=null;
-let currentCommentsProjectId=null;
-let currentChannelCommentsPostId=null;
-
-let notificationsData=[];
-
-let currentProfileStats={
-projects:0,
-likes:0,
-comments:0
-};
-
-const designs=[
-{title:"برج المستقبل",icon:"🏙️",description:"تصور معماري لبرج حديث يجمع بين التقنية والاستدامة والهوية المستقبلية.",type:"تصميم معماري",details:"برج مستقبلي يمكن تطويره ليضم مكاتب وشققاً فاخرة ومساحات تجارية ومرافق ذكية."},
-{title:"التصميم الذري",icon:"⚛️",description:"فكرة برج مستوحى من شكل الذرة، بتكوين هندسي مميز وحركة بصرية مستقبلية.",type:"فكرة هندسية",details:"يعتمد التصميم على مركز رئيسي تحيط به كتل أو مسارات دائرية تعطي البرج هوية بصرية فريدة."},
-{title:"السيف والنخلة",icon:"⚔️",description:"تصميم معماري مستوحى من رموز الهوية السعودية بطريقة حديثة وفخمة.",type:"تصميم رمزي",details:"يمكن تطوير الفكرة لتكون معلماً معمارياً أو برجاً متعدد الاستخدامات يعكس الهوية المحلية."},
-{title:"مدينة المستقبل",icon:"🌆",description:"تصور لمدينة ذكية تعتمد على التقنية والاستدامة والحركة الحديثة.",type:"مدينة ذكية",details:"مدينة تعتمد على النقل الذكي والطاقة النظيفة والمساحات الخضراء والبنية التحتية الرقمية."}
-];
-
-const channelData={
-projects:{title:"🏗️ قناة المشاريع",description:"ناقش المشاريع والتصاميم والأفكار المعمارية والهندسية."},
-ideas:{title:"💡 قناة الأفكار",description:"شارك أفكارك الجديدة واطلع على رؤى وأفكار المستخدمين."},
-engineering:{title:"📐 قناة الهندسة",description:"نقاشات حول التصميم والهندسة والحلول المعمارية."},
-kapo:{title:"🌐 قناة KAPO ONE",description:"مساحة عامة للتواصل والتفاعل مع محتوى المنصة."}
-};
-
-function showLoginForm(){
-document.getElementById("loginForm").classList.remove("hidden");
-document.getElementById("registerForm").classList.add("hidden");
-document.getElementById("resetForm").classList.add("hidden");
-clearAuthMessage();
-}
-
-function showRegisterForm(){
-document.getElementById("loginForm").classList.add("hidden");
-document.getElementById("registerForm").classList.remove("hidden");
-document.getElementById("resetForm").classList.add("hidden");
-clearAuthMessage();
-}
-
-function showResetForm(){
-document.getElementById("loginForm").classList.add("hidden");
-document.getElementById("registerForm").classList.add("hidden");
-document.getElementById("resetForm").classList.remove("hidden");
-clearAuthMessage();
-}
-
-function showAuthMessage(message){
-const box=document.getElementById("authMessage");
-box.textContent=message;
-box.classList.remove("hidden");
-}
-
-function clearAuthMessage(){
-const box=document.getElementById("authMessage");
-box.classList.add("hidden");
-box.textContent="";
-}
-
-/* =========================
-   APP / AUTH DISPLAY
-========================= */
-
-function showApp(){
-
-const authPage=document.getElementById("authPage");
-const app=document.getElementById("app");
-
-if(authPage){
-authPage.style.display="none";
-}
-
-if(app){
-app.classList.remove("hidden");
-app.style.display="block";
-}
-
-}
-
-function showAuthPage(){
-
-const authPage=document.getElementById("authPage");
-const app=document.getElementById("app");
-
-if(authPage){
-authPage.style.display="flex";
-}
-
-if(app){
-app.classList.add("hidden");
-app.style.display="none";
-}
-
-}
-
-async function loginUser(){
-clearAuthMessage();
-
-if(!initSupabase()){
-showAuthMessage("تعذر تحميل خدمة الدخول. تأكد من اتصال الإنترنت ثم أعد تحميل الصفحة.");
-return;
-}
-
-const email=document.getElementById("loginEmail").value.trim();
-const password=document.getElementById("loginPassword").value;
-
-if(!email||!password){
-showAuthMessage("أدخل البريد الإلكتروني وكلمة المرور.");
-return;
-}
-
-const button=document.querySelector("#loginForm .primary-btn");
-
-if(button){
-button.disabled=true;
-button.textContent="جاري تسجيل الدخول...";
-}
-
-try{
-const result=await supabaseClient.auth.signInWithPassword({email,password});
-
-if(result.error){
-console.error("Login error:",result.error);
-showAuthMessage(result.error.message||"البريد الإلكتروني أو كلمة المرور غير صحيحة.");
-return;
-}
-
-if(!result.data||!result.data.user){
-showAuthMessage("لم يتم تسجيل الدخول. حاول مرة أخرى.");
-return;
-}
-
-currentUser=result.data.user;
-
-await loadUserApp();
-
-showToast("تم تسجيل الدخول بنجاح.");
-
-}catch(error){
-console.error("Login exception:",error);
-showAuthMessage(error?.message||"حدث خطأ أثناء تسجيل الدخول.");
-}finally{
-if(button){
-button.disabled=false;
-button.textContent="تسجيل الدخول";
-}
-}
-}
-
-async function registerUser(){
-if(!initSupabase()){
-showAuthMessage("تعذر تحميل خدمة التسجيل. أعد تحميل الصفحة.");
-return;
-}
-
-const name=document.getElementById("registerName").value.trim();
-const email=document.getElementById("registerEmail").value.trim();
-const password=document.getElementById("registerPassword").value;
-
-if(!name||!email||!password){
-showAuthMessage("أكمل جميع البيانات.");
-return;
-}
-
-if(password.length<6){
-showAuthMessage("كلمة المرور يجب أن تكون 6 أحرف على الأقل.");
-return;
-}
-
-try{
-const {data,error}=await supabaseClient.auth.signUp({
-email,password,options:{data:{name:name}}
-});
-
-if(error){
-showAuthMessage(error.message);
-return;
-}
-
-if(data.user){
-currentUser=data.user;
-await createProfile(data.user,name);
-
-if(data.session){
-await loadUserApp();
-showToast("تم إنشاء الحساب بنجاح.");
-}else{
-showAuthMessage("تم إنشاء الحساب. تحقق من بريدك الإلكتروني لتفعيل الحساب.");
-}
-}
-}catch(error){
-console.error(error);
-showAuthMessage(error?.message||"حدث خطأ أثناء إنشاء الحساب.");
-}
-}
-
-async function createProfile(user,name){
-if(!user||!initSupabase())return;
-
-const {error}=await supabaseClient.from("profiles").upsert({
-id:user.id,
-name:name||user.user_metadata?.name||"مستخدم",
-email:user.email||""
-});
-
-if(error)console.error("Profile error:",error);
-}
-
-async function resetUserPassword(){
-if(!initSupabase()){
-showAuthMessage("تعذر تحميل خدمة الاستعادة. أعد تحميل الصفحة.");
-return;
-}
-
-const email=document.getElementById("resetEmail").value.trim();
-
-if(!email){
-showAuthMessage("أدخل البريد الإلكتروني.");
-return;
-}
-
-try{
-const {error}=await supabaseClient.auth.resetPasswordForEmail(
-email,
-{redirectTo:SITE_URL}
-);
-
-if(error){
-showAuthMessage(error.message);
-return;
-}
-
-showAuthMessage("تم إرسال رابط استعادة كلمة المرور إلى بريدك الإلكتروني.");
-
-}catch(error){
-console.error(error);
-showAuthMessage(error?.message||"حدث خطأ أثناء إرسال الرابط.");
-}
-}
-
-function enterGuest(){
-currentUser=null;
-currentProfile={name:"زائر",email:""};
-currentProfileStats={projects:0,likes:0,comments:0};
-notificationsData=[];
-updateNotificationBadge();
-showApp();
-updateUserUI();
-updateProfileStats();
-loadProjects();
-loadLocalCommunity();
-showSection("home");
-showToast("تم الدخول كزائر.");
-}
-
-async function checkCurrentUser(){
-if(!initSupabase()){
-console.warn("Supabase library is not available yet.");
-showAuthPage();
-return;
-}
-
-try{
-const {data,error}=await supabaseClient.auth.getSession();
-
-if(error){
-console.error("Session error:",error);
-showAuthPage();
-return;
-}
-
-if(data.session){
-currentUser=data.session.user;
-await loadUserApp();
-}else{
-showAuthPage();
-}
-
-}catch(error){
-console.error("Session exception:",error);
-showAuthPage();
-}
-}
-
-function setupAuthListener(){
-if(!initSupabase())return;
-
-supabaseClient.auth.onAuthStateChange((event,session)=>{
-
-if(event==="SIGNED_IN"&&session){
-currentUser=session.user;
-}
-
-if(event==="SIGNED_OUT"){
-currentUser=null;
-currentProfile=null;
-notificationsData=[];
-currentProfileStats={projects:0,likes:0,comments:0};
-updateNotificationBadge();
-showAuthPage();
-}
-
-});
-}
-
-async function loadUserApp(){
-
-if(currentUser){
-
-try{
-await loadProfile();
-}catch(error){
-console.error("loadProfile error:",error);
-}
-
-}
-
-showApp();
-updateUserUI();
-
-try{
-await loadProjects();
-}catch(e){
-console.error(e);
-}
-
-await loadProfileStats();
-await loadNotifications();
-
-loadLocalCommunity();
-showSection("home");
-}
-
-async function loadProfile(){
-
-if(!currentUser){
-currentProfile={name:"زائر",email:""};
-return;
-}
-
-try{
-
-const {data,error}=await supabaseClient
-.from("profiles")
-.select("*")
-.eq("id",currentUser.id)
-.maybeSingle();
-
-if(error)console.error(error);
-
-if(data){
-currentProfile=data;
-}else{
-currentProfile={
-id:currentUser.id,
-name:currentUser.user_metadata?.name||currentUser.email?.split("@")[0]||"مستخدم",
-email:currentUser.email||""
-};
-}
-
-}catch(error){
-
-console.error(error);
-
-currentProfile={
-name:currentUser.user_metadata?.name||currentUser.email?.split("@")[0]||"مستخدم",
-email:currentUser.email||""
-};
-
-}
-}
-
-/* =========================
-   PROFILE STATS
-========================= */
-
-async function loadProfileStats(){
-
-if(!currentUser||!initSupabase()){
-
-currentProfileStats={
-projects:0,
-likes:0,
-comments:0
-};
-
-updateProfileStats();
-
-return;
-}
-
-try{
-
-const [
-projectsResult,
-projectLikesResult,
-projectCommentsResult,
-channelLikesResult,
-channelCommentsResult,
-commentLikesResult
-]=await Promise.all([
-
-supabaseClient
-.from("projects")
-.select("id",{count:"exact",head:true})
-.eq("user_id",currentUser.id),
-
-supabaseClient
-.from("likes")
-.select("id",{count:"exact",head:true})
-.eq("user_id",currentUser.id),
-
-supabaseClient
-.from("comments")
-.select("id",{count:"exact",head:true})
-.eq("user_id",currentUser.id),
-
-supabaseClient
-.from("channel_likes")
-.select("id",{count:"exact",head:true})
-.eq("user_id",currentUser.id),
-
-supabaseClient
-.from("channel_comments")
-.select("id",{count:"exact",head:true})
-.eq("user_id",currentUser.id),
-
-supabaseClient
-.from("comment_likes")
-.select("id",{count:"exact",head:true})
-.eq("user_id",currentUser.id)
-
-]);
-
-if(projectsResult.error)console.error("Profile projects stats:",projectsResult.error);
-if(projectLikesResult.error)console.error("Profile project likes stats:",projectLikesResult.error);
-if(projectCommentsResult.error)console.error("Profile project comments stats:",projectCommentsResult.error);
-if(channelLikesResult.error)console.error("Profile channel likes stats:",channelLikesResult.error);
-if(channelCommentsResult.error)console.error("Profile channel comments stats:",channelCommentsResult.error);
-if(commentLikesResult.error)console.error("Profile comment likes stats:",commentLikesResult.error);
-
-const projects=Number(projectsResult.count||0);
-
-const likes=
-Number(projectLikesResult.count||0)+
-Number(channelLikesResult.count||0)+
-Number(commentLikesResult.count||0);
-
-const comments=
-Number(projectCommentsResult.count||0)+
-Number(channelCommentsResult.count||0);
-
-currentProfileStats={
-projects,
-likes,
-comments
-};
-
-updateProfileStats();
-
-}catch(error){
-
-console.error("Profile stats error:",error);
-
-updateProfileStats();
-
-}
-}
-
-function updateProfileStats(){
-
-const projects=document.getElementById("profileProjectsCount");
-const likes=document.getElementById("profileLikesCount");
-const comments=document.getElementById("profileCommentsCount");
-
-if(projects)projects.textContent=Number(currentProfileStats.projects||0);
-if(likes)likes.textContent=Number(currentProfileStats.likes||0);
-if(comments)comments.textContent=Number(currentProfileStats.comments||0);
-}
-
-/* =========================
-   PROFILE EDIT
-========================= */
-
-function openProfileModal(){
-
-if(!currentUser){
-
-showToast("سجل الدخول أولاً لتعديل الملف الشخصي.");
-return;
-
-}
-
-const name=
-currentProfile?.name||
-currentUser.user_metadata?.name||
-currentUser.email?.split("@")[0]||
-"مستخدم";
-
-const avatar=
-currentProfile?.avatar_url||
-currentUser.user_metadata?.avatar_url||
-"";
-
-document.getElementById("editProfileName").value=name;
-document.getElementById("editProfileAvatar").value=avatar;
-
-const message=document.getElementById("profileEditMessage");
-
-if(message){
-message.classList.add("hidden");
-message.textContent="";
-}
-
-previewProfileAvatar();
-
-document.getElementById("profileModal").classList.add("active");
-}
-
-function closeProfileModal(){
-document.getElementById("profileModal").classList.remove("active");
-}
-
-function showProfileEditMessage(message){
-
-const box=document.getElementById("profileEditMessage");
-
-box.textContent=message;
-box.classList.remove("hidden");
-
-}
-
-function previewProfileAvatar(){
-
-const preview=document.getElementById("profilePreviewAvatar");
-
-if(!preview)return;
-
-const url=
-document.getElementById("editProfileAvatar")?.value.trim()||"";
-
-const name=
-document.getElementById("editProfileName")?.value.trim()||
-currentProfile?.name||
-"مستخدم";
-
-const first=
-name.charAt(0).toUpperCase()||"K";
-
-preview.innerHTML="";
-
-if(url){
-
-const img=document.createElement("img");
-
-img.src=url;
-img.alt="صورة الحساب";
-
-img.onerror=function(){
-preview.innerHTML="";
-preview.textContent=first;
-};
-
-preview.appendChild(img);
-
-}else{
-
-preview.textContent=first;
-
-}
-}
-
-async function saveProfileChanges(){
-
-if(!currentUser){
-
-showProfileEditMessage("يجب تسجيل الدخول لتعديل الملف الشخصي.");
-return;
-
-}
-
-if(!initSupabase()){
-
-showProfileEditMessage("تعذر الاتصال بقاعدة البيانات.");
-return;
-
-}
-
-const name=
-document.getElementById("editProfileName")
-.value
-.trim();
-
-const avatarUrl=
-document.getElementById("editProfileAvatar")
-.value
-.trim();
-
-if(!name){
-
-showProfileEditMessage("اكتب الاسم أولاً.");
-return;
-
-}
-
-if(name.length>80){
-
-showProfileEditMessage("الاسم طويل جداً.");
-return;
-
-}
-
-const button=
-document.querySelector("#profileModal .primary-btn");
-
-if(button){
-
-button.disabled=true;
-button.textContent="جاري الحفظ...";
-}
-
-try{
-
-const {error:profileError}=await supabaseClient
-.from("profiles")
-.update({
-name:name
-})
-.eq("id",currentUser.id);
-
-if(profileError){
-
-console.error("Profile update error:",profileError);
-
-showProfileEditMessage(
-profileError.message||
-"تعذر حفظ الاسم في الملف الشخصي."
-);
-
-return;
-}
-
-const {data:userData,error:authError}=await supabaseClient.auth.updateUser({
-
-data:{
-name:name,
-avatar_url:avatarUrl||null
-}
-
-});
-
-if(authError){
-
-console.error("Auth profile update error:",authError);
-
-showProfileEditMessage(
-"تم تحديث الاسم، لكن تعذر حفظ الصورة."
-);
-
-await loadProfile();
-updateUserUI();
-
-return;
-
-}
-
-if(userData?.user){
-currentUser=userData.user;
-}
-
-currentProfile={
-...(currentProfile||{}),
-name:name,
-email:currentUser.email||currentProfile?.email||"",
-avatar_url:avatarUrl||""
-};
-
-updateUserUI();
-
-closeProfileModal();
-
-showToast("تم تحديث الملف الشخصي بنجاح ✅");
-
-}catch(error){
-
-console.error("Save profile exception:",error);
-
-showProfileEditMessage(
-error?.message||
-"حدث خطأ أثناء حفظ الملف الشخصي."
-);
-
-}finally{
-
-if(button){
-
-button.disabled=false;
-button.textContent="حفظ التعديلات";
-
-}
-
-}
-}
-
-function updateAvatarElement(element,url,first){
-
-if(!element)return;
-
-element.innerHTML="";
-
-if(url){
-
-const img=document.createElement("img");
-
-img.src=url;
-img.alt="صورة الحساب";
-
-img.onerror=function(){
-
-element.innerHTML="";
-element.textContent=first;
-
-};
-
-element.appendChild(img);
-
-}else{
-
-element.textContent=first;
-
-}
-}
-
-function updateUserUI(){
-
-const name=currentProfile?.name||"زائر";
-const email=currentProfile?.email||currentUser?.email||"";
-const first=name.trim().charAt(0).toUpperCase()||"K";
-
-const avatarUrl=
-currentProfile?.avatar_url||
-currentUser?.user_metadata?.avatar_url||
-"";
-
-const miniAvatar=document.getElementById("miniUserAvatar");
-const profileAvatar=document.getElementById("profileAvatar");
-
-document.getElementById("miniUserName").textContent=name;
-
-updateAvatarElement(
-miniAvatar,
-avatarUrl,
-first
-);
-
-document.getElementById("profileName").textContent=name;
-document.getElementById("profileEmail").textContent=email||"الدخول كزائر";
-document.getElementById("profileNameInfo").textContent=name;
-document.getElementById("profileEmailInfo").textContent=email||"-";
-
-updateAvatarElement(
-profileAvatar,
-avatarUrl,
-first
-);
-
-updateProfileStats();
-}
-
-function showSection(id){
-
-document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
-
-const section=document.getElementById(id);
-
-if(section)section.classList.add("active");
-
-document.querySelectorAll(".nav-btn").forEach(button=>{
-button.classList.remove("active");
-
-if(button.dataset.section===id){
-button.classList.add("active");
-}
-});
-
-if(id==="projects")loadProjects();
-if(id==="ideas")loadLocalIdeas();
-if(id==="answers")loadQuestions();
-
-if(id==="notifications"){
-loadNotifications();
-}
-
-if(id==="profile"&&currentUser){
-
-loadProfile().then(()=>{
-updateUserUI();
-loadProfileStats();
-});
-
-}
-
-window.scrollTo({top:0,behavior:"smooth"});
-}
-
-/* =========================
-   NOTIFICATIONS
-========================= */
-
-function getCurrentActorName(){
-
-return(
-currentProfile?.name||
-currentUser?.user_metadata?.name||
-currentUser?.email?.split("@")[0]||
-"مستخدم"
-);
-
-async function createNotification({
-userId,
-actorId,
-type,
-message,
-projectId=null,
-postId=null,
-commentId=null
-}){
-
-if(!currentUser||!initSupabase())return;
-
-if(!userId||!actorId)return;
-
-if(String(userId)===String(actorId))return;
-
-try{
-
-const {error}=await supabaseClient
-.from("notifications")
-.insert({
-user_id:userId,
-actor_id:actorId,
-type:type,
-message:message,
-project_id:projectId,
-post_id:postId,
-comment_id:commentId,
-is_read:false
-});
-
-if(error){
-console.error("Create notification error:",error);
-return;
-}
-
-}catch(error){
-
-console.error("Create notification exception:",error);
-
-}
-
-}
-
-function getNotificationIcon(type){
-
-if(type==="project_like")return"❤️";
-if(type==="project_comment")return"💬";
-if(type==="channel_like")return"❤️";
-if(type==="channel_comment")return"💬";
-if(type==="comment_like")return"❤️";
-
-return"🔔";
-}
-
-async function loadNotifications(){
-
-const list=document.getElementById("notificationsList");
-
-if(!list)return;
-
-if(!currentUser||!initSupabase()){
-
-notificationsData=[];
-
-updateNotificationBadge();
-
-list.innerHTML=`
-<div class="notification-empty">
-🔐 سجل الدخول حتى تتمكن من مشاهدة إشعاراتك.
-</div>
-`;
-
-return;
-
-}
-
-list.innerHTML=`
-<div class="notification-loading">
-جاري تحميل الإشعارات...
-</div>
-`;
-
-try{
-
-const {data,error}=await supabaseClient
-.from("notifications")
-.select("*")
-.eq("user_id",currentUser.id)
-.order("created_at",{ascending:false})
-.limit(100);
-
-if(error){
-
-console.error("Load notifications error:",error);
-
-notificationsData=[];
-
-updateNotificationBadge();
-
-list.innerHTML=`
-<div class="notification-empty">
-تعذر تحميل الإشعارات.
-</div>
-`;
-
-return;
-
-}
-
-notificationsData=data||[];
-
-renderNotifications();
-
-}catch(error){
-
-console.error("Notifications exception:",error);
-
-notificationsData=[];
-
-updateNotificationBadge();
-
-list.innerHTML=`
-<div class="notification-empty">
-حدث خطأ أثناء تحميل الإشعارات.
-</div>
-`;
-
-}
-
-}
-
-function renderNotifications(){
-
-const list=document.getElementById("notificationsList");
-
-if(!list)return;
-
-const unreadCount=notificationsData.filter(
-notification=>!notification.is_read
-).length;
-
-const countText=document.getElementById("notificationsCountText");
-
-if(countText){
-countText.textContent=
-`${notificationsData.length} إشعار${notificationsData.length===1?"":"ات"}`
-+
-(unreadCount?` • ${unreadCount} غير مقروء`:"");
-}
-
-updateNotificationBadge();
-
-if(!notificationsData.length){
-
-list.innerHTML=`
-<div class="notification-empty">
-<div style="font-size:40px;margin-bottom:10px">🔔</div>
-لا توجد إشعارات حتى الآن.<br>
-ستظهر هنا عندما يتفاعل المستخدمون مع محتواك.
-</div>
-`;
-
-return;
-
-}
-
-list.innerHTML=notificationsData.map(notification=>{
-
-const icon=getNotificationIcon(notification.type);
-
-const message=escapeHtml(notification.message||"إشعار جديد");
-
-const date=notification.created_at
-?new Date(notification.created_at).toLocaleString("ar-SA")
-:"";
-
-const id=escapeAttribute(notification.id||"");
-
-return`
-<div
-class="notification-card ${notification.is_read?"":"unread"}"
-onclick="markNotificationRead('${id}')"
->
-
-<div class="notification-icon">
-${icon}
-</div>
-
-<div class="notification-body">
-
-<div class="notification-message">
-${message}
-</div>
-
-<div class="notification-date">
-${escapeHtml(date)}
-</div>
-
-<div class="notification-actions">
-
-${
-!notification.is_read
-?
-`
-<button
-type="button"
-class="notification-small-btn"
-onclick="event.stopPropagation();markNotificationRead('${id}')"
->
-✅ تحديد كمقروء
-</button>
-`
-:
-`
-<span style="font-size:11px;color:#64748b">
-✓ مقروء
-</span>
-`
-}
-
-<button
-type="button"
-class="notification-small-btn notification-delete-btn"
-onclick="event.stopPropagation();deleteNotification('${id}')"
->
-🗑️ حذف
-</button>
-
-</div>
-
-</div>
-
-</div>
-`;
-
-}).join("");
-
-}
-
-function updateNotificationBadge(){
-
-const badge=document.getElementById("notificationBadge");
-
-if(!badge)return;
-
-if(!currentUser){
-
-badge.textContent="0";
-badge.classList.add("hidden");
-return;
-
-}
-
-const unreadCount=notificationsData.filter(
-notification=>!notification.is_read
-).length;
-
-if(unreadCount>0){
-
-badge.textContent=
-unreadCount>99
-?"99+"
-:String(unreadCount);
-
-badge.classList.remove("hidden");
-
-}else{
-
-badge.textContent="0";
-badge.classList.add("hidden");
-
-}
-
-}
-
-async function markNotificationRead(notificationId){
-
-if(!currentUser||!initSupabase())return;
-
-const notification=notificationsData.find(
-item=>String(item.id)===String(notificationId)
-);
-
-if(!notification)return;
-
-if(notification.is_read)return;
-
-try{
-
-const {error}=await supabaseClient
-.from("notifications")
-.update({
-is_read:true
-})
-.eq("id",notificationId)
-.eq("user_id",currentUser.id);
-
-if(error){
-
-console.error("Mark notification read error:",error);
-return;
-
-}
-
-notification.is_read=true;
-
-renderNotifications();
-
-}catch(error){
-
-console.error("Mark notification read exception:",error);
-
-}
-
-}
-
-async function markAllNotificationsRead(){
-
-if(!currentUser){
-
-showToast("سجل الدخول أولاً.");
-
-return;
-
-}
-
-if(!initSupabase())return;
-
-const unread=notificationsData.filter(
-notification=>!notification.is_read
-);
-
-if(!unread.length){
-
-showToast("جميع الإشعارات مقروءة بالفعل.");
-
-return;
-
-}
-
-try{
-
-const {error}=await supabaseClient
-.from("notifications")
-.update({
-is_read:true
-})
-.eq("user_id",currentUser.id)
-.eq("is_read",false);
-
-if(error){
-
-console.error("Mark all notifications error:",error);
-
-showToast("تعذر تحديث الإشعارات.");
-
-return;
-
-}
-
-notificationsData.forEach(notification=>{
-notification.is_read=true;
-});
-
-renderNotifications();
-
-showToast("تم تحديد جميع الإشعارات كمقروءة ✅");
-
-}catch(error){
-
-console.error(error);
-
-showToast("حدث خطأ أثناء تحديث الإشعارات.");
-
-}
-
-}
-
-async function deleteNotification(notificationId){
-
-if(!currentUser){
-
-showToast("سجل الدخول أولاً.");
-
-return;
-
-}
-
-if(!initSupabase())return;
-
-try{
-
-const {error}=await supabaseClient
-.from("notifications")
-.delete()
-.eq("id",notificationId)
-.eq("user_id",currentUser.id);
-
-if(error){
-
-console.error("Delete notification error:",error);
-
-showToast("تعذر حذف الإشعار.");
-
-return;
-
-}
-
-notificationsData=
-notificationsData.filter(
-notification=>String(notification.id)!==String(notificationId)
-);
-
-renderNotifications();
-
-showToast("تم حذف الإشعار.");
-
-}catch(error){
-
-console.error(error);
-
-showToast("حدث خطأ أثناء حذف الإشعار.");
-
-}
-
-}
-
-async function deleteAllNotifications(){
-
-if(!currentUser){
-
-showToast("سجل الدخول أولاً.");
-
-return;
-
-}
-
-if(!initSupabase())return;
-
-if(!notificationsData.length){
-
-showToast("لا توجد إشعارات لحذفها.");
-
-return;
-
-}
-
-if(!confirm("هل تريد حذف جميع الإشعارات؟"))return;
-
-try{
-
-const {error}=await supabaseClient
-.from("notifications")
-.delete()
-.eq("user_id",currentUser.id);
-
-if(error){
-
-console.error("Delete all notifications error:",error);
-
-showToast("تعذر حذف الإشعارات.");
-
-return;
-
-}
-
-notificationsData=[];
-
-renderNotifications();
-
-showToast("تم حذف جميع الإشعارات.");
-
-}catch(error){
-
-console.error(error);
-
-showToast("حدث خطأ أثناء حذف الإشعارات.");
-
-}
-
-}
-
-/* =========================
-   PROJECTS
-========================= */
-
-async function loadProjects(){
-
-const grid=document.getElementById("projectsGrid");
-
-if(!grid)return;
-
-if(!initSupabase()){
-grid.innerHTML=`<div class="empty-state">تعذر الاتصال بخدمة المشاريع.</div>`;
-return;
-}
-
-grid.innerHTML=`<div class="empty-state">جاري تحميل المشاريع...</div>`;
-
-try{
-
-const {data,error}=await supabaseClient
-.from("projects")
-.select("*")
-.order("created_at",{ascending:false});
-
-if(error){
-console.error(error);
-projectsData=[];
-renderProjects();
-return;
-}
-
-projectsData=data||[];
-
-await loadProjectSocialData();
-
-}catch(error){
-
-console.error(error);
-
-projectsData=[];
-
-renderProjects();
-
-}
-}
-
-async function loadProjectSocialData(){
-
-if(!projectsData.length){
-renderProjects();
-return;
-}
-
-if(!initSupabase()){
-renderProjects();
-return;
-}
-
-try{
-
-const projectIds=projectsData
-.map(project=>project.id)
-.filter(Boolean);
-
-if(!projectIds.length){
-renderProjects();
-return;
-}
-
-const likesResult=await supabaseClient
-.from("likes")
-.select("id,project_id,user_id")
-.in("project_id",projectIds);
-
-if(likesResult.error)console.error("Likes load error:",likesResult.error);
-
-const likes=likesResult.data||[];
-
-const commentsResult=await supabaseClient
-.from("comments")
-.select("id,project_id,user_id,content,created_at")
-.in("project_id",projectIds);
-
-if(commentsResult.error)console.error("Comments load error:",commentsResult.error);
-
-const comments=commentsResult.data||[];
-
-projectsData=projectsData.map(project=>{
-
-const projectLikes=likes.filter(
-like=>like.project_id===project.id
-);
-
-const projectComments=comments.filter(
-comment=>comment.project_id===project.id
-);
-
-const userLiked=!!(
-currentUser &&
-projectLikes.some(
-like=>like.user_id===currentUser.id
-)
-);
-
-return{
-...project,
-_likeCount:projectLikes.length,
-_commentCount:projectComments.length,
-_userLiked:userLiked
-};
-
-});
-
-renderProjects();
-
-}catch(error){
-
-console.error("Social data error:",error);
-
-projectsData=projectsData.map(project=>({
-...project,
-_likeCount:project._likeCount||0,
-_commentCount:project._commentCount||0,
-_userLiked:project._userLiked||false
-}));
-
-renderProjects();
-
-}
-}
-
-function renderProjects(){
-
-const grid=document.getElementById("projectsGrid");
-
-if(!grid)return;
-
-const search=(document.getElementById("projectSearch")?.value||"")
-.toLowerCase()
-.trim();
-
-let list=[...projectsData];
-
-if(currentProjectFilter==="images"){
-list=list.filter(p=>p.image_url);
-}
-
-if(currentProjectFilter==="noimages"){
-list=list.filter(p=>!p.image_url);
-}
-
-if(search){
-
-list=list.filter(p=>
-(p.title||"").toLowerCase().includes(search)||
-(p.description||"").toLowerCase().includes(search)
-);
-
-}
-
-const total=projectsData.length;
-const images=projectsData.filter(p=>p.image_url).length;
-
-document.getElementById("projectsCount").textContent=total;
-document.getElementById("projectsImagesCount").textContent=images;
-document.getElementById("projectsNoImagesCount").textContent=total-images;
-
-if(!list.length){
-
-grid.innerHTML=`
-<div class="empty-state">
-لا توجد مشاريع مطابقة للبحث.
-</div>`;
-
-return;
-}
-
-grid.innerHTML=list.map(project=>{
-
-const title=escapeHtml(project.title||"مشروع بدون اسم");
-const description=escapeHtml(project.description||"لا يوجد وصف.");
-const id=escapeAttribute(project.id||"");
-
-const likeCount=Number(project._likeCount||0);
-const commentCount=Number(project._commentCount||0);
-const liked=project._userLiked===true;
-
-const image=project.image_url
-?`
-<img
-class="project-image"
-src="${escapeAttribute(project.image_url)}"
-alt="${title}"
-onerror="this.style.display='none'"
->
-`
-:
-`
-<div class="project-placeholder">🏗️</div>
-`;
-
-return `
-<div class="project-card">
-
-${image}
-
-<div class="project-content">
-
-<div class="project-title">${title}</div>
-
-<div class="project-description">
-${description}
-</div>
-
-<div class="project-meta">
-KAPO ONE
-</div>
-
-<div class="project-actions">
-
-<button
-type="button"
-class="icon-btn project-like-btn ${liked?"liked":""}"
-onclick="likeProject('${id}',this)"
->
-${liked?"♥":"♡"} إعجاب <span class="like-count">${likeCount}</span>
-</button>
-
-<button
-type="button"
-class="icon-btn project-comments-btn"
-onclick="commentProject('${id}')"
->
-💬 التعليقات <span class="comment-count">${commentCount}</span>
-</button>
-
-</div>
-
-</div>
-
-</div>
-`;
-
-}).join("");
-}
-
-function setProjectFilter(filter,button){
-
-currentProjectFilter=filter;
-
-document.querySelectorAll(".filter-btn")
-.forEach(btn=>btn.classList.remove("active"));
-
-if(button){
-button.classList.add("active");
-}
-
-renderProjects();
-}
-
-function openAddProjectModal(){
-
-document.getElementById("addProjectModal")
-.classList.add("active");
-
-document.getElementById("addProjectMessage")
-.classList.add("hidden");
-}
-
-function closeAddProjectModal(){
-
-document.getElementById("addProjectModal")
-.classList.remove("active");
-
-}
-
-async function saveNewProject(){
-
-if(!currentUser){
-showAddProjectMessage("يجب تسجيل الدخول لإضافة مشروع.");
-return;
-}
-
-if(!initSupabase()){
-showAddProjectMessage("تعذر الاتصال بقاعدة البيانات.");
-return;
-}
-
-const title=document.getElementById("projectTitle").value.trim();
-const description=document.getElementById("projectDescription").value.trim();
-const image=document.getElementById("projectImage").value.trim();
-
-if(!title){
-showAddProjectMessage("اكتب اسم المشروع.");
-return;
-}
-
-try{
-
-const {error}=await supabaseClient
-.from("projects")
-.insert({
-title,
-description:description||"",
-image_url:image||null,
-user_id:currentUser.id
-});
-
-if(error){
-console.error(error);
-showAddProjectMessage(error.message);
-return;
-}
-
-closeAddProjectModal();
-
-document.getElementById("projectTitle").value="";
-document.getElementById("projectDescription").value="";
-document.getElementById("projectImage").value="";
-
-await loadProjects();
-await loadProfileStats();
-
-showToast("تم حفظ المشروع بنجاح.");
-
-}catch(error){
-
-console.error(error);
-showAddProjectMessage("حدث خطأ أثناء حفظ المشروع.");
-
-}
-}
-
-function showAddProjectMessage(message){
-
-const box=document.getElementById("addProjectMessage");
-
-box.textContent=message;
-box.classList.remove("hidden");
-
-}
-
-/* =========================
-   PROJECT LIKE
-========================= */
-
-async function likeProject(projectId,button){
-
-if(!currentUser){
-
-showToast("سجل الدخول أولاً لإضافة إعجاب.");
-return;
-
-}
-
-if(!initSupabase())return;
-
-const project=projectsData.find(
-p=>String(p.id)===String(projectId)
-);
-
-if(!project)return;
-
-try{
-
-if(project._userLiked){
-
-const {error}=await supabaseClient
-.from("likes")
-.delete()
-.eq("project_id",projectId)
-.eq("user_id",currentUser.id);
-
-if(error){
-
-console.error(error);
-showToast("تعذر إلغاء الإعجاب.");
-return;
-
-}
-
-project._userLiked=false;
-project._likeCount=Math.max(
-0,
-Number(project._likeCount||0)-1
-);
-
-if(button){
-
-button.classList.remove("liked");
-button.innerHTML=
-`♡ إعجاب <span class="like-count">${project._likeCount}</span>`;
-
-}
-
-await loadProfileStats();
-
-showToast("تم إلغاء الإعجاب.");
-
-return;
-}
-
-const {error}=await supabaseClient
-.from("likes")
-.insert({
-project_id:projectId,
-user_id:currentUser.id
-});
-
-if(error){
-
-if(error.code==="23505"){
-
-project._userLiked=true;
-
-showToast("سبق وأعجبت بهذا المشروع.");
-
-return;
-
-}
-
-console.error(error);
-showToast("تعذر إضافة الإعجاب.");
-return;
-
-}
-
-project._userLiked=true;
-project._likeCount=Number(project._likeCount||0)+1;
-
-if(button){
-
-button.classList.add("liked");
-
-button.innerHTML=
-`♥ إعجاب <span class="like-count">${project._likeCount}</span>`;
-
-}
-
-/* إنشاء إشعار لصاحب المشروع */
-
-if(project.user_id){
-
-const actorName=getCurrentActorName();
-
-createNotification({
-userId:project.user_id,
-actorId:currentUser.id,
-type:"project_like",
-message:`❤️ ${actorName} أعجب بمشروعك "${project.title||"مشروعك"}"`,
-projectId:project.id
-});
-
-}
-
-await loadProfileStats();
-
-showToast("تم تسجيل الإعجاب ❤️");
-
-}catch(error){
-
-console.error(error);
-showToast("حدث خطأ أثناء الإعجاب.");
-
-}
-}
-
-/* =========================
-   PROJECT COMMENTS
-========================= */
-
-async function commentProject(projectId){
-
-if(!currentUser){
-
-showToast("سجل الدخول أولاً لإضافة تعليق.");
-return;
-
-}
-
-if(!initSupabase())return;
-
-currentCommentsProjectId=projectId;
-currentChannelCommentsPostId=null;
-
-const project=projectsData.find(
-p=>String(p.id)===String(projectId)
-);
-
-const title=project?.title||"المشروع";
-
-document.getElementById("commentsModalTitle").textContent=
-"💬 تعليقات: "+title;
-
-document.getElementById("commentsModalContent").innerHTML=`
-<div class="comment-empty">
-جاري تحميل التعليقات...
-</div>
-`;
-
-document.getElementById("commentsModal")
-.classList.add("active");
-
-await loadProjectComments(projectId);
-}
-
-async function loadProjectComments(projectId){
-
-const box=document.getElementById("commentsModalContent");
-
-if(!box)return;
-
-if(!initSupabase()){
-
-box.innerHTML=`
-<div class="comment-empty">
-تعذر الاتصال بقاعدة البيانات.
-</div>
-`;
-
-return;
-
-}
-
-try{
-
-const {data,error}=await supabaseClient
-.from("comments")
-.select("id,project_id,user_id,content,created_at")
-.eq("project_id",projectId)
-.order("created_at",{ascending:true});
-
-if(error){
-
-console.error(error);
-
-box.innerHTML=`
-<div class="comment-empty">
-تعذر تحميل التعليقات.
-</div>
-`;
-
-return;
-
-}
-
-const comments=data||[];
-
-let profiles={};
-
-const userIds=[
-...new Set(
-comments
-.map(comment=>comment.user_id)
-.filter(Boolean)
-)
-];
-
-if(userIds.length){
-
-const profileResult=await supabaseClient
-.from("profiles")
-.select("id,name")
-.in("id",userIds);
-
-if(!profileResult.error&&profileResult.data){
-
-profileResult.data.forEach(profile=>{
-profiles[profile.id]=profile.name;
-});
-
-}
-
-}
-
-let commentsHtml="";
-
-if(!comments.length){
-
-commentsHtml=`
-<div class="comment-empty">
-لا توجد تعليقات حتى الآن.<br>
-كن أول من يعلق على هذا المشروع 💬
-</div>
-`;
-
-}else{
-
-commentsHtml=`
-<div class="comments-list">
-
-${comments.map(comment=>{
-
-const isOwner=
-currentUser &&
-comment.user_id===currentUser.id;
-
-const author=
-profiles[comment.user_id]||
-(isOwner?currentProfile?.name:"مستخدم");
-
-const first=
-(author||"م")
-.trim()
-.charAt(0)
-.toUpperCase();
-
-const date=
-comment.created_at
-?new Date(comment.created_at)
-.toLocaleString("ar-SA")
-:"";
-
-return `
-<div class="comment-item">
-
-<div class="comment-head">
-
-<div class="comment-author">
-
-<div class="comment-avatar">
-${escapeHtml(first)}
-</div>
-
-<span>
-${escapeHtml(author||"مستخدم")}
-</span>
-
-</div>
-
-<span class="comment-date">
-${escapeHtml(date)}
-</span>
-
-</div>
-
-<div class="comment-text">
-${escapeHtml(comment.content)}
-</div>
-
-${isOwner?`
-<div class="comment-footer">
-<button
-type="button"
-class="delete-comment-btn"
-onclick="deleteProjectComment('${escapeAttribute(comment.id)}','${escapeAttribute(projectId)}')"
->
-حذف التعليق
-</button>
-</div>
-`:""}
-
-</div>
-`;
-
-}).join("")}
-
-</div>
-`;
-
-}
-
-const inputHtml=currentUser
-?`
-<div class="comment-input-box">
-
-<textarea
-id="projectCommentInput"
-maxlength="2000"
-placeholder="اكتب تعليقك على المشروع..."
-></textarea>
-
-<div class="comment-input-actions">
-
-<span style="font-size:12px;color:#64748b">
-شارك رأيك مع مجتمع KAPO ONE
-</span>
-
-<button
-type="button"
-class="primary-btn"
-onclick="addProjectComment('${escapeAttribute(projectId)}')"
->
-نشر التعليق
-</button>
-
-</div>
-
-</div>
-`
-:
-`
-<div class="comment-empty" style="margin-top:15px">
-سجل الدخول حتى تتمكن من إضافة تعليق.
-</div>
-`;
-
-box.innerHTML=
-commentsHtml+
-inputHtml;
-
-}catch(error){
-
-console.error(error);
-
-box.innerHTML=`
-<div class="comment-empty">
-حدث خطأ أثناء تحميل التعليقات.
-</div>
-`;
-
-}
-}
-
-async function addProjectComment(projectId){
-
-if(!currentUser){
-
-showToast("سجل الدخول أولاً لإضافة تعليق.");
-return;
-
-}
-
-if(!initSupabase())return;
-
-const input=document.getElementById("projectCommentInput");
-
-if(!input)return;
-
-const content=input.value.trim();
-
-if(!content){
-
-showToast("اكتب التعليق أولاً.");
-return;
-
-}
-
-if(content.length>2000){
-
-showToast("التعليق طويل جداً.");
-return;
-
-}
-
-try{
-
-const {error}=await supabaseClient
-.from("comments")
-.insert({
-project_id:projectId,
-user_id:currentUser.id,
-content:content
-});
-
-if(error){
-
-console.error(error);
-
-showToast(error.message||"تعذر إضافة التعليق.");
-return;
-
-}
-
-const project=projectsData.find(
-p=>String(p.id)===String(projectId)
-);
-
-if(project){
-
-project._commentCount=
-Number(project._commentCount||0)+1;
-
-/* إنشاء إشعار لصاحب المشروع */
-
-if(project.user_id){
-
-const actorName=getCurrentActorName();
-
-createNotification({
-userId:project.user_id,
-actorId:currentUser.id,
-type:"project_comment",
-message:`💬 ${actorName} علّق على مشروعك "${project.title||"مشروعك"}"`,
-projectId:project.id
-});
-
-}
-
-}
-
-input.value="";
-
-await loadProjectComments(projectId);
-
-renderProjects();
-
-await loadProfileStats();
-
-showToast("تم إضافة التعليق 💬");
-
-}catch(error){
-
-console.error(error);
-showToast("حدث خطأ أثناء إضافة التعليق.");
-
-}
-}
-
-async function deleteProjectComment(commentId,projectId){
-
-if(!currentUser){
-
-showToast("سجل الدخول أولاً.");
-return;
-
-}
-
-if(!initSupabase())return;
-
-if(!confirm("هل تريد حذف هذا التعليق؟"))return;
-
-try{
-
-const {error}=await supabaseClient
-.from("comments")
-.delete()
-.eq("id",commentId)
-.eq("user_id",currentUser.id);
-
-if(error){
-
-console.error(error);
-
-showToast("تعذر حذف التعليق.");
-return;
-
-}
-
-const project=projectsData.find(
-p=>String(p.id)===String(projectId)
-);
-
-if(project){
-
-project._commentCount=Math.max(
-0,
-Number(project._commentCount||0)-1
-);
-
-}
-
-await loadProjectComments(projectId);
-
-renderProjects();
-
-await loadProfileStats();
-
-showToast("تم حذف التعليق.");
-
-}catch(error){
-
-console.error(error);
-showToast("حدث خطأ أثناء حذف التعليق.");
-
-}
-}
-
-/* =========================
-   CHANNEL POST LIKE
-========================= */
-
-async function likeChannelPost(postId,button){
-
-if(!currentUser){
-
-showToast("سجل الدخول أولاً لإضافة إعجاب.");
-return;
-
-}
-
-if(!initSupabase())return;
-
-const liked=button?.dataset.liked==="true";
-
-try{
-
-if(liked){
-
-const {error}=await supabaseClient
-.from("channel_likes")
-.delete()
-.eq("post_id",postId)
-.eq("user_id",currentUser.id);
-
-if(error){
-
-console.error("Channel unlike error:",error);
-showToast("تعذر إلغاء الإعجاب.");
-return;
-
-}
-
-const countElement=button.querySelector(".channel-like-count");
-const oldCount=Number(countElement?.textContent||0);
-const newCount=Math.max(0,oldCount-1);
-
-if(button){
-button.dataset.liked="false";
-button.classList.remove("liked");
-button.innerHTML=`♡ إعجاب <span class="channel-like-count">${newCount}</span>`;
-}
-
-await loadProfileStats();
-
-showToast("تم إلغاء الإعجاب.");
-
-return;
-}
-
-/* إضافة الإعجاب */
-
-const {error}=await supabaseClient
-.from("channel_likes")
-.insert({
-post_id:postId,
-user_id:currentUser.id
-});
-
-if(error){
-
-if(error.code==="23505"){
-
-if(button){
-button.dataset.liked="true";
-button.classList.add("liked");
-}
-
-showToast("سبق وأعجبت بهذا المنشور.");
-return;
-
-}
-
-console.error("Channel like error:",error);
-showToast("تعذر إضافة الإعجاب.");
-return;
-
-}
-
-const countElement=button.querySelector(".channel-like-count");
-const oldCount=Number(countElement?.textContent||0);
-const newCount=oldCount+1;
-
-if(button){
-button.dataset.liked="true";
-button.classList.add("liked");
-button.innerHTML=`♥ إعجاب <span class="channel-like-count">${newCount}</span>`;
-}
-
-/* جلب صاحب المنشور وإنشاء الإشعار */
-
-try{
-
-const {data:post,error:postError}=await supabaseClient
-.from("channel_posts")
-.select("id,user_id,content")
-.eq("id",postId)
-.maybeSingle();
-
-if(!postError&&post?.user_id){
-
-const actorName=getCurrentActorName();
-
-createNotification({
-userId:post.user_id,
-actorId:currentUser.id,
-type:"channel_like",
-message:`❤️ ${actorName} أعجب بمنشورك في القناة`,
-postId:post.id
-});
-
-}
-
-}catch(notificationError){
-
-console.error("Channel like notification error:",notificationError);
-
-}
-
-await loadProfileStats();
-
-showToast("تم تسجيل الإعجاب ❤️");
-
-}catch(error){
-
-console.error(error);
-showToast("حدث خطأ أثناء الإعجاب.");
-
-}
-}
-
-/* =========================
-   CHANNEL COMMENTS OPEN
-========================= */
-
-async function commentChannelPost(postId){
-
-if(!currentUser){
-
-showToast("سجل الدخول أولاً لإضافة تعليق.");
-return;
-
-}
-
-if(!initSupabase())return;
-
-currentChannelCommentsPostId=postId;
-currentCommentsProjectId=null;
-
-document.getElementById("commentsModalTitle").textContent=
-"💬 تعليقات المنشور";
-
-document.getElementById("commentsModalContent").innerHTML=`
-<div class="comment-empty">
-جاري تحميل التعليقات...
-</div>
-`;
-
-document.getElementById("commentsModal")
-.classList.add("active");
-
-await loadChannelPostComments(postId);
-}
-
-/* =========================
-   LOAD CHANNEL COMMENTS
-========================= */
-
-async function loadChannelPostComments(postId){
-
-const box=document.getElementById("commentsModalContent");
-
-if(!box)return;
-
-if(!initSupabase()){
-
-box.innerHTML=`
-<div class="comment-empty">
-تعذر الاتصال بقاعدة البيانات.
-</div>
-`;
-
-return;
-
-}
-
-try{
-
-const commentsResult=await supabaseClient
-.from("channel_comments")
-.select("id,post_id,user_id,content,created_at")
-.eq("post_id",postId)
-.order("created_at",{ascending:true});
-
-if(commentsResult.error){
-
-console.error("Channel comments load error:",commentsResult.error);
-
-box.innerHTML=`
-<div class="comment-empty">
-تعذر تحميل تعليقات المنشور.
-</div>
-`;
-
-return;
-
-}
-
-const comments=commentsResult.data||[];
-
-let commentLikes=[];
-
-if(comments.length){
-
-const commentIds=comments
-.map(comment=>comment.id)
-.filter(Boolean);
-
-if(commentIds.length){
-
-const likesResult=await supabaseClient
-.from("comment_likes")
-.select("id,comment_id,user_id")
-.in("comment_id",commentIds);
-
-if(likesResult.error){
-
-console.error("Comment likes load error:",likesResult.error);
-
-}else{
-
-commentLikes=likesResult.data||[];
-
-}
-
-}
-
-}
-
-let profiles={};
-
-const userIds=[
-...new Set(
-comments
-.map(comment=>comment.user_id)
-.filter(Boolean)
-)
-];
-
-if(userIds.length){
-
-const profileResult=await supabaseClient
-.from("profiles")
-.select("id,name")
-.in("id",userIds);
-
-if(!profileResult.error&&profileResult.data){
-
-profileResult.data.forEach(profile=>{
-profiles[profile.id]=profile.name;
-});
-
-}
-
-}
-
-let commentsHtml="";
-
-if(!comments.length){
-
-commentsHtml=`
-<div class="comment-empty">
-لا توجد تعليقات حتى الآن.<br>
-كن أول من يعلق على هذا المنشور 💬
-</div>
-`;
-
-}else{
-
-commentsHtml=`
-<div class="comments-list">
-
-${comments.map(comment=>{
-
-const isOwner=
-currentUser &&
-comment.user_id===currentUser.id;
-
-const author=
-profiles[comment.user_id]||
-(isOwner?currentProfile?.name:"مستخدم");
-
-const first=
-(author||"م")
-.trim()
-.charAt(0)
-.toUpperCase();
-
-const date=
-comment.created_at
-?new Date(comment.created_at)
-.toLocaleString("ar-SA")
-:"";
-
-const likesForComment=commentLikes.filter(
-like=>like.comment_id===comment.id
-);
-
-const likeCount=likesForComment.length;
-
-const userLiked=!!(
-currentUser &&
-likesForComment.some(
-like=>like.user_id===currentUser.id
-)
-);
-
-return `
-<div class="comment-item">
-
-<div class="comment-head">
-
-<div class="comment-author">
-
-<div class="comment-avatar">
-${escapeHtml(first)}
-</div>
-
-<span>
-${escapeHtml(author||"مستخدم")}
-</span>
-
-</div>
-
-<span class="comment-date">
-${escapeHtml(date)}
-</span>
-
-</div>
-
-<div class="comment-text">
-${escapeHtml(comment.content)}
-</div>
-
-<div class="comment-footer">
-
-<button
-type="button"
-class="comment-like-btn ${userLiked?"liked":""}"
-data-liked="${userLiked?"true":"false"}"
-onclick="likeChannelComment('${escapeAttribute(comment.id)}',this)"
->
-${userLiked?"♥":"♡"} إعجاب
-<span class="comment-like-count">${likeCount}</span>
-</button>
-
-${isOwner?`
-<button
-type="button"
-class="delete-comment-btn"
-onclick="deleteChannelComment('${escapeAttribute(comment.id)}','${escapeAttribute(postId)}')"
->
-حذف التعليق
-</button>
-`:""}
-
-</div>
-
-</div>
-`;
-
-}).join("")}
-
-</div>
-`;
-
-}
-
-const inputHtml=currentUser
-?`
-<div class="comment-input-box">
-
-<textarea
-id="channelCommentInput"
-maxlength="2000"
-placeholder="اكتب تعليقك على المنشور..."
-></textarea>
-
-<div class="comment-input-actions">
-
-<span style="font-size:12px;color:#64748b">
-شارك رأيك مع مجتمع KAPO ONE
-</span>
-
-<button
-type="button"
-class="primary-btn"
-onclick="addChannelPostComment('${escapeAttribute(postId)}')"
->
-نشر التعليق
-</button>
-
-</div>
-
-</div>
-`
-:
-`
-<div class="comment-empty" style="margin-top:15px">
-سجل الدخول حتى تتمكن من إضافة تعليق.
-</div>
-`;
-
-box.innerHTML=
-commentsHtml+
-inputHtml;
-
-}catch(error){
-
-console.error("Channel comments exception:",error);
-
-box.innerHTML=`
-<div class="comment-empty">
-حدث خطأ أثناء تحميل التعليقات.
-</div>
-`;
-
-}
-}
-
-/* =========================
-   ADD CHANNEL COMMENT
-========================= */
-
-async function addChannelPostComment(postId){
-
-if(!currentUser){
-
-showToast("سجل الدخول أولاً لإضافة تعليق.");
-return;
-
-}
-
-if(!initSupabase())return;
-
-const input=document.getElementById("channelCommentInput");
-
-if(!input)return;
-
-const content=input.value.trim();
-
-if(!content){
-
-showToast("اكتب التعليق أولاً.");
-return;
-
-}
-
-if(content.length>2000){
-
-showToast("التعليق طويل جداً.");
-return;
-
-}
-
-try{
-
-const {error}=await supabaseClient
-.from("channel_comments")
-.insert({
-post_id:postId,
-user_id:currentUser.id,
-content:content
-});
-
-if(error){
-
-console.error("Add channel comment error:",error);
-
-showToast(
-error.message||
-"تعذر إضافة التعليق."
-);
-
-return;
-
-}
-
-/* إنشاء إشعار لصاحب المنشور */
-
-try{
-
-const {data:post,error:postError}=await supabaseClient
-.from("channel_posts")
-.select("id,user_id")
-.eq("id",postId)
-.maybeSingle();
-
-if(!postError&&post?.user_id){
-
-const actorName=getCurrentActorName();
-
-createNotification({
-userId:post.user_id,
-actorId:currentUser.id,
-type:"channel_comment",
-message:`💬 ${actorName} علّق على منشورك في القناة`,
-postId:post.id
-});
-
-}
-
-}catch(notificationError){
-
-console.error("Channel comment notification error:",notificationError);
-
-}
-
-input.value="";
-
-await loadChannelPostComments(postId);
-
-if(currentChannelType){
-await loadChannelPosts(currentChannelType);
-}
-
-await loadProfileStats();
-
-showToast("تم إضافة التعليق 💬");
-
-}catch(error){
-
-console.error(error);
-showToast("حدث خطأ أثناء إضافة التعليق.");
-
-}
-}
-
-/* =========================
-   CHANNEL COMMENT LIKE
-========================= */
-
-async function likeChannelComment(commentId,button){
-
-if(!currentUser){
-
-showToast("سجل الدخول أولاً لإضافة إعجاب.");
-return;
-
-}
-
-if(!initSupabase())return;
-
-const liked=button?.dataset.liked==="true";
-
-try{
-
-if(liked){
-
-const {error}=await supabaseClient
-.from("comment_likes")
-.delete()
-.eq("comment_id",commentId)
-.eq("user_id",currentUser.id);
-
-if(error){
-
-console.error("Comment unlike error:",error);
-showToast("تعذر إلغاء الإعجاب.");
-return;
-
-}
-
-const countElement=button.querySelector(".comment-like-count");
-const oldCount=Number(countElement?.textContent||0);
-const newCount=Math.max(0,oldCount-1);
-
-button.dataset.liked="false";
-button.classList.remove("liked");
-button.innerHTML=`♡ إعجاب <span class="comment-like-count">${newCount}</span>`;
-
-await loadProfileStats();
-
-showToast("تم إلغاء الإعجاب.");
-
-return;
-}
-
-/* إضافة إعجاب */
-
-const {error}=await supabaseClient
-.from("comment_likes")
-.insert({
-comment_id:commentId,
-user_id:currentUser.id
-});
-
-if(error){
-
-if(error.code==="23505"){
-
-button.dataset.liked="true";
-button.classList.add("liked");
-
-showToast("سبق وأعجبت بهذا التعليق.");
-
-return;
-
-}
-
-console.error("Comment like error:",error);
-showToast("تعذر إضافة الإعجاب.");
-return;
-
-}
-
-const countElement=button.querySelector(".comment-like-count");
-const oldCount=Number(countElement?.textContent||0);
-const newCount=oldCount+1;
-
-button.dataset.liked="true";
-button.classList.add("liked");
-button.innerHTML=`♥ إعجاب <span class="comment-like-count">${newCount}</span>`;
-
-/* جلب صاحب التعليق وإنشاء الإشعار */
-
-try{
-
-const {data:comment,error:commentError}=await supabaseClient
-.from("channel_comments")
-.select("id,user_id")
-.eq("id",commentId)
-.maybeSingle();
-
-if(!commentError&&comment?.user_id){
-
-const actorName=getCurrentActorName();
-
-createNotification({
-userId:comment.user_id,
-actorId:currentUser.id,
-type:"comment_like",
-message:`❤️ ${actorName} أعجب بتعليقك`,
-commentId:comment.id
-});
-
-}
-
-}catch(notificationError){
-
-console.error("Comment like notification error:",notificationError);
-
-}
-
-await loadProfileStats();
-
-showToast("تم تسجيل إعجابك ❤️");
-
-}catch(error){
-
-console.error(error);
-showToast("حدث خطأ أثناء الإعجاب.");
-
-}
-}
-
-/* =========================
-   DELETE CHANNEL COMMENT
-========================= */
-
-async function deleteChannelComment(commentId,postId){
-
-if(!currentUser){
-
-showToast("سجل الدخول أولاً.");
-return;
-
-}
-
-if(!initSupabase())return;
-
-if(!confirm("هل تريد حذف هذا التعليق؟"))return;
-
-try{
-
-const {error}=await supabaseClient
-.from("channel_comments")
-.delete()
-.eq("id",commentId)
-.eq("user_id",currentUser.id);
-
-if(error){
-
-console.error("Delete channel comment error:",error);
-
-showToast("تعذر حذف التعليق.");
-return;
-
-}
-
-await loadChannelPostComments(postId);
-
-if(currentChannelType){
-await loadChannelPosts(currentChannelType);
-}
-
-await loadProfileStats();
-
-showToast("تم حذف التعليق.");
-
-}catch(error){
-
-console.error(error);
-showToast("حدث خطأ أثناء حذف التعليق.");
-
-}
-}
-
-function closeCommentsModal(){
-
-document.getElementById("commentsModal")
-.classList.remove("active");
-
-currentCommentsProjectId=null;
-currentChannelCommentsPostId=null;
-
-}
-
-/* =========================
-   DESIGNS
-========================= */
-
-function openDesignModal(index){
-
-currentDesignIndex=index;
-
-const design=designs[index];
-
-if(!design)return;
-
-document.getElementById("designModalTitle")
-.textContent=design.icon+" "+design.title;
-
-document.getElementById("designModalContent")
-.innerHTML=`
-
-<p>${escapeHtml(design.description)}</p>
-
-<h3>نوع التصميم</h3>
-
-<p>${escapeHtml(design.type)}</p>
-
-<h3>التفاصيل</h3>
-
-<p>${escapeHtml(design.details)}</p>
-
-`;
-
-document.getElementById("designModal")
-.classList.add("active");
-
-}
-
-function closeDesignModal(){
-
-document.getElementById("designModal")
-.classList.remove("active");
-
-}
-
-function likeDesign(index,button){
-
-if(!designs[index])return;
-
-if(button.dataset.liked==="true"){
-
-button.dataset.liked="false";
-button.textContent="♡ إعجاب";
-
-showToast("تم إلغاء الإعجاب.");
-
-}else{
-
-button.dataset.liked="true";
-button.textContent="♥ أعجبني";
-
-showToast("تم تسجيل الإعجاب.");
-
-}
-
-}
-
-/* =========================
-   IDEAS
-========================= */
-
-function generateIdea(){
-
-const input=document.getElementById("ideaInput");
-const text=input.value.trim();
-
-if(!text){
-
-showToast("اكتب فكرة أولاً.");
-return;
-
-}
-
-let result={
-title:"مشروع معماري مبتكر",
-type:"تصميم معماري",
-concept:"تطوير الفكرة إلى مشروع حديث يجمع بين الوظيفة والجمال والتقنية.",
-uses:"مكاتب، مساحات تجارية، سكن أو مرافق عامة.",
-features:"هوية معمارية مميزة، استدامة، حلول ذكية ومساحات مرنة."
-};
-
-const lower=text.toLowerCase();
-
-if(text.includes("برج")||lower.includes("tower")){
-
-result={
-title:"برج مستقبلي",
-type:"برج معماري",
-concept:"برج حديث بواجهة مميزة وتكوين رأسي واضح يجمع بين الجمال والكفاءة.",
-uses:"مكاتب، شقق فاخرة، فندق، مطاعم ومساحات تجارية.",
-features:"واجهات ذكية، أنظمة استدامة، إطلالات بانورامية ومرافق متطورة."
-};
-
-}
-
-if(text.includes("ذرة")||lower.includes("atom")){
-
-result={
-title:"برج الذرة",
-type:"فكرة هندسية",
-concept:"برج مستوحى من تركيب الذرة، حيث يمثل المركز النواة وتحيط به عناصر معمارية دائرية.",
-uses:"مركز أعمال، فندق، مكاتب ومرافق سياحية.",
-features:"تكوين بصري فريد، حركة دائرية، إضاءة ليلية وهوية معمارية مميزة."
-};
-
-}
-
-if(text.includes("مدينة")||lower.includes("city")){
-
-result={
-title:"مدينة المستقبل",
-type:"مدينة ذكية",
-concept:"مدينة مترابطة رقمياً تعتمد على الطاقة النظيفة والنقل الذكي والمساحات الخضراء.",
-uses:"سكن، أعمال، ترفيه، خدمات ومرافق عامة.",
-features:"ذكاء اصطناعي، نقل ذكي، طاقة نظيفة، بنية رقمية ومساحات خضراء."
-};
-
-}
-
-document.getElementById("ideaResult").innerHTML=`
-
-<h3>${escapeHtml(result.title)}</h3>
-
-<p>
-<strong>النوع:</strong>
-${escapeHtml(result.type)}
-</p>
-
-<p>
-<strong>الفكرة:</strong>
-${escapeHtml(result.concept)}
-</p>
-
-<p>
-<strong>الاستخدامات:</strong>
-${escapeHtml(result.uses)}
-</p>
-
-<p>
-<strong>المميزات:</strong>
-${escapeHtml(result.features)}
-</p>
-
-`;
-
-document.getElementById("ideaResult")
-.classList.remove("hidden");
-
-const ideas=
-JSON.parse(localStorage.getItem("kapoIdeas")||"[]");
-
-ideas.unshift({
-title:result.title,
-type:result.type,
-concept:result.concept,
-text,
-date:new Date().toLocaleString("ar-SA")
-});
-
-localStorage.setItem(
-"kapoIdeas",
-JSON.stringify(ideas.slice(0,50))
-);
-
-loadLocalIdeas();
-
-}
-
-function loadLocalIdeas(){
-
-const list=document.getElementById("ideasList");
-
-if(!list)return;
-
-const ideas=
-JSON.parse(localStorage.getItem("kapoIdeas")||"[]");
-
-if(!ideas.length){
-
-list.innerHTML=`
-<div class="empty-state">
-لا توجد أفكار محفوظة حتى الآن.
-</div>
-`;
-
-return;
-
-}
-
-list.innerHTML=ideas.slice(0,20).map(idea=>`
-
-<div class="idea-card">
-
-<h4>💡 ${escapeHtml(idea.title)}</h4>
-
-<p>
-<strong>الفكرة الأصلية:</strong>
-${escapeHtml(idea.text||"")}
-</p>
-
-<p>
-<strong>النوع:</strong>
-${escapeHtml(idea.type||"")}
-</p>
-
-<p>
-${escapeHtml(idea.concept||"")}
-</p>
-
-<span style="color:#64748b;font-size:12px">
-${escapeHtml(idea.date||"")}
-</span>
-
-</div>
-
-`).join("");
-
-}
-
-/* =========================
-   QUESTIONS
-========================= */
-
-function addQuestion(){
-
-const input=document.getElementById("questionInput");
-const question=input.value.trim();
-
-if(!question){
-
-showToast("اكتب السؤال أولاً.");
-return;
-
-}
-
-const questions=
-JSON.parse(localStorage.getItem("kapoQuestions")||"[]");
-
-questions.unshift({
-question,
-date:new Date().toLocaleString("ar-SA")
-});
-
-localStorage.setItem(
-"kapoQuestions",
-JSON.stringify(questions.slice(0,50))
-);
-
-input.value="";
-
-loadQuestions();
-
-showToast("تم نشر السؤال.");
-
-}
-
-function loadQuestions(){
-
-const list=document.getElementById("questionsList");
-
-if(!list)return;
-
-const questions=
-JSON.parse(localStorage.getItem("kapoQuestions")||"[]");
-
-if(!questions.length){
-
-list.innerHTML=`
-<div class="empty-state">
-لا توجد أسئلة حتى الآن.
-</div>
-`;
-
-return;
-
-}
-
-list.innerHTML=questions.map(item=>`
-
-<div class="question-item">
-
-<strong>
-❓ ${escapeHtml(item.question)}
-</strong>
-
-<span>
-${escapeHtml(item.date||"")}
-</span>
-
-</div>
-
-`).join("");
-
-}
-
-function loadLocalCommunity(){
-
-loadQuestions();
-loadLocalIdeas();
-
-}
-
-/* =========================
-   CHANNELS
-========================= */
-
-function openChannel(type){
-
-const channel=channelData[type];
-
-if(!channel){
-
-showToast("القناة غير موجودة.");
-return;
-
-}
-
-currentChannelType=type;
-
-document.getElementById("channelModalTitle")
-.textContent=channel.title;
-
-document.getElementById("channelModalContent")
-.innerHTML=`
-
-<p>
-${escapeHtml(channel.description)}
-</p>
-
-<div class="channel-post-box">
-
-${
-currentUser
-?
-`
-
-<textarea
-id="channelPostInput"
-placeholder="اكتب منشورك في القناة..."
-maxlength="3000"
-></textarea>
-
-<div class="channel-post-actions">
-
-<span class="channel-post-hint">
-شارك فكرة أو رأياً مع مجتمع KAPO ONE
-</span>
-
-<button
-type="button"
-class="primary-btn"
-onclick="createChannelPost()"
->
-نشر المنشور
-</button>
-
-</div>
-
-`
-:
-`
-
-<div class="empty-state">
-سجل الدخول حتى تتمكن من نشر منشور داخل القناة.
-</div>
-
-`
-
-}
-
-</div>
-
-<h3>منشورات القناة</h3>
-
-<div id="channelPosts" class="channel-posts">
-
-<div class="channel-loading">
-جاري تحميل المنشورات...
-</div>
-
-</div>
-
-`;
-
-document.getElementById("channelModal")
-.classList.add("active");
-
-loadChannelPosts(type);
-
-}
-
-async function loadChannelPosts(type){
-
-const postsBox=document.getElementById("channelPosts");
-
-if(!postsBox)return;
-
-if(!initSupabase()){
-
-postsBox.innerHTML=`
-<div class="empty-state">
-تعذر الاتصال بالمنصة.
-</div>
-`;
-
-return;
-
-}
-
-postsBox.innerHTML=`
-<div class="channel-loading">
-جاري تحميل المنشورات...
-</div>
-`;
-
-try{
-
-const {data,error}=await supabaseClient
-.from("channel_posts")
-.select("*")
-.eq("channel",type)
-.order("created_at",{ascending:false});
-
-if(error){
-
-console.error(error);
-
-postsBox.innerHTML=`
-<div class="empty-state">
-تعذر تحميل المنشورات.
-</div>
-`;
-
-return;
-
-}
-
-const posts=data||[];
-
-if(!posts.length){
-
-postsBox.innerHTML=`
-<div class="empty-state">
-لا توجد منشورات حتى الآن.<br>
-كن أول من ينشر في هذه القناة 🚀
-</div>
-`;
-
-return;
-
-}
-
-const postIds=posts
-.map(post=>post.id)
-.filter(Boolean);
-
-let channelLikes=[];
-
-if(postIds.length){
-
-const likesResult=await supabaseClient
-.from("channel_likes")
-.select("id,post_id,user_id")
-.in("post_id",postIds);
-
-if(likesResult.error){
-
-console.error("Channel likes load error:",likesResult.error);
-
-}else{
-
-channelLikes=likesResult.data||[];
-
-}
-
-}
-
-let channelComments=[];
-
-if(postIds.length){
-
-const commentsResult=await supabaseClient
-.from("channel_comments")
-.select("id,post_id,user_id,content,created_at")
-.in("post_id",postIds);
-
-if(commentsResult.error){
-
-console.error("Channel comments count load error:",commentsResult.error);
-
-}else{
-
-channelComments=commentsResult.data||[];
-
-}
-
-}
-
-const userIds=[
-...new Set(
-posts.map(p=>p.user_id).filter(Boolean)
-)
-];
-
-let profiles={};
-
-if(userIds.length){
-
-const profileResult=await supabaseClient
-.from("profiles")
-.select("id,name")
-.in("id",userIds);
-
-if(!profileResult.error&&profileResult.data){
-
-profileResult.data.forEach(profile=>{
-profiles[profile.id]=profile.name;
-});
-
-}
-
-}
-
-postsBox.innerHTML=posts.map(post=>{
-
-const isOwner=
-currentUser &&
-post.user_id===currentUser.id;
-
-const author=
-profiles[post.user_id]||
-(isOwner?currentProfile?.name:"مستخدم");
-
-const first=
-(author||"م")
-.trim()
-.charAt(0)
-.toUpperCase();
-
-const date=
-post.created_at
-?new Date(post.created_at)
-.toLocaleString("ar-SA")
-:"";
-
-const postLikes=channelLikes.filter(
-like=>like.post_id===post.id
-);
-
-const postComments=channelComments.filter(
-comment=>comment.post_id===post.id
-);
-
-const likeCount=postLikes.length;
-const commentCount=postComments.length;
-
-const userLiked=!!(
-currentUser &&
-postLikes.some(
-like=>like.user_id===currentUser.id
-)
-);
-
-return `
-
-<div class="channel-post">
-
-<div class="channel-post-head">
-
-<div class="channel-author">
-
-<div class="channel-avatar">
-${escapeHtml(first)}
-</div>
-
-<span>
-${escapeHtml(author||"مستخدم")}
-</span>
-
-</div>
-
-<span class="channel-date">
-${escapeHtml(date)}
-</span>
-
-</div>
-
-<div class="channel-post-text">
-${escapeHtml(post.content)}
-</div>
-
-<div class="channel-post-footer">
-
-<button
-type="button"
-class="channel-social-btn ${userLiked?"liked":""}"
-data-liked="${userLiked?"true":"false"}"
-onclick="likeChannelPost('${escapeAttribute(post.id)}',this)"
->
-${userLiked?"♥":"♡"} إعجاب
-<span class="channel-like-count">${likeCount}</span>
-</button>
-
-<button
-type="button"
-class="channel-social-btn channel-comment-btn"
-onclick="commentChannelPost('${escapeAttribute(post.id)}')"
->
-💬 التعليقات
-<span class="channel-comment-count">${commentCount}</span>
-</button>
-
-${
-isOwner
-?
-`
-<button
-type="button"
-class="delete-post-btn"
-onclick="deleteChannelPost('${escapeAttribute(post.id)}')"
->
-حذف المنشور
-</button>
-`
-:
-""
-}
-
-</div>
-
-</div>
-
-`;
-
-}).join("");
-
-}catch(error){
-
-console.error(error);
-
-postsBox.innerHTML=`
-<div class="empty-state">
-حدث خطأ أثناء تحميل المنشورات.
-</div>
-`;
-
-}
-}
-
-async function createChannelPost(){
-
-if(!currentUser){
-
-showToast("سجل الدخول أولاً لنشر منشور.");
-return;
-
-}
-
-if(!currentChannelType){
-
-showToast("اختر قناة أولاً.");
-return;
-
-}
-
-if(!initSupabase())return;
-
-const input=document.getElementById("channelPostInput");
-
-if(!input)return;
-
-const content=input.value.trim();
-
-if(!content){
-
-showToast("اكتب محتوى المنشور أولاً.");
-return;
-
-}
-
-if(content.length>3000){
-
-showToast("المنشور طويل جداً.");
-return;
-
-}
-
-try{
-
-const {error}=await supabaseClient
-.from("channel_posts")
-.insert({
-channel:currentChannelType,
-content,
-user_id:currentUser.id
-});
-
-if(error){
-
-console.error(error);
-
-showToast(
-error.message||
-"تعذر نشر المنشور."
-);
-
-return;
-
-}
-
-input.value="";
-
-showToast("تم نشر المنشور بنجاح.");
-
-await loadChannelPosts(currentChannelType);
-
-}catch(error){
-
-console.error(error);
-
-showToast("حدث خطأ أثناء نشر المنشور.");
-
-}
-}
-
-async function deleteChannelPost(postId){
-
-if(!currentUser){
-
-showToast("سجل الدخول أولاً.");
-return;
-
-}
-
-if(!initSupabase())return;
-
-if(!confirm("هل تريد حذف هذا المنشور؟"))return;
-
-try{
-
-const {error}=await supabaseClient
-.from("channel_posts")
-.delete()
-.eq("id",postId)
-.eq("user_id",currentUser.id);
-
-if(error){
-
-console.error(error);
-
-showToast("تعذر حذف المنشور.");
-return;
-
-}
-
-showToast("تم حذف المنشور.");
-
-if(currentChannelType){
-
-await loadChannelPosts(currentChannelType);
-
-}
-
-}catch(error){
-
-console.error(error);
-
-showToast("حدث خطأ أثناء الحذف.");
-
-}
-}
-
-function closeChannel(){
-
-document.getElementById("channelModal")
-.classList.remove("active");
-
-currentChannelType=null;
-
-}
-
-/* =========================
-   LOGOUT
-========================= */
-
-async function logoutUser(){
-
-if(initSupabase()){
-
-try{
-
-await supabaseClient.auth.signOut();
-
-}catch(error){
-
-console.error(error);
-
-}
-
-}
-
-currentUser=null;
-currentProfile=null;
-notificationsData=[];
-currentProfileStats={projects:0,likes:0,comments:0};
-
-updateNotificationBadge();
-
-showAuthPage();
-
-showToast("تم تسجيل الخروج.");
-
-}
-
-/* =========================
-   HELPERS
-========================= */
-
-function escapeHtml(value){
-
-return String(value??"")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
-
-}
-
-function escapeAttribute(value){
-
-return escapeHtml(value);
-
-}
-
-let toastTimer=null;
-
-function showToast(message){
-
-const toast=document.getElementById("toast");
-
-if(!toast)return;
-
-toast.textContent=message;
-
-toast.classList.add("show");
-
-clearTimeout(toastTimer);
-
-toastTimer=setTimeout(()=>{
-toast.classList.remove("show");
-},3000);
-
-}
-
-/* =========================
-   KEYBOARD
-========================= */
-
-document.addEventListener("keydown",function(event){
-
-if(event.key==="Escape"){
-
-closeAddProjectModal();
-closeProfileModal();
-closeCommentsModal();
-closeDesignModal();
-closeChannel();
-
-}
-
-});
-
-/* =========================
-   START
-========================= */
-
-document.addEventListener("DOMContentLoaded",async function(){
-
-showAuthPage();
-
-updateNotificationBadge();
-
-if(!initSupabase()){
-
-showAuthMessage("جاري تحميل خدمة الدخول...");
-
-setTimeout(async()=>{
-
-if(initSupabase()){
-
-clearAuthMessage();
-
-setupAuthListener();
-
-await checkCurrentUser();
-
-}else{
-
-showAuthMessage(
-"تعذر تحميل خدمة الدخول. تأكد من الإنترنت ثم أعد تحميل الصفحة."
-);
-
-}
-
-},1000);
-
-return;
-
-}
-
-setupAuthListener();
-
-await checkCurrentUser();
-
-});
-</script>
-
-</body>
-</html>
+// ============================================
+// CONFIG
+// ============================================
+const SUPABASE_URL = "https://ehmeircigoqfhftaotba.supabase.co";
+const SUPABASE_KEY = "sb_publishable_54N-aEBjhTQK1wUzpWl0fg_MQRq5D-T";
+const OWNER_ID = "dfe5695d-c77a-4ccb-a1eb-901d28169be2";
+
+let supabaseClient = null;
+let currentUser = null;
+let currentProfile = null;
+let allProperties = [];
+let filteredProperties = [];
+
+// ============================================
+// SUPABASE INIT
+// ============================================
+function initSupabase() {
+  if (window.supabase && typeof window.supabase.createClient === "function") {
+    if (!supabaseClient) {
+      supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    }
+    return true;
+  }
+  return false;
+}
+
+// ============================================
+// AUTH UI
+// ============================================
+function showLoginForm() {
+  document.getElementById("loginForm").classList.remove("hidden");
+  document.getElementById("registerForm").classList.add("hidden");
+  document.getElementById("resetForm").classList.add("hidden");
+  clearAuthMessage();
+}
+function showRegisterForm() {
+  document.getElementById("loginForm").classList.add("hidden");
+  document.getElementById("registerForm").classList.remove("hidden");
+  document.getElementById("resetForm").classList.add("hidden");
+  clearAuthMessage();
+}
+function showResetForm() {
+  document.getElementById("loginForm").classList.add("hidden");
+  document.getElementById("registerForm").classList.add("hidden");
+  document.getElementById("resetForm").classList.remove("hidden");
+  clearAuthMessage();
+}
+function showAuthMessage(msg) {
+  const box = document.getElementById("authMessage");
+  box.textContent = msg;
+  box.classList.remove("hidden");
+}
+function clearAuthMessage() {
+  const box = document.getElementById("authMessage");
+  box.classList.add("hidden");
+  box.textContent = "";
+}
+
+function showApp() {
+  document.getElementById("authPage").style.display = "none";
+  document.getElementById("app").classList.remove("hidden");
+  document.getElementById("app").style.display = "block";
+}
+function showAuthPage() {
+  document.getElementById("authPage").style.display = "flex";
+  document.getElementById("app").classList.add("hidden");
+  document.getElementById("app").style.display = "none";
+}
+
+// ============================================
+// AUTH FUNCTIONS
+// ============================================
+async function loginUser() {
+  clearAuthMessage();
+  if (!initSupabase()) { showAuthMessage("تعذر تحميل خدمة الدخول."); return; }
+  const email = document.getElementById("loginEmail").value.trim();
+  const password = document.getElementById("loginPassword").value;
+  if (!email || !password) { showAuthMessage("أدخل البريد وكلمة المرور."); return; }
+  const btn = document.querySelector("#loginForm .primary-btn");
+  if (btn) { btn.disabled = true; btn.textContent = "جاري..."; }
+  try {
+    const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+    if (error) { showAuthMessage(error.message); return; }
+    if (!data?.user) { showAuthMessage("فشل تسجيل الدخول."); return; }
+    currentUser = data.user;
+    await loadUserProfile();
+    showApp();
+    updateUI();
+    loadProperties();
+    showToast("✅ تم تسجيل الدخول بنجاح.");
+  } catch (e) { showAuthMessage(e.message); }
+  finally { if (btn) { btn.disabled = false; btn.textContent = "تسجيل الدخول"; } }
+}
+
+async function registerUser() {
+  if (!initSupabase()) { showAuthMessage("تعذر تحميل خدمة التسجيل."); return; }
+  const name = document.getElementById("registerName").value.trim();
+  const email = document.getElementById("registerEmail").value.trim();
+  const password = document.getElementById("registerPassword").value;
+  if (!name || !email || !password) { showAuthMessage("أكمل جميع البيانات."); return; }
+  if (password.length < 6) { showAuthMessage("كلمة المرور 6 أحرف على الأقل."); return; }
+  try {
+    const { data, error } = await supabaseClient.auth.signUp({
+      email, password,
+      options: { data: { name } }
+    });
+    if (error) { showAuthMessage(error.message); return; }
+    if (data.user) {
+      await createProfile(data.user, name);
+      if (data.session) {
+        currentUser = data.user;
+        await loadUserProfile();
+        showApp();
+        updateUI();
+        loadProperties();
+        showToast("✅ تم إنشاء الحساب.");
+      } else {
+        showAuthMessage("✅ تم إنشاء الحساب. تحقق من بريدك لتفعيله.");
+      }
+    }
+  } catch (e) { showAuthMessage(e.message); }
+}
+
+async function createProfile(user, name) {
+  if (!user || !initSupabase()) return;
+  await supabaseClient.from("profiles").upsert({
+    id: user.id,
+    name: name || user.user_metadata?.name || "مستخدم",
+    email: user.email || ""
+  });
+}
+
+async function resetUserPassword() {
+  if (!initSupabase()) { showAuthMessage("تعذر تحميل الخدمة."); return; }
+  const email = document.getElementById("resetEmail").value.trim();
+  if (!email) { showAuthMessage("أدخل البريد الإلكتروني."); return; }
+  try {
+    const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
+      redirectTo: window.location.origin + window.location.pathname
+    });
+    if (error) { showAuthMessage(error.message); return; }
+    showAuthMessage("✅ تم إرسال رابط الاستعادة إلى بريدك.");
+  } catch (e) { showAuthMessage(e.message); }
+}
+
+function enterGuest() {
+  currentUser = null;
+  currentProfile = { name: "زائر", email: "" };
+  showApp();
+  updateUI();
+  loadProperties();
+  showToast("👋 مرحباً بك كزائر.");
+  showSection("home");
+}
+
+async function logoutUser() {
+  if (initSupabase()) await supabaseClient.auth.signOut();
+  currentUser = null;
+  currentProfile = null;
+  showAuthPage();
+  showToast("تم تسجيل الخروج.");
+}
+
+// ============================================
+// PROFILE
+// ============================================
+async function loadUserProfile() {
+  if (!currentUser) { currentProfile = { name: "زائر", email: "" }; return; }
+  try {
+    const { data, error } = await supabaseClient
+      .from("profiles")
+      .select("*")
+      .eq("id", currentUser.id)
+      .maybeSingle();
+    if (data) currentProfile = data;
+    else currentProfile = {
+      id: currentUser.id,
+      name: currentUser.user_metadata?.name || currentUser.email?.split("@")[0] || "مستخدم",
+      email: currentUser.email || ""
+    };
+  } catch (e) { console.error(e); }
+}
+
+function updateUI() {
+  const name = currentProfile?.name || "زائر";
+  const email = currentProfile?.email || currentUser?.email || "";
+  const first = name.trim().charAt(0).toUpperCase() || "K";
+  const avatar = currentProfile?.avatar_url || "";
+
+  document.getElementById("miniUserName").textContent = name;
+  document.getElementById("profileName").textContent = name;
+  document.getElementById("profileEmail").textContent = email || "-";
+
+  const avatarEls = [
+    document.getElementById("miniUserAvatar"),
+    document.getElementById("profileAvatar")
+  ];
+  avatarEls.forEach(el => {
+    if (!el) return;
+    el.innerHTML = "";
+    if (avatar) {
+      const img = document.createElement("img");
+      img.src = avatar;
+      img.onerror = () => { el.innerHTML = ""; el.textContent = first; };
+      el.appendChild(img);
+    } else {
+      el.textContent = first;
+    }
+  });
+}
+
+// ============================================
+// NAVIGATION
+// ============================================
+function showSection(id) {
+  document.querySelectorAll(".section").
