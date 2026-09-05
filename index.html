@@ -249,7 +249,6 @@ font-size:25px;font-weight:900;overflow:hidden
 .public-content-title{
 font-size:18px;font-weight:900;margin:20px 0 12px
 }
-
 .public-content-list{
 display:grid;grid-template-columns:1fr;gap:10px
 }
@@ -262,7 +261,6 @@ background:#0f172a;cursor:pointer
 .public-content-item-type{font-size:11px;color:#64748b;margin-top:4px}
 
 /* COMMENTS */
-
 .comments-box{
 margin-top:22px;padding-top:18px;border-top:1px solid #1e293b
 }
@@ -321,39 +319,126 @@ pointer-events:none;transition:.25s
 <div class="auth-box">
 
 <div class="auth-logo">K</div>
+
 <h1 class="auth-title">KAPO ONE</h1>
-<p class="auth-subtitle">🌍 منصة مفتوحة للأفكار والمشاريع والعقارات</p>
+
+<p class="auth-subtitle">
+🌍 منصة مفتوحة للأفكار والمشاريع والعقارات
+</p>
 
 <div id="loginForm" class="auth-form">
-<input id="loginEmail" type="email" placeholder="البريد الإلكتروني">
-<input id="loginPassword" type="password" placeholder="كلمة المرور">
-<button type="button" class="primary-btn" onclick="loginUser()">تسجيل الدخول</button>
-<button type="button" class="secondary-btn" onclick="enterGuest()">الدخول كزائر</button>
+
+<input
+id="loginEmail"
+type="email"
+placeholder="البريد الإلكتروني"
+autocomplete="email">
+
+<input
+id="loginPassword"
+type="password"
+placeholder="كلمة المرور"
+autocomplete="current-password">
+
+<button
+type="button"
+class="primary-btn"
+onclick="loginUser()">
+تسجيل الدخول
+</button>
+
+<button
+type="button"
+class="secondary-btn"
+onclick="enterGuest()">
+الدخول كزائر
+</button>
 
 <div class="auth-links">
-<button type="button" class="auth-link" onclick="showRegisterForm()">إنشاء حساب</button>
-<button type="button" class="auth-link" onclick="showResetForm()">نسيت كلمة المرور؟</button>
+
+<button
+type="button"
+class="auth-link"
+onclick="showRegisterForm()">
+إنشاء حساب
+</button>
+
+<button
+type="button"
+class="auth-link"
+onclick="showResetForm()">
+نسيت كلمة المرور؟
+</button>
+
 </div>
+
 </div>
 
 <div id="registerForm" class="auth-form hidden">
-<input id="registerName" type="text" placeholder="الاسم">
-<input id="registerEmail" type="email" placeholder="البريد الإلكتروني">
-<input id="registerPassword" type="password" placeholder="كلمة المرور (6 أحرف)">
-<button type="button" class="primary-btn" onclick="registerUser()">إنشاء الحساب</button>
-<button type="button" class="auth-link" onclick="showLoginForm()">العودة</button>
+
+<input
+id="registerName"
+type="text"
+placeholder="الاسم"
+autocomplete="name">
+
+<input
+id="registerEmail"
+type="email"
+placeholder="البريد الإلكتروني"
+autocomplete="email">
+
+<input
+id="registerPassword"
+type="password"
+placeholder="كلمة المرور (6 أحرف)"
+autocomplete="new-password">
+
+<button
+type="button"
+class="primary-btn"
+onclick="registerUser()">
+إنشاء الحساب
+</button>
+
+<button
+type="button"
+class="auth-link"
+onclick="showLoginForm()">
+العودة
+</button>
+
 </div>
 
 <div id="resetForm" class="auth-form hidden">
-<input id="resetEmail" type="email" placeholder="البريد الإلكتروني">
-<button type="button" class="primary-btn" onclick="resetUserPassword()">إرسال رابط الاستعادة</button>
-<button type="button" class="auth-link" onclick="showLoginForm()">العودة</button>
+
+<input
+id="resetEmail"
+type="email"
+placeholder="البريد الإلكتروني"
+autocomplete="email">
+
+<button
+type="button"
+class="primary-btn"
+onclick="resetUserPassword()">
+إرسال رابط الاستعادة
+</button>
+
+<button
+type="button"
+class="auth-link"
+onclick="showLoginForm()">
+العودة
+</button>
+
 </div>
 
 <div id="authMessage" class="auth-message hidden"></div>
 
 </div>
 </div>
+
 
 <div id="app" class="hidden">
 
@@ -362,41 +447,55 @@ pointer-events:none;transition:.25s
 <div class="header-inner">
 
 <div class="brand">
+
 <div class="brand-logo">K</div>
+
 <span>KAPO ONE</span>
+
 </div>
 
 <div class="user-mini">
-<div id="miniUserAvatar" class="user-avatar">K</div>
-<span id="miniUserName">زائر</span>
+
+<div id="miniUserAvatar" class="user-avatar">
+K
+</div>
+
+<span id="miniUserName">
+زائر
+</span>
+
 </div>
 
 </div>
 
 <nav class="nav">
 
-<button type="button"
+<button
+type="button"
 class="nav-btn active"
 data-section="home"
 onclick="showSection('home')">
 الرئيسية
 </button>
 
-<button type="button"
+<button
+type="button"
 class="nav-btn"
 data-section="content"
 onclick="showSection('content')">
 📋 المحتوى
 </button>
 
-<button type="button"
+<button
+type="button"
 class="nav-btn"
 data-section="addcontent"
 onclick="openAddModal()">
 ➕ إضافة
 </button>
 
-<button type="button"
+<button
+type="button"
 class="nav-btn"
 data-section="profile"
 onclick="showSection('profile')">
@@ -406,6 +505,7 @@ onclick="showSection('profile')">
 </nav>
 
 </header>
+
 
 <main class="container">
 
@@ -423,13 +523,15 @@ onclick="showSection('profile')">
 
 <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:22px">
 
-<button type="button"
+<button
+type="button"
 class="primary-btn"
 onclick="showSection('content')">
 📋 استكشاف المحتوى
 </button>
 
-<button type="button"
+<button
+type="button"
 class="secondary-btn"
 onclick="openAddModal()">
 ➕ إضافة محتوى
@@ -438,44 +540,87 @@ onclick="openAddModal()">
 </div>
 </div>
 
+
 <div class="content-grid">
 
-<div class="content-card" onclick="showSection('content')">
-<div class="content-placeholder">📋</div>
+<div
+class="content-card"
+onclick="showSection('content')">
+
+<div class="content-placeholder">
+📋
+</div>
+
 <div class="content-info">
-<div class="content-title">المحتوى</div>
+
+<div class="content-title">
+المحتوى
+</div>
+
 <div class="content-description">
 استكشف المشاريع والأفكار والتصاميم والعقارات التي يشاركها أعضاء KAPO ONE.
 </div>
-</div>
+
 </div>
 
-<div class="content-card" onclick="openAddModal()">
-<div class="content-placeholder">💡</div>
+</div>
+
+
+<div
+class="content-card"
+onclick="openAddModal()">
+
+<div class="content-placeholder">
+💡
+</div>
+
 <div class="content-info">
-<div class="content-title">شارك فكرتك</div>
+
+<div class="content-title">
+شارك فكرتك
+</div>
+
 <div class="content-description">
 أضف مشروعك أو فكرتك أو تصميمك إلى المنصة.
 </div>
-</div>
+
 </div>
 
-<div class="content-card" onclick="showSection('profile')">
-<div class="content-placeholder">👤</div>
+</div>
+
+
+<div
+class="content-card"
+onclick="showSection('profile')">
+
+<div class="content-placeholder">
+👤
+</div>
+
 <div class="content-info">
-<div class="content-title">حسابي</div>
+
+<div class="content-title">
+حسابي
+</div>
+
 <div class="content-description">
 راجع معلومات حسابك وإدارة دخولك إلى المنصة.
 </div>
-</div>
+
 </div>
 
 </div>
+
+</div>
+
 </section>
+
 
 <section id="content" class="section">
 
-<h2 class="section-title">📋 المحتوى</h2>
+<h2 class="section-title">
+📋 المحتوى
+</h2>
 
 <p class="section-subtitle">
 جميع المحتويات من الأعضاء.
@@ -487,9 +632,11 @@ onclick="openAddModal()">
 id="filterSearch"
 type="text"
 placeholder="🔍 بحث..."
-oninput="applyFilters()">
+oninput="applyFilters">
 
-<select id="filterType" onchange="applyFilters()">
+<select
+id="filterType"
+onchange="applyFilters()">
 
 <option value="">جميع الأنواع</option>
 <option value="project">🏗️ مشروع</option>
@@ -510,14 +657,21 @@ onclick="resetFilters()">
 </div>
 
 <div id="contentGrid" class="content-grid">
-<div class="empty-state">جاري تحميل المحتوى...</div>
+
+<div class="empty-state">
+جاري تحميل المحتوى...
+</div>
+
 </div>
 
 </section>
 
+
 <section id="profile" class="section">
 
-<h2 class="section-title">حسابي</h2>
+<h2 class="section-title">
+حسابي
+</h2>
 
 <p class="section-subtitle">
 معلومات حسابك.
@@ -527,7 +681,8 @@ onclick="resetFilters()">
 
 <div style="display:flex;align-items:center;gap:16px;margin-bottom:22px">
 
-<div id="profileAvatar"
+<div
+id="profileAvatar"
 class="user-avatar"
 style="width:78px;height:78px;border-radius:22px;font-size:28px">
 K
@@ -535,12 +690,14 @@ K
 
 <div>
 
-<div id="profileName"
+<div
+id="profileName"
 style="font-size:25px;font-weight:900">
 زائر
 </div>
 
-<div id="profileEmail"
+<div
+id="profileEmail"
 style="color:#94a3b8">
 -
 </div>
@@ -562,16 +719,26 @@ onclick="logoutUser()">
 </section>
 
 </main>
+
 </div>
+
 
 <!-- ADD MODAL -->
 
-<div id="addModal" class="modal" onclick="closeAddModal()">
+<div
+id="addModal"
+class="modal"
+onclick="closeAddModal()">
 
-<div class="modal-box" onclick="event.stopPropagation()">
+<div
+class="modal-box"
+onclick="event.stopPropagation()">
 
 <div class="modal-header">
-<h2>➕ إضافة محتوى جديد</h2>
+
+<h2>
+➕ إضافة محتوى جديد
+</h2>
 
 <button
 type="button"
@@ -579,6 +746,7 @@ class="close-btn"
 onclick="closeAddModal()">
 ×
 </button>
+
 </div>
 
 <div class="modal-content">
@@ -587,9 +755,13 @@ onclick="closeAddModal()">
 
 <div class="full-width">
 
-<label>نوع المحتوى</label>
+<label>
+نوع المحتوى
+</label>
 
-<select id="contentType" onchange="toggleContentFields()">
+<select
+id="contentType"
+onchange="toggleContentFields()">
 
 <option value="project">🏗️ مشروع</option>
 <option value="property">🏢 عقار</option>
@@ -601,9 +773,12 @@ onclick="closeAddModal()">
 
 </div>
 
+
 <div class="full-width">
 
-<label>العنوان</label>
+<label>
+العنوان
+</label>
 
 <input
 id="contentTitle"
@@ -611,9 +786,12 @@ placeholder="عنوان المحتوى">
 
 </div>
 
+
 <div class="full-width">
 
-<label>الوصف</label>
+<label>
+الوصف
+</label>
 
 <textarea
 id="contentDescription"
@@ -622,9 +800,12 @@ placeholder="وصف المحتوى..."></textarea>
 
 </div>
 
+
 <div class="full-width">
 
-<label>رابط الصورة (اختياري)</label>
+<label>
+رابط الصورة (اختياري)
+</label>
 
 <input
 id="contentImage"
@@ -632,52 +813,107 @@ placeholder="https://example.com/image.jpg">
 
 </div>
 
-<div id="propertyFields" class="property-grid hidden">
+
+<div
+id="propertyFields"
+class="property-grid hidden">
 
 <div>
-<label>الدولة</label>
-<input id="propCountry" placeholder="مثال: السعودية">
+
+<label>
+الدولة
+</label>
+
+<input
+id="propCountry"
+placeholder="مثال: السعودية">
+
 </div>
 
+
 <div>
-<label>المدينة</label>
-<input id="propCity" placeholder="مثال: الرياض">
+
+<label>
+المدينة
+</label>
+
+<input
+id="propCity"
+placeholder="مثال: الرياض">
+
 </div>
 
+
 <div>
-<label>السعر</label>
-<input id="propPrice" type="number" placeholder="0">
+
+<label>
+السعر
+</label>
+
+<input
+id="propPrice"
+type="number"
+placeholder="0">
+
 </div>
 
+
 <div>
 
-<label>العملة</label>
+<label>
+العملة
+</label>
 
 <select id="propCurrency">
+
 <option value="USD">🇺🇸 دولار</option>
 <option value="SAR">🇸🇦 ريال</option>
 <option value="EUR">🇪🇺 يورو</option>
 <option value="AED">🇦🇪 درهم</option>
+
 </select>
 
 </div>
 
-<div>
-<label>المساحة (م²)</label>
-<input id="propArea" type="number" placeholder="0">
-</div>
 
 <div>
-<label>واتساب</label>
-<input id="propWhatsapp" placeholder="رقم التواصل">
+
+<label>
+المساحة (م²)
+</label>
+
+<input
+id="propArea"
+type="number"
+placeholder="0">
+
+</div>
+
+
+<div>
+
+<label>
+واتساب
+</label>
+
+<input
+id="propWhatsapp"
+placeholder="رقم التواصل">
+
+</div>
+
+</div>
+
+
+<div
+id="addMessage"
+class="auth-message hidden">
 </div>
 
 </div>
 
-<div id="addMessage" class="auth-message hidden"></div>
+</div>
 
-</div>
-</div>
 
 <div class="modal-actions">
 
@@ -698,17 +934,26 @@ onclick="closeAddModal()">
 </div>
 
 </div>
+
 </div>
+
 
 <!-- DETAIL MODAL -->
 
-<div id="detailModal" class="modal" onclick="closeDetailModal()">
+<div
+id="detailModal"
+class="modal"
+onclick="closeDetailModal()">
 
-<div class="modal-box" onclick="event.stopPropagation()">
+<div
+class="modal-box"
+onclick="event.stopPropagation()">
 
 <div class="modal-header">
 
-<h2 id="detailTitle">تفاصيل</h2>
+<h2 id="detailTitle">
+تفاصيل
+</h2>
 
 <button
 type="button"
@@ -719,7 +964,10 @@ onclick="closeDetailModal()">
 
 </div>
 
-<div id="detailContent" class="modal-content"></div>
+<div
+id="detailContent"
+class="modal-content">
+</div>
 
 <div class="modal-actions">
 
@@ -733,17 +981,26 @@ onclick="closeDetailModal()">
 </div>
 
 </div>
+
 </div>
+
 
 <!-- PUBLIC PROFILE MODAL -->
 
-<div id="publicProfileModal" class="modal" onclick="closePublicProfile()">
+<div
+id="publicProfileModal"
+class="modal"
+onclick="closePublicProfile()">
 
-<div class="modal-box" onclick="event.stopPropagation()">
+<div
+class="modal-box"
+onclick="event.stopPropagation()">
 
 <div class="modal-header">
 
-<h2>👤 الملف الشخصي</h2>
+<h2>
+👤 الملف الشخصي
+</h2>
 
 <button
 type="button"
@@ -754,20 +1011,28 @@ onclick="closePublicProfile()">
 
 </div>
 
-<div id="publicProfileContent" class="modal-content">
+<div
+id="publicProfileContent"
+class="modal-content">
 جاري التحميل...
 </div>
 
 </div>
+
 </div>
+
 
 <div id="toast"></div>
 
+
 <script>
 
-const SUPABASE_URL="https://ehmeircigoqfhftaotba.supabase.co";
+const SUPABASE_URL=
+"https://ehmeircigoqfhftaotba.supabase.co";
 
-const SUPABASE_KEY="sb_publishable_54N-aEBjhTQK1wUzpWl0fg_MQRq5D-T";
+const SUPABASE_KEY=
+"sb_publishable_54N-aEBjhTQK1wUzpWl0fg_MQRq5D-T";
+
 
 let supabaseClient=null;
 let currentUser=null;
@@ -788,11 +1053,71 @@ let allProfiles={};
 let toastTimer=null;
 
 
+/* ================= DOM ================= */
+
+const authPage=
+document.getElementById("authPage");
+
+const app=
+document.getElementById("app");
+
+const loginForm=
+document.getElementById("loginForm");
+
+const registerForm=
+document.getElementById("registerForm");
+
+const resetForm=
+document.getElementById("resetForm");
+
+const loginEmail=
+document.getElementById("loginEmail");
+
+const loginPassword=
+document.getElementById("loginPassword");
+
+const registerName=
+document.getElementById("registerName");
+
+const registerEmail=
+document.getElementById("registerEmail");
+
+const registerPassword=
+document.getElementById("registerPassword");
+
+const resetEmail=
+document.getElementById("resetEmail");
+
+const miniUserName=
+document.getElementById("miniUserName");
+
+const miniUserAvatar=
+document.getElementById("miniUserAvatar");
+
+const profileName=
+document.getElementById("profileName");
+
+const profileEmail=
+document.getElementById("profileEmail");
+
+const profileAvatar=
+document.getElementById("profileAvatar");
+
+const contentType=
+document.getElementById("contentType");
+
+const propertyFields=
+document.getElementById("propertyFields");
+
+
 /* ================= SUPABASE ================= */
 
 function initSupabase(){
 
-if(window.supabase&&typeof window.supabase.createClient==="function"){
+if(
+window.supabase&&
+typeof window.supabase.createClient==="function"
+){
 
 if(!supabaseClient){
 
@@ -805,59 +1130,76 @@ SUPABASE_KEY
 }
 
 return true;
+
 }
 
 return false;
+
 }
 
 
-/* ================= AUTH ================= */
+/* ================= AUTH UI ================= */
 
 function showLoginForm(){
 
 loginForm.classList.remove("hidden");
+
 registerForm.classList.add("hidden");
+
 resetForm.classList.add("hidden");
 
 clearAuthMessage();
+
 }
 
 function showRegisterForm(){
 
 loginForm.classList.add("hidden");
+
 registerForm.classList.remove("hidden");
+
 resetForm.classList.add("hidden");
 
 clearAuthMessage();
+
 }
 
 function showResetForm(){
 
 loginForm.classList.add("hidden");
+
 registerForm.classList.add("hidden");
+
 resetForm.classList.remove("hidden");
 
 clearAuthMessage();
+
 }
 
 function showAuthMessage(msg){
 
-const box=document.getElementById("authMessage");
+const box=
+document.getElementById("authMessage");
 
 if(!box)return;
 
 box.textContent=msg;
+
 box.classList.remove("hidden");
+
 }
 
 function clearAuthMessage(){
 
-const box=document.getElementById("authMessage");
+const box=
+document.getElementById("authMessage");
 
 if(!box)return;
 
 box.classList.add("hidden");
+
 box.textContent="";
+
 }
 
 function showApp(){
@@ -865,7 +1207,9 @@ function showApp(){
 authPage.style.display="none";
 
 app.classList.remove("hidden");
+
 app.style.display="block";
+
 }
 
 function showAuthPage(){
@@ -873,7 +1217,9 @@ function showAuthPage(){
 authPage.style.display="flex";
 
 app.classList.add("hidden");
+
 app.style.display="none";
+
 }
 
 
@@ -885,33 +1231,52 @@ clearAuthMessage();
 
 if(!initSupabase()){
 
-showAuthMessage("⏳ جاري تحميل الخدمة...");
+showAuthMessage(
+"⏳ جاري تحميل الخدمة..."
+);
+
 return;
+
 }
 
-const email=loginEmail.value.trim();
-const password=loginPassword.value;
+const email=
+loginEmail.value.trim();
+
+const password=
+loginPassword.value;
 
 if(!email||!password){
 
-showAuthMessage("أدخل البريد وكلمة المرور.");
+showAuthMessage(
+"أدخل البريد وكلمة المرور."
+);
+
 return;
+
 }
 
-const btn=document.querySelector("#loginForm .primary-btn");
+const btn=
+document.querySelector(
+"#loginForm .primary-btn"
+);
 
 if(btn){
 
 btn.disabled=true;
+
 btn.textContent="جاري...";
+
 }
 
 try{
 
 const result=
 await supabaseClient.auth.signInWithPassword({
-email,
-password
+
+email:email,
+
+password:password
+
 });
 
 if(result.error){
@@ -922,20 +1287,40 @@ result.error.message||
 );
 
 return;
+
 }
 
-currentUser=result.data.user;
+if(
+!result.data||
+!result.data.user
+){
+
+showAuthMessage(
+"تعذر الحصول على بيانات الحساب."
+);
+
+return;
+
+}
+
+currentUser=
+result.data.user;
 
 await loadUserProfile();
 
 showApp();
+
 updateUI();
 
 await loadContent();
 
-showToast("✅ تم تسجيل الدخول.");
+showToast(
+"✅ تم تسجيل الدخول."
+);
 
 }catch(e){
+
+console.error(e);
 
 showAuthMessage(
 e.message||
@@ -947,10 +1332,14 @@ e.message||
 if(btn){
 
 btn.disabled=false;
-btn.textContent="تسجيل الدخول";
+
+btn.textContent=
+"تسجيل الدخول";
+
 }
 
 }
+
 }
 
 
@@ -962,18 +1351,31 @@ clearAuthMessage();
 
 if(!initSupabase()){
 
-showAuthMessage("⏳ جاري تحميل الخدمة...");
+showAuthMessage(
+"⏳ جاري تحميل الخدمة..."
+);
+
 return;
+
 }
 
-const name=registerName.value.trim();
-const email=registerEmail.value.trim();
-const password=registerPassword.value;
+const name=
+registerName.value.trim();
+
+const email=
+registerEmail.value.trim();
+
+const password=
+registerPassword.value;
 
 if(!name||!email||!password){
 
-showAuthMessage("أكمل جميع البيانات.");
+showAuthMessage(
+"أكمل جميع البيانات."
+);
+
 return;
+
 }
 
 if(password.length<6){
@@ -983,6 +1385,7 @@ showAuthMessage(
 );
 
 return;
+
 }
 
 try{
@@ -991,11 +1394,12 @@ const result=
 await supabaseClient.auth.signUp({
 
 email,
+
 password,
 
 options:{
 data:{
-name
+name:name
 }
 }
 
@@ -1003,11 +1407,18 @@ name
 
 if(result.error){
 
-showAuthMessage(result.error.message);
+showAuthMessage(
+result.error.message
+);
+
 return;
+
 }
 
-if(result.data&&result.data.user){
+if(
+result.data&&
+result.data.user
+){
 
 await createProfile(
 result.data.user,
@@ -1016,16 +1427,20 @@ name
 
 if(result.data.session){
 
-currentUser=result.data.user;
+currentUser=
+result.data.user;
 
 await loadUserProfile();
 
 showApp();
+
 updateUI();
 
 await loadContent();
 
-showToast("✅ تم إنشاء الحساب.");
+showToast(
+"✅ تم إنشاء الحساب."
+);
 
 }else{
 
@@ -1039,17 +1454,29 @@ showAuthMessage(
 
 }catch(e){
 
-showAuthMessage(e.message);
+console.error(e);
+
+showAuthMessage(
+e.message||
+"حدث خطأ أثناء إنشاء الحساب."
+);
 
 }
+
 }
 
 
 /* ================= PROFILE ================= */
 
-async function createProfile(user,name){
+async function createProfile(
+user,
+name
+){
 
-if(!user||!initSupabase())return;
+if(
+!user||
+!initSupabase()
+)return;
 
 try{
 
@@ -1059,30 +1486,49 @@ await supabaseClient
 .upsert({
 
 id:user.id,
-name:name||"مستخدم",
-email:user.email||""
+
+name:
+name||
+"مستخدم",
+
+email:
+user.email||
+""
 
 });
 
-if(result.error)console.error(result.error);
+if(result.error){
+
+console.error(
+"Create profile:",
+result.error
+);
+
+}
 
 }catch(e){
 
 console.error(e);
 
 }
+
 }
+
 
 async function loadUserProfile(){
 
 if(!currentUser){
 
 currentProfile={
+
 name:"زائر",
+
 email:""
+
 };
 
 return;
+
 }
 
 try{
@@ -1094,9 +1540,19 @@ await supabaseClient
 .eq("id",currentUser.id)
 .maybeSingle();
 
+if(result.error){
+
+console.warn(
+"Profile:",
+result.error.message
+);
+
+}
+
 if(result.data){
 
-currentProfile=result.data;
+currentProfile=
+result.data;
 
 }else{
 
@@ -1110,7 +1566,8 @@ currentUser.email?.split("@")[0]||
 "مستخدم",
 
 email:
-currentUser.email||""
+currentUser.email||
+""
 
 };
 
@@ -1120,8 +1577,25 @@ currentUser.email||""
 
 console.error(e);
 
+currentProfile={
+
+id:currentUser.id,
+
+name:
+currentUser.user_metadata?.name||
+currentUser.email?.split("@")[0]||
+"مستخدم",
+
+email:
+currentUser.email||
+""
+
+};
+
 }
+
 }
+
 
 function updateUI(){
 
@@ -1138,81 +1612,86 @@ const first=
 name.trim().charAt(0).toUpperCase()||
 "K";
 
-const avatar=
-currentProfile?.avatar_url||
-"";
 
-miniUserName.textContent=name;
+miniUserName.textContent=
+name;
 
-profileName.textContent=name;
+profileName.textContent=
+name;
 
 profileEmail.textContent=
-email||"-";
+email||
+"-";
 
-[miniUserAvatar,profileAvatar].forEach(el=>{
+
+[
+miniUserAvatar,
+profileAvatar
+].forEach(el=>{
 
 if(!el)return;
 
 el.innerHTML="";
 
-if(avatar){
-
-const img=document.createElement("img");
-
-img.src=avatar;
-
-img.onerror=()=>{
-el.innerHTML="";
 el.textContent=first;
-};
-
-el.appendChild(img);
-
-}else{
-
-el.textContent=first;
-
-}
 
 });
 
 }
 
 
-/* ================= RESET ================= */
+/* ================= RESET PASSWORD ================= */
 
 async function resetUserPassword(){
 
+clearAuthMessage();
+
 if(!initSupabase()){
 
-showAuthMessage("⏳ جاري تحميل الخدمة...");
+showAuthMessage(
+"⏳ جاري تحميل الخدمة..."
+);
+
 return;
+
 }
 
-const email=resetEmail.value.trim();
+const email=
+resetEmail.value.trim();
 
 if(!email){
 
-showAuthMessage("أدخل البريد.");
+showAuthMessage(
+"أدخل البريد."
+);
+
 return;
+
 }
 
 try{
 
 const result=
 await supabaseClient.auth.resetPasswordForEmail(
+
 email,
+
 {
 redirectTo:
 window.location.origin+
 window.location.pathname
 }
+
 );
 
 if(result.error){
 
-showAuthMessage(result.error.message);
+showAuthMessage(
+result.error.message
+);
+
 return;
+
 }
 
 showAuthMessage(
@@ -1221,9 +1700,15 @@ showAuthMessage(
 
 }catch(e){
 
-showAuthMessage(e.message);
+console.error(e);
+
+showAuthMessage(
+e.message||
+"حدث خطأ."
+);
 
 }
+
 }
 
 
@@ -1234,8 +1719,11 @@ function enterGuest(){
 currentUser=null;
 
 currentProfile={
+
 name:"زائر",
+
 email:""
+
 };
 
 showApp();
@@ -1244,9 +1732,12 @@ updateUI();
 
 loadContent();
 
-showToast("👋 مرحباً بك كزائر.");
+showToast(
+"👋 مرحباً بك كزائر."
+);
 
 showSection("home");
+
 }
 
 
@@ -1256,8 +1747,11 @@ async function logoutUser(){
 
 try{
 
-if(initSupabase())
+if(initSupabase()){
+
 await supabaseClient.auth.signOut();
+
+}
 
 }catch(e){
 
@@ -1266,13 +1760,20 @@ console.error(e);
 }
 
 currentUser=null;
+
 currentProfile=null;
 
-likedContentIds=new Set();
+likedContentIds=
+new Set();
 
 showAuthPage();
 
-showToast("تم تسجيل الخروج.");
+showLoginForm();
+
+showToast(
+"تم تسجيل الخروج."
+);
+
 }
 
 
@@ -1282,36 +1783,48 @@ function showSection(id){
 
 document
 .querySelectorAll(".section")
-.forEach(s=>
-s.classList.remove("active")
-);
+.forEach(s=>{
+s.classList.remove("active");
+});
 
 const section=
 document.getElementById(id);
 
-if(section)
+if(section){
+
 section.classList.add("active");
+
+}
 
 document
 .querySelectorAll(".nav-btn")
-.forEach(b=>
-b.classList.remove("active")
-);
+.forEach(b=>{
+b.classList.remove("active");
+});
 
 const btn=
 document.querySelector(
 `.nav-btn[data-section="${id}"]`
 );
 
-if(btn)
+if(btn){
+
 btn.classList.add("active");
 
-if(id==="content")
+}
+
+if(id==="content"){
+
 loadContent();
 
+}
+
 window.scrollTo({
+
 top:0,
+
 behavior:"smooth"
+
 });
 
 }
@@ -1326,14 +1839,18 @@ document.getElementById("toast");
 
 if(!toast)return;
 
-toast.textContent=message;
+toast.textContent=
+message;
 
 toast.classList.add("show");
 
 clearTimeout(toastTimer);
 
-toastTimer=setTimeout(
-()=>toast.classList.remove("show"),
+toastTimer=
+setTimeout(
+()=>{
+toast.classList.remove("show");
+},
 3000
 );
 
@@ -1346,8 +1863,12 @@ function openAddModal(){
 
 if(!currentUser){
 
-showToast("سجل الدخول أولاً.");
+showToast(
+"سجل الدخول أولاً."
+);
+
 return;
+
 }
 
 document
@@ -1372,7 +1893,8 @@ document
 
 function toggleContentFields(){
 
-const type=contentType.value;
+const type=
+contentType.value;
 
 propertyFields.classList.toggle(
 "hidden",
@@ -1388,70 +1910,117 @@ async function saveContent(){
 
 if(!currentUser){
 
-showToast("سجل الدخول أولاً.");
+showToast(
+"سجل الدخول أولاً."
+);
+
 return;
+
 }
 
 if(!initSupabase()){
 
-showToast("تعذر الاتصال.");
+showToast(
+"تعذر الاتصال."
+);
+
 return;
+
 }
 
-const type=contentType.value;
+const type=
+contentType.value;
 
 const title=
-contentTitle.value.trim();
+document
+.getElementById("contentTitle")
+.value
+.trim();
 
 const description=
-contentDescription.value.trim();
+document
+.getElementById("contentDescription")
+.value
+.trim();
 
 const image=
-contentImage.value.trim();
+document
+.getElementById("contentImage")
+.value
+.trim();
 
 if(!title){
 
-showAddMessage("اكتب العنوان.");
+showAddMessage(
+"اكتب العنوان."
+);
+
 return;
+
 }
 
 const projectData={
 
-user_id:currentUser.id,
+user_id:
+currentUser.id,
 
-title,
+title:title,
 
-description:description||"",
+description:
+description||"",
 
-image_url:image||null,
+image_url:
+image||null,
 
-content_type:type,
+content_type:
+type,
 
-created_at:new Date().toISOString()
+created_at:
+new Date().toISOString()
 
 };
+
 
 if(type==="property"){
 
 const extra={
 
 country:
-propCountry.value.trim(),
+document
+.getElementById("propCountry")
+.value
+.trim(),
 
 city:
-propCity.value.trim(),
+document
+.getElementById("propCity")
+.value
+.trim(),
 
 price:
-parseFloat(propPrice.value)||0,
+parseFloat(
+document
+.getElementById("propPrice")
+.value
+)||0,
 
 currency:
-propCurrency.value,
+document
+.getElementById("propCurrency")
+.value,
 
 area:
-parseFloat(propArea.value)||0,
+parseFloat(
+document
+.getElementById("propArea")
+.value
+)||0,
 
 whatsapp:
-propWhatsapp.value.trim()
+document
+.getElementById("propWhatsapp")
+.value
+.trim()
 
 };
 
@@ -1476,6 +2045,7 @@ result.error.message
 );
 
 return;
+
 }
 
 closeAddModal();
@@ -1484,15 +2054,23 @@ clearAddForm();
 
 await loadContent();
 
-showToast("✅ تم حفظ المحتوى.");
+showToast(
+"✅ تم حفظ المحتوى."
+);
 
 }catch(e){
 
-showAddMessage(e.message);
+console.error(e);
+
+showAddMessage(
+e.message||
+"حدث خطأ أثناء الحفظ."
+);
 
 }
 
 }
+
 
 function showAddMessage(msg){
 
@@ -1501,11 +2079,13 @@ document.getElementById("addMessage");
 
 if(!box)return;
 
-box.textContent=msg;
+box.textContent=
+msg;
 
 box.classList.remove("hidden");
 
 }
+
 
 function clearAddForm(){
 
@@ -1523,11 +2103,16 @@ function clearAddForm(){
 const el=
 document.getElementById(id);
 
-if(el)el.value="";
+if(el){
+
+el.value="";
+
+}
 
 });
 
-contentType.value="project";
+contentType.value=
+"project";
 
 toggleContentFields();
 
@@ -1539,7 +2124,9 @@ toggleContentFields();
 async function loadContent(){
 
 const grid=
-document.getElementById("contentGrid");
+document.getElementById(
+"contentGrid"
+);
 
 if(!grid)return;
 
@@ -1549,6 +2136,7 @@ grid.innerHTML=
 '<div class="empty-state">⏳ جاري تحميل الخدمة...</div>';
 
 return;
+
 }
 
 grid.innerHTML=
@@ -1560,20 +2148,30 @@ const result=
 await supabaseClient
 .from("projects")
 .select("*")
-.order("created_at",{ascending:false});
+.order(
+"created_at",
+{
+ascending:false
+}
+);
 
 if(result.error){
 
 grid.innerHTML=
-`<div class="empty-state">
+`
+<div class="empty-state">
 ❌ خطأ في التحميل:<br>
 ${escapeHtml(result.error.message)}
-</div>`;
+</div>
+`;
 
 return;
+
 }
 
-allContent=result.data||[];
+allContent=
+result.data||
+[];
 
 await loadLikes();
 
@@ -1585,11 +2183,15 @@ applyFilters();
 
 }catch(e){
 
+console.error(e);
+
 grid.innerHTML=
-`<div class="empty-state">
+`
+<div class="empty-state">
 ❌ حدث خطأ:<br>
 ${escapeHtml(e.message)}
-</div>`;
+</div>
+`;
 
 }
 
@@ -1619,10 +2221,17 @@ return;
 
 try{
 
+/*
+مهم:
+جدول profiles عندك لا يحتوي avatar_url
+لذلك نقرأ فقط الأعمدة الموجودة:
+id,name,email
+*/
+
 const result=
 await supabaseClient
 .from("profiles")
-.select("id,name,email,avatar_url")
+.select("id,name,email")
 .in("id",ids);
 
 if(result.error){
@@ -1633,58 +2242,57 @@ result.error.message
 );
 
 return;
+
 }
 
-(result.data||[]).forEach(profile=>{
+(result.data||[])
+.forEach(profile=>{
 
-allProfiles[String(profile.id)]
-=
-profile;
+allProfiles[
+String(profile.id)
+]=profile;
 
 });
 
 }catch(e){
 
-console.warn("Profiles exception:",e);
+console.warn(
+"Profiles exception:",
+e
+);
 
 }
 
 }
+
 
 function getOwner(item){
 
 if(!item)
 return null;
 
-return allProfiles[String(item.user_id)]||{
+return allProfiles[
+String(item.user_id)
+]||{
 
 id:item.user_id,
 
 name:"عضو KAPO ONE",
 
-email:"",
-
-avatar_url:""
+email:""
 
 };
 
 }
 
+
 function getOwnerName(item){
 
-const owner=getOwner(item);
+const owner=
+getOwner(item);
 
 return owner?.name||
 "عضو KAPO ONE";
-
-}
-
-function getOwnerAvatar(item){
-
-const owner=getOwner(item);
-
-return owner?.avatar_url||
-"";
 
 }
 
@@ -1693,7 +2301,8 @@ return owner?.avatar_url||
 
 function ownerHtml(item){
 
-const owner=getOwner(item);
+const owner=
+getOwner(item);
 
 if(!owner||!item.user_id)
 return "";
@@ -1703,21 +2312,10 @@ owner.name||
 "عضو KAPO ONE";
 
 const first=
-name.trim().charAt(0).toUpperCase()||
+name.trim()
+.charAt(0)
+.toUpperCase()||
 "K";
-
-const avatar=
-owner.avatar_url||"";
-
-const avatarHtml=avatar
-?`
-<img
-src="${escapeAttribute(avatar)}"
-alt="${escapeAttribute(name)}"
-onerror="this.style.display='none'">
-`
-:
-first;
 
 return `
 <div
@@ -1725,7 +2323,7 @@ class="owner-mini"
 onclick="event.stopPropagation();openPublicProfile('${escapeAttribute(item.user_id)}')">
 
 <div class="owner-avatar">
-${avatarHtml}
+${first}
 </div>
 
 <div>
@@ -1751,7 +2349,10 @@ ${avatarHtml}
 async function loadLikes(){
 
 allLikes=[];
-likedContentIds=new Set();
+
+likedContentIds=
+new Set();
+
 likeCounts={};
 
 if(!initSupabase())
@@ -1762,7 +2363,9 @@ try{
 const result=
 await supabaseClient
 .from("likes")
-.select("id,project_id,user_id");
+.select(
+"id,project_id,user_id"
+);
 
 if(result.error){
 
@@ -1772,9 +2375,12 @@ result.error.message
 );
 
 return;
+
 }
 
-allLikes=result.data||[];
+allLikes=
+result.data||
+[];
 
 allLikes.forEach(like=>{
 
@@ -1798,11 +2404,15 @@ likedContentIds.add(id);
 
 }catch(e){
 
-console.warn(e);
+console.warn(
+"Likes exception:",
+e
+);
 
 }
 
 }
+
 
 async function toggleLike(id){
 
@@ -1813,17 +2423,23 @@ showToast(
 );
 
 return;
+
 }
 
 if(!initSupabase()){
 
-showToast("تعذر الاتصال.");
+showToast(
+"تعذر الاتصال."
+);
 
 return;
+
 }
 
 const alreadyLiked=
-likedContentIds.has(String(id));
+likedContentIds.has(
+String(id)
+);
 
 try{
 
@@ -1833,8 +2449,14 @@ const result=
 await supabaseClient
 .from("likes")
 .delete()
-.eq("project_id",id)
-.eq("user_id",currentUser.id);
+.eq(
+"project_id",
+id
+)
+.eq(
+"user_id",
+currentUser.id
+);
 
 if(result.error){
 
@@ -1843,9 +2465,12 @@ showToast(
 );
 
 return;
+
 }
 
-showToast("تم إزالة الإعجاب.");
+showToast(
+"تم إزالة الإعجاب."
+);
 
 }else{
 
@@ -1855,13 +2480,18 @@ await supabaseClient
 .insert({
 
 project_id:id,
-user_id:currentUser.id
+
+user_id:
+currentUser.id
 
 });
 
 if(result.error){
 
-if(result.error.code==="23505"){
+if(
+result.error.code===
+"23505"
+){
 
 showToast(
 "أنت معجب بهذا المحتوى بالفعل."
@@ -1876,6 +2506,7 @@ showToast(
 }
 
 return;
+
 }
 
 showToast(
@@ -1889,6 +2520,8 @@ await loadLikes();
 renderContent();
 
 }catch(e){
+
+console.error(e);
 
 showToast(
 "حدث خطأ في الإعجاب."
@@ -1904,6 +2537,7 @@ showToast(
 async function loadComments(){
 
 allComments=[];
+
 commentCounts={};
 
 if(!initSupabase())
@@ -1926,9 +2560,12 @@ result.error.message
 );
 
 return;
+
 }
 
-allComments=result.data||[];
+allComments=
+result.data||
+[];
 
 allComments.forEach(c=>{
 
@@ -1951,6 +2588,7 @@ e
 
 }
 
+
 function getCommentsForProject(id){
 
 return allComments
@@ -1966,6 +2604,7 @@ new Date(b.created_at)
 
 }
 
+
 async function addComment(id){
 
 if(!currentUser){
@@ -1975,6 +2614,7 @@ showToast(
 );
 
 return;
+
 }
 
 const input=
@@ -1994,13 +2634,17 @@ showToast(
 );
 
 return;
+
 }
 
 if(!initSupabase()){
 
-showToast("تعذر الاتصال.");
+showToast(
+"تعذر الاتصال."
+);
 
 return;
+
 }
 
 try{
@@ -2012,7 +2656,8 @@ await supabaseClient
 
 project_id:id,
 
-user_id:currentUser.id,
+user_id:
+currentUser.id,
 
 comment:text
 
@@ -2027,6 +2672,7 @@ showToast(
 );
 
 return;
+
 }
 
 input.value="";
@@ -2051,6 +2697,7 @@ showToast(
 
 }
 
+
 async function deleteComment(
 commentId,
 projectId
@@ -2072,8 +2719,14 @@ const result=
 await supabaseClient
 .from("comments")
 .delete()
-.eq("id",commentId)
-.eq("user_id",currentUser.id);
+.eq(
+"id",
+commentId
+)
+.eq(
+"user_id",
+currentUser.id
+);
 
 if(result.error){
 
@@ -2082,6 +2735,7 @@ showToast(
 );
 
 return;
+
 }
 
 showToast(
@@ -2094,11 +2748,16 @@ openDetailModal(projectId);
 
 }catch(e){
 
-showToast("حدث خطأ.");
+console.error(e);
+
+showToast(
+"حدث خطأ."
+);
 
 }
 
 }
+
 
 function renderComments(id){
 
@@ -2155,6 +2814,7 @@ ${renderCommentList(comments)}
 
 }
 
+
 function renderCommentList(comments){
 
 if(!comments.length){
@@ -2172,12 +2832,15 @@ return comments.map(c=>{
 const name=
 String(c.user_id)===
 String(currentUser?.id)
-?"أنت"
-:"عضو KAPO ONE";
+?
+"أنت"
+:
+"عضو KAPO ONE";
 
 const date=
 c.created_at
-?new Date(
+?
+new Date(
 c.created_at
 ).toLocaleString("ar-SA")
 :"";
@@ -2187,12 +2850,14 @@ currentUser&&
 String(c.user_id)===
 String(currentUser.id)
 ?
-`<button
+`
+<button
 type="button"
 class="delete-comment"
 onclick="deleteComment('${escapeAttribute(c.id)}','${escapeAttribute(c.project_id)}')">
 حذف
-</button>`
+</button>
+`
 :"";
 
 return `
@@ -2246,16 +2911,21 @@ allContent.filter(item=>{
 if(
 type&&
 item.content_type!==type
-)
+){
+
 return false;
+
+}
 
 if(search){
 
 const title=
-(item.title||"").toLowerCase();
+(item.title||"")
+.toLowerCase();
 
 const desc=
-(item.description||"").toLowerCase();
+(item.description||"")
+.toLowerCase();
 
 const owner=
 getOwnerName(item)
@@ -2265,8 +2935,11 @@ if(
 !title.includes(search)&&
 !desc.includes(search)&&
 !owner.includes(search)
-)
+){
+
 return false;
+
+}
 
 }
 
@@ -2277,6 +2950,7 @@ return true;
 renderContent();
 
 }
+
 
 function resetFilters(){
 
@@ -2310,6 +2984,7 @@ grid.innerHTML=
 '<div class="empty-state">📭 لا يوجد محتوى مطابق.</div>';
 
 return;
+
 }
 
 grid.innerHTML=
@@ -2327,6 +3002,7 @@ question:"badge-question"
 ||
 "badge-project";
 
+
 const badgeLabel={
 
 project:"🏗️ مشروع",
@@ -2339,6 +3015,7 @@ question:"❓ سؤال"
 ||
 "محتوى";
 
+
 const icon={
 
 project:"🏗️",
@@ -2350,6 +3027,7 @@ question:"❓"
 }[item.content_type]
 ||
 "📋";
+
 
 const imageHtml=
 item.image_url
@@ -2374,6 +3052,7 @@ ${icon}
 </div>
 `;
 
+
 const date=
 item.created_at
 ?
@@ -2381,6 +3060,7 @@ new Date(
 item.created_at
 ).toLocaleDateString("ar-SA")
 :"";
+
 
 const id=
 String(item.id||"");
@@ -2393,6 +3073,7 @@ likeCounts[id]||0;
 
 const comments=
 commentCounts[id]||0;
+
 
 return `
 <div
@@ -2452,6 +3133,7 @@ ${comments}
 </div>
 
 </div>
+
 </div>
 `;
 
@@ -2466,7 +3148,8 @@ function openDetailModal(id){
 
 const item=
 allContent.find(
-x=>String(x.id)===
+x=>
+String(x.id)===
 String(id)
 );
 
@@ -2477,6 +3160,7 @@ showToast(
 );
 
 return;
+
 }
 
 const title=
@@ -2485,7 +3169,8 @@ item.title||
 
 document.getElementById(
 "detailTitle"
-).textContent=title;
+).textContent=
+title;
 
 let image="";
 
@@ -2516,11 +3201,13 @@ const type=
 typeLabels[item.content_type]||
 "📋 محتوى";
 
+
 let description=
 item.description||
 "لا يوجد وصف.";
 
 let propertyHtml="";
+
 
 if(item.content_type==="property"){
 
@@ -2530,7 +3217,8 @@ description.split(
 );
 
 description=
-parts[0]||"";
+parts[0]||
+"";
 
 if(parts[1]){
 
@@ -2539,8 +3227,9 @@ try{
 const extra=
 JSON.parse(parts[1]);
 
-propertyHtml=`
+propertyHtml=
 
+`
 <div class="detail-row">
 <strong>الدولة:</strong>
 ${escapeHtml(extra.country||"-")}
@@ -2567,14 +3256,18 @@ ${escapeHtml(String(extra.area||0))}
 <strong>واتساب:</strong>
 ${escapeHtml(extra.whatsapp||"-")}
 </div>
-
 `;
 
-}catch(e){}
+}catch(e){
+
+console.warn(e);
 
 }
 
 }
+
+}
+
 
 const date=
 item.created_at
@@ -2609,21 +3302,6 @@ ownerName.trim()
 .toUpperCase()||
 "K";
 
-const ownerAvatar=
-owner?.avatar_url||"";
-
-const ownerAvatarHtml=
-ownerAvatar
-?
-`
-<img
-src="${escapeAttribute(ownerAvatar)}"
-alt="${escapeAttribute(ownerName)}"
-onerror="this.style.display='none'">
-`
-:
-ownerFirst;
-
 const ownerBlock=
 item.user_id
 ?
@@ -2633,7 +3311,7 @@ class="owner-detail"
 onclick="openPublicProfile('${escapeAttribute(item.user_id)}')">
 
 <div class="owner-detail-avatar">
-${ownerAvatarHtml}
+${ownerFirst}
 </div>
 
 <div>
@@ -2705,11 +3383,13 @@ ${renderComments(projectId)}
 
 `;
 
+
 document.getElementById(
 "detailModal"
 ).classList.add("active");
 
 }
+
 
 async function toggleLikeFromDetail(id){
 
@@ -2723,10 +3403,14 @@ document.getElementById(
 if(
 modal&&
 modal.classList.contains("active")
-)
+){
+
 openDetailModal(id);
 
 }
+
+}
+
 
 function closeDetailModal(){
 
@@ -2748,6 +3432,7 @@ showToast(
 );
 
 return;
+
 }
 
 const modal=
@@ -2765,22 +3450,44 @@ modal.classList.add("active");
 box.innerHTML=
 '<div class="empty-state">⏳ جاري تحميل الملف الشخصي...</div>';
 
+
 let profile=
-allProfiles[String(userId)];
+allProfiles[
+String(userId)
+];
+
 
 try{
 
 if(!profile){
 
+/*
+إصلاح مهم:
+لا نطلب avatar_url لأنه غير موجود في profiles
+*/
+
 const result=
 await supabaseClient
 .from("profiles")
-.select("id,name,email,avatar_url")
+.select("id,name,email")
 .eq("id",userId)
 .maybeSingle();
 
-if(result.data)
-profile=result.data;
+if(result.data){
+
+profile=
+result.data;
+
+}
+
+if(result.error){
+
+console.warn(
+"Public profile:",
+result.error.message
+);
+
+}
 
 }
 
@@ -2789,6 +3496,7 @@ profile=result.data;
 console.error(e);
 
 }
+
 
 if(!profile){
 
@@ -2800,7 +3508,9 @@ box.innerHTML=
 `;
 
 return;
+
 }
+
 
 const name=
 profile.name||
@@ -2816,22 +3526,6 @@ name.trim()
 .toUpperCase()||
 "K";
 
-const avatar=
-profile.avatar_url||
-"";
-
-const avatarHtml=
-avatar
-?
-`
-<img
-src="${escapeAttribute(avatar)}"
-alt="${escapeAttribute(name)}"
-onerror="this.style.display='none'">
-`
-:
-first;
-
 
 /* CONTENT OF OWNER */
 
@@ -2842,6 +3536,7 @@ String(userId)
 );
 
 let contentHtml="";
+
 
 if(!ownerContent.length){
 
@@ -2897,6 +3592,7 @@ ${type}
 
 }
 
+
 box.innerHTML=
 `
 
@@ -2905,7 +3601,7 @@ box.innerHTML=
 <div class="profile-public-head">
 
 <div class="profile-public-avatar">
-${avatarHtml}
+${first}
 </div>
 
 <div>
@@ -2939,6 +3635,7 @@ ${contentHtml}
 
 }
 
+
 function closePublicProfile(){
 
 document
@@ -2964,6 +3661,7 @@ return String(value??"")
 
 }
 
+
 function escapeAttribute(value){
 
 return escapeHtml(value);
@@ -2983,6 +3681,7 @@ restoreSession,
 );
 
 return;
+
 }
 
 try{
@@ -2992,9 +3691,12 @@ await supabaseClient.auth.getSession();
 
 if(result.error){
 
+console.error(result.error);
+
 showAuthPage();
 
 return;
+
 }
 
 const session=
@@ -3058,6 +3760,8 @@ likedContentIds=
 new Set();
 
 showAuthPage();
+
+showLoginForm();
 
 }
 
