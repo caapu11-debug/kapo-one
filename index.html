@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
 <title>KAPO ONE - منصة مفتوحة</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
+
+*{
+box-sizing:border-box
+}
+
+html{
+scroll-behavior:smooth
+}
 
 body{
 margin:0;
@@ -21,9 +32,22 @@ color:#f8fafc;
 min-height:100vh
 }
 
-button,input,textarea,select{font-family:inherit}
-button{cursor:pointer}
-.hidden{display:none!important}
+button,
+input,
+textarea,
+select{
+font-family:inherit
+}
+
+button{
+cursor:pointer
+}
+
+.hidden{
+display:none!important
+}
+
+/* ================= AUTH ================= */
 
 .auth-page{
 min-height:100vh;
@@ -161,6 +185,8 @@ color:#fff;
 font-weight:700
 }
 
+/* ================= HEADER ================= */
+
 .header{
 position:sticky;
 top:0;
@@ -263,6 +289,8 @@ border-color:rgba(59,130,246,.3);
 color:#fff
 }
 
+/* ================= MAIN ================= */
+
 .container{
 max-width:1250px;
 margin:auto;
@@ -279,8 +307,14 @@ display:block
 }
 
 @keyframes fadeIn{
-from{opacity:0;transform:translateY(5px)}
-to{opacity:1;transform:translateY(0)}
+from{
+opacity:0;
+transform:translateY(5px)
+}
+to{
+opacity:1;
+transform:translateY(0)
+}
 }
 
 .section-title{
@@ -294,6 +328,8 @@ color:#94a3b8;
 margin:0 0 24px;
 line-height:1.8
 }
+
+/* ================= CONTENT ================= */
 
 .content-grid{
 display:grid;
@@ -431,6 +467,8 @@ color:#94a3b8;
 font-weight:700
 }
 
+/* ================= FILTERS ================= */
+
 .filters-bar{
 display:grid;
 grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
@@ -457,6 +495,8 @@ width:100%
 .filters-bar select:focus{
 border-color:#3b82f6
 }
+
+/* ================= MODAL ================= */
 
 .modal{
 position:fixed;
@@ -523,6 +563,8 @@ gap:10px;
 padding:0 20px 20px
 }
 
+/* ================= FORMS ================= */
+
 .form-grid{
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -571,6 +613,8 @@ background:rgba(2,6,23,.5);
 border:1px solid #1e293b
 }
 
+/* ================= EMPTY ================= */
+
 .empty-state{
 padding:40px 20px;
 text-align:center;
@@ -580,6 +624,8 @@ border-radius:18px;
 color:#94a3b8;
 grid-column:1/-1
 }
+
+/* ================= DETAILS ================= */
 
 .detail-image{
 width:100%;
@@ -607,6 +653,8 @@ align-items:center;
 gap:10px
 }
 
+/* ================= TOAST ================= */
+
 #toast{
 position:fixed;
 bottom:25px;
@@ -629,13 +677,18 @@ opacity:1;
 transform:translateY(0)
 }
 
+/* ================= MOBILE ================= */
+
 @media(max-width:900px){
+
 .content-grid{
 grid-template-columns:repeat(2,1fr)
 }
+
 }
 
 @media(max-width:650px){
+
 .header-inner{
 padding:10px 12px
 }
@@ -668,8 +721,11 @@ grid-column:span 1
 grid-column:span 1;
 grid-template-columns:1fr
 }
+
 }
+
 </style>
+
 </head>
 
 <body>
@@ -680,9 +736,13 @@ grid-template-columns:1fr
 
 <div class="auth-box">
 
-<div class="auth-logo">K</div>
+<div class="auth-logo">
+K
+</div>
 
-<h1 class="auth-title">KAPO ONE</h1>
+<h1 class="auth-title">
+KAPO ONE
+</h1>
 
 <p class="auth-subtitle">
 🌍 منصة مفتوحة للأفكار والمشاريع والعقارات
@@ -690,38 +750,52 @@ grid-template-columns:1fr
 
 <div id="loginForm" class="auth-form">
 
-<input id="loginEmail"
+<input
+id="loginEmail"
 type="email"
 placeholder="البريد الإلكتروني">
 
-<input id="loginPassword"
+<input
+id="loginPassword"
 type="password"
 placeholder="كلمة المرور">
 
-<button type="button"
+<button
+type="button"
 class="primary-btn"
 onclick="loginUser()">
+
 تسجيل الدخول
+
 </button>
 
-<button type="button"
+<button
+type="button"
 class="secondary-btn"
 onclick="enterGuest()">
+
 الدخول كزائر
+
 </button>
 
 <div class="auth-links">
 
-<button type="button"
+<button
+type="button"
 class="auth-link"
 onclick="showRegisterForm()">
+
 إنشاء حساب
+
 </button>
 
-<button type="button"
+<button
+type="button"
 class="auth-link"
 onclick="showResetForm()">
+
 نسيت كلمة المرور؟
+
 </button>
 
 </div>
@@ -731,28 +805,37 @@ onclick="showResetForm()">
 <div id="registerForm"
 class="auth-form hidden">
 
-<input id="registerName"
+<input
+id="registerName"
 type="text"
 placeholder="الاسم">
 
-<input id="registerEmail"
+<input
+id="registerEmail"
 type="email"
 placeholder="البريد الإلكتروني">
 
-<input id="registerPassword"
+<input
+id="registerPassword"
 type="password"
 placeholder="كلمة المرور (6 أحرف)">
 
-<button type="button"
+<button
+type="button"
 class="primary-btn"
 onclick="registerUser()">
+
 إنشاء الحساب
+
 </button>
 
-<button type="button"
+<button
+type="button"
 class="auth-link"
 onclick="showLoginForm()">
+
 العودة
+
 </button>
 
 </div>
@@ -760,28 +843,38 @@ onclick="showLoginForm()">
 <div id="resetForm"
 class="auth-form hidden">
 
-<input id="resetEmail"
+<input
+id="resetEmail"
 type="email"
 placeholder="البريد الإلكتروني">
 
-<button type="button"
+<button
+type="button"
 class="primary-btn"
 onclick="resetUserPassword()">
+
 إرسال رابط الاستعادة
+
 </button>
 
-<button type="button"
+<button
+type="button"
 class="auth-link"
 onclick="showLoginForm()">
+
 العودة
+
 </button>
 
 </div>
 
-<div id="authMessage"
-class="auth-message hidden"></div>
+<div
+id="authMessage"
+class="auth-message hidden">
+</div>
 
 </div>
+
 </div>
 
 
@@ -795,15 +888,20 @@ class="auth-message hidden"></div>
 
 <div class="brand">
 
-<div class="brand-logo">K</div>
+<div class="brand-logo">
+K
+</div>
 
-<span>KAPO ONE</span>
+<span>
+KAPO ONE
+</span>
 
 </div>
 
 <div class="user-mini">
 
-<div id="miniUserAvatar"
+<div
+id="miniUserAvatar"
 class="user-avatar">
 K
 </div>
@@ -818,32 +916,44 @@ K
 
 <nav class="nav">
 
-<button type="button"
+<button
+type="button"
 class="nav-btn active"
 data-section="home"
 onclick="showSection('home')">
+
 الرئيسية
+
 </button>
 
-<button type="button"
+<button
+type="button"
 class="nav-btn"
 data-section="content"
 onclick="showSection('content')">
+
 📋 المحتوى
+
 </button>
 
-<button type="button"
+<button
+type="button"
 class="nav-btn"
 data-section="addcontent"
 onclick="openAddModal()">
+
 ➕ إضافة
+
 </button>
 
-<button type="button"
+<button
+type="button"
 class="nav-btn"
 data-section="profile"
 onclick="showSection('profile')">
+
 حسابي
+
 </button>
 
 </nav>
@@ -855,7 +965,8 @@ onclick="showSection('profile')">
 
 <!-- HOME -->
 
-<section id="home"
+<section
+id="home"
 class="section active">
 
 <div style="
@@ -869,7 +980,9 @@ border:1px solid rgba(148,163,184,.14)">
 font-size:42px;
 margin:0 0 12px;
 font-weight:900">
+
 🌍 مرحباً في KAPO ONE
+
 </h1>
 
 <p style="
@@ -877,7 +990,9 @@ color:#cbd5e1;
 line-height:1.9;
 font-size:17px;
 max-width:700px">
+
 منصة مفتوحة تتيح لك مشاركة الأفكار، المشاريع، التصاميم، العقارات، والأسئلة.
+
 </p>
 
 <div style="
@@ -886,16 +1001,22 @@ flex-wrap:wrap;
 gap:10px;
 margin-top:22px">
 
-<button type="button"
+<button
+type="button"
 class="primary-btn"
 onclick="showSection('content')">
+
 📋 استكشاف المحتوى
+
 </button>
 
-<button type="button"
+<button
+type="button"
 class="secondary-btn"
 onclick="openAddModal()">
+
 ➕ إضافة محتوى
+
 </button>
 
 </div>
@@ -905,7 +1026,8 @@ onclick="openAddModal()">
 
 <div class="content-grid">
 
-<div class="content-card"
+<div
+class="content-card"
 onclick="showSection('content')">
 
 <div class="content-placeholder">
@@ -919,15 +1041,18 @@ onclick="showSection('content')">
 </div>
 
 <div class="content-description">
+
 استكشف المشاريع والأفكار والتصاميم والعقارات التي يشاركها أعضاء KAPO ONE.
-</div>
 
 </div>
 
 </div>
 
+</div>
 
-<div class="content-card"
+
+<div
+class="content-card"
 onclick="openAddModal()">
 
 <div class="content-placeholder">
@@ -941,15 +1066,18 @@ onclick="openAddModal()">
 </div>
 
 <div class="content-description">
+
 أضف مشروعك أو فكرتك أو تصميمك إلى المنصة.
-</div>
 
 </div>
 
 </div>
 
+</div>
 
-<div class="content-card"
+
+<div
+class="content-card"
 onclick="showSection('profile')">
 
 <div class="content-placeholder">
@@ -963,7 +1091,9 @@ onclick="showSection('profile')">
 </div>
 
 <div class="content-description">
+
 راجع معلومات حسابك وإدارة دخولك إلى المنصة.
+
 </div>
 
 </div>
@@ -977,7 +1107,8 @@ onclick="showSection('profile')">
 
 <!-- CONTENT -->
 
-<section id="content"
+<section
+id="content"
 class="section">
 
 <h2 class="section-title">
@@ -990,12 +1121,14 @@ class="section">
 
 <div class="filters-bar">
 
-<input id="filterSearch"
+<input
+id="filterSearch"
 type="text"
 placeholder="🔍 بحث..."
 oninput="applyFilters()">
 
-<select id="filterType"
+<select
+id="filterType"
 onchange="applyFilters()">
 
 <option value="">
@@ -1024,15 +1157,19 @@ onchange="applyFilters()">
 
 </select>
 
-<button type="button"
+<button
+type="button"
 class="secondary-btn"
 onclick="resetFilters()">
+
 🔄 إعادة ضبط
+
 </button>
 
 </div>
 
-<div id="contentGrid"
+<div
+id="contentGrid"
 class="content-grid">
 
 <div class="empty-state">
@@ -1046,7 +1183,8 @@ class="content-grid">
 
 <!-- PROFILE -->
 
-<section id="profile"
+<section
+id="profile"
 class="section">
 
 <h2 class="section-title">
@@ -1069,42 +1207,54 @@ align-items:center;
 gap:16px;
 margin-bottom:22px">
 
-<div id="profileAvatar"
+<div
+id="profileAvatar"
 class="user-avatar"
 style="
 width:78px;
 height:78px;
 border-radius:22px;
 font-size:28px">
+
 K
+
 </div>
 
 <div>
 
-<div id="profileName"
+<div
+id="profileName"
 style="
 font-size:25px;
 font-weight:900">
+
 زائر
+
 </div>
 
-<div id="profileEmail"
+<div
+id="profileEmail"
 style="color:#94a3b8">
+
 -
-</div>
 
 </div>
 
 </div>
 
-<button type="button"
+</div>
+
+<button
+type="button"
 class="primary-btn"
 style="
 background:rgba(239,68,68,.08);
 color:#fca5a5;
 border:1px solid rgba(239,68,68,.3)"
 onclick="logoutUser()">
+
 تسجيل الخروج
+
 </button>
 
 </div>
@@ -1118,11 +1268,13 @@ onclick="logoutUser()">
 
 <!-- ================= ADD MODAL ================= -->
 
-<div id="addModal"
+<div
+id="addModal"
 class="modal"
 onclick="closeAddModal()">
 
-<div class="modal-box"
+<div
+class="modal-box"
 onclick="event.stopPropagation()">
 
 <div class="modal-header">
@@ -1131,10 +1283,13 @@ onclick="event.stopPropagation()">
 ➕ إضافة محتوى جديد
 </h2>
 
-<button type="button"
+<button
+type="button"
 class="close-btn"
 onclick="closeAddModal()">
+
 ×
+
 </button>
 
 </div>
@@ -1149,7 +1304,8 @@ onclick="closeAddModal()">
 نوع المحتوى
 </label>
 
-<select id="contentType"
+<select
+id="contentType"
 onchange="toggleContentFields()">
 
 <option value="project">
@@ -1182,7 +1338,8 @@ onchange="toggleContentFields()">
 العنوان
 </label>
 
-<input id="contentTitle"
+<input
+id="contentTitle"
 placeholder="عنوان المحتوى">
 
 </div>
@@ -1193,7 +1350,8 @@ placeholder="عنوان المحتوى">
 الوصف
 </label>
 
-<textarea id="contentDescription"
+<textarea
+id="contentDescription"
 rows="4"
 placeholder="وصف المحتوى..."></textarea>
 
@@ -1205,12 +1363,14 @@ placeholder="وصف المحتوى..."></textarea>
 رابط الصورة (اختياري)
 </label>
 
-<input id="contentImage"
+<input
+id="contentImage"
 placeholder="https://example.com/image.jpg">
 
 </div>
 
-<div id="propertyFields"
+<div
+id="propertyFields"
 class="property-grid hidden">
 
 <div>
@@ -1219,7 +1379,8 @@ class="property-grid hidden">
 الدولة
 </label>
 
-<input id="propCountry"
+<input
+id="propCountry"
 placeholder="مثال: السعودية">
 
 </div>
@@ -1230,7 +1391,8 @@ placeholder="مثال: السعودية">
 المدينة
 </label>
 
-<input id="propCity"
+<input
+id="propCity"
 placeholder="مثال: الرياض">
 
 </div>
@@ -1241,7 +1403,8 @@ placeholder="مثال: الرياض">
 السعر
 </label>
 
-<input id="propPrice"
+<input
+id="propPrice"
 type="number"
 placeholder="0">
 
@@ -1281,7 +1444,8 @@ placeholder="0">
 المساحة (م²)
 </label>
 
-<input id="propArea"
+<input
+id="propArea"
 type="number"
 placeholder="0">
 
@@ -1293,14 +1457,16 @@ placeholder="0">
 واتساب
 </label>
 
-<input id="propWhatsapp"
+<input
+id="propWhatsapp"
 placeholder="رقم التواصل">
 
 </div>
 
 </div>
 
-<div id="addMessage"
+<div
+id="addMessage"
 class="auth-message hidden">
 </div>
 
@@ -1310,16 +1476,22 @@ class="auth-message hidden">
 
 <div class="modal-actions">
 
-<button type="button"
+<button
+type="button"
 class="primary-btn"
 onclick="saveContent()">
+
 💾 حفظ
+
 </button>
 
-<button type="button"
+<button
+type="button"
 class="secondary-btn"
 onclick="closeAddModal()">
+
 إلغاء
+
 </button>
 
 </div>
@@ -1331,11 +1503,13 @@ onclick="closeAddModal()">
 
 <!-- ================= DETAIL MODAL ================= -->
 
-<div id="detailModal"
+<div
+id="detailModal"
 class="modal"
 onclick="closeDetailModal()">
 
-<div class="modal-box"
+<div
+class="modal-box"
 onclick="event.stopPropagation()">
 
 <div class="modal-header">
@@ -1344,24 +1518,31 @@ onclick="event.stopPropagation()">
 تفاصيل
 </h2>
 
-<button type="button"
+<button
+type="button"
 class="close-btn"
 onclick="closeDetailModal()">
+
 ×
+
 </button>
 
 </div>
 
-<div id="detailContent"
+<div
+id="detailContent"
 class="modal-content">
 </div>
 
 <div class="modal-actions">
 
-<button type="button"
+<button
+type="button"
 class="secondary-btn"
 onclick="closeDetailModal()">
+
 إغلاق
+
 </button>
 
 </div>
@@ -1376,7 +1557,9 @@ onclick="closeDetailModal()">
 
 <script>
 
-/* ================= SUPABASE ================= */
+/* =====================================================
+   SUPABASE
+===================================================== */
 
 const SUPABASE_URL =
 "https://ehmeircigoqfhftaotba.supabase.co";
@@ -1385,22 +1568,34 @@ const SUPABASE_KEY =
 "sb_publishable_54N-aEBjhTQK1wUzpWl0fg_MQRq5D-T";
 
 let supabaseClient = null;
+
 let currentUser = null;
+
 let currentProfile = null;
+
 let allContent = [];
+
 let filteredContent = [];
+
 let allLikes = [];
+
 let likedContentIds = new Set();
+
 let likeCounts = {};
+
 let toastTimer = null;
 
 
-/* ================= INIT ================= */
+/* =====================================================
+   INIT SUPABASE
+===================================================== */
 
 function initSupabase(){
 
-if(window.supabase &&
-typeof window.supabase.createClient === "function"){
+if(
+window.supabase &&
+typeof window.supabase.createClient === "function"
+){
 
 if(!supabaseClient){
 
@@ -1410,117 +1605,172 @@ SUPABASE_URL,
 SUPABASE_KEY
 );
 
-console.log("✅ Supabase connected");
+console.log(
+"✅ Supabase connected"
+);
 
 }
 
 return true;
-}
 
-console.warn("⏳ Supabase loading...");
+}
 
 return false;
+
 }
 
 
-/* ================= AUTH FORMS ================= */
+/* =====================================================
+   AUTH FORMS
+===================================================== */
 
 function showLoginForm(){
 
-document.getElementById("loginForm")
+document
+.getElementById("loginForm")
 .classList.remove("hidden");
 
-document.getElementById("registerForm")
+document
+.getElementById("registerForm")
 .classList.add("hidden");
 
-document.getElementById("resetForm")
+document
+.getElementById("resetForm")
 .classList.add("hidden");
 
 clearAuthMessage();
 
 }
+
 
 function showRegisterForm(){
 
-document.getElementById("loginForm")
+document
+.getElementById("loginForm")
 .classList.add("hidden");
 
-document.getElementById("registerForm")
+document
+.getElementById("registerForm")
 .classList.remove("hidden");
 
-document.getElementById("resetForm")
+document
+.getElementById("resetForm")
 .classList.add("hidden");
 
 clearAuthMessage();
 
 }
+
 
 function showResetForm(){
 
-document.getElementById("loginForm")
+document
+.getElementById("loginForm")
 .classList.add("hidden");
 
-document.getElementById("registerForm")
+document
+.getElementById("registerForm")
 .classList.add("hidden");
 
-document.getElementById("resetForm")
+document
+.getElementById("resetForm")
 .classList.remove("hidden");
 
 clearAuthMessage();
 
 }
+
 
 function showAuthMessage(msg){
 
 const box =
 document.getElementById("authMessage");
 
-box.textContent = msg;
+if(!box)return;
+
+box.textContent =
+msg;
+
 box.classList.remove("hidden");
 
 }
+
 
 function clearAuthMessage(){
 
 const box =
 document.getElementById("authMessage");
 
+if(!box)return;
+
 box.classList.add("hidden");
+
 box.textContent = "";
 
 }
 
 
-/* ================= PAGES ================= */
+/* =====================================================
+   APP / AUTH PAGE
+===================================================== */
 
 function showApp(){
 
-document.getElementById("authPage")
-.style.display = "none";
+const auth =
+document.getElementById("authPage");
 
-document.getElementById("app")
-.classList.remove("hidden");
+const app =
+document.getElementById("app");
 
-document.getElementById("app")
-.style.display = "block";
+if(auth){
+
+auth.style.display =
+"none";
 
 }
+
+if(app){
+
+app.classList.remove("hidden");
+
+app.style.display =
+"block";
+
+}
+
+}
+
 
 function showAuthPage(){
 
-document.getElementById("authPage")
-.style.display = "flex";
+const auth =
+document.getElementById("authPage");
 
-document.getElementById("app")
-.classList.add("hidden");
+const app =
+document.getElementById("app");
 
-document.getElementById("app")
-.style.display = "none";
+if(auth){
+
+auth.style.display =
+"flex";
+
+}
+
+if(app){
+
+app.classList.add("hidden");
+
+app.style.display =
+"none";
+
+}
 
 }
 
 
-/* ================= LOGIN ================= */
+/* =====================================================
+   LOGIN
+===================================================== */
 
 async function loginUser(){
 
@@ -1533,14 +1783,18 @@ showAuthMessage(
 );
 
 return;
+
 }
 
 const email =
-document.getElementById("loginEmail")
-.value.trim();
+document
+.getElementById("loginEmail")
+.value
+.trim();
 
 const password =
-document.getElementById("loginPassword")
+document
+.getElementById("loginPassword")
 .value;
 
 if(!email || !password){
@@ -1550,6 +1804,7 @@ showAuthMessage(
 );
 
 return;
+
 }
 
 const btn =
@@ -1560,21 +1815,35 @@ document.querySelector(
 if(btn){
 
 btn.disabled = true;
-btn.textContent = "جاري...";
+
+btn.textContent =
+"جاري...";
 
 }
 
 try{
 
-const {data,error} =
+const result =
 await supabaseClient.auth.signInWithPassword({
-email,
-password
+
+email:email,
+
+password:password
+
 });
+
+const data =
+result.data;
+
+const error =
+result.error;
 
 if(error){
 
-console.error("Login error:",error);
+console.error(
+"Login error:",
+error
+);
 
 showAuthMessage(
 error.message ||
@@ -1582,18 +1851,21 @@ error.message ||
 );
 
 return;
+
 }
 
-if(!data?.user){
+if(!data || !data.user){
 
 showAuthMessage(
 "فشل تسجيل الدخول."
 );
 
 return;
+
 }
 
-currentUser = data.user;
+currentUser =
+data.user;
 
 await loadUserProfile();
 
@@ -1610,7 +1882,10 @@ showToast(
 }
 catch(e){
 
-console.error("Login exception:",e);
+console.error(
+"Login exception:",
+e
+);
 
 showAuthMessage(
 e.message ||
@@ -1623,7 +1898,9 @@ finally{
 if(btn){
 
 btn.disabled = false;
-btn.textContent = "تسجيل الدخول";
+
+btn.textContent =
+"تسجيل الدخول";
 
 }
 
@@ -1632,7 +1909,9 @@ btn.textContent = "تسجيل الدخول";
 }
 
 
-/* ================= REGISTER ================= */
+/* =====================================================
+   REGISTER
+===================================================== */
 
 async function registerUser(){
 
@@ -1645,18 +1924,24 @@ showAuthMessage(
 );
 
 return;
+
 }
 
 const name =
-document.getElementById("registerName")
-.value.trim();
+document
+.getElementById("registerName")
+.value
+.trim();
 
 const email =
-document.getElementById("registerEmail")
-.value.trim();
+document
+.getElementById("registerEmail")
+.value
+.trim();
 
 const password =
-document.getElementById("registerPassword")
+document
+.getElementById("registerPassword")
 .value;
 
 if(!name || !email || !password){
@@ -1666,6 +1951,7 @@ showAuthMessage(
 );
 
 return;
+
 }
 
 if(password.length < 6){
@@ -1675,15 +1961,17 @@ showAuthMessage(
 );
 
 return;
+
 }
 
 try{
 
-const {data,error} =
+const result =
 await supabaseClient.auth.signUp({
 
-email,
-password,
+email:email,
+
+password:password,
 
 options:{
 data:{
@@ -1693,18 +1981,28 @@ name:name
 
 });
 
+const data =
+result.data;
+
+const error =
+result.error;
+
 if(error){
 
-console.error("Register error:",error);
+console.error(
+"Register error:",
+error
+);
 
 showAuthMessage(
 error.message
 );
 
 return;
+
 }
 
-if(data.user){
+if(data && data.user){
 
 await createProfile(
 data.user,
@@ -1742,7 +2040,10 @@ showAuthMessage(
 }
 catch(e){
 
-console.error("Register exception:",e);
+console.error(
+"Register exception:",
+e
+);
 
 showAuthMessage(
 e.message
@@ -1753,19 +2054,27 @@ e.message
 }
 
 
-/* ================= PROFILE ================= */
+/* =====================================================
+   PROFILE
+===================================================== */
 
 async function createProfile(
 user,
 name
 ){
 
-if(!user || !initSupabase())
+if(
+!user ||
+!initSupabase()
+){
+
 return;
+
+}
 
 try{
 
-const {error} =
+const result =
 await supabaseClient
 .from("profiles")
 .upsert({
@@ -1778,11 +2087,14 @@ email:user.email || ""
 
 });
 
-if(error)
+if(result.error){
+
 console.error(
 "Profile create error:",
-error
+result.error
 );
+
+}
 
 }
 catch(e){
@@ -1793,36 +2105,54 @@ console.error(e);
 
 }
 
+
 async function loadUserProfile(){
 
 if(!currentUser){
 
 currentProfile = {
+
 name:"زائر",
+
 email:""
+
 };
 
 return;
+
 }
 
 try{
 
-const {data,error} =
+const result =
 await supabaseClient
 .from("profiles")
 .select("*")
-.eq("id",currentUser.id)
+.eq(
+"id",
+currentUser.id
+)
 .maybeSingle();
 
-if(error)
+const data =
+result.data;
+
+const error =
+result.error;
+
+if(error){
+
 console.error(
 "Load profile error:",
 error
 );
 
+}
+
 if(data){
 
-currentProfile = data;
+currentProfile =
+data;
 
 }
 else{
@@ -1853,7 +2183,9 @@ console.error(e);
 }
 
 
-/* ================= UPDATE UI ================= */
+/* =====================================================
+   UPDATE UI
+===================================================== */
 
 function updateUI(){
 
@@ -1867,30 +2199,61 @@ currentUser?.email ||
 "";
 
 const first =
-name.trim().charAt(0).toUpperCase()
+name
+.trim()
+.charAt(0)
+.toUpperCase()
 || "K";
 
 const avatar =
 currentProfile?.avatar_url ||
 "";
 
+const miniName =
 document.getElementById(
 "miniUserName"
-).textContent = name;
+);
 
+const profileName =
 document.getElementById(
 "profileName"
-).textContent = name;
+);
 
+const profileEmail =
 document.getElementById(
 "profileEmail"
-).textContent =
+);
+
+if(miniName){
+
+miniName.textContent =
+name;
+
+}
+
+if(profileName){
+
+profileName.textContent =
+name;
+
+}
+
+if(profileEmail){
+
+profileEmail.textContent =
 email || "-";
 
+}
+
 [
-document.getElementById("miniUserAvatar"),
-document.getElementById("profileAvatar")
-].forEach(el=>{
+document.getElementById(
+"miniUserAvatar"
+),
+document.getElementById(
+"profileAvatar"
+)
+]
+.forEach(el=>{
 
 if(!el)return;
 
@@ -1901,12 +2264,15 @@ if(avatar){
 const img =
 document.createElement("img");
 
-img.src = avatar;
+img.src =
+avatar;
 
 img.onerror = ()=>{
 
 el.innerHTML = "";
-el.textContent = first;
+
+el.textContent =
+first;
 
 };
 
@@ -1915,7 +2281,8 @@ el.appendChild(img);
 }
 else{
 
-el.textContent = first;
+el.textContent =
+first;
 
 }
 
@@ -1924,7 +2291,9 @@ el.textContent = first;
 }
 
 
-/* ================= PASSWORD RESET ================= */
+/* =====================================================
+   PASSWORD RESET
+===================================================== */
 
 async function resetUserPassword(){
 
@@ -1935,11 +2304,14 @@ showAuthMessage(
 );
 
 return;
+
 }
 
 const email =
-document.getElementById("resetEmail")
-.value.trim();
+document
+.getElementById("resetEmail")
+.value
+.trim();
 
 if(!email){
 
@@ -1948,11 +2320,12 @@ showAuthMessage(
 );
 
 return;
+
 }
 
 try{
 
-const {error} =
+const result =
 await supabaseClient.auth
 .resetPasswordForEmail(
 email,
@@ -1963,13 +2336,14 @@ window.location.pathname
 }
 );
 
-if(error){
+if(result.error){
 
 showAuthMessage(
-error.message
+result.error.message
 );
 
 return;
+
 }
 
 showAuthMessage(
@@ -1988,15 +2362,20 @@ e.message
 }
 
 
-/* ================= GUEST ================= */
+/* =====================================================
+   GUEST
+===================================================== */
 
 function enterGuest(){
 
 currentUser = null;
 
 currentProfile = {
+
 name:"زائر",
+
 email:""
+
 };
 
 showApp();
@@ -2009,14 +2388,20 @@ showToast(
 "👋 مرحباً بك كزائر."
 );
 
-showSection("home");
+showSection(
+"home"
+);
 
 }
 
 
-/* ================= LOGOUT ================= */
+/* =====================================================
+   LOGOUT
+===================================================== */
 
 async function logoutUser(){
+
+try{
 
 if(initSupabase()){
 
@@ -2024,9 +2409,19 @@ await supabaseClient.auth.signOut();
 
 }
 
+}
+catch(e){
+
+console.error(e);
+
+}
+
 currentUser = null;
+
 currentProfile = null;
-likedContentIds = new Set();
+
+likedContentIds =
+new Set();
 
 showAuthPage();
 
@@ -2037,30 +2432,42 @@ showToast(
 }
 
 
-/* ================= NAVIGATION ================= */
+/* =====================================================
+   NAVIGATION
+===================================================== */
 
 function showSection(id){
 
 document
 .querySelectorAll(".section")
-.forEach(s=>
-s.classList.remove("active")
+.forEach(section=>{
+
+section.classList.remove(
+"active"
 );
+
+});
 
 const section =
 document.getElementById(id);
 
 if(section){
 
-section.classList.add("active");
+section.classList.add(
+"active"
+);
 
 }
 
 document
 .querySelectorAll(".nav-btn")
-.forEach(b=>
-b.classList.remove("active")
+.forEach(button=>{
+
+button.classList.remove(
+"active"
 );
+
+});
 
 const btn =
 document.querySelector(
@@ -2069,7 +2476,9 @@ document.querySelector(
 
 if(btn){
 
-btn.classList.add("active");
+btn.classList.add(
+"active"
+);
 
 }
 
@@ -2087,26 +2496,36 @@ behavior:"smooth"
 }
 
 
-/* ================= TOAST ================= */
+/* =====================================================
+   TOAST
+===================================================== */
 
 function showToast(message){
 
 const toast =
-document.getElementById("toast");
+document.getElementById(
+"toast"
+);
 
 if(!toast)return;
 
 toast.textContent =
 message;
 
-toast.classList.add("show");
+toast.classList.add(
+"show"
+);
 
-clearTimeout(toastTimer);
+clearTimeout(
+toastTimer
+);
 
 toastTimer =
 setTimeout(
 ()=>{
-toast.classList.remove("show");
+toast.classList.remove(
+"show"
+);
 },
 3000
 );
@@ -2114,7 +2533,9 @@ toast.classList.remove("show");
 }
 
 
-/* ================= ADD MODAL ================= */
+/* =====================================================
+   ADD MODAL
+===================================================== */
 
 function openAddModal(){
 
@@ -2125,32 +2546,42 @@ showToast(
 );
 
 return;
+
 }
 
 document
 .getElementById("addModal")
-.classList.add("active");
+.classList.add(
+"active"
+);
 
 document
 .getElementById("addMessage")
-.classList.add("hidden");
+.classList.add(
+"hidden"
+);
 
 toggleContentFields();
 
 }
 
+
 function closeAddModal(){
 
 document
 .getElementById("addModal")
-.classList.remove("active");
+.classList.remove(
+"active"
+);
 
 }
+
 
 function toggleContentFields(){
 
 const type =
-document.getElementById("contentType")
+document
+.getElementById("contentType")
 .value;
 
 document
@@ -2163,7 +2594,9 @@ type !== "property"
 }
 
 
-/* ================= SAVE CONTENT ================= */
+/* =====================================================
+   SAVE CONTENT
+===================================================== */
 
 async function saveContent(){
 
@@ -2174,6 +2607,7 @@ showToast(
 );
 
 return;
+
 }
 
 if(!initSupabase()){
@@ -2183,23 +2617,31 @@ showToast(
 );
 
 return;
+
 }
 
 const type =
-document.getElementById("contentType")
+document
+.getElementById("contentType")
 .value;
 
 const title =
-document.getElementById("contentTitle")
-.value.trim();
+document
+.getElementById("contentTitle")
+.value
+.trim();
 
 const description =
-document.getElementById("contentDescription")
-.value.trim();
+document
+.getElementById("contentDescription")
+.value
+.trim();
 
 const image =
-document.getElementById("contentImage")
-.value.trim();
+document
+.getElementById("contentImage")
+.value
+.trim();
 
 if(!title){
 
@@ -2208,11 +2650,13 @@ showAddMessage(
 );
 
 return;
+
 }
 
 const projectData = {
 
-user_id:currentUser.id,
+user_id:
+currentUser.id,
 
 title:title,
 
@@ -2234,38 +2678,53 @@ if(type === "property"){
 const extra = {
 
 country:
-document.getElementById(
+document
+.getElementById(
 "propCountry"
-).value.trim(),
+)
+.value
+.trim(),
 
 city:
-document.getElementById(
+document
+.getElementById(
 "propCity"
-).value.trim(),
+)
+.value
+.trim(),
 
 price:
 parseFloat(
-document.getElementById(
+document
+.getElementById(
 "propPrice"
-).value
+)
+.value
 ) || 0,
 
 currency:
-document.getElementById(
+document
+.getElementById(
 "propCurrency"
-).value,
+)
+.value,
 
 area:
 parseFloat(
-document.getElementById(
+document
+.getElementById(
 "propArea"
-).value
+)
+.value
 ) || 0,
 
 whatsapp:
-document.getElementById(
+document
+.getElementById(
 "propWhatsapp"
-).value.trim()
+)
+.value
+.trim()
 
 };
 
@@ -2278,23 +2737,24 @@ JSON.stringify(extra);
 
 try{
 
-const {error} =
+const result =
 await supabaseClient
 .from("projects")
 .insert(projectData);
 
-if(error){
+if(result.error){
 
 console.error(
 "Save error:",
-error
+result.error
 );
 
 showAddMessage(
-error.message
+result.error.message
 );
 
 return;
+
 }
 
 closeAddModal();
@@ -2323,12 +2783,15 @@ e.message
 
 }
 
+
 function showAddMessage(msg){
 
 const box =
 document.getElementById(
 "addMessage"
 );
+
+if(!box)return;
 
 box.textContent =
 msg;
@@ -2339,50 +2802,48 @@ box.classList.remove(
 
 }
 
+
 function clearAddForm(){
 
-document.getElementById(
-"contentTitle"
-).value = "";
+const ids = [
 
-document.getElementById(
-"contentDescription"
-).value = "";
-
-document.getElementById(
-"contentImage"
-).value = "";
-
-document.getElementById(
-"propCountry"
-).value = "";
-
-document.getElementById(
-"propCity"
-).value = "";
-
-document.getElementById(
-"propPrice"
-).value = "";
-
-document.getElementById(
-"propArea"
-).value = "";
-
-document.getElementById(
+"contentTitle",
+"contentDescription",
+"contentImage",
+"propCountry",
+"propCity",
+"propPrice",
+"propArea",
 "propWhatsapp"
-).value = "";
 
-document.getElementById(
-"contentType"
-).value = "project";
+];
+
+ids.forEach(id=>{
+
+const el =
+document.getElementById(id);
+
+if(el){
+
+el.value = "";
+
+}
+
+});
+
+document
+.getElementById("contentType")
+.value =
+"project";
 
 toggleContentFields();
 
 }
 
 
-/* ================= LOAD CONTENT ================= */
+/* =====================================================
+   LOAD CONTENT
+===================================================== */
 
 async function loadContent(){
 
@@ -2395,27 +2856,25 @@ if(!grid)return;
 
 if(!initSupabase()){
 
-grid.innerHTML =
-`<div class="empty-state">
+grid.innerHTML = `
+<div class="empty-state">
 ⏳ جاري تحميل الخدمة...
-</div>`;
-
-setTimeout(
-loadContent,
-1000
-);
+</div>
+`;
 
 return;
+
 }
 
-grid.innerHTML =
-`<div class="empty-state">
+grid.innerHTML = `
+<div class="empty-state">
 ⏳ جاري التحميل...
-</div>`;
+</div>
+`;
 
 try{
 
-const {data,error} =
+const result =
 await supabaseClient
 .from("projects")
 .select("*")
@@ -2426,24 +2885,34 @@ ascending:false
 }
 );
 
-if(error){
+if(result.error){
 
 console.error(
 "Load error:",
-error
+result.error
 );
 
-grid.innerHTML =
-`<div class="empty-state">
+grid.innerHTML = `
+<div class="empty-state">
 ❌ خطأ في التحميل:<br>
-${escapeHtml(error.message)}
-</div>`;
+${escapeHtml(
+result.error.message
+)}
+</div>
+`;
 
 return;
+
 }
 
 allContent =
-data || [];
+result.data || [];
+
+/*
+   مهم:
+   تحميل الإعجابات لا يمنع المنصة
+   من العمل حتى لو كانت مشكلة في جدول likes.
+*/
 
 await loadLikes();
 
@@ -2457,55 +2926,71 @@ console.error(
 e
 );
 
-grid.innerHTML =
-`<div class="empty-state">
+grid.innerHTML = `
+<div class="empty-state">
 ❌ حدث خطأ:<br>
 ${escapeHtml(e.message)}
-</div>`;
+</div>
+`;
 
 }
 
 }
 
 
-/* ================= LOAD LIKES ================= */
+/* =====================================================
+   LOAD LIKES
+===================================================== */
 
 async function loadLikes(){
 
 allLikes = [];
-likedContentIds = new Set();
+
+likedContentIds =
+new Set();
+
 likeCounts = {};
 
-if(!initSupabase())
+if(!initSupabase()){
+
 return;
+
+}
 
 try{
 
-const {data,error} =
+const result =
 await supabaseClient
 .from("likes")
-.select("id,project_id,user_id");
+.select(
+"id,project_id,user_id"
+);
 
-if(error){
+if(result.error){
 
 console.warn(
 "Likes load:",
-error.message
+result.error.message
 );
 
 return;
+
 }
 
 allLikes =
-data || [];
+result.data || [];
 
 allLikes.forEach(like=>{
 
 const projectId =
-String(like.project_id);
+String(
+like.project_id
+);
 
 likeCounts[projectId] =
-(likeCounts[projectId] || 0) + 1;
+(
+likeCounts[projectId] || 0
+) + 1;
 
 if(
 currentUser &&
@@ -2513,7 +2998,9 @@ String(like.user_id) ===
 String(currentUser.id)
 ){
 
-likedContentIds.add(projectId);
+likedContentIds.add(
+projectId
+);
 
 }
 
@@ -2532,7 +3019,9 @@ e
 }
 
 
-/* ================= LIKE / UNLIKE ================= */
+/* =====================================================
+   TOGGLE LIKE
+===================================================== */
 
 async function toggleLike(id){
 
@@ -2543,6 +3032,7 @@ showToast(
 );
 
 return;
+
 }
 
 if(!initSupabase()){
@@ -2552,30 +3042,39 @@ showToast(
 );
 
 return;
+
 }
 
 const projectId =
 String(id);
 
 const alreadyLiked =
-likedContentIds.has(projectId);
+likedContentIds.has(
+projectId
+);
 
 try{
 
 if(alreadyLiked){
 
-const {error} =
+const result =
 await supabaseClient
 .from("likes")
 .delete()
-.eq("project_id",id)
-.eq("user_id",currentUser.id);
+.eq(
+"project_id",
+id
+)
+.eq(
+"user_id",
+currentUser.id
+);
 
-if(error){
+if(result.error){
 
 console.error(
 "Unlike error:",
-error
+result.error
 );
 
 showToast(
@@ -2583,6 +3082,7 @@ showToast(
 );
 
 return;
+
 }
 
 showToast(
@@ -2592,19 +3092,24 @@ showToast(
 }
 else{
 
-const {error} =
+const result =
 await supabaseClient
 .from("likes")
 .insert({
 
 project_id:id,
-user_id:currentUser.id
+
+user_id:
+currentUser.id
 
 });
 
-if(error){
+if(result.error){
 
-if(error.code === "23505"){
+if(
+result.error.code ===
+"23505"
+){
 
 showToast(
 "أنت معجب بهذا المحتوى بالفعل."
@@ -2615,7 +3120,7 @@ else{
 
 console.error(
 "Like error:",
-error
+result.error
 );
 
 showToast(
@@ -2625,6 +3130,7 @@ showToast(
 }
 
 return;
+
 }
 
 showToast(
@@ -2651,29 +3157,42 @@ showToast(
 
 }
 
+}
 
-/* ================= FILTER ================= */
+
+/* =====================================================
+   FILTER
+===================================================== */
 
 function applyFilters(){
 
 const search =
-document.getElementById(
+document
+.getElementById(
 "filterSearch"
-).value
+)
+.value
 .toLowerCase()
 .trim();
 
 const type =
-document.getElementById(
+document
+.getElementById(
 "filterType"
-).value;
+)
+.value;
 
 filteredContent =
 allContent.filter(item=>{
 
-if(type &&
-item.content_type !== type)
+if(
+type &&
+item.content_type !== type
+){
+
 return false;
+
+}
 
 if(search){
 
@@ -2688,8 +3207,11 @@ const desc =
 if(
 !title.includes(search) &&
 !desc.includes(search)
-)
+){
+
 return false;
+
+}
 
 }
 
@@ -2701,22 +3223,29 @@ renderContent();
 
 }
 
+
 function resetFilters(){
 
-document.getElementById(
+document
+.getElementById(
 "filterSearch"
-).value = "";
+)
+.value = "";
 
-document.getElementById(
+document
+.getElementById(
 "filterType"
-).value = "";
+)
+.value = "";
 
 applyFilters();
 
 }
 
 
-/* ================= RENDER ================= */
+/* =====================================================
+   RENDER CONTENT
+===================================================== */
 
 function renderContent(){
 
@@ -2729,84 +3258,130 @@ if(!grid)return;
 
 if(!filteredContent.length){
 
-grid.innerHTML =
-`<div class="empty-state">
+grid.innerHTML = `
+<div class="empty-state">
 📭 لا يوجد محتوى مطابق.
-</div>`;
+</div>
+`;
 
 return;
+
 }
 
 grid.innerHTML =
-filteredContent.map(item=>{
+filteredContent
+.map(item=>{
 
 const badgeClass = {
 
-project:"badge-project",
-property:"badge-property",
-idea:"badge-idea",
-design:"badge-design",
-question:"badge-question"
+project:
+"badge-project",
+
+property:
+"badge-property",
+
+idea:
+"badge-idea",
+
+design:
+"badge-design",
+
+question:
+"badge-question"
 
 }[item.content_type]
-|| "badge-project";
+||
+"badge-project";
 
 const badgeLabel = {
 
-project:"🏗️ مشروع",
-property:"🏢 عقار",
-idea:"💡 فكرة",
-design:"📐 تصميم",
-question:"❓ سؤال"
+project:
+"🏗️ مشروع",
+
+property:
+"🏢 عقار",
+
+idea:
+"💡 فكرة",
+
+design:
+"📐 تصميم",
+
+question:
+"❓ سؤال"
 
 }[item.content_type]
-|| "محتوى";
+||
+"محتوى";
 
 const icon = {
 
 project:"🏗️",
+
 property:"🏢",
+
 idea:"💡",
+
 design:"📐",
+
 question:"❓"
 
 }[item.content_type]
-|| "📋";
+||
+"📋";
 
 const imageHtml =
 item.image_url
 
 ?
+
 `<img
 class="content-image"
-src="${escapeAttribute(item.image_url)}"
-alt="${escapeAttribute(item.title || "")}"
+src="${escapeAttribute(
+item.image_url
+)}"
+alt="${escapeAttribute(
+item.title || ""
+)}"
 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
 
 <div
 class="content-placeholder"
 style="display:none">
+
 ${icon}
+
 </div>`
 
 :
+
 `<div class="content-placeholder">
+
 ${icon}
+
 </div>`;
 
 const date =
 item.created_at
 ?
-new Date(item.created_at)
-.toLocaleDateString("ar-SA")
+new Date(
+item.created_at
+)
+.toLocaleDateString(
+"ar-SA"
+)
 :
 "";
 
 const projectId =
-String(item.id || "");
+String(
+item.id || ""
+);
 
 const isLiked =
-likedContentIds.has(projectId);
+likedContentIds.has(
+projectId
+);
 
 const count =
 likeCounts[projectId] || 0;
@@ -2815,37 +3390,58 @@ return `
 
 <div
 class="content-card"
-onclick="openDetailModal('${escapeAttribute(item.id || "")}')">
+onclick="openDetailModal('${escapeAttribute(
+item.id || ""
+)}')">
 
 ${imageHtml}
 
 <div class="content-info">
 
 <div class="content-title">
-${escapeHtml(item.title || "بدون عنوان")}
+
+${escapeHtml(
+item.title ||
+"بدون عنوان"
+)}
+
 </div>
 
 <div class="content-meta">
+
 ${escapeHtml(date)}
+
 </div>
 
 <div class="content-description">
+
 ${escapeHtml(
-item.description || "لا يوجد وصف."
+item.description ||
+"لا يوجد وصف."
 )}
+
 </div>
 
 <span
 class="content-badge ${badgeClass}">
+
 ${badgeLabel}
+
 </span>
 
 <div class="card-bottom">
 
 <button
 type="button"
-class="like-btn ${isLiked ? "liked" : ""}"
-onclick="event.stopPropagation();toggleLike('${escapeAttribute(item.id || "")}')">
+class="like-btn ${
+isLiked ? "liked" : ""
+}"
+onclick="
+event.stopPropagation();
+toggleLike('${escapeAttribute(
+item.id || ""
+)}')
+">
 
 ${isLiked ? "❤️" : "🤍"}
 
@@ -2856,7 +3452,15 @@ ${count}
 </button>
 
 <span class="like-count">
-${count === 1 ? "إعجاب واحد" : "إعجابات"}
+
+${
+count === 1
+?
+"إعجاب واحد"
+:
+"إعجابات"
+}
+
 </span>
 
 </div>
@@ -2867,18 +3471,23 @@ ${count === 1 ? "إعجاب واحد" : "إعجابات"}
 
 `;
 
-}).join("");
+})
+.join("");
 
 }
 
 
-/* ================= DETAILS ================= */
+/* =====================================================
+   DETAILS
+===================================================== */
 
 function openDetailModal(id){
 
 const item =
 allContent.find(
-x => String(x.id) === String(id)
+x =>
+String(x.id) ===
+String(id)
 );
 
 if(!item){
@@ -2888,6 +3497,7 @@ showToast(
 );
 
 return;
+
 }
 
 const title =
@@ -2903,38 +3513,61 @@ let image = "";
 
 if(item.image_url){
 
-image =
-`<img
+image = `
+<img
 class="detail-image"
-src="${escapeAttribute(item.image_url)}"
-alt="${escapeAttribute(title)}"
-onerror="this.style.display='none'">`;
+src="${escapeAttribute(
+item.image_url
+)}"
+alt="${escapeAttribute(
+title
+)}"
+onerror="this.style.display='none'">
+`;
 
 }
 
 const typeLabels = {
 
-project:"🏗️ مشروع",
-property:"🏢 عقار",
-idea:"💡 فكرة",
-design:"📐 تصميم",
-question:"❓ سؤال"
+project:
+"🏗️ مشروع",
+
+property:
+"🏢 عقار",
+
+idea:
+"💡 فكرة",
+
+design:
+"📐 تصميم",
+
+question:
+"❓ سؤال"
 
 };
 
 const type =
-typeLabels[item.content_type]
-|| "📋 محتوى";
+typeLabels[
+item.content_type
+]
+||
+"📋 محتوى";
 
 let description =
-item.description || "لا يوجد وصف.";
+item.description ||
+"لا يوجد وصف.";
 
 let propertyHtml = "";
 
-if(item.content_type === "property"){
+if(
+item.content_type ===
+"property"
+){
 
 const parts =
-description.split("\n\n---\n");
+description.split(
+"\n\n---\n"
+);
 
 description =
 parts[0] || "";
@@ -2944,35 +3577,80 @@ if(parts[1]){
 try{
 
 const extra =
-JSON.parse(parts[1]);
+JSON.parse(
+parts[1]
+);
 
 propertyHtml = `
 
 <div class="detail-row">
-<strong>الدولة:</strong>
-${escapeHtml(extra.country || "-")}
+
+<strong>
+الدولة:
+</strong>
+
+${escapeHtml(
+extra.country || "-"
+)}
+
 </div>
 
 <div class="detail-row">
-<strong>المدينة:</strong>
-${escapeHtml(extra.city || "-")}
+
+<strong>
+المدينة:
+</strong>
+
+${escapeHtml(
+extra.city || "-"
+)}
+
 </div>
 
 <div class="detail-row">
-<strong>السعر:</strong>
-${escapeHtml(String(extra.price || 0))}
-${escapeHtml(extra.currency || "")}
+
+<strong>
+السعر:
+</strong>
+
+${escapeHtml(
+String(
+extra.price || 0
+)
+)}
+
+${escapeHtml(
+extra.currency || ""
+)}
+
 </div>
 
 <div class="detail-row">
-<strong>المساحة:</strong>
-${escapeHtml(String(extra.area || 0))}
- م²
+
+<strong>
+المساحة:
+</strong>
+
+${escapeHtml(
+String(
+extra.area || 0
+)
+)}
+
+م²
+
 </div>
 
 <div class="detail-row">
-<strong>واتساب:</strong>
-${escapeHtml(extra.whatsapp || "-")}
+
+<strong>
+واتساب:
+</strong>
+
+${escapeHtml(
+extra.whatsapp || "-"
+)}
+
 </div>
 
 `;
@@ -2994,16 +3672,24 @@ e
 const date =
 item.created_at
 ?
-new Date(item.created_at)
-.toLocaleString("ar-SA")
+new Date(
+item.created_at
+)
+.toLocaleString(
+"ar-SA"
+)
 :
 "-";
 
 const projectId =
-String(item.id || "");
+String(
+item.id || ""
+);
 
 const isLiked =
-likedContentIds.has(projectId);
+likedContentIds.has(
+projectId
+);
 
 const count =
 likeCounts[projectId] || 0;
@@ -3015,20 +3701,36 @@ document.getElementById(
 ${image}
 
 <div class="detail-row">
-<strong>النوع:</strong>
+
+<strong>
+النوع:
+</strong>
+
 ${type}
+
 </div>
 
 <div class="detail-row">
-<strong>تاريخ الإضافة:</strong>
-${escapeHtml(date)}
+
+<strong>
+تاريخ الإضافة:
+</strong>
+
+${escapeHtml(
+date
+)}
+
 </div>
 
 <div style="
 margin-top:18px;
 white-space:pre-wrap;
 line-height:2">
-${escapeHtml(description)}
+
+${escapeHtml(
+description
+)}
+
 </div>
 
 ${propertyHtml}
@@ -3037,8 +3739,14 @@ ${propertyHtml}
 
 <button
 type="button"
-class="like-btn ${isLiked ? "liked" : ""}"
-onclick="toggleLikeFromDetail('${escapeAttribute(projectId)}')">
+class="like-btn ${
+isLiked ? "liked" : ""
+}"
+onclick="
+toggleLikeFromDetail('${escapeAttribute(
+projectId
+)}')
+">
 
 ${isLiked ? "❤️" : "🤍"}
 
@@ -3049,28 +3757,47 @@ ${count}
 </button>
 
 <strong>
-${count === 1 ? "إعجاب واحد" : "إعجابات"}
+
+${
+count === 1
+?
+"إعجاب واحد"
+:
+"إعجابات"
+}
+
 </strong>
 
 </div>
 
 `;
 
-document.getElementById(
+document
+.getElementById(
 "detailModal"
 )
-.classList.add("active");
+.classList.add(
+"active"
+);
 
 }
+
 
 async function toggleLikeFromDetail(id){
 
 await toggleLike(id);
 
 const modal =
-document.getElementById("detailModal");
+document.getElementById(
+"detailModal"
+);
 
-if(modal.classList.contains("active")){
+if(
+modal &&
+modal.classList.contains(
+"active"
+)
+){
 
 openDetailModal(id);
 
@@ -3078,28 +3805,52 @@ openDetailModal(id);
 
 }
 
+
 function closeDetailModal(){
 
-document.getElementById(
+document
+.getElementById(
 "detailModal"
 )
-.classList.remove("active");
+.classList.remove(
+"active"
+);
 
 }
 
 
-/* ================= SECURITY HELPERS ================= */
+/* =====================================================
+   SECURITY HELPERS
+===================================================== */
 
 function escapeHtml(value){
 
-return String(value ?? "")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
+return String(
+value ?? ""
+)
+.replace(
+/&/g,
+"&amp;"
+)
+.replace(
+/</g,
+"&lt;"
+)
+.replace(
+/>/g,
+"&gt;"
+)
+.replace(
+/"/g,
+"&quot;"
+)
+.replace(
+/'/g,
+"&#039;"
+);
 
 }
+
 
 function escapeAttribute(value){
 
@@ -3108,7 +3859,9 @@ return escapeHtml(value);
 }
 
 
-/* ================= AUTH SESSION ================= */
+/* =====================================================
+   RESTORE SESSION
+===================================================== */
 
 async function restoreSession(){
 
@@ -3116,35 +3869,42 @@ if(!initSupabase()){
 
 setTimeout(
 restoreSession,
-300
+500
 );
 
 return;
+
 }
 
 try{
 
-const {
-data,
-error
-} =
+const result =
 await supabaseClient.auth
 .getSession();
 
-if(error){
+if(result.error){
 
 console.error(
 "Session error:",
-error
+result.error
 );
 
+showAuthPage();
+
 return;
+
 }
 
-if(data?.session?.user){
+const session =
+result.data?.session;
+
+if(
+session &&
+session.user
+){
 
 currentUser =
-data.session.user;
+session.user;
 
 await loadUserProfile();
 
@@ -3169,34 +3929,48 @@ console.error(
 e
 );
 
-}
+showAuthPage();
 
 }
 
+}
 
-/* ================= AUTH LISTENER ================= */
+
+/* =====================================================
+   AUTH LISTENER
+===================================================== */
 
 function setupAuthListener(){
 
-if(!initSupabase())
+if(!initSupabase()){
+
 return;
+
+}
 
 supabaseClient.auth
 .onAuthStateChange(
-async(event,session)=>{
+async(
+event,
+session
+)=>{
 
 console.log(
 "Auth event:",
 event
 );
 
-if(event === "SIGNED_OUT"){
+if(
+event ===
+"SIGNED_OUT"
+){
 
 currentUser = null;
 
 currentProfile = null;
 
-likedContentIds = new Set();
+likedContentIds =
+new Set();
 
 showAuthPage();
 
@@ -3208,11 +3982,15 @@ showAuthPage();
 }
 
 
-/* ================= START ================= */
+/* =====================================================
+   START
+===================================================== */
 
 window.addEventListener(
 "load",
 async()=>{
+
+showAuthPage();
 
 initSupabase();
 
@@ -3228,4 +4006,5 @@ toggleContentFields();
 </script>
 
 </body>
+
 </html>
