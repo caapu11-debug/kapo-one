@@ -79,9 +79,11 @@ box-shadow:0 8px 22px rgba(37,99,235,.3)
 .user-avatar{
 width:38px;height:38px;border-radius:50%;
 background:linear-gradient(135deg,#2563eb,#7c3aed);
-display:flex;align-items:center;justify-content:center;font-weight:900;overflow:hidden
+display:flex;align-items:center;justify-content:center;font-weight:900;overflow:hidden;
+flex-shrink:0
 }
 .user-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+
 .nav{
 max-width:1250px;margin:auto;padding:8px 18px 12px;
 display:flex;gap:8px;overflow-x:auto;scrollbar-width:none
@@ -139,6 +141,22 @@ display:flex;align-items:center;gap:6px;transition:.2s
 .like-btn.liked{background:rgba(239,68,68,.12);border-color:rgba(239,68,68,.45);color:#f87171}
 .like-count{font-size:13px;color:#94a3b8;font-weight:700}
 
+.owner-mini{
+display:flex;align-items:center;gap:8px;
+margin-top:12px;padding-top:12px;border-top:1px solid #1e293b;
+cursor:pointer
+}
+.owner-mini:hover .owner-name{color:#60a5fa}
+.owner-avatar{
+width:32px;height:32px;border-radius:50%;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+display:flex;align-items:center;justify-content:center;
+font-size:12px;font-weight:900;overflow:hidden;flex-shrink:0
+}
+.owner-avatar img{width:100%;height:100%;object-fit:cover}
+.owner-name{font-size:13px;font-weight:800;color:#e2e8f0}
+.owner-label{font-size:10px;color:#64748b;margin-bottom:2px}
+
 .filters-bar{
 display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
 gap:10px;background:rgba(15,23,42,.6);padding:15px;border-radius:18px;
@@ -194,7 +212,56 @@ margin-top:18px;padding-top:15px;border-top:1px solid #1e293b;
 display:flex;align-items:center;gap:10px;flex-wrap:wrap
 }
 
-/* ================= COMMENTS ================= */
+.owner-detail{
+display:flex;align-items:center;gap:12px;
+margin:18px 0;padding:14px;border-radius:16px;
+background:#020617;border:1px solid #1e293b;
+cursor:pointer
+}
+.owner-detail:hover{border-color:#3b82f6}
+.owner-detail-avatar{
+width:50px;height:50px;border-radius:50%;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+display:flex;align-items:center;justify-content:center;
+font-weight:900;overflow:hidden;flex-shrink:0
+}
+.owner-detail-avatar img{width:100%;height:100%;object-fit:cover}
+.owner-detail-name{font-size:16px;font-weight:900;color:#fff}
+.owner-detail-label{font-size:12px;color:#64748b}
+
+.profile-public{
+padding:22px;background:#020617;border:1px solid #1e293b;border-radius:18px;
+margin-bottom:20px
+}
+.profile-public-head{
+display:flex;align-items:center;gap:15px;margin-bottom:18px
+}
+.profile-public-avatar{
+width:72px;height:72px;border-radius:20px;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+display:flex;align-items:center;justify-content:center;
+font-size:25px;font-weight:900;overflow:hidden
+}
+.profile-public-avatar img{width:100%;height:100%;object-fit:cover}
+.profile-public-name{font-size:23px;font-weight:900}
+.profile-public-email{color:#64748b;font-size:13px}
+
+.public-content-title{
+font-size:18px;font-weight:900;margin:20px 0 12px
+}
+
+.public-content-list{
+display:grid;grid-template-columns:1fr;gap:10px
+}
+.public-content-item{
+padding:13px;border:1px solid #1e293b;border-radius:13px;
+background:#0f172a;cursor:pointer
+}
+.public-content-item:hover{border-color:#3b82f6}
+.public-content-item-title{font-weight:900}
+.public-content-item-type{font-size:11px;color:#64748b;margin-top:4px}
+
+/* COMMENTS */
 
 .comments-box{
 margin-top:22px;padding-top:18px;border-top:1px solid #1e293b
@@ -231,10 +298,14 @@ pointer-events:none;transition:.25s
 }
 #toast.show{opacity:1;transform:translateY(0)}
 
-@media(max-width:900px){.content-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){
+.content-grid{grid-template-columns:repeat(2,1fr)}
+}
 @media(max-width:650px){
-.header-inner{padding:10px 12px}.user-mini{display:none}
-.container{padding:20px 12px 50px}.content-grid{grid-template-columns:1fr}
+.header-inner{padding:10px 12px}
+.user-mini{display:none}
+.container{padding:20px 12px 50px}
+.content-grid{grid-template-columns:1fr}
 .filters-bar{grid-template-columns:1fr 1fr}
 .form-grid{grid-template-columns:1fr}
 .form-grid .full-width{grid-column:span 1}
@@ -248,6 +319,7 @@ pointer-events:none;transition:.25s
 
 <div id="authPage" class="auth-page">
 <div class="auth-box">
+
 <div class="auth-logo">K</div>
 <h1 class="auth-title">KAPO ONE</h1>
 <p class="auth-subtitle">🌍 منصة مفتوحة للأفكار والمشاريع والعقارات</p>
@@ -257,6 +329,7 @@ pointer-events:none;transition:.25s
 <input id="loginPassword" type="password" placeholder="كلمة المرور">
 <button type="button" class="primary-btn" onclick="loginUser()">تسجيل الدخول</button>
 <button type="button" class="secondary-btn" onclick="enterGuest()">الدخول كزائر</button>
+
 <div class="auth-links">
 <button type="button" class="auth-link" onclick="showRegisterForm()">إنشاء حساب</button>
 <button type="button" class="auth-link" onclick="showResetForm()">نسيت كلمة المرور؟</button>
@@ -278,51 +351,102 @@ pointer-events:none;transition:.25s
 </div>
 
 <div id="authMessage" class="auth-message hidden"></div>
+
 </div>
 </div>
 
 <div id="app" class="hidden">
 
 <header class="header">
+
 <div class="header-inner">
+
 <div class="brand">
 <div class="brand-logo">K</div>
 <span>KAPO ONE</span>
 </div>
+
 <div class="user-mini">
 <div id="miniUserAvatar" class="user-avatar">K</div>
 <span id="miniUserName">زائر</span>
 </div>
+
 </div>
 
 <nav class="nav">
-<button type="button" class="nav-btn active" data-section="home" onclick="showSection('home')">الرئيسية</button>
-<button type="button" class="nav-btn" data-section="content" onclick="showSection('content')">📋 المحتوى</button>
-<button type="button" class="nav-btn" data-section="addcontent" onclick="openAddModal()">➕ إضافة</button>
-<button type="button" class="nav-btn" data-section="profile" onclick="showSection('profile')">حسابي</button>
+
+<button type="button"
+class="nav-btn active"
+data-section="home"
+onclick="showSection('home')">
+الرئيسية
+</button>
+
+<button type="button"
+class="nav-btn"
+data-section="content"
+onclick="showSection('content')">
+📋 المحتوى
+</button>
+
+<button type="button"
+class="nav-btn"
+data-section="addcontent"
+onclick="openAddModal()">
+➕ إضافة
+</button>
+
+<button type="button"
+class="nav-btn"
+data-section="profile"
+onclick="showSection('profile')">
+حسابي
+</button>
+
 </nav>
+
 </header>
 
 <main class="container">
 
 <section id="home" class="section active">
+
 <div style="background:rgba(15,23,42,.72);border-radius:28px;padding:42px 30px;margin-bottom:25px;border:1px solid rgba(148,163,184,.14)">
-<h1 style="font-size:42px;margin:0 0 12px;font-weight:900">🌍 مرحباً في KAPO ONE</h1>
+
+<h1 style="font-size:42px;margin:0 0 12px;font-weight:900">
+🌍 مرحباً في KAPO ONE
+</h1>
+
 <p style="color:#cbd5e1;line-height:1.9;font-size:17px;max-width:700px">
 منصة مفتوحة تتيح لك مشاركة الأفكار، المشاريع، التصاميم، العقارات، والأسئلة.
 </p>
+
 <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:22px">
-<button type="button" class="primary-btn" onclick="showSection('content')">📋 استكشاف المحتوى</button>
-<button type="button" class="secondary-btn" onclick="openAddModal()">➕ إضافة محتوى</button>
+
+<button type="button"
+class="primary-btn"
+onclick="showSection('content')">
+📋 استكشاف المحتوى
+</button>
+
+<button type="button"
+class="secondary-btn"
+onclick="openAddModal()">
+➕ إضافة محتوى
+</button>
+
 </div>
 </div>
 
 <div class="content-grid">
+
 <div class="content-card" onclick="showSection('content')">
 <div class="content-placeholder">📋</div>
 <div class="content-info">
 <div class="content-title">المحتوى</div>
-<div class="content-description">استكشف المشاريع والأفكار والتصاميم والعقارات التي يشاركها أعضاء KAPO ONE.</div>
+<div class="content-description">
+استكشف المشاريع والأفكار والتصاميم والعقارات التي يشاركها أعضاء KAPO ONE.
+</div>
 </div>
 </div>
 
@@ -330,7 +454,9 @@ pointer-events:none;transition:.25s
 <div class="content-placeholder">💡</div>
 <div class="content-info">
 <div class="content-title">شارك فكرتك</div>
-<div class="content-description">أضف مشروعك أو فكرتك أو تصميمك إلى المنصة.</div>
+<div class="content-description">
+أضف مشروعك أو فكرتك أو تصميمك إلى المنصة.
+</div>
 </div>
 </div>
 
@@ -338,131 +464,298 @@ pointer-events:none;transition:.25s
 <div class="content-placeholder">👤</div>
 <div class="content-info">
 <div class="content-title">حسابي</div>
-<div class="content-description">راجع معلومات حسابك وإدارة دخولك إلى المنصة.</div>
+<div class="content-description">
+راجع معلومات حسابك وإدارة دخولك إلى المنصة.
 </div>
 </div>
+</div>
+
 </div>
 </section>
 
 <section id="content" class="section">
+
 <h2 class="section-title">📋 المحتوى</h2>
-<p class="section-subtitle">جميع المحتويات من الأعضاء.</p>
+
+<p class="section-subtitle">
+جميع المحتويات من الأعضاء.
+</p>
 
 <div class="filters-bar">
-<input id="filterSearch" type="text" placeholder="🔍 بحث..." oninput="applyFilters()">
+
+<input
+id="filterSearch"
+type="text"
+placeholder="🔍 بحث..."
+oninput="applyFilters()">
+
 <select id="filterType" onchange="applyFilters()">
+
 <option value="">جميع الأنواع</option>
 <option value="project">🏗️ مشروع</option>
 <option value="property">🏢 عقار</option>
 <option value="idea">💡 فكرة</option>
 <option value="design">📐 تصميم</option>
 <option value="question">❓ سؤال</option>
+
 </select>
-<button type="button" class="secondary-btn" onclick="resetFilters()">🔄 إعادة ضبط</button>
+
+<button
+type="button"
+class="secondary-btn"
+onclick="resetFilters()">
+🔄 إعادة ضبط
+</button>
+
 </div>
 
 <div id="contentGrid" class="content-grid">
 <div class="empty-state">جاري تحميل المحتوى...</div>
 </div>
+
 </section>
 
 <section id="profile" class="section">
+
 <h2 class="section-title">حسابي</h2>
-<p class="section-subtitle">معلومات حسابك.</p>
+
+<p class="section-subtitle">
+معلومات حسابك.
+</p>
 
 <div style="background:#0f172a;border:1px solid rgba(148,163,184,.14);border-radius:24px;padding:25px">
+
 <div style="display:flex;align-items:center;gap:16px;margin-bottom:22px">
-<div id="profileAvatar" class="user-avatar" style="width:78px;height:78px;border-radius:22px;font-size:28px">K</div>
+
+<div id="profileAvatar"
+class="user-avatar"
+style="width:78px;height:78px;border-radius:22px;font-size:28px">
+K
+</div>
+
 <div>
-<div id="profileName" style="font-size:25px;font-weight:900">زائر</div>
-<div id="profileEmail" style="color:#94a3b8">-</div>
+
+<div id="profileName"
+style="font-size:25px;font-weight:900">
+زائر
 </div>
+
+<div id="profileEmail"
+style="color:#94a3b8">
+-
 </div>
-<button type="button" class="primary-btn" style="background:rgba(239,68,68,.08);color:#fca5a5;border:1px solid rgba(239,68,68,.3)" onclick="logoutUser()">تسجيل الخروج</button>
+
 </div>
+
+</div>
+
+<button
+type="button"
+class="primary-btn"
+style="background:rgba(239,68,68,.08);color:#fca5a5;border:1px solid rgba(239,68,68,.3)"
+onclick="logoutUser()">
+تسجيل الخروج
+</button>
+
+</div>
+
 </section>
 
 </main>
 </div>
 
 <!-- ADD MODAL -->
+
 <div id="addModal" class="modal" onclick="closeAddModal()">
+
 <div class="modal-box" onclick="event.stopPropagation()">
+
 <div class="modal-header">
 <h2>➕ إضافة محتوى جديد</h2>
-<button type="button" class="close-btn" onclick="closeAddModal()">×</button>
+
+<button
+type="button"
+class="close-btn"
+onclick="closeAddModal()">
+×
+</button>
 </div>
 
 <div class="modal-content">
+
 <div class="form-grid">
 
 <div class="full-width">
+
 <label>نوع المحتوى</label>
+
 <select id="contentType" onchange="toggleContentFields()">
+
 <option value="project">🏗️ مشروع</option>
 <option value="property">🏢 عقار</option>
 <option value="idea">💡 فكرة</option>
 <option value="design">📐 تصميم</option>
 <option value="question">❓ سؤال</option>
+
 </select>
+
 </div>
 
 <div class="full-width">
+
 <label>العنوان</label>
-<input id="contentTitle" placeholder="عنوان المحتوى">
+
+<input
+id="contentTitle"
+placeholder="عنوان المحتوى">
+
 </div>
 
 <div class="full-width">
+
 <label>الوصف</label>
-<textarea id="contentDescription" rows="4" placeholder="وصف المحتوى..."></textarea>
+
+<textarea
+id="contentDescription"
+rows="4"
+placeholder="وصف المحتوى..."></textarea>
+
 </div>
 
 <div class="full-width">
+
 <label>رابط الصورة (اختياري)</label>
-<input id="contentImage" placeholder="https://example.com/image.jpg">
+
+<input
+id="contentImage"
+placeholder="https://example.com/image.jpg">
+
 </div>
 
 <div id="propertyFields" class="property-grid hidden">
-<div><label>الدولة</label><input id="propCountry" placeholder="مثال: السعودية"></div>
-<div><label>المدينة</label><input id="propCity" placeholder="مثال: الرياض"></div>
-<div><label>السعر</label><input id="propPrice" type="number" placeholder="0"></div>
+
 <div>
+<label>الدولة</label>
+<input id="propCountry" placeholder="مثال: السعودية">
+</div>
+
+<div>
+<label>المدينة</label>
+<input id="propCity" placeholder="مثال: الرياض">
+</div>
+
+<div>
+<label>السعر</label>
+<input id="propPrice" type="number" placeholder="0">
+</div>
+
+<div>
+
 <label>العملة</label>
+
 <select id="propCurrency">
 <option value="USD">🇺🇸 دولار</option>
 <option value="SAR">🇸🇦 ريال</option>
 <option value="EUR">🇪🇺 يورو</option>
 <option value="AED">🇦🇪 درهم</option>
 </select>
+
 </div>
-<div><label>المساحة (م²)</label><input id="propArea" type="number" placeholder="0"></div>
-<div><label>واتساب</label><input id="propWhatsapp" placeholder="رقم التواصل"></div>
+
+<div>
+<label>المساحة (م²)</label>
+<input id="propArea" type="number" placeholder="0">
+</div>
+
+<div>
+<label>واتساب</label>
+<input id="propWhatsapp" placeholder="رقم التواصل">
+</div>
+
 </div>
 
 <div id="addMessage" class="auth-message hidden"></div>
+
 </div>
 </div>
 
 <div class="modal-actions">
-<button type="button" class="primary-btn" onclick="saveContent()">💾 حفظ</button>
-<button type="button" class="secondary-btn" onclick="closeAddModal()">إلغاء</button>
+
+<button
+type="button"
+class="primary-btn"
+onclick="saveContent()">
+💾 حفظ
+</button>
+
+<button
+type="button"
+class="secondary-btn"
+onclick="closeAddModal()">
+إلغاء
+</button>
+
 </div>
+
 </div>
 </div>
 
 <!-- DETAIL MODAL -->
+
 <div id="detailModal" class="modal" onclick="closeDetailModal()">
+
 <div class="modal-box" onclick="event.stopPropagation()">
 
 <div class="modal-header">
+
 <h2 id="detailTitle">تفاصيل</h2>
-<button type="button" class="close-btn" onclick="closeDetailModal()">×</button>
+
+<button
+type="button"
+class="close-btn"
+onclick="closeDetailModal()">
+×
+</button>
+
 </div>
 
 <div id="detailContent" class="modal-content"></div>
 
 <div class="modal-actions">
-<button type="button" class="secondary-btn" onclick="closeDetailModal()">إغلاق</button>
+
+<button
+type="button"
+class="secondary-btn"
+onclick="closeDetailModal()">
+إغلاق
+</button>
+
+</div>
+
+</div>
+</div>
+
+<!-- PUBLIC PROFILE MODAL -->
+
+<div id="publicProfileModal" class="modal" onclick="closePublicProfile()">
+
+<div class="modal-box" onclick="event.stopPropagation()">
+
+<div class="modal-header">
+
+<h2>👤 الملف الشخصي</h2>
+
+<button
+type="button"
+class="close-btn"
+onclick="closePublicProfile()">
+×
+</button>
+
+</div>
+
+<div id="publicProfileContent" class="modal-content">
+جاري التحميل...
 </div>
 
 </div>
@@ -471,603 +764,1640 @@ pointer-events:none;transition:.25s
 <div id="toast"></div>
 
 <script>
+
 const SUPABASE_URL="https://ehmeircigoqfhftaotba.supabase.co";
+
 const SUPABASE_KEY="sb_publishable_54N-aEBjhTQK1wUzpWl0fg_MQRq5D-T";
 
 let supabaseClient=null;
 let currentUser=null;
 let currentProfile=null;
+
 let allContent=[];
 let filteredContent=[];
+
 let allLikes=[];
 let likedContentIds=new Set();
 let likeCounts={};
+
 let allComments=[];
 let commentCounts={};
+
+let allProfiles={};
+
 let toastTimer=null;
 
+
+/* ================= SUPABASE ================= */
+
 function initSupabase(){
+
 if(window.supabase&&typeof window.supabase.createClient==="function"){
+
 if(!supabaseClient){
-supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+
+supabaseClient=
+window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
+
 }
+
 return true;
 }
+
 return false;
 }
 
+
+/* ================= AUTH ================= */
+
 function showLoginForm(){
+
 loginForm.classList.remove("hidden");
 registerForm.classList.add("hidden");
 resetForm.classList.add("hidden");
+
 clearAuthMessage();
 }
+
 function showRegisterForm(){
+
 loginForm.classList.add("hidden");
 registerForm.classList.remove("hidden");
 resetForm.classList.add("hidden");
+
 clearAuthMessage();
 }
+
 function showResetForm(){
+
 loginForm.classList.add("hidden");
 registerForm.classList.add("hidden");
 resetForm.classList.remove("hidden");
+
 clearAuthMessage();
 }
+
 function showAuthMessage(msg){
+
 const box=document.getElementById("authMessage");
+
 if(!box)return;
+
 box.textContent=msg;
 box.classList.remove("hidden");
 }
+
 function clearAuthMessage(){
+
 const box=document.getElementById("authMessage");
+
 if(!box)return;
+
 box.classList.add("hidden");
 box.textContent="";
 }
 
 function showApp(){
+
 authPage.style.display="none";
+
 app.classList.remove("hidden");
 app.style.display="block";
 }
+
 function showAuthPage(){
+
 authPage.style.display="flex";
+
 app.classList.add("hidden");
 app.style.display="none";
 }
 
+
+/* ================= LOGIN ================= */
+
 async function loginUser(){
+
 clearAuthMessage();
-if(!initSupabase()){showAuthMessage("⏳ جاري تحميل الخدمة...");return;}
-const email=loginEmail.value.trim();
-const password=loginPassword.value;
-if(!email||!password){showAuthMessage("أدخل البريد وكلمة المرور.");return;}
-const btn=document.querySelector("#loginForm .primary-btn");
-if(btn){btn.disabled=true;btn.textContent="جاري...";}
-try{
-const result=await supabaseClient.auth.signInWithPassword({email,password});
-if(result.error){showAuthMessage(result.error.message||"بيانات الدخول غير صحيحة.");return;}
-currentUser=result.data.user;
-await loadUserProfile();
-showApp();updateUI();await loadContent();
-showToast("✅ تم تسجيل الدخول.");
-}catch(e){showAuthMessage(e.message||"حدث خطأ أثناء تسجيل الدخول.");}
-finally{if(btn){btn.disabled=false;btn.textContent="تسجيل الدخول";}}
+
+if(!initSupabase()){
+
+showAuthMessage("⏳ جاري تحميل الخدمة...");
+return;
 }
 
+const email=loginEmail.value.trim();
+const password=loginPassword.value;
+
+if(!email||!password){
+
+showAuthMessage("أدخل البريد وكلمة المرور.");
+return;
+}
+
+const btn=document.querySelector("#loginForm .primary-btn");
+
+if(btn){
+
+btn.disabled=true;
+btn.textContent="جاري...";
+}
+
+try{
+
+const result=
+await supabaseClient.auth.signInWithPassword({
+email,
+password
+});
+
+if(result.error){
+
+showAuthMessage(
+result.error.message||
+"بيانات الدخول غير صحيحة."
+);
+
+return;
+}
+
+currentUser=result.data.user;
+
+await loadUserProfile();
+
+showApp();
+updateUI();
+
+await loadContent();
+
+showToast("✅ تم تسجيل الدخول.");
+
+}catch(e){
+
+showAuthMessage(
+e.message||
+"حدث خطأ أثناء تسجيل الدخول."
+);
+
+}finally{
+
+if(btn){
+
+btn.disabled=false;
+btn.textContent="تسجيل الدخول";
+}
+
+}
+}
+
+
+/* ================= REGISTER ================= */
+
 async function registerUser(){
+
 clearAuthMessage();
-if(!initSupabase()){showAuthMessage("⏳ جاري تحميل الخدمة...");return;}
+
+if(!initSupabase()){
+
+showAuthMessage("⏳ جاري تحميل الخدمة...");
+return;
+}
+
 const name=registerName.value.trim();
 const email=registerEmail.value.trim();
 const password=registerPassword.value;
-if(!name||!email||!password){showAuthMessage("أكمل جميع البيانات.");return;}
-if(password.length<6){showAuthMessage("كلمة المرور 6 أحرف على الأقل.");return;}
-try{
-const result=await supabaseClient.auth.signUp({
-email,password,options:{data:{name}}
-});
-if(result.error){showAuthMessage(result.error.message);return;}
-if(result.data&&result.data.user){
-await createProfile(result.data.user,name);
-if(result.data.session){
-currentUser=result.data.user;
-await loadUserProfile();
-showApp();updateUI();await loadContent();
-showToast("✅ تم إنشاء الحساب.");
-}else{
-showAuthMessage("✅ تم إنشاء الحساب. تحقق من بريدك لتفعيله.");
-}
-}
-}catch(e){showAuthMessage(e.message);}
+
+if(!name||!email||!password){
+
+showAuthMessage("أكمل جميع البيانات.");
+return;
 }
 
-async function createProfile(user,name){
-if(!user||!initSupabase())return;
+if(password.length<6){
+
+showAuthMessage(
+"كلمة المرور 6 أحرف على الأقل."
+);
+
+return;
+}
+
 try{
-const result=await supabaseClient.from("profiles").upsert({
-id:user.id,name:name||"مستخدم",email:user.email||""
+
+const result=
+await supabaseClient.auth.signUp({
+
+email,
+password,
+
+options:{
+data:{
+name
+}
+}
+
 });
+
+if(result.error){
+
+showAuthMessage(result.error.message);
+return;
+}
+
+if(result.data&&result.data.user){
+
+await createProfile(
+result.data.user,
+name
+);
+
+if(result.data.session){
+
+currentUser=result.data.user;
+
+await loadUserProfile();
+
+showApp();
+updateUI();
+
+await loadContent();
+
+showToast("✅ تم إنشاء الحساب.");
+
+}else{
+
+showAuthMessage(
+"✅ تم إنشاء الحساب. تحقق من بريدك لتفعيله."
+);
+
+}
+
+}
+
+}catch(e){
+
+showAuthMessage(e.message);
+
+}
+}
+
+
+/* ================= PROFILE ================= */
+
+async function createProfile(user,name){
+
+if(!user||!initSupabase())return;
+
+try{
+
+const result=
+await supabaseClient
+.from("profiles")
+.upsert({
+
+id:user.id,
+name:name||"مستخدم",
+email:user.email||""
+
+});
+
 if(result.error)console.error(result.error);
-}catch(e){console.error(e);}
+
+}catch(e){
+
+console.error(e);
+
+}
 }
 
 async function loadUserProfile(){
+
 if(!currentUser){
-currentProfile={name:"زائر",email:""};
+
+currentProfile={
+name:"زائر",
+email:""
+};
+
 return;
 }
+
 try{
-const result=await supabaseClient.from("profiles").select("*").eq("id",currentUser.id).maybeSingle();
-if(result.data)currentProfile=result.data;
-else currentProfile={
+
+const result=
+await supabaseClient
+.from("profiles")
+.select("*")
+.eq("id",currentUser.id)
+.maybeSingle();
+
+if(result.data){
+
+currentProfile=result.data;
+
+}else{
+
+currentProfile={
+
 id:currentUser.id,
-name:currentUser.user_metadata?.name||currentUser.email?.split("@")[0]||"مستخدم",
-email:currentUser.email||""
+
+name:
+currentUser.user_metadata?.name||
+currentUser.email?.split("@")[0]||
+"مستخدم",
+
+email:
+currentUser.email||""
+
 };
-}catch(e){console.error(e);}
+
+}
+
+}catch(e){
+
+console.error(e);
+
+}
 }
 
 function updateUI(){
-const name=currentProfile?.name||"زائر";
-const email=currentProfile?.email||currentUser?.email||"";
-const first=name.trim().charAt(0).toUpperCase()||"K";
-const avatar=currentProfile?.avatar_url||"";
+
+const name=
+currentProfile?.name||
+"زائر";
+
+const email=
+currentProfile?.email||
+currentUser?.email||
+"";
+
+const first=
+name.trim().charAt(0).toUpperCase()||
+"K";
+
+const avatar=
+currentProfile?.avatar_url||
+"";
 
 miniUserName.textContent=name;
+
 profileName.textContent=name;
-profileEmail.textContent=email||"-";
+
+profileEmail.textContent=
+email||"-";
 
 [miniUserAvatar,profileAvatar].forEach(el=>{
+
 if(!el)return;
+
 el.innerHTML="";
+
 if(avatar){
+
 const img=document.createElement("img");
+
 img.src=avatar;
-img.onerror=()=>{el.innerHTML="";el.textContent=first;};
+
+img.onerror=()=>{
+el.innerHTML="";
+el.textContent=first;
+};
+
 el.appendChild(img);
-}else el.textContent=first;
-});
+
+}else{
+
+el.textContent=first;
+
 }
+
+});
+
+}
+
+
+/* ================= RESET ================= */
 
 async function resetUserPassword(){
-if(!initSupabase()){showAuthMessage("⏳ جاري تحميل الخدمة...");return;}
-const email=resetEmail.value.trim();
-if(!email){showAuthMessage("أدخل البريد.");return;}
-try{
-const result=await supabaseClient.auth.resetPasswordForEmail(email,{
-redirectTo:window.location.origin+window.location.pathname
-});
-if(result.error){showAuthMessage(result.error.message);return;}
-showAuthMessage("✅ تم إرسال رابط الاستعادة.");
-}catch(e){showAuthMessage(e.message);}
+
+if(!initSupabase()){
+
+showAuthMessage("⏳ جاري تحميل الخدمة...");
+return;
 }
 
+const email=resetEmail.value.trim();
+
+if(!email){
+
+showAuthMessage("أدخل البريد.");
+return;
+}
+
+try{
+
+const result=
+await supabaseClient.auth.resetPasswordForEmail(
+email,
+{
+redirectTo:
+window.location.origin+
+window.location.pathname
+}
+);
+
+if(result.error){
+
+showAuthMessage(result.error.message);
+return;
+}
+
+showAuthMessage(
+"✅ تم إرسال رابط الاستعادة."
+);
+
+}catch(e){
+
+showAuthMessage(e.message);
+
+}
+}
+
+
+/* ================= GUEST ================= */
+
 function enterGuest(){
+
 currentUser=null;
-currentProfile={name:"زائر",email:""};
-showApp();updateUI();loadContent();
+
+currentProfile={
+name:"زائر",
+email:""
+};
+
+showApp();
+
+updateUI();
+
+loadContent();
+
 showToast("👋 مرحباً بك كزائر.");
+
 showSection("home");
 }
 
+
+/* ================= LOGOUT ================= */
+
 async function logoutUser(){
-try{if(initSupabase())await supabaseClient.auth.signOut();}catch(e){console.error(e);}
-currentUser=null;currentProfile=null;likedContentIds=new Set();
-showAuthPage();showToast("تم تسجيل الخروج.");
+
+try{
+
+if(initSupabase())
+await supabaseClient.auth.signOut();
+
+}catch(e){
+
+console.error(e);
+
 }
+
+currentUser=null;
+currentProfile=null;
+
+likedContentIds=new Set();
+
+showAuthPage();
+
+showToast("تم تسجيل الخروج.");
+}
+
+
+/* ================= NAVIGATION ================= */
 
 function showSection(id){
-document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
-const section=document.getElementById(id);
-if(section)section.classList.add("active");
-document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active"));
-const btn=document.querySelector(`.nav-btn[data-section="${id}"]`);
-if(btn)btn.classList.add("active");
-if(id==="content")loadContent();
-window.scrollTo({top:0,behavior:"smooth"});
+
+document
+.querySelectorAll(".section")
+.forEach(s=>
+s.classList.remove("active")
+);
+
+const section=
+document.getElementById(id);
+
+if(section)
+section.classList.add("active");
+
+document
+.querySelectorAll(".nav-btn")
+.forEach(b=>
+b.classList.remove("active")
+);
+
+const btn=
+document.querySelector(
+`.nav-btn[data-section="${id}"]`
+);
+
+if(btn)
+btn.classList.add("active");
+
+if(id==="content")
+loadContent();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
 }
+
+
+/* ================= TOAST ================= */
 
 function showToast(message){
-const toast=document.getElementById("toast");
+
+const toast=
+document.getElementById("toast");
+
 if(!toast)return;
+
 toast.textContent=message;
+
 toast.classList.add("show");
+
 clearTimeout(toastTimer);
-toastTimer=setTimeout(()=>toast.classList.remove("show"),3000);
+
+toastTimer=setTimeout(
+()=>toast.classList.remove("show"),
+3000
+);
+
 }
+
+
+/* ================= ADD CONTENT ================= */
 
 function openAddModal(){
-if(!currentUser){showToast("سجل الدخول أولاً.");return;}
-document.getElementById("addModal").classList.add("active");
-document.getElementById("addMessage").classList.add("hidden");
+
+if(!currentUser){
+
+showToast("سجل الدخول أولاً.");
+return;
+}
+
+document
+.getElementById("addModal")
+.classList.add("active");
+
+document
+.getElementById("addMessage")
+.classList.add("hidden");
+
 toggleContentFields();
+
 }
-function closeAddModal(){document.getElementById("addModal").classList.remove("active");}
+
+function closeAddModal(){
+
+document
+.getElementById("addModal")
+.classList.remove("active");
+
+}
+
 function toggleContentFields(){
+
 const type=contentType.value;
-propertyFields.classList.toggle("hidden",type!=="property");
+
+propertyFields.classList.toggle(
+"hidden",
+type!=="property"
+);
+
 }
+
+
+/* ================= SAVE CONTENT ================= */
 
 async function saveContent(){
-if(!currentUser){showToast("سجل الدخول أولاً.");return;}
-if(!initSupabase()){showToast("تعذر الاتصال.");return;}
+
+if(!currentUser){
+
+showToast("سجل الدخول أولاً.");
+return;
+}
+
+if(!initSupabase()){
+
+showToast("تعذر الاتصال.");
+return;
+}
 
 const type=contentType.value;
-const title=contentTitle.value.trim();
-const description=contentDescription.value.trim();
-const image=contentImage.value.trim();
 
-if(!title){showAddMessage("اكتب العنوان.");return;}
+const title=
+contentTitle.value.trim();
+
+const description=
+contentDescription.value.trim();
+
+const image=
+contentImage.value.trim();
+
+if(!title){
+
+showAddMessage("اكتب العنوان.");
+return;
+}
 
 const projectData={
-user_id:currentUser.id,title,
+
+user_id:currentUser.id,
+
+title,
+
 description:description||"",
+
 image_url:image||null,
+
 content_type:type,
+
 created_at:new Date().toISOString()
+
 };
 
 if(type==="property"){
+
 const extra={
-country:propCountry.value.trim(),
-city:propCity.value.trim(),
-price:parseFloat(propPrice.value)||0,
-currency:propCurrency.value,
-area:parseFloat(propArea.value)||0,
-whatsapp:propWhatsapp.value.trim()
+
+country:
+propCountry.value.trim(),
+
+city:
+propCity.value.trim(),
+
+price:
+parseFloat(propPrice.value)||0,
+
+currency:
+propCurrency.value,
+
+area:
+parseFloat(propArea.value)||0,
+
+whatsapp:
+propWhatsapp.value.trim()
+
 };
-projectData.description=description+"\n\n---\n"+JSON.stringify(extra);
+
+projectData.description=
+description+
+"\n\n---\n"+
+JSON.stringify(extra);
+
 }
 
 try{
-const result=await supabaseClient.from("projects").insert(projectData);
-if(result.error){showAddMessage(result.error.message);return;}
-closeAddModal();clearAddForm();await loadContent();
+
+const result=
+await supabaseClient
+.from("projects")
+.insert(projectData);
+
+if(result.error){
+
+showAddMessage(
+result.error.message
+);
+
+return;
+}
+
+closeAddModal();
+
+clearAddForm();
+
+await loadContent();
+
 showToast("✅ تم حفظ المحتوى.");
-}catch(e){showAddMessage(e.message);}
+
+}catch(e){
+
+showAddMessage(e.message);
+
+}
+
 }
 
 function showAddMessage(msg){
-const box=document.getElementById("addMessage");
+
+const box=
+document.getElementById("addMessage");
+
 if(!box)return;
+
 box.textContent=msg;
+
 box.classList.remove("hidden");
+
 }
 
 function clearAddForm(){
+
 [
-"contentTitle","contentDescription","contentImage",
-"propCountry","propCity","propPrice","propArea","propWhatsapp"
+"contentTitle",
+"contentDescription",
+"contentImage",
+"propCountry",
+"propCity",
+"propPrice",
+"propArea",
+"propWhatsapp"
 ].forEach(id=>{
-const el=document.getElementById(id);
+
+const el=
+document.getElementById(id);
+
 if(el)el.value="";
+
 });
+
 contentType.value="project";
+
 toggleContentFields();
+
 }
+
 
 /* ================= LOAD CONTENT ================= */
 
 async function loadContent(){
-const grid=document.getElementById("contentGrid");
+
+const grid=
+document.getElementById("contentGrid");
+
 if(!grid)return;
 
 if(!initSupabase()){
-grid.innerHTML='<div class="empty-state">⏳ جاري تحميل الخدمة...</div>';
+
+grid.innerHTML=
+'<div class="empty-state">⏳ جاري تحميل الخدمة...</div>';
+
 return;
 }
 
-grid.innerHTML='<div class="empty-state">⏳ جاري التحميل...</div>';
+grid.innerHTML=
+'<div class="empty-state">⏳ جاري التحميل...</div>';
 
 try{
-const result=await supabaseClient.from("projects").select("*").order("created_at",{ascending:false});
+
+const result=
+await supabaseClient
+.from("projects")
+.select("*")
+.order("created_at",{ascending:false});
 
 if(result.error){
-grid.innerHTML=`<div class="empty-state">❌ خطأ في التحميل:<br>${escapeHtml(result.error.message)}</div>`;
+
+grid.innerHTML=
+`<div class="empty-state">
+❌ خطأ في التحميل:<br>
+${escapeHtml(result.error.message)}
+</div>`;
+
 return;
 }
 
 allContent=result.data||[];
 
 await loadLikes();
+
 await loadComments();
+
+await loadProfiles();
 
 applyFilters();
 
 }catch(e){
-grid.innerHTML=`<div class="empty-state">❌ حدث خطأ:<br>${escapeHtml(e.message)}</div>`;
+
+grid.innerHTML=
+`<div class="empty-state">
+❌ حدث خطأ:<br>
+${escapeHtml(e.message)}
+</div>`;
+
 }
+
 }
+
+
+/* ================= LOAD OWNERS ================= */
+
+async function loadProfiles(){
+
+allProfiles={};
+
+if(!initSupabase())
+return;
+
+const ids=[
+...new Set(
+allContent
+.map(item=>item.user_id)
+.filter(Boolean)
+.map(String)
+)
+];
+
+if(!ids.length)
+return;
+
+try{
+
+const result=
+await supabaseClient
+.from("profiles")
+.select("id,name,email,avatar_url")
+.in("id",ids);
+
+if(result.error){
+
+console.warn(
+"Profiles:",
+result.error.message
+);
+
+return;
+}
+
+(result.data||[]).forEach(profile=>{
+
+allProfiles[String(profile.id)]
+=
+profile;
+
+});
+
+}catch(e){
+
+console.warn("Profiles exception:",e);
+
+}
+
+}
+
+function getOwner(item){
+
+if(!item)
+return null;
+
+return allProfiles[String(item.user_id)]||{
+
+id:item.user_id,
+
+name:"عضو KAPO ONE",
+
+email:"",
+
+avatar_url:""
+
+};
+
+}
+
+function getOwnerName(item){
+
+const owner=getOwner(item);
+
+return owner?.name||
+"عضو KAPO ONE";
+
+}
+
+function getOwnerAvatar(item){
+
+const owner=getOwner(item);
+
+return owner?.avatar_url||
+"";
+
+}
+
+
+/* ================= OWNER HTML ================= */
+
+function ownerHtml(item){
+
+const owner=getOwner(item);
+
+if(!owner||!item.user_id)
+return "";
+
+const name=
+owner.name||
+"عضو KAPO ONE";
+
+const first=
+name.trim().charAt(0).toUpperCase()||
+"K";
+
+const avatar=
+owner.avatar_url||"";
+
+const avatarHtml=avatar
+?`
+<img
+src="${escapeAttribute(avatar)}"
+alt="${escapeAttribute(name)}"
+onerror="this.style.display='none'">
+`
+:
+first;
+
+return `
+<div
+class="owner-mini"
+onclick="event.stopPropagation();openPublicProfile('${escapeAttribute(item.user_id)}')">
+
+<div class="owner-avatar">
+${avatarHtml}
+</div>
+
+<div>
+
+<div class="owner-label">
+صاحب المحتوى
+</div>
+
+<div class="owner-name">
+👤 ${escapeHtml(name)}
+</div>
+
+</div>
+
+</div>
+`;
+
+}
+
 
 /* ================= LIKES ================= */
 
 async function loadLikes(){
-allLikes=[];likedContentIds=new Set();likeCounts={};
-if(!initSupabase())return;
+
+allLikes=[];
+likedContentIds=new Set();
+likeCounts={};
+
+if(!initSupabase())
+return;
 
 try{
-const result=await supabaseClient.from("likes").select("id,project_id,user_id");
-if(result.error){console.warn("Likes:",result.error.message);return;}
+
+const result=
+await supabaseClient
+.from("likes")
+.select("id,project_id,user_id");
+
+if(result.error){
+
+console.warn(
+"Likes:",
+result.error.message
+);
+
+return;
+}
 
 allLikes=result.data||[];
 
 allLikes.forEach(like=>{
-const id=String(like.project_id);
-likeCounts[id]=(likeCounts[id]||0)+1;
-if(currentUser&&String(like.user_id)===String(currentUser.id))likedContentIds.add(id);
+
+const id=
+String(like.project_id);
+
+likeCounts[id]=
+(likeCounts[id]||0)+1;
+
+if(
+currentUser&&
+String(like.user_id)===
+String(currentUser.id)
+){
+
+likedContentIds.add(id);
+
+}
+
 });
-}catch(e){console.warn(e);}
+
+}catch(e){
+
+console.warn(e);
+
+}
+
 }
 
 async function toggleLike(id){
-if(!currentUser){showToast("❤️ سجل الدخول للإعجاب.");return;}
-if(!initSupabase()){showToast("تعذر الاتصال.");return;}
 
-const alreadyLiked=likedContentIds.has(String(id));
+if(!currentUser){
 
-try{
-if(alreadyLiked){
-const result=await supabaseClient.from("likes").delete()
-.eq("project_id",id).eq("user_id",currentUser.id);
-if(result.error){showToast("تعذر إزالة الإعجاب.");return;}
-showToast("تم إزالة الإعجاب.");
-}else{
-const result=await supabaseClient.from("likes").insert({
-project_id:id,user_id:currentUser.id
-});
-if(result.error){
-if(result.error.code==="23505")showToast("أنت معجب بهذا المحتوى بالفعل.");
-else showToast("تعذر تسجيل الإعجاب.");
+showToast(
+"❤️ سجل الدخول للإعجاب."
+);
+
 return;
 }
-showToast("❤️ تمت إضافة الإعجاب.");
+
+if(!initSupabase()){
+
+showToast("تعذر الاتصال.");
+
+return;
 }
+
+const alreadyLiked=
+likedContentIds.has(String(id));
+
+try{
+
+if(alreadyLiked){
+
+const result=
+await supabaseClient
+.from("likes")
+.delete()
+.eq("project_id",id)
+.eq("user_id",currentUser.id);
+
+if(result.error){
+
+showToast(
+"تعذر إزالة الإعجاب."
+);
+
+return;
+}
+
+showToast("تم إزالة الإعجاب.");
+
+}else{
+
+const result=
+await supabaseClient
+.from("likes")
+.insert({
+
+project_id:id,
+user_id:currentUser.id
+
+});
+
+if(result.error){
+
+if(result.error.code==="23505"){
+
+showToast(
+"أنت معجب بهذا المحتوى بالفعل."
+);
+
+}else{
+
+showToast(
+"تعذر تسجيل الإعجاب."
+);
+
+}
+
+return;
+}
+
+showToast(
+"❤️ تمت إضافة الإعجاب."
+);
+
+}
+
 await loadLikes();
+
 renderContent();
-}catch(e){showToast("حدث خطأ في الإعجاب.");}
+
+}catch(e){
+
+showToast(
+"حدث خطأ في الإعجاب."
+);
+
 }
+
+}
+
 
 /* ================= COMMENTS ================= */
 
 async function loadComments(){
-allComments=[];commentCounts={};
-if(!initSupabase())return;
+
+allComments=[];
+commentCounts={};
+
+if(!initSupabase())
+return;
 
 try{
-const result=await supabaseClient
+
+const result=
+await supabaseClient
 .from("comments")
-.select("id,project_id,user_id,comment,created_at");
+.select(
+"id,project_id,user_id,comment,created_at"
+);
 
 if(result.error){
-console.warn("Comments:",result.error.message);
+
+console.warn(
+"Comments:",
+result.error.message
+);
+
 return;
 }
 
 allComments=result.data||[];
 
 allComments.forEach(c=>{
-const id=String(c.project_id);
-commentCounts[id]=(commentCounts[id]||0)+1;
+
+const id=
+String(c.project_id);
+
+commentCounts[id]=
+(commentCounts[id]||0)+1;
+
 });
-}catch(e){console.warn("Comments exception:",e);}
+
+}catch(e){
+
+console.warn(
+"Comments exception:",
+e
+);
+
+}
+
 }
 
 function getCommentsForProject(id){
+
 return allComments
-.filter(c=>String(c.project_id)===String(id))
-.sort((a,b)=>new Date(a.created_at)-new Date(b.created_at));
+.filter(c=>
+String(c.project_id)===
+String(id)
+)
+.sort(
+(a,b)=>
+new Date(a.created_at)-
+new Date(b.created_at)
+);
+
 }
 
 async function addComment(id){
+
 if(!currentUser){
-showToast("💬 سجل الدخول لكتابة تعليق.");
+
+showToast(
+"💬 سجل الدخول لكتابة تعليق."
+);
+
 return;
 }
 
-const input=document.getElementById("commentInput_"+id);
+const input=
+document.getElementById(
+"commentInput_"+id
+);
+
 if(!input)return;
 
-const text=input.value.trim();
+const text=
+input.value.trim();
 
 if(!text){
-showToast("اكتب التعليق أولاً.");
+
+showToast(
+"اكتب التعليق أولاً."
+);
+
 return;
 }
 
 if(!initSupabase()){
+
 showToast("تعذر الاتصال.");
+
 return;
 }
 
 try{
-const result=await supabaseClient.from("comments").insert({
+
+const result=
+await supabaseClient
+.from("comments")
+.insert({
+
 project_id:id,
+
 user_id:currentUser.id,
+
 comment:text
+
 });
 
 if(result.error){
+
 console.error(result.error);
-showToast("تعذر إضافة التعليق.");
+
+showToast(
+"تعذر إضافة التعليق."
+);
+
 return;
 }
 
 input.value="";
-showToast("💬 تم نشر التعليق.");
+
+showToast(
+"💬 تم نشر التعليق."
+);
+
 await loadComments();
+
 openDetailModal(id);
 
 }catch(e){
+
 console.error(e);
-showToast("حدث خطأ في التعليق.");
-}
+
+showToast(
+"حدث خطأ في التعليق."
+);
+
 }
 
-async function deleteComment(commentId,projectId){
-if(!currentUser)return;
+}
 
-if(!confirm("هل تريد حذف هذا التعليق؟"))return;
+async function deleteComment(
+commentId,
+projectId
+){
+
+if(!currentUser)
+return;
+
+if(
+!confirm(
+"هل تريد حذف هذا التعليق؟"
+)
+)
+return;
 
 try{
-const result=await supabaseClient
+
+const result=
+await supabaseClient
 .from("comments")
 .delete()
 .eq("id",commentId)
 .eq("user_id",currentUser.id);
 
 if(result.error){
-showToast("تعذر حذف التعليق.");
+
+showToast(
+"تعذر حذف التعليق."
+);
+
 return;
 }
 
-showToast("🗑️ تم حذف التعليق.");
+showToast(
+"🗑️ تم حذف التعليق."
+);
+
 await loadComments();
+
 openDetailModal(projectId);
 
 }catch(e){
+
 showToast("حدث خطأ.");
+
 }
+
 }
 
 function renderComments(id){
-const comments=getCommentsForProject(id);
+
+const comments=
+getCommentsForProject(id);
 
 if(!currentUser){
+
 return `
 <div class="comments-box">
-<div class="comments-title">💬 التعليقات (${comments.length})</div>
-<div class="comment-login">سجل الدخول حتى تتمكن من كتابة تعليق.</div>
+
+<div class="comments-title">
+💬 التعليقات (${comments.length})
+</div>
+
+<div class="comment-login">
+سجل الدخول حتى تتمكن من كتابة تعليق.
+</div>
+
 ${renderCommentList(comments)}
-</div>`;
+
+</div>
+`;
+
 }
 
 return `
 <div class="comments-box">
-<div class="comments-title">💬 التعليقات (${comments.length})</div>
+
+<div class="comments-title">
+💬 التعليقات (${comments.length})
+</div>
 
 <div class="comment-form">
-<input id="commentInput_${escapeAttribute(id)}"
+
+<input
+id="commentInput_${escapeAttribute(id)}"
 placeholder="اكتب تعليقك هنا..."
 maxlength="1000">
-<button type="button" class="primary-btn"
+
+<button
+type="button"
+class="primary-btn"
 onclick="addComment('${escapeAttribute(id)}')">
 نشر
 </button>
+
 </div>
 
 ${renderCommentList(comments)}
-</div>`;
+
+</div>
+`;
+
 }
 
 function renderCommentList(comments){
+
 if(!comments.length){
-return '<div class="comment-empty">لا توجد تعليقات حتى الآن. كن أول من يعلق 💬</div>';
+
+return `
+<div class="comment-empty">
+لا توجد تعليقات حتى الآن. كن أول من يعلق 💬
+</div>
+`;
+
 }
 
 return comments.map(c=>{
+
 const name=
-String(c.user_id)===String(currentUser?.id)
+String(c.user_id)===
+String(currentUser?.id)
 ?"أنت"
 :"عضو KAPO ONE";
 
-const date=c.created_at
-?new Date(c.created_at).toLocaleString("ar-SA")
+const date=
+c.created_at
+?new Date(
+c.created_at
+).toLocaleString("ar-SA")
 :"";
 
 const deleteBtn=
-currentUser&&String(c.user_id)===String(currentUser.id)
-?`<button type="button" class="delete-comment"
+currentUser&&
+String(c.user_id)===
+String(currentUser.id)
+?
+`<button
+type="button"
+class="delete-comment"
 onclick="deleteComment('${escapeAttribute(c.id)}','${escapeAttribute(c.project_id)}')">
 حذف
-</button>`:"";
+</button>`
+:"";
 
 return `
 <div class="comment-item">
+
 <div class="comment-head">
-<span class="comment-user">👤 ${escapeHtml(name)}</span>
-<span class="comment-date">${escapeHtml(date)}</span>
+
+<span class="comment-user">
+👤 ${escapeHtml(name)}
+</span>
+
+<span class="comment-date">
+${escapeHtml(date)}
+</span>
+
 ${deleteBtn}
+
 </div>
-<div class="comment-text">${escapeHtml(c.comment)}</div>
-</div>`;
+
+<div class="comment-text">
+${escapeHtml(c.comment)}
+</div>
+
+</div>
+`;
+
 }).join("");
+
 }
+
 
 /* ================= FILTER ================= */
 
 function applyFilters(){
-const search=document.getElementById("filterSearch").value.toLowerCase().trim();
-const type=document.getElementById("filterType").value;
 
-filteredContent=allContent.filter(item=>{
-if(type&&item.content_type!==type)return false;
+const search=
+document
+.getElementById("filterSearch")
+.value
+.toLowerCase()
+.trim();
+
+const type=
+document
+.getElementById("filterType")
+.value;
+
+filteredContent=
+allContent.filter(item=>{
+
+if(
+type&&
+item.content_type!==type
+)
+return false;
 
 if(search){
-const title=(item.title||"").toLowerCase();
-const desc=(item.description||"").toLowerCase();
-if(!title.includes(search)&&!desc.includes(search))return false;
+
+const title=
+(item.title||"").toLowerCase();
+
+const desc=
+(item.description||"").toLowerCase();
+
+const owner=
+getOwnerName(item)
+.toLowerCase();
+
+if(
+!title.includes(search)&&
+!desc.includes(search)&&
+!owner.includes(search)
+)
+return false;
+
 }
 
 return true;
+
 });
 
 renderContent();
+
 }
 
 function resetFilters(){
-document.getElementById("filterSearch").value="";
-document.getElementById("filterType").value="";
+
+document.getElementById(
+"filterSearch"
+).value="";
+
+document.getElementById(
+"filterType"
+).value="";
+
 applyFilters();
+
 }
 
-/* ================= RENDER ================= */
+
+/* ================= RENDER CONTENT ================= */
 
 function renderContent(){
-const grid=document.getElementById("contentGrid");
+
+const grid=
+document.getElementById(
+"contentGrid"
+);
+
 if(!grid)return;
 
 if(!filteredContent.length){
-grid.innerHTML='<div class="empty-state">📭 لا يوجد محتوى مطابق.</div>';
+
+grid.innerHTML=
+'<div class="empty-state">📭 لا يوجد محتوى مطابق.</div>';
+
 return;
 }
 
-grid.innerHTML=filteredContent.map(item=>{
+grid.innerHTML=
+filteredContent.map(item=>{
 
 const badgeClass={
-project:"badge-project",property:"badge-property",
-idea:"badge-idea",design:"badge-design",question:"badge-question"
-}[item.content_type]||"badge-project";
+
+project:"badge-project",
+property:"badge-property",
+idea:"badge-idea",
+design:"badge-design",
+question:"badge-question"
+
+}[item.content_type]
+||
+"badge-project";
 
 const badgeLabel={
-project:"🏗️ مشروع",property:"🏢 عقار",
-idea:"💡 فكرة",design:"📐 تصميم",question:"❓ سؤال"
-}[item.content_type]||"محتوى";
+
+project:"🏗️ مشروع",
+property:"🏢 عقار",
+idea:"💡 فكرة",
+design:"📐 تصميم",
+question:"❓ سؤال"
+
+}[item.content_type]
+||
+"محتوى";
 
 const icon={
-project:"🏗️",property:"🏢",idea:"💡",design:"📐",question:"❓"
-}[item.content_type]||"📋";
 
-const imageHtml=item.image_url
-?`<img class="content-image"
+project:"🏗️",
+property:"🏢",
+idea:"💡",
+design:"📐",
+question:"❓"
+
+}[item.content_type]
+||
+"📋";
+
+const imageHtml=
+item.image_url
+?
+`
+<img
+class="content-image"
 src="${escapeAttribute(item.image_url)}"
 alt="${escapeAttribute(item.title||"")}"
 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-<div class="content-placeholder" style="display:none">${icon}</div>`
-:`<div class="content-placeholder">${icon}</div>`;
 
-const date=item.created_at
-?new Date(item.created_at).toLocaleDateString("ar-SA"):"";
+<div
+class="content-placeholder"
+style="display:none">
+${icon}
+</div>
+`
+:
+`
+<div class="content-placeholder">
+${icon}
+</div>
+`;
 
-const id=String(item.id||"");
-const isLiked=likedContentIds.has(id);
-const likes=likeCounts[id]||0;
-const comments=commentCounts[id]||0;
+const date=
+item.created_at
+?
+new Date(
+item.created_at
+).toLocaleDateString("ar-SA")
+:"";
+
+const id=
+String(item.id||"");
+
+const isLiked=
+likedContentIds.has(id);
+
+const likes=
+likeCounts[id]||0;
+
+const comments=
+commentCounts[id]||0;
 
 return `
-<div class="content-card" onclick="openDetailModal('${escapeAttribute(id)}')">
+<div
+class="content-card"
+onclick="openDetailModal('${escapeAttribute(id)}')">
 
 ${imageHtml}
 
@@ -1089,97 +2419,262 @@ ${escapeHtml(item.description||"لا يوجد وصف.")}
 ${badgeLabel}
 </span>
 
+${ownerHtml(item)}
+
 <div class="card-bottom">
 
-<button type="button"
+<button
+type="button"
 class="like-btn ${isLiked?"liked":""}"
 onclick="event.stopPropagation();toggleLike('${escapeAttribute(id)}')">
-${isLiked?"❤️":"🤍"} <span>${likes}</span>
+
+${isLiked?"❤️":"🤍"}
+
+<span>
+${likes}
+</span>
+
 </button>
 
-<button type="button"
+<button
+type="button"
 class="comment-btn"
 onclick="event.stopPropagation();openDetailModal('${escapeAttribute(id)}')">
-💬 <span>${comments}</span>
+
+💬
+
+<span>
+${comments}
+</span>
+
 </button>
 
 </div>
 
 </div>
-</div>`;
+</div>
+`;
+
 }).join("");
+
 }
+
 
 /* ================= DETAILS ================= */
 
 function openDetailModal(id){
 
-const item=allContent.find(x=>String(x.id)===String(id));
+const item=
+allContent.find(
+x=>String(x.id)===
+String(id)
+);
 
 if(!item){
-showToast("تعذر فتح المحتوى.");
+
+showToast(
+"تعذر فتح المحتوى."
+);
+
 return;
 }
 
-const title=item.title||"تفاصيل المحتوى";
-document.getElementById("detailTitle").textContent=title;
+const title=
+item.title||
+"تفاصيل المحتوى";
+
+document.getElementById(
+"detailTitle"
+).textContent=title;
 
 let image="";
+
 if(item.image_url){
-image=`<img class="detail-image"
+
+image=
+`
+<img
+class="detail-image"
 src="${escapeAttribute(item.image_url)}"
 alt="${escapeAttribute(title)}"
-onerror="this.style.display='none'">`;
+onerror="this.style.display='none'">
+`;
+
 }
 
 const typeLabels={
-project:"🏗️ مشروع",property:"🏢 عقار",
-idea:"💡 فكرة",design:"📐 تصميم",question:"❓ سؤال"
+
+project:"🏗️ مشروع",
+property:"🏢 عقار",
+idea:"💡 فكرة",
+design:"📐 تصميم",
+question:"❓ سؤال"
+
 };
 
-const type=typeLabels[item.content_type]||"📋 محتوى";
+const type=
+typeLabels[item.content_type]||
+"📋 محتوى";
 
-let description=item.description||"لا يوجد وصف.";
+let description=
+item.description||
+"لا يوجد وصف.";
+
 let propertyHtml="";
 
 if(item.content_type==="property"){
-const parts=description.split("\n\n---\n");
-description=parts[0]||"";
+
+const parts=
+description.split(
+"\n\n---\n"
+);
+
+description=
+parts[0]||"";
 
 if(parts[1]){
+
 try{
-const extra=JSON.parse(parts[1]);
+
+const extra=
+JSON.parse(parts[1]);
 
 propertyHtml=`
-<div class="detail-row"><strong>الدولة:</strong> ${escapeHtml(extra.country||"-")}</div>
-<div class="detail-row"><strong>المدينة:</strong> ${escapeHtml(extra.city||"-")}</div>
-<div class="detail-row"><strong>السعر:</strong> ${escapeHtml(String(extra.price||0))} ${escapeHtml(extra.currency||"")}</div>
-<div class="detail-row"><strong>المساحة:</strong> ${escapeHtml(String(extra.area||0))} م²</div>
-<div class="detail-row"><strong>واتساب:</strong> ${escapeHtml(extra.whatsapp||"-")}</div>`;
+
+<div class="detail-row">
+<strong>الدولة:</strong>
+${escapeHtml(extra.country||"-")}
+</div>
+
+<div class="detail-row">
+<strong>المدينة:</strong>
+${escapeHtml(extra.city||"-")}
+</div>
+
+<div class="detail-row">
+<strong>السعر:</strong>
+${escapeHtml(String(extra.price||0))}
+${escapeHtml(extra.currency||"")}
+</div>
+
+<div class="detail-row">
+<strong>المساحة:</strong>
+${escapeHtml(String(extra.area||0))}
+م²
+</div>
+
+<div class="detail-row">
+<strong>واتساب:</strong>
+${escapeHtml(extra.whatsapp||"-")}
+</div>
+
+`;
+
 }catch(e){}
+
 }
+
 }
 
-const date=item.created_at
-?new Date(item.created_at).toLocaleString("ar-SA"):"-";
+const date=
+item.created_at
+?
+new Date(
+item.created_at
+).toLocaleString("ar-SA")
+:"-";
 
-const projectId=String(item.id||"");
-const isLiked=likedContentIds.has(projectId);
-const likes=likeCounts[projectId]||0;
+const projectId=
+String(item.id||"");
 
-document.getElementById("detailContent").innerHTML=`
+const isLiked=
+likedContentIds.has(projectId);
+
+const likes=
+likeCounts[projectId]||0;
+
+
+/* OWNER */
+
+const owner=
+getOwner(item);
+
+const ownerName=
+owner?.name||
+"عضو KAPO ONE";
+
+const ownerFirst=
+ownerName.trim()
+.charAt(0)
+.toUpperCase()||
+"K";
+
+const ownerAvatar=
+owner?.avatar_url||"";
+
+const ownerAvatarHtml=
+ownerAvatar
+?
+`
+<img
+src="${escapeAttribute(ownerAvatar)}"
+alt="${escapeAttribute(ownerName)}"
+onerror="this.style.display='none'">
+`
+:
+ownerFirst;
+
+const ownerBlock=
+item.user_id
+?
+`
+<div
+class="owner-detail"
+onclick="openPublicProfile('${escapeAttribute(item.user_id)}')">
+
+<div class="owner-detail-avatar">
+${ownerAvatarHtml}
+</div>
+
+<div>
+
+<div class="owner-detail-label">
+👤 صاحب المحتوى
+</div>
+
+<div class="owner-detail-name">
+${escapeHtml(ownerName)}
+</div>
+
+</div>
+
+</div>
+`
+:"";
+
+
+document.getElementById(
+"detailContent"
+).innerHTML=
+
+`
 
 ${image}
 
 <div class="detail-row">
-<strong>النوع:</strong> ${type}
+<strong>النوع:</strong>
+${type}
 </div>
+
+${ownerBlock}
 
 <div class="detail-row">
-<strong>تاريخ الإضافة:</strong> ${escapeHtml(date)}
+<strong>تاريخ الإضافة:</strong>
+${escapeHtml(date)}
 </div>
 
-<div style="margin-top:18px;white-space:pre-wrap;line-height:2">
+<div
+style="margin-top:18px;white-space:pre-wrap;line-height:2">
 ${escapeHtml(description)}
 </div>
 
@@ -1187,106 +2682,410 @@ ${propertyHtml}
 
 <div class="detail-like">
 
-<button type="button"
+<button
+type="button"
 class="like-btn ${isLiked?"liked":""}"
 onclick="toggleLikeFromDetail('${escapeAttribute(projectId)}')">
-${isLiked?"❤️":"🤍"} <span>${likes}</span>
+
+${isLiked?"❤️":"🤍"}
+
+<span>
+${likes}
+</span>
+
 </button>
 
-<strong>${likes===1?"إعجاب واحد":"إعجابات"}</strong>
+<strong>
+${likes===1?"إعجاب واحد":"إعجابات"}
+</strong>
 
 </div>
 
 ${renderComments(projectId)}
+
 `;
 
-document.getElementById("detailModal").classList.add("active");
+document.getElementById(
+"detailModal"
+).classList.add("active");
+
 }
 
 async function toggleLikeFromDetail(id){
+
 await toggleLike(id);
-const modal=document.getElementById("detailModal");
-if(modal&&modal.classList.contains("active"))openDetailModal(id);
+
+const modal=
+document.getElementById(
+"detailModal"
+);
+
+if(
+modal&&
+modal.classList.contains("active")
+)
+openDetailModal(id);
+
 }
 
 function closeDetailModal(){
-document.getElementById("detailModal").classList.remove("active");
+
+document.getElementById(
+"detailModal"
+).classList.remove("active");
+
 }
+
+
+/* ================= PUBLIC PROFILE ================= */
+
+async function openPublicProfile(userId){
+
+if(!userId){
+
+showToast(
+"تعذر فتح الملف الشخصي."
+);
+
+return;
+}
+
+const modal=
+document.getElementById(
+"publicProfileModal"
+);
+
+const box=
+document.getElementById(
+"publicProfileContent"
+);
+
+modal.classList.add("active");
+
+box.innerHTML=
+'<div class="empty-state">⏳ جاري تحميل الملف الشخصي...</div>';
+
+let profile=
+allProfiles[String(userId)];
+
+try{
+
+if(!profile){
+
+const result=
+await supabaseClient
+.from("profiles")
+.select("id,name,email,avatar_url")
+.eq("id",userId)
+.maybeSingle();
+
+if(result.data)
+profile=result.data;
+
+}
+
+}catch(e){
+
+console.error(e);
+
+}
+
+if(!profile){
+
+box.innerHTML=
+`
+<div class="empty-state">
+❌ لم يتم العثور على الملف الشخصي.
+</div>
+`;
+
+return;
+}
+
+const name=
+profile.name||
+"عضو KAPO ONE";
+
+const email=
+profile.email||
+"";
+
+const first=
+name.trim()
+.charAt(0)
+.toUpperCase()||
+"K";
+
+const avatar=
+profile.avatar_url||
+"";
+
+const avatarHtml=
+avatar
+?
+`
+<img
+src="${escapeAttribute(avatar)}"
+alt="${escapeAttribute(name)}"
+onerror="this.style.display='none'">
+`
+:
+first;
+
+
+/* CONTENT OF OWNER */
+
+const ownerContent=
+allContent.filter(item=>
+String(item.user_id)===
+String(userId)
+);
+
+let contentHtml="";
+
+if(!ownerContent.length){
+
+contentHtml=
+`
+<div class="comment-empty">
+لا يوجد محتوى منشور حتى الآن.
+</div>
+`;
+
+}else{
+
+contentHtml=
+`
+<div class="public-content-list">
+
+${ownerContent.map(item=>{
+
+const typeLabels={
+
+project:"🏗️ مشروع",
+property:"🏢 عقار",
+idea:"💡 فكرة",
+design:"📐 تصميم",
+question:"❓ سؤال"
+
+};
+
+const type=
+typeLabels[item.content_type]||
+"📋 محتوى";
+
+return `
+<div
+class="public-content-item"
+onclick="closePublicProfile();openDetailModal('${escapeAttribute(item.id)}')">
+
+<div class="public-content-item-title">
+${escapeHtml(item.title||"بدون عنوان")}
+</div>
+
+<div class="public-content-item-type">
+${type}
+</div>
+
+</div>
+`;
+
+}).join("")}
+
+</div>
+`;
+
+}
+
+box.innerHTML=
+`
+
+<div class="profile-public">
+
+<div class="profile-public-head">
+
+<div class="profile-public-avatar">
+${avatarHtml}
+</div>
+
+<div>
+
+<div class="profile-public-name">
+${escapeHtml(name)}
+</div>
+
+<div class="profile-public-email">
+${escapeHtml(email)}
+</div>
+
+</div>
+
+</div>
+
+<div
+style="color:#94a3b8;font-size:14px">
+🌍 عضو في KAPO ONE
+</div>
+
+</div>
+
+<div class="public-content-title">
+📚 محتوى هذا العضو (${ownerContent.length})
+</div>
+
+${contentHtml}
+
+`;
+
+}
+
+function closePublicProfile(){
+
+document
+.getElementById(
+"publicProfileModal"
+)
+.classList.remove("active");
+
+}
+
 
 /* ================= SECURITY ================= */
 
 function escapeHtml(value){
+
 return String(value??"")
+
 .replace(/&/g,"&amp;")
 .replace(/</g,"&lt;")
 .replace(/>/g,"&gt;")
 .replace(/"/g,"&quot;")
 .replace(/'/g,"&#039;");
+
 }
 
 function escapeAttribute(value){
+
 return escapeHtml(value);
+
 }
+
 
 /* ================= SESSION ================= */
 
 async function restoreSession(){
 
 if(!initSupabase()){
-setTimeout(restoreSession,500);
+
+setTimeout(
+restoreSession,
+500
+);
+
 return;
 }
 
 try{
-const result=await supabaseClient.auth.getSession();
+
+const result=
+await supabaseClient.auth.getSession();
 
 if(result.error){
+
 showAuthPage();
+
 return;
 }
 
-const session=result.data?.session;
+const session=
+result.data?.session;
 
-if(session&&session.user){
-currentUser=session.user;
+if(
+session&&
+session.user
+){
+
+currentUser=
+session.user;
+
 await loadUserProfile();
+
 showApp();
+
 updateUI();
+
 await loadContent();
+
 }else{
+
 showAuthPage();
+
 }
 
 }catch(e){
+
 console.error(e);
+
 showAuthPage();
+
 }
+
 }
+
+
+/* ================= AUTH LISTENER ================= */
 
 function setupAuthListener(){
-if(!initSupabase())return;
 
-supabaseClient.auth.onAuthStateChange(async(event,session)=>{
-console.log("Auth event:",event);
+if(!initSupabase())
+return;
+
+supabaseClient.auth.onAuthStateChange(
+async(event,session)=>{
+
+console.log(
+"Auth event:",
+event
+);
 
 if(event==="SIGNED_OUT"){
+
 currentUser=null;
+
 currentProfile=null;
-likedContentIds=new Set();
+
+likedContentIds=
+new Set();
+
 showAuthPage();
+
 }
-});
+
 }
+);
+
+}
+
 
 /* ================= START ================= */
 
-window.addEventListener("load",async()=>{
+window.addEventListener(
+"load",
+async()=>{
+
 showAuthPage();
+
 initSupabase();
+
 setupAuthListener();
+
 await restoreSession();
+
 toggleContentFields();
-});
+
+}
+);
+
 </script>
 
 </body>
