@@ -9,7 +9,6 @@
 
 <style>
 *{box-sizing:border-box}
-
 html{scroll-behavior:smooth}
 
 body{
@@ -392,6 +391,46 @@ background:rgba(239,68,68,.18);
 color:#fca5a5
 }
 
+/* ================= LIKES ================= */
+
+.card-bottom{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+margin-top:14px
+}
+
+.like-btn{
+border:1px solid #334155;
+background:#020617;
+color:#cbd5e1;
+border-radius:12px;
+padding:8px 12px;
+font-weight:800;
+display:flex;
+align-items:center;
+gap:6px;
+transition:.2s
+}
+
+.like-btn:hover{
+border-color:#ef4444;
+transform:translateY(-1px)
+}
+
+.like-btn.liked{
+background:rgba(239,68,68,.12);
+border-color:rgba(239,68,68,.45);
+color:#f87171
+}
+
+.like-count{
+font-size:13px;
+color:#94a3b8;
+font-weight:700
+}
+
 .filters-bar{
 display:grid;
 grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
@@ -557,6 +596,15 @@ border-bottom:1px solid #1e293b
 
 .detail-row strong{
 color:#fff
+}
+
+.detail-like{
+margin-top:18px;
+padding-top:15px;
+border-top:1px solid #1e293b;
+display:flex;
+align-items:center;
+gap:10px
 }
 
 #toast{
@@ -804,7 +852,6 @@ onclick="showSection('profile')">
 
 
 <main class="container">
-
 
 <!-- HOME -->
 
@@ -1092,11 +1139,9 @@ onclick="closeAddModal()">
 
 </div>
 
-
 <div class="modal-content">
 
 <div class="form-grid">
-
 
 <div class="full-width">
 
@@ -1131,7 +1176,6 @@ onchange="toggleContentFields()">
 
 </div>
 
-
 <div class="full-width">
 
 <label>
@@ -1142,7 +1186,6 @@ onchange="toggleContentFields()">
 placeholder="عنوان المحتوى">
 
 </div>
-
 
 <div class="full-width">
 
@@ -1156,7 +1199,6 @@ placeholder="وصف المحتوى..."></textarea>
 
 </div>
 
-
 <div class="full-width">
 
 <label>
@@ -1167,7 +1209,6 @@ placeholder="وصف المحتوى..."></textarea>
 placeholder="https://example.com/image.jpg">
 
 </div>
-
 
 <div id="propertyFields"
 class="property-grid hidden">
@@ -1259,7 +1300,6 @@ placeholder="رقم التواصل">
 
 </div>
 
-
 <div id="addMessage"
 class="auth-message hidden">
 </div>
@@ -1267,7 +1307,6 @@ class="auth-message hidden">
 </div>
 
 </div>
-
 
 <div class="modal-actions">
 
@@ -1350,6 +1389,9 @@ let currentUser = null;
 let currentProfile = null;
 let allContent = [];
 let filteredContent = [];
+let allLikes = [];
+let likedContentIds = new Set();
+let likeCounts = {};
 let toastTimer = null;
 
 
@@ -1398,7 +1440,6 @@ clearAuthMessage();
 
 }
 
-
 function showRegisterForm(){
 
 document.getElementById("loginForm")
@@ -1413,7 +1454,6 @@ document.getElementById("resetForm")
 clearAuthMessage();
 
 }
-
 
 function showResetForm(){
 
@@ -1430,18 +1470,15 @@ clearAuthMessage();
 
 }
 
-
 function showAuthMessage(msg){
 
 const box =
 document.getElementById("authMessage");
 
 box.textContent = msg;
-
 box.classList.remove("hidden");
 
 }
-
 
 function clearAuthMessage(){
 
@@ -1449,7 +1486,6 @@ const box =
 document.getElementById("authMessage");
 
 box.classList.add("hidden");
-
 box.textContent = "";
 
 }
@@ -1469,7 +1505,6 @@ document.getElementById("app")
 .style.display = "block";
 
 }
-
 
 function showAuthPage(){
 
@@ -1539,10 +1574,7 @@ password
 
 if(error){
 
-console.error(
-"Login error:",
-error
-);
+console.error("Login error:",error);
 
 showAuthMessage(
 error.message ||
@@ -1578,10 +1610,7 @@ showToast(
 }
 catch(e){
 
-console.error(
-"Login exception:",
-e
-);
+console.error("Login exception:",e);
 
 showAuthMessage(
 e.message ||
@@ -1666,10 +1695,7 @@ name:name
 
 if(error){
 
-console.error(
-"Register error:",
-error
-);
+console.error("Register error:",error);
 
 showAuthMessage(
 error.message
@@ -1716,10 +1742,7 @@ showAuthMessage(
 }
 catch(e){
 
-console.error(
-"Register exception:",
-e
-);
+console.error("Register exception:",e);
 
 showAuthMessage(
 e.message
@@ -1769,7 +1792,6 @@ console.error(e);
 }
 
 }
-
 
 async function loadUserProfile(){
 
@@ -1865,7 +1887,6 @@ document.getElementById(
 ).textContent =
 email || "-";
 
-
 [
 document.getElementById("miniUserAvatar"),
 document.getElementById("profileAvatar")
@@ -1885,7 +1906,6 @@ img.src = avatar;
 img.onerror = ()=>{
 
 el.innerHTML = "";
-
 el.textContent = first;
 
 };
@@ -2005,8 +2025,8 @@ await supabaseClient.auth.signOut();
 }
 
 currentUser = null;
-
 currentProfile = null;
+likedContentIds = new Set();
 
 showAuthPage();
 
@@ -2119,7 +2139,6 @@ toggleContentFields();
 
 }
 
-
 function closeAddModal(){
 
 document
@@ -2127,7 +2146,6 @@ document
 .classList.remove("active");
 
 }
-
 
 function toggleContentFields(){
 
@@ -2211,7 +2229,6 @@ new Date().toISOString()
 
 };
 
-
 if(type === "property"){
 
 const extra = {
@@ -2258,7 +2275,6 @@ description +
 JSON.stringify(extra);
 
 }
-
 
 try{
 
@@ -2307,7 +2323,6 @@ e.message
 
 }
 
-
 function showAddMessage(msg){
 
 const box =
@@ -2323,7 +2338,6 @@ box.classList.remove(
 );
 
 }
-
 
 function clearAddForm(){
 
@@ -2431,6 +2445,8 @@ return;
 allContent =
 data || [];
 
+await loadLikes();
+
 applyFilters();
 
 }
@@ -2448,6 +2464,190 @@ ${escapeHtml(e.message)}
 </div>`;
 
 }
+
+}
+
+
+/* ================= LOAD LIKES ================= */
+
+async function loadLikes(){
+
+allLikes = [];
+likedContentIds = new Set();
+likeCounts = {};
+
+if(!initSupabase())
+return;
+
+try{
+
+const {data,error} =
+await supabaseClient
+.from("likes")
+.select("id,project_id,user_id");
+
+if(error){
+
+console.warn(
+"Likes load:",
+error.message
+);
+
+return;
+}
+
+allLikes =
+data || [];
+
+allLikes.forEach(like=>{
+
+const projectId =
+String(like.project_id);
+
+likeCounts[projectId] =
+(likeCounts[projectId] || 0) + 1;
+
+if(
+currentUser &&
+String(like.user_id) ===
+String(currentUser.id)
+){
+
+likedContentIds.add(projectId);
+
+}
+
+});
+
+}
+catch(e){
+
+console.warn(
+"Likes exception:",
+e
+);
+
+}
+
+}
+
+
+/* ================= LIKE / UNLIKE ================= */
+
+async function toggleLike(id){
+
+if(!currentUser){
+
+showToast(
+"❤️ سجل الدخول للإعجاب."
+);
+
+return;
+}
+
+if(!initSupabase()){
+
+showToast(
+"تعذر الاتصال."
+);
+
+return;
+}
+
+const projectId =
+String(id);
+
+const alreadyLiked =
+likedContentIds.has(projectId);
+
+try{
+
+if(alreadyLiked){
+
+const {error} =
+await supabaseClient
+.from("likes")
+.delete()
+.eq("project_id",id)
+.eq("user_id",currentUser.id);
+
+if(error){
+
+console.error(
+"Unlike error:",
+error
+);
+
+showToast(
+"تعذر إزالة الإعجاب."
+);
+
+return;
+}
+
+showToast(
+"تم إزالة الإعجاب."
+);
+
+}
+else{
+
+const {error} =
+await supabaseClient
+.from("likes")
+.insert({
+
+project_id:id,
+user_id:currentUser.id
+
+});
+
+if(error){
+
+if(error.code === "23505"){
+
+showToast(
+"أنت معجب بهذا المحتوى بالفعل."
+);
+
+}
+else{
+
+console.error(
+"Like error:",
+error
+);
+
+showToast(
+"تعذر تسجيل الإعجاب."
+);
+
+}
+
+return;
+}
+
+showToast(
+"❤️ تمت إضافة الإعجاب."
+);
+
+}
+
+await loadLikes();
+
+renderContent();
+
+}
+catch(e){
+
+console.error(
+"Like exception:",
+e
+);
+
+showToast(
+"حدث خطأ في الإعجاب."
+);
 
 }
 
@@ -2501,7 +2701,6 @@ renderContent();
 
 }
 
-
 function resetFilters(){
 
 document.getElementById(
@@ -2544,50 +2743,35 @@ filteredContent.map(item=>{
 const badgeClass = {
 
 project:"badge-project",
-
 property:"badge-property",
-
 idea:"badge-idea",
-
 design:"badge-design",
-
 question:"badge-question"
 
 }[item.content_type]
 || "badge-project";
 
-
 const badgeLabel = {
 
 project:"🏗️ مشروع",
-
 property:"🏢 عقار",
-
 idea:"💡 فكرة",
-
 design:"📐 تصميم",
-
 question:"❓ سؤال"
 
 }[item.content_type]
 || "محتوى";
 
-
 const icon = {
 
 project:"🏗️",
-
 property:"🏢",
-
 idea:"💡",
-
 design:"📐",
-
 question:"❓"
 
 }[item.content_type]
 || "📋";
-
 
 const imageHtml =
 item.image_url
@@ -2610,17 +2794,22 @@ ${icon}
 ${icon}
 </div>`;
 
-
 const date =
 item.created_at
 ?
 new Date(item.created_at)
-.toLocaleDateString(
-"ar-SA"
-)
+.toLocaleDateString("ar-SA")
 :
 "";
 
+const projectId =
+String(item.id || "");
+
+const isLiked =
+likedContentIds.has(projectId);
+
+const count =
+likeCounts[projectId] || 0;
 
 return `
 
@@ -2650,6 +2839,27 @@ item.description || "لا يوجد وصف."
 class="content-badge ${badgeClass}">
 ${badgeLabel}
 </span>
+
+<div class="card-bottom">
+
+<button
+type="button"
+class="like-btn ${isLiked ? "liked" : ""}"
+onclick="event.stopPropagation();toggleLike('${escapeAttribute(item.id || "")}')">
+
+${isLiked ? "❤️" : "🤍"}
+
+<span>
+${count}
+</span>
+
+</button>
+
+<span class="like-count">
+${count === 1 ? "إعجاب واحد" : "إعجابات"}
+</span>
+
+</div>
 
 </div>
 
@@ -2689,7 +2899,6 @@ document.getElementById(
 ).textContent =
 title;
 
-
 let image = "";
 
 if(item.image_url){
@@ -2703,17 +2912,12 @@ onerror="this.style.display='none'">`;
 
 }
 
-
 const typeLabels = {
 
 project:"🏗️ مشروع",
-
 property:"🏢 عقار",
-
 idea:"💡 فكرة",
-
 design:"📐 تصميم",
-
 question:"❓ سؤال"
 
 };
@@ -2721,7 +2925,6 @@ question:"❓ سؤال"
 const type =
 typeLabels[item.content_type]
 || "📋 محتوى";
-
 
 let description =
 item.description || "لا يوجد وصف.";
@@ -2788,7 +2991,6 @@ e
 
 }
 
-
 const date =
 item.created_at
 ?
@@ -2797,6 +2999,14 @@ new Date(item.created_at)
 :
 "-";
 
+const projectId =
+String(item.id || "");
+
+const isLiked =
+likedContentIds.has(projectId);
+
+const count =
+likeCounts[projectId] || 0;
 
 document.getElementById(
 "detailContent"
@@ -2823,6 +3033,27 @@ ${escapeHtml(description)}
 
 ${propertyHtml}
 
+<div class="detail-like">
+
+<button
+type="button"
+class="like-btn ${isLiked ? "liked" : ""}"
+onclick="toggleLikeFromDetail('${escapeAttribute(projectId)}')">
+
+${isLiked ? "❤️" : "🤍"}
+
+<span>
+${count}
+</span>
+
+</button>
+
+<strong>
+${count === 1 ? "إعجاب واحد" : "إعجابات"}
+</strong>
+
+</div>
+
 `;
 
 document.getElementById(
@@ -2832,6 +3063,20 @@ document.getElementById(
 
 }
 
+async function toggleLikeFromDetail(id){
+
+await toggleLike(id);
+
+const modal =
+document.getElementById("detailModal");
+
+if(modal.classList.contains("active")){
+
+openDetailModal(id);
+
+}
+
+}
 
 function closeDetailModal(){
 
@@ -2855,7 +3100,6 @@ return String(value ?? "")
 .replace(/'/g,"&#039;");
 
 }
-
 
 function escapeAttribute(value){
 
@@ -2951,6 +3195,8 @@ if(event === "SIGNED_OUT"){
 currentUser = null;
 
 currentProfile = null;
+
+likedContentIds = new Set();
 
 showAuthPage();
 
