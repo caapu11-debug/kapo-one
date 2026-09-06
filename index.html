@@ -288,6 +288,333 @@ border:0;background:none;color:#f87171;font-size:12px;padding:3px
 .comment-empty{text-align:center;color:#64748b;padding:15px}
 .comment-login{text-align:center;color:#94a3b8;padding:10px}
 
+/* ================= CHANNELS ================= */
+
+.channel-toolbar{
+display:flex;align-items:center;justify-content:space-between;
+gap:12px;flex-wrap:wrap;margin-bottom:20px
+}
+
+.channel-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:16px
+}
+
+.channel-card{
+background:#0f172a;
+border:1px solid rgba(148,163,184,.13);
+border-radius:22px;
+overflow:hidden;
+cursor:pointer;
+transition:.2s
+}
+
+.channel-card:hover{
+transform:translateY(-4px);
+border-color:rgba(59,130,246,.5)
+}
+
+.channel-cover{
+height:125px;
+background:
+linear-gradient(135deg,#1e3a8a,#4c1d95);
+position:relative;
+overflow:hidden
+}
+
+.channel-cover img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+
+.channel-avatar-wrap{
+position:absolute;
+right:18px;
+bottom:-30px;
+width:70px;
+height:70px
+}
+
+.channel-avatar{
+width:70px;
+height:70px;
+border-radius:20px;
+border:4px solid #0f172a;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:25px;
+font-weight:900;
+overflow:hidden
+}
+
+.channel-avatar img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+
+.channel-card-body{
+padding:40px 16px 17px
+}
+
+.channel-name{
+font-size:19px;
+font-weight:900;
+display:flex;
+align-items:center;
+gap:6px
+}
+
+.verified{
+color:#60a5fa;
+font-size:17px
+}
+
+.channel-username{
+color:#64748b;
+font-size:12px;
+margin-top:4px
+}
+
+.channel-description{
+color:#cbd5e1;
+font-size:13px;
+line-height:1.7;
+margin-top:10px;
+display:-webkit-box;
+-webkit-line-clamp:2;
+-webkit-box-orient:vertical;
+overflow:hidden
+}
+
+.channel-stats{
+display:flex;
+gap:16px;
+flex-wrap:wrap;
+margin-top:14px;
+padding-top:12px;
+border-top:1px solid #1e293b
+}
+
+.channel-stat{
+font-size:12px;
+color:#94a3b8
+}
+
+.channel-stat strong{
+color:#fff;
+display:block;
+font-size:15px
+}
+
+.channel-page{
+background:#0f172a;
+border:1px solid rgba(148,163,184,.15);
+border-radius:25px;
+overflow:hidden
+}
+
+.channel-page-cover{
+height:220px;
+background:linear-gradient(135deg,#1e3a8a,#4c1d95);
+position:relative
+}
+
+.channel-page-cover img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+
+.channel-page-info{
+padding:0 24px 24px;
+position:relative
+}
+
+.channel-page-avatar{
+width:105px;
+height:105px;
+border-radius:26px;
+border:5px solid #0f172a;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:35px;
+font-weight:900;
+overflow:hidden;
+margin-top:-45px;
+position:relative
+}
+
+.channel-page-avatar img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+
+.channel-page-top{
+display:flex;
+justify-content:space-between;
+align-items:flex-end;
+gap:15px;
+flex-wrap:wrap
+}
+
+.channel-page-name{
+font-size:28px;
+font-weight:900;
+margin-top:10px;
+display:flex;
+align-items:center;
+gap:8px
+}
+
+.channel-page-username{
+color:#64748b;
+font-size:14px;
+margin-top:4px
+}
+
+.channel-page-description{
+color:#cbd5e1;
+line-height:1.8;
+margin-top:15px;
+max-width:800px
+}
+
+.channel-page-stats{
+display:flex;
+gap:25px;
+flex-wrap:wrap;
+margin-top:20px
+}
+
+.channel-page-stat{
+text-align:center
+}
+
+.channel-page-stat strong{
+display:block;
+font-size:21px
+}
+
+.channel-page-stat span{
+color:#64748b;
+font-size:12px
+}
+
+.channel-tabs{
+display:flex;
+gap:5px;
+overflow-x:auto;
+padding:0 20px;
+border-top:1px solid #1e293b;
+border-bottom:1px solid #1e293b
+}
+
+.channel-tab{
+border:0;
+background:none;
+color:#94a3b8;
+padding:14px 16px;
+font-weight:800;
+white-space:nowrap
+}
+
+.channel-tab.active{
+color:#fff;
+border-bottom:2px solid #3b82f6
+}
+
+.channel-page-content{
+padding:20px
+}
+
+.follow-btn{
+min-width:125px
+}
+
+.follow-btn.following{
+background:#0f172a;
+border:1px solid #334155;
+box-shadow:none
+}
+
+.channel-mini-owner{
+display:flex;
+align-items:center;
+gap:8px;
+color:#94a3b8;
+font-size:12px;
+margin-top:10px
+}
+
+.channel-mini-dot{
+width:25px;
+height:25px;
+border-radius:8px;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:10px;
+font-weight:900;
+overflow:hidden
+}
+
+.channel-mini-dot img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+
+.channel-select-wrap{
+padding:14px;
+border-radius:15px;
+background:rgba(37,99,235,.06);
+border:1px solid rgba(59,130,246,.2);
+margin-bottom:12px
+}
+
+.channel-select-wrap label{
+font-size:13px;
+color:#94a3b8;
+font-weight:800;
+display:block;
+margin-bottom:6px
+}
+
+.channel-select-wrap select{
+width:100%;
+padding:12px;
+border-radius:12px;
+border:1px solid #334155;
+background:#020617;
+color:#fff
+}
+
+.channel-empty-create{
+padding:20px;
+border-radius:16px;
+background:#020617;
+border:1px dashed #334155;
+text-align:center;
+color:#94a3b8
+}
+
+.channel-link-btn{
+border:0;
+background:none;
+color:#60a5fa;
+font-weight:800;
+padding:5px
+}
+
 #toast{
 position:fixed;bottom:25px;right:25px;z-index:1000;background:#0f172a;
 border:1px solid #334155;color:#fff;padding:13px 17px;border-radius:13px;
@@ -298,17 +625,22 @@ pointer-events:none;transition:.25s
 
 @media(max-width:900px){
 .content-grid{grid-template-columns:repeat(2,1fr)}
+.channel-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:650px){
 .header-inner{padding:10px 12px}
 .user-mini{display:none}
 .container{padding:20px 12px 50px}
 .content-grid{grid-template-columns:1fr}
+.channel-grid{grid-template-columns:1fr}
 .filters-bar{grid-template-columns:1fr 1fr}
 .form-grid{grid-template-columns:1fr}
 .form-grid .full-width{grid-column:span 1}
 .property-grid{grid-column:span 1;grid-template-columns:1fr}
 .comment-form{flex-direction:column}
+.channel-page-cover{height:160px}
+.channel-page-info{padding:0 15px 20px}
+.channel-page-name{font-size:23px}
 }
 </style>
 </head>
@@ -328,45 +660,25 @@ pointer-events:none;transition:.25s
 
 <div id="loginForm" class="auth-form">
 
-<input
-id="loginEmail"
-type="email"
-placeholder="البريد الإلكتروني"
-autocomplete="email">
+<input id="loginEmail" type="email" placeholder="البريد الإلكتروني" autocomplete="email">
 
-<input
-id="loginPassword"
-type="password"
-placeholder="كلمة المرور"
-autocomplete="current-password">
+<input id="loginPassword" type="password" placeholder="كلمة المرور" autocomplete="current-password">
 
-<button
-type="button"
-class="primary-btn"
-onclick="loginUser()">
+<button type="button" class="primary-btn" onclick="loginUser()">
 تسجيل الدخول
 </button>
 
-<button
-type="button"
-class="secondary-btn"
-onclick="enterGuest()">
+<button type="button" class="secondary-btn" onclick="enterGuest()">
 الدخول كزائر
 </button>
 
 <div class="auth-links">
 
-<button
-type="button"
-class="auth-link"
-onclick="showRegisterForm()">
+<button type="button" class="auth-link" onclick="showRegisterForm()">
 إنشاء حساب
 </button>
 
-<button
-type="button"
-class="auth-link"
-onclick="showResetForm()">
+<button type="button" class="auth-link" onclick="showResetForm()">
 نسيت كلمة المرور؟
 </button>
 
@@ -376,35 +688,17 @@ onclick="showResetForm()">
 
 <div id="registerForm" class="auth-form hidden">
 
-<input
-id="registerName"
-type="text"
-placeholder="الاسم"
-autocomplete="name">
+<input id="registerName" type="text" placeholder="الاسم" autocomplete="name">
 
-<input
-id="registerEmail"
-type="email"
-placeholder="البريد الإلكتروني"
-autocomplete="email">
+<input id="registerEmail" type="email" placeholder="البريد الإلكتروني" autocomplete="email">
 
-<input
-id="registerPassword"
-type="password"
-placeholder="كلمة المرور (6 أحرف)"
-autocomplete="new-password">
+<input id="registerPassword" type="password" placeholder="كلمة المرور (6 أحرف)" autocomplete="new-password">
 
-<button
-type="button"
-class="primary-btn"
-onclick="registerUser()">
+<button type="button" class="primary-btn" onclick="registerUser()">
 إنشاء الحساب
 </button>
 
-<button
-type="button"
-class="auth-link"
-onclick="showLoginForm()">
+<button type="button" class="auth-link" onclick="showLoginForm()">
 العودة
 </button>
 
@@ -412,23 +706,13 @@ onclick="showLoginForm()">
 
 <div id="resetForm" class="auth-form hidden">
 
-<input
-id="resetEmail"
-type="email"
-placeholder="البريد الإلكتروني"
-autocomplete="email">
+<input id="resetEmail" type="email" placeholder="البريد الإلكتروني" autocomplete="email">
 
-<button
-type="button"
-class="primary-btn"
-onclick="resetUserPassword()">
+<button type="button" class="primary-btn" onclick="resetUserPassword()">
 إرسال رابط الاستعادة
 </button>
 
-<button
-type="button"
-class="auth-link"
-onclick="showLoginForm()">
+<button type="button" class="auth-link" onclick="showLoginForm()">
 العودة
 </button>
 
@@ -456,13 +740,9 @@ onclick="showLoginForm()">
 
 <div class="user-mini">
 
-<div id="miniUserAvatar" class="user-avatar">
-K
-</div>
+<div id="miniUserAvatar" class="user-avatar">K</div>
 
-<span id="miniUserName">
-زائر
-</span>
+<span id="miniUserName">زائر</span>
 
 </div>
 
@@ -470,35 +750,23 @@ K
 
 <nav class="nav">
 
-<button
-type="button"
-class="nav-btn active"
-data-section="home"
-onclick="showSection('home')">
+<button type="button" class="nav-btn active" data-section="home" onclick="showSection('home')">
 الرئيسية
 </button>
 
-<button
-type="button"
-class="nav-btn"
-data-section="content"
-onclick="showSection('content')">
+<button type="button" class="nav-btn" data-section="content" onclick="showSection('content')">
 📋 المحتوى
 </button>
 
-<button
-type="button"
-class="nav-btn"
-data-section="addcontent"
-onclick="openAddModal()">
+<button type="button" class="nav-btn" data-section="channels" onclick="showSection('channels')">
+📺 القنوات
+</button>
+
+<button type="button" class="nav-btn" data-section="addcontent" onclick="openAddModal()">
 ➕ إضافة
 </button>
 
-<button
-type="button"
-class="nav-btn"
-data-section="profile"
-onclick="showSection('profile')">
+<button type="button" class="nav-btn" data-section="profile" onclick="showSection('profile')">
 حسابي
 </button>
 
@@ -523,17 +791,15 @@ onclick="showSection('profile')">
 
 <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:22px">
 
-<button
-type="button"
-class="primary-btn"
-onclick="showSection('content')">
+<button type="button" class="primary-btn" onclick="showSection('content')">
 📋 استكشاف المحتوى
 </button>
 
-<button
-type="button"
-class="secondary-btn"
-onclick="openAddModal()">
+<button type="button" class="secondary-btn" onclick="showSection('channels')">
+📺 استكشاف القنوات
+</button>
+
+<button type="button" class="secondary-btn" onclick="openAddModal()">
 ➕ إضافة محتوى
 </button>
 
@@ -543,19 +809,13 @@ onclick="openAddModal()">
 
 <div class="content-grid">
 
-<div
-class="content-card"
-onclick="showSection('content')">
+<div class="content-card" onclick="showSection('content')">
 
-<div class="content-placeholder">
-📋
-</div>
+<div class="content-placeholder">📋</div>
 
 <div class="content-info">
 
-<div class="content-title">
-المحتوى
-</div>
+<div class="content-title">المحتوى</div>
 
 <div class="content-description">
 استكشف المشاريع والأفكار والتصاميم والعقارات التي يشاركها أعضاء KAPO ONE.
@@ -566,19 +826,30 @@ onclick="showSection('content')">
 </div>
 
 
-<div
-class="content-card"
-onclick="openAddModal()">
+<div class="content-card" onclick="showSection('channels')">
 
-<div class="content-placeholder">
-💡
-</div>
+<div class="content-placeholder">📺</div>
 
 <div class="content-info">
 
-<div class="content-title">
-شارك فكرتك
+<div class="content-title">القنوات</div>
+
+<div class="content-description">
+اكتشف القنوات والمنشورات والمشاريع والأفكار التي يقدمها أصحاب القنوات.
 </div>
+
+</div>
+
+</div>
+
+
+<div class="content-card" onclick="openAddModal()">
+
+<div class="content-placeholder">💡</div>
+
+<div class="content-info">
+
+<div class="content-title">شارك فكرتك</div>
 
 <div class="content-description">
 أضف مشروعك أو فكرتك أو تصميمك إلى المنصة.
@@ -589,19 +860,13 @@ onclick="openAddModal()">
 </div>
 
 
-<div
-class="content-card"
-onclick="showSection('profile')">
+<div class="content-card" onclick="showSection('profile')">
 
-<div class="content-placeholder">
-👤
-</div>
+<div class="content-placeholder">👤</div>
 
 <div class="content-info">
 
-<div class="content-title">
-حسابي
-</div>
+<div class="content-title">حسابي</div>
 
 <div class="content-description">
 راجع معلومات حسابك وإدارة دخولك إلى المنصة.
@@ -618,9 +883,7 @@ onclick="showSection('profile')">
 
 <section id="content" class="section">
 
-<h2 class="section-title">
-📋 المحتوى
-</h2>
+<h2 class="section-title">📋 المحتوى</h2>
 
 <p class="section-subtitle">
 جميع المحتويات من الأعضاء.
@@ -628,15 +891,9 @@ onclick="showSection('profile')">
 
 <div class="filters-bar">
 
-<input
-id="filterSearch"
-type="text"
-placeholder="🔍 بحث..."
-oninput="applyFilters">
+<input id="filterSearch" type="text" placeholder="🔍 بحث..." oninput="applyFilters()">
 
-<select
-id="filterType"
-onchange="applyFilters()">
+<select id="filterType" onchange="applyFilters()">
 
 <option value="">جميع الأنواع</option>
 <option value="project">🏗️ مشروع</option>
@@ -647,10 +904,7 @@ onchange="applyFilters()">
 
 </select>
 
-<button
-type="button"
-class="secondary-btn"
-onclick="resetFilters()">
+<button type="button" class="secondary-btn" onclick="resetFilters()">
 🔄 إعادة ضبط
 </button>
 
@@ -667,11 +921,42 @@ onclick="resetFilters()">
 </section>
 
 
+<!-- CHANNELS -->
+
+<section id="channels" class="section">
+
+<div class="channel-toolbar">
+
+<div>
+
+<h2 class="section-title">📺 القنوات</h2>
+
+<p class="section-subtitle" style="margin-bottom:0">
+اكتشف القنوات وتابع أصحاب المشاريع والأفكار والمحتوى.
+</p>
+
+</div>
+
+<button type="button" class="primary-btn" onclick="openChannelModal()">
+➕ إنشاء قناة
+</button>
+
+</div>
+
+<div id="channelsGrid" class="channel-grid">
+
+<div class="empty-state">
+⏳ جاري تحميل القنوات...
+</div>
+
+</div>
+
+</section>
+
+
 <section id="profile" class="section">
 
-<h2 class="section-title">
-حسابي
-</h2>
+<h2 class="section-title">حسابي</h2>
 
 <p class="section-subtitle">
 معلومات حسابك.
@@ -681,24 +966,17 @@ onclick="resetFilters()">
 
 <div style="display:flex;align-items:center;gap:16px;margin-bottom:22px">
 
-<div
-id="profileAvatar"
-class="user-avatar"
-style="width:78px;height:78px;border-radius:22px;font-size:28px">
+<div id="profileAvatar" class="user-avatar" style="width:78px;height:78px;border-radius:22px;font-size:28px">
 K
 </div>
 
 <div>
 
-<div
-id="profileName"
-style="font-size:25px;font-weight:900">
+<div id="profileName" style="font-size:25px;font-weight:900">
 زائر
 </div>
 
-<div
-id="profileEmail"
-style="color:#94a3b8">
+<div id="profileEmail" style="color:#94a3b8">
 -
 </div>
 
@@ -706,11 +984,7 @@ style="color:#94a3b8">
 
 </div>
 
-<button
-type="button"
-class="primary-btn"
-style="background:rgba(239,68,68,.08);color:#fca5a5;border:1px solid rgba(239,68,68,.3)"
-onclick="logoutUser()">
+<button type="button" class="primary-btn" style="background:rgba(239,68,68,.08);color:#fca5a5;border:1px solid rgba(239,68,68,.3)" onclick="logoutUser()">
 تسجيل الخروج
 </button>
 
@@ -725,27 +999,15 @@ onclick="logoutUser()">
 
 <!-- ADD MODAL -->
 
-<div
-id="addModal"
-class="modal"
-onclick="closeAddModal()">
+<div id="addModal" class="modal" onclick="closeAddModal()">
 
-<div
-class="modal-box"
-onclick="event.stopPropagation()">
+<div class="modal-box" onclick="event.stopPropagation()">
 
 <div class="modal-header">
 
-<h2>
-➕ إضافة محتوى جديد
-</h2>
+<h2>➕ إضافة محتوى جديد</h2>
 
-<button
-type="button"
-class="close-btn"
-onclick="closeAddModal()">
-×
-</button>
+<button type="button" class="close-btn" onclick="closeAddModal()">×</button>
 
 </div>
 
@@ -755,13 +1017,9 @@ onclick="closeAddModal()">
 
 <div class="full-width">
 
-<label>
-نوع المحتوى
-</label>
+<label>نوع المحتوى</label>
 
-<select
-id="contentType"
-onchange="toggleContentFields()">
+<select id="contentType" onchange="toggleContentFields()">
 
 <option value="project">🏗️ مشروع</option>
 <option value="property">🏢 عقار</option>
@@ -776,93 +1034,82 @@ onchange="toggleContentFields()">
 
 <div class="full-width">
 
-<label>
-العنوان
-</label>
+<label>العنوان</label>
 
-<input
-id="contentTitle"
-placeholder="عنوان المحتوى">
+<input id="contentTitle" placeholder="عنوان المحتوى">
 
 </div>
 
 
 <div class="full-width">
 
-<label>
-الوصف
-</label>
+<label>الوصف</label>
 
-<textarea
-id="contentDescription"
-rows="4"
-placeholder="وصف المحتوى..."></textarea>
+<textarea id="contentDescription" rows="4" placeholder="وصف المحتوى..."></textarea>
 
 </div>
 
 
 <div class="full-width">
 
-<label>
-رابط الصورة (اختياري)
-</label>
+<label>رابط الصورة (اختياري)</label>
 
-<input
-id="contentImage"
-placeholder="https://example.com/image.jpg">
+<input id="contentImage" placeholder="https://example.com/image.jpg">
 
 </div>
 
 
-<div
-id="propertyFields"
-class="property-grid hidden">
+<!-- CHANNEL SELECT -->
 
-<div>
+<div class="full-width channel-select-wrap">
 
-<label>
-الدولة
-</label>
+<label>📺 القناة التي سيظهر فيها المحتوى</label>
 
-<input
-id="propCountry"
-placeholder="مثال: السعودية">
+<select id="contentChannel">
+
+<option value="">بدون قناة</option>
+
+</select>
+
+<div id="channelSelectHelp" style="font-size:11px;color:#64748b;margin-top:6px">
+يمكنك نشر المحتوى في قناة من قنواتك.
+</div>
 
 </div>
 
 
+<div id="propertyFields" class="property-grid hidden">
+
 <div>
 
-<label>
-المدينة
-</label>
+<label>الدولة</label>
 
-<input
-id="propCity"
-placeholder="مثال: الرياض">
+<input id="propCountry" placeholder="مثال: السعودية">
 
 </div>
 
 
 <div>
 
-<label>
-السعر
-</label>
+<label>المدينة</label>
 
-<input
-id="propPrice"
-type="number"
-placeholder="0">
+<input id="propCity" placeholder="مثال: الرياض">
 
 </div>
 
 
 <div>
 
-<label>
-العملة
-</label>
+<label>السعر</label>
+
+<input id="propPrice" type="number" placeholder="0">
+
+</div>
+
+
+<div>
+
+<label>العملة</label>
 
 <select id="propCurrency">
 
@@ -878,37 +1125,25 @@ placeholder="0">
 
 <div>
 
-<label>
-المساحة (م²)
-</label>
+<label>المساحة (م²)</label>
 
-<input
-id="propArea"
-type="number"
-placeholder="0">
+<input id="propArea" type="number" placeholder="0">
 
 </div>
 
 
 <div>
 
-<label>
-واتساب
-</label>
+<label>واتساب</label>
 
-<input
-id="propWhatsapp"
-placeholder="رقم التواصل">
+<input id="propWhatsapp" placeholder="رقم التواصل">
 
 </div>
 
 </div>
 
 
-<div
-id="addMessage"
-class="auth-message hidden">
-</div>
+<div id="addMessage" class="auth-message hidden"></div>
 
 </div>
 
@@ -917,17 +1152,96 @@ class="auth-message hidden">
 
 <div class="modal-actions">
 
-<button
-type="button"
-class="primary-btn"
-onclick="saveContent()">
+<button type="button" class="primary-btn" onclick="saveContent()">
 💾 حفظ
 </button>
 
-<button
-type="button"
-class="secondary-btn"
-onclick="closeAddModal()">
+<button type="button" class="secondary-btn" onclick="closeAddModal()">
+إلغاء
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- CHANNEL CREATE MODAL -->
+
+<div id="channelModal" class="modal" onclick="closeChannelModal()">
+
+<div class="modal-box" onclick="event.stopPropagation()">
+
+<div class="modal-header">
+
+<h2>📺 إنشاء قناة جديدة</h2>
+
+<button type="button" class="close-btn" onclick="closeChannelModal()">×</button>
+
+</div>
+
+<div class="modal-content">
+
+<div class="form-grid">
+
+<div class="full-width">
+
+<label>اسم القناة</label>
+
+<input id="channelName" placeholder="مثال: KAPO Architecture">
+
+</div>
+
+<div class="full-width">
+
+<label>اسم المستخدم @username</label>
+
+<input id="channelUsername" placeholder="مثال: kapo_architecture">
+
+<div style="font-size:11px;color:#64748b;margin-top:5px">
+استخدم أحرفًا إنجليزية وأرقامًا و _ فقط.
+</div>
+
+</div>
+
+<div class="full-width">
+
+<label>وصف القناة</label>
+
+<textarea id="channelDescription" rows="4" placeholder="اكتب نبذة عن القناة..."></textarea>
+
+</div>
+
+<div>
+
+<label>رابط صورة القناة</label>
+
+<input id="channelAvatar" placeholder="https://example.com/avatar.jpg">
+
+</div>
+
+<div>
+
+<label>رابط الغلاف</label>
+
+<input id="channelCover" placeholder="https://example.com/cover.jpg">
+
+</div>
+
+<div id="channelMessage" class="auth-message hidden full-width"></div>
+
+</div>
+
+</div>
+
+<div class="modal-actions">
+
+<button type="button" class="primary-btn" onclick="createChannel()">
+🚀 إنشاء القناة
+</button>
+
+<button type="button" class="secondary-btn" onclick="closeChannelModal()">
 إلغاء
 </button>
 
@@ -940,41 +1254,23 @@ onclick="closeAddModal()">
 
 <!-- DETAIL MODAL -->
 
-<div
-id="detailModal"
-class="modal"
-onclick="closeDetailModal()">
+<div id="detailModal" class="modal" onclick="closeDetailModal()">
 
-<div
-class="modal-box"
-onclick="event.stopPropagation()">
+<div class="modal-box" onclick="event.stopPropagation()">
 
 <div class="modal-header">
 
-<h2 id="detailTitle">
-تفاصيل
-</h2>
+<h2 id="detailTitle">تفاصيل</h2>
 
-<button
-type="button"
-class="close-btn"
-onclick="closeDetailModal()">
-×
-</button>
+<button type="button" class="close-btn" onclick="closeDetailModal()">×</button>
 
 </div>
 
-<div
-id="detailContent"
-class="modal-content">
-</div>
+<div id="detailContent" class="modal-content"></div>
 
 <div class="modal-actions">
 
-<button
-type="button"
-class="secondary-btn"
-onclick="closeDetailModal()">
+<button type="button" class="secondary-btn" onclick="closeDetailModal()">
 إغلاق
 </button>
 
@@ -987,34 +1283,43 @@ onclick="closeDetailModal()">
 
 <!-- PUBLIC PROFILE MODAL -->
 
-<div
-id="publicProfileModal"
-class="modal"
-onclick="closePublicProfile()">
+<div id="publicProfileModal" class="modal" onclick="closePublicProfile()">
 
-<div
-class="modal-box"
-onclick="event.stopPropagation()">
+<div class="modal-box" onclick="event.stopPropagation()">
 
 <div class="modal-header">
 
-<h2>
-👤 الملف الشخصي
-</h2>
+<h2>👤 الملف الشخصي</h2>
 
-<button
-type="button"
-class="close-btn"
-onclick="closePublicProfile()">
-×
-</button>
+<button type="button" class="close-btn" onclick="closePublicProfile()">×</button>
 
 </div>
 
-<div
-id="publicProfileContent"
-class="modal-content">
+<div id="publicProfileContent" class="modal-content">
 جاري التحميل...
+</div>
+
+</div>
+
+</div>
+
+
+<!-- CHANNEL DETAIL MODAL -->
+
+<div id="channelDetailModal" class="modal" onclick="closeChannelDetail()">
+
+<div class="modal-box" style="max-width:900px" onclick="event.stopPropagation()">
+
+<div class="modal-header">
+
+<h2>📺 القناة</h2>
+
+<button type="button" class="close-btn" onclick="closeChannelDetail()">×</button>
+
+</div>
+
+<div id="channelDetailContent" class="modal-content">
+⏳ جاري التحميل...
 </div>
 
 </div>
@@ -1050,74 +1355,50 @@ let commentCounts={};
 
 let allProfiles={};
 
+let allChannels=[];
+let channelFollowers={};
+let followedChannelIds=new Set();
+let currentChannel=null;
+let currentChannelTab="home";
+
 let toastTimer=null;
 
 
 /* ================= DOM ================= */
 
-const authPage=
-document.getElementById("authPage");
+const authPage=document.getElementById("authPage");
+const app=document.getElementById("app");
 
-const app=
-document.getElementById("app");
+const loginForm=document.getElementById("loginForm");
+const registerForm=document.getElementById("registerForm");
+const resetForm=document.getElementById("resetForm");
 
-const loginForm=
-document.getElementById("loginForm");
+const loginEmail=document.getElementById("loginEmail");
+const loginPassword=document.getElementById("loginPassword");
 
-const registerForm=
-document.getElementById("registerForm");
+const registerName=document.getElementById("registerName");
+const registerEmail=document.getElementById("registerEmail");
+const registerPassword=document.getElementById("registerPassword");
 
-const resetForm=
-document.getElementById("resetForm");
+const resetEmail=document.getElementById("resetEmail");
 
-const loginEmail=
-document.getElementById("loginEmail");
+const miniUserName=document.getElementById("miniUserName");
+const miniUserAvatar=document.getElementById("miniUserAvatar");
 
-const loginPassword=
-document.getElementById("loginPassword");
+const profileName=document.getElementById("profileName");
+const profileEmail=document.getElementById("profileEmail");
+const profileAvatar=document.getElementById("profileAvatar");
 
-const registerName=
-document.getElementById("registerName");
-
-const registerEmail=
-document.getElementById("registerEmail");
-
-const registerPassword=
-document.getElementById("registerPassword");
-
-const resetEmail=
-document.getElementById("resetEmail");
-
-const miniUserName=
-document.getElementById("miniUserName");
-
-const miniUserAvatar=
-document.getElementById("miniUserAvatar");
-
-const profileName=
-document.getElementById("profileName");
-
-const profileEmail=
-document.getElementById("profileEmail");
-
-const profileAvatar=
-document.getElementById("profileAvatar");
-
-const contentType=
-document.getElementById("contentType");
-
-const propertyFields=
-document.getElementById("propertyFields");
+const contentType=document.getElementById("contentType");
+const propertyFields=document.getElementById("propertyFields");
+const contentChannel=document.getElementById("contentChannel");
 
 
 /* ================= SUPABASE ================= */
 
 function initSupabase(){
 
-if(
-window.supabase&&
-typeof window.supabase.createClient==="function"
-){
+if(window.supabase&&typeof window.supabase.createClient==="function"){
 
 if(!supabaseClient){
 
@@ -1143,11 +1424,8 @@ return false;
 function showLoginForm(){
 
 loginForm.classList.remove("hidden");
-
 registerForm.classList.add("hidden");
-
 resetForm.classList.add("hidden");
-
 clearAuthMessage();
 
 }
@@ -1155,11 +1433,8 @@ clearAuthMessage();
 function showRegisterForm(){
 
 loginForm.classList.add("hidden");
-
 registerForm.classList.remove("hidden");
-
 resetForm.classList.add("hidden");
-
 clearAuthMessage();
 
 }
@@ -1167,37 +1442,30 @@ clearAuthMessage();
 function showResetForm(){
 
 loginForm.classList.add("hidden");
-
 registerForm.classList.add("hidden");
-
 resetForm.classList.remove("hidden");
-
 clearAuthMessage();
 
 }
 
 function showAuthMessage(msg){
 
-const box=
-document.getElementById("authMessage");
+const box=document.getElementById("authMessage");
 
 if(!box)return;
 
 box.textContent=msg;
-
 box.classList.remove("hidden");
 
 }
 
 function clearAuthMessage(){
 
-const box=
-document.getElementById("authMessage");
+const box=document.getElementById("authMessage");
 
 if(!box)return;
 
 box.classList.add("hidden");
-
 box.textContent="";
 
 }
@@ -1205,9 +1473,7 @@ box.textContent="";
 function showApp(){
 
 authPage.style.display="none";
-
 app.classList.remove("hidden");
-
 app.style.display="block";
 
 }
@@ -1215,9 +1481,7 @@ app.style.display="block";
 function showAuthPage(){
 
 authPage.style.display="flex";
-
 app.classList.add("hidden");
-
 app.style.display="none";
 
 }
@@ -1231,39 +1495,26 @@ clearAuthMessage();
 
 if(!initSupabase()){
 
-showAuthMessage(
-"⏳ جاري تحميل الخدمة..."
-);
-
+showAuthMessage("⏳ جاري تحميل الخدمة...");
 return;
 
 }
 
-const email=
-loginEmail.value.trim();
-
-const password=
-loginPassword.value;
+const email=loginEmail.value.trim();
+const password=loginPassword.value;
 
 if(!email||!password){
 
-showAuthMessage(
-"أدخل البريد وكلمة المرور."
-);
-
+showAuthMessage("أدخل البريد وكلمة المرور.");
 return;
 
 }
 
-const btn=
-document.querySelector(
-"#loginForm .primary-btn"
-);
+const btn=document.querySelector("#loginForm .primary-btn");
 
 if(btn){
 
 btn.disabled=true;
-
 btn.textContent="جاري...";
 
 }
@@ -1272,11 +1523,8 @@ try{
 
 const result=
 await supabaseClient.auth.signInWithPassword({
-
 email:email,
-
 password:password
-
 });
 
 if(result.error){
@@ -1290,33 +1538,24 @@ return;
 
 }
 
-if(
-!result.data||
-!result.data.user
-){
+if(!result.data||!result.data.user){
 
-showAuthMessage(
-"تعذر الحصول على بيانات الحساب."
-);
-
+showAuthMessage("تعذر الحصول على بيانات الحساب.");
 return;
 
 }
 
-currentUser=
-result.data.user;
+currentUser=result.data.user;
 
 await loadUserProfile();
 
 showApp();
-
 updateUI();
 
 await loadContent();
+await loadChannels();
 
-showToast(
-"✅ تم تسجيل الدخول."
-);
+showToast("✅ تم تسجيل الدخول.");
 
 }catch(e){
 
@@ -1332,9 +1571,7 @@ e.message||
 if(btn){
 
 btn.disabled=false;
-
-btn.textContent=
-"تسجيل الدخول";
+btn.textContent="تسجيل الدخول";
 
 }
 
@@ -1351,39 +1588,25 @@ clearAuthMessage();
 
 if(!initSupabase()){
 
-showAuthMessage(
-"⏳ جاري تحميل الخدمة..."
-);
-
+showAuthMessage("⏳ جاري تحميل الخدمة...");
 return;
 
 }
 
-const name=
-registerName.value.trim();
-
-const email=
-registerEmail.value.trim();
-
-const password=
-registerPassword.value;
+const name=registerName.value.trim();
+const email=registerEmail.value.trim();
+const password=registerPassword.value;
 
 if(!name||!email||!password){
 
-showAuthMessage(
-"أكمل جميع البيانات."
-);
-
+showAuthMessage("أكمل جميع البيانات.");
 return;
 
 }
 
 if(password.length<6){
 
-showAuthMessage(
-"كلمة المرور 6 أحرف على الأقل."
-);
-
+showAuthMessage("كلمة المرور 6 أحرف على الأقل.");
 return;
 
 }
@@ -1394,7 +1617,6 @@ const result=
 await supabaseClient.auth.signUp({
 
 email,
-
 password,
 
 options:{
@@ -1407,18 +1629,12 @@ name:name
 
 if(result.error){
 
-showAuthMessage(
-result.error.message
-);
-
+showAuthMessage(result.error.message);
 return;
 
 }
 
-if(
-result.data&&
-result.data.user
-){
+if(result.data&&result.data.user){
 
 await createProfile(
 result.data.user,
@@ -1427,20 +1643,17 @@ name
 
 if(result.data.session){
 
-currentUser=
-result.data.user;
+currentUser=result.data.user;
 
 await loadUserProfile();
 
 showApp();
-
 updateUI();
 
 await loadContent();
+await loadChannels();
 
-showToast(
-"✅ تم إنشاء الحساب."
-);
+showToast("✅ تم إنشاء الحساب.");
 
 }else{
 
@@ -1468,15 +1681,9 @@ e.message||
 
 /* ================= PROFILE ================= */
 
-async function createProfile(
-user,
-name
-){
+async function createProfile(user,name){
 
-if(
-!user||
-!initSupabase()
-)return;
+if(!user||!initSupabase())return;
 
 try{
 
@@ -1487,22 +1694,15 @@ await supabaseClient
 
 id:user.id,
 
-name:
-name||
-"مستخدم",
+name:name||"مستخدم",
 
-email:
-user.email||
-""
+email:user.email||""
 
 });
 
 if(result.error){
 
-console.error(
-"Create profile:",
-result.error
-);
+console.error("Create profile:",result.error);
 
 }
 
@@ -1520,11 +1720,8 @@ async function loadUserProfile(){
 if(!currentUser){
 
 currentProfile={
-
 name:"زائر",
-
 email:""
-
 };
 
 return;
@@ -1542,17 +1739,13 @@ await supabaseClient
 
 if(result.error){
 
-console.warn(
-"Profile:",
-result.error.message
-);
+console.warn("Profile:",result.error.message);
 
 }
 
 if(result.data){
 
-currentProfile=
-result.data;
+currentProfile=result.data;
 
 }else{
 
@@ -1599,9 +1792,7 @@ currentUser.email||
 
 function updateUI(){
 
-const name=
-currentProfile?.name||
-"زائر";
+const name=currentProfile?.name||"زائر";
 
 const email=
 currentProfile?.email||
@@ -1609,20 +1800,11 @@ currentUser?.email||
 "";
 
 const first=
-name.trim().charAt(0).toUpperCase()||
-"K";
+name.trim().charAt(0).toUpperCase()||"K";
 
-
-miniUserName.textContent=
-name;
-
-profileName.textContent=
-name;
-
-profileEmail.textContent=
-email||
-"-";
-
+miniUserName.textContent=name;
+profileName.textContent=name;
+profileEmail.textContent=email||"-";
 
 [
 miniUserAvatar,
@@ -1632,7 +1814,6 @@ profileAvatar
 if(!el)return;
 
 el.innerHTML="";
-
 el.textContent=first;
 
 });
@@ -1640,7 +1821,7 @@ el.textContent=first;
 }
 
 
-/* ================= RESET PASSWORD ================= */
+/* ================= RESET ================= */
 
 async function resetUserPassword(){
 
@@ -1648,23 +1829,16 @@ clearAuthMessage();
 
 if(!initSupabase()){
 
-showAuthMessage(
-"⏳ جاري تحميل الخدمة..."
-);
-
+showAuthMessage("⏳ جاري تحميل الخدمة...");
 return;
 
 }
 
-const email=
-resetEmail.value.trim();
+const email=resetEmail.value.trim();
 
 if(!email){
 
-showAuthMessage(
-"أدخل البريد."
-);
-
+showAuthMessage("أدخل البريد.");
 return;
 
 }
@@ -1673,30 +1847,22 @@ try{
 
 const result=
 await supabaseClient.auth.resetPasswordForEmail(
-
 email,
-
 {
 redirectTo:
 window.location.origin+
 window.location.pathname
 }
-
 );
 
 if(result.error){
 
-showAuthMessage(
-result.error.message
-);
-
+showAuthMessage(result.error.message);
 return;
 
 }
 
-showAuthMessage(
-"✅ تم إرسال رابط الاستعادة."
-);
+showAuthMessage("✅ تم إرسال رابط الاستعادة.");
 
 }catch(e){
 
@@ -1719,22 +1885,17 @@ function enterGuest(){
 currentUser=null;
 
 currentProfile={
-
 name:"زائر",
-
 email:""
-
 };
 
 showApp();
-
 updateUI();
 
 loadContent();
+loadChannels();
 
-showToast(
-"👋 مرحباً بك كزائر."
-);
+showToast("👋 مرحباً بك كزائر.");
 
 showSection("home");
 
@@ -1760,19 +1921,15 @@ console.error(e);
 }
 
 currentUser=null;
-
 currentProfile=null;
 
-likedContentIds=
-new Set();
+likedContentIds=new Set();
+followedChannelIds=new Set();
 
 showAuthPage();
-
 showLoginForm();
 
-showToast(
-"تم تسجيل الخروج."
-);
+showToast("تم تسجيل الخروج.");
 
 }
 
@@ -1781,24 +1938,17 @@ showToast(
 
 function showSection(id){
 
-document
-.querySelectorAll(".section")
-.forEach(s=>{
+document.querySelectorAll(".section").forEach(s=>{
 s.classList.remove("active");
 });
 
-const section=
-document.getElementById(id);
+const section=document.getElementById(id);
 
 if(section){
-
 section.classList.add("active");
-
 }
 
-document
-.querySelectorAll(".nav-btn")
-.forEach(b=>{
+document.querySelectorAll(".nav-btn").forEach(b=>{
 b.classList.remove("active");
 });
 
@@ -1808,23 +1958,20 @@ document.querySelector(
 );
 
 if(btn){
-
 btn.classList.add("active");
-
 }
 
 if(id==="content"){
-
 loadContent();
+}
 
+if(id==="channels"){
+loadChannels();
 }
 
 window.scrollTo({
-
 top:0,
-
 behavior:"smooth"
-
 });
 
 }
@@ -1834,72 +1981,130 @@ behavior:"smooth"
 
 function showToast(message){
 
-const toast=
-document.getElementById("toast");
+const toast=document.getElementById("toast");
 
 if(!toast)return;
 
-toast.textContent=
-message;
+toast.textContent=message;
 
 toast.classList.add("show");
 
 clearTimeout(toastTimer);
 
 toastTimer=
-setTimeout(
-()=>{
+setTimeout(()=>{
 toast.classList.remove("show");
-},
-3000
-);
+},3000);
 
 }
 
 
 /* ================= ADD CONTENT ================= */
 
-function openAddModal(){
+async function openAddModal(){
 
 if(!currentUser){
 
-showToast(
-"سجل الدخول أولاً."
-);
-
+showToast("سجل الدخول أولاً.");
 return;
 
 }
 
-document
-.getElementById("addModal")
-.classList.add("active");
+document.getElementById("addModal").classList.add("active");
 
-document
-.getElementById("addMessage")
-.classList.add("hidden");
+document.getElementById("addMessage").classList.add("hidden");
 
 toggleContentFields();
+
+await loadMyChannelsIntoSelect();
 
 }
 
 function closeAddModal(){
 
-document
-.getElementById("addModal")
-.classList.remove("active");
+document.getElementById("addModal").classList.remove("active");
 
 }
 
 function toggleContentFields(){
 
-const type=
-contentType.value;
+const type=contentType.value;
 
 propertyFields.classList.toggle(
 "hidden",
 type!=="property"
 );
+
+}
+
+
+/* ================= MY CHANNELS SELECT ================= */
+
+async function loadMyChannelsIntoSelect(){
+
+const select=document.getElementById("contentChannel");
+
+if(!select)return;
+
+select.innerHTML=
+'<option value="">بدون قناة</option>';
+
+if(!currentUser){
+
+return;
+
+}
+
+const myChannels=
+allChannels.filter(
+channel=>
+String(channel.owner_id)===
+String(currentUser.id)
+);
+
+if(!myChannels.length){
+
+select.innerHTML=
+'<option value="">بدون قناة</option>';
+
+const help=document.getElementById("channelSelectHelp");
+
+if(help){
+
+help.innerHTML=
+'ليس لديك قناة بعد. <button type="button" class="channel-link-btn" onclick="closeAddModal();showSection(\'channels\')">أنشئ قناة أولاً</button>';
+
+}
+
+return;
+
+}
+
+myChannels.forEach(channel=>{
+
+const option=document.createElement("option");
+
+option.value=channel.id;
+
+option.textContent=
+"📺 "+
+channel.name+
+" (@"+
+channel.username+
+")";
+
+select.appendChild(option);
+
+});
+
+const help=document.getElementById("channelSelectHelp");
+
+if(help){
+
+help.textContent=
+"اختر قناة لنشر المحتوى داخلها، أو اتركه بدون قناة.";
+
+}
 
 }
 
@@ -1910,73 +2115,62 @@ async function saveContent(){
 
 if(!currentUser){
 
-showToast(
-"سجل الدخول أولاً."
-);
-
+showToast("سجل الدخول أولاً.");
 return;
 
 }
 
 if(!initSupabase()){
 
-showToast(
-"تعذر الاتصال."
-);
-
+showToast("تعذر الاتصال.");
 return;
 
 }
 
-const type=
-contentType.value;
+const type=contentType.value;
 
 const title=
-document
-.getElementById("contentTitle")
+document.getElementById("contentTitle")
 .value
 .trim();
 
 const description=
-document
-.getElementById("contentDescription")
+document.getElementById("contentDescription")
 .value
 .trim();
 
 const image=
-document
-.getElementById("contentImage")
+document.getElementById("contentImage")
 .value
 .trim();
 
+const channelId=
+document.getElementById("contentChannel")
+.value||
+null;
+
 if(!title){
 
-showAddMessage(
-"اكتب العنوان."
-);
-
+showAddMessage("اكتب العنوان.");
 return;
 
 }
 
 const projectData={
 
-user_id:
-currentUser.id,
+user_id:currentUser.id,
 
 title:title,
 
-description:
-description||"",
+description:description||"",
 
-image_url:
-image||null,
+image_url:image||null,
 
-content_type:
-type,
+content_type:type,
 
-created_at:
-new Date().toISOString()
+channel_id:channelId,
+
+created_at:new Date().toISOString()
 
 };
 
@@ -1986,39 +2180,33 @@ if(type==="property"){
 const extra={
 
 country:
-document
-.getElementById("propCountry")
+document.getElementById("propCountry")
 .value
 .trim(),
 
 city:
-document
-.getElementById("propCity")
+document.getElementById("propCity")
 .value
 .trim(),
 
 price:
 parseFloat(
-document
-.getElementById("propPrice")
+document.getElementById("propPrice")
 .value
 )||0,
 
 currency:
-document
-.getElementById("propCurrency")
+document.getElementById("propCurrency")
 .value,
 
 area:
 parseFloat(
-document
-.getElementById("propArea")
+document.getElementById("propArea")
 .value
 )||0,
 
 whatsapp:
-document
-.getElementById("propWhatsapp")
+document.getElementById("propWhatsapp")
 .value
 .trim()
 
@@ -2040,10 +2228,7 @@ await supabaseClient
 
 if(result.error){
 
-showAddMessage(
-result.error.message
-);
-
+showAddMessage(result.error.message);
 return;
 
 }
@@ -2053,10 +2238,9 @@ closeAddModal();
 clearAddForm();
 
 await loadContent();
+await loadChannels();
 
-showToast(
-"✅ تم حفظ المحتوى."
-);
+showToast("✅ تم حفظ المحتوى.");
 
 }catch(e){
 
@@ -2074,13 +2258,11 @@ e.message||
 
 function showAddMessage(msg){
 
-const box=
-document.getElementById("addMessage");
+const box=document.getElementById("addMessage");
 
 if(!box)return;
 
-box.textContent=
-msg;
+box.textContent=msg;
 
 box.classList.remove("hidden");
 
@@ -2100,19 +2282,19 @@ function clearAddForm(){
 "propWhatsapp"
 ].forEach(id=>{
 
-const el=
-document.getElementById(id);
+const el=document.getElementById(id);
 
 if(el){
-
 el.value="";
-
 }
 
 });
 
-contentType.value=
-"project";
+contentType.value="project";
+
+if(contentChannel){
+contentChannel.value="";
+}
 
 toggleContentFields();
 
@@ -2123,10 +2305,7 @@ toggleContentFields();
 
 async function loadContent(){
 
-const grid=
-document.getElementById(
-"contentGrid"
-);
+const grid=document.getElementById("contentGrid");
 
 if(!grid)return;
 
@@ -2169,14 +2348,10 @@ return;
 
 }
 
-allContent=
-result.data||
-[];
+allContent=result.data||[];
 
 await loadLikes();
-
 await loadComments();
-
 await loadProfiles();
 
 applyFilters();
@@ -2204,8 +2379,7 @@ async function loadProfiles(){
 
 allProfiles={};
 
-if(!initSupabase())
-return;
+if(!initSupabase())return;
 
 const ids=[
 ...new Set(
@@ -2216,17 +2390,9 @@ allContent
 )
 ];
 
-if(!ids.length)
-return;
+if(!ids.length)return;
 
 try{
-
-/*
-مهم:
-جدول profiles عندك لا يحتوي avatar_url
-لذلك نقرأ فقط الأعمدة الموجودة:
-id,name,email
-*/
 
 const result=
 await supabaseClient
@@ -2245,8 +2411,7 @@ return;
 
 }
 
-(result.data||[])
-.forEach(profile=>{
+(result.data||[]).forEach(profile=>{
 
 allProfiles[
 String(profile.id)
@@ -2268,8 +2433,7 @@ e
 
 function getOwner(item){
 
-if(!item)
-return null;
+if(!item)return null;
 
 return allProfiles[
 String(item.user_id)
@@ -2288,8 +2452,7 @@ email:""
 
 function getOwnerName(item){
 
-const owner=
-getOwner(item);
+const owner=getOwner(item);
 
 return owner?.name||
 "عضو KAPO ONE";
@@ -2301,11 +2464,9 @@ return owner?.name||
 
 function ownerHtml(item){
 
-const owner=
-getOwner(item);
+const owner=getOwner(item);
 
-if(!owner||!item.user_id)
-return "";
+if(!owner||!item.user_id)return "";
 
 const name=
 owner.name||
@@ -2349,23 +2510,17 @@ ${first}
 async function loadLikes(){
 
 allLikes=[];
-
-likedContentIds=
-new Set();
-
+likedContentIds=new Set();
 likeCounts={};
 
-if(!initSupabase())
-return;
+if(!initSupabase())return;
 
 try{
 
 const result=
 await supabaseClient
 .from("likes")
-.select(
-"id,project_id,user_id"
-);
+.select("id,project_id,user_id");
 
 if(result.error){
 
@@ -2378,14 +2533,11 @@ return;
 
 }
 
-allLikes=
-result.data||
-[];
+allLikes=result.data||[];
 
 allLikes.forEach(like=>{
 
-const id=
-String(like.project_id);
+const id=String(like.project_id);
 
 likeCounts[id]=
 (likeCounts[id]||0)+1;
@@ -2418,28 +2570,20 @@ async function toggleLike(id){
 
 if(!currentUser){
 
-showToast(
-"❤️ سجل الدخول للإعجاب."
-);
-
+showToast("❤️ سجل الدخول للإعجاب.");
 return;
 
 }
 
 if(!initSupabase()){
 
-showToast(
-"تعذر الاتصال."
-);
-
+showToast("تعذر الاتصال.");
 return;
 
 }
 
 const alreadyLiked=
-likedContentIds.has(
-String(id)
-);
+likedContentIds.has(String(id));
 
 try{
 
@@ -2449,28 +2593,17 @@ const result=
 await supabaseClient
 .from("likes")
 .delete()
-.eq(
-"project_id",
-id
-)
-.eq(
-"user_id",
-currentUser.id
-);
+.eq("project_id",id)
+.eq("user_id",currentUser.id);
 
 if(result.error){
 
-showToast(
-"تعذر إزالة الإعجاب."
-);
-
+showToast("تعذر إزالة الإعجاب.");
 return;
 
 }
 
-showToast(
-"تم إزالة الإعجاب."
-);
+showToast("تم إزالة الإعجاب.");
 
 }else{
 
@@ -2481,17 +2614,13 @@ await supabaseClient
 
 project_id:id,
 
-user_id:
-currentUser.id
+user_id:currentUser.id
 
 });
 
 if(result.error){
 
-if(
-result.error.code===
-"23505"
-){
+if(result.error.code==="23505"){
 
 showToast(
 "أنت معجب بهذا المحتوى بالفعل."
@@ -2509,9 +2638,7 @@ return;
 
 }
 
-showToast(
-"❤️ تمت إضافة الإعجاب."
-);
+showToast("❤️ تمت إضافة الإعجاب.");
 
 }
 
@@ -2523,9 +2650,7 @@ renderContent();
 
 console.error(e);
 
-showToast(
-"حدث خطأ في الإعجاب."
-);
+showToast("حدث خطأ في الإعجاب.");
 
 }
 
@@ -2537,11 +2662,9 @@ showToast(
 async function loadComments(){
 
 allComments=[];
-
 commentCounts={};
 
-if(!initSupabase())
-return;
+if(!initSupabase())return;
 
 try{
 
@@ -2563,14 +2686,11 @@ return;
 
 }
 
-allComments=
-result.data||
-[];
+allComments=result.data||[];
 
 allComments.forEach(c=>{
 
-const id=
-String(c.project_id);
+const id=String(c.project_id);
 
 commentCounts[id]=
 (commentCounts[id]||0)+1;
@@ -2624,25 +2744,18 @@ document.getElementById(
 
 if(!input)return;
 
-const text=
-input.value.trim();
+const text=input.value.trim();
 
 if(!text){
 
-showToast(
-"اكتب التعليق أولاً."
-);
-
+showToast("اكتب التعليق أولاً.");
 return;
 
 }
 
 if(!initSupabase()){
 
-showToast(
-"تعذر الاتصال."
-);
-
+showToast("تعذر الاتصال.");
 return;
 
 }
@@ -2656,8 +2769,7 @@ await supabaseClient
 
 project_id:id,
 
-user_id:
-currentUser.id,
+user_id:currentUser.id,
 
 comment:text
 
@@ -2667,19 +2779,14 @@ if(result.error){
 
 console.error(result.error);
 
-showToast(
-"تعذر إضافة التعليق."
-);
-
+showToast("تعذر إضافة التعليق.");
 return;
 
 }
 
 input.value="";
 
-showToast(
-"💬 تم نشر التعليق."
-);
+showToast("💬 تم نشر التعليق.");
 
 await loadComments();
 
@@ -2689,29 +2796,18 @@ openDetailModal(id);
 
 console.error(e);
 
-showToast(
-"حدث خطأ في التعليق."
-);
+showToast("حدث خطأ في التعليق.");
 
 }
 
 }
 
 
-async function deleteComment(
-commentId,
-projectId
-){
+async function deleteComment(commentId,projectId){
 
-if(!currentUser)
-return;
+if(!currentUser)return;
 
-if(
-!confirm(
-"هل تريد حذف هذا التعليق؟"
-)
-)
-return;
+if(!confirm("هل تريد حذف هذا التعليق؟"))return;
 
 try{
 
@@ -2719,28 +2815,17 @@ const result=
 await supabaseClient
 .from("comments")
 .delete()
-.eq(
-"id",
-commentId
-)
-.eq(
-"user_id",
-currentUser.id
-);
+.eq("id",commentId)
+.eq("user_id",currentUser.id);
 
 if(result.error){
 
-showToast(
-"تعذر حذف التعليق."
-);
-
+showToast("تعذر حذف التعليق.");
 return;
 
 }
 
-showToast(
-"🗑️ تم حذف التعليق."
-);
+showToast("🗑️ تم حذف التعليق.");
 
 await loadComments();
 
@@ -2750,9 +2835,7 @@ openDetailModal(projectId);
 
 console.error(e);
 
-showToast(
-"حدث خطأ."
-);
+showToast("حدث خطأ.");
 
 }
 
@@ -2840,9 +2923,8 @@ String(currentUser?.id)
 const date=
 c.created_at
 ?
-new Date(
-c.created_at
-).toLocaleString("ar-SA")
+new Date(c.created_at)
+.toLocaleString("ar-SA")
 :"";
 
 const deleteBtn=
@@ -2894,24 +2976,19 @@ ${escapeHtml(c.comment)}
 function applyFilters(){
 
 const search=
-document
-.getElementById("filterSearch")
+document.getElementById("filterSearch")
 .value
 .toLowerCase()
 .trim();
 
 const type=
-document
-.getElementById("filterType")
+document.getElementById("filterType")
 .value;
 
 filteredContent=
 allContent.filter(item=>{
 
-if(
-type&&
-item.content_type!==type
-){
+if(type&&item.content_type!==type){
 
 return false;
 
@@ -2920,16 +2997,13 @@ return false;
 if(search){
 
 const title=
-(item.title||"")
-.toLowerCase();
+(item.title||"").toLowerCase();
 
 const desc=
-(item.description||"")
-.toLowerCase();
+(item.description||"").toLowerCase();
 
 const owner=
-getOwnerName(item)
-.toLowerCase();
+getOwnerName(item).toLowerCase();
 
 if(
 !title.includes(search)&&
@@ -2954,15 +3028,74 @@ renderContent();
 
 function resetFilters(){
 
-document.getElementById(
-"filterSearch"
-).value="";
-
-document.getElementById(
-"filterType"
-).value="";
+document.getElementById("filterSearch").value="";
+document.getElementById("filterType").value="";
 
 applyFilters();
+
+}
+
+
+/* ================= CHANNEL HELPER ================= */
+
+function getChannel(channelId){
+
+if(!channelId)return null;
+
+return allChannels.find(
+channel=>
+String(channel.id)===
+String(channelId)
+)||null;
+
+}
+
+
+function getChannelName(channelId){
+
+const channel=getChannel(channelId);
+
+return channel?.name||"";
+
+}
+
+
+function channelMiniHtml(channel){
+
+if(!channel)return "";
+
+const name=channel.name||"قناة";
+
+const first=
+name.trim().charAt(0).toUpperCase()||
+"📺";
+
+const avatar=
+channel.avatar_url
+?
+`
+<img
+src="${escapeAttribute(channel.avatar_url)}"
+alt="${escapeAttribute(name)}"
+onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+<span style="display:none">${first}</span>
+`
+:
+first;
+
+return `
+<div class="channel-mini-owner">
+
+<div class="channel-mini-dot">
+${avatar}
+</div>
+
+<span>
+📺 ${escapeHtml(name)}
+</span>
+
+</div>
+`;
 
 }
 
@@ -2971,10 +3104,7 @@ applyFilters();
 
 function renderContent(){
 
-const grid=
-document.getElementById(
-"contentGrid"
-);
+const grid=document.getElementById("contentGrid");
 
 if(!grid)return;
 
@@ -3002,7 +3132,6 @@ question:"badge-question"
 ||
 "badge-project";
 
-
 const badgeLabel={
 
 project:"🏗️ مشروع",
@@ -3015,7 +3144,6 @@ question:"❓ سؤال"
 ||
 "محتوى";
 
-
 const icon={
 
 project:"🏗️",
@@ -3027,7 +3155,6 @@ question:"❓"
 }[item.content_type]
 ||
 "📋";
-
 
 const imageHtml=
 item.image_url
@@ -3052,28 +3179,35 @@ ${icon}
 </div>
 `;
 
-
 const date=
 item.created_at
 ?
-new Date(
-item.created_at
-).toLocaleDateString("ar-SA")
+new Date(item.created_at)
+.toLocaleDateString("ar-SA")
 :"";
 
-
-const id=
-String(item.id||"");
+const id=String(item.id||"");
 
 const isLiked=
 likedContentIds.has(id);
 
-const likes=
-likeCounts[id]||0;
+const likes=likeCounts[id]||0;
+const comments=commentCounts[id]||0;
 
-const comments=
-commentCounts[id]||0;
+const channel=
+getChannel(item.channel_id);
 
+const channelHtml=
+channel
+?
+`
+<div
+style="margin-top:9px;color:#60a5fa;font-size:12px;font-weight:800"
+onclick="event.stopPropagation();openChannelDetail('${escapeAttribute(channel.id)}')">
+📺 ${escapeHtml(channel.name)}
+</div>
+`
+:"";
 
 return `
 <div
@@ -3100,6 +3234,8 @@ ${escapeHtml(item.description||"لا يوجد وصف.")}
 ${badgeLabel}
 </span>
 
+${channelHtml}
+
 ${ownerHtml(item)}
 
 <div class="card-bottom">
@@ -3111,9 +3247,7 @@ onclick="event.stopPropagation();toggleLike('${escapeAttribute(id)}')">
 
 ${isLiked?"❤️":"🤍"}
 
-<span>
-${likes}
-</span>
+<span>${likes}</span>
 
 </button>
 
@@ -3124,9 +3258,7 @@ onclick="event.stopPropagation();openDetailModal('${escapeAttribute(id)}')">
 
 💬
 
-<span>
-${comments}
-</span>
+<span>${comments}</span>
 
 </button>
 
@@ -3148,29 +3280,19 @@ function openDetailModal(id){
 
 const item=
 allContent.find(
-x=>
-String(x.id)===
-String(id)
+x=>String(x.id)===String(id)
 );
 
 if(!item){
 
-showToast(
-"تعذر فتح المحتوى."
-);
-
+showToast("تعذر فتح المحتوى.");
 return;
 
 }
 
-const title=
-item.title||
-"تفاصيل المحتوى";
+const title=item.title||"تفاصيل المحتوى";
 
-document.getElementById(
-"detailTitle"
-).textContent=
-title;
+document.getElementById("detailTitle").textContent=title;
 
 let image="";
 
@@ -3201,31 +3323,20 @@ const type=
 typeLabels[item.content_type]||
 "📋 محتوى";
 
-
-let description=
-item.description||
-"لا يوجد وصف.";
-
+let description=item.description||"لا يوجد وصف.";
 let propertyHtml="";
-
 
 if(item.content_type==="property"){
 
-const parts=
-description.split(
-"\n\n---\n"
-);
+const parts=description.split("\n\n---\n");
 
-description=
-parts[0]||
-"";
+description=parts[0]||"";
 
 if(parts[1]){
 
 try{
 
-const extra=
-JSON.parse(parts[1]);
+const extra=JSON.parse(parts[1]);
 
 propertyHtml=
 
@@ -3268,29 +3379,21 @@ console.warn(e);
 
 }
 
-
 const date=
 item.created_at
 ?
-new Date(
-item.created_at
-).toLocaleString("ar-SA")
+new Date(item.created_at)
+.toLocaleString("ar-SA")
 :"-";
 
-const projectId=
-String(item.id||"");
+const projectId=String(item.id||"");
 
 const isLiked=
 likedContentIds.has(projectId);
 
-const likes=
-likeCounts[projectId]||0;
+const likes=likeCounts[projectId]||0;
 
-
-/* OWNER */
-
-const owner=
-getOwner(item);
+const owner=getOwner(item);
 
 const ownerName=
 owner?.name||
@@ -3330,10 +3433,30 @@ ${escapeHtml(ownerName)}
 `
 :"";
 
+const channel=
+getChannel(item.channel_id);
 
-document.getElementById(
-"detailContent"
-).innerHTML=
+const channelBlock=
+channel
+?
+`
+<div
+style="margin:15px 0;padding:13px;border-radius:14px;background:#020617;border:1px solid #1e293b;cursor:pointer"
+onclick="openChannelDetail('${escapeAttribute(channel.id)}')">
+
+<div style="font-size:11px;color:#64748b">
+القناة
+</div>
+
+<div style="font-weight:900;color:#60a5fa">
+📺 ${escapeHtml(channel.name)}
+</div>
+
+</div>
+`
+:"";
+
+document.getElementById("detailContent").innerHTML=
 
 `
 
@@ -3343,6 +3466,8 @@ ${image}
 <strong>النوع:</strong>
 ${type}
 </div>
+
+${channelBlock}
 
 ${ownerBlock}
 
@@ -3367,9 +3492,7 @@ onclick="toggleLikeFromDetail('${escapeAttribute(projectId)}')">
 
 ${isLiked?"❤️":"🤍"}
 
-<span>
-${likes}
-</span>
+<span>${likes}</span>
 
 </button>
 
@@ -3383,10 +3506,7 @@ ${renderComments(projectId)}
 
 `;
 
-
-document.getElementById(
-"detailModal"
-).classList.add("active");
+document.getElementById("detailModal").classList.add("active");
 
 }
 
@@ -3395,10 +3515,7 @@ async function toggleLikeFromDetail(id){
 
 await toggleLike(id);
 
-const modal=
-document.getElementById(
-"detailModal"
-);
+const modal=document.getElementById("detailModal");
 
 if(
 modal&&
@@ -3414,9 +3531,8 @@ openDetailModal(id);
 
 function closeDetailModal(){
 
-document.getElementById(
-"detailModal"
-).classList.remove("active");
+document.getElementById("detailModal")
+.classList.remove("active");
 
 }
 
@@ -3427,44 +3543,28 @@ async function openPublicProfile(userId){
 
 if(!userId){
 
-showToast(
-"تعذر فتح الملف الشخصي."
-);
-
+showToast("تعذر فتح الملف الشخصي.");
 return;
 
 }
 
 const modal=
-document.getElementById(
-"publicProfileModal"
-);
+document.getElementById("publicProfileModal");
 
 const box=
-document.getElementById(
-"publicProfileContent"
-);
+document.getElementById("publicProfileContent");
 
 modal.classList.add("active");
 
 box.innerHTML=
 '<div class="empty-state">⏳ جاري تحميل الملف الشخصي...</div>';
 
-
 let profile=
-allProfiles[
-String(userId)
-];
-
+allProfiles[String(userId)];
 
 try{
 
 if(!profile){
-
-/*
-إصلاح مهم:
-لا نطلب avatar_url لأنه غير موجود في profiles
-*/
 
 const result=
 await supabaseClient
@@ -3474,19 +3574,14 @@ await supabaseClient
 .maybeSingle();
 
 if(result.data){
-
-profile=
-result.data;
-
+profile=result.data;
 }
 
 if(result.error){
-
 console.warn(
 "Public profile:",
 result.error.message
 );
-
 }
 
 }
@@ -3496,7 +3591,6 @@ result.error.message
 console.error(e);
 
 }
-
 
 if(!profile){
 
@@ -3510,7 +3604,6 @@ box.innerHTML=
 return;
 
 }
-
 
 const name=
 profile.name||
@@ -3526,17 +3619,19 @@ name.trim()
 .toUpperCase()||
 "K";
 
-
-/* CONTENT OF OWNER */
-
 const ownerContent=
 allContent.filter(item=>
 String(item.user_id)===
 String(userId)
 );
 
-let contentHtml="";
+const ownerChannels=
+allChannels.filter(channel=>
+String(channel.owner_id)===
+String(userId)
+);
 
+let contentHtml="";
 
 if(!ownerContent.length){
 
@@ -3580,6 +3675,7 @@ ${escapeHtml(item.title||"بدون عنوان")}
 
 <div class="public-content-item-type">
 ${type}
+${item.channel_id?" · 📺 داخل قناة":""}
 </div>
 
 </div>
@@ -3592,6 +3688,38 @@ ${type}
 
 }
 
+const channelsHtml=
+ownerChannels.length
+?
+`
+<div class="public-content-title">
+📺 قنوات هذا العضو (${ownerChannels.length})
+</div>
+
+<div class="public-content-list">
+
+${ownerChannels.map(channel=>`
+
+<div
+class="public-content-item"
+onclick="closePublicProfile();openChannelDetail('${escapeAttribute(channel.id)}')">
+
+<div class="public-content-item-title">
+📺 ${escapeHtml(channel.name)}
+${channel.verified?" ✓":""}
+</div>
+
+<div class="public-content-item-type">
+@${escapeHtml(channel.username)}
+</div>
+
+</div>
+
+`).join("")}
+
+</div>
+`
+:"";
 
 box.innerHTML=
 `
@@ -3618,12 +3746,13 @@ ${escapeHtml(email)}
 
 </div>
 
-<div
-style="color:#94a3b8;font-size:14px">
+<div style="color:#94a3b8;font-size:14px">
 🌍 عضو في KAPO ONE
 </div>
 
 </div>
+
+${channelsHtml}
 
 <div class="public-content-title">
 📚 محتوى هذا العضو (${ownerContent.length})
@@ -3638,11 +3767,1237 @@ ${contentHtml}
 
 function closePublicProfile(){
 
-document
-.getElementById(
-"publicProfileModal"
-)
+document.getElementById("publicProfileModal")
 .classList.remove("active");
+
+}
+
+
+/* =========================================================
+   CHANNEL SYSTEM
+========================================================= */
+
+
+/* ================= LOAD CHANNELS ================= */
+
+async function loadChannels(){
+
+const grid=document.getElementById("channelsGrid");
+
+if(!grid)return;
+
+if(!initSupabase()){
+
+grid.innerHTML=
+'<div class="empty-state">⏳ جاري تحميل الخدمة...</div>';
+
+return;
+
+}
+
+grid.innerHTML=
+'<div class="empty-state">⏳ جاري تحميل القنوات...</div>';
+
+try{
+
+const result=
+await supabaseClient
+.from("channels")
+.select("*")
+.order(
+"created_at",
+{
+ascending:false
+}
+);
+
+if(result.error){
+
+grid.innerHTML=
+`
+<div class="empty-state">
+❌ خطأ في تحميل القنوات:<br>
+${escapeHtml(result.error.message)}
+</div>
+`;
+
+return;
+
+}
+
+allChannels=result.data||[];
+
+await loadChannelFollowers();
+
+renderChannels();
+
+if(document.getElementById("contentChannel")){
+
+await loadMyChannelsIntoSelect();
+
+}
+
+}catch(e){
+
+console.error(e);
+
+grid.innerHTML=
+`
+<div class="empty-state">
+❌ حدث خطأ:<br>
+${escapeHtml(e.message)}
+</div>
+`;
+
+}
+
+}
+
+
+/* ================= FOLLOWERS ================= */
+
+async function loadChannelFollowers(){
+
+channelFollowers={};
+followedChannelIds=new Set();
+
+if(!initSupabase())return;
+
+if(!allChannels.length)return;
+
+try{
+
+const ids=
+allChannels.map(channel=>channel.id);
+
+const result=
+await supabaseClient
+.from("channel_followers")
+.select("id,channel_id,user_id")
+.in("channel_id",ids);
+
+if(result.error){
+
+console.warn(
+"Channel followers:",
+result.error.message
+);
+
+return;
+
+}
+
+(result.data||[]).forEach(row=>{
+
+const channelId=String(row.channel_id);
+
+channelFollowers[channelId]=
+(channelFollowers[channelId]||0)+1;
+
+if(
+currentUser&&
+String(row.user_id)===
+String(currentUser.id)
+){
+
+followedChannelIds.add(channelId);
+
+}
+
+});
+
+}catch(e){
+
+console.warn(
+"Channel followers exception:",
+e
+);
+
+}
+
+}
+
+
+/* ================= RENDER CHANNELS ================= */
+
+function renderChannels(){
+
+const grid=document.getElementById("channelsGrid");
+
+if(!grid)return;
+
+if(!allChannels.length){
+
+grid.innerHTML=
+`
+<div class="empty-state">
+
+<div style="font-size:45px;margin-bottom:10px">
+📺
+</div>
+
+<div style="font-size:18px;font-weight:900;color:#fff;margin-bottom:8px">
+لا توجد قنوات حتى الآن
+</div>
+
+<div>
+كن أول من ينشئ قناة في KAPO ONE.
+</div>
+
+<br>
+
+<button
+type="button"
+class="primary-btn"
+onclick="openChannelModal()">
+➕ إنشاء أول قناة
+</button>
+
+</div>
+`;
+
+return;
+
+}
+
+grid.innerHTML=
+allChannels.map(channel=>{
+
+const name=
+channel.name||
+"قناة KAPO ONE";
+
+const first=
+name.trim()
+.charAt(0)
+.toUpperCase()||
+"📺";
+
+const followers=
+channelFollowers[String(channel.id)]||0;
+
+const avatar=
+channel.avatar_url
+?
+`
+<img
+src="${escapeAttribute(channel.avatar_url)}"
+alt="${escapeAttribute(name)}"
+onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
+<div
+style="display:none;width:100%;height:100%;align-items:center;justify-content:center">
+${first}
+</div>
+`
+:
+first;
+
+const cover=
+channel.cover_url
+?
+`
+<img
+src="${escapeAttribute(channel.cover_url)}"
+alt=""
+onerror="this.style.display='none'">
+`
+:"";
+
+const verified=
+channel.verified
+?
+'<span class="verified" title="قناة موثقة">✓</span>'
+:"";
+
+return `
+<div
+class="channel-card"
+onclick="openChannelDetail('${escapeAttribute(channel.id)}')">
+
+<div class="channel-cover">
+${cover}
+
+<div class="channel-avatar-wrap">
+
+<div class="channel-avatar">
+${avatar}
+</div>
+
+</div>
+
+</div>
+
+<div class="channel-card-body">
+
+<div class="channel-name">
+${escapeHtml(name)}
+${verified}
+</div>
+
+<div class="channel-username">
+@${escapeHtml(channel.username||"channel")}
+</div>
+
+<div class="channel-description">
+${escapeHtml(channel.description||"لا يوجد وصف للقناة.")}
+</div>
+
+<div class="channel-stats">
+
+<div class="channel-stat">
+<strong>${followers}</strong>
+متابع
+</div>
+
+<div class="channel-stat">
+<strong>${countChannelContent(channel.id)}</strong>
+منشور
+</div>
+
+</div>
+
+</div>
+
+</div>
+`;
+
+}).join("");
+
+}
+
+
+function countChannelContent(channelId){
+
+return allContent.filter(item=>
+String(item.channel_id)===
+String(channelId)
+).length;
+
+}
+
+
+/* ================= CREATE CHANNEL ================= */
+
+function openChannelModal(){
+
+if(!currentUser){
+
+showToast("سجل الدخول أولاً لإنشاء قناة.");
+return;
+
+}
+
+document.getElementById("channelModal")
+.classList.add("active");
+
+document.getElementById("channelMessage")
+.classList.add("hidden");
+
+}
+
+
+function closeChannelModal(){
+
+document.getElementById("channelModal")
+.classList.remove("active");
+
+}
+
+
+function showChannelMessage(msg){
+
+const box=
+document.getElementById("channelMessage");
+
+if(!box)return;
+
+box.textContent=msg;
+box.classList.remove("hidden");
+
+}
+
+
+function clearChannelForm(){
+
+[
+"channelName",
+"channelUsername",
+"channelDescription",
+"channelAvatar",
+"channelCover"
+].forEach(id=>{
+
+const el=document.getElementById(id);
+
+if(el){
+el.value="";
+}
+
+});
+
+}
+
+
+async function createChannel(){
+
+if(!currentUser){
+
+showChannelMessage(
+"سجل الدخول أولاً."
+);
+
+return;
+
+}
+
+if(!initSupabase()){
+
+showChannelMessage(
+"تعذر الاتصال بالخدمة."
+);
+
+return;
+
+}
+
+const name=
+document.getElementById("channelName")
+.value
+.trim();
+
+let username=
+document.getElementById("channelUsername")
+.value
+.trim()
+.toLowerCase();
+
+const description=
+document.getElementById("channelDescription")
+.value
+.trim();
+
+const avatar=
+document.getElementById("channelAvatar")
+.value
+.trim();
+
+const cover=
+document.getElementById("channelCover")
+.value
+.trim();
+
+if(!name||!username){
+
+showChannelMessage(
+"أدخل اسم القناة واسم المستخدم."
+);
+
+return;
+
+}
+
+username=username.replace(/^@+/,"");
+
+if(!/^[a-z0-9_]+$/.test(username)){
+
+showChannelMessage(
+"اسم المستخدم يجب أن يحتوي على أحرف إنجليزية وأرقام و _ فقط."
+);
+
+return;
+
+}
+
+try{
+
+const result=
+await supabaseClient
+.from("channels")
+.insert({
+
+owner_id:currentUser.id,
+
+name:name,
+
+username:username,
+
+description:description||"",
+
+avatar_url:avatar||null,
+
+cover_url:cover||null
+
+})
+.select()
+.single();
+
+if(result.error){
+
+if(result.error.code==="23505"){
+
+showChannelMessage(
+"اسم المستخدم هذا مستخدم بالفعل. اختر اسمًا آخر."
+);
+
+}else{
+
+showChannelMessage(
+result.error.message
+);
+
+}
+
+return;
+
+}
+
+closeChannelModal();
+
+clearChannelForm();
+
+showToast("🎉 تم إنشاء القناة بنجاح.");
+
+await loadChannels();
+
+showSection("channels");
+
+if(result.data){
+
+setTimeout(()=>{
+openChannelDetail(result.data.id);
+},300);
+
+}
+
+}catch(e){
+
+console.error(e);
+
+showChannelMessage(
+e.message||
+"حدث خطأ أثناء إنشاء القناة."
+);
+
+}
+
+}
+
+
+/* ================= OPEN CHANNEL ================= */
+
+async function openChannelDetail(channelId){
+
+if(!channelId){
+
+showToast("تعذر فتح القناة.");
+return;
+
+}
+
+const modal=
+document.getElementById("channelDetailModal");
+
+const box=
+document.getElementById("channelDetailContent");
+
+modal.classList.add("active");
+
+box.innerHTML=
+'<div class="empty-state">⏳ جاري تحميل القناة...</div>';
+
+let channel=
+getChannel(channelId);
+
+try{
+
+if(!channel){
+
+const result=
+await supabaseClient
+.from("channels")
+.select("*")
+.eq("id",channelId)
+.maybeSingle();
+
+if(result.data){
+
+channel=result.data;
+
+}
+
+if(result.error){
+
+console.warn(result.error);
+
+}
+
+}
+
+}catch(e){
+
+console.error(e);
+
+}
+
+if(!channel){
+
+box.innerHTML=
+`
+<div class="empty-state">
+❌ لم يتم العثور على القناة.
+</div>
+`;
+
+return;
+
+}
+
+currentChannel=channel;
+currentChannelTab="home";
+
+await renderChannelDetail(channel);
+
+}
+
+
+async function renderChannelDetail(channel){
+
+const box=
+document.getElementById("channelDetailContent");
+
+if(!box)return;
+
+const channelId=String(channel.id);
+
+const content=
+allContent.filter(item=>
+String(item.channel_id)===channelId
+);
+
+const followers=
+channelFollowers[channelId]||0;
+
+const following=
+followedChannelIds.has(channelId);
+
+const isOwner=
+currentUser&&
+String(channel.owner_id)===
+String(currentUser.id);
+
+const name=
+channel.name||
+"قناة KAPO ONE";
+
+const first=
+name.trim()
+.charAt(0)
+.toUpperCase()||
+"📺";
+
+const avatar=
+channel.avatar_url
+?
+`
+<img
+src="${escapeAttribute(channel.avatar_url)}"
+alt="${escapeAttribute(name)}"
+onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
+<div
+style="display:none;width:100%;height:100%;align-items:center;justify-content:center">
+${first}
+</div>
+`
+:
+first;
+
+const cover=
+channel.cover_url
+?
+`
+<img
+src="${escapeAttribute(channel.cover_url)}"
+alt=""
+onerror="this.style.display='none'">
+`
+:"";
+
+const verified=
+channel.verified
+?
+'<span class="verified">✓</span>'
+:"";
+
+let contentBody="";
+
+if(currentChannelTab==="home"){
+
+contentBody=
+renderChannelHome(channel,content);
+
+}else if(currentChannelTab==="posts"){
+
+contentBody=
+renderChannelContentByType(content,"all");
+
+}else if(currentChannelTab==="projects"){
+
+contentBody=
+renderChannelContentByType(content,"project");
+
+}else if(currentChannelTab==="ideas"){
+
+contentBody=
+renderChannelContentByType(content,"idea");
+
+}else if(currentChannelTab==="images"){
+
+contentBody=
+renderChannelImages(content);
+
+}else if(currentChannelTab==="about"){
+
+contentBody=
+renderChannelAbout(channel);
+
+}
+
+box.innerHTML=
+`
+
+<div class="channel-page">
+
+<div class="channel-page-cover">
+${cover}
+</div>
+
+<div class="channel-page-info">
+
+<div class="channel-page-top">
+
+<div>
+
+<div class="channel-page-avatar">
+${avatar}
+</div>
+
+<div class="channel-page-name">
+${escapeHtml(name)}
+${verified}
+</div>
+
+<div class="channel-page-username">
+@${escapeHtml(channel.username||"channel")}
+</div>
+
+</div>
+
+<div>
+
+${
+isOwner
+?
+`
+<div style="color:#64748b;font-size:12px;margin-bottom:8px;text-align:center">
+قناتك
+</div>
+`
+:
+`
+<button
+type="button"
+class="primary-btn follow-btn ${following?"following":""}"
+onclick="toggleFollowChannel('${escapeAttribute(channel.id)}')">
+${following?"✓ متابَع":"＋ متابعة"}
+</button>
+`
+}
+
+</div>
+
+</div>
+
+<div class="channel-page-description">
+${escapeHtml(channel.description||"لا يوجد وصف للقناة.")}
+</div>
+
+<div class="channel-page-stats">
+
+<div class="channel-page-stat">
+<strong>${followers}</strong>
+<span>متابع</span>
+</div>
+
+<div class="channel-page-stat">
+<strong>${content.length}</strong>
+<span>منشور</span>
+</div>
+
+<div class="channel-page-stat">
+<strong>${content.filter(x=>x.content_type==="project").length}</strong>
+<span>مشروع</span>
+</div>
+
+<div class="channel-page-stat">
+<strong>${content.filter(x=>x.content_type==="idea").length}</strong>
+<span>فكرة</span>
+</div>
+
+</div>
+
+</div>
+
+<div class="channel-tabs">
+
+<button
+type="button"
+class="channel-tab ${currentChannelTab==="home"?"active":""}"
+onclick="switchChannelTab('home')">
+الرئيسية
+</button>
+
+<button
+type="button"
+class="channel-tab ${currentChannelTab==="posts"?"active":""}"
+onclick="switchChannelTab('posts')">
+المنشورات
+</button>
+
+<button
+type="button"
+class="channel-tab ${currentChannelTab==="projects"?"active":""}"
+onclick="switchChannelTab('projects')">
+المشاريع
+</button>
+
+<button
+type="button"
+class="channel-tab ${currentChannelTab==="ideas"?"active":""}"
+onclick="switchChannelTab('ideas')">
+الأفكار
+</button>
+
+<button
+type="button"
+class="channel-tab ${currentChannelTab==="images"?"active":""}"
+onclick="switchChannelTab('images')">
+الصور
+</button>
+
+<button
+type="button"
+class="channel-tab ${currentChannelTab==="about"?"active":""}"
+onclick="switchChannelTab('about')">
+حول
+</button>
+
+</div>
+
+<div class="channel-page-content">
+
+${contentBody}
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+function renderChannelHome(channel,content){
+
+if(!content.length){
+
+return `
+<div class="empty-state">
+
+<div style="font-size:45px">
+📺
+</div>
+
+<div style="font-size:18px;font-weight:900;color:#fff;margin:10px 0">
+القناة جاهزة
+</div>
+
+<div>
+لم يتم نشر محتوى في هذه القناة حتى الآن.
+</div>
+
+</div>
+`;
+
+}
+
+const latest=
+content.slice(0,6);
+
+return `
+
+<div style="font-size:20px;font-weight:900;margin-bottom:15px">
+🔥 أحدث محتوى
+</div>
+
+<div class="content-grid">
+
+${latest.map(item=>channelContentCard(item)).join("")}
+
+</div>
+
+`;
+
+}
+
+
+function renderChannelContentByType(content,type){
+
+let items=content;
+
+if(type!=="all"){
+
+items=
+content.filter(
+item=>item.content_type===type
+);
+
+}
+
+if(!items.length){
+
+return `
+<div class="empty-state">
+📭 لا يوجد محتوى في هذا القسم حتى الآن.
+</div>
+`;
+
+}
+
+return `
+<div class="content-grid">
+${items.map(item=>channelContentCard(item)).join("")}
+</div>
+`;
+
+}
+
+
+function renderChannelImages(content){
+
+const items=
+content.filter(item=>item.image_url);
+
+if(!items.length){
+
+return `
+<div class="empty-state">
+🖼️ لا توجد صور في القناة حتى الآن.
+</div>
+`;
+
+}
+
+return `
+<div class="content-grid">
+${items.map(item=>channelContentCard(item)).join("")}
+</div>
+`;
+
+}
+
+
+function renderChannelAbout(channel){
+
+const created=
+channel.created_at
+?
+new Date(channel.created_at)
+.toLocaleDateString("ar-SA")
+:"-";
+
+return `
+
+<div style="max-width:750px">
+
+<div style="font-size:22px;font-weight:900;margin-bottom:15px">
+📖 حول القناة
+</div>
+
+<div class="detail-row">
+<strong>اسم القناة:</strong>
+${escapeHtml(channel.name||"-")}
+</div>
+
+<div class="detail-row">
+<strong>اسم المستخدم:</strong>
+@${escapeHtml(channel.username||"-")}
+</div>
+
+<div class="detail-row">
+<strong>الوصف:</strong>
+${escapeHtml(channel.description||"لا يوجد وصف.")}
+</div>
+
+<div class="detail-row">
+<strong>تاريخ إنشاء القناة:</strong>
+${escapeHtml(created)}
+</div>
+
+<div style="margin-top:20px;color:#94a3b8">
+🌍 قناة ضمن منصة KAPO ONE
+</div>
+
+</div>
+
+`;
+
+}
+
+
+function channelContentCard(item){
+
+const icon={
+
+project:"🏗️",
+property:"🏢",
+idea:"💡",
+design:"📐",
+question:"❓"
+
+}[item.content_type]||"📋";
+
+const id=String(item.id);
+
+const isLiked=
+likedContentIds.has(id);
+
+const likes=
+likeCounts[id]||0;
+
+const comments=
+commentCounts[id]||0;
+
+const imageHtml=
+item.image_url
+?
+`
+<img
+class="content-image"
+src="${escapeAttribute(item.image_url)}"
+alt="${escapeAttribute(item.title||"")}"
+onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
+<div class="content-placeholder" style="display:none">
+${icon}
+</div>
+`
+:
+`
+<div class="content-placeholder">
+${icon}
+</div>
+`;
+
+return `
+<div
+class="content-card"
+onclick="openChannelContentDetail('${escapeAttribute(id)}')">
+
+${imageHtml}
+
+<div class="content-info">
+
+<div class="content-title">
+${escapeHtml(item.title||"بدون عنوان")}
+</div>
+
+<div class="content-description">
+${escapeHtml(item.description||"لا يوجد وصف.")}
+</div>
+
+<div class="card-bottom">
+
+<button
+type="button"
+class="like-btn ${isLiked?"liked":""}"
+onclick="event.stopPropagation();toggleLike('${escapeAttribute(id)}')">
+
+${isLiked?"❤️":"🤍"}
+<span>${likes}</span>
+
+</button>
+
+<button
+type="button"
+class="comment-btn"
+onclick="event.stopPropagation();openChannelContentDetail('${escapeAttribute(id)}')">
+
+💬
+<span>${comments}</span>
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+`;
+
+}
+
+
+function openChannelContentDetail(id){
+
+closeChannelDetail();
+
+openDetailModal(id);
+
+}
+
+
+/* ================= CHANNEL TABS ================= */
+
+async function switchChannelTab(tab){
+
+if(!currentChannel)return;
+
+currentChannelTab=tab;
+
+await renderChannelDetail(currentChannel);
+
+}
+
+
+/* ================= FOLLOW ================= */
+
+async function toggleFollowChannel(channelId){
+
+if(!currentUser){
+
+showToast(
+"🔔 سجل الدخول لمتابعة القنوات."
+);
+
+return;
+
+}
+
+if(!initSupabase()){
+
+showToast("تعذر الاتصال.");
+return;
+
+}
+
+const id=String(channelId);
+
+const already=
+followedChannelIds.has(id);
+
+try{
+
+if(already){
+
+const result=
+await supabaseClient
+.from("channel_followers")
+.delete()
+.eq("channel_id",channelId)
+.eq("user_id",currentUser.id);
+
+if(result.error){
+
+showToast(
+"تعذر إلغاء المتابعة."
+);
+
+return;
+
+}
+
+followedChannelIds.delete(id);
+
+channelFollowers[id]=
+Math.max(
+0,
+(channelFollowers[id]||0)-1
+);
+
+showToast("تم إلغاء متابعة القناة.");
+
+}else{
+
+const result=
+await supabaseClient
+.from("channel_followers")
+.insert({
+
+channel_id:channelId,
+
+user_id:currentUser.id
+
+});
+
+if(result.error){
+
+if(result.error.code==="23505"){
+
+showToast(
+"أنت تتابع هذه القناة بالفعل."
+);
+
+}else{
+
+showToast(
+"تعذر متابعة القناة."
+);
+
+}
+
+return;
+
+}
+
+followedChannelIds.add(id);
+
+channelFollowers[id]=
+(channelFollowers[id]||0)+1;
+
+showToast("🔔 تمت متابعة القناة.");
+
+}
+
+if(currentChannel&&
+String(currentChannel.id)===id){
+
+await renderChannelDetail(currentChannel);
+
+}
+
+renderChannels();
+
+}catch(e){
+
+console.error(e);
+
+showToast("حدث خطأ.");
+
+}
+
+}
+
+
+/* ================= CLOSE CHANNEL ================= */
+
+function closeChannelDetail(){
+
+document.getElementById("channelDetailModal")
+.classList.remove("active");
+
+currentChannel=null;
 
 }
 
@@ -3652,7 +5007,6 @@ document
 function escapeHtml(value){
 
 return String(value??"")
-
 .replace(/&/g,"&amp;")
 .replace(/</g,"&lt;")
 .replace(/>/g,"&gt;")
@@ -3699,16 +5053,11 @@ return;
 
 }
 
-const session=
-result.data?.session;
+const session=result.data?.session;
 
-if(
-session&&
-session.user
-){
+if(session&&session.user){
 
-currentUser=
-session.user;
+currentUser=session.user;
 
 await loadUserProfile();
 
@@ -3717,6 +5066,7 @@ showApp();
 updateUI();
 
 await loadContent();
+await loadChannels();
 
 }else{
 
@@ -3739,8 +5089,7 @@ showAuthPage();
 
 function setupAuthListener(){
 
-if(!initSupabase())
-return;
+if(!initSupabase())return;
 
 supabaseClient.auth.onAuthStateChange(
 async(event,session)=>{
@@ -3753,14 +5102,12 @@ event
 if(event==="SIGNED_OUT"){
 
 currentUser=null;
-
 currentProfile=null;
 
-likedContentIds=
-new Set();
+likedContentIds=new Set();
+followedChannelIds=new Set();
 
 showAuthPage();
-
 showLoginForm();
 
 }
