@@ -4,588 +4,1547 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>KAPO ONE - منصة مفتوحة</title>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
+
 body{
-margin:0;font-family:Arial,sans-serif;
-background:radial-gradient(circle at 50% -15%,rgba(37,99,235,.22),transparent 35%),linear-gradient(180deg,#020617,#07111f 45%,#020617);
-color:#f8fafc;min-height:100vh
+margin:0;
+font-family:Arial,sans-serif;
+background:
+radial-gradient(circle at 50% -15%,rgba(37,99,235,.22),transparent 35%),
+linear-gradient(180deg,#020617,#07111f 45%,#020617);
+color:#f8fafc;
+min-height:100vh
 }
+
 button,input,textarea,select{font-family:inherit}
 button{cursor:pointer}
 .hidden{display:none!important}
 
-.auth-page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.auth-page{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px
+}
+
 .auth-box{
-width:100%;max-width:430px;background:rgba(15,23,42,.94);
-border:1px solid rgba(148,163,184,.18);border-radius:24px;padding:30px;
+width:100%;
+max-width:430px;
+background:rgba(15,23,42,.94);
+border:1px solid rgba(148,163,184,.18);
+border-radius:24px;
+padding:30px;
 box-shadow:0 25px 80px rgba(0,0,0,.45)
 }
+
 .auth-logo{
-width:78px;height:78px;margin:0 auto 18px;border-radius:22px;
-display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:900;
+width:78px;
+height:78px;
+margin:0 auto 18px;
+border-radius:22px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:32px;
+font-weight:900;
 background:linear-gradient(135deg,#2563eb,#7c3aed);
 box-shadow:0 15px 35px rgba(37,99,235,.35)
 }
-.auth-title{text-align:center;font-size:30px;font-weight:900;margin:0 0 8px}
-.auth-subtitle{text-align:center;color:#94a3b8;margin:0 0 25px}
-.auth-form{display:flex;flex-direction:column;gap:13px}
-.auth-form input,.auth-form textarea,.auth-form select{
-width:100%;padding:14px 15px;border-radius:14px;border:1px solid #334155;
-background:#020617;color:#fff;outline:none
-}
-.auth-form select option{background:#020617;color:#fff}
-.auth-form textarea{resize:vertical;min-height:110px}
-.auth-form input:focus,.auth-form textarea:focus,.auth-form select:focus{
-border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,.12)
-}
-.auth-links{display:flex;justify-content:space-between;gap:10px;margin-top:15px}
-.auth-link{border:0;background:none;color:#60a5fa;font-size:14px;cursor:pointer}
-.auth-message{
-margin-top:15px;padding:12px;border-radius:12px;
-background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.25);
-color:#fca5a5;text-align:center;font-size:14px
-}
-.primary-btn{
-border:0;border-radius:13px;padding:12px 18px;
-background:linear-gradient(135deg,#2563eb,#4f46e5);color:#fff;font-weight:800;
-box-shadow:0 8px 20px rgba(37,99,235,.2);transition:.2s
-}
-.primary-btn:hover{transform:translateY(-1px);filter:brightness(1.08)}
-.primary-btn:disabled{opacity:.6;cursor:not-allowed}
-.secondary-btn{
-border:1px solid #334155;border-radius:13px;padding:12px 18px;
-background:#0f172a;color:#fff;font-weight:700
+
+.auth-title{
+text-align:center;
+font-size:30px;
+font-weight:900;
+margin:0 0 8px
 }
 
+.auth-subtitle{
+text-align:center;
+color:#94a3b8;
+margin:0 0 25px
+}
+
+.auth-form{
+display:flex;
+flex-direction:column;
+gap:13px
+}
+
+.auth-form input,
+.auth-form textarea,
+.auth-form select{
+width:100%;
+padding:14px 15px;
+border-radius:14px;
+border:1px solid #334155;
+background:#020617;
+color:#fff;
+outline:none
+}
+
+.auth-form select option{
+background:#020617;
+color:#fff
+}
+
+.auth-form textarea{
+resize:vertical;
+min-height:110px
+}
+
+.auth-form input:focus,
+.auth-form textarea:focus,
+.auth-form select:focus{
+border-color:#3b82f6;
+box-shadow:0 0 0 3px rgba(59,130,246,.12)
+}
+
+.auth-links{
+display:flex;
+justify-content:space-between;
+gap:10px;
+margin-top:15px
+}
+
+.auth-link{
+border:0;
+background:none;
+color:#60a5fa;
+font-size:14px;
+cursor:pointer
+}
+
+.auth-message{
+margin-top:15px;
+padding:12px;
+border-radius:12px;
+background:rgba(239,68,68,.12);
+border:1px solid rgba(239,68,68,.25);
+color:#fca5a5;
+text-align:center;
+font-size:14px
+}
+
+.primary-btn{
+border:0;
+border-radius:13px;
+padding:12px 18px;
+background:linear-gradient(135deg,#2563eb,#4f46e5);
+color:#fff;
+font-weight:800;
+box-shadow:0 8px 20px rgba(37,99,235,.2);
+transition:.2s
+}
+
+.primary-btn:hover{
+transform:translateY(-1px);
+filter:brightness(1.08)
+}
+
+.primary-btn:disabled{
+opacity:.6;
+cursor:not-allowed
+}
+
+.secondary-btn{
+border:1px solid #334155;
+border-radius:13px;
+padding:12px 18px;
+background:#0f172a;
+color:#fff;
+font-weight:700
+}
+
+/* HEADER */
+
 .header{
-position:sticky;top:0;z-index:100;background:rgba(2,6,23,.88);
-backdrop-filter:blur(18px);border-bottom:1px solid rgba(148,163,184,.12)
+position:sticky;
+top:0;
+z-index:100;
+background:rgba(2,6,23,.88);
+backdrop-filter:blur(18px);
+border-bottom:1px solid rgba(148,163,184,.12)
 }
+
 .header-inner{
-max-width:1250px;margin:auto;padding:12px 18px;
-display:flex;align-items:center;justify-content:space-between;gap:15px
+max-width:1250px;
+margin:auto;
+padding:12px 18px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px
 }
-.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:20px}
+
+.brand{
+display:flex;
+align-items:center;
+gap:10px;
+font-weight:900;
+font-size:20px
+}
+
 .brand-logo{
-width:43px;height:43px;border-radius:13px;display:flex;align-items:center;justify-content:center;
+width:43px;
+height:43px;
+border-radius:13px;
+display:flex;
+align-items:center;
+justify-content:center;
 background:linear-gradient(135deg,#2563eb,#7c3aed);
 box-shadow:0 8px 22px rgba(37,99,235,.3)
 }
-.user-mini{display:flex;align-items:center;gap:9px;color:#cbd5e1;font-size:14px}
+
+.user-mini{
+display:flex;
+align-items:center;
+gap:9px;
+color:#cbd5e1;
+font-size:14px
+}
+
 .user-avatar{
-width:38px;height:38px;border-radius:50%;
+width:38px;
+height:38px;
+border-radius:50%;
 background:linear-gradient(135deg,#2563eb,#7c3aed);
-display:flex;align-items:center;justify-content:center;font-weight:900;overflow:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:900;
+overflow:hidden;
 flex-shrink:0
 }
-.user-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+
+.user-avatar img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block
+}
 
 /* NOTIFICATIONS */
+
 .notification-button{
-position:relative;width:42px;height:42px;
-border:1px solid #334155;background:#020617;color:#fff;
-border-radius:13px;font-size:20px;cursor:pointer;
-display:flex;align-items:center;justify-content:center
+position:relative;
+width:42px;
+height:42px;
+border:1px solid #334155;
+background:#020617;
+color:#fff;
+border-radius:13px;
+font-size:20px;
+cursor:pointer;
+display:flex;
+align-items:center;
+justify-content:center
 }
+
 .notification-button:hover{
 border-color:#3b82f6;
 transform:translateY(-1px)
 }
+
 .notification-badge{
-position:absolute;top:-5px;left:-5px;
-min-width:18px;height:18px;padding:0 4px;
-border-radius:20px;background:#ef4444;color:#fff;
-font-size:10px;font-weight:900;
-display:none;align-items:center;justify-content:center
+position:absolute;
+top:-5px;
+left:-5px;
+min-width:18px;
+height:18px;
+padding:0 4px;
+border-radius:20px;
+background:#ef4444;
+color:#fff;
+font-size:10px;
+font-weight:900;
+display:none;
+align-items:center;
+justify-content:center
 }
-.notification-list{display:flex;flex-direction:column;gap:9px}
+
+.notification-list{
+display:flex;
+flex-direction:column;
+gap:9px
+}
+
 .notification-item{
-padding:14px;border-radius:15px;background:#020617;
-border:1px solid #1e293b;display:flex;align-items:flex-start;
-gap:10px;cursor:pointer;transition:.2s
+padding:14px;
+border-radius:15px;
+background:#020617;
+border:1px solid #1e293b;
+display:flex;
+align-items:flex-start;
+gap:10px;
+cursor:pointer;
+transition:.2s
 }
+
 .notification-item:hover{
-border-color:#3b82f6;transform:translateY(-1px)
+border-color:#3b82f6;
+transform:translateY(-1px)
 }
+
 .notification-item.unread{
 border-color:rgba(59,130,246,.45);
 background:rgba(37,99,235,.08)
 }
+
 .notification-icon{
-width:38px;height:38px;border-radius:12px;
+width:38px;
+height:38px;
+border-radius:12px;
 background:rgba(37,99,235,.15);
-display:flex;align-items:center;justify-content:center;
-font-size:18px;flex-shrink:0
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:18px;
+flex-shrink:0
 }
+
 .notification-text{
-flex:1;line-height:1.7;color:#cbd5e1;font-size:13px
+flex:1;
+line-height:1.7;
+color:#cbd5e1;
+font-size:13px
 }
-.notification-date{font-size:10px;color:#64748b;margin-top:4px}
+
+.notification-date{
+font-size:10px;
+color:#64748b;
+margin-top:4px
+}
+
 .notification-unread-dot{
-width:8px;height:8px;border-radius:50%;
-background:#3b82f6;margin-top:7px;flex-shrink:0
+width:8px;
+height:8px;
+border-radius:50%;
+background:#3b82f6;
+margin-top:7px;
+flex-shrink:0
 }
-.notification-empty{padding:35px 15px;text-align:center;color:#64748b}
+
+.notification-empty{
+padding:35px 15px;
+text-align:center;
+color:#64748b
+}
+
+/* NAV */
 
 .nav{
-max-width:1250px;margin:auto;padding:8px 18px 12px;
-display:flex;gap:8px;overflow-x:auto;scrollbar-width:none
+max-width:1250px;
+margin:auto;
+padding:8px 18px 12px;
+display:flex;
+gap:8px;
+overflow-x:auto;
+scrollbar-width:none
 }
-.nav::-webkit-scrollbar{display:none}
+
+.nav::-webkit-scrollbar{
+display:none
+}
+
 .nav-btn{
-white-space:nowrap;border:1px solid transparent;background:transparent;
-color:#94a3b8;padding:9px 13px;border-radius:12px;font-weight:700;
-transition:.2s;cursor:pointer
+white-space:nowrap;
+border:1px solid transparent;
+background:transparent;
+color:#94a3b8;
+padding:9px 13px;
+border-radius:12px;
+font-weight:700;
+transition:.2s;
+cursor:pointer
 }
-.nav-btn:hover{background:#0f172a;color:#fff}
+
+.nav-btn:hover{
+background:#0f172a;
+color:#fff
+}
+
 .nav-btn.active{
 background:rgba(37,99,235,.18);
-border-color:rgba(59,130,246,.3);color:#fff
+border-color:rgba(59,130,246,.3);
+color:#fff
 }
 
-.container{max-width:1250px;margin:auto;padding:25px 18px 60px}
-.section{display:none;animation:fadeIn .3s ease}
-.section.active{display:block}
+/* GENERAL */
+
+.container{
+max-width:1250px;
+margin:auto;
+padding:25px 18px 60px
+}
+
+.section{
+display:none;
+animation:fadeIn .3s ease
+}
+
+.section.active{
+display:block
+}
+
 @keyframes fadeIn{
-from{opacity:0;transform:translateY(5px)}
-to{opacity:1;transform:translateY(0)}
+from{
+opacity:0;
+transform:translateY(5px)
 }
-.section-title{font-size:28px;margin:0 0 8px;font-weight:900}
-.section-subtitle{color:#94a3b8;margin:0 0 24px;line-height:1.8}
+to{
+opacity:1;
+transform:translateY(0)
+}
+}
 
-.content-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.content-card{
-background:#0f172a;border:1px solid rgba(148,163,184,.13);
-border-radius:20px;overflow:hidden;transition:.2s;cursor:pointer
+.section-title{
+font-size:28px;
+margin:0 0 8px;
+font-weight:900
 }
+
+.section-subtitle{
+color:#94a3b8;
+margin:0 0 24px;
+line-height:1.8
+}
+
+/* CONTENT */
+
+.content-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:16px
+}
+
+.content-card{
+background:#0f172a;
+border:1px solid rgba(148,163,184,.13);
+border-radius:20px;
+overflow:hidden;
+transition:.2s;
+cursor:pointer
+}
+
 .content-card:hover{
 transform:translateY(-4px);
 border-color:rgba(59,130,246,.45)
 }
-.content-image{width:100%;height:180px;object-fit:cover;display:block}
+
+.content-image{
+width:100%;
+height:180px;
+object-fit:cover;
+display:block
+}
+
 .content-placeholder{
-height:180px;display:flex;align-items:center;justify-content:center;
-font-size:48px;background:radial-gradient(circle,#1e3a8a,#0f172a 65%)
+height:180px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:48px;
+background:radial-gradient(circle,#1e3a8a,#0f172a 65%)
 }
-.content-info{padding:16px}
-.content-title{font-size:18px;font-weight:900;margin-bottom:6px}
-.content-meta{color:#94a3b8;font-size:12px;margin-bottom:8px}
+
+.content-info{
+padding:16px
+}
+
+.content-title{
+font-size:18px;
+font-weight:900;
+margin-bottom:6px
+}
+
+.content-meta{
+color:#94a3b8;
+font-size:12px;
+margin-bottom:8px
+}
+
 .content-description{
-color:#cbd5e1;font-size:13px;line-height:1.7;
-display:-webkit-box;-webkit-line-clamp:3;
--webkit-box-orient:vertical;overflow:hidden
+color:#cbd5e1;
+font-size:13px;
+line-height:1.7;
+display:-webkit-box;
+-webkit-line-clamp:3;
+-webkit-box-orient:vertical;
+overflow:hidden
 }
+
 .content-badge{
-display:inline-block;padding:3px 10px;border-radius:6px;
-font-size:11px;font-weight:700;margin-top:9px
+display:inline-block;
+padding:3px 10px;
+border-radius:6px;
+font-size:11px;
+font-weight:700;
+margin-top:9px
 }
-.badge-project{background:rgba(34,197,94,.18);color:#4ade80}
-.badge-property{background:rgba(59,130,246,.18);color:#60a5fa}
-.badge-idea{background:rgba(251,191,36,.18);color:#fbbf24}
-.badge-design{background:rgba(168,85,247,.18);color:#c084fc}
-.badge-question{background:rgba(239,68,68,.18);color:#fca5a5}
+
+.badge-project{
+background:rgba(34,197,94,.18);
+color:#4ade80
+}
+
+.badge-property{
+background:rgba(59,130,246,.18);
+color:#60a5fa
+}
+
+.badge-idea{
+background:rgba(251,191,36,.18);
+color:#fbbf24
+}
+
+.badge-design{
+background:rgba(168,85,247,.18);
+color:#c084fc
+}
+
+.badge-question{
+background:rgba(239,68,68,.18);
+color:#fca5a5
+}
 
 .card-bottom{
-display:flex;align-items:center;justify-content:space-between;
-gap:8px;margin-top:14px;flex-wrap:wrap
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:8px;
+margin-top:14px;
+flex-wrap:wrap
 }
-.like-btn,.comment-btn{
-border:1px solid #334155;background:#020617;color:#cbd5e1;
-border-radius:12px;padding:8px 12px;font-weight:800;
-display:flex;align-items:center;gap:6px;transition:.2s
+
+.like-btn,
+.comment-btn{
+border:1px solid #334155;
+background:#020617;
+color:#cbd5e1;
+border-radius:12px;
+padding:8px 12px;
+font-weight:800;
+display:flex;
+align-items:center;
+gap:6px;
+transition:.2s
 }
-.like-btn:hover,.comment-btn:hover{
-transform:translateY(-1px);border-color:#3b82f6
+
+.like-btn:hover,
+.comment-btn:hover{
+transform:translateY(-1px);
+border-color:#3b82f6
 }
+
 .like-btn.liked{
 background:rgba(239,68,68,.12);
-border-color:rgba(239,68,68,.45);color:#f87171
+border-color:rgba(239,68,68,.45);
+color:#f87171
 }
-.like-count{font-size:13px;color:#94a3b8;font-weight:700}
+
+.like-count{
+font-size:13px;
+color:#94a3b8;
+font-weight:700
+}
+
+/* OWNER */
 
 .owner-mini{
-display:flex;align-items:center;gap:8px;margin-top:12px;
-padding-top:12px;border-top:1px solid #1e293b;cursor:pointer
+display:flex;
+align-items:center;
+gap:8px;
+margin-top:12px;
+padding-top:12px;
+border-top:1px solid #1e293b;
+cursor:pointer
 }
-.owner-mini:hover .owner-name{color:#60a5fa}
+
+.owner-mini:hover .owner-name{
+color:#60a5fa
+}
+
 .owner-avatar{
-width:32px;height:32px;border-radius:50%;
+width:32px;
+height:32px;
+border-radius:50%;
 background:linear-gradient(135deg,#2563eb,#7c3aed);
-display:flex;align-items:center;justify-content:center;
-font-size:12px;font-weight:900;overflow:hidden;flex-shrink:0
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:12px;
+font-weight:900;
+overflow:hidden;
+flex-shrink:0
 }
-.owner-avatar img{width:100%;height:100%;object-fit:cover}
-.owner-name{font-size:13px;font-weight:800;color:#e2e8f0}
-.owner-label{font-size:10px;color:#64748b;margin-bottom:2px}
+
+.owner-avatar img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+
+.owner-name{
+font-size:13px;
+font-weight:800;
+color:#e2e8f0
+}
+
+.owner-label{
+font-size:10px;
+color:#64748b;
+margin-bottom:2px
+}
+
+/* FILTERS */
 
 .filters-bar{
-display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
-gap:10px;background:rgba(15,23,42,.6);padding:15px;
-border-radius:18px;border:1px solid rgba(148,163,184,.13);
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+gap:10px;
+background:rgba(15,23,42,.6);
+padding:15px;
+border-radius:18px;
+border:1px solid rgba(148,163,184,.13);
 margin-bottom:18px
 }
-.filters-bar input,.filters-bar select{
-padding:10px 12px;border-radius:11px;border:1px solid #334155;
-background:#020617;color:#fff;outline:none;width:100%
+
+.filters-bar input,
+.filters-bar select{
+padding:10px 12px;
+border-radius:11px;
+border:1px solid #334155;
+background:#020617;
+color:#fff;
+outline:none;
+width:100%
 }
+
+/* MODALS */
 
 .modal{
-position:fixed;inset:0;z-index:500;display:none;
-align-items:center;justify-content:center;padding:20px;
-background:rgba(0,0,0,.72);backdrop-filter:blur(8px)
-}
-.modal.active{display:flex}
-.modal-box{
-width:100%;max-width:700px;max-height:90vh;overflow:auto;
-background:#0f172a;border:1px solid rgba(148,163,184,.18);
-border-radius:24px;box-shadow:0 30px 100px rgba(0,0,0,.55)
-}
-.modal-header{
-display:flex;align-items:center;justify-content:space-between;
-gap:15px;padding:20px;border-bottom:1px solid #1e293b
-}
-.modal-header h2{margin:0;font-size:22px}
-.close-btn{
-width:38px;height:38px;border:1px solid #334155;
-background:#020617;color:#fff;border-radius:11px;
-font-size:22px;cursor:pointer
-}
-.modal-content{padding:20px;line-height:1.9;color:#cbd5e1}
-.modal-actions{
-display:flex;justify-content:flex-start;gap:10px;padding:0 20px 20px
+position:fixed;
+inset:0;
+z-index:500;
+display:none;
+align-items:center;
+justify-content:center;
+padding:20px;
+background:rgba(0,0,0,.72);
+backdrop-filter:blur(8px)
 }
 
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.form-grid .full-width{grid-column:span 2}
+.modal.active{
+display:flex
+}
+
+.modal-box{
+width:100%;
+max-width:700px;
+max-height:90vh;
+overflow:auto;
+background:#0f172a;
+border:1px solid rgba(148,163,184,.18);
+border-radius:24px;
+box-shadow:0 30px 100px rgba(0,0,0,.55)
+}
+
+.modal-header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+padding:20px;
+border-bottom:1px solid #1e293b
+}
+
+.modal-header h2{
+margin:0;
+font-size:22px
+}
+
+.close-btn{
+width:38px;
+height:38px;
+border:1px solid #334155;
+background:#020617;
+color:#fff;
+border-radius:11px;
+font-size:22px;
+cursor:pointer
+}
+
+.modal-content{
+padding:20px;
+line-height:1.9;
+color:#cbd5e1
+}
+
+.modal-actions{
+display:flex;
+justify-content:flex-start;
+gap:10px;
+padding:0 20px 20px
+}
+
+/* FORMS */
+
+.form-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px
+}
+
+.form-grid .full-width{
+grid-column:span 2
+}
+
 .form-grid label{
-font-size:13px;color:#94a3b8;font-weight:700;
-display:block;margin-bottom:4px
+font-size:13px;
+color:#94a3b8;
+font-weight:700;
+display:block;
+margin-bottom:4px
 }
-.form-grid input,.form-grid select,.form-grid textarea{
-width:100%;padding:12px 14px;border-radius:12px;
-border:1px solid #334155;background:#020617;color:#fff;outline:none
+
+.form-grid input,
+.form-grid select,
+.form-grid textarea{
+width:100%;
+padding:12px 14px;
+border-radius:12px;
+border:1px solid #334155;
+background:#020617;
+color:#fff;
+outline:none
 }
+
 .property-grid{
-display:grid;grid-template-columns:1fr 1fr;gap:12px;
-grid-column:span 2;padding:14px;border-radius:15px;
-background:rgba(2,6,23,.5);border:1px solid #1e293b
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+grid-column:span 2;
+padding:14px;
+border-radius:15px;
+background:rgba(2,6,23,.5);
+border:1px solid #1e293b
 }
+
 .empty-state{
-padding:40px 20px;text-align:center;background:#0f172a;
-border:1px dashed #334155;border-radius:18px;
-color:#94a3b8;grid-column:1/-1
+padding:40px 20px;
+text-align:center;
+background:#0f172a;
+border:1px dashed #334155;
+border-radius:18px;
+color:#94a3b8;
+grid-column:1/-1
 }
+
 .detail-image{
-width:100%;max-height:350px;object-fit:cover;
-border-radius:16px;margin-bottom:18px
+width:100%;
+max-height:350px;
+object-fit:cover;
+border-radius:16px;
+margin-bottom:18px
 }
+
 .detail-row{
-padding:10px 0;border-bottom:1px solid #1e293b
+padding:10px 0;
+border-bottom:1px solid #1e293b
 }
-.detail-row strong{color:#fff}
+
+.detail-row strong{
+color:#fff
+}
+
 .detail-like{
-margin-top:18px;padding-top:15px;border-top:1px solid #1e293b;
-display:flex;align-items:center;gap:10px;flex-wrap:wrap
+margin-top:18px;
+padding-top:15px;
+border-top:1px solid #1e293b;
+display:flex;
+align-items:center;
+gap:10px;
+flex-wrap:wrap
 }
+
+/* OWNER DETAIL */
 
 .owner-detail{
-display:flex;align-items:center;gap:12px;margin:18px 0;
-padding:14px;border-radius:16px;background:#020617;
-border:1px solid #1e293b;cursor:pointer
+display:flex;
+align-items:center;
+gap:12px;
+margin:18px 0;
+padding:14px;
+border-radius:16px;
+background:#020617;
+border:1px solid #1e293b;
+cursor:pointer
 }
-.owner-detail:hover{border-color:#3b82f6}
+
+.owner-detail:hover{
+border-color:#3b82f6
+}
+
 .owner-detail-avatar{
-width:50px;height:50px;border-radius:50%;
+width:50px;
+height:50px;
+border-radius:50%;
 background:linear-gradient(135deg,#2563eb,#7c3aed);
-display:flex;align-items:center;justify-content:center;
-font-weight:900;overflow:hidden;flex-shrink:0
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:900;
+overflow:hidden;
+flex-shrink:0
 }
+
 .owner-detail-avatar img{
-width:100%;height:100%;object-fit:cover
+width:100%;
+height:100%;
+object-fit:cover
 }
-.owner-detail-name{font-size:16px;font-weight:900;color:#fff}
-.owner-detail-label{font-size:12px;color:#64748b}
+
+.owner-detail-name{
+font-size:16px;
+font-weight:900;
+color:#fff
+}
+
+.owner-detail-label{
+font-size:12px;
+color:#64748b
+}
+
+/* PUBLIC PROFILE */
 
 .profile-public{
-padding:22px;background:#020617;border:1px solid #1e293b;
-border-radius:18px;margin-bottom:20px
+padding:22px;
+background:#020617;
+border:1px solid #1e293b;
+border-radius:18px;
+margin-bottom:20px
 }
+
 .profile-public-head{
-display:flex;align-items:center;gap:15px;margin-bottom:18px
+display:flex;
+align-items:center;
+gap:15px;
+margin-bottom:18px
 }
+
 .profile-public-avatar{
-width:72px;height:72px;border-radius:20px;
+width:72px;
+height:72px;
+border-radius:20px;
 background:linear-gradient(135deg,#2563eb,#7c3aed);
-display:flex;align-items:center;justify-content:center;
-font-size:25px;font-weight:900;overflow:hidden
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:25px;
+font-weight:900;
+overflow:hidden
 }
+
 .profile-public-avatar img{
-width:100%;height:100%;object-fit:cover
+width:100%;
+height:100%;
+object-fit:cover
 }
-.profile-public-name{font-size:23px;font-weight:900}
-.profile-public-email{color:#64748b;font-size:13px}
+
+.profile-public-name{
+font-size:23px;
+font-weight:900
+}
+
+.profile-public-email{
+color:#64748b;
+font-size:13px
+}
 
 .public-content-title{
-font-size:18px;font-weight:900;margin:20px 0 12px
+font-size:18px;
+font-weight:900;
+margin:20px 0 12px
 }
+
 .public-content-list{
-display:grid;grid-template-columns:1fr;gap:10px
+display:grid;
+grid-template-columns:1fr;
+gap:10px
 }
+
 .public-content-item{
-padding:13px;border:1px solid #1e293b;
-border-radius:13px;background:#0f172a;cursor:pointer
+padding:13px;
+border:1px solid #1e293b;
+border-radius:13px;
+background:#0f172a;
+cursor:pointer
 }
-.public-content-item:hover{border-color:#3b82f6}
-.public-content-item-title{font-weight:900}
+
+.public-content-item:hover{
+border-color:#3b82f6
+}
+
+.public-content-item-title{
+font-weight:900
+}
+
 .public-content-item-type{
-font-size:11px;color:#64748b;margin-top:4px
+font-size:11px;
+color:#64748b;
+margin-top:4px
 }
 
 /* COMMENTS */
+
 .comments-box{
-margin-top:22px;padding-top:18px;border-top:1px solid #1e293b
+margin-top:22px;
+padding-top:18px;
+border-top:1px solid #1e293b
 }
-.comments-title{font-size:18px;font-weight:900;margin-bottom:12px}
-.comment-form{display:flex;gap:8px;margin-bottom:18px}
+
+.comments-title{
+font-size:18px;
+font-weight:900;
+margin-bottom:12px
+}
+
+.comment-form{
+display:flex;
+gap:8px;
+margin-bottom:18px
+}
+
 .comment-form input{
-flex:1;padding:11px 13px;border-radius:12px;
-border:1px solid #334155;background:#020617;color:#fff;outline:none
+flex:1;
+padding:11px 13px;
+border-radius:12px;
+border:1px solid #334155;
+background:#020617;
+color:#fff;
+outline:none
 }
-.comment-form input:focus{border-color:#3b82f6}
+
+.comment-form input:focus{
+border-color:#3b82f6
+}
+
 .comment-item{
-padding:12px;margin-bottom:10px;background:#020617;
-border:1px solid #1e293b;border-radius:14px
+padding:12px;
+margin-bottom:10px;
+background:#020617;
+border:1px solid #1e293b;
+border-radius:14px
 }
+
 .comment-head{
-display:flex;align-items:center;justify-content:space-between;
-gap:8px;margin-bottom:5px;flex-wrap:wrap
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:8px;
+margin-bottom:5px;
+flex-wrap:wrap
 }
-.comment-user{font-weight:900;color:#fff}
-.comment-date{font-size:11px;color:#64748b}
+
+.comment-user{
+font-weight:900;
+color:#fff
+}
+
+.comment-date{
+font-size:11px;
+color:#64748b
+}
+
 .comment-text{
-color:#cbd5e1;line-height:1.7;white-space:pre-wrap
+color:#cbd5e1;
+line-height:1.7;
+white-space:pre-wrap
 }
+
 .delete-comment{
-border:0;background:none;color:#f87171;font-size:12px;padding:3px
+border:0;
+background:none;
+color:#f87171;
+font-size:12px;
+padding:3px
 }
-.comment-empty{text-align:center;color:#64748b;padding:15px}
-.comment-login{text-align:center;color:#94a3b8;padding:10px}
+
+.comment-empty{
+text-align:center;
+color:#64748b;
+padding:15px
+}
+
+.comment-login{
+text-align:center;
+color:#94a3b8;
+padding:10px
+}
 
 /* CHANNELS */
+
 .channel-toolbar{
-display:flex;align-items:center;justify-content:space-between;
-gap:12px;flex-wrap:wrap;margin-bottom:20px
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px;
+flex-wrap:wrap;
+margin-bottom:20px
 }
-.channel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+
+.channel-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:16px
+}
+
 .channel-card{
-background:#0f172a;border:1px solid rgba(148,163,184,.13);
-border-radius:22px;overflow:hidden;cursor:pointer;transition:.2s
+background:#0f172a;
+border:1px solid rgba(148,163,184,.13);
+border-radius:22px;
+overflow:hidden;
+cursor:pointer;
+transition:.2s
 }
+
 .channel-card:hover{
-transform:translateY(-4px);border-color:rgba(59,130,246,.5)
+transform:translateY(-4px);
+border-color:rgba(59,130,246,.5)
 }
+
 .channel-cover{
-height:125px;background:linear-gradient(135deg,#1e3a8a,#4c1d95);
-position:relative;overflow:hidden
+height:125px;
+background:linear-gradient(135deg,#1e3a8a,#4c1d95);
+position:relative;
+overflow:hidden
 }
-.channel-cover img{width:100%;height:100%;object-fit:cover}
+
+.channel-cover img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+
 .channel-avatar-wrap{
-position:absolute;right:18px;bottom:-30px;width:70px;height:70px
+position:absolute;
+right:18px;
+bottom:-30px;
+width:70px;
+height:70px
 }
+
 .channel-avatar{
-width:70px;height:70px;border-radius:20px;border:4px solid #0f172a;
+width:70px;
+height:70px;
+border-radius:20px;
+border:4px solid #0f172a;
 background:linear-gradient(135deg,#2563eb,#7c3aed);
-display:flex;align-items:center;justify-content:center;
-font-size:25px;font-weight:900;overflow:hidden
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:25px;
+font-weight:900;
+overflow:hidden
 }
-.channel-avatar img{width:100%;height:100%;object-fit:cover}
-.channel-card-body{padding:40px 16px 17px}
+
+.channel-avatar img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+
+.channel-card-body{
+padding:40px 16px 17px
+}
+
 .channel-name{
-font-size:19px;font-weight:900;display:flex;align-items:center;gap:6px
+font-size:19px;
+font-weight:900;
+display:flex;
+align-items:center;
+gap:6px
 }
-.verified{color:#60a5fa;font-size:17px}
-.channel-username{color:#64748b;font-size:12px;margin-top:4px}
+
+.verified{
+color:#60a5fa;
+font-size:17px
+}
+
+.channel-username{
+color:#64748b;
+font-size:12px;
+margin-top:4px
+}
+
 .channel-description{
-color:#cbd5e1;font-size:13px;line-height:1.7;margin-top:10px;
-display:-webkit-box;-webkit-line-clamp:2;
--webkit-box-orient:vertical;overflow:hidden
+color:#cbd5e1;
+font-size:13px;
+line-height:1.7;
+margin-top:10px;
+display:-webkit-box;
+-webkit-line-clamp:2;
+-webkit-box-orient:vertical;
+overflow:hidden
 }
+
 .channel-stats{
-display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;
-padding-top:12px;border-top:1px solid #1e293b
+display:flex;
+gap:16px;
+flex-wrap:wrap;
+margin-top:14px;
+padding-top:12px;
+border-top:1px solid #1e293b
 }
-.channel-stat{font-size:12px;color:#94a3b8}
-.channel-stat strong{color:#fff;display:block;font-size:15px}
+
+.channel-stat{
+font-size:12px;
+color:#94a3b8
+}
+
+.channel-stat strong{
+color:#fff;
+display:block;
+font-size:15px
+}
+
+/* CHANNEL PAGE */
+
 .channel-page{
-background:#0f172a;border:1px solid rgba(148,163,184,.15);
-border-radius:25px;overflow:hidden
+background:#0f172a;
+border:1px solid rgba(148,163,184,.15);
+border-radius:25px;
+overflow:hidden
 }
+
 .channel-page-cover{
-height:220px;background:linear-gradient(135deg,#1e3a8a,#4c1d95);
+height:220px;
+background:linear-gradient(135deg,#1e3a8a,#4c1d95);
 position:relative
 }
+
 .channel-page-cover img{
-width:100%;height:100%;object-fit:cover
+width:100%;
+height:100%;
+object-fit:cover
 }
+
 .channel-page-info{
-padding:0 24px 24px;position:relative
-}
-.channel-page-avatar{
-width:105px;height:105px;border-radius:26px;border:5px solid #0f172a;
-background:linear-gradient(135deg,#2563eb,#7c3aed);
-display:flex;align-items:center;justify-content:center;
-font-size:35px;font-weight:900;overflow:hidden;margin-top:-45px;
+padding:0 24px 24px;
 position:relative
 }
-.channel-page-avatar img{
-width:100%;height:100%;object-fit:cover
-}
-.channel-page-top{
-display:flex;justify-content:space-between;align-items:flex-end;
-gap:15px;flex-wrap:wrap
-}
-.channel-page-name{
-font-size:28px;font-weight:900;margin-top:10px;
-display:flex;align-items:center;gap:8px
-}
-.channel-page-username{color:#64748b;font-size:14px;margin-top:4px}
-.channel-page-description{
-color:#cbd5e1;line-height:1.8;margin-top:15px;max-width:800px
-}
-.channel-page-stats{
-display:flex;gap:25px;flex-wrap:wrap;margin-top:20px
-}
-.channel-page-stat{text-align:center}
-.channel-page-stat strong{
-display:block;font-size:21px
-}
-.channel-page-stat span{color:#64748b;font-size:12px}
-.channel-tabs{
-display:flex;gap:5px;overflow-x:auto;padding:0 20px;
-border-top:1px solid #1e293b;border-bottom:1px solid #1e293b
-}
-.channel-tab{
-border:0;background:none;color:#94a3b8;padding:14px 16px;
-font-weight:800;white-space:nowrap
-}
-.channel-tab.active{
-color:#fff;border-bottom:2px solid #3b82f6
-}
-.channel-page-content{padding:20px}
-.follow-btn{min-width:125px}
-.follow-btn.following{
-background:#0f172a;border:1px solid #334155;box-shadow:none
-}
-.channel-mini-owner{
-display:flex;align-items:center;gap:8px;
-color:#94a3b8;font-size:12px;margin-top:10px
-}
-.channel-mini-dot{
-width:25px;height:25px;border-radius:8px;
+
+.channel-page-avatar{
+width:105px;
+height:105px;
+border-radius:26px;
+border:5px solid #0f172a;
 background:linear-gradient(135deg,#2563eb,#7c3aed);
-display:flex;align-items:center;justify-content:center;
-font-size:10px;font-weight:900;overflow:hidden
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:35px;
+font-weight:900;
+overflow:hidden;
+margin-top:-45px;
+position:relative
 }
+
+.channel-page-avatar img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+
+.channel-page-top{
+display:flex;
+justify-content:space-between;
+align-items:flex-end;
+gap:15px;
+flex-wrap:wrap
+}
+
+.channel-page-name{
+font-size:28px;
+font-weight:900;
+margin-top:10px;
+display:flex;
+align-items:center;
+gap:8px
+}
+
+.channel-page-username{
+color:#64748b;
+font-size:14px;
+margin-top:4px
+}
+
+.channel-page-description{
+color:#cbd5e1;
+line-height:1.8;
+margin-top:15px;
+max-width:800px
+}
+
+.channel-page-stats{
+display:flex;
+gap:25px;
+flex-wrap:wrap;
+margin-top:20px
+}
+
+.channel-page-stat{
+text-align:center
+}
+
+.channel-page-stat strong{
+display:block;
+font-size:21px
+}
+
+.channel-page-stat span{
+color:#64748b;
+font-size:12px
+}
+
+.channel-tabs{
+display:flex;
+gap:5px;
+overflow-x:auto;
+padding:0 20px;
+border-top:1px solid #1e293b;
+border-bottom:1px solid #1e293b
+}
+
+.channel-tab{
+border:0;
+background:none;
+color:#94a3b8;
+padding:14px 16px;
+font-weight:800;
+white-space:nowrap
+}
+
+.channel-tab.active{
+color:#fff;
+border-bottom:2px solid #3b82f6
+}
+
+.channel-page-content{
+padding:20px
+}
+
+.follow-btn{
+min-width:125px
+}
+
+.follow-btn.following{
+background:#0f172a;
+border:1px solid #334155;
+box-shadow:none
+}
+
+.channel-mini-owner{
+display:flex;
+align-items:center;
+gap:8px;
+color:#94a3b8;
+font-size:12px;
+margin-top:10px
+}
+
+.channel-mini-dot{
+width:25px;
+height:25px;
+border-radius:8px;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:10px;
+font-weight:900;
+overflow:hidden
+}
+
 .channel-mini-dot img{
-width:100%;height:100%;object-fit:cover
+width:100%;
+height:100%;
+object-fit:cover
 }
+
 .channel-select-wrap{
-padding:14px;border-radius:15px;
+padding:14px;
+border-radius:15px;
 background:rgba(37,99,235,.06);
-border:1px solid rgba(59,130,246,.2);margin-bottom:12px
+border:1px solid rgba(59,130,246,.2);
+margin-bottom:12px
 }
+
 .channel-select-wrap label{
-font-size:13px;color:#94a3b8;font-weight:800;
-display:block;margin-bottom:6px
+font-size:13px;
+color:#94a3b8;
+font-weight:800;
+display:block;
+margin-bottom:6px
 }
+
 .channel-select-wrap select{
-width:100%;padding:12px;border-radius:12px;
-border:1px solid #334155;background:#020617;color:#fff
+width:100%;
+padding:12px;
+border-radius:12px;
+border:1px solid #334155;
+background:#020617;
+color:#fff
 }
+
 .channel-empty-create{
-padding:20px;border-radius:16px;background:#020617;
-border:1px dashed #334155;text-align:center;color:#94a3b8
+padding:20px;
+border-radius:16px;
+background:#020617;
+border:1px dashed #334155;
+text-align:center;
+color:#94a3b8
 }
+
 .channel-link-btn{
-border:0;background:none;color:#60a5fa;font-weight:800;padding:5px
+border:0;
+background:none;
+color:#60a5fa;
+font-weight:800;
+padding:5px
 }
+
+/* TOAST */
 
 #toast{
-position:fixed;bottom:25px;right:25px;z-index:1000;
-background:#0f172a;border:1px solid #334155;color:#fff;
-padding:13px 17px;border-radius:13px;
+position:fixed;
+bottom:25px;
+right:25px;
+z-index:1000;
+background:#0f172a;
+border:1px solid #334155;
+color:#fff;
+padding:13px 17px;
+border-radius:13px;
 box-shadow:0 15px 40px rgba(0,0,0,.35);
-opacity:0;transform:translateY(15px);
-pointer-events:none;transition:.25s
+opacity:0;
+transform:translateY(15px);
+pointer-events:none;
+transition:.25s
 }
-#toast.show{opacity:1;transform:translateY(0)}
+
+#toast.show{
+opacity:1;
+transform:translateY(0)
+}
+
+/* RESPONSIVE */
 
 @media(max-width:900px){
-.content-grid{grid-template-columns:repeat(2,1fr)}
-.channel-grid{grid-template-columns:repeat(2,1fr)}
+.content-grid{
+grid-template-columns:repeat(2,1fr)
 }
+
+.channel-grid{
+grid-template-columns:repeat(2,1fr)
+}
+}
+
 @media(max-width:650px){
-.header-inner{padding:10px 12px}
-.user-mini>span{display:none}
-.container{padding:20px 12px 50px}
-.content-grid{grid-template-columns:1fr}
-.channel-grid{grid-template-columns:1fr}
-.filters-bar{grid-template-columns:1fr 1fr}
-.form-grid{grid-template-columns:1fr}
-.form-grid .full-width{grid-column:span 1}
-.property-grid{grid-column:span 1;grid-template-columns:1fr}
-.comment-form{flex-direction:column}
-.channel-page-cover{height:160px}
-.channel-page-info{padding:0 15px 20px}
-.channel-page-name{font-size:23px}
+
+.header-inner{
+padding:10px 12px
+}
+
+.user-mini>span{
+display:none
+}
+
+.container{
+padding:20px 12px 50px
+}
+
+.content-grid{
+grid-template-columns:1fr
+}
+
+.channel-grid{
+grid-template-columns:1fr
+}
+
+.filters-bar{
+grid-template-columns:1fr 1fr
+}
+
+.form-grid{
+grid-template-columns:1fr
+}
+
+.form-grid .full-width{
+grid-column:span 1
+}
+
+.property-grid{
+grid-column:span 1;
+grid-template-columns:1fr
+}
+
+.comment-form{
+flex-direction:column
+}
+
+.channel-page-cover{
+height:160px
+}
+
+.channel-page-info{
+padding:0 15px 20px
+}
+
+.channel-page-name{
+font-size:23px
+}
 }
 </style>
 </head>
 
 <body>
 
+<!-- AUTH -->
+
 <div id="authPage" class="auth-page">
+
 <div class="auth-box">
 
 <div class="auth-logo">K</div>
+
 <h1 class="auth-title">KAPO ONE</h1>
-<p class="auth-subtitle">🌍 منصة مفتوحة للأفكار والمشاريع والعقارات</p>
+
+<p class="auth-subtitle">
+🌍 منصة مفتوحة للأفكار والمشاريع والعقارات
+</p>
 
 <div id="loginForm" class="auth-form">
 
-<input id="loginEmail" type="email" placeholder="البريد الإلكتروني" autocomplete="email">
-<input id="loginPassword" type="password" placeholder="كلمة المرور" autocomplete="current-password">
+<input
+id="loginEmail"
+type="email"
+placeholder="البريد الإلكتروني"
+autocomplete="email">
 
-<button type="button" class="primary-btn" onclick="loginUser()">تسجيل الدخول</button>
-<button type="button" class="secondary-btn" onclick="enterGuest()">الدخول كزائر</button>
+<input
+id="loginPassword"
+type="password"
+placeholder="كلمة المرور"
+autocomplete="current-password">
+
+<button
+type="button"
+class="primary-btn"
+onclick="loginUser()">
+تسجيل الدخول
+</button>
+
+<button
+type="button"
+class="secondary-btn"
+onclick="enterGuest()">
+الدخول كزائر
+</button>
 
 <div class="auth-links">
-<button type="button" class="auth-link" onclick="showRegisterForm()">إنشاء حساب</button>
-<button type="button" class="auth-link" onclick="showResetForm()">نسيت كلمة المرور؟</button>
+
+<button
+type="button"
+class="auth-link"
+onclick="showRegisterForm()">
+إنشاء حساب
+</button>
+
+<button
+type="button"
+class="auth-link"
+onclick="showResetForm()">
+نسيت كلمة المرور؟
+</button>
+
 </div>
+
 </div>
 
 <div id="registerForm" class="auth-form hidden">
-<input id="registerName" type="text" placeholder="الاسم" autocomplete="name">
-<input id="registerEmail" type="email" placeholder="البريد الإلكتروني" autocomplete="email">
-<input id="registerPassword" type="password" placeholder="كلمة المرور (6 أحرف)" autocomplete="new-password">
-<button type="button" class="primary-btn" onclick="registerUser()">إنشاء الحساب</button>
-<button type="button" class="auth-link" onclick="showLoginForm()">العودة</button>
+
+<input
+id="registerName"
+type="text"
+placeholder="الاسم"
+autocomplete="name">
+
+<input
+id="registerEmail"
+type="email"
+placeholder="البريد الإلكتروني"
+autocomplete="email">
+
+<input
+id="registerPassword"
+type="password"
+placeholder="كلمة المرور (6 أحرف)"
+autocomplete="new-password">
+
+<button
+type="button"
+class="primary-btn"
+onclick="registerUser()">
+إنشاء الحساب
+</button>
+
+<button
+type="button"
+class="auth-link"
+onclick="showLoginForm()">
+العودة
+</button>
+
 </div>
 
 <div id="resetForm" class="auth-form hidden">
-<input id="resetEmail" type="email" placeholder="البريد الإلكتروني" autocomplete="email">
-<button type="button" class="primary-btn" onclick="resetUserPassword()">إرسال رابط الاستعادة</button>
-<button type="button" class="auth-link" onclick="showLoginForm()">العودة</button>
+
+<input
+id="resetEmail"
+type="email"
+placeholder="البريد الإلكتروني"
+autocomplete="email">
+
+<button
+type="button"
+class="primary-btn"
+onclick="resetUserPassword()">
+إرسال رابط الاستعادة
+</button>
+
+<button
+type="button"
+class="auth-link"
+onclick="showLoginForm()">
+العودة
+</button>
+
 </div>
 
 <div id="authMessage" class="auth-message hidden"></div>
+
 </div>
 </div>
+
+
+<!-- APP -->
 
 <div id="app" class="hidden">
 
@@ -594,8 +1553,11 @@ pointer-events:none;transition:.25s
 <div class="header-inner">
 
 <div class="brand">
+
 <div class="brand-logo">K</div>
+
 <span>KAPO ONE</span>
+
 </div>
 
 <div class="user-mini">
@@ -606,11 +1568,23 @@ id="notificationBtn"
 class="notification-button"
 onclick="openNotifications()"
 title="الإشعارات">
+
 🔔
-<span id="notificationBadge" class="notification-badge">0</span>
+
+<span
+id="notificationBadge"
+class="notification-badge">
+0
+</span>
+
 </button>
 
-<div id="miniUserAvatar" class="user-avatar">K</div>
+<div
+id="miniUserAvatar"
+class="user-avatar">
+K
+</div>
+
 <span id="miniUserName">زائر</span>
 
 </div>
@@ -619,195 +1593,409 @@ title="الإشعارات">
 
 <nav class="nav">
 
-<button type="button" class="nav-btn active" data-section="home" onclick="showSection('home')">
+<button
+type="button"
+class="nav-btn active"
+data-section="home"
+onclick="showSection('home')">
 الرئيسية
 </button>
 
-<button type="button" class="nav-btn" data-section="content" onclick="showSection('content')">
+<button
+type="button"
+class="nav-btn"
+data-section="content"
+onclick="showSection('content')">
 📋 المحتوى
 </button>
 
-<button type="button" class="nav-btn" data-section="channels" onclick="showSection('channels')">
+<button
+type="button"
+class="nav-btn"
+data-section="channels"
+onclick="showSection('channels')">
 📺 القنوات
 </button>
 
-<button type="button" class="nav-btn" data-section="addcontent" onclick="openAddModal()">
+<button
+type="button"
+class="nav-btn"
+data-section="addcontent"
+onclick="openAddModal()">
 ➕ إضافة
 </button>
 
-<button type="button" class="nav-btn" data-section="profile" onclick="showSection('profile')">
+<button
+type="button"
+class="nav-btn"
+data-section="profile"
+onclick="showSection('profile')">
 حسابي
 </button>
 
 </nav>
+
 </header>
+
 
 <main class="container">
 
+<!-- HOME -->
+
 <section id="home" class="section active">
 
-<div style="background:rgba(15,23,42,.72);border-radius:28px;padding:42px 30px;margin-bottom:25px;border:1px solid rgba(148,163,184,.14)">
+<div style="
+background:rgba(15,23,42,.72);
+border-radius:28px;
+padding:42px 30px;
+margin-bottom:25px;
+border:1px solid rgba(148,163,184,.14)">
 
-<h1 style="font-size:42px;margin:0 0 12px;font-weight:900">
+<h1 style="
+font-size:42px;
+margin:0 0 12px;
+font-weight:900">
 🌍 مرحباً في KAPO ONE
 </h1>
 
-<p style="color:#cbd5e1;line-height:1.9;font-size:17px;max-width:700px">
+<p style="
+color:#cbd5e1;
+line-height:1.9;
+font-size:17px;
+max-width:700px">
 منصة مفتوحة تتيح لك مشاركة الأفكار، المشاريع، التصاميم، العقارات، والأسئلة.
 </p>
 
-<div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:22px">
+<div style="
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-top:22px">
 
-<button type="button" class="primary-btn" onclick="showSection('content')">
+<button
+type="button"
+class="primary-btn"
+onclick="showSection('content')">
 📋 استكشاف المحتوى
 </button>
 
-<button type="button" class="secondary-btn" onclick="showSection('channels')">
+<button
+type="button"
+class="secondary-btn"
+onclick="showSection('channels')">
 📺 استكشاف القنوات
 </button>
 
-<button type="button" class="secondary-btn" onclick="openAddModal()">
+<button
+type="button"
+class="secondary-btn"
+onclick="openAddModal()">
 ➕ إضافة محتوى
 </button>
 
 </div>
+
 </div>
+
 
 <div class="content-grid">
 
-<div class="content-card" onclick="showSection('content')">
+<div
+class="content-card"
+onclick="showSection('content')">
+
 <div class="content-placeholder">📋</div>
+
 <div class="content-info">
-<div class="content-title">المحتوى</div>
+
+<div class="content-title">
+المحتوى
+</div>
+
 <div class="content-description">
 استكشف المشاريع والأفكار والتصاميم والعقارات التي يشاركها أعضاء KAPO ONE.
 </div>
+
 </div>
 </div>
 
-<div class="content-card" onclick="showSection('channels')">
+
+<div
+class="content-card"
+onclick="showSection('channels')">
+
 <div class="content-placeholder">📺</div>
+
 <div class="content-info">
-<div class="content-title">القنوات</div>
+
+<div class="content-title">
+القنوات
+</div>
+
 <div class="content-description">
 اكتشف القنوات والمنشورات والمشاريع والأفكار التي يقدمها أصحاب القنوات.
 </div>
+
 </div>
 </div>
 
-<div class="content-card" onclick="openAddModal()">
+
+<div
+class="content-card"
+onclick="openAddModal()">
+
 <div class="content-placeholder">💡</div>
+
 <div class="content-info">
-<div class="content-title">شارك فكرتك</div>
+
+<div class="content-title">
+شارك فكرتك
+</div>
+
 <div class="content-description">
 أضف مشروعك أو فكرتك أو تصميمك إلى المنصة.
 </div>
+
 </div>
 </div>
 
-<div class="content-card" onclick="showSection('profile')">
+
+<div
+class="content-card"
+onclick="showSection('profile')">
+
 <div class="content-placeholder">👤</div>
+
 <div class="content-info">
-<div class="content-title">حسابي</div>
+
+<div class="content-title">
+حسابي
+</div>
+
 <div class="content-description">
 راجع معلومات حسابك وإدارة دخولك إلى المنصة.
 </div>
+
 </div>
 </div>
 
 </div>
+
 </section>
+
+
+<!-- CONTENT -->
 
 <section id="content" class="section">
 
-<h2 class="section-title">📋 المحتوى</h2>
-<p class="section-subtitle">جميع المحتويات من الأعضاء.</p>
+<h2 class="section-title">
+📋 المحتوى
+</h2>
+
+<p class="section-subtitle">
+جميع المحتويات من الأعضاء.
+</p>
 
 <div class="filters-bar">
 
-<input id="filterSearch" type="text" placeholder="🔍 بحث..." oninput="applyFilters()">
+<input
+id="filterSearch"
+type="text"
+placeholder="🔍 بحث..."
+oninput="applyFilters()">
 
-<select id="filterType" onchange="applyFilters()">
-<option value="">جميع الأنواع</option>
-<option value="project">🏗️ مشروع</option>
-<option value="property">🏢 عقار</option>
-<option value="idea">💡 فكرة</option>
-<option value="design">📐 تصميم</option>
-<option value="question">❓ سؤال</option>
+<select
+id="filterType"
+onchange="applyFilters()">
+
+<option value="">
+جميع الأنواع
+</option>
+
+<option value="project">
+🏗️ مشروع
+</option>
+
+<option value="property">
+🏢 عقار
+</option>
+
+<option value="idea">
+💡 فكرة
+</option>
+
+<option value="design">
+📐 تصميم
+</option>
+
+<option value="question">
+❓ سؤال
+</option>
+
 </select>
 
-<button type="button" class="secondary-btn" onclick="resetFilters()">🔄 إعادة ضبط</button>
+<button
+type="button"
+class="secondary-btn"
+onclick="resetFilters()">
+🔄 إعادة ضبط
+</button>
 
 </div>
 
-<div id="contentGrid" class="content-grid">
-<div class="empty-state">جاري تحميل المحتوى...</div>
+<div
+id="contentGrid"
+class="content-grid">
+
+<div class="empty-state">
+جاري تحميل المحتوى...
+</div>
+
 </div>
 
 </section>
+
+
+<!-- CHANNELS -->
 
 <section id="channels" class="section">
 
 <div class="channel-toolbar">
 
 <div>
-<h2 class="section-title">📺 القنوات</h2>
-<p class="section-subtitle" style="margin-bottom:0">
+
+<h2 class="section-title">
+📺 القنوات
+</h2>
+
+<p
+class="section-subtitle"
+style="margin-bottom:0">
 اكتشف القنوات وتابع أصحاب المشاريع والأفكار والمحتوى.
 </p>
+
 </div>
 
-<button type="button" class="primary-btn" onclick="openChannelModal()">
+<button
+type="button"
+class="primary-btn"
+onclick="openChannelModal()">
 ➕ إنشاء قناة
 </button>
 
 </div>
 
-<div id="channelsGrid" class="channel-grid">
-<div class="empty-state">⏳ جاري تحميل القنوات...</div>
+<div
+id="channelsGrid"
+class="channel-grid">
+
+<div class="empty-state">
+⏳ جاري تحميل القنوات...
+</div>
+
 </div>
 
 </section>
 
+
+<!-- PROFILE -->
+
 <section id="profile" class="section">
 
-<h2 class="section-title">حسابي</h2>
-<p class="section-subtitle">معلومات حسابك.</p>
+<h2 class="section-title">
+حسابي
+</h2>
 
-<div style="background:#0f172a;border:1px solid rgba(148,163,184,.14);border-radius:24px;padding:25px">
+<p class="section-subtitle">
+معلومات حسابك.
+</p>
 
-<div style="display:flex;align-items:center;gap:16px;margin-bottom:22px">
+<div style="
+background:#0f172a;
+border:1px solid rgba(148,163,184,.14);
+border-radius:24px;
+padding:25px">
 
-<div id="profileAvatar" class="user-avatar" style="width:78px;height:78px;border-radius:22px;font-size:28px">
+<div style="
+display:flex;
+align-items:center;
+gap:16px;
+margin-bottom:22px">
+
+<div
+id="profileAvatar"
+class="user-avatar"
+style="
+width:78px;
+height:78px;
+border-radius:22px;
+font-size:28px">
 K
 </div>
 
 <div>
-<div id="profileName" style="font-size:25px;font-weight:900">زائر</div>
-<div id="profileEmail" style="color:#94a3b8">-</div>
+
+<div
+id="profileName"
+style="
+font-size:25px;
+font-weight:900">
+زائر
+</div>
+
+<div
+id="profileEmail"
+style="color:#94a3b8">
+-
 </div>
 
 </div>
 
-<button type="button" class="primary-btn"
-style="background:rgba(239,68,68,.08);color:#fca5a5;border:1px solid rgba(239,68,68,.3)"
+</div>
+
+<button
+type="button"
+class="primary-btn"
+style="
+background:rgba(239,68,68,.08);
+color:#fca5a5;
+border:1px solid rgba(239,68,68,.3)"
 onclick="logoutUser()">
 تسجيل الخروج
 </button>
 
 </div>
+
 </section>
 
 </main>
 </div>
 
+
 <!-- ADD MODAL -->
-<div id="addModal" class="modal" onclick="closeAddModal()">
-<div class="modal-box" onclick="event.stopPropagation()">
+
+<div
+id="addModal"
+class="modal"
+onclick="closeAddModal()">
+
+<div
+class="modal-box"
+onclick="event.stopPropagation()">
 
 <div class="modal-header">
-<h2>➕ إضافة محتوى جديد</h2>
-<button type="button" class="close-btn" onclick="closeAddModal()">×</button>
+
+<h2>
+➕ إضافة محتوى جديد
+</h2>
+
+<button
+type="button"
+class="close-btn"
+onclick="closeAddModal()">
+×
+</button>
+
 </div>
 
 <div class="modal-content">
@@ -815,100 +2003,263 @@ onclick="logoutUser()">
 <div class="form-grid">
 
 <div class="full-width">
-<label>نوع المحتوى</label>
-<select id="contentType" onchange="toggleContentFields()">
-<option value="project">🏗️ مشروع</option>
-<option value="property">🏢 عقار</option>
-<option value="idea">💡 فكرة</option>
-<option value="design">📐 تصميم</option>
-<option value="question">❓ سؤال</option>
+
+<label>
+نوع المحتوى
+</label>
+
+<select
+id="contentType"
+onchange="toggleContentFields()">
+
+<option value="project">
+🏗️ مشروع
+</option>
+
+<option value="property">
+🏢 عقار
+</option>
+
+<option value="idea">
+💡 فكرة
+</option>
+
+<option value="design">
+📐 تصميم
+</option>
+
+<option value="question">
+❓ سؤال
+</option>
+
 </select>
+
 </div>
 
-<div class="full-width">
-<label>العنوان</label>
-<input id="contentTitle" placeholder="عنوان المحتوى">
-</div>
 
 <div class="full-width">
-<label>الوصف</label>
-<textarea id="contentDescription" rows="4" placeholder="وصف المحتوى..."></textarea>
+
+<label>
+العنوان
+</label>
+
+<input
+id="contentTitle"
+placeholder="عنوان المحتوى">
+
 </div>
 
+
 <div class="full-width">
-<label>رابط الصورة (اختياري)</label>
-<input id="contentImage" placeholder="https://example.com/image.jpg">
+
+<label>
+الوصف
+</label>
+
+<textarea
+id="contentDescription"
+rows="4"
+placeholder="وصف المحتوى..."></textarea>
+
 </div>
+
+
+<div class="full-width">
+
+<label>
+رابط الصورة (اختياري)
+</label>
+
+<input
+id="contentImage"
+placeholder="https://example.com/image.jpg">
+
+</div>
+
 
 <div class="full-width channel-select-wrap">
-<label>📺 القناة التي سيظهر فيها المحتوى</label>
+
+<label>
+📺 القناة التي سيظهر فيها المحتوى
+</label>
+
 <select id="contentChannel">
-<option value="">بدون قناة</option>
+
+<option value="">
+بدون قناة
+</option>
+
 </select>
-<div id="channelSelectHelp" style="font-size:11px;color:#64748b;margin-top:6px">
+
+<div
+id="channelSelectHelp"
+style="
+font-size:11px;
+color:#64748b;
+margin-top:6px">
 يمكنك نشر المحتوى في قناة من قنواتك.
 </div>
+
 </div>
 
-<div id="propertyFields" class="property-grid hidden">
+
+<div
+id="propertyFields"
+class="property-grid hidden">
 
 <div>
-<label>الدولة</label>
-<input id="propCountry" placeholder="مثال: السعودية">
+
+<label>
+الدولة
+</label>
+
+<input
+id="propCountry"
+placeholder="مثال: السعودية">
+
 </div>
 
-<div>
-<label>المدينة</label>
-<input id="propCity" placeholder="مثال: الرياض">
-</div>
 
 <div>
-<label>السعر</label>
-<input id="propPrice" type="number" placeholder="0">
+
+<label>
+المدينة
+</label>
+
+<input
+id="propCity"
+placeholder="مثال: الرياض">
+
 </div>
 
+
 <div>
-<label>العملة</label>
+
+<label>
+السعر
+</label>
+
+<input
+id="propPrice"
+type="number"
+placeholder="0">
+
+</div>
+
+
+<div>
+
+<label>
+العملة
+</label>
+
 <select id="propCurrency">
-<option value="USD">🇺🇸 دولار</option>
-<option value="SAR">🇸🇦 ريال</option>
-<option value="EUR">🇪🇺 يورو</option>
-<option value="AED">🇦🇪 درهم</option>
+
+<option value="USD">
+🇺🇸 دولار
+</option>
+
+<option value="SAR">
+🇸🇦 ريال
+</option>
+
+<option value="EUR">
+🇪🇺 يورو
+</option>
+
+<option value="AED">
+🇦🇪 درهم
+</option>
+
 </select>
+
 </div>
+
 
 <div>
-<label>المساحة (م²)</label>
-<input id="propArea" type="number" placeholder="0">
+
+<label>
+المساحة (م²)
+</label>
+
+<input
+id="propArea"
+type="number"
+placeholder="0">
+
 </div>
+
 
 <div>
-<label>واتساب</label>
-<input id="propWhatsapp" placeholder="رقم التواصل">
+
+<label>
+واتساب
+</label>
+
+<input
+id="propWhatsapp"
+placeholder="رقم التواصل">
+
+</div>
+
+</div>
+
+
+<div
+id="addMessage"
+class="auth-message hidden">
 </div>
 
 </div>
 
-<div id="addMessage" class="auth-message hidden"></div>
-
-</div>
 </div>
 
 <div class="modal-actions">
-<button type="button" class="primary-btn" onclick="saveContent()">💾 حفظ</button>
-<button type="button" class="secondary-btn" onclick="closeAddModal()">إلغاء</button>
+
+<button
+type="button"
+class="primary-btn"
+onclick="saveContent()">
+💾 حفظ
+</button>
+
+<button
+type="button"
+class="secondary-btn"
+onclick="closeAddModal()">
+إلغاء
+</button>
+
 </div>
 
 </div>
 </div>
+
 
 <!-- CHANNEL CREATE MODAL -->
-<div id="channelModal" class="modal" onclick="closeChannelModal()">
-<div class="modal-box" onclick="event.stopPropagation()">
+
+<div
+id="channelModal"
+class="modal"
+onclick="closeChannelModal()">
+
+<div
+class="modal-box"
+onclick="event.stopPropagation()">
 
 <div class="modal-header">
-<h2>📺 إنشاء قناة جديدة</h2>
-<button type="button" class="close-btn" onclick="closeChannelModal()">×</button>
+
+<h2>
+📺 إنشاء قناة جديدة
+</h2>
+
+<button
+type="button"
+class="close-btn"
+onclick="closeChannelModal()">
+×
+</button>
+
 </div>
 
 <div class="modal-content">
@@ -916,138 +2267,305 @@ onclick="logoutUser()">
 <div class="form-grid">
 
 <div class="full-width">
-<label>اسم القناة</label>
-<input id="channelName" placeholder="مثال: KAPO Architecture">
+
+<label>
+اسم القناة
+</label>
+
+<input
+id="channelName"
+placeholder="مثال: KAPO Architecture">
+
 </div>
 
+
 <div class="full-width">
-<label>اسم المستخدم @username</label>
-<input id="channelUsername" placeholder="مثال: kapo_architecture">
-<div style="font-size:11px;color:#64748b;margin-top:5px">
+
+<label>
+اسم المستخدم @username
+</label>
+
+<input
+id="channelUsername"
+placeholder="مثال: kapo_architecture">
+
+<div style="
+font-size:11px;
+color:#64748b;
+margin-top:5px">
 استخدم أحرفًا إنجليزية وأرقامًا و _ فقط.
 </div>
+
 </div>
+
 
 <div class="full-width">
-<label>وصف القناة</label>
-<textarea id="channelDescription" rows="4" placeholder="اكتب نبذة عن القناة..."></textarea>
+
+<label>
+وصف القناة
+</label>
+
+<textarea
+id="channelDescription"
+rows="4"
+placeholder="اكتب نبذة عن القناة..."></textarea>
+
 </div>
+
 
 <div>
-<label>رابط صورة القناة</label>
-<input id="channelAvatar" placeholder="https://example.com/avatar.jpg">
+
+<label>
+رابط صورة القناة
+</label>
+
+<input
+id="channelAvatar"
+placeholder="https://example.com/avatar.jpg">
+
 </div>
+
 
 <div>
-<label>رابط الغلاف</label>
-<input id="channelCover" placeholder="https://example.com/cover.jpg">
+
+<label>
+رابط الغلاف
+</label>
+
+<input
+id="channelCover"
+placeholder="https://example.com/cover.jpg">
+
 </div>
 
-<div id="channelMessage" class="auth-message hidden full-width"></div>
+
+<div
+id="channelMessage"
+class="auth-message hidden full-width">
+</div>
 
 </div>
+
 </div>
 
 <div class="modal-actions">
-<button type="button" class="primary-btn" onclick="createChannel()">🚀 إنشاء القناة</button>
-<button type="button" class="secondary-btn" onclick="closeChannelModal()">إلغاء</button>
+
+<button
+type="button"
+class="primary-btn"
+onclick="createChannel()">
+🚀 إنشاء القناة
+</button>
+
+<button
+type="button"
+class="secondary-btn"
+onclick="closeChannelModal()">
+إلغاء
+</button>
+
 </div>
 
 </div>
 </div>
+
 
 <!-- DETAIL MODAL -->
-<div id="detailModal" class="modal" onclick="closeDetailModal()">
-<div class="modal-box" onclick="event.stopPropagation()">
+
+<div
+id="detailModal"
+class="modal"
+onclick="closeDetailModal()">
+
+<div
+class="modal-box"
+onclick="event.stopPropagation()">
 
 <div class="modal-header">
-<h2 id="detailTitle">تفاصيل</h2>
-<button type="button" class="close-btn" onclick="closeDetailModal()">×</button>
+
+<h2 id="detailTitle">
+تفاصيل
+</h2>
+
+<button
+type="button"
+class="close-btn"
+onclick="closeDetailModal()">
+×
+</button>
+
 </div>
 
-<div id="detailContent" class="modal-content"></div>
+<div
+id="detailContent"
+class="modal-content">
+</div>
 
 <div class="modal-actions">
-<button type="button" class="secondary-btn" onclick="closeDetailModal()">إغلاق</button>
+
+<button
+type="button"
+class="secondary-btn"
+onclick="closeDetailModal()">
+إغلاق
+</button>
+
 </div>
 
 </div>
 </div>
 
-<!-- PUBLIC PROFILE MODAL -->
-<div id="publicProfileModal" class="modal" onclick="closePublicProfile()">
-<div class="modal-box" onclick="event.stopPropagation()">
+
+<!-- PUBLIC PROFILE -->
+
+<div
+id="publicProfileModal"
+class="modal"
+onclick="closePublicProfile()">
+
+<div
+class="modal-box"
+onclick="event.stopPropagation()">
 
 <div class="modal-header">
-<h2>👤 الملف الشخصي</h2>
-<button type="button" class="close-btn" onclick="closePublicProfile()">×</button>
+
+<h2>
+👤 الملف الشخصي
+</h2>
+
+<button
+type="button"
+class="close-btn"
+onclick="closePublicProfile()">
+×
+</button>
+
 </div>
 
-<div id="publicProfileContent" class="modal-content">
+<div
+id="publicProfileContent"
+class="modal-content">
 جاري التحميل...
 </div>
 
 </div>
 </div>
 
-<!-- CHANNEL DETAIL MODAL -->
-<div id="channelDetailModal" class="modal" onclick="closeChannelDetail()">
-<div class="modal-box" style="max-width:900px" onclick="event.stopPropagation()">
+
+<!-- CHANNEL DETAIL -->
+
+<div
+id="channelDetailModal"
+class="modal"
+onclick="closeChannelDetail()">
+
+<div
+class="modal-box"
+style="max-width:900px"
+onclick="event.stopPropagation()">
 
 <div class="modal-header">
-<h2>📺 القناة</h2>
-<button type="button" class="close-btn" onclick="closeChannelDetail()">×</button>
+
+<h2>
+📺 القناة
+</h2>
+
+<button
+type="button"
+class="close-btn"
+onclick="closeChannelDetail()">
+×
+</button>
+
 </div>
 
-<div id="channelDetailContent" class="modal-content">
+<div
+id="channelDetailContent"
+class="modal-content">
 ⏳ جاري التحميل...
 </div>
 
 </div>
 </div>
 
-<!-- NOTIFICATIONS MODAL -->
-<div id="notificationsModal" class="modal" onclick="closeNotifications()">
-<div class="modal-box" style="max-width:650px" onclick="event.stopPropagation()">
+
+<!-- NOTIFICATIONS -->
+
+<div
+id="notificationsModal"
+class="modal"
+onclick="closeNotifications()">
+
+<div
+class="modal-box"
+style="max-width:650px"
+onclick="event.stopPropagation()">
 
 <div class="modal-header">
 
-<h2>🔔 الإشعارات</h2>
+<h2>
+🔔 الإشعارات
+</h2>
 
-<button type="button" class="close-btn" onclick="closeNotifications()">×</button>
+<button
+type="button"
+class="close-btn"
+onclick="closeNotifications()">
+×
+</button>
 
 </div>
 
 <div class="modal-content">
 
-<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:15px">
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+flex-wrap:wrap;
+margin-bottom:15px">
 
-<div style="color:#94a3b8;font-size:13px">
+<div style="
+color:#94a3b8;
+font-size:13px">
 آخر الإشعارات الخاصة بك
 </div>
 
 <button
 type="button"
 class="secondary-btn"
-style="padding:8px 12px;font-size:12px"
+style="
+padding:8px 12px;
+font-size:12px"
 onclick="markAllNotificationsRead()">
 ✓ تحديد الكل كمقروء
 </button>
 
 </div>
 
-<div id="notificationsList" class="notification-list">
-<div class="notification-empty">⏳ جاري تحميل الإشعارات...</div>
+<div
+id="notificationsList"
+class="notification-list">
+
+<div class="notification-empty">
+⏳ جاري تحميل الإشعارات...
 </div>
 
 </div>
 
 </div>
+
 </div>
+</div>
+
 
 <div id="toast"></div>
 
+
 <script>
+
+/* ================= SUPABASE ================= */
 
 const SUPABASE_URL=
 "https://ehmeircigoqfhftaotba.supabase.co";
@@ -1056,6 +2574,7 @@ const SUPABASE_KEY=
 "sb_publishable_54N-aEBjhTQK1wUzpWl0fg_MQRq5D-T";
 
 let supabaseClient=null;
+
 let currentUser=null;
 let currentProfile=null;
 
@@ -1074,6 +2593,7 @@ let allProfiles={};
 let allChannels=[];
 let channelFollowers={};
 let followedChannelIds=new Set();
+
 let currentChannel=null;
 let currentChannelTab="home";
 
@@ -1113,11 +2633,14 @@ const propertyFields=document.getElementById("propertyFields");
 const contentChannel=document.getElementById("contentChannel");
 
 
-/* ================= SUPABASE ================= */
+/* ================= SUPABASE INIT ================= */
 
 function initSupabase(){
 
-if(window.supabase&&typeof window.supabase.createClient==="function"){
+if(
+window.supabase&&
+typeof window.supabase.createClient==="function"
+){
 
 if(!supabaseClient){
 
@@ -1145,6 +2668,7 @@ function showLoginForm(){
 loginForm.classList.remove("hidden");
 registerForm.classList.add("hidden");
 resetForm.classList.add("hidden");
+
 clearAuthMessage();
 
 }
@@ -1154,6 +2678,7 @@ function showRegisterForm(){
 loginForm.classList.add("hidden");
 registerForm.classList.remove("hidden");
 resetForm.classList.add("hidden");
+
 clearAuthMessage();
 
 }
@@ -1163,6 +2688,7 @@ function showResetForm(){
 loginForm.classList.add("hidden");
 registerForm.classList.add("hidden");
 resetForm.classList.remove("hidden");
+
 clearAuthMessage();
 
 }
@@ -1192,6 +2718,7 @@ box.textContent="";
 function showApp(){
 
 authPage.style.display="none";
+
 app.classList.remove("hidden");
 app.style.display="block";
 
@@ -1200,6 +2727,7 @@ app.style.display="block";
 function showAuthPage(){
 
 authPage.style.display="flex";
+
 app.classList.add("hidden");
 app.style.display="none";
 
@@ -1229,7 +2757,10 @@ return;
 
 }
 
-const btn=document.querySelector("#loginForm .primary-btn");
+const btn=
+document.querySelector(
+"#loginForm .primary-btn"
+);
 
 if(btn){
 
@@ -1257,9 +2788,15 @@ return;
 
 }
 
-if(!result.data||!result.data.user){
+if(
+!result.data||
+!result.data.user
+){
 
-showAuthMessage("تعذر الحصول على بيانات الحساب.");
+showAuthMessage(
+"تعذر الحصول على بيانات الحساب."
+);
+
 return;
 
 }
@@ -1269,6 +2806,7 @@ currentUser=result.data.user;
 await loadUserProfile();
 
 showApp();
+
 updateUI();
 
 await loadContent();
@@ -1326,7 +2864,10 @@ return;
 
 if(password.length<6){
 
-showAuthMessage("كلمة المرور 6 أحرف على الأقل.");
+showAuthMessage(
+"كلمة المرور 6 أحرف على الأقل."
+);
+
 return;
 
 }
@@ -1419,7 +2960,10 @@ email:user.email||""
 
 if(result.error){
 
-console.error("Create profile:",result.error);
+console.error(
+"Create profile:",
+result.error
+);
 
 }
 
@@ -1456,7 +3000,10 @@ await supabaseClient
 
 if(result.error){
 
-console.warn("Profile:",result.error.message);
+console.warn(
+"Profile:",
+result.error.message
+);
 
 }
 
@@ -1509,7 +3056,9 @@ currentUser.email||
 
 function updateUI(){
 
-const name=currentProfile?.name||"زائر";
+const name=
+currentProfile?.name||
+"زائر";
 
 const email=
 currentProfile?.email||
@@ -1517,10 +3066,13 @@ currentUser?.email||
 "";
 
 const first=
-name.trim().charAt(0).toUpperCase()||"K";
+name.trim().charAt(0).toUpperCase()||
+"K";
 
 miniUserName.textContent=name;
+
 profileName.textContent=name;
+
 profileEmail.textContent=email||"-";
 
 [
@@ -1546,7 +3098,10 @@ clearAuthMessage();
 
 if(!initSupabase()){
 
-showAuthMessage("⏳ جاري تحميل الخدمة...");
+showAuthMessage(
+"⏳ جاري تحميل الخدمة..."
+);
+
 return;
 
 }
@@ -1574,12 +3129,17 @@ window.location.pathname
 
 if(result.error){
 
-showAuthMessage(result.error.message);
+showAuthMessage(
+result.error.message
+);
+
 return;
 
 }
 
-showAuthMessage("✅ تم إرسال رابط الاستعادة.");
+showAuthMessage(
+"✅ تم إرسال رابط الاستعادة."
+);
 
 }catch(e){
 
@@ -1615,6 +3175,7 @@ loadChannels();
 updateNotificationBadge(0);
 
 showToast("👋 مرحباً بك كزائر.");
+
 showSection("home");
 
 }
@@ -1646,6 +3207,7 @@ followedChannelIds=new Set();
 
 allNotifications=[];
 unreadNotificationCount=0;
+
 updateNotificationBadge(0);
 
 closeNotifications();
@@ -1662,17 +3224,22 @@ showToast("تم تسجيل الخروج.");
 
 function showSection(id){
 
-document.querySelectorAll(".section").forEach(s=>{
+document.querySelectorAll(".section")
+.forEach(s=>{
 s.classList.remove("active");
 });
 
-const section=document.getElementById(id);
+const section=
+document.getElementById(id);
 
 if(section){
+
 section.classList.add("active");
+
 }
 
-document.querySelectorAll(".nav-btn").forEach(b=>{
+document.querySelectorAll(".nav-btn")
+.forEach(b=>{
 b.classList.remove("active");
 });
 
@@ -1682,15 +3249,21 @@ document.querySelector(
 );
 
 if(btn){
+
 btn.classList.add("active");
+
 }
 
 if(id==="content"){
+
 loadContent();
+
 }
 
 if(id==="channels"){
+
 loadChannels();
+
 }
 
 window.scrollTo({
@@ -1710,6 +3283,7 @@ const toast=document.getElementById("toast");
 if(!toast)return;
 
 toast.textContent=message;
+
 toast.classList.add("show");
 
 clearTimeout(toastTimer);
@@ -1742,7 +3316,8 @@ notification.actor_id&&
 allProfiles[String(notification.actor_id)]
 ){
 
-return allProfiles[String(notification.actor_id)].name||
+return
+allProfiles[String(notification.actor_id)].name||
 "عضو KAPO ONE";
 
 }
@@ -1849,7 +3424,9 @@ e
 function renderNotifications(){
 
 const list=
-document.getElementById("notificationsList");
+document.getElementById(
+"notificationsList"
+);
 
 if(!list)return;
 
@@ -1871,8 +3448,15 @@ if(!allNotifications.length){
 list.innerHTML=
 `
 <div class="notification-empty">
-<div style="font-size:42px;margin-bottom:10px">🔔</div>
+
+<div style="
+font-size:42px;
+margin-bottom:10px">
+🔔
+</div>
+
 لا توجد إشعارات حتى الآن.
+
 </div>
 `;
 
@@ -1881,15 +3465,18 @@ return;
 }
 
 list.innerHTML=
-allNotifications.map(notification=>{
+allNotifications.map(
+notification=>{
 
-const unread=!notification.is_read;
+const unread=
+!notification.is_read;
 
 const date=
 notification.created_at
 ?
-new Date(notification.created_at)
-.toLocaleString("ar-SA")
+new Date(
+notification.created_at
+).toLocaleString("ar-SA")
 :"";
 
 const message=
@@ -1897,7 +3484,9 @@ notification.message||
 "لديك إشعار جديد.";
 
 const actor=
-getNotificationActorName(notification);
+getNotificationActorName(
+notification
+);
 
 return `
 <div
@@ -1910,11 +3499,15 @@ ${notificationIcon(notification.type)}
 
 <div class="notification-text">
 
-<div style="font-weight:${unread?"900":"700"};color:#fff">
+<div style="
+font-weight:${unread?"900":"700"};
+color:#fff">
 ${escapeHtml(message)}
 </div>
 
-<div style="font-size:11px;color:#64748b">
+<div style="
+font-size:11px;
+color:#64748b">
 ${escapeHtml(actor)}
 </div>
 
@@ -1924,7 +3517,13 @@ ${escapeHtml(date)}
 
 </div>
 
-${unread?'<div class="notification-unread-dot"></div>':""}
+${
+unread
+?
+'<div class="notification-unread-dot"></div>'
+:
+""
+}
 
 </div>
 `;
@@ -1938,13 +3537,18 @@ async function openNotifications(){
 
 if(!currentUser){
 
-showToast("🔔 سجل الدخول أولاً لرؤية الإشعارات.");
+showToast(
+"🔔 سجل الدخول أولاً لرؤية الإشعارات."
+);
+
 return;
 
 }
 
 const modal=
-document.getElementById("notificationsModal");
+document.getElementById(
+"notificationsModal"
+);
 
 modal.classList.add("active");
 
@@ -1958,10 +3562,14 @@ renderNotifications();
 function closeNotifications(){
 
 const modal=
-document.getElementById("notificationsModal");
+document.getElementById(
+"notificationsModal"
+);
 
 if(modal){
+
 modal.classList.remove("active");
+
 }
 
 }
@@ -1983,7 +3591,9 @@ try{
 const result=
 await supabaseClient
 .from("notifications")
-.update({is_read:true})
+.update({
+is_read:true
+})
 .eq("id",id)
 .eq("user_id",currentUser.id);
 
@@ -2028,20 +3638,27 @@ try{
 const result=
 await supabaseClient
 .from("notifications")
-.update({is_read:true})
+.update({
+is_read:true
+})
 .eq("user_id",currentUser.id)
 .eq("is_read",false);
 
 if(result.error){
 
-showToast("تعذر تحديث الإشعارات.");
+showToast(
+"تعذر تحديث الإشعارات."
+);
+
 return;
 
 }
 
-allNotifications.forEach(n=>{
+allNotifications.forEach(
+n=>{
 n.is_read=true;
-});
+}
+);
 
 unreadNotificationCount=0;
 
@@ -2049,7 +3666,9 @@ updateNotificationBadge(0);
 
 renderNotifications();
 
-showToast("✅ تم تحديد جميع الإشعارات كمقروءة.");
+showToast(
+"✅ تم تحديد جميع الإشعارات كمقروءة."
+);
 
 }catch(e){
 
@@ -2079,7 +3698,9 @@ if(notification.project_id){
 
 closeNotifications();
 
-openDetailModal(notification.project_id);
+openDetailModal(
+notification.project_id
+);
 
 return;
 
@@ -2089,7 +3710,9 @@ if(notification.post_id){
 
 closeNotifications();
 
-openDetailModal(notification.post_id);
+openDetailModal(
+notification.post_id
+);
 
 return;
 
@@ -2101,12 +3724,15 @@ closeNotifications();
 
 const comment=
 allComments.find(
-c=>String(c.id)===String(notification.comment_id)
+c=>String(c.id)===
+String(notification.comment_id)
 );
 
 if(comment){
 
-openDetailModal(comment.project_id);
+openDetailModal(
+comment.project_id
+);
 
 }
 
@@ -2142,6 +3768,7 @@ if(!initSupabase())return;
 try{
 
 const data={
+
 user_id:recipientId,
 actor_id:actorId,
 type:type,
@@ -2151,6 +3778,7 @@ post_id:postId,
 comment_id:commentId,
 is_read:false,
 created_at:new Date().toISOString()
+
 };
 
 const result=
@@ -2185,14 +3813,21 @@ async function openAddModal(){
 
 if(!currentUser){
 
-showToast("سجل الدخول أولاً.");
+showToast(
+"سجل الدخول أولاً."
+);
+
 return;
 
 }
 
-document.getElementById("addModal").classList.add("active");
+document
+.getElementById("addModal")
+.classList.add("active");
 
-document.getElementById("addMessage").classList.add("hidden");
+document
+.getElementById("addMessage")
+.classList.add("hidden");
 
 toggleContentFields();
 
@@ -2200,11 +3835,15 @@ await loadMyChannelsIntoSelect();
 
 }
 
+
 function closeAddModal(){
 
-document.getElementById("addModal").classList.remove("active");
+document
+.getElementById("addModal")
+.classList.remove("active");
 
 }
+
 
 function toggleContentFields(){
 
@@ -2218,11 +3857,14 @@ type!=="property"
 }
 
 
-/* ================= MY CHANNELS SELECT ================= */
+/* ================= MY CHANNELS ================= */
 
 async function loadMyChannelsIntoSelect(){
 
-const select=document.getElementById("contentChannel");
+const select=
+document.getElementById(
+"contentChannel"
+);
 
 if(!select)return;
 
@@ -2243,7 +3885,10 @@ if(!myChannels.length){
 select.innerHTML=
 '<option value="">بدون قناة</option>';
 
-const help=document.getElementById("channelSelectHelp");
+const help=
+document.getElementById(
+"channelSelectHelp"
+);
 
 if(help){
 
@@ -2256,9 +3901,11 @@ return;
 
 }
 
-myChannels.forEach(channel=>{
+myChannels.forEach(
+channel=>{
 
-const option=document.createElement("option");
+const option=
+document.createElement("option");
 
 option.value=channel.id;
 
@@ -2273,7 +3920,10 @@ select.appendChild(option);
 
 });
 
-const help=document.getElementById("channelSelectHelp");
+const help=
+document.getElementById(
+"channelSelectHelp"
+);
 
 if(help){
 
@@ -2291,14 +3941,20 @@ async function saveContent(){
 
 if(!currentUser){
 
-showToast("سجل الدخول أولاً.");
+showToast(
+"سجل الدخول أولاً."
+);
+
 return;
 
 }
 
 if(!initSupabase()){
 
-showToast("تعذر الاتصال.");
+showToast(
+"تعذر الاتصال."
+);
+
 return;
 
 }
@@ -2306,23 +3962,31 @@ return;
 const type=contentType.value;
 
 const title=
-document.getElementById("contentTitle")
+document
+.getElementById("contentTitle")
 .value.trim();
 
 const description=
-document.getElementById("contentDescription")
+document
+.getElementById("contentDescription")
 .value.trim();
 
 const image=
-document.getElementById("contentImage")
+document
+.getElementById("contentImage")
 .value.trim();
 
 const channelId=
-document.getElementById("contentChannel").value||null;
+document.getElementById(
+"contentChannel"
+).value||null;
 
 if(!title){
 
-showAddMessage("اكتب العنوان.");
+showAddMessage(
+"اكتب العنوان."
+);
+
 return;
 
 }
@@ -2344,26 +4008,38 @@ if(type==="property"){
 const extra={
 
 country:
-document.getElementById("propCountry").value.trim(),
+document
+.getElementById("propCountry")
+.value.trim(),
 
 city:
-document.getElementById("propCity").value.trim(),
+document
+.getElementById("propCity")
+.value.trim(),
 
 price:
 parseFloat(
-document.getElementById("propPrice").value
+document
+.getElementById("propPrice")
+.value
 )||0,
 
 currency:
-document.getElementById("propCurrency").value,
+document
+.getElementById("propCurrency")
+.value,
 
 area:
 parseFloat(
-document.getElementById("propArea").value
+document
+.getElementById("propArea")
+.value
 )||0,
 
 whatsapp:
-document.getElementById("propWhatsapp").value.trim()
+document
+.getElementById("propWhatsapp")
+.value.trim()
 
 };
 
@@ -2383,18 +4059,24 @@ await supabaseClient
 
 if(result.error){
 
-showAddMessage(result.error.message);
+showAddMessage(
+result.error.message
+);
+
 return;
 
 }
 
 closeAddModal();
+
 clearAddForm();
 
 await loadContent();
 await loadChannels();
 
-showToast("✅ تم حفظ المحتوى.");
+showToast(
+"✅ تم حفظ المحتوى."
+);
 
 }catch(e){
 
@@ -2412,11 +4094,15 @@ e.message||
 
 function showAddMessage(msg){
 
-const box=document.getElementById("addMessage");
+const box=
+document.getElementById(
+"addMessage"
+);
 
 if(!box)return;
 
 box.textContent=msg;
+
 box.classList.remove("hidden");
 
 }
@@ -2433,9 +4119,11 @@ function clearAddForm(){
 "propPrice",
 "propArea",
 "propWhatsapp"
-].forEach(id=>{
+].forEach(
+id=>{
 
-const el=document.getElementById(id);
+const el=
+document.getElementById(id);
 
 if(el)el.value="";
 
@@ -2443,7 +4131,11 @@ if(el)el.value="";
 
 contentType.value="project";
 
-if(contentChannel)contentChannel.value="";
+if(contentChannel){
+
+contentChannel.value="";
+
+}
 
 toggleContentFields();
 
@@ -2454,21 +4146,32 @@ toggleContentFields();
 
 async function loadContent(){
 
-const grid=document.getElementById("contentGrid");
+const grid=
+document.getElementById(
+"contentGrid"
+);
 
 if(!grid)return;
 
 if(!initSupabase()){
 
 grid.innerHTML=
-'<div class="empty-state">⏳ جاري تحميل الخدمة...</div>';
+`
+<div class="empty-state">
+⏳ جاري تحميل الخدمة...
+</div>
+`;
 
 return;
 
 }
 
 grid.innerHTML=
-'<div class="empty-state">⏳ جاري التحميل...</div>';
+`
+<div class="empty-state">
+⏳ جاري التحميل...
+</div>
+`;
 
 try{
 
@@ -2476,7 +4179,12 @@ const result=
 await supabaseClient
 .from("projects")
 .select("*")
-.order("created_at",{ascending:false});
+.order(
+"created_at",
+{
+ascending:false
+}
+);
 
 if(result.error){
 
@@ -2484,7 +4192,9 @@ grid.innerHTML=
 `
 <div class="empty-state">
 ❌ خطأ في التحميل:<br>
-${escapeHtml(result.error.message)}
+${escapeHtml(
+result.error.message
+)}
 </div>
 `;
 
@@ -2546,20 +4256,30 @@ await supabaseClient
 
 if(result.error){
 
-console.warn("Profiles:",result.error.message);
+console.warn(
+"Profiles:",
+result.error.message
+);
+
 return;
 
 }
 
-(result.data||[]).forEach(profile=>{
+(result.data||[]).forEach(
+profile=>{
 
-allProfiles[String(profile.id)]=profile;
+allProfiles[
+String(profile.id)
+]=profile;
 
 });
 
 }catch(e){
 
-console.warn("Profiles exception:",e);
+console.warn(
+"Profiles exception:",
+e
+);
 
 }
 
@@ -2570,10 +4290,15 @@ function getOwner(item){
 
 if(!item)return null;
 
-return allProfiles[String(item.user_id)]||{
+return
+allProfiles[
+String(item.user_id)
+]||{
+
 id:item.user_id,
 name:"عضو KAPO ONE",
 email:""
+
 };
 
 }
@@ -2583,7 +4308,8 @@ function getOwnerName(item){
 
 const owner=getOwner(item);
 
-return owner?.name||"عضو KAPO ONE";
+return owner?.name||
+"عضو KAPO ONE";
 
 }
 
@@ -2594,20 +4320,33 @@ const owner=getOwner(item);
 
 if(!owner||!item.user_id)return "";
 
-const name=owner.name||"عضو KAPO ONE";
+const name=
+owner.name||
+"عضو KAPO ONE";
 
 const first=
-name.trim().charAt(0).toUpperCase()||"K";
+name.trim().charAt(0).toUpperCase()||
+"K";
 
 return `
-<div class="owner-mini"
+<div
+class="owner-mini"
 onclick="event.stopPropagation();openPublicProfile('${escapeAttribute(item.user_id)}')">
 
-<div class="owner-avatar">${first}</div>
+<div class="owner-avatar">
+${first}
+</div>
 
 <div>
-<div class="owner-label">صاحب المحتوى</div>
-<div class="owner-name">👤 ${escapeHtml(name)}</div>
+
+<div class="owner-label">
+صاحب المحتوى
+</div>
+
+<div class="owner-name">
+👤 ${escapeHtml(name)}
+</div>
+
 </div>
 
 </div>
@@ -2631,22 +4370,31 @@ try{
 const result=
 await supabaseClient
 .from("likes")
-.select("id,project_id,user_id");
+.select(
+"id,project_id,user_id"
+);
 
 if(result.error){
 
-console.warn("Likes:",result.error.message);
+console.warn(
+"Likes:",
+result.error.message
+);
+
 return;
 
 }
 
 allLikes=result.data||[];
 
-allLikes.forEach(like=>{
+allLikes.forEach(
+like=>{
 
-const id=String(like.project_id);
+const id=
+String(like.project_id);
 
-likeCounts[id]=(likeCounts[id]||0)+1;
+likeCounts[id]=
+(likeCounts[id]||0)+1;
 
 if(
 currentUser&&
@@ -2662,7 +4410,10 @@ likedContentIds.add(id);
 
 }catch(e){
 
-console.warn("Likes exception:",e);
+console.warn(
+"Likes exception:",
+e
+);
 
 }
 
@@ -2673,20 +4424,28 @@ async function toggleLike(id){
 
 if(!currentUser){
 
-showToast("❤️ سجل الدخول للإعجاب.");
+showToast(
+"❤️ سجل الدخول للإعجاب."
+);
+
 return;
 
 }
 
 if(!initSupabase()){
 
-showToast("تعذر الاتصال.");
+showToast(
+"تعذر الاتصال."
+);
+
 return;
 
 }
 
 const alreadyLiked=
-likedContentIds.has(String(id));
+likedContentIds.has(
+String(id)
+);
 
 try{
 
@@ -2697,7 +4456,10 @@ await supabaseClient
 .from("likes")
 .delete()
 .eq("project_id",id)
-.eq("user_id",currentUser.id);
+.eq(
+"user_id",
+currentUser.id
+);
 
 if(result.error){
 
@@ -2710,7 +4472,9 @@ return;
 
 }
 
-showToast("تم إزالة الإعجاب.");
+showToast(
+"تم إزالة الإعجاب."
+);
 
 }else{
 
@@ -2718,15 +4482,19 @@ const result=
 await supabaseClient
 .from("likes")
 .insert({
+
 project_id:id,
 user_id:currentUser.id
+
 });
 
 if(result.error){
 
 if(result.error.code==="23505"){
 
-showToast("أنت معجب بهذا المحتوى بالفعل.");
+showToast(
+"أنت معجب بهذا المحتوى بالفعل."
+);
 
 }else{
 
@@ -2743,7 +4511,9 @@ return;
 
 const likedProject=
 allContent.find(
-item=>String(item.id)===String(id)
+item=>
+String(item.id)===
+String(id)
 );
 
 if(
@@ -2755,23 +4525,35 @@ String(currentUser.id)
 
 await createNotification({
 
-recipientId:likedProject.user_id,
-actorId:currentUser.id,
+recipientId:
+likedProject.user_id,
+
+actorId:
+currentUser.id,
+
 type:"like",
+
 message:
 "❤️ أعجب أحد الأعضاء بمحتواك: "+
-(likedProject.title||"محتوى"),
+(
+likedProject.title||
+"محتوى"
+),
+
 projectId:id
 
 });
 
 }
 
-showToast("❤️ تمت إضافة الإعجاب.");
+showToast(
+"❤️ تمت إضافة الإعجاب."
+);
 
 }
 
 await loadLikes();
+
 renderContent();
 
 }catch(e){
@@ -2788,7 +4570,11 @@ showToast(
 }
 
 
-/* ================= COMMENTS ================= */
+/* ==================================================
+COMMENTS
+الإصلاح الكامل لجدول comments
+العمود الصحيح في قاعدة البيانات هو content
+================================================== */
 
 async function loadComments(){
 
@@ -2802,8 +4588,15 @@ try{
 const result=
 await supabaseClient
 .from("comments")
-.select("id,project_id,user_id,comment,created_at")
-.order("created_at",{ascending:true});
+.select(
+"id,project_id,user_id,content,created_at"
+)
+.order(
+"created_at",
+{
+ascending:true
+}
+);
 
 if(result.error){
 
@@ -2818,11 +4611,14 @@ return;
 
 allComments=result.data||[];
 
-allComments.forEach(c=>{
+allComments.forEach(
+c=>{
 
-const id=String(c.project_id);
+const id=
+String(c.project_id);
 
-commentCounts[id]=(commentCounts[id]||0)+1;
+commentCounts[id]=
+(commentCounts[id]||0)+1;
 
 });
 
@@ -2841,90 +4637,112 @@ e
 function getCommentsForProject(id){
 
 return allComments
-.filter(c=>String(c.project_id)===String(id))
+.filter(
+c=>
+String(c.project_id)===
+String(id)
+)
 .sort(
 (a,b)=>
-new Date(a.created_at)-new Date(b.created_at)
+new Date(a.created_at)-
+new Date(b.created_at)
 );
 
 }
 
 
-/*
-==================================================
-COMMENT FIX
-==================================================
-الإصلاح الأساسي:
-لا نستخدم .select().single() بعد INSERT.
-لأن INSERT قد ينجح، لكن SELECT قد يفشل بسبب RLS.
-==================================================
-*/
+/* ================= ADD COMMENT ================= */
 
 async function addComment(id){
 
 if(!currentUser){
 
-showToast("💬 سجل الدخول لكتابة تعليق.");
+showToast(
+"💬 سجل الدخول لكتابة تعليق."
+);
+
 return;
 
 }
 
 const input=
-document.getElementById("commentInput_"+id);
+document.getElementById(
+"commentInput_"+id
+);
 
 if(!input){
 
-showToast("❌ تعذر العثور على خانة التعليق.");
+showToast(
+"❌ تعذر العثور على خانة التعليق."
+);
+
 return;
 
 }
 
-const text=input.value.trim();
+const text=
+input.value.trim();
 
 if(!text){
 
-showToast("اكتب التعليق أولاً.");
+showToast(
+"اكتب التعليق أولاً."
+);
+
 return;
 
 }
 
 if(text.length>1000){
 
-showToast("التعليق طويل جدًا.");
+showToast(
+"التعليق طويل جدًا."
+);
+
 return;
 
 }
 
 if(!initSupabase()){
 
-showToast("تعذر الاتصال بقاعدة البيانات.");
+showToast(
+"تعذر الاتصال بقاعدة البيانات."
+);
+
 return;
 
 }
 
 const button=
-input.parentElement?.querySelector("button");
+input.parentElement?.querySelector(
+"button"
+);
 
 if(button){
 
 button.disabled=true;
-button.textContent="جاري النشر...";
+button.textContent=
+"جاري النشر...";
+
 }
 
 try{
 
 /*
-نرسل الإدخال فقط.
-لا نطلب SELECT بعده.
+مهم:
+لا نستخدم select بعد insert.
+ونستخدم content وليس comment.
 */
 
 const result=
 await supabaseClient
 .from("comments")
 .insert({
+
 project_id:id,
 user_id:currentUser.id,
-comment:text
+content:text
+
 });
 
 if(result.error){
@@ -2936,22 +4754,25 @@ result.error
 
 showToast(
 "❌ فشل نشر التعليق: "+
-(result.error.message||"خطأ في قاعدة البيانات")
+(
+result.error.message||
+"خطأ في قاعدة البيانات"
+)
 );
 
 return;
 
 }
 
-/*
-إذا وصلنا هنا فهذا يعني أن عملية INSERT نجحت.
-*/
+/* نجح الإدخال */
 
 input.value="";
 
 const project=
 allContent.find(
-item=>String(item.id)===String(id)
+item=>
+String(item.id)===
+String(id)
 );
 
 if(
@@ -2963,27 +4784,36 @@ String(currentUser.id)
 
 await createNotification({
 
-recipientId:project.user_id,
-actorId:currentUser.id,
+recipientId:
+project.user_id,
+
+actorId:
+currentUser.id,
+
 type:"comment",
+
 message:
 "💬 علق أحد الأعضاء على محتواك: "+
-(project.title||"محتوى"),
+(
+project.title||
+"محتوى"
+),
+
 projectId:id
 
 });
 
 }
 
-/*
-نعيد تحميل التعليقات من قاعدة البيانات.
-*/
+/* تحديث التعليقات */
 
 await loadComments();
 
 renderContent();
 
-showToast("💬 تم نشر التعليق بنجاح.");
+showToast(
+"💬 تم نشر التعليق بنجاح."
+);
 
 openDetailModal(id);
 
@@ -2996,7 +4826,10 @@ e
 
 showToast(
 "❌ حدث خطأ في التعليق: "+
-(e.message||"تعذر نشر التعليق")
+(
+e.message||
+"تعذر نشر التعليق"
+)
 );
 
 }finally{
@@ -3013,11 +4846,20 @@ button.textContent="نشر";
 }
 
 
-async function deleteComment(commentId,projectId){
+/* ================= DELETE COMMENT ================= */
+
+async function deleteComment(
+commentId,
+projectId
+){
 
 if(!currentUser)return;
 
-if(!confirm("هل تريد حذف هذا التعليق؟"))return;
+if(
+!confirm(
+"هل تريد حذف هذا التعليق؟"
+)
+)return;
 
 if(!initSupabase())return;
 
@@ -3028,7 +4870,10 @@ await supabaseClient
 .from("comments")
 .delete()
 .eq("id",commentId)
-.eq("user_id",currentUser.id);
+.eq(
+"user_id",
+currentUser.id
+);
 
 if(result.error){
 
@@ -3041,11 +4886,15 @@ return;
 
 }
 
-showToast("🗑️ تم حذف التعليق.");
-
 await loadComments();
 
+renderContent();
+
 openDetailModal(projectId);
+
+showToast(
+"🗑️ تم حذف التعليق."
+);
 
 }catch(e){
 
@@ -3061,9 +4910,12 @@ showToast(
 }
 
 
+/* ================= RENDER COMMENTS ================= */
+
 function renderComments(id){
 
-const comments=getCommentsForProject(id);
+const comments=
+getCommentsForProject(id);
 
 if(!currentUser){
 
@@ -3097,7 +4949,12 @@ return `
 <input
 id="commentInput_${escapeAttribute(id)}"
 placeholder="اكتب تعليقك هنا..."
-maxlength="1000">
+maxlength="1000"
+onkeydown="
+if(event.key==='Enter'){
+event.preventDefault();
+addComment('${escapeAttribute(id)}')
+}">
 
 <button
 type="button"
@@ -3116,6 +4973,8 @@ ${renderCommentList(comments)}
 }
 
 
+/* ================= COMMENT LIST ================= */
+
 function renderCommentList(comments){
 
 if(!comments.length){
@@ -3128,7 +4987,8 @@ return `
 
 }
 
-return comments.map(c=>{
+return comments.map(
+c=>{
 
 const name=
 String(c.user_id)===
@@ -3141,8 +5001,11 @@ String(currentUser?.id)
 const date=
 c.created_at
 ?
-new Date(c.created_at).toLocaleString("ar-SA")
-:"";
+new Date(
+c.created_at
+).toLocaleString("ar-SA")
+:
+"";
 
 const deleteBtn=
 currentUser&&
@@ -3157,7 +5020,8 @@ onclick="deleteComment('${escapeAttribute(c.id)}','${escapeAttribute(c.project_i
 حذف
 </button>
 `
-:"";
+:
+"";
 
 return `
 <div class="comment-item">
@@ -3177,13 +5041,14 @@ ${deleteBtn}
 </div>
 
 <div class="comment-text">
-${escapeHtml(c.comment)}
+${escapeHtml(c.content)}
 </div>
 
 </div>
 `;
 
-}).join("");
+}
+).join("");
 
 }
 
@@ -3193,22 +5058,39 @@ ${escapeHtml(c.comment)}
 function applyFilters(){
 
 const search=
-document.getElementById("filterSearch")
-.value.toLowerCase().trim();
+document
+.getElementById("filterSearch")
+.value
+.toLowerCase()
+.trim();
 
 const type=
-document.getElementById("filterType").value;
+document
+.getElementById("filterType")
+.value;
 
 filteredContent=
-allContent.filter(item=>{
+allContent.filter(
+item=>{
 
-if(type&&item.content_type!==type)return false;
+if(
+type&&
+item.content_type!==type
+)return false;
 
 if(search){
 
-const title=(item.title||"").toLowerCase();
-const desc=(item.description||"").toLowerCase();
-const owner=getOwnerName(item).toLowerCase();
+const title=
+(item.title||"")
+.toLowerCase();
+
+const desc=
+(item.description||"")
+.toLowerCase();
+
+const owner=
+getOwnerName(item)
+.toLowerCase();
 
 if(
 !title.includes(search)&&
@@ -3233,8 +5115,13 @@ renderContent();
 
 function resetFilters(){
 
-document.getElementById("filterSearch").value="";
-document.getElementById("filterType").value="";
+document.getElementById(
+"filterSearch"
+).value="";
+
+document.getElementById(
+"filterType"
+).value="";
 
 applyFilters();
 
@@ -3248,7 +5135,9 @@ function getChannel(channelId){
 if(!channelId)return null;
 
 return allChannels.find(
-channel=>String(channel.id)===String(channelId)
+channel=>
+String(channel.id)===
+String(channelId)
 )||null;
 
 }
@@ -3256,7 +5145,8 @@ channel=>String(channel.id)===String(channelId)
 
 function getChannelName(channelId){
 
-const channel=getChannel(channelId);
+const channel=
+getChannel(channelId);
 
 return channel?.name||"";
 
@@ -3267,10 +5157,12 @@ function channelMiniHtml(channel){
 
 if(!channel)return "";
 
-const name=channel.name||"قناة";
+const name=
+channel.name||"قناة";
 
 const first=
-name.trim().charAt(0).toUpperCase()||"📺";
+name.trim().charAt(0).toUpperCase()||
+"📺";
 
 const avatar=
 channel.avatar_url
@@ -3279,10 +5171,17 @@ channel.avatar_url
 <img
 src="${escapeAttribute(channel.avatar_url)}"
 alt="${escapeAttribute(name)}"
-onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-<span style="display:none">${first}</span>
+onerror="
+this.style.display='none';
+this.nextElementSibling.style.display='flex';
+">
+
+<span style="display:none">
+${first}
+</span>
 `
-:first;
+:
+first;
 
 return `
 <div class="channel-mini-owner">
@@ -3291,7 +5190,9 @@ return `
 ${avatar}
 </div>
 
-<span>📺 ${escapeHtml(name)}</span>
+<span>
+📺 ${escapeHtml(name)}
+</span>
 
 </div>
 `;
@@ -3303,45 +5204,62 @@ ${avatar}
 
 function renderContent(){
 
-const grid=document.getElementById("contentGrid");
+const grid=
+document.getElementById(
+"contentGrid"
+);
 
 if(!grid)return;
 
 if(!filteredContent.length){
 
 grid.innerHTML=
-'<div class="empty-state">📭 لا يوجد محتوى مطابق.</div>';
+`
+<div class="empty-state">
+📭 لا يوجد محتوى مطابق.
+</div>
+`;
 
 return;
 
 }
 
 grid.innerHTML=
-filteredContent.map(item=>{
+filteredContent.map(
+item=>{
 
 const badgeClass={
+
 project:"badge-project",
 property:"badge-property",
 idea:"badge-idea",
 design:"badge-design",
 question:"badge-question"
-}[item.content_type]||"badge-project";
+
+}[item.content_type]||
+"badge-project";
 
 const badgeLabel={
+
 project:"🏗️ مشروع",
 property:"🏢 عقار",
 idea:"💡 فكرة",
 design:"📐 تصميم",
 question:"❓ سؤال"
-}[item.content_type]||"محتوى";
+
+}[item.content_type]||
+"محتوى";
 
 const icon={
+
 project:"🏗️",
 property:"🏢",
 idea:"💡",
 design:"📐",
 question:"❓"
-}[item.content_type]||"📋";
+
+}[item.content_type]||
+"📋";
 
 const imageHtml=
 item.image_url
@@ -3351,43 +5269,71 @@ item.image_url
 class="content-image"
 src="${escapeAttribute(item.image_url)}"
 alt="${escapeAttribute(item.title||"")}"
-onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+onerror="
+this.style.display='none';
+this.nextElementSibling.style.display='flex';
+">
 
-<div class="content-placeholder" style="display:none">
+<div
+class="content-placeholder"
+style="display:none">
 ${icon}
 </div>
 `
 :
 `
-<div class="content-placeholder">${icon}</div>
+<div class="content-placeholder">
+${icon}
+</div>
 `;
 
 const date=
 item.created_at
 ?
-new Date(item.created_at).toLocaleDateString("ar-SA")
-:"";
+new Date(
+item.created_at
+).toLocaleDateString("ar-SA")
+:
+"";
 
-const id=String(item.id||"");
-const isLiked=likedContentIds.has(id);
-const likes=likeCounts[id]||0;
-const comments=commentCounts[id]||0;
-const channel=getChannel(item.channel_id);
+const id=
+String(item.id||"");
+
+const isLiked=
+likedContentIds.has(id);
+
+const likes=
+likeCounts[id]||0;
+
+const comments=
+commentCounts[id]||0;
+
+const channel=
+getChannel(item.channel_id);
 
 const channelHtml=
 channel
 ?
 `
 <div
-style="margin-top:9px;color:#60a5fa;font-size:12px;font-weight:800"
-onclick="event.stopPropagation();openChannelDetail('${escapeAttribute(channel.id)}')">
+style="
+margin-top:9px;
+color:#60a5fa;
+font-size:12px;
+font-weight:800"
+onclick="
+event.stopPropagation();
+openChannelDetail('${escapeAttribute(channel.id)}')
+">
 📺 ${escapeHtml(channel.name)}
 </div>
 `
-:"";
+:
+"";
 
 return `
-<div class="content-card"
+<div
+class="content-card"
 onclick="openDetailModal('${escapeAttribute(id)}')">
 
 ${imageHtml}
@@ -3403,10 +5349,14 @@ ${escapeHtml(date)}
 </div>
 
 <div class="content-description">
-${escapeHtml(item.description||"لا يوجد وصف.")}
+${escapeHtml(
+item.description||
+"لا يوجد وصف."
+)}
 </div>
 
-<span class="content-badge ${badgeClass}">
+<span
+class="content-badge ${badgeClass}">
 ${badgeLabel}
 </span>
 
@@ -3419,30 +5369,45 @@ ${ownerHtml(item)}
 <button
 type="button"
 class="like-btn ${isLiked?"liked":""}"
-onclick="event.stopPropagation();toggleLike('${escapeAttribute(id)}')">
+onclick="
+event.stopPropagation();
+toggleLike('${escapeAttribute(id)}')
+">
 
 ${isLiked?"❤️":"🤍"}
-<span>${likes}</span>
+
+<span>
+${likes}
+</span>
 
 </button>
+
 
 <button
 type="button"
 class="comment-btn"
-onclick="event.stopPropagation();openDetailModal('${escapeAttribute(id)}')">
+onclick="
+event.stopPropagation();
+openDetailModal('${escapeAttribute(id)}')
+">
 
 💬
-<span>${comments}</span>
+
+<span>
+${comments}
+</span>
 
 </button>
 
 </div>
 
 </div>
+
 </div>
 `;
 
-}).join("");
+}
+).join("");
 
 }
 
@@ -3452,18 +5417,29 @@ onclick="event.stopPropagation();openDetailModal('${escapeAttribute(id)}')">
 function openDetailModal(id){
 
 const item=
-allContent.find(x=>String(x.id)===String(id));
+allContent.find(
+x=>
+String(x.id)===
+String(id)
+);
 
 if(!item){
 
-showToast("تعذر فتح المحتوى.");
+showToast(
+"تعذر فتح المحتوى."
+);
+
 return;
 
 }
 
-const title=item.title||"تفاصيل المحتوى";
+const title=
+item.title||
+"تفاصيل المحتوى";
 
-document.getElementById("detailTitle").textContent=title;
+document.getElementById(
+"detailTitle"
+).textContent=title;
 
 let image="";
 
@@ -3481,21 +5457,31 @@ onerror="this.style.display='none'">
 }
 
 const typeLabels={
+
 project:"🏗️ مشروع",
 property:"🏢 عقار",
 idea:"💡 فكرة",
 design:"📐 تصميم",
 question:"❓ سؤال"
+
 };
 
-const type=typeLabels[item.content_type]||"📋 محتوى";
+const type=
+typeLabels[item.content_type]||
+"📋 محتوى";
 
-let description=item.description||"لا يوجد وصف.";
+let description=
+item.description||
+"لا يوجد وصف.";
+
 let propertyHtml="";
 
 if(item.content_type==="property"){
 
-const parts=description.split("\n\n---\n");
+const parts=
+description.split(
+"\n\n---\n"
+);
 
 description=parts[0]||"";
 
@@ -3503,7 +5489,8 @@ if(parts[1]){
 
 try{
 
-const extra=JSON.parse(parts[1]);
+const extra=
+JSON.parse(parts[1]);
 
 propertyHtml=
 `
@@ -3525,7 +5512,8 @@ ${escapeHtml(extra.currency||"")}
 
 <div class="detail-row">
 <strong>المساحة:</strong>
-${escapeHtml(String(extra.area||0))} م²
+${escapeHtml(String(extra.area||0))}
+م²
 </div>
 
 <div class="detail-row">
@@ -3547,20 +5535,31 @@ console.warn(e);
 const date=
 item.created_at
 ?
-new Date(item.created_at).toLocaleString("ar-SA")
-:"-";
+new Date(
+item.created_at
+).toLocaleString("ar-SA")
+:
+"-";
 
-const projectId=String(item.id||"");
-const isLiked=likedContentIds.has(projectId);
-const likes=likeCounts[projectId]||0;
-const owner=getOwner(item);
+const projectId=
+String(item.id||"");
+
+const isLiked=
+likedContentIds.has(projectId);
+
+const likes=
+likeCounts[projectId]||0;
+
+const owner=
+getOwner(item);
 
 const ownerName=
 owner?.name||
 "عضو KAPO ONE";
 
 const ownerFirst=
-ownerName.trim().charAt(0).toUpperCase()||"K";
+ownerName.trim().charAt(0).toUpperCase()||
+"K";
 
 const ownerBlock=
 item.user_id
@@ -3568,7 +5567,9 @@ item.user_id
 `
 <div
 class="owner-detail"
-onclick="openPublicProfile('${escapeAttribute(item.user_id)}')">
+onclick="
+openPublicProfile('${escapeAttribute(item.user_id)}')
+">
 
 <div class="owner-detail-avatar">
 ${ownerFirst}
@@ -3588,31 +5589,48 @@ ${escapeHtml(ownerName)}
 
 </div>
 `
-:"";
+:
+"";
 
-const channel=getChannel(item.channel_id);
+const channel=
+getChannel(item.channel_id);
 
 const channelBlock=
 channel
 ?
 `
 <div
-style="margin:15px 0;padding:13px;border-radius:14px;background:#020617;border:1px solid #1e293b;cursor:pointer"
-onclick="openChannelDetail('${escapeAttribute(channel.id)}')">
+style="
+margin:15px 0;
+padding:13px;
+border-radius:14px;
+background:#020617;
+border:1px solid #1e293b;
+cursor:pointer"
+onclick="
+openChannelDetail('${escapeAttribute(channel.id)}')
+">
 
-<div style="font-size:11px;color:#64748b">
+<div style="
+font-size:11px;
+color:#64748b">
 القناة
 </div>
 
-<div style="font-weight:900;color:#60a5fa">
+<div style="
+font-weight:900;
+color:#60a5fa">
 📺 ${escapeHtml(channel.name)}
 </div>
 
 </div>
 `
-:"";
+:
+"";
 
-document.getElementById("detailContent").innerHTML=
+document.getElementById(
+"detailContent"
+).innerHTML=
 `
 
 ${image}
@@ -3623,6 +5641,7 @@ ${type}
 </div>
 
 ${channelBlock}
+
 ${ownerBlock}
 
 <div class="detail-row">
@@ -3630,7 +5649,10 @@ ${ownerBlock}
 ${escapeHtml(date)}
 </div>
 
-<div style="margin-top:18px;white-space:pre-wrap;line-height:2">
+<div style="
+margin-top:18px;
+white-space:pre-wrap;
+line-height:2">
 ${escapeHtml(description)}
 </div>
 
@@ -3641,15 +5663,26 @@ ${propertyHtml}
 <button
 type="button"
 class="like-btn ${isLiked?"liked":""}"
-onclick="toggleLikeFromDetail('${escapeAttribute(projectId)}')">
+onclick="
+toggleLikeFromDetail('${escapeAttribute(projectId)}')
+">
 
 ${isLiked?"❤️":"🤍"}
-<span>${likes}</span>
+
+<span>
+${likes}
+</span>
 
 </button>
 
 <strong>
-${likes===1?"إعجاب واحد":"إعجابات"}
+${
+likes===1
+?
+"إعجاب واحد"
+:
+"إعجابات"
+}
 </strong>
 
 </div>
@@ -3658,7 +5691,9 @@ ${renderComments(projectId)}
 
 `;
 
-document.getElementById("detailModal").classList.add("active");
+document.getElementById(
+"detailModal"
+).classList.add("active");
 
 }
 
@@ -3667,10 +5702,18 @@ async function toggleLikeFromDetail(id){
 
 await toggleLike(id);
 
-const modal=document.getElementById("detailModal");
+const modal=
+document.getElementById(
+"detailModal"
+);
 
-if(modal&&modal.classList.contains("active")){
+if(
+modal&&
+modal.classList.contains("active")
+){
+
 openDetailModal(id);
+
 }
 
 }
@@ -3678,7 +5721,8 @@ openDetailModal(id);
 
 function closeDetailModal(){
 
-document.getElementById("detailModal")
+document
+.getElementById("detailModal")
 .classList.remove("active");
 
 }
@@ -3690,20 +5734,35 @@ async function openPublicProfile(userId){
 
 if(!userId){
 
-showToast("تعذر فتح الملف الشخصي.");
+showToast(
+"تعذر فتح الملف الشخصي."
+);
+
 return;
 
 }
 
-const modal=document.getElementById("publicProfileModal");
-const box=document.getElementById("publicProfileContent");
+const modal=
+document.getElementById(
+"publicProfileModal"
+);
+
+const box=
+document.getElementById(
+"publicProfileContent"
+);
 
 modal.classList.add("active");
 
 box.innerHTML=
-'<div class="empty-state">⏳ جاري تحميل الملف الشخصي...</div>';
+`
+<div class="empty-state">
+⏳ جاري تحميل الملف الشخصي...
+</div>
+`;
 
-let profile=allProfiles[String(userId)];
+let profile=
+allProfiles[String(userId)];
 
 try{
 
@@ -3716,10 +5775,19 @@ await supabaseClient
 .eq("id",userId)
 .maybeSingle();
 
-if(result.data)profile=result.data;
+if(result.data){
+
+profile=result.data;
+
+}
 
 if(result.error){
-console.warn("Public profile:",result.error.message);
+
+console.warn(
+"Public profile:",
+result.error.message
+);
+
 }
 
 }
@@ -3743,20 +5811,29 @@ return;
 
 }
 
-const name=profile.name||"عضو KAPO ONE";
-const email=profile.email||"";
+const name=
+profile.name||
+"عضو KAPO ONE";
+
+const email=
+profile.email||"";
 
 const first=
-name.trim().charAt(0).toUpperCase()||"K";
+name.trim().charAt(0).toUpperCase()||
+"K";
 
 const ownerContent=
-allContent.filter(item=>
-String(item.user_id)===String(userId)
+allContent.filter(
+item=>
+String(item.user_id)===
+String(userId)
 );
 
 const ownerChannels=
-allChannels.filter(channel=>
-String(channel.owner_id)===String(userId)
+allChannels.filter(
+channel=>
+String(channel.owner_id)===
+String(userId)
 );
 
 let contentHtml="";
@@ -3776,36 +5853,54 @@ contentHtml=
 `
 <div class="public-content-list">
 
-${ownerContent.map(item=>{
+${ownerContent.map(
+item=>{
 
 const typeLabels={
+
 project:"🏗️ مشروع",
 property:"🏢 عقار",
 idea:"💡 فكرة",
 design:"📐 تصميم",
 question:"❓ سؤال"
+
 };
 
-const type=typeLabels[item.content_type]||"📋 محتوى";
+const type=
+typeLabels[item.content_type]||
+"📋 محتوى";
 
 return `
 <div
 class="public-content-item"
-onclick="closePublicProfile();openDetailModal('${escapeAttribute(item.id)}')">
+onclick="
+closePublicProfile();
+openDetailModal('${escapeAttribute(item.id)}')
+">
 
 <div class="public-content-item-title">
-${escapeHtml(item.title||"بدون عنوان")}
+${escapeHtml(
+item.title||
+"بدون عنوان"
+)}
 </div>
 
 <div class="public-content-item-type">
 ${type}
-${item.channel_id?" · 📺 داخل قناة":""}
+${
+item.channel_id
+?
+" · 📺 داخل قناة"
+:
+""
+}
 </div>
 
 </div>
 `;
 
-}).join("")}
+}
+).join("")}
 
 </div>
 `;
@@ -3822,15 +5917,25 @@ ownerChannels.length
 
 <div class="public-content-list">
 
-${ownerChannels.map(channel=>`
+${ownerChannels.map(
+channel=>`
 
 <div
 class="public-content-item"
-onclick="closePublicProfile();openChannelDetail('${escapeAttribute(channel.id)}')">
+onclick="
+closePublicProfile();
+openChannelDetail('${escapeAttribute(channel.id)}')
+">
 
 <div class="public-content-item-title">
 📺 ${escapeHtml(channel.name)}
-${channel.verified?" ✓":""}
+${
+channel.verified
+?
+" ✓"
+:
+""
+}
 </div>
 
 <div class="public-content-item-type">
@@ -3839,11 +5944,13 @@ ${channel.verified?" ✓":""}
 
 </div>
 
-`).join("")}
+`
+).join("")}
 
 </div>
 `
-:"";
+:
+"";
 
 box.innerHTML=
 `
@@ -3870,7 +5977,9 @@ ${escapeHtml(email)}
 
 </div>
 
-<div style="color:#94a3b8;font-size:14px">
+<div style="
+color:#94a3b8;
+font-size:14px">
 🌍 عضو في KAPO ONE
 </div>
 
@@ -3891,7 +6000,10 @@ ${contentHtml}
 
 function closePublicProfile(){
 
-document.getElementById("publicProfileModal")
+document
+.getElementById(
+"publicProfileModal"
+)
 .classList.remove("active");
 
 }
@@ -3901,21 +6013,32 @@ document.getElementById("publicProfileModal")
 
 async function loadChannels(){
 
-const grid=document.getElementById("channelsGrid");
+const grid=
+document.getElementById(
+"channelsGrid"
+);
 
 if(!grid)return;
 
 if(!initSupabase()){
 
 grid.innerHTML=
-'<div class="empty-state">⏳ جاري تحميل الخدمة...</div>';
+`
+<div class="empty-state">
+⏳ جاري تحميل الخدمة...
+</div>
+`;
 
 return;
 
 }
 
 grid.innerHTML=
-'<div class="empty-state">⏳ جاري تحميل القنوات...</div>';
+`
+<div class="empty-state">
+⏳ جاري تحميل القنوات...
+</div>
+`;
 
 try{
 
@@ -3923,7 +6046,12 @@ const result=
 await supabaseClient
 .from("channels")
 .select("*")
-.order("created_at",{ascending:false});
+.order(
+"created_at",
+{
+ascending:false
+}
+);
 
 if(result.error){
 
@@ -3931,7 +6059,9 @@ grid.innerHTML=
 `
 <div class="empty-state">
 ❌ خطأ في تحميل القنوات:<br>
-${escapeHtml(result.error.message)}
+${escapeHtml(
+result.error.message
+)}
 </div>
 `;
 
@@ -3945,8 +6075,14 @@ await loadChannelFollowers();
 
 renderChannels();
 
-if(document.getElementById("contentChannel")){
+if(
+document.getElementById(
+"contentChannel"
+)
+){
+
 await loadMyChannelsIntoSelect();
+
 }
 
 renderContent();
@@ -3976,38 +6112,56 @@ channelFollowers={};
 followedChannelIds=new Set();
 
 if(!initSupabase())return;
+
 if(!allChannels.length)return;
 
 try{
 
-const ids=allChannels.map(channel=>channel.id);
+const ids=
+allChannels.map(
+channel=>channel.id
+);
 
 const result=
 await supabaseClient
 .from("channel_followers")
-.select("id,channel_id,user_id")
-.in("channel_id",ids);
+.select(
+"id,channel_id,user_id"
+)
+.in(
+"channel_id",
+ids
+);
 
 if(result.error){
 
-console.warn("Channel followers:",result.error.message);
+console.warn(
+"Channel followers:",
+result.error.message
+);
+
 return;
 
 }
 
-(result.data||[]).forEach(row=>{
+(result.data||[]).forEach(
+row=>{
 
-const channelId=String(row.channel_id);
+const channelId=
+String(row.channel_id);
 
 channelFollowers[channelId]=
 (channelFollowers[channelId]||0)+1;
 
 if(
 currentUser&&
-String(row.user_id)===String(currentUser.id)
+String(row.user_id)===
+String(currentUser.id)
 ){
 
-followedChannelIds.add(channelId);
+followedChannelIds.add(
+channelId
+);
 
 }
 
@@ -4015,7 +6169,10 @@ followedChannelIds.add(channelId);
 
 }catch(e){
 
-console.warn("Channel followers exception:",e);
+console.warn(
+"Channel followers exception:",
+e
+);
 
 }
 
@@ -4026,7 +6183,10 @@ console.warn("Channel followers exception:",e);
 
 function renderChannels(){
 
-const grid=document.getElementById("channelsGrid");
+const grid=
+document.getElementById(
+"channelsGrid"
+);
 
 if(!grid)return;
 
@@ -4036,13 +6196,23 @@ grid.innerHTML=
 `
 <div class="empty-state">
 
-<div style="font-size:45px;margin-bottom:10px">📺</div>
+<div style="
+font-size:45px;
+margin-bottom:10px">
+📺
+</div>
 
-<div style="font-size:18px;font-weight:900;color:#fff;margin-bottom:8px">
+<div style="
+font-size:18px;
+font-weight:900;
+color:#fff;
+margin-bottom:8px">
 لا توجد قنوات حتى الآن
 </div>
 
-<div>كن أول من ينشئ قناة في KAPO ONE.</div>
+<div>
+كن أول من ينشئ قناة في KAPO ONE.
+</div>
 
 <br>
 
@@ -4061,15 +6231,21 @@ return;
 }
 
 grid.innerHTML=
-allChannels.map(channel=>{
+allChannels.map(
+channel=>{
 
-const name=channel.name||"قناة KAPO ONE";
+const name=
+channel.name||
+"قناة KAPO ONE";
 
 const first=
-name.trim().charAt(0).toUpperCase()||"📺";
+name.trim().charAt(0).toUpperCase()||
+"📺";
 
 const followers=
-channelFollowers[String(channel.id)]||0;
+channelFollowers[
+String(channel.id)
+]||0;
 
 const avatar=
 channel.avatar_url
@@ -4078,13 +6254,23 @@ channel.avatar_url
 <img
 src="${escapeAttribute(channel.avatar_url)}"
 alt="${escapeAttribute(name)}"
-onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+onerror="
+this.style.display='none';
+this.nextElementSibling.style.display='flex';
+">
 
-<div style="display:none;width:100%;height:100%;align-items:center;justify-content:center">
+<div
+style="
+display:none;
+width:100%;
+height:100%;
+align-items:center;
+justify-content:center">
 ${first}
 </div>
 `
-:first;
+:
+first;
 
 const cover=
 channel.cover_url
@@ -4093,26 +6279,37 @@ channel.cover_url
 <img
 src="${escapeAttribute(channel.cover_url)}"
 alt=""
-onerror="this.style.display='none'">
+onerror="
+this.style.display='none'
+">
 `
-:"";
+:
+"";
 
 const verified=
 channel.verified
 ?
 '<span class="verified" title="قناة موثقة">✓</span>'
-:"";
+:
+"";
 
 return `
 <div
 class="channel-card"
-onclick="openChannelDetail('${escapeAttribute(channel.id)}')">
+onclick="
+openChannelDetail('${escapeAttribute(channel.id)}')
+">
 
 <div class="channel-cover">
+
 ${cover}
 
 <div class="channel-avatar-wrap">
-<div class="channel-avatar">${avatar}</div>
+
+<div class="channel-avatar">
+${avatar}
+</div>
+
 </div>
 
 </div>
@@ -4125,23 +6322,39 @@ ${verified}
 </div>
 
 <div class="channel-username">
-@${escapeHtml(channel.username||"channel")}
+@${escapeHtml(
+channel.username||
+"channel"
+)}
 </div>
 
 <div class="channel-description">
-${escapeHtml(channel.description||"لا يوجد وصف للقناة.")}
+${escapeHtml(
+channel.description||
+"لا يوجد وصف للقناة."
+)}
 </div>
 
 <div class="channel-stats">
 
 <div class="channel-stat">
-<strong>${followers}</strong>
+
+<strong>
+${followers}
+</strong>
+
 متابع
+
 </div>
 
 <div class="channel-stat">
-<strong>${countChannelContent(channel.id)}</strong>
+
+<strong>
+${countChannelContent(channel.id)}
+</strong>
+
 منشور
+
 </div>
 
 </div>
@@ -4151,15 +6364,18 @@ ${escapeHtml(channel.description||"لا يوجد وصف للقناة.")}
 </div>
 `;
 
-}).join("");
+}
+).join("");
 
 }
 
 
 function countChannelContent(channelId){
 
-return allContent.filter(item=>
-String(item.channel_id)===String(channelId)
+return allContent.filter(
+item=>
+String(item.channel_id)===
+String(channelId)
 ).length;
 
 }
@@ -4171,15 +6387,20 @@ function openChannelModal(){
 
 if(!currentUser){
 
-showToast("سجل الدخول أولاً لإنشاء قناة.");
+showToast(
+"سجل الدخول أولاً لإنشاء قناة."
+);
+
 return;
 
 }
 
-document.getElementById("channelModal")
+document
+.getElementById("channelModal")
 .classList.add("active");
 
-document.getElementById("channelMessage")
+document
+.getElementById("channelMessage")
 .classList.add("hidden");
 
 }
@@ -4187,7 +6408,8 @@ document.getElementById("channelMessage")
 
 function closeChannelModal(){
 
-document.getElementById("channelModal")
+document
+.getElementById("channelModal")
 .classList.remove("active");
 
 }
@@ -4195,11 +6417,15 @@ document.getElementById("channelModal")
 
 function showChannelMessage(msg){
 
-const box=document.getElementById("channelMessage");
+const box=
+document.getElementById(
+"channelMessage"
+);
 
 if(!box)return;
 
 box.textContent=msg;
+
 box.classList.remove("hidden");
 
 }
@@ -4213,9 +6439,11 @@ function clearChannelForm(){
 "channelDescription",
 "channelAvatar",
 "channelCover"
-].forEach(id=>{
+].forEach(
+id=>{
 
-const el=document.getElementById(id);
+const el=
+document.getElementById(id);
 
 if(el)el.value="";
 
@@ -4228,41 +6456,62 @@ async function createChannel(){
 
 if(!currentUser){
 
-showChannelMessage("سجل الدخول أولاً.");
+showChannelMessage(
+"سجل الدخول أولاً."
+);
+
 return;
 
 }
 
 if(!initSupabase()){
 
-showChannelMessage("تعذر الاتصال بالخدمة.");
+showChannelMessage(
+"تعذر الاتصال بالخدمة."
+);
+
 return;
 
 }
 
 const name=
-document.getElementById("channelName").value.trim();
+document
+.getElementById("channelName")
+.value.trim();
 
 let username=
-document.getElementById("channelUsername").value.trim().toLowerCase();
+document
+.getElementById("channelUsername")
+.value.trim()
+.toLowerCase();
 
 const description=
-document.getElementById("channelDescription").value.trim();
+document
+.getElementById("channelDescription")
+.value.trim();
 
 const avatar=
-document.getElementById("channelAvatar").value.trim();
+document
+.getElementById("channelAvatar")
+.value.trim();
 
 const cover=
-document.getElementById("channelCover").value.trim();
+document
+.getElementById("channelCover")
+.value.trim();
 
 if(!name||!username){
 
-showChannelMessage("أدخل اسم القناة واسم المستخدم.");
+showChannelMessage(
+"أدخل اسم القناة واسم المستخدم."
+);
+
 return;
 
 }
 
-username=username.replace(/^@+/,"");
+username=
+username.replace(/^@+/,"");
 
 if(!/^[a-z0-9_]+$/.test(username)){
 
@@ -4302,7 +6551,9 @@ showChannelMessage(
 
 }else{
 
-showChannelMessage(result.error.message);
+showChannelMessage(
+result.error.message
+);
 
 }
 
@@ -4311,9 +6562,12 @@ return;
 }
 
 closeChannelModal();
+
 clearChannelForm();
 
-showToast("🎉 تم إنشاء القناة بنجاح.");
+showToast(
+"🎉 تم إنشاء القناة بنجاح."
+);
 
 await loadChannels();
 
@@ -4321,9 +6575,14 @@ showSection("channels");
 
 if(result.data){
 
-setTimeout(()=>{
-openChannelDetail(result.data.id);
-},300);
+setTimeout(
+()=>{
+openChannelDetail(
+result.data.id
+);
+},
+300
+);
 
 }
 
@@ -4347,23 +6606,35 @@ async function openChannelDetail(channelId){
 
 if(!channelId){
 
-showToast("تعذر فتح القناة.");
+showToast(
+"تعذر فتح القناة."
+);
+
 return;
 
 }
 
 const modal=
-document.getElementById("channelDetailModal");
+document.getElementById(
+"channelDetailModal"
+);
 
 const box=
-document.getElementById("channelDetailContent");
+document.getElementById(
+"channelDetailContent"
+);
 
 modal.classList.add("active");
 
 box.innerHTML=
-'<div class="empty-state">⏳ جاري تحميل القناة...</div>';
+`
+<div class="empty-state">
+⏳ جاري تحميل القناة...
+</div>
+`;
 
-let channel=getChannel(channelId);
+let channel=
+getChannel(channelId);
 
 try{
 
@@ -4376,9 +6647,17 @@ await supabaseClient
 .eq("id",channelId)
 .maybeSingle();
 
-if(result.data)channel=result.data;
+if(result.data){
 
-if(result.error)console.warn(result.error);
+channel=result.data;
+
+}
+
+if(result.error){
+
+console.warn(result.error);
+
+}
 
 }
 
@@ -4404,36 +6683,54 @@ return;
 currentChannel=channel;
 currentChannelTab="home";
 
-await renderChannelDetail(channel);
+await renderChannelDetail(
+channel
+);
 
 }
 
 
-async function renderChannelDetail(channel){
+async function renderChannelDetail(
+channel
+){
 
 const box=
-document.getElementById("channelDetailContent");
+document.getElementById(
+"channelDetailContent"
+);
 
 if(!box)return;
 
-const channelId=String(channel.id);
+const channelId=
+String(channel.id);
 
 const content=
-allContent.filter(item=>
-String(item.channel_id)===channelId
+allContent.filter(
+item=>
+String(item.channel_id)===
+channelId
 );
 
-const followers=channelFollowers[channelId]||0;
-const following=followedChannelIds.has(channelId);
+const followers=
+channelFollowers[channelId]||0;
+
+const following=
+followedChannelIds.has(
+channelId
+);
 
 const isOwner=
 currentUser&&
-String(channel.owner_id)===String(currentUser.id);
+String(channel.owner_id)===
+String(currentUser.id);
 
-const name=channel.name||"قناة KAPO ONE";
+const name=
+channel.name||
+"قناة KAPO ONE";
 
 const first=
-name.trim().charAt(0).toUpperCase()||"📺";
+name.trim().charAt(0).toUpperCase()||
+"📺";
 
 const avatar=
 channel.avatar_url
@@ -4442,13 +6739,23 @@ channel.avatar_url
 <img
 src="${escapeAttribute(channel.avatar_url)}"
 alt="${escapeAttribute(name)}"
-onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+onerror="
+this.style.display='none';
+this.nextElementSibling.style.display='flex';
+">
 
-<div style="display:none;width:100%;height:100%;align-items:center;justify-content:center">
+<div
+style="
+display:none;
+width:100%;
+height:100%;
+align-items:center;
+justify-content:center">
 ${first}
 </div>
 `
-:first;
+:
+first;
 
 const cover=
 channel.cover_url
@@ -4457,41 +6764,77 @@ channel.cover_url
 <img
 src="${escapeAttribute(channel.cover_url)}"
 alt=""
-onerror="this.style.display='none'">
+onerror="
+this.style.display='none'
+">
 `
-:"";
+:
+"";
 
 const verified=
 channel.verified
 ?
 '<span class="verified">✓</span>'
-:"";
+:
+"";
 
 let contentBody="";
 
 if(currentChannelTab==="home"){
 
-contentBody=renderChannelHome(channel,content);
+contentBody=
+renderChannelHome(
+channel,
+content
+);
 
-}else if(currentChannelTab==="posts"){
+}else if(
+currentChannelTab==="posts"
+){
 
-contentBody=renderChannelContentByType(content,"all");
+contentBody=
+renderChannelContentByType(
+content,
+"all"
+);
 
-}else if(currentChannelTab==="projects"){
+}else if(
+currentChannelTab==="projects"
+){
 
-contentBody=renderChannelContentByType(content,"project");
+contentBody=
+renderChannelContentByType(
+content,
+"project"
+);
 
-}else if(currentChannelTab==="ideas"){
+}else if(
+currentChannelTab==="ideas"
+){
 
-contentBody=renderChannelContentByType(content,"idea");
+contentBody=
+renderChannelContentByType(
+content,
+"idea"
+);
 
-}else if(currentChannelTab==="images"){
+}else if(
+currentChannelTab==="images"
+){
 
-contentBody=renderChannelImages(content);
+contentBody=
+renderChannelImages(
+content
+);
 
-}else if(currentChannelTab==="about"){
+}else if(
+currentChannelTab==="about"
+){
 
-contentBody=renderChannelAbout(channel);
+contentBody=
+renderChannelAbout(
+channel
+);
 
 }
 
@@ -4520,7 +6863,10 @@ ${verified}
 </div>
 
 <div class="channel-page-username">
-@${escapeHtml(channel.username||"channel")}
+@${escapeHtml(
+channel.username||
+"channel"
+)}
 </div>
 
 </div>
@@ -4531,7 +6877,11 @@ ${
 isOwner
 ?
 `
-<div style="color:#64748b;font-size:12px;margin-bottom:8px;text-align:center">
+<div style="
+color:#64748b;
+font-size:12px;
+margin-bottom:8px;
+text-align:center">
 قناتك
 </div>
 `
@@ -4540,8 +6890,16 @@ isOwner
 <button
 type="button"
 class="primary-btn follow-btn ${following?"following":""}"
-onclick="toggleFollowChannel('${escapeAttribute(channel.id)}')">
-${following?"✓ متابَع":"＋ متابعة"}
+onclick="
+toggleFollowChannel('${escapeAttribute(channel.id)}')
+">
+${
+following
+?
+"✓ متابَع"
+:
+"＋ متابعة"
+}
 </button>
 `
 }
@@ -4551,7 +6909,10 @@ ${following?"✓ متابَع":"＋ متابعة"}
 </div>
 
 <div class="channel-page-description">
-${escapeHtml(channel.description||"لا يوجد وصف للقناة.")}
+${escapeHtml(
+channel.description||
+"لا يوجد وصف للقناة."
+)}
 </div>
 
 <div class="channel-page-stats">
@@ -4567,12 +6928,20 @@ ${escapeHtml(channel.description||"لا يوجد وصف للقناة.")}
 </div>
 
 <div class="channel-page-stat">
-<strong>${content.filter(x=>x.content_type==="project").length}</strong>
+<strong>${
+content.filter(
+x=>x.content_type==="project"
+).length
+}</strong>
 <span>مشروع</span>
 </div>
 
 <div class="channel-page-stat">
-<strong>${content.filter(x=>x.content_type==="idea").length}</strong>
+<strong>${
+content.filter(
+x=>x.content_type==="idea"
+).length
+}</strong>
 <span>فكرة</span>
 </div>
 
@@ -4637,16 +7006,26 @@ ${contentBody}
 }
 
 
-function renderChannelHome(channel,content){
+function renderChannelHome(
+channel,
+content
+){
 
 if(!content.length){
 
 return `
 <div class="empty-state">
 
-<div style="font-size:45px">📺</div>
+<div style="
+font-size:45px">
+📺
+</div>
 
-<div style="font-size:18px;font-weight:900;color:#fff;margin:10px 0">
+<div style="
+font-size:18px;
+font-weight:900;
+color:#fff;
+margin:10px 0">
 القناة جاهزة
 </div>
 
@@ -4659,16 +7038,25 @@ return `
 
 }
 
-const latest=content.slice(0,6);
+const latest=
+content.slice(0,6);
 
 return `
 
-<div style="font-size:20px;font-weight:900;margin-bottom:15px">
+<div style="
+font-size:20px;
+font-weight:900;
+margin-bottom:15px">
 🔥 أحدث محتوى
 </div>
 
 <div class="content-grid">
-${latest.map(item=>channelContentCard(item)).join("")}
+
+${latest.map(
+item=>
+channelContentCard(item)
+).join("")}
+
 </div>
 
 `;
@@ -4676,12 +7064,21 @@ ${latest.map(item=>channelContentCard(item)).join("")}
 }
 
 
-function renderChannelContentByType(content,type){
+function renderChannelContentByType(
+content,
+type
+){
 
 let items=content;
 
 if(type!=="all"){
-items=content.filter(item=>item.content_type===type);
+
+items=
+content.filter(
+item=>
+item.content_type===type
+);
+
 }
 
 if(!items.length){
@@ -4696,16 +7093,26 @@ return `
 
 return `
 <div class="content-grid">
-${items.map(item=>channelContentCard(item)).join("")}
+
+${items.map(
+item=>
+channelContentCard(item)
+).join("")}
+
 </div>
 `;
 
 }
 
 
-function renderChannelImages(content){
+function renderChannelImages(
+content
+){
 
-const items=content.filter(item=>item.image_url);
+const items=
+content.filter(
+item=>item.image_url
+);
 
 if(!items.length){
 
@@ -4719,42 +7126,62 @@ return `
 
 return `
 <div class="content-grid">
-${items.map(item=>channelContentCard(item)).join("")}
+
+${items.map(
+item=>
+channelContentCard(item)
+).join("")}
+
 </div>
 `;
 
 }
 
 
-function renderChannelAbout(channel){
+function renderChannelAbout(
+channel
+){
 
 const created=
 channel.created_at
 ?
-new Date(channel.created_at).toLocaleDateString("ar-SA")
-:"-";
+new Date(
+channel.created_at
+).toLocaleDateString("ar-SA")
+:
+"-";
 
 return `
 
 <div style="max-width:750px">
 
-<div style="font-size:22px;font-weight:900;margin-bottom:15px">
+<div style="
+font-size:22px;
+font-weight:900;
+margin-bottom:15px">
 📖 حول القناة
 </div>
 
 <div class="detail-row">
 <strong>اسم القناة:</strong>
-${escapeHtml(channel.name||"-")}
+${escapeHtml(
+channel.name||"-"
+)}
 </div>
 
 <div class="detail-row">
 <strong>اسم المستخدم:</strong>
-@${escapeHtml(channel.username||"-")}
+@${escapeHtml(
+channel.username||"-"
+)}
 </div>
 
 <div class="detail-row">
 <strong>الوصف:</strong>
-${escapeHtml(channel.description||"لا يوجد وصف.")}
+${escapeHtml(
+channel.description||
+"لا يوجد وصف."
+)}
 </div>
 
 <div class="detail-row">
@@ -4762,7 +7189,9 @@ ${escapeHtml(channel.description||"لا يوجد وصف.")}
 ${escapeHtml(created)}
 </div>
 
-<div style="margin-top:20px;color:#94a3b8">
+<div style="
+margin-top:20px;
+color:#94a3b8">
 🌍 قناة ضمن منصة KAPO ONE
 </div>
 
@@ -4776,17 +7205,27 @@ ${escapeHtml(created)}
 function channelContentCard(item){
 
 const icon={
+
 project:"🏗️",
 property:"🏢",
 idea:"💡",
 design:"📐",
 question:"❓"
-}[item.content_type]||"📋";
 
-const id=String(item.id);
-const isLiked=likedContentIds.has(id);
-const likes=likeCounts[id]||0;
-const comments=commentCounts[id]||0;
+}[item.content_type]||
+"📋";
+
+const id=
+String(item.id);
+
+const isLiked=
+likedContentIds.has(id);
+
+const likes=
+likeCounts[id]||0;
+
+const comments=
+commentCounts[id]||0;
 
 const imageHtml=
 item.image_url
@@ -4796,32 +7235,47 @@ item.image_url
 class="content-image"
 src="${escapeAttribute(item.image_url)}"
 alt="${escapeAttribute(item.title||"")}"
-onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+onerror="
+this.style.display='none';
+this.nextElementSibling.style.display='flex';
+">
 
-<div class="content-placeholder" style="display:none">
+<div
+class="content-placeholder"
+style="display:none">
 ${icon}
 </div>
 `
 :
 `
-<div class="content-placeholder">${icon}</div>
+<div class="content-placeholder">
+${icon}
+</div>
 `;
 
 return `
 <div
 class="content-card"
-onclick="openChannelContentDetail('${escapeAttribute(id)}')">
+onclick="
+openChannelContentDetail('${escapeAttribute(id)}')
+">
 
 ${imageHtml}
 
 <div class="content-info">
 
 <div class="content-title">
-${escapeHtml(item.title||"بدون عنوان")}
+${escapeHtml(
+item.title||
+"بدون عنوان"
+)}
 </div>
 
 <div class="content-description">
-${escapeHtml(item.description||"لا يوجد وصف.")}
+${escapeHtml(
+item.description||
+"لا يوجد وصف."
+)}
 </div>
 
 <div class="card-bottom">
@@ -4829,35 +7283,51 @@ ${escapeHtml(item.description||"لا يوجد وصف.")}
 <button
 type="button"
 class="like-btn ${isLiked?"liked":""}"
-onclick="event.stopPropagation();toggleLike('${escapeAttribute(id)}')">
+onclick="
+event.stopPropagation();
+toggleLike('${escapeAttribute(id)}')
+">
 
 ${isLiked?"❤️":"🤍"}
-<span>${likes}</span>
+
+<span>
+${likes}
+</span>
 
 </button>
 
 <button
 type="button"
 class="comment-btn"
-onclick="event.stopPropagation();openChannelContentDetail('${escapeAttribute(id)}')">
+onclick="
+event.stopPropagation();
+openChannelContentDetail('${escapeAttribute(id)}')
+">
 
 💬
-<span>${comments}</span>
+
+<span>
+${comments}
+</span>
 
 </button>
 
 </div>
 
 </div>
+
 </div>
 `;
 
 }
 
 
-function openChannelContentDetail(id){
+function openChannelContentDetail(
+id
+){
 
 closeChannelDetail();
+
 openDetailModal(id);
 
 }
@@ -4865,37 +7335,52 @@ openDetailModal(id);
 
 /* ================= CHANNEL TABS ================= */
 
-async function switchChannelTab(tab){
+async function switchChannelTab(
+tab
+){
 
 if(!currentChannel)return;
 
 currentChannelTab=tab;
 
-await renderChannelDetail(currentChannel);
+await renderChannelDetail(
+currentChannel
+);
 
 }
 
 
 /* ================= FOLLOW ================= */
 
-async function toggleFollowChannel(channelId){
+async function toggleFollowChannel(
+channelId
+){
 
 if(!currentUser){
 
-showToast("🔔 سجل الدخول لمتابعة القنوات.");
+showToast(
+"🔔 سجل الدخول لمتابعة القنوات."
+);
+
 return;
 
 }
 
 if(!initSupabase()){
 
-showToast("تعذر الاتصال.");
+showToast(
+"تعذر الاتصال."
+);
+
 return;
 
 }
 
-const id=String(channelId);
-const already=followedChannelIds.has(id);
+const id=
+String(channelId);
+
+const already=
+followedChannelIds.has(id);
 
 try{
 
@@ -4905,8 +7390,14 @@ const result=
 await supabaseClient
 .from("channel_followers")
 .delete()
-.eq("channel_id",channelId)
-.eq("user_id",currentUser.id);
+.eq(
+"channel_id",
+channelId
+)
+.eq(
+"user_id",
+currentUser.id
+);
 
 if(result.error){
 
@@ -4927,7 +7418,9 @@ Math.max(
 (channelFollowers[id]||0)-1
 );
 
-showToast("تم إلغاء متابعة القناة.");
+showToast(
+"تم إلغاء متابعة القناة."
+);
 
 }else{
 
@@ -4935,15 +7428,19 @@ const result=
 await supabaseClient
 .from("channel_followers")
 .insert({
+
 channel_id:channelId,
 user_id:currentUser.id
+
 });
 
 if(result.error){
 
 if(result.error.code==="23505"){
 
-showToast("أنت تتابع هذه القناة بالفعل.");
+showToast(
+"أنت تتابع هذه القناة بالفعل."
+);
 
 }else{
 
@@ -4965,7 +7462,8 @@ channelFollowers[id]=
 
 const followedChannel=
 allChannels.find(
-channel=>String(channel.id)===id
+channel=>
+String(channel.id)===id
 );
 
 if(
@@ -4977,18 +7475,28 @@ String(currentUser.id)
 
 await createNotification({
 
-recipientId:followedChannel.owner_id,
-actorId:currentUser.id,
+recipientId:
+followedChannel.owner_id,
+
+actorId:
+currentUser.id,
+
 type:"follow",
+
 message:
 "📺 بدأ أحد الأعضاء بمتابعة قناتك: "+
-(followedChannel.name||"قناتك")
+(
+followedChannel.name||
+"قناتك"
+)
 
 });
 
 }
 
-showToast("🔔 تمت متابعة القناة.");
+showToast(
+"🔔 تمت متابعة القناة."
+);
 
 }
 
@@ -4997,7 +7505,9 @@ currentChannel&&
 String(currentChannel.id)===id
 ){
 
-await renderChannelDetail(currentChannel);
+await renderChannelDetail(
+currentChannel
+);
 
 }
 
@@ -5021,7 +7531,10 @@ showToast(
 
 function closeChannelDetail(){
 
-document.getElementById("channelDetailModal")
+document
+.getElementById(
+"channelDetailModal"
+)
 .classList.remove("active");
 
 currentChannel=null;
@@ -5056,7 +7569,10 @@ async function restoreSession(){
 
 if(!initSupabase()){
 
-setTimeout(restoreSession,500);
+setTimeout(
+restoreSession,
+500
+);
 
 return;
 
@@ -5070,20 +7586,27 @@ await supabaseClient.auth.getSession();
 if(result.error){
 
 console.error(result.error);
+
 showAuthPage();
+
 return;
 
 }
 
-const session=result.data?.session;
+const session=
+result.data?.session;
 
-if(session&&session.user){
+if(
+session&&
+session.user
+){
 
 currentUser=session.user;
 
 await loadUserProfile();
 
 showApp();
+
 updateUI();
 
 await loadContent();
@@ -5114,17 +7637,27 @@ function setupAuthListener(){
 if(!initSupabase())return;
 
 supabaseClient.auth.onAuthStateChange(
-async(event,session)=>{
+async(
+event,
+session
+)=>{
 
-console.log("Auth event:",event);
+console.log(
+"Auth event:",
+event
+);
 
-if(event==="SIGNED_IN"&&session?.user){
+if(
+event==="SIGNED_IN"&&
+session?.user
+){
 
 currentUser=session.user;
 
 await loadUserProfile();
 
 showApp();
+
 updateUI();
 
 await loadNotifications();
