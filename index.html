@@ -639,7 +639,6 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 <button type="button" class="nav-btn" data-section="addcontent" onclick="openAddModal()">➕ إضافة</button>
 <button type="button" class="nav-btn" data-section="profile" onclick="showSection('profile')">حسابي</button>
 
-<!-- OWNER -->
 <button type="button" id="ownerNavBtn" class="nav-btn owner-nav-btn hidden" data-section="owner" onclick="showSection('owner');loadOwnerDashboard()">
 👑 حساب المالك
 </button>
@@ -1230,10 +1229,6 @@ app.style.display="none";
 
 /* ================= OWNER BUTTON ================= */
 
-/*
-يظهر زر المالك للحساب المسجل.
-لو كان جدول profiles يحتوي role أو is_owner فسيتم استخدامه أيضًا.
-*/
 function updateOwnerButton(){
 
 const btn=document.getElementById("ownerNavBtn");
@@ -2183,6 +2178,116 @@ ${escapeHtml(e.message)}
 </div>`;
 
 }
+
+}
+
+/* ================= RENDER CONTENT ================= */
+
+function renderContent(){
+
+const grid=document.getElementById("contentGrid");
+
+if(!grid)return;
+
+if(!filteredContent.length){
+
+grid.innerHTML=`
+<div class="empty-state">
+<div style="font-size:45px;margin-bottom:10px">📭</div>
+<div style="font-size:18px;font-weight:900;color:#fff;margin-bottom:8px">
+لا يوجد محتوى
+</div>
+<div>لم يتم العثور على محتوى يطابق البحث أو الفلتر الحالي.</div>
+</div>`;
+
+return;
+
+}
+
+grid.innerHTML=filteredContent.map(item=>{
+
+const icon={
+project:"🏗️",
+property:"🏢",
+idea:"💡",
+design:"📐",
+question:"❓"
+}[item.content_type]||"📋";
+
+const id=String(item.id);
+const isLiked=likedContentIds.has(id);
+const likes=likeCounts[id]||0;
+const comments=commentCounts[id]||0;
+
+const imageHtml=item.image_url
+?
+`<img class="content-image"
+src="${escapeAttribute(item.image_url)}"
+alt="${escapeAttribute(item.title||"")}"
+onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+<div class="content-placeholder" style="display:none">${icon}</div>`
+:
+`<div class="content-placeholder">${icon}</div>`;
+
+const typeLabels={
+project:"🏗️ مشروع",
+property:"🏢 عقار",
+idea:"💡 فكرة",
+design:"📐 تصميم",
+question:"❓ سؤال"
+};
+
+const typeLabel=typeLabels[item.content_type]||"📋 محتوى";
+
+return `
+<div class="content-card"
+onclick="openDetailModal('${escapeAttribute(id)}')">
+
+${imageHtml}
+
+<div class="content-info">
+
+<div class="content-title">
+${escapeHtml(item.title||"بدون عنوان")}
+</div>
+
+<div class="content-meta">
+${escapeHtml(typeLabel)}
+${getChannelName(item.channel_id)?' • 📺 '+escapeHtml(getChannelName(item.channel_id)):""}
+</div>
+
+<div class="content-description">
+${escapeHtml(item.description||"لا يوجد وصف.")}
+</div>
+
+<div class="content-badge badge-${escapeAttribute(item.content_type||"project")}">
+${escapeHtml(typeLabel)}
+</div>
+
+${ownerHtml(item)}
+
+<div class="card-bottom">
+
+<button type="button"
+class="like-btn ${isLiked?"liked":""}"
+onclick="event.stopPropagation();toggleLike('${escapeAttribute(id)}')">
+${isLiked?"❤️":"🤍"}
+<span>${likes}</span>
+</button>
+
+<button type="button"
+class="comment-btn"
+onclick="event.stopPropagation();openDetailModal('${escapeAttribute(id)}')">
+💬
+<span>${comments}</span>
+</button>
+
+</div>
+
+</div>
+</div>`;
+
+}).join("");
 
 }
 
@@ -4222,6 +4327,8 @@ onclick="openDetailModal('${escapeAttribute(project.id)}')">
 }catch(e){
 
 box.innerHTML='<div class="empty-state">❌ حدث خطأ.</div>';
+
+}
 
 }
 
