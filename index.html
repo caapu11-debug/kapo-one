@@ -166,6 +166,11 @@ border-radius:12px;font-weight:700;transition:.2s;cursor:pointer
 background:rgba(37,99,235,.18);
 border-color:rgba(59,130,246,.3);color:#fff
 }
+.owner-nav-btn{
+background:linear-gradient(135deg,rgba(245,158,11,.16),rgba(234,88,12,.12));
+border-color:rgba(245,158,11,.3)!important;
+color:#fbbf24!important
+}
 
 /* GENERAL */
 .container{max-width:1250px;margin:auto;padding:25px 18px 60px}
@@ -221,7 +226,6 @@ display:flex;align-items:center;gap:6px;transition:.2s
 background:rgba(239,68,68,.12);
 border-color:rgba(239,68,68,.45);color:#f87171
 }
-.like-count{font-size:13px;color:#94a3b8;font-weight:700}
 
 /* OWNER */
 .owner-mini{
@@ -307,47 +311,6 @@ margin-top:18px;padding-top:15px;border-top:1px solid #1e293b;
 display:flex;align-items:center;gap:10px;flex-wrap:wrap
 }
 
-/* OWNER DETAIL */
-.owner-detail{
-display:flex;align-items:center;gap:12px;margin:18px 0;padding:14px;
-border-radius:16px;background:#020617;border:1px solid #1e293b;cursor:pointer
-}
-.owner-detail:hover{border-color:#3b82f6}
-.owner-detail-avatar{
-width:50px;height:50px;border-radius:50%;
-background:linear-gradient(135deg,#2563eb,#7c3aed);
-display:flex;align-items:center;justify-content:center;
-font-weight:900;overflow:hidden;flex-shrink:0
-}
-.owner-detail-avatar img{width:100%;height:100%;object-fit:cover}
-.owner-detail-name{font-size:16px;font-weight:900;color:#fff}
-.owner-detail-label{font-size:12px;color:#64748b}
-
-/* PUBLIC PROFILE */
-.profile-public{
-padding:22px;background:#020617;border:1px solid #1e293b;
-border-radius:18px;margin-bottom:20px
-}
-.profile-public-head{display:flex;align-items:center;gap:15px;margin-bottom:18px}
-.profile-public-avatar{
-width:72px;height:72px;border-radius:20px;
-background:linear-gradient(135deg,#2563eb,#7c3aed);
-display:flex;align-items:center;justify-content:center;
-font-size:25px;font-weight:900;overflow:hidden
-}
-.profile-public-avatar img{width:100%;height:100%;object-fit:cover}
-.profile-public-name{font-size:23px;font-weight:900}
-.profile-public-email{color:#64748b;font-size:13px}
-.public-content-title{font-size:18px;font-weight:900;margin:20px 0 12px}
-.public-content-list{display:grid;grid-template-columns:1fr;gap:10px}
-.public-content-item{
-padding:13px;border:1px solid #1e293b;border-radius:13px;
-background:#0f172a;cursor:pointer
-}
-.public-content-item:hover{border-color:#3b82f6}
-.public-content-item-title{font-weight:900}
-.public-content-item-type{font-size:11px;color:#64748b;margin-top:4px}
-
 /* COMMENTS */
 .comments-box{margin-top:22px;padding-top:18px;border-top:1px solid #1e293b}
 .comments-title{font-size:18px;font-weight:900;margin-bottom:12px}
@@ -356,7 +319,6 @@ background:#0f172a;cursor:pointer
 flex:1;padding:11px 13px;border-radius:12px;
 border:1px solid #334155;background:#020617;color:#fff;outline:none
 }
-.comment-form input:focus{border-color:#3b82f6}
 .comment-item{
 padding:12px;margin-bottom:10px;background:#020617;
 border:1px solid #1e293b;border-radius:14px
@@ -475,11 +437,91 @@ font-size:13px;color:#94a3b8;font-weight:800;display:block;margin-bottom:6px
 width:100%;padding:12px;border-radius:12px;
 border:1px solid #334155;background:#020617;color:#fff
 }
-.channel-empty-create{
-padding:20px;border-radius:16px;background:#020617;
-border:1px dashed #334155;text-align:center;color:#94a3b8
-}
 .channel-link-btn{border:0;background:none;color:#60a5fa;font-weight:800;padding:5px}
+
+/* OWNER DASHBOARD */
+.owner-hero{
+background:
+radial-gradient(circle at 20% 20%,rgba(245,158,11,.2),transparent 35%),
+linear-gradient(135deg,#111827,#0f172a);
+border:1px solid rgba(245,158,11,.22);
+border-radius:25px;padding:28px;margin-bottom:20px
+}
+.owner-hero-title{
+font-size:30px;font-weight:900;color:#fbbf24;margin-bottom:7px
+}
+.owner-hero-subtitle{color:#94a3b8;line-height:1.8}
+.owner-stats{
+display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:22px
+}
+.owner-stat{
+padding:18px;border-radius:18px;background:#020617;
+border:1px solid #1e293b;text-align:center
+}
+.owner-stat-icon{font-size:27px;margin-bottom:6px}
+.owner-stat-number{font-size:25px;font-weight:900;color:#fff}
+.owner-stat-label{font-size:12px;color:#64748b;margin-top:4px}
+.owner-panel{
+background:#0f172a;border:1px solid rgba(148,163,184,.13);
+border-radius:22px;padding:20px;margin-bottom:18px
+}
+.owner-panel-title{
+font-size:19px;font-weight:900;margin-bottom:15px;
+display:flex;align-items:center;justify-content:space-between;gap:10px
+}
+.owner-table-wrap{overflow:auto}
+.owner-table{
+width:100%;border-collapse:collapse;min-width:600px
+}
+.owner-table th,.owner-table td{
+padding:12px 10px;border-bottom:1px solid #1e293b;
+text-align:right;font-size:13px
+}
+.owner-table th{color:#94a3b8;background:#020617}
+.owner-table td{color:#cbd5e1}
+.owner-user{
+display:flex;align-items:center;gap:9px
+}
+.owner-user-avatar{
+width:34px;height:34px;border-radius:50%;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+display:flex;align-items:center;justify-content:center;
+font-weight:900;flex-shrink:0
+}
+.owner-delete{
+border:1px solid rgba(239,68,68,.3);
+background:rgba(239,68,68,.08);
+color:#fca5a5;border-radius:9px;padding:6px 9px
+}
+.owner-refresh{
+border:1px solid #334155;background:#020617;
+color:#fff;border-radius:10px;padding:8px 12px
+}
+
+/* PUBLIC PROFILE */
+.profile-public{
+padding:22px;background:#020617;border:1px solid #1e293b;
+border-radius:18px;margin-bottom:20px
+}
+.profile-public-head{display:flex;align-items:center;gap:15px;margin-bottom:18px}
+.profile-public-avatar{
+width:72px;height:72px;border-radius:20px;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+display:flex;align-items:center;justify-content:center;
+font-size:25px;font-weight:900;overflow:hidden
+}
+.profile-public-avatar img{width:100%;height:100%;object-fit:cover}
+.profile-public-name{font-size:23px;font-weight:900}
+.profile-public-email{color:#64748b;font-size:13px}
+.public-content-title{font-size:18px;font-weight:900;margin:20px 0 12px}
+.public-content-list{display:grid;grid-template-columns:1fr;gap:10px}
+.public-content-item{
+padding:13px;border:1px solid #1e293b;border-radius:13px;
+background:#0f172a;cursor:pointer
+}
+.public-content-item:hover{border-color:#3b82f6}
+.public-content-item-title{font-weight:900}
+.public-content-item-type{font-size:11px;color:#64748b;margin-top:4px}
 
 /* TOAST */
 #toast{
@@ -494,6 +536,7 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 /* RESPONSIVE */
 @media(max-width:900px){
 .content-grid,.channel-grid{grid-template-columns:repeat(2,1fr)}
+.owner-stats{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:650px){
 .header-inner{padding:10px 12px}
@@ -508,6 +551,7 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 .channel-page-cover{height:160px}
 .channel-page-info{padding:0 15px 20px}
 .channel-page-name{font-size:23px}
+.owner-stats{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
@@ -594,6 +638,11 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 <button type="button" class="nav-btn" data-section="channels" onclick="showSection('channels')">📺 القنوات</button>
 <button type="button" class="nav-btn" data-section="addcontent" onclick="openAddModal()">➕ إضافة</button>
 <button type="button" class="nav-btn" data-section="profile" onclick="showSection('profile')">حسابي</button>
+
+<!-- OWNER -->
+<button type="button" id="ownerNavBtn" class="nav-btn owner-nav-btn hidden" data-section="owner" onclick="showSection('owner');loadOwnerDashboard()">
+👑 حساب المالك
+</button>
 
 </nav>
 </header>
@@ -730,12 +779,105 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 </div>
 </section>
 
+<!-- OWNER DASHBOARD -->
+<section id="owner" class="section">
+
+<div class="owner-hero">
+
+<div class="owner-hero-title">👑 حساب المالك</div>
+
+<div class="owner-hero-subtitle">
+لوحة إدارة KAPO ONE — متابعة المستخدمين والمحتوى والقنوات والتفاعل داخل المنصة.
+</div>
+
+<div class="owner-stats">
+
+<div class="owner-stat">
+<div class="owner-stat-icon">👥</div>
+<div id="ownerUsersCount" class="owner-stat-number">0</div>
+<div class="owner-stat-label">المستخدمون</div>
+</div>
+
+<div class="owner-stat">
+<div class="owner-stat-icon">📋</div>
+<div id="ownerProjectsCount" class="owner-stat-number">0</div>
+<div class="owner-stat-label">المحتوى</div>
+</div>
+
+<div class="owner-stat">
+<div class="owner-stat-icon">📺</div>
+<div id="ownerChannelsCount" class="owner-stat-number">0</div>
+<div class="owner-stat-label">القنوات</div>
+</div>
+
+<div class="owner-stat">
+<div class="owner-stat-icon">❤️</div>
+<div id="ownerLikesCount" class="owner-stat-number">0</div>
+<div class="owner-stat-label">الإعجابات</div>
+</div>
+
+</div>
+</div>
+
+<div class="owner-panel">
+
+<div class="owner-panel-title">
+<span>👥 المستخدمون</span>
+<button type="button" class="owner-refresh" onclick="loadOwnerUsers()">🔄 تحديث</button>
+</div>
+
+<div id="ownerUsersTable" class="owner-table-wrap">
+<div class="empty-state">⏳ جاري تحميل المستخدمين...</div>
+</div>
+
+</div>
+
+<div class="owner-panel">
+
+<div class="owner-panel-title">
+<span>📋 أحدث المحتوى</span>
+<button type="button" class="owner-refresh" onclick="loadOwnerProjects()">🔄 تحديث</button>
+</div>
+
+<div id="ownerProjectsTable" class="owner-table-wrap">
+<div class="empty-state">⏳ جاري تحميل المحتوى...</div>
+</div>
+
+</div>
+
+<div class="owner-panel">
+
+<div class="owner-panel-title">
+<span>📺 القنوات</span>
+<button type="button" class="owner-refresh" onclick="loadOwnerChannels()">🔄 تحديث</button>
+</div>
+
+<div id="ownerChannelsTable" class="owner-table-wrap">
+<div class="empty-state">⏳ جاري تحميل القنوات...</div>
+</div>
+
+</div>
+
+<div class="owner-panel">
+
+<div class="owner-panel-title">
+<span>💬 أحدث التعليقات</span>
+<button type="button" class="owner-refresh" onclick="loadOwnerComments()">🔄 تحديث</button>
+</div>
+
+<div id="ownerCommentsTable" class="owner-table-wrap">
+<div class="empty-state">⏳ جاري تحميل التعليقات...</div>
+</div>
+
+</div>
+
+</section>
+
 </main>
 </div>
 
 <!-- ADD MODAL -->
 <div id="addModal" class="modal" onclick="closeAddModal()">
-
 <div class="modal-box" onclick="event.stopPropagation()">
 
 <div class="modal-header">
@@ -841,7 +983,6 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 
 <!-- CHANNEL CREATE MODAL -->
 <div id="channelModal" class="modal" onclick="closeChannelModal()">
-
 <div class="modal-box" onclick="event.stopPropagation()">
 
 <div class="modal-header">
@@ -861,9 +1002,6 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 <div class="full-width">
 <label>اسم المستخدم @username</label>
 <input id="channelUsername" placeholder="مثال: kapo_architecture">
-<div style="font-size:11px;color:#64748b;margin-top:5px">
-استخدم أحرفًا إنجليزية وأرقامًا و _ فقط.
-</div>
 </div>
 
 <div class="full-width">
@@ -896,7 +1034,6 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 
 <!-- DETAIL MODAL -->
 <div id="detailModal" class="modal" onclick="closeDetailModal()">
-
 <div class="modal-box" onclick="event.stopPropagation()">
 
 <div class="modal-header">
@@ -915,7 +1052,6 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 
 <!-- PUBLIC PROFILE -->
 <div id="publicProfileModal" class="modal" onclick="closePublicProfile()">
-
 <div class="modal-box" onclick="event.stopPropagation()">
 
 <div class="modal-header">
@@ -930,7 +1066,6 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 
 <!-- CHANNEL DETAIL -->
 <div id="channelDetailModal" class="modal" onclick="closeChannelDetail()">
-
 <div class="modal-box" style="max-width:900px" onclick="event.stopPropagation()">
 
 <div class="modal-header">
@@ -945,7 +1080,6 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 
 <!-- NOTIFICATIONS -->
 <div id="notificationsModal" class="modal" onclick="closeNotifications()">
-
 <div class="modal-box" style="max-width:650px" onclick="event.stopPropagation()">
 
 <div class="modal-header">
@@ -988,49 +1122,38 @@ let currentProfile=null;
 
 let allContent=[];
 let filteredContent=[];
-
 let allLikes=[];
 let likedContentIds=new Set();
 let likeCounts={};
-
 let allComments=[];
 let commentCounts={};
-
 let allProfiles={};
-
 let allChannels=[];
 let channelFollowers={};
 let followedChannelIds=new Set();
-
 let currentChannel=null;
 let currentChannelTab="home";
-
 let allNotifications=[];
 let unreadNotificationCount=0;
-
 let toastTimer=null;
 
 /* ================= DOM ================= */
 
 const authPage=document.getElementById("authPage");
 const app=document.getElementById("app");
-
 const loginForm=document.getElementById("loginForm");
 const registerForm=document.getElementById("registerForm");
 const resetForm=document.getElementById("resetForm");
 
 const loginEmail=document.getElementById("loginEmail");
 const loginPassword=document.getElementById("loginPassword");
-
 const registerName=document.getElementById("registerName");
 const registerEmail=document.getElementById("registerEmail");
 const registerPassword=document.getElementById("registerPassword");
-
 const resetEmail=document.getElementById("resetEmail");
 
 const miniUserName=document.getElementById("miniUserName");
 const miniUserAvatar=document.getElementById("miniUserAvatar");
-
 const profileName=document.getElementById("profileName");
 const profileEmail=document.getElementById("profileEmail");
 const profileAvatar=document.getElementById("profileAvatar");
@@ -1039,7 +1162,7 @@ const contentType=document.getElementById("contentType");
 const propertyFields=document.getElementById("propertyFields");
 const contentChannel=document.getElementById("contentChannel");
 
-/* ================= SUPABASE INIT ================= */
+/* ================= SUPABASE ================= */
 
 function initSupabase(){
 
@@ -1083,14 +1206,12 @@ clearAuthMessage();
 
 function showAuthMessage(msg){
 const box=document.getElementById("authMessage");
-if(!box)return;
 box.textContent=msg;
 box.classList.remove("hidden");
 }
 
 function clearAuthMessage(){
 const box=document.getElementById("authMessage");
-if(!box)return;
 box.classList.add("hidden");
 box.textContent="";
 }
@@ -1105,6 +1226,30 @@ function showAuthPage(){
 authPage.style.display="flex";
 app.classList.add("hidden");
 app.style.display="none";
+}
+
+/* ================= OWNER BUTTON ================= */
+
+/*
+يظهر زر المالك للحساب المسجل.
+لو كان جدول profiles يحتوي role أو is_owner فسيتم استخدامه أيضًا.
+*/
+function updateOwnerButton(){
+
+const btn=document.getElementById("ownerNavBtn");
+
+if(!btn)return;
+
+if(currentUser){
+
+btn.classList.remove("hidden");
+
+}else{
+
+btn.classList.add("hidden");
+
+}
+
 }
 
 /* ================= LOGIN ================= */
@@ -1145,7 +1290,7 @@ showAuthMessage(result.error.message||"بيانات الدخول غير صحيح
 return;
 }
 
-if(!result.data||!result.data.user){
+if(!result.data?.user){
 showAuthMessage("تعذر الحصول على بيانات الحساب.");
 return;
 }
@@ -1156,6 +1301,7 @@ await loadUserProfile();
 
 showApp();
 updateUI();
+updateOwnerButton();
 
 await loadContent();
 await loadChannels();
@@ -1166,7 +1312,6 @@ showToast("✅ تم تسجيل الدخول.");
 }catch(e){
 
 console.error(e);
-
 showAuthMessage(e.message||"حدث خطأ أثناء تسجيل الدخول.");
 
 }finally{
@@ -1218,7 +1363,7 @@ showAuthMessage(result.error.message);
 return;
 }
 
-if(result.data&&result.data.user){
+if(result.data?.user){
 
 await createProfile(result.data.user,name);
 
@@ -1230,6 +1375,7 @@ await loadUserProfile();
 
 showApp();
 updateUI();
+updateOwnerButton();
 
 await loadContent();
 await loadChannels();
@@ -1248,7 +1394,6 @@ showAuthMessage("✅ تم إنشاء الحساب. تحقق من بريدك لت
 }catch(e){
 
 console.error(e);
-
 showAuthMessage(e.message||"حدث خطأ أثناء إنشاء الحساب.");
 
 }
@@ -1271,9 +1416,7 @@ name:name||"مستخدم",
 email:user.email||""
 });
 
-if(result.error){
-console.error("Create profile:",result.error);
-}
+if(result.error)console.error("Create profile:",result.error);
 
 }catch(e){
 console.error(e);
@@ -1285,12 +1428,9 @@ async function loadUserProfile(){
 
 if(!currentUser){
 
-currentProfile={
-name:"زائر",
-email:""
-};
-
+currentProfile={name:"زائر",email:""};
 return;
+
 }
 
 try{
@@ -1300,10 +1440,6 @@ const result=await supabaseClient
 .select("*")
 .eq("id",currentUser.id)
 .maybeSingle();
-
-if(result.error){
-console.warn("Profile:",result.error.message);
-}
 
 if(result.data){
 
@@ -1355,6 +1491,8 @@ el.innerHTML="";
 el.textContent=first;
 
 });
+
+updateOwnerButton();
 
 }
 
@@ -1414,6 +1552,7 @@ email:""
 
 showApp();
 updateUI();
+updateOwnerButton();
 
 loadContent();
 loadChannels();
@@ -1421,7 +1560,6 @@ loadChannels();
 updateNotificationBadge(0);
 
 showToast("👋 مرحباً بك كزائر.");
-
 showSection("home");
 
 }
@@ -1450,6 +1588,7 @@ allNotifications=[];
 unreadNotificationCount=0;
 
 updateNotificationBadge(0);
+updateOwnerButton();
 
 closeNotifications();
 
@@ -1486,11 +1625,9 @@ btn.classList.add("active");
 
 if(id==="content")loadContent();
 if(id==="channels")loadChannels();
+if(id==="owner")loadOwnerDashboard();
 
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+window.scrollTo({top:0,behavior:"smooth"});
 
 }
 
@@ -1528,7 +1665,10 @@ return "🔔";
 function getNotificationActorName(notification){
 
 if(notification.actor_id&&allProfiles[String(notification.actor_id)]){
-return allProfiles[String(notification.actor_id)].name||"عضو KAPO ONE";
+
+return allProfiles[String(notification.actor_id)].name||
+"عضو KAPO ONE";
+
 }
 
 if(currentUser&&String(notification.actor_id)===String(currentUser.id)){
@@ -1565,7 +1705,6 @@ async function loadNotifications(){
 
 allNotifications=[];
 unreadNotificationCount=0;
-
 updateNotificationBadge(0);
 
 if(!currentUser||!initSupabase())return;
@@ -1579,10 +1718,7 @@ const result=await supabaseClient
 .order("created_at",{ascending:false})
 .limit(50);
 
-if(result.error){
-console.warn("Notifications:",result.error.message);
-return;
-}
+if(result.error)return;
 
 allNotifications=result.data||[];
 
@@ -1593,7 +1729,7 @@ updateNotificationBadge(unreadNotificationCount);
 
 }catch(e){
 
-console.warn("Notifications exception:",e);
+console.warn(e);
 
 }
 
@@ -1607,12 +1743,9 @@ if(!list)return;
 
 if(!currentUser){
 
-list.innerHTML=`
-<div class="notification-empty">
-🔐 سجل الدخول حتى ترى إشعاراتك.
-</div>`;
-
+list.innerHTML=`<div class="notification-empty">🔐 سجل الدخول حتى ترى إشعاراتك.</div>`;
 return;
+
 }
 
 if(!allNotifications.length){
@@ -1624,12 +1757,12 @@ list.innerHTML=`
 </div>`;
 
 return;
+
 }
 
 list.innerHTML=allNotifications.map(notification=>{
 
 const unread=!notification.is_read;
-
 const date=notification.created_at
 ?new Date(notification.created_at).toLocaleString("ar-SA")
 :"";
@@ -1641,9 +1774,7 @@ return `
 <div class="notification-item ${unread?"unread":""}"
 onclick="openNotification('${escapeAttribute(notification.id)}')">
 
-<div class="notification-icon">
-${notificationIcon(notification.type)}
-</div>
+<div class="notification-icon">${notificationIcon(notification.type)}</div>
 
 <div class="notification-text">
 
@@ -1676,9 +1807,7 @@ showToast("🔔 سجل الدخول أولاً لرؤية الإشعارات.");
 return;
 }
 
-const modal=document.getElementById("notificationsModal");
-
-modal.classList.add("active");
+document.getElementById("notificationsModal").classList.add("active");
 
 await loadNotifications();
 renderNotifications();
@@ -1703,18 +1832,13 @@ n=>String(n.id)===String(id)
 
 if(!notification||notification.is_read)return;
 
-try{
-
 const result=await supabaseClient
 .from("notifications")
 .update({is_read:true})
 .eq("id",id)
 .eq("user_id",currentUser.id);
 
-if(result.error){
-console.warn("Read notification:",result.error);
-return;
-}
+if(result.error)return;
 
 notification.is_read=true;
 
@@ -1725,17 +1849,11 @@ unreadNotificationCount-1
 
 updateNotificationBadge(unreadNotificationCount);
 
-}catch(e){
-console.warn(e);
-}
-
 }
 
 async function markAllNotificationsRead(){
 
 if(!currentUser||!initSupabase())return;
-
-try{
 
 const result=await supabaseClient
 .from("notifications")
@@ -1748,22 +1866,13 @@ showToast("تعذر تحديث الإشعارات.");
 return;
 }
 
-allNotifications.forEach(n=>{
-n.is_read=true;
-});
+allNotifications.forEach(n=>n.is_read=true);
 
 unreadNotificationCount=0;
 updateNotificationBadge(0);
 renderNotifications();
 
 showToast("✅ تم تحديد جميع الإشعارات كمقروءة.");
-
-}catch(e){
-
-console.error(e);
-showToast("حدث خطأ.");
-
-}
 
 }
 
@@ -1794,20 +1903,6 @@ return;
 
 }
 
-if(notification.comment_id){
-
-closeNotifications();
-
-const comment=allComments.find(
-c=>String(c.id)===String(notification.comment_id)
-);
-
-if(comment){
-openDetailModal(comment.project_id);
-}
-
-}
-
 }
 
 async function createNotification({
@@ -1825,15 +1920,15 @@ if(
 !recipientId||
 !actorId||
 String(recipientId)===String(actorId)
-){
-return;
-}
+)return;
 
 if(!initSupabase())return;
 
 try{
 
-const data={
+await supabaseClient
+.from("notifications")
+.insert({
 user_id:recipientId,
 actor_id:actorId,
 type:type,
@@ -1843,18 +1938,10 @@ post_id:postId,
 comment_id:commentId,
 is_read:false,
 created_at:new Date().toISOString()
-};
-
-const result=await supabaseClient
-.from("notifications")
-.insert(data);
-
-if(result.error){
-console.warn("Create notification:",result.error);
-}
+});
 
 }catch(e){
-console.warn("Notification exception:",e);
+console.warn(e);
 }
 
 }
@@ -1872,7 +1959,6 @@ document.getElementById("addModal").classList.add("active");
 document.getElementById("addMessage").classList.add("hidden");
 
 toggleContentFields();
-
 await loadMyChannelsIntoSelect();
 
 }
@@ -1883,11 +1969,9 @@ document.getElementById("addModal").classList.remove("active");
 
 function toggleContentFields(){
 
-const type=contentType.value;
-
 propertyFields.classList.toggle(
 "hidden",
-type!=="property"
+contentType.value!=="property"
 );
 
 }
@@ -1910,15 +1994,10 @@ channel=>String(channel.owner_id)===String(currentUser.id)
 
 if(!myChannels.length){
 
-select.innerHTML='<option value="">بدون قناة</option>';
-
 const help=document.getElementById("channelSelectHelp");
 
 if(help){
-
-help.innerHTML=
-'ليس لديك قناة بعد. <button type="button" class="channel-link-btn" onclick="closeAddModal();showSection(\'channels\')">أنشئ قناة أولاً</button>';
-
+help.innerHTML='ليس لديك قناة بعد. <button type="button" class="channel-link-btn" onclick="closeAddModal();showSection(\'channels\')">أنشئ قناة أولاً</button>';
 }
 
 return;
@@ -1930,8 +2009,7 @@ myChannels.forEach(channel=>{
 const option=document.createElement("option");
 
 option.value=channel.id;
-option.textContent=
-"📺 "+channel.name+" (@"+channel.username+")";
+option.textContent="📺 "+channel.name+" (@"+channel.username+")";
 
 select.appendChild(option);
 
@@ -1960,7 +2038,6 @@ return;
 }
 
 const type=contentType.value;
-
 const title=document.getElementById("contentTitle").value.trim();
 const description=document.getElementById("contentDescription").value.trim();
 const image=document.getElementById("contentImage").value.trim();
@@ -2019,7 +2096,6 @@ showToast("✅ تم حفظ المحتوى.");
 }catch(e){
 
 console.error(e);
-
 showAddMessage(e.message||"حدث خطأ أثناء الحفظ.");
 
 }
@@ -2029,8 +2105,6 @@ showAddMessage(e.message||"حدث خطأ أثناء الحفظ.");
 function showAddMessage(msg){
 
 const box=document.getElementById("addMessage");
-
-if(!box)return;
 
 box.textContent=msg;
 box.classList.remove("hidden");
@@ -2051,17 +2125,12 @@ function clearAddForm(){
 ].forEach(id=>{
 
 const el=document.getElementById(id);
-
 if(el)el.value="";
 
 });
 
 contentType.value="project";
-
-if(contentChannel){
 contentChannel.value="";
-}
-
 toggleContentFields();
 
 }
@@ -2074,21 +2143,9 @@ const grid=document.getElementById("contentGrid");
 
 if(!grid)return;
 
-if(!initSupabase()){
+if(!initSupabase())return;
 
-grid.innerHTML=`
-<div class="empty-state">
-⏳ جاري تحميل الخدمة...
-</div>`;
-
-return;
-
-}
-
-grid.innerHTML=`
-<div class="empty-state">
-⏳ جاري التحميل...
-</div>`;
+grid.innerHTML='<div class="empty-state">⏳ جاري التحميل...</div>';
 
 try{
 
@@ -2119,8 +2176,6 @@ applyFilters();
 
 }catch(e){
 
-console.error(e);
-
 grid.innerHTML=`
 <div class="empty-state">
 ❌ حدث خطأ:<br>
@@ -2131,7 +2186,7 @@ ${escapeHtml(e.message)}
 
 }
 
-/* ================= LOAD OWNERS ================= */
+/* ================= PROFILES ================= */
 
 async function loadProfiles(){
 
@@ -2154,27 +2209,21 @@ try{
 
 const result=await supabaseClient
 .from("profiles")
-.select("id,name,email")
+.select("*")
 .in("id",ids);
 
-if(result.error){
-console.warn("Profiles:",result.error.message);
-return;
-}
+if(result.error)return;
 
 (result.data||[]).forEach(profile=>{
 allProfiles[String(profile.id)]=profile;
 });
 
 }catch(e){
-
-console.warn("Profiles exception:",e);
-
+console.warn(e);
 }
 
 }
 
-/* تم إصلاح return هنا */
 function getOwner(item){
 
 if(!item)return null;
@@ -2187,12 +2236,9 @@ email:""
 
 }
 
-/* تم إصلاح return هنا */
 function getOwnerName(item){
 
-const owner=getOwner(item);
-
-return owner?.name||"عضو KAPO ONE";
+return getOwner(item)?.name||"عضو KAPO ONE";
 
 }
 
@@ -2209,9 +2255,7 @@ return `
 <div class="owner-mini"
 onclick="event.stopPropagation();openPublicProfile('${escapeAttribute(item.user_id)}')">
 
-<div class="owner-avatar">
-${first}
-</div>
+<div class="owner-avatar">${first}</div>
 
 <div>
 <div class="owner-label">صاحب المحتوى</div>
@@ -2238,10 +2282,7 @@ const result=await supabaseClient
 .from("likes")
 .select("id,project_id,user_id");
 
-if(result.error){
-console.warn("Likes:",result.error.message);
-return;
-}
+if(result.error)return;
 
 allLikes=result.data||[];
 
@@ -2251,19 +2292,14 @@ const id=String(like.project_id);
 
 likeCounts[id]=(likeCounts[id]||0)+1;
 
-if(
-currentUser&&
-String(like.user_id)===String(currentUser.id)
-){
+if(currentUser&&String(like.user_id)===String(currentUser.id)){
 likedContentIds.add(id);
 }
 
 });
 
 }catch(e){
-
-console.warn("Likes exception:",e);
-
+console.warn(e);
 }
 
 }
@@ -2275,10 +2311,7 @@ showToast("❤️ سجل الدخول للإعجاب.");
 return;
 }
 
-if(!initSupabase()){
-showToast("تعذر الاتصال.");
-return;
-}
+if(!initSupabase())return;
 
 const alreadyLiked=likedContentIds.has(String(id));
 
@@ -2293,7 +2326,7 @@ const result=await supabaseClient
 .eq("user_id",currentUser.id);
 
 if(result.error){
-showToast("تعذر إزالة الإعجاب: "+result.error.message);
+showToast("تعذر إزالة الإعجاب.");
 return;
 }
 
@@ -2309,32 +2342,21 @@ user_id:currentUser.id
 });
 
 if(result.error){
-
-if(result.error.code==="23505"){
-showToast("أنت معجب بهذا المحتوى بالفعل.");
-}else{
-showToast("تعذر تسجيل الإعجاب: "+result.error.message);
-}
-
+showToast("تعذر تسجيل الإعجاب.");
 return;
-
 }
 
-const likedProject=allContent.find(
+const project=allContent.find(
 item=>String(item.id)===String(id)
 );
 
-if(
-likedProject&&
-likedProject.user_id&&
-String(likedProject.user_id)!==String(currentUser.id)
-){
+if(project&&project.user_id&&String(project.user_id)!==String(currentUser.id)){
 
 await createNotification({
-recipientId:likedProject.user_id,
+recipientId:project.user_id,
 actorId:currentUser.id,
 type:"like",
-message:"❤️ أعجب أحد الأعضاء بمحتواك: "+(likedProject.title||"محتوى"),
+message:"❤️ أعجب أحد الأعضاء بمحتواك: "+(project.title||"محتوى"),
 projectId:id
 });
 
@@ -2350,8 +2372,7 @@ renderContent();
 }catch(e){
 
 console.error(e);
-
-showToast("حدث خطأ في الإعجاب: "+(e.message||""));
+showToast("حدث خطأ في الإعجاب.");
 
 }
 
@@ -2373,25 +2394,17 @@ const result=await supabaseClient
 .select("id,project_id,user_id,content,created_at")
 .order("created_at",{ascending:true});
 
-if(result.error){
-console.warn("Comments LOAD:",result.error.message);
-return;
-}
+if(result.error)return;
 
 allComments=result.data||[];
 
 allComments.forEach(c=>{
-
 const id=String(c.project_id);
-
 commentCounts[id]=(commentCounts[id]||0)+1;
-
 });
 
 }catch(e){
-
-console.warn("Comments exception:",e);
-
+console.warn(e);
 }
 
 }
@@ -2404,8 +2417,6 @@ return allComments
 
 }
 
-/* ================= ADD COMMENT ================= */
-
 async function addComment(id){
 
 if(!currentUser){
@@ -2415,10 +2426,7 @@ return;
 
 const input=document.getElementById("commentInput_"+id);
 
-if(!input){
-showToast("❌ تعذر العثور على خانة التعليق.");
-return;
-}
+if(!input)return;
 
 const text=input.value.trim();
 
@@ -2430,18 +2438,6 @@ return;
 if(text.length>1000){
 showToast("التعليق طويل جدًا.");
 return;
-}
-
-if(!initSupabase()){
-showToast("تعذر الاتصال بقاعدة البيانات.");
-return;
-}
-
-const button=input.parentElement?.querySelector("button");
-
-if(button){
-button.disabled=true;
-button.textContent="جاري النشر...";
 }
 
 try{
@@ -2456,13 +2452,7 @@ content:text
 
 if(result.error){
 
-console.error("COMMENT INSERT ERROR:",result.error);
-
-showToast(
-"❌ فشل نشر التعليق: "+
-(result.error.message||"خطأ في قاعدة البيانات")
-);
-
+showToast("❌ فشل نشر التعليق: "+result.error.message);
 return;
 
 }
@@ -2473,11 +2463,7 @@ const project=allContent.find(
 item=>String(item.id)===String(id)
 );
 
-if(
-project&&
-project.user_id&&
-String(project.user_id)!==String(currentUser.id)
-){
+if(project&&project.user_id&&String(project.user_id)!==String(currentUser.id)){
 
 await createNotification({
 recipientId:project.user_id,
@@ -2493,40 +2479,21 @@ await loadComments();
 renderContent();
 
 showToast("💬 تم نشر التعليق بنجاح.");
-
 openDetailModal(id);
 
 }catch(e){
 
-console.error("COMMENT EXCEPTION:",e);
-
-showToast(
-"❌ حدث خطأ في التعليق: "+
-(e.message||"تعذر نشر التعليق")
-);
-
-}finally{
-
-if(button){
-button.disabled=false;
-button.textContent="نشر";
-}
+showToast("❌ حدث خطأ في التعليق.");
 
 }
 
 }
-
-/* ================= DELETE COMMENT ================= */
 
 async function deleteComment(commentId,projectId){
 
 if(!currentUser)return;
 
 if(!confirm("هل تريد حذف هذا التعليق؟"))return;
-
-if(!initSupabase())return;
-
-try{
 
 const result=await supabaseClient
 .from("comments")
@@ -2536,7 +2503,7 @@ const result=await supabaseClient
 
 if(result.error){
 
-showToast("تعذر حذف التعليق: "+result.error.message);
+showToast("تعذر حذف التعليق.");
 return;
 
 }
@@ -2547,23 +2514,12 @@ openDetailModal(projectId);
 
 showToast("🗑️ تم حذف التعليق.");
 
-}catch(e){
-
-console.error(e);
-showToast("حدث خطأ: "+(e.message||""));
-
 }
-
-}
-
-/* ================= RENDER COMMENTS ================= */
 
 function renderComments(id){
 
 const comments=getCommentsForProject(id);
 
-if(!currentUser){
-
 return `
 <div class="comments-box">
 
@@ -2571,23 +2527,10 @@ return `
 💬 التعليقات (${comments.length})
 </div>
 
-<div class="comment-login">
-سجل الدخول حتى تتمكن من كتابة تعليق.
-</div>
-
-${renderCommentList(comments)}
-
-</div>`;
-
-}
-
-return `
-<div class="comments-box">
-
-<div class="comments-title">
-💬 التعليقات (${comments.length})
-</div>
-
+${
+currentUser
+?
+`
 <div class="comment-form">
 
 <input
@@ -2606,6 +2549,14 @@ onclick="addComment('${escapeAttribute(id)}')">
 </button>
 
 </div>
+`
+:
+`
+<div class="comment-login">
+سجل الدخول حتى تتمكن من كتابة تعليق.
+</div>
+`
+}
 
 ${renderCommentList(comments)}
 
@@ -2613,40 +2564,31 @@ ${renderCommentList(comments)}
 
 }
 
-/* ================= COMMENT LIST ================= */
-
 function renderCommentList(comments){
 
 if(!comments.length){
 
-return `
-<div class="comment-empty">
-لا توجد تعليقات حتى الآن. كن أول من يعلق 💬
-</div>`;
+return `<div class="comment-empty">لا توجد تعليقات حتى الآن. كن أول من يعلق 💬</div>`;
 
 }
 
 return comments.map(c=>{
 
+const profile=allProfiles[String(c.user_id)];
 const name=
 String(c.user_id)===String(currentUser?.id)
 ?"أنت"
-:"عضو KAPO ONE";
+:(profile?.name||"عضو KAPO ONE");
 
 const date=c.created_at
 ?new Date(c.created_at).toLocaleString("ar-SA")
 :"";
 
 const deleteBtn=
-currentUser&&
-String(c.user_id)===String(currentUser.id)
+currentUser&&String(c.user_id)===String(currentUser.id)
 ?
-`
-<button type="button" class="delete-comment"
-onclick="deleteComment('${escapeAttribute(c.id)}','${escapeAttribute(c.project_id)}')">
-حذف
-</button>
-`
+`<button type="button" class="delete-comment"
+onclick="deleteComment('${escapeAttribute(c.id)}','${escapeAttribute(c.project_id)}')">حذف</button>`
 :"";
 
 return `
@@ -2680,12 +2622,7 @@ ${escapeHtml(c.content)}
 
 function applyFilters(){
 
-const search=document
-.getElementById("filterSearch")
-.value
-.toLowerCase()
-.trim();
-
+const search=document.getElementById("filterSearch").value.toLowerCase().trim();
 const type=document.getElementById("filterType").value;
 
 filteredContent=allContent.filter(item=>{
@@ -2698,11 +2635,7 @@ const title=(item.title||"").toLowerCase();
 const desc=(item.description||"").toLowerCase();
 const owner=getOwnerName(item).toLowerCase();
 
-if(
-!title.includes(search)&&
-!desc.includes(search)&&
-!owner.includes(search)
-){
+if(!title.includes(search)&&!desc.includes(search)&&!owner.includes(search)){
 return false;
 }
 
@@ -2720,12 +2653,11 @@ function resetFilters(){
 
 document.getElementById("filterSearch").value="";
 document.getElementById("filterType").value="";
-
 applyFilters();
 
 }
 
-/* ================= CHANNEL HELPER ================= */
+/* ================= CHANNELS ================= */
 
 function getChannel(channelId){
 
@@ -2739,623 +2671,17 @@ channel=>String(channel.id)===String(channelId)
 
 function getChannelName(channelId){
 
-const channel=getChannel(channelId);
-
-return channel?.name||"";
+return getChannel(channelId)?.name||"";
 
 }
-
-function channelMiniHtml(channel){
-
-if(!channel)return "";
-
-const name=channel.name||"قناة";
-const first=name.trim().charAt(0).toUpperCase()||"📺";
-
-const avatar=channel.avatar_url
-?
-`
-<img
-src="${escapeAttribute(channel.avatar_url)}"
-alt="${escapeAttribute(name)}"
-onerror="
-this.style.display='none';
-this.nextElementSibling.style.display='flex';
-">
-
-<span style="display:none">${first}</span>
-`
-:first;
-
-return `
-<div class="channel-mini-owner">
-
-<div class="channel-mini-dot">
-${avatar}
-</div>
-
-<span>📺 ${escapeHtml(name)}</span>
-
-</div>`;
-
-}
-
-/* ================= RENDER CONTENT ================= */
-
-function renderContent(){
-
-const grid=document.getElementById("contentGrid");
-
-if(!grid)return;
-
-if(!filteredContent.length){
-
-grid.innerHTML=`
-<div class="empty-state">
-📭 لا يوجد محتوى مطابق.
-</div>`;
-
-return;
-
-}
-
-grid.innerHTML=filteredContent.map(item=>{
-
-const badgeClass={
-project:"badge-project",
-property:"badge-property",
-idea:"badge-idea",
-design:"badge-design",
-question:"badge-question"
-}[item.content_type]||"badge-project";
-
-const badgeLabel={
-project:"🏗️ مشروع",
-property:"🏢 عقار",
-idea:"💡 فكرة",
-design:"📐 تصميم",
-question:"❓ سؤال"
-}[item.content_type]||"محتوى";
-
-const icon={
-project:"🏗️",
-property:"🏢",
-idea:"💡",
-design:"📐",
-question:"❓"
-}[item.content_type]||"📋";
-
-const imageHtml=item.image_url
-?
-`
-<img class="content-image"
-src="${escapeAttribute(item.image_url)}"
-alt="${escapeAttribute(item.title||"")}"
-onerror="
-this.style.display='none';
-this.nextElementSibling.style.display='flex';
-">
-
-<div class="content-placeholder" style="display:none">
-${icon}
-</div>
-`
-:
-`
-<div class="content-placeholder">
-${icon}
-</div>`;
-
-const date=item.created_at
-?new Date(item.created_at).toLocaleDateString("ar-SA")
-:"";
-
-const id=String(item.id||"");
-const isLiked=likedContentIds.has(id);
-const likes=likeCounts[id]||0;
-const comments=commentCounts[id]||0;
-
-const channel=getChannel(item.channel_id);
-
-const channelHtml=channel
-?
-`
-<div
-style="margin-top:9px;color:#60a5fa;font-size:12px;font-weight:800"
-onclick="event.stopPropagation();openChannelDetail('${escapeAttribute(channel.id)}')">
-📺 ${escapeHtml(channel.name)}
-</div>
-`
-:"";
-
-return `
-<div class="content-card"
-onclick="openDetailModal('${escapeAttribute(id)}')">
-
-${imageHtml}
-
-<div class="content-info">
-
-<div class="content-title">
-${escapeHtml(item.title||"بدون عنوان")}
-</div>
-
-<div class="content-meta">
-${escapeHtml(date)}
-</div>
-
-<div class="content-description">
-${escapeHtml(item.description||"لا يوجد وصف.")}
-</div>
-
-<span class="content-badge ${badgeClass}">
-${badgeLabel}
-</span>
-
-${channelHtml}
-
-${ownerHtml(item)}
-
-<div class="card-bottom">
-
-<button type="button"
-class="like-btn ${isLiked?"liked":""}"
-onclick="event.stopPropagation();toggleLike('${escapeAttribute(id)}')">
-
-${isLiked?"❤️":"🤍"}
-
-<span>${likes}</span>
-
-</button>
-
-<button type="button"
-class="comment-btn"
-onclick="event.stopPropagation();openDetailModal('${escapeAttribute(id)}')">
-
-💬
-
-<span>${comments}</span>
-
-</button>
-
-</div>
-
-</div>
-</div>`;
-
-}).join("");
-
-}
-
-/* ================= DETAILS ================= */
-
-function openDetailModal(id){
-
-const item=allContent.find(
-x=>String(x.id)===String(id)
-);
-
-if(!item){
-
-showToast("تعذر فتح المحتوى.");
-return;
-
-}
-
-const title=item.title||"تفاصيل المحتوى";
-
-document.getElementById("detailTitle").textContent=title;
-
-let image="";
-
-if(item.image_url){
-
-image=`
-<img class="detail-image"
-src="${escapeAttribute(item.image_url)}"
-alt="${escapeAttribute(title)}"
-onerror="this.style.display='none'">
-`;
-
-}
-
-const typeLabels={
-project:"🏗️ مشروع",
-property:"🏢 عقار",
-idea:"💡 فكرة",
-design:"📐 تصميم",
-question:"❓ سؤال"
-};
-
-const type=typeLabels[item.content_type]||"📋 محتوى";
-
-let description=item.description||"لا يوجد وصف.";
-let propertyHtml="";
-
-if(item.content_type==="property"){
-
-const parts=description.split("\n\n---\n");
-
-description=parts[0]||"";
-
-if(parts[1]){
-
-try{
-
-const extra=JSON.parse(parts[1]);
-
-propertyHtml=`
-<div class="detail-row">
-<strong>الدولة:</strong>
-${escapeHtml(extra.country||"-")}
-</div>
-
-<div class="detail-row">
-<strong>المدينة:</strong>
-${escapeHtml(extra.city||"-")}
-</div>
-
-<div class="detail-row">
-<strong>السعر:</strong>
-${escapeHtml(String(extra.price||0))}
-${escapeHtml(extra.currency||"")}
-</div>
-
-<div class="detail-row">
-<strong>المساحة:</strong>
-${escapeHtml(String(extra.area||0))} م²
-</div>
-
-<div class="detail-row">
-<strong>واتساب:</strong>
-${escapeHtml(extra.whatsapp||"-")}
-</div>`;
-
-}catch(e){
-console.warn(e);
-}
-
-}
-
-}
-
-const date=item.created_at
-?new Date(item.created_at).toLocaleString("ar-SA")
-:"-";
-
-const projectId=String(item.id||"");
-const isLiked=likedContentIds.has(projectId);
-const likes=likeCounts[projectId]||0;
-
-const owner=getOwner(item);
-const ownerName=owner?.name||"عضو KAPO ONE";
-const ownerFirst=ownerName.trim().charAt(0).toUpperCase()||"K";
-
-const ownerBlock=item.user_id
-?
-`
-<div class="owner-detail"
-onclick="openPublicProfile('${escapeAttribute(item.user_id)}')">
-
-<div class="owner-detail-avatar">
-${ownerFirst}
-</div>
-
-<div>
-<div class="owner-detail-label">👤 صاحب المحتوى</div>
-<div class="owner-detail-name">${escapeHtml(ownerName)}</div>
-</div>
-
-</div>
-`
-:"";
-
-const channel=getChannel(item.channel_id);
-
-const channelBlock=channel
-?
-`
-<div
-style="margin:15px 0;padding:13px;border-radius:14px;background:#020617;border:1px solid #1e293b;cursor:pointer"
-onclick="openChannelDetail('${escapeAttribute(channel.id)}')">
-
-<div style="font-size:11px;color:#64748b">
-القناة
-</div>
-
-<div style="font-weight:900;color:#60a5fa">
-📺 ${escapeHtml(channel.name)}
-</div>
-
-</div>
-`
-:"";
-
-document.getElementById("detailContent").innerHTML=`
-
-${image}
-
-<div class="detail-row">
-<strong>النوع:</strong>
-${type}
-</div>
-
-${channelBlock}
-
-${ownerBlock}
-
-<div class="detail-row">
-<strong>تاريخ الإضافة:</strong>
-${escapeHtml(date)}
-</div>
-
-<div style="margin-top:18px;white-space:pre-wrap;line-height:2">
-${escapeHtml(description)}
-</div>
-
-${propertyHtml}
-
-<div class="detail-like">
-
-<button type="button"
-class="like-btn ${isLiked?"liked":""}"
-onclick="toggleLikeFromDetail('${escapeAttribute(projectId)}')">
-
-${isLiked?"❤️":"🤍"}
-
-<span>${likes}</span>
-
-</button>
-
-<strong>
-${likes===1?"إعجاب واحد":"إعجابات"}
-</strong>
-
-</div>
-
-${renderComments(projectId)}
-
-`;
-
-document.getElementById("detailModal").classList.add("active");
-
-}
-
-async function toggleLikeFromDetail(id){
-
-await toggleLike(id);
-
-const modal=document.getElementById("detailModal");
-
-if(modal&&modal.classList.contains("active")){
-openDetailModal(id);
-}
-
-}
-
-function closeDetailModal(){
-document.getElementById("detailModal").classList.remove("active");
-}
-
-/* ================= PUBLIC PROFILE ================= */
-
-async function openPublicProfile(userId){
-
-if(!userId){
-showToast("تعذر فتح الملف الشخصي.");
-return;
-}
-
-const modal=document.getElementById("publicProfileModal");
-const box=document.getElementById("publicProfileContent");
-
-modal.classList.add("active");
-
-box.innerHTML=`
-<div class="empty-state">
-⏳ جاري تحميل الملف الشخصي...
-</div>`;
-
-let profile=allProfiles[String(userId)];
-
-try{
-
-if(!profile){
-
-const result=await supabaseClient
-.from("profiles")
-.select("id,name,email")
-.eq("id",userId)
-.maybeSingle();
-
-if(result.data){
-profile=result.data;
-}
-
-if(result.error){
-console.warn("Public profile:",result.error.message);
-}
-
-}
-
-}catch(e){
-
-console.error(e);
-
-}
-
-if(!profile){
-
-box.innerHTML=`
-<div class="empty-state">
-❌ لم يتم العثور على الملف الشخصي.
-</div>`;
-
-return;
-
-}
-
-const name=profile.name||"عضو KAPO ONE";
-const email=profile.email||"";
-const first=name.trim().charAt(0).toUpperCase()||"K";
-
-const ownerContent=allContent.filter(
-item=>String(item.user_id)===String(userId)
-);
-
-const ownerChannels=allChannels.filter(
-channel=>String(channel.owner_id)===String(userId)
-);
-
-let contentHtml="";
-
-if(!ownerContent.length){
-
-contentHtml=`
-<div class="comment-empty">
-لا يوجد محتوى منشور حتى الآن.
-</div>`;
-
-}else{
-
-contentHtml=`
-<div class="public-content-list">
-
-${ownerContent.map(item=>{
-
-const typeLabels={
-project:"🏗️ مشروع",
-property:"🏢 عقار",
-idea:"💡 فكرة",
-design:"📐 تصميم",
-question:"❓ سؤال"
-};
-
-const type=typeLabels[item.content_type]||"📋 محتوى";
-
-return `
-<div class="public-content-item"
-onclick="closePublicProfile();openDetailModal('${escapeAttribute(item.id)}')">
-
-<div class="public-content-item-title">
-${escapeHtml(item.title||"بدون عنوان")}
-</div>
-
-<div class="public-content-item-type">
-${type}
-${item.channel_id?" · 📺 داخل قناة":""}
-</div>
-
-</div>`;
-
-}).join("")}
-
-</div>`;
-
-}
-
-const channelsHtml=ownerChannels.length
-?
-`
-<div class="public-content-title">
-📺 قنوات هذا العضو (${ownerChannels.length})
-</div>
-
-<div class="public-content-list">
-
-${ownerChannels.map(channel=>`
-
-<div class="public-content-item"
-onclick="closePublicProfile();openChannelDetail('${escapeAttribute(channel.id)}')">
-
-<div class="public-content-item-title">
-📺 ${escapeHtml(channel.name)}
-${channel.verified?" ✓":""}
-</div>
-
-<div class="public-content-item-type">
-@${escapeHtml(channel.username)}
-</div>
-
-</div>
-
-`).join("")}
-
-</div>
-`
-:"";
-
-box.innerHTML=`
-
-<div class="profile-public">
-
-<div class="profile-public-head">
-
-<div class="profile-public-avatar">
-${first}
-</div>
-
-<div>
-
-<div class="profile-public-name">
-${escapeHtml(name)}
-</div>
-
-<div class="profile-public-email">
-${escapeHtml(email)}
-</div>
-
-</div>
-
-</div>
-
-<div style="color:#94a3b8;font-size:14px">
-🌍 عضو في KAPO ONE
-</div>
-
-</div>
-
-${channelsHtml}
-
-<div class="public-content-title">
-📚 محتوى هذا العضو (${ownerContent.length})
-</div>
-
-${contentHtml}
-
-`;
-
-}
-
-function closePublicProfile(){
-
-document.getElementById("publicProfileModal").classList.remove("active");
-
-}
-
-/* ================= CHANNEL SYSTEM ================= */
 
 async function loadChannels(){
 
 const grid=document.getElementById("channelsGrid");
 
-if(!grid)return;
+if(!grid||!initSupabase())return;
 
-if(!initSupabase()){
-
-grid.innerHTML=`
-<div class="empty-state">
-⏳ جاري تحميل الخدمة...
-</div>`;
-
-return;
-
-}
-
-grid.innerHTML=`
-<div class="empty-state">
-⏳ جاري تحميل القنوات...
-</div>`;
+grid.innerHTML='<div class="empty-state">⏳ جاري تحميل القنوات...</div>';
 
 try{
 
@@ -3390,8 +2716,6 @@ renderContent();
 
 }catch(e){
 
-console.error(e);
-
 grid.innerHTML=`
 <div class="empty-state">
 ❌ حدث خطأ:<br>
@@ -3402,15 +2726,12 @@ ${escapeHtml(e.message)}
 
 }
 
-/* ================= FOLLOWERS ================= */
-
 async function loadChannelFollowers(){
 
 channelFollowers={};
 followedChannelIds=new Set();
 
-if(!initSupabase())return;
-if(!allChannels.length)return;
+if(!initSupabase()||!allChannels.length)return;
 
 try{
 
@@ -3421,38 +2742,25 @@ const result=await supabaseClient
 .select("id,channel_id,user_id")
 .in("channel_id",ids);
 
-if(result.error){
-console.warn("Channel followers:",result.error.message);
-return;
-}
+if(result.error)return;
 
 (result.data||[]).forEach(row=>{
 
-const channelId=String(row.channel_id);
+const id=String(row.channel_id);
 
-channelFollowers[channelId]=
-(channelFollowers[channelId]||0)+1;
+channelFollowers[id]=(channelFollowers[id]||0)+1;
 
-if(
-currentUser&&
-String(row.user_id)===String(currentUser.id)
-){
-
-followedChannelIds.add(channelId);
-
+if(currentUser&&String(row.user_id)===String(currentUser.id)){
+followedChannelIds.add(id);
 }
 
 });
 
 }catch(e){
-
-console.warn("Channel followers exception:",e);
-
+console.warn(e);
 }
 
 }
-
-/* ================= RENDER CHANNELS ================= */
 
 function renderChannels(){
 
@@ -3464,21 +2772,15 @@ if(!allChannels.length){
 
 grid.innerHTML=`
 <div class="empty-state">
-
 <div style="font-size:45px;margin-bottom:10px">📺</div>
-
 <div style="font-size:18px;font-weight:900;color:#fff;margin-bottom:8px">
 لا توجد قنوات حتى الآن
 </div>
-
 <div>كن أول من ينشئ قناة في KAPO ONE.</div>
-
 <br>
-
 <button type="button" class="primary-btn" onclick="openChannelModal()">
 ➕ إنشاء أول قناة
 </button>
-
 </div>`;
 
 return;
@@ -3489,39 +2791,21 @@ grid.innerHTML=allChannels.map(channel=>{
 
 const name=channel.name||"قناة KAPO ONE";
 const first=name.trim().charAt(0).toUpperCase()||"📺";
-
 const followers=channelFollowers[String(channel.id)]||0;
 
 const avatar=channel.avatar_url
 ?
-`
-<img
-src="${escapeAttribute(channel.avatar_url)}"
+`<img src="${escapeAttribute(channel.avatar_url)}"
 alt="${escapeAttribute(name)}"
-onerror="
-this.style.display='none';
-this.nextElementSibling.style.display='flex';
-">
-
-<div style="display:none;width:100%;height:100%;align-items:center;justify-content:center">
-${first}
-</div>
-`
+onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+<div style="display:none;width:100%;height:100%;align-items:center;justify-content:center">${first}</div>`
 :first;
 
 const cover=channel.cover_url
-?
-`
-<img
-src="${escapeAttribute(channel.cover_url)}"
-alt=""
-onerror="this.style.display='none'">
-`
+?`<img src="${escapeAttribute(channel.cover_url)}" alt="" onerror="this.style.display='none'">`
 :"";
 
-const verified=channel.verified
-?'<span class="verified" title="قناة موثقة">✓</span>'
-:"";
+const verified=channel.verified?'<span class="verified">✓</span>':"";
 
 return `
 <div class="channel-card"
@@ -3607,29 +2891,8 @@ document.getElementById("channelModal").classList.remove("active");
 function showChannelMessage(msg){
 
 const box=document.getElementById("channelMessage");
-
-if(!box)return;
-
 box.textContent=msg;
 box.classList.remove("hidden");
-
-}
-
-function clearChannelForm(){
-
-[
-"channelName",
-"channelUsername",
-"channelDescription",
-"channelAvatar",
-"channelCover"
-].forEach(id=>{
-
-const el=document.getElementById(id);
-
-if(el)el.value="";
-
-});
 
 }
 
@@ -3640,17 +2903,11 @@ showChannelMessage("سجل الدخول أولاً.");
 return;
 }
 
-if(!initSupabase()){
-showChannelMessage("تعذر الاتصال بالخدمة.");
-return;
-}
-
 const name=document.getElementById("channelName").value.trim();
 
 let username=document
 .getElementById("channelUsername")
-.value
-.trim()
+.value.trim()
 .toLowerCase();
 
 const description=document
@@ -3694,52 +2951,38 @@ cover_url:cover||null
 
 if(result.error){
 
-if(result.error.code==="23505"){
-
 showChannelMessage(
-"اسم المستخدم هذا مستخدم بالفعل. اختر اسمًا آخر."
+result.error.code==="23505"
+?"اسم المستخدم هذا مستخدم بالفعل. اختر اسمًا آخر."
+:result.error.message
 );
-
-}else{
-
-showChannelMessage(result.error.message);
-
-}
 
 return;
 
 }
 
 closeChannelModal();
-clearChannelForm();
 
 showToast("🎉 تم إنشاء القناة بنجاح.");
 
 await loadChannels();
-
 showSection("channels");
 
 if(result.data){
-
 setTimeout(()=>{
 openChannelDetail(result.data.id);
 },300);
-
 }
 
 }catch(e){
 
-console.error(e);
-
-showChannelMessage(
-e.message||"حدث خطأ أثناء إنشاء القناة."
-);
+showChannelMessage(e.message||"حدث خطأ أثناء إنشاء القناة.");
 
 }
 
 }
 
-/* ================= OPEN CHANNEL ================= */
+/* ================= CHANNEL DETAIL ================= */
 
 async function openChannelDetail(channelId){
 
@@ -3753,16 +2996,13 @@ const box=document.getElementById("channelDetailContent");
 
 modal.classList.add("active");
 
-box.innerHTML=`
-<div class="empty-state">
-⏳ جاري تحميل القناة...
-</div>`;
+box.innerHTML='<div class="empty-state">⏳ جاري تحميل القناة...</div>';
 
 let channel=getChannel(channelId);
 
-try{
-
 if(!channel){
+
+try{
 
 const result=await supabaseClient
 .from("channels")
@@ -3770,29 +3010,15 @@ const result=await supabaseClient
 .eq("id",channelId)
 .maybeSingle();
 
-if(result.data){
-channel=result.data;
-}
+if(result.data)channel=result.data;
 
-if(result.error){
-console.warn(result.error);
-}
-
-}
-
-}catch(e){
-
-console.error(e);
+}catch(e){}
 
 }
 
 if(!channel){
 
-box.innerHTML=`
-<div class="empty-state">
-❌ لم يتم العثور على القناة.
-</div>`;
-
+box.innerHTML='<div class="empty-state">❌ لم يتم العثور على القناة.</div>';
 return;
 
 }
@@ -3807,8 +3033,6 @@ await renderChannelDetail(channel);
 async function renderChannelDetail(channel){
 
 const box=document.getElementById("channelDetailContent");
-
-if(!box)return;
 
 const channelId=String(channel.id);
 
@@ -3827,70 +3051,37 @@ const first=name.trim().charAt(0).toUpperCase()||"📺";
 
 const avatar=channel.avatar_url
 ?
-`
-<img
-src="${escapeAttribute(channel.avatar_url)}"
+`<img src="${escapeAttribute(channel.avatar_url)}"
 alt="${escapeAttribute(name)}"
-onerror="
-this.style.display='none';
-this.nextElementSibling.style.display='flex';
-">
-
-<div style="display:none;width:100%;height:100%;align-items:center;justify-content:center">
-${first}
-</div>
-`
+onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+<div style="display:none;width:100%;height:100%;align-items:center;justify-content:center">${first}</div>`
 :first;
 
 const cover=channel.cover_url
-?
-`
-<img
-src="${escapeAttribute(channel.cover_url)}"
-alt=""
-onerror="this.style.display='none'">
-`
-:"";
-
-const verified=channel.verified
-?'<span class="verified">✓</span>'
+?`<img src="${escapeAttribute(channel.cover_url)}" alt="" onerror="this.style.display='none'">`
 :"";
 
 let contentBody="";
 
 if(currentChannelTab==="home"){
-
 contentBody=renderChannelHome(channel,content);
-
 }else if(currentChannelTab==="posts"){
-
 contentBody=renderChannelContentByType(content,"all");
-
 }else if(currentChannelTab==="projects"){
-
 contentBody=renderChannelContentByType(content,"project");
-
 }else if(currentChannelTab==="ideas"){
-
 contentBody=renderChannelContentByType(content,"idea");
-
 }else if(currentChannelTab==="images"){
-
 contentBody=renderChannelImages(content);
-
-}else if(currentChannelTab==="about"){
-
+}else{
 contentBody=renderChannelAbout(channel);
-
 }
 
 box.innerHTML=`
 
 <div class="channel-page">
 
-<div class="channel-page-cover">
-${cover}
-</div>
+<div class="channel-page-cover">${cover}</div>
 
 <div class="channel-page-info">
 
@@ -3898,13 +3089,11 @@ ${cover}
 
 <div>
 
-<div class="channel-page-avatar">
-${avatar}
-</div>
+<div class="channel-page-avatar">${avatar}</div>
 
 <div class="channel-page-name">
 ${escapeHtml(name)}
-${verified}
+${channel.verified?'<span class="verified">✓</span>':""}
 </div>
 
 <div class="channel-page-username">
@@ -3918,19 +3107,13 @@ ${verified}
 ${
 isOwner
 ?
-`
-<div style="color:#64748b;font-size:12px;margin-bottom:8px;text-align:center">
-قناتك
-</div>
-`
+`<div style="color:#64748b;font-size:12px;margin-bottom:8px;text-align:center">قناتك</div>`
 :
 `
 <button type="button"
 class="primary-btn follow-btn ${following?"following":""}"
 onclick="toggleFollowChannel('${escapeAttribute(channel.id)}')">
-
 ${following?"✓ متابَع":"＋ متابعة"}
-
 </button>
 `
 }
@@ -3971,41 +3154,12 @@ ${escapeHtml(channel.description||"لا يوجد وصف للقناة.")}
 
 <div class="channel-tabs">
 
-<button type="button"
-class="channel-tab ${currentChannelTab==="home"?"active":""}"
-onclick="switchChannelTab('home')">
-الرئيسية
-</button>
-
-<button type="button"
-class="channel-tab ${currentChannelTab==="posts"?"active":""}"
-onclick="switchChannelTab('posts')">
-المنشورات
-</button>
-
-<button type="button"
-class="channel-tab ${currentChannelTab==="projects"?"active":""}"
-onclick="switchChannelTab('projects')">
-المشاريع
-</button>
-
-<button type="button"
-class="channel-tab ${currentChannelTab==="ideas"?"active":""}"
-onclick="switchChannelTab('ideas')">
-الأفكار
-</button>
-
-<button type="button"
-class="channel-tab ${currentChannelTab==="images"?"active":""}"
-onclick="switchChannelTab('images')">
-الصور
-</button>
-
-<button type="button"
-class="channel-tab ${currentChannelTab==="about"?"active":""}"
-onclick="switchChannelTab('about')">
-حول
-</button>
+<button class="channel-tab ${currentChannelTab==="home"?"active":""}" onclick="switchChannelTab('home')">الرئيسية</button>
+<button class="channel-tab ${currentChannelTab==="posts"?"active":""}" onclick="switchChannelTab('posts')">المنشورات</button>
+<button class="channel-tab ${currentChannelTab==="projects"?"active":""}" onclick="switchChannelTab('projects')">المشاريع</button>
+<button class="channel-tab ${currentChannelTab==="ideas"?"active":""}" onclick="switchChannelTab('ideas')">الأفكار</button>
+<button class="channel-tab ${currentChannelTab==="images"?"active":""}" onclick="switchChannelTab('images')">الصور</button>
+<button class="channel-tab ${currentChannelTab==="about"?"active":""}" onclick="switchChannelTab('about')">حول</button>
 
 </div>
 
@@ -4023,22 +3177,14 @@ if(!content.length){
 
 return `
 <div class="empty-state">
-
 <div style="font-size:45px">📺</div>
-
 <div style="font-size:18px;font-weight:900;color:#fff;margin:10px 0">
 القناة جاهزة
 </div>
-
-<div>
-لم يتم نشر محتوى في هذه القناة حتى الآن.
-</div>
-
+<div>لم يتم نشر محتوى في هذه القناة حتى الآن.</div>
 </div>`;
 
 }
-
-const latest=content.slice(0,6);
 
 return `
 <div style="font-size:20px;font-weight:900;margin-bottom:15px">
@@ -4046,9 +3192,7 @@ return `
 </div>
 
 <div class="content-grid">
-
-${latest.map(item=>channelContentCard(item)).join("")}
-
+${content.slice(0,6).map(item=>channelContentCard(item)).join("")}
 </div>`;
 
 }
@@ -4062,18 +3206,10 @@ items=content.filter(item=>item.content_type===type);
 }
 
 if(!items.length){
-
-return `
-<div class="empty-state">
-📭 لا يوجد محتوى في هذا القسم حتى الآن.
-</div>`;
-
+return `<div class="empty-state">📭 لا يوجد محتوى في هذا القسم حتى الآن.</div>`;
 }
 
-return `
-<div class="content-grid">
-${items.map(item=>channelContentCard(item)).join("")}
-</div>`;
+return `<div class="content-grid">${items.map(item=>channelContentCard(item)).join("")}</div>`;
 
 }
 
@@ -4082,18 +3218,10 @@ function renderChannelImages(content){
 const items=content.filter(item=>item.image_url);
 
 if(!items.length){
-
-return `
-<div class="empty-state">
-🖼️ لا توجد صور في القناة حتى الآن.
-</div>`;
-
+return `<div class="empty-state">🖼️ لا توجد صور في القناة حتى الآن.</div>`;
 }
 
-return `
-<div class="content-grid">
-${items.map(item=>channelContentCard(item)).join("")}
-</div>`;
+return `<div class="content-grid">${items.map(item=>channelContentCard(item)).join("")}</div>`;
 
 }
 
@@ -4149,31 +3277,19 @@ question:"❓"
 }[item.content_type]||"📋";
 
 const id=String(item.id);
-
 const isLiked=likedContentIds.has(id);
 const likes=likeCounts[id]||0;
 const comments=commentCounts[id]||0;
 
 const imageHtml=item.image_url
 ?
-`
-<img class="content-image"
+`<img class="content-image"
 src="${escapeAttribute(item.image_url)}"
 alt="${escapeAttribute(item.title||"")}"
-onerror="
-this.style.display='none';
-this.nextElementSibling.style.display='flex';
-">
-
-<div class="content-placeholder" style="display:none">
-${icon}
-</div>
-`
+onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+<div class="content-placeholder" style="display:none">${icon}</div>`
 :
-`
-<div class="content-placeholder">
-${icon}
-</div>`;
+`<div class="content-placeholder">${icon}</div>`;
 
 return `
 <div class="content-card"
@@ -4196,21 +3312,15 @@ ${escapeHtml(item.description||"لا يوجد وصف.")}
 <button type="button"
 class="like-btn ${isLiked?"liked":""}"
 onclick="event.stopPropagation();toggleLike('${escapeAttribute(id)}')">
-
 ${isLiked?"❤️":"🤍"}
-
 <span>${likes}</span>
-
 </button>
 
 <button type="button"
 class="comment-btn"
 onclick="event.stopPropagation();openChannelContentDetail('${escapeAttribute(id)}')">
-
 💬
-
 <span>${comments}</span>
-
 </button>
 
 </div>
@@ -4227,8 +3337,6 @@ openDetailModal(id);
 
 }
 
-/* ================= CHANNEL TABS ================= */
-
 async function switchChannelTab(tab){
 
 if(!currentChannel)return;
@@ -4239,17 +3347,10 @@ await renderChannelDetail(currentChannel);
 
 }
 
-/* ================= FOLLOW ================= */
-
 async function toggleFollowChannel(channelId){
 
 if(!currentUser){
 showToast("🔔 سجل الدخول لمتابعة القنوات.");
-return;
-}
-
-if(!initSupabase()){
-showToast("تعذر الاتصال.");
 return;
 }
 
@@ -4267,14 +3368,8 @@ const result=await supabaseClient
 .eq("user_id",currentUser.id);
 
 if(result.error){
-
-showToast(
-"تعذر إلغاء المتابعة: "+
-result.error.message
-);
-
+showToast("تعذر إلغاء المتابعة.");
 return;
-
 }
 
 followedChannelIds.delete(id);
@@ -4296,38 +3391,21 @@ user_id:currentUser.id
 });
 
 if(result.error){
-
-if(result.error.code==="23505"){
-
-showToast("أنت تتابع هذه القناة بالفعل.");
-
-}else{
-
-showToast(
-"تعذر متابعة القناة: "+
-result.error.message
-);
-
-}
-
+showToast("تعذر متابعة القناة.");
 return;
-
 }
 
 followedChannelIds.add(id);
 
-channelFollowers[id]=
-(channelFollowers[id]||0)+1;
+channelFollowers[id]=(channelFollowers[id]||0)+1;
 
 const followedChannel=allChannels.find(
 channel=>String(channel.id)===id
 );
 
-if(
-followedChannel&&
+if(followedChannel&&
 followedChannel.owner_id&&
-String(followedChannel.owner_id)!==String(currentUser.id)
-){
+String(followedChannel.owner_id)!==String(currentUser.id)){
 
 await createNotification({
 recipientId:followedChannel.owner_id,
@@ -4342,38 +3420,812 @@ showToast("🔔 تمت متابعة القناة.");
 
 }
 
-if(
-currentChannel&&
-String(currentChannel.id)===id
-){
-
+if(currentChannel&&String(currentChannel.id)===id){
 await renderChannelDetail(currentChannel);
-
 }
 
 renderChannels();
 
 }catch(e){
 
-console.error(e);
-
-showToast("حدث خطأ: "+(e.message||""));
+showToast("حدث خطأ.");
 
 }
 
 }
-
-/* ================= CLOSE CHANNEL ================= */
 
 function closeChannelDetail(){
 
 document.getElementById("channelDetailModal").classList.remove("active");
-
 currentChannel=null;
 
 }
 
-/* ================= SECURITY ================= */
+/* ================= DETAILS ================= */
+
+function openDetailModal(id){
+
+const item=allContent.find(
+x=>String(x.id)===String(id)
+);
+
+if(!item){
+showToast("تعذر فتح المحتوى.");
+return;
+}
+
+const title=item.title||"تفاصيل المحتوى";
+
+document.getElementById("detailTitle").textContent=title;
+
+let image="";
+
+if(item.image_url){
+
+image=`
+<img class="detail-image"
+src="${escapeAttribute(item.image_url)}"
+alt="${escapeAttribute(title)}"
+onerror="this.style.display='none'">
+`;
+
+}
+
+const typeLabels={
+project:"🏗️ مشروع",
+property:"🏢 عقار",
+idea:"💡 فكرة",
+design:"📐 تصميم",
+question:"❓ سؤال"
+};
+
+const type=typeLabels[item.content_type]||"📋 محتوى";
+
+let description=item.description||"لا يوجد وصف.";
+let propertyHtml="";
+
+if(item.content_type==="property"){
+
+const parts=description.split("\n\n---\n");
+
+description=parts[0]||"";
+
+if(parts[1]){
+
+try{
+
+const extra=JSON.parse(parts[1]);
+
+propertyHtml=`
+<div class="detail-row"><strong>الدولة:</strong> ${escapeHtml(extra.country||"-")}</div>
+<div class="detail-row"><strong>المدينة:</strong> ${escapeHtml(extra.city||"-")}</div>
+<div class="detail-row"><strong>السعر:</strong> ${escapeHtml(String(extra.price||0))} ${escapeHtml(extra.currency||"")}</div>
+<div class="detail-row"><strong>المساحة:</strong> ${escapeHtml(String(extra.area||0))} م²</div>
+<div class="detail-row"><strong>واتساب:</strong> ${escapeHtml(extra.whatsapp||"-")}</div>`;
+
+}catch(e){}
+
+}
+
+}
+
+const date=item.created_at
+?new Date(item.created_at).toLocaleString("ar-SA")
+:"-";
+
+const projectId=String(item.id||"");
+const isLiked=likedContentIds.has(projectId);
+const likes=likeCounts[projectId]||0;
+
+const owner=getOwner(item);
+const ownerName=owner?.name||"عضو KAPO ONE";
+const ownerFirst=ownerName.trim().charAt(0).toUpperCase()||"K";
+
+const channel=getChannel(item.channel_id);
+
+document.getElementById("detailContent").innerHTML=`
+
+${image}
+
+<div class="detail-row">
+<strong>النوع:</strong>
+${type}
+</div>
+
+${
+channel
+?
+`
+<div class="detail-row" style="cursor:pointer"
+onclick="openChannelDetail('${escapeAttribute(channel.id)}')">
+<strong>القناة:</strong>
+<span style="color:#60a5fa">📺 ${escapeHtml(channel.name)}</span>
+</div>
+`
+:""
+}
+
+<div class="owner-detail"
+onclick="openPublicProfile('${escapeAttribute(item.user_id)}')">
+
+<div class="owner-detail-avatar">
+${ownerFirst}
+</div>
+
+<div>
+<div class="owner-detail-label">👤 صاحب المحتوى</div>
+<div class="owner-detail-name">${escapeHtml(ownerName)}</div>
+</div>
+
+</div>
+
+<div class="detail-row">
+<strong>تاريخ الإضافة:</strong>
+${escapeHtml(date)}
+</div>
+
+<div style="margin-top:18px;white-space:pre-wrap;line-height:2">
+${escapeHtml(description)}
+</div>
+
+${propertyHtml}
+
+<div class="detail-like">
+
+<button type="button"
+class="like-btn ${isLiked?"liked":""}"
+onclick="toggleLikeFromDetail('${escapeAttribute(projectId)}')">
+
+${isLiked?"❤️":"🤍"}
+
+<span>${likes}</span>
+
+</button>
+
+<strong>
+${likes===1?"إعجاب واحد":"إعجابات"}
+</strong>
+
+</div>
+
+${renderComments(projectId)}
+
+`;
+
+document.getElementById("detailModal").classList.add("active");
+
+}
+
+async function toggleLikeFromDetail(id){
+
+await toggleLike(id);
+
+const modal=document.getElementById("detailModal");
+
+if(modal?.classList.contains("active")){
+openDetailModal(id);
+}
+
+}
+
+function closeDetailModal(){
+document.getElementById("detailModal").classList.remove("active");
+}
+
+/* ================= PUBLIC PROFILE ================= */
+
+async function openPublicProfile(userId){
+
+if(!userId)return;
+
+const modal=document.getElementById("publicProfileModal");
+const box=document.getElementById("publicProfileContent");
+
+modal.classList.add("active");
+
+box.innerHTML='<div class="empty-state">⏳ جاري تحميل الملف الشخصي...</div>';
+
+let profile=allProfiles[String(userId)];
+
+try{
+
+if(!profile){
+
+const result=await supabaseClient
+.from("profiles")
+.select("*")
+.eq("id",userId)
+.maybeSingle();
+
+if(result.data)profile=result.data;
+
+}
+
+}catch(e){}
+
+if(!profile){
+
+box.innerHTML='<div class="empty-state">❌ لم يتم العثور على الملف الشخصي.</div>';
+return;
+
+}
+
+const name=profile.name||"عضو KAPO ONE";
+const email=profile.email||"";
+const first=name.trim().charAt(0).toUpperCase()||"K";
+
+const ownerContent=allContent.filter(
+item=>String(item.user_id)===String(userId)
+);
+
+const ownerChannels=allChannels.filter(
+channel=>String(channel.owner_id)===String(userId)
+);
+
+box.innerHTML=`
+
+<div class="profile-public">
+
+<div class="profile-public-head">
+
+<div class="profile-public-avatar">${first}</div>
+
+<div>
+
+<div class="profile-public-name">
+${escapeHtml(name)}
+</div>
+
+<div class="profile-public-email">
+${escapeHtml(email)}
+</div>
+
+</div>
+
+</div>
+
+<div style="color:#94a3b8;font-size:14px">
+🌍 عضو في KAPO ONE
+</div>
+
+</div>
+
+<div class="public-content-title">
+📺 قنوات هذا العضو (${ownerChannels.length})
+</div>
+
+${
+ownerChannels.length
+?
+`
+<div class="public-content-list">
+${ownerChannels.map(channel=>`
+<div class="public-content-item"
+onclick="closePublicProfile();openChannelDetail('${escapeAttribute(channel.id)}')">
+
+<div class="public-content-item-title">
+📺 ${escapeHtml(channel.name)}
+</div>
+
+<div class="public-content-item-type">
+@${escapeHtml(channel.username||"channel")}
+</div>
+
+</div>
+`).join("")}
+</div>
+`
+:
+`<div class="comment-empty">لا توجد قنوات.</div>`
+}
+
+<div class="public-content-title">
+📚 محتوى هذا العضو (${ownerContent.length})
+</div>
+
+${
+ownerContent.length
+?
+`
+<div class="public-content-list">
+${ownerContent.map(item=>`
+<div class="public-content-item"
+onclick="closePublicProfile();openDetailModal('${escapeAttribute(item.id)}')">
+
+<div class="public-content-item-title">
+${escapeHtml(item.title||"بدون عنوان")}
+</div>
+
+<div class="public-content-item-type">
+${escapeHtml(item.content_type||"محتوى")}
+</div>
+
+</div>
+`).join("")}
+</div>
+`
+:
+`<div class="comment-empty">لا يوجد محتوى منشور حتى الآن.</div>`
+}
+
+`;
+
+}
+
+function closePublicProfile(){
+document.getElementById("publicProfileModal").classList.remove("active");
+}
+
+/* ================= OWNER DASHBOARD ================= */
+
+async function loadOwnerDashboard(){
+
+if(!currentUser){
+
+showToast("سجل الدخول أولاً.");
+showSection("home");
+return;
+
+}
+
+document.getElementById("ownerUsersCount").textContent="...";
+document.getElementById("ownerProjectsCount").textContent="...";
+document.getElementById("ownerChannelsCount").textContent="...";
+document.getElementById("ownerLikesCount").textContent="...";
+
+await Promise.all([
+loadOwnerUsers(),
+loadOwnerProjects(),
+loadOwnerChannels(),
+loadOwnerComments(),
+loadOwnerStats()
+]);
+
+}
+
+async function loadOwnerStats(){
+
+if(!initSupabase())return;
+
+try{
+
+const projects=await supabaseClient
+.from("projects")
+.select("id",{count:"exact",head:true});
+
+const channels=await supabaseClient
+.from("channels")
+.select("id",{count:"exact",head:true});
+
+const likes=await supabaseClient
+.from("likes")
+.select("id",{count:"exact",head:true});
+
+document.getElementById("ownerProjectsCount").textContent=
+projects.count??0;
+
+document.getElementById("ownerChannelsCount").textContent=
+channels.count??0;
+
+document.getElementById("ownerLikesCount").textContent=
+likes.count??0;
+
+}catch(e){
+
+console.warn("Owner stats:",e);
+
+}
+
+}
+
+/* USERS */
+
+async function loadOwnerUsers(){
+
+const box=document.getElementById("ownerUsersTable");
+
+if(!box||!initSupabase())return;
+
+box.innerHTML='<div class="empty-state">⏳ جاري تحميل المستخدمين...</div>';
+
+try{
+
+const result=await supabaseClient
+.from("profiles")
+.select("*")
+.order("name",{ascending:true});
+
+if(result.error){
+
+box.innerHTML=`
+<div class="empty-state">
+❌ تعذر تحميل المستخدمين:<br>
+${escapeHtml(result.error.message)}
+</div>`;
+
+return;
+
+}
+
+const users=result.data||[];
+
+document.getElementById("ownerUsersCount").textContent=users.length;
+
+if(!users.length){
+
+box.innerHTML='<div class="empty-state">👥 لا يوجد مستخدمون.</div>';
+return;
+
+}
+
+box.innerHTML=`
+
+<table class="owner-table">
+
+<thead>
+<tr>
+<th>المستخدم</th>
+<th>البريد</th>
+<th>المعرف</th>
+</tr>
+</thead>
+
+<tbody>
+
+${users.map(user=>{
+
+const name=user.name||"مستخدم";
+const first=name.trim().charAt(0).toUpperCase()||"K";
+
+return `
+<tr>
+
+<td>
+
+<div class="owner-user">
+
+<div class="owner-user-avatar">
+${escapeHtml(first)}
+</div>
+
+<div>
+<strong>${escapeHtml(name)}</strong>
+</div>
+
+</div>
+
+</td>
+
+<td>${escapeHtml(user.email||"-")}</td>
+
+<td style="font-size:10px;color:#64748b">
+${escapeHtml(user.id||"-")}
+</td>
+
+</tr>
+`;
+
+}).join("")}
+
+</tbody>
+
+</table>`;
+
+}catch(e){
+
+box.innerHTML='<div class="empty-state">❌ حدث خطأ في تحميل المستخدمين.</div>';
+
+}
+
+}
+
+/* PROJECTS */
+
+async function loadOwnerProjects(){
+
+const box=document.getElementById("ownerProjectsTable");
+
+if(!box||!initSupabase())return;
+
+box.innerHTML='<div class="empty-state">⏳ جاري تحميل المحتوى...</div>';
+
+try{
+
+const result=await supabaseClient
+.from("projects")
+.select("*")
+.order("created_at",{ascending:false})
+.limit(50);
+
+if(result.error){
+
+box.innerHTML=`
+<div class="empty-state">
+❌ تعذر تحميل المحتوى:<br>
+${escapeHtml(result.error.message)}
+</div>`;
+
+return;
+
+}
+
+const projects=result.data||[];
+
+document.getElementById("ownerProjectsCount").textContent=
+projects.length;
+
+if(!projects.length){
+
+box.innerHTML='<div class="empty-state">📋 لا يوجد محتوى.</div>';
+return;
+
+}
+
+box.innerHTML=`
+
+<table class="owner-table">
+
+<thead>
+<tr>
+<th>العنوان</th>
+<th>النوع</th>
+<th>صاحب المحتوى</th>
+<th>التاريخ</th>
+</tr>
+</thead>
+
+<tbody>
+
+${projects.map(item=>{
+
+const owner=allProfiles[String(item.user_id)];
+
+return `
+<tr>
+
+<td>
+<button type="button"
+style="border:0;background:none;color:#60a5fa;font-weight:900"
+onclick="openDetailModal('${escapeAttribute(item.id)}')">
+${escapeHtml(item.title||"بدون عنوان")}
+</button>
+</td>
+
+<td>${escapeHtml(item.content_type||"-")}</td>
+
+<td>${escapeHtml(owner?.name||"عضو KAPO ONE")}</td>
+
+<td>
+${item.created_at
+?escapeHtml(new Date(item.created_at).toLocaleDateString("ar-SA"))
+:"-"}
+</td>
+
+</tr>
+`;
+
+}).join("")}
+
+</tbody>
+
+</table>`;
+
+}catch(e){
+
+box.innerHTML='<div class="empty-state">❌ حدث خطأ.</div>';
+
+}
+
+}
+
+/* CHANNELS */
+
+async function loadOwnerChannels(){
+
+const box=document.getElementById("ownerChannelsTable");
+
+if(!box||!initSupabase())return;
+
+box.innerHTML='<div class="empty-state">⏳ جاري تحميل القنوات...</div>';
+
+try{
+
+const result=await supabaseClient
+.from("channels")
+.select("*")
+.order("created_at",{ascending:false})
+.limit(50);
+
+if(result.error){
+
+box.innerHTML=`
+<div class="empty-state">
+❌ تعذر تحميل القنوات:<br>
+${escapeHtml(result.error.message)}
+</div>`;
+
+return;
+
+}
+
+const channels=result.data||[];
+
+document.getElementById("ownerChannelsCount").textContent=
+channels.length;
+
+if(!channels.length){
+
+box.innerHTML='<div class="empty-state">📺 لا توجد قنوات.</div>';
+return;
+
+}
+
+box.innerHTML=`
+
+<table class="owner-table">
+
+<thead>
+<tr>
+<th>القناة</th>
+<th>اسم المستخدم</th>
+<th>المالك</th>
+<th>التاريخ</th>
+</tr>
+</thead>
+
+<tbody>
+
+${channels.map(channel=>{
+
+const owner=allProfiles[String(channel.owner_id)];
+
+return `
+<tr>
+
+<td>
+<button type="button"
+style="border:0;background:none;color:#60a5fa;font-weight:900"
+onclick="openChannelDetail('${escapeAttribute(channel.id)}')">
+📺 ${escapeHtml(channel.name||"قناة")}
+</button>
+</td>
+
+<td>@${escapeHtml(channel.username||"-")}</td>
+
+<td>${escapeHtml(owner?.name||"عضو KAPO ONE")}</td>
+
+<td>
+${channel.created_at
+?escapeHtml(new Date(channel.created_at).toLocaleDateString("ar-SA"))
+:"-"}
+</td>
+
+</tr>
+`;
+
+}).join("")}
+
+</tbody>
+
+</table>`;
+
+}catch(e){
+
+box.innerHTML='<div class="empty-state">❌ حدث خطأ.</div>';
+
+}
+
+}
+
+/* COMMENTS */
+
+async function loadOwnerComments(){
+
+const box=document.getElementById("ownerCommentsTable");
+
+if(!box||!initSupabase())return;
+
+box.innerHTML='<div class="empty-state">⏳ جاري تحميل التعليقات...</div>';
+
+try{
+
+const result=await supabaseClient
+.from("comments")
+.select("id,project_id,user_id,content,created_at")
+.order("created_at",{ascending:false})
+.limit(50);
+
+if(result.error){
+
+box.innerHTML=`
+<div class="empty-state">
+❌ تعذر تحميل التعليقات:<br>
+${escapeHtml(result.error.message)}
+</div>`;
+
+return;
+
+}
+
+const comments=result.data||[];
+
+if(!comments.length){
+
+box.innerHTML='<div class="empty-state">💬 لا توجد تعليقات.</div>';
+return;
+
+}
+
+box.innerHTML=`
+
+<table class="owner-table">
+
+<thead>
+<tr>
+<th>العضو</th>
+<th>التعليق</th>
+<th>التاريخ</th>
+<th>المحتوى</th>
+</tr>
+</thead>
+
+<tbody>
+
+${comments.map(comment=>{
+
+const profile=allProfiles[String(comment.user_id)];
+
+const project=allContent.find(
+item=>String(item.id)===String(comment.project_id)
+);
+
+return `
+<tr>
+
+<td>${escapeHtml(profile?.name||"عضو KAPO ONE")}</td>
+
+<td style="max-width:300px">
+${escapeHtml(comment.content||"")}
+</td>
+
+<td>
+${comment.created_at
+?escapeHtml(new Date(comment.created_at).toLocaleDateString("ar-SA"))
+:"-"}
+</td>
+
+<td>
+
+${
+project
+?
+`<button type="button"
+style="border:0;background:none;color:#60a5fa;font-weight:800"
+onclick="openDetailModal('${escapeAttribute(project.id)}')">
+فتح
+</button>`
+:
+"-"
+}
+
+</td>
+
+</tr>
+`;
+
+}).join("")}
+
+</tbody>
+
+</table>`;
+
+}catch(e){
+
+box.innerHTML='<div class="empty-state">❌ حدث خطأ.</div>';
+
+}
+
+/* ================= SECURITY / HELPERS ================= */
 
 function escapeHtml(value){
 
@@ -4397,7 +4249,6 @@ async function restoreSession(){
 if(!initSupabase()){
 
 setTimeout(restoreSession,500);
-
 return;
 
 }
@@ -4408,7 +4259,6 @@ const result=await supabaseClient.auth.getSession();
 
 if(result.error){
 
-console.error(result.error);
 showAuthPage();
 return;
 
@@ -4416,7 +4266,7 @@ return;
 
 const session=result.data?.session;
 
-if(session&&session.user){
+if(session?.user){
 
 currentUser=session.user;
 
@@ -4424,6 +4274,7 @@ await loadUserProfile();
 
 showApp();
 updateUI();
+updateOwnerButton();
 
 await loadContent();
 await loadChannels();
@@ -4463,6 +4314,7 @@ await loadUserProfile();
 
 showApp();
 updateUI();
+updateOwnerButton();
 
 await loadNotifications();
 
@@ -4480,6 +4332,7 @@ allNotifications=[];
 unreadNotificationCount=0;
 
 updateNotificationBadge(0);
+updateOwnerButton();
 
 showAuthPage();
 showLoginForm();
