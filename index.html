@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -243,6 +244,44 @@ font-size:12px;font-weight:900;overflow:hidden;flex-shrink:0
 .owner-name{font-size:13px;font-weight:800;color:#e2e8f0}
 .owner-label{font-size:10px;color:#64748b;margin-bottom:2px}
 
+.owner-detail{
+display:flex;
+align-items:center;
+gap:10px;
+margin-top:18px;
+padding:13px;
+border:1px solid #1e293b;
+border-radius:14px;
+background:#020617;
+cursor:pointer;
+transition:.2s
+}
+.owner-detail:hover{
+border-color:#3b82f6;
+transform:translateY(-1px)
+}
+.owner-detail-avatar{
+width:42px;
+height:42px;
+border-radius:13px;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:900;
+flex-shrink:0
+}
+.owner-detail-label{
+font-size:11px;
+color:#64748b;
+margin-bottom:2px
+}
+.owner-detail-name{
+font-size:14px;
+font-weight:900;
+color:#fff
+}
+
 /* FILTERS */
 .filters-bar{
 display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
@@ -451,6 +490,19 @@ border-radius:25px;padding:28px;margin-bottom:20px
 font-size:30px;font-weight:900;color:#fbbf24;margin-bottom:7px
 }
 .owner-hero-subtitle{color:#94a3b8;line-height:1.8}
+.owner-readonly{
+display:inline-flex;
+align-items:center;
+gap:7px;
+margin-top:13px;
+padding:8px 12px;
+border-radius:10px;
+background:rgba(34,197,94,.10);
+border:1px solid rgba(34,197,94,.25);
+color:#86efac;
+font-size:12px;
+font-weight:800
+}
 .owner-stats{
 display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:22px
 }
@@ -639,7 +691,7 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 <button type="button" class="nav-btn" data-section="addcontent" onclick="openAddModal()">➕ إضافة</button>
 <button type="button" class="nav-btn" data-section="profile" onclick="showSection('profile')">حسابي</button>
 
-<button type="button" id="ownerNavBtn" class="nav-btn owner-nav-btn hidden" data-section="owner" onclick="showSection('owner');loadOwnerDashboard()">
+<button type="button" id="ownerNavBtn" class="nav-btn owner-nav-btn hidden" data-section="owner" onclick="openOwnerDashboard()">
 👑 حساب المالك
 </button>
 
@@ -789,6 +841,10 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 لوحة إدارة KAPO ONE — متابعة المستخدمين والمحتوى والقنوات والتفاعل داخل المنصة.
 </div>
 
+<div class="owner-readonly">
+🔒 وضع المالك للعرض فقط — لا يمكن التعديل أو الحذف من هنا
+</div>
+
 <div class="owner-stats">
 
 <div class="owner-stat">
@@ -822,7 +878,7 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 
 <div class="owner-panel-title">
 <span>👥 المستخدمون</span>
-<button type="button" class="owner-refresh" onclick="loadOwnerUsers()">🔄 تحديث</button>
+<button type="button" class="owner-refresh" onclick="ownerOnlyAction(loadOwnerUsers)">🔄 تحديث</button>
 </div>
 
 <div id="ownerUsersTable" class="owner-table-wrap">
@@ -835,7 +891,7 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 
 <div class="owner-panel-title">
 <span>📋 أحدث المحتوى</span>
-<button type="button" class="owner-refresh" onclick="loadOwnerProjects()">🔄 تحديث</button>
+<button type="button" class="owner-refresh" onclick="ownerOnlyAction(loadOwnerProjects)">🔄 تحديث</button>
 </div>
 
 <div id="ownerProjectsTable" class="owner-table-wrap">
@@ -848,7 +904,7 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 
 <div class="owner-panel-title">
 <span>📺 القنوات</span>
-<button type="button" class="owner-refresh" onclick="loadOwnerChannels()">🔄 تحديث</button>
+<button type="button" class="owner-refresh" onclick="ownerOnlyAction(loadOwnerChannels)">🔄 تحديث</button>
 </div>
 
 <div id="ownerChannelsTable" class="owner-table-wrap">
@@ -861,7 +917,7 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 
 <div class="owner-panel-title">
 <span>💬 أحدث التعليقات</span>
-<button type="button" class="owner-refresh" onclick="loadOwnerComments()">🔄 تحديث</button>
+<button type="button" class="owner-refresh" onclick="ownerOnlyAction(loadOwnerComments)">🔄 تحديث</button>
 </div>
 
 <div id="ownerCommentsTable" class="owner-table-wrap">
@@ -1115,6 +1171,13 @@ opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
 const SUPABASE_URL="https://ehmeircigoqfhftaotba.supabase.co";
 const SUPABASE_KEY="sb_publishable_54N-aEBjhTQK1wUzpWl0fg_MQRq5D-T";
 
+/* ================= OWNER ================= */
+
+/*
+   البريد الرسمي لمالك KAPO ONE
+*/
+const OWNER_EMAIL="caapu11@gmail.com";
+
 let supabaseClient=null;
 let currentUser=null;
 let currentProfile=null;
@@ -1180,6 +1243,57 @@ return true;
 return false;
 }
 
+/* ================= OWNER SECURITY ================= */
+
+/*
+   التحقق من المالك من البريد الإلكتروني.
+   المقارنة تتم بطريقة غير حساسة لحالة الأحرف.
+*/
+function isOwner(){
+
+if(!currentUser)return false;
+
+const email=String(currentUser.email||"").trim().toLowerCase();
+
+return email===OWNER_EMAIL.toLowerCase();
+
+}
+
+/*
+   حماية أي وظيفة تخص لوحة المالك.
+*/
+function requireOwner(){
+
+if(!currentUser){
+showToast("🔐 سجل الدخول أولاً.");
+return false;
+}
+
+if(!isOwner()){
+showToast("⛔ هذه الصفحة خاصة بمالك KAPO ONE.");
+showSection("home");
+return false;
+}
+
+return true;
+
+}
+
+/*
+   تشغيل وظائف لوحة المالك فقط إذا كان الحساب هو المالك.
+*/
+async function ownerOnlyAction(action){
+
+if(!requireOwner())return;
+
+try{
+await action();
+}catch(e){
+console.error("Owner action:",e);
+}
+
+}
+
 /* ================= AUTH UI ================= */
 
 function showLoginForm(){
@@ -1235,13 +1349,20 @@ const btn=document.getElementById("ownerNavBtn");
 
 if(!btn)return;
 
-if(currentUser){
+if(isOwner()){
 
 btn.classList.remove("hidden");
 
 }else{
 
 btn.classList.add("hidden");
+
+/* إذا كان مستخدمًا عاديًا داخل لوحة المالك سابقًا */
+const ownerSection=document.getElementById("owner");
+
+if(ownerSection){
+ownerSection.classList.remove("active");
+}
 
 }
 
@@ -1302,7 +1423,11 @@ await loadContent();
 await loadChannels();
 await loadNotifications();
 
+if(isOwner()){
+showToast("👑 مرحباً بك يا مالك KAPO ONE.");
+}else{
 showToast("✅ تم تسجيل الدخول.");
+}
 
 }catch(e){
 
@@ -1598,6 +1723,18 @@ showToast("تم تسجيل الخروج.");
 
 function showSection(id){
 
+/*
+   منع أي مستخدم غير المالك من فتح قسم المالك.
+*/
+if(id==="owner"&&!isOwner()){
+showToast(
+currentUser
+?"⛔ حساب المالك خاص بمالك KAPO ONE."
+:"🔐 سجل الدخول أولاً."
+);
+id="home";
+}
+
 document.querySelectorAll(".section").forEach(s=>{
 s.classList.remove("active");
 });
@@ -1620,9 +1757,23 @@ btn.classList.add("active");
 
 if(id==="content")loadContent();
 if(id==="channels")loadChannels();
-if(id==="owner")loadOwnerDashboard();
+
+if(id==="owner"&&isOwner())loadOwnerDashboard();
 
 window.scrollTo({top:0,behavior:"smooth"});
+
+}
+
+/*
+   فتح لوحة المالك من زر لوحة المالك.
+*/
+async function openOwnerDashboard(){
+
+if(!requireOwner())return;
+
+showSection("owner");
+
+await loadOwnerDashboard();
 
 }
 
@@ -3148,7 +3299,7 @@ item=>String(item.channel_id)===channelId
 const followers=channelFollowers[channelId]||0;
 const following=followedChannelIds.has(channelId);
 
-const isOwner=currentUser&&
+const isOwnerChannel=currentUser&&
 String(channel.owner_id)===String(currentUser.id);
 
 const name=channel.name||"قناة KAPO ONE";
@@ -3210,7 +3361,7 @@ ${channel.verified?'<span class="verified">✓</span>':""}
 <div>
 
 ${
-isOwner
+isOwnerChannel
 ?
 `<div style="color:#64748b;font-size:12px;margin-bottom:8px;text-align:center">قناتك</div>`
 :
@@ -3863,15 +4014,13 @@ document.getElementById("publicProfileModal").classList.remove("active");
 
 /* ================= OWNER DASHBOARD ================= */
 
+/*
+   هذه الوظيفة محمية.
+   لا تعمل إلا إذا كان البريد هو بريد المالك.
+*/
 async function loadOwnerDashboard(){
 
-if(!currentUser){
-
-showToast("سجل الدخول أولاً.");
-showSection("home");
-return;
-
-}
+if(!requireOwner())return;
 
 document.getElementById("ownerUsersCount").textContent="...";
 document.getElementById("ownerProjectsCount").textContent="...";
@@ -3889,6 +4038,8 @@ loadOwnerStats()
 }
 
 async function loadOwnerStats(){
+
+if(!requireOwner())return;
 
 if(!initSupabase())return;
 
@@ -3926,6 +4077,8 @@ console.warn("Owner stats:",e);
 /* USERS */
 
 async function loadOwnerUsers(){
+
+if(!requireOwner())return;
 
 const box=document.getElementById("ownerUsersTable");
 
@@ -4028,6 +4181,8 @@ box.innerHTML='<div class="empty-state">❌ حدث خطأ في تحميل الم
 
 async function loadOwnerProjects(){
 
+if(!requireOwner())return;
+
 const box=document.getElementById("ownerProjectsTable");
 
 if(!box||!initSupabase())return;
@@ -4127,6 +4282,8 @@ box.innerHTML='<div class="empty-state">❌ حدث خطأ.</div>';
 
 async function loadOwnerChannels(){
 
+if(!requireOwner())return;
+
 const box=document.getElementById("ownerChannelsTable");
 
 if(!box||!initSupabase())return;
@@ -4225,6 +4382,8 @@ box.innerHTML='<div class="empty-state">❌ حدث خطأ.</div>';
 /* COMMENTS */
 
 async function loadOwnerComments(){
+
+if(!requireOwner())return;
 
 const box=document.getElementById("ownerCommentsTable");
 
@@ -4424,6 +4583,10 @@ updateUI();
 updateOwnerButton();
 
 await loadNotifications();
+
+if(isOwner()){
+showToast("👑 مرحباً بك يا مالك KAPO ONE.");
+}
 
 }
 
